@@ -41,6 +41,8 @@ WORKDIR /home/dev
 ENV HOME /home/dev
 ADD bashrc /home/dev/.bashrc
 ADD gitconfig /home/dev/.gitconfig
+ADD vim /home/dev/.vim
+ADD .vimrc /home/dev/.vimrc
 
 # Link in shared parts of the home directory
 RUN ln -s /var/shared/.ssh
