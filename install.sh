@@ -12,6 +12,8 @@ mkdir -p vim/tmp/backup
 mkdir -p vim/tmp/swap
 mkdir -p vim/tmp/undo
 
+mkdir -p $HOME/.vim-go
+
 ln -s vim $HOME/.vim
 ln -s vimrc $HOME/.vimrc
 
