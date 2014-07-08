@@ -96,7 +96,6 @@ alias la='ls -lA'
 alias l='ls -CF'
 
 # Docker
-alias docker='sudo docker'
 alias sdd='sudo service docker stop ; sudo cp $(which docker) $(which docker)_ ; sudo cp ./bundles/1.1.0-dev/binary/docker-1.1.0-dev $(which docker); sudo service docker start'
 alias sd='sudo service docker stop ; sudo cp $(which docker)_ $(which docker) ; sudo cp $(which docker) ./bundles/1.1.0-dev/binary/docker-1.1.0-dev ; sudo service docker start'
 
