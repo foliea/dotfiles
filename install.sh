@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # Git config
-ln -s .gitconfig ~/.gitconfig
+ln -s .gitconfig $HOME/.gitconfig
 
-# Bashrc
-ln -s .bashrc ~/.bashrc
-source ~/.bashrc
+# Bash profile
+ln -s .bashrc $HOME/.bashrc
+source $HOME/.bashrc
