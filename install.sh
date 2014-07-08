@@ -14,3 +14,7 @@ mkdir -p vim/tmp/undo
 
 ln -s vim $HOME/.vim
 ln -s vimrc $HOME/.vimrc
+
+# Install YouCompleteMe
+cd vim/bundle/YouCompleteMe
+./install.sh --clang-completer
