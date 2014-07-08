@@ -1,5 +1,7 @@
 #!/bin/sh
 
+git submodule update --init --recursive
+
 # Git config
 ln -s $PWD/gitconfig $HOME/.gitconfig
 
