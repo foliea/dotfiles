@@ -39,14 +39,12 @@ VOLUME /var/shared
 
 WORKDIR /home/dev
 ENV HOME /home/dev
-ADD vimrc /home/dev/.vimrc
-ADD vim /home/dev/.vim
 ADD bashrc /home/dev/.bashrc
 ADD gitconfig /home/dev/.gitconfig
 
 # Link in shared parts of the home directory
 RUN ln -s /var/shared/.ssh
-RUN ln -s /var/shared/.bashrc
+RUN ln -s /var/shared/.bash_history
 
 RUN chown -R dev: /home/dev
 USER dev
