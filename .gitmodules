@@ -1,0 +1,18 @@
+[submodule "vim/bundle/nerdtree"]
+	path = vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "vim/bundle/YouCompleteMe"]
+	path = vim/bundle/YouCompleteMe
+	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule "vim/bundle/vim-go"]
+	path = vim/bundle/vim-go
+	url = https://github.com/fatih/vim-go.git
+[submodule "vim/bundle/tagbar"]
+	path = vim/bundle/tagbar
+	url = https://github.com/majutsushi/tagbar
+[submodule "vim/bundle/vim-rails"]
+	path = vim/bundle/vim-rails
+	url = https://github.com/tpope/vim-rails
+[submodule "vim/bundle/vim-ruby"]
+	path = vim/bundle/vim-ruby
+	url = https://github.com/vim-ruby/vim-ruby.git
