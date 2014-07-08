@@ -123,6 +123,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+# Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/.rvm/bin"
+
+# Go path
 export GOPATH=$HOME/Dev/go
 export GOBIN=$GOPATH/bin
