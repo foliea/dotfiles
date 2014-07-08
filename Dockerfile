@@ -1,5 +1,7 @@
 FROM ubuntu:14.04
 
+MAINTAINER Adrien Folie, folie.adrien@gmail.com
+
 RUN apt-get update -y
 RUN apt-get install -y mercurial
 RUN apt-get install -y git
