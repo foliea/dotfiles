@@ -15,10 +15,6 @@ shopt -s checkwinsize
 
 export PATH="$PATH:$HOME/.rvm/bin"
 
-# Go path
-export GOPATH=$HOME/Dev/go
-export GOBIN=$GOPATH/bin
-
 # Prompt
 export PS1="\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$ "
 export CLICOLOR=1
@@ -51,11 +47,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
 fi
-

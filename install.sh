@@ -4,6 +4,7 @@ git submodule update --init --recursive
 
 # Git config
 ln -s $PWD/gitconfig $HOME/.gitconfig
+curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o $HOME/.git-completion.bash
 
 # Bash profile
 ln -s $PWD/bashrc $HOME/.bashrc
