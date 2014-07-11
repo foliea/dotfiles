@@ -1,15 +1,14 @@
 CWD=$(shell pwd)
 BINDIR=$(HOME)/bin
 
-.PHONY: docker container install clean update goinstall
-
+.PHONY: docker container install clean update vim bash git go
 docker:
 	docker build -t dev .
 
 container:
 	docker run -v $(HOME)/Dev/docker:/go/src/github.com/dotcloud/docker --privileged -i -t dev
 
-install: goinstall clean bash git vim
+install: clean go bash git vim
 
 vim:
 	git submodule update --init --recursive
@@ -40,7 +39,7 @@ update:
 	cd $(CWD)/vim/bundle/YouCompleteMe
 	git submodule foreach git pull origin master
 
-goinstall:
+go:
 	go get -u code.google.com/p/go.tools/cmd/godoc
 	go get -u code.google.com/p/go.tools/cmd/oracle
 	go get -u code.google.com/p/go.tools/cmd/goimports
