@@ -9,25 +9,25 @@ docker:
 container:
 	docker run -v $(HOME)/Dev/docker:/go/src/github.com/dotcloud/docker --privileged -i -t dev
 
-install: goinstall clean
+install: goinstall clean bash git vim
+
+vim:
 	git submodule update --init --recursive
-	# Git config
-	ln -s $(CWD)/gitconfig $HOME/.gitconfig
-	# Bash profile
-	ln -s $(CWD)/bashrc $HOME/.bashrc
-	# Vim config
 	mkdir -p $(CWD)/vim/tmp/backup
 	mkdir -p $(CWD)/vim/tmp/swap
 	mkdir -p $(CWD)/vim/tmp/undo
 	mkdir -p $HOME/.vim-go
-	
 	ln -s $(CWD)/vim $HOME/.vim
 	ln -s $(CWD)/vimrc $HOME/.vimrc
-	
-	# Install YouCompleteMe
 	cd vim/bundle/YouCompleteMe
 	git submodule update --init --recursive
 	install.sh --clang-completer
+
+bash:
+	ln -s $(CWD)/bashrc $HOME/.bashrc
+	
+git:
+	ln -s $(CWD)/gitconfig $HOME/.gitconfig
 
 clean:
 	rm $HOME/.gitconfig
