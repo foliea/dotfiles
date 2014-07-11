@@ -14,7 +14,6 @@ HISTFILESIZE=2000
 shopt -s checkwinsize
 
 export PATH="$PATH:$HOME/.rvm/bin"
-export DOCKER_DEV_VERSION="1.1.1"
 # Prompt
 export PS1="\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$ "
 export CLICOLOR=1
