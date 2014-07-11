@@ -2,10 +2,9 @@
 
 install: clean
 	install.sh
-          
+
 clean:
-            clean.sh
+	clean.sh
             
 update:
-            update.sh
-      
+	update.sh
