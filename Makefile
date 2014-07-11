@@ -6,6 +6,9 @@ BINDIR=$(HOME)/bin
 docker:
 	docker build -t dev .
 
+container:
+	docker run -v $(HOME)/Dev/docker:/go/src/github.com/dotcloud/docker --privileged -i -t dev
+
 install: goinstall clean
 	install.sh
 	
