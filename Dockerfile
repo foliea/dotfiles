@@ -46,7 +46,6 @@ run make -C /home/dev/dotfiles install
 
 # Link in shared parts of the home directory
 RUN ln -s /var/shared/.ssh
-RUN ln -s /var/shared/.bash_history
 
 RUN chown -R dev: /home/dev
 USER dev
