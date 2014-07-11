@@ -1,7 +1,7 @@
 CWD=$(shell pwd)
 BINDIR=$(HOME)/bin
 
-.PHONY: install clean update
+.PHONY: docker container install clean update goinstall
 
 docker:
 	docker build -t dev .
