@@ -2,6 +2,7 @@ CWD=$(shell pwd)
 BINDIR=$(HOME)/bin
 
 .PHONY: docker container install clean update vim bash git go
+
 docker:
 	docker build -t dev .
 
@@ -15,7 +16,7 @@ vim:
 	mkdir -p $(CWD)/vim/tmp/backup
 	mkdir -p $(CWD)/vim/tmp/swap
 	mkdir -p $(CWD)/vim/tmp/undo
-	mkdir -p $HOME/.vim-go
+	mkdir -p $(HOME)/.vim-go
 	ln -s $(CWD)/vim $HOME/.vim
 	ln -s $(CWD)/vimrc $HOME/.vimrc
 	cd vim/bundle/YouCompleteMe
@@ -23,16 +24,16 @@ vim:
 	install.sh --clang-completer
 
 bash:
-	ln -s $(CWD)/bashrc $HOME/.bashrc
+	ln -s $(CWD)/bashrc $(HOME)/.bashrc
 	
 git:
-	ln -s $(CWD)/gitconfig $HOME/.gitconfig
+	ln -s $(CWD)/gitconfig $(HOME)/.gitconfig
 
 clean:
-	rm $HOME/.gitconfig
-	rm $HOME/.bashrc
-	rm $HOME/.vimrc
-	rm $HOME/.vim
+	rm $(HOME)/.gitconfig
+	rm $(HOME)/.bashrc
+	rm $(HOME)/.vimrc
+	rm $(HOME)/.vim
 
 update:
 	git submodule foreach git pull origin master
