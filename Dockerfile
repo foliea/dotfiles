@@ -42,7 +42,7 @@ VOLUME /var/shared
 WORKDIR /home/dev
 ENV HOME /home/dev
 ADD . /home/dev/dotfiles
-run make -C /home/dev/dotfiles install
+RUN make -C /home/dev/dotfiles install
 
 # Link in shared parts of the home directory
 RUN ln -s /var/shared/.ssh
