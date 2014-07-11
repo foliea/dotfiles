@@ -17,8 +17,8 @@ vim:
 	mkdir -p $(CWD)/vim/tmp/swap
 	mkdir -p $(CWD)/vim/tmp/undo
 	mkdir -p $(HOME)/.vim-go
-	ln -s $(CWD)/vim $HOME/.vim
-	ln -s $(CWD)/vimrc $HOME/.vimrc
+	ln -s $(CWD)/vim $(HOME)/.vim
+	ln -s $(CWD)/vimrc $(HOME)/.vimrc
 	cd vim/bundle/YouCompleteMe
 	git submodule update --init --recursive
 	install.sh --clang-completer
