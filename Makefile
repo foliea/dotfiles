@@ -7,21 +7,19 @@ docker:
 	docker build -t dev .
 
 container:
-	docker run -v $(HOME)/Dev/docker:/go/src/github.com/dotcloud/docker --privileged -i -t dev
+	docker run -v $(HOME)/dev/docker:/go/src/github.com/dotcloud/docker --privileged -i -t dev /bin/bash
 
-install: clean go bash git vim
+install: clean bash git vim
 
-vim:
+vim: go
 	git submodule update --init --recursive
 	mkdir -p $(CWD)/vim/tmp/backup
 	mkdir -p $(CWD)/vim/tmp/swap
 	mkdir -p $(CWD)/vim/tmp/undo
-	mkdir -p $(HOME)/.vim-go
+	ln -s $(GOPATH)/bin $(HOME)/.vim-go
 	ln -s $(CWD)/vim $(HOME)/.vim
 	ln -s $(CWD)/vimrc $(HOME)/.vimrc
-	cd vim/bundle/YouCompleteMe
-	git submodule update --init --recursive
-	install.sh --clang-completer
+	cd $(CWD)/vim/bundle/YouCompleteMe && sh install.sh
 
 bash:
 	ln -s $(CWD)/bashrc $(HOME)/.bashrc
@@ -30,18 +28,18 @@ git:
 	ln -s $(CWD)/gitconfig $(HOME)/.gitconfig
 
 clean:
-	rm $(HOME)/.gitconfig
-	rm $(HOME)/.bashrc
-	rm $(HOME)/.vimrc
-	rm $(HOME)/.vim
+	rm -rf $(CWD)/vim/bundle/*
+	rm -f $(HOME)/.gitconfig
+	rm -f $(HOME)/.bashrc
+	rm -f $(HOME)/.vimrc
+	rm -f $(HOME)/.vim
+	rm -f $(HOME)/.vim-go
 
 update:
 	git submodule foreach git pull origin master
-	cd $(CWD)/vim/bundle/YouCompleteMe
-	git submodule foreach git pull origin master
 
 go:
-	go get -u code.google.com/p/go.tools/cmd/godoc
+	$(CWD)/scripts/go.sh
 	go get -u code.google.com/p/go.tools/cmd/oracle
 	go get -u code.google.com/p/go.tools/cmd/goimports
 	go get -u github.com/nsf/gocode
@@ -49,13 +47,3 @@ go:
 	go get -u github.com/kisielk/errcheck
 	go get -u code.google.com/p/rog-go/exp/cmd/godef
 	go get -u github.com/jstemmer/gotags
-	go get -u github.com/monochromegane/the_platinum_searcher
-	rm -rf $(BINDIR)/oracle $(BINDIR)/goimports $(BINDIR)/golint $(BINDIR)/errcheck $(BINDIR)/gocode $(BINDIR)/godef $(BINDIR)/gotags $(BINDIR)/pt
-	ln -s $(GOPATH)/bin/oracle $(BINDIR)
-	ln -s $(GOPATH)/bin/goimports $(BINDIR)
-	ln -s $(GOPATH)/bin/golint $(BINDIR)
-	ln -s $(GOPATH)/bin/errcheck $(BINDIR)
-	ln -s $(GOPATH)/bin/gocode $(BINDIR)
-	ln -s $(GOPATH)/bin/godef $(BINDIR)
-	ln -s $(GOPATH)/bin/gotags $(BINDIR)
-	ln -s $(GOPATH)/bin/the_platinum_searcher $(BINDIR)/pt
