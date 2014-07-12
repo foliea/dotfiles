@@ -26,6 +26,7 @@ bash:
 	
 git:
 	ln -s $(CWD)/gitconfig $(HOME)/.gitconfig
+	ln -s $(CWD)/git-completion.bash $(HOME)/.git-completion.bash
 
 clean:
 	rm -rf $(CWD)/vim/bundle/*
