@@ -1,13 +1,13 @@
 CWD=$(shell pwd)
 BINDIR=$(HOME)/bin
 
-.PHONY: docker container install clean update vim bash git go
+.PHONY: devbox run-devbox install clean update vim bash git go
 
-docker:
-	docker build -t dev .
+devbox:
+	docker build -t devbox .
 
-container:
-	docker run -v $(HOME)/dev/docker:/go/src/github.com/dotcloud/docker --privileged -i -t dev /bin/bash
+run-devbox:
+	docker run -v $(HOME)/dev/docker:/go/src/github.com/dotcloud/docker --privileged -i -t --name devbox devbox /bin/bash
 
 install: clean bash git vim
 
