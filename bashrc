@@ -1,5 +1,3 @@
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
 HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
@@ -14,6 +12,7 @@ HISTFILESIZE=2000
 shopt -s checkwinsize
 
 export PATH="$PATH:$HOME/.rvm/bin"
+
 # Prompt
 export PS1="\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$ "
 export CLICOLOR=1
@@ -27,14 +26,21 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
+# ls aliases
 alias ll='ls -lF'
 alias la='ls -lA'
 alias l='ls -CF'
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+# docker aliases
+alias drm='docker rm'
+alias dps='docker ps'
+alias drun='docker run'
+
+# git aliases
+alias gc='git commit'
+alias gs='git status'
+alias gck='git checkout'
+alias gf='git fetch'
 
 if ! shopt -oq posix; then
     if [ -f /usr/share/bash-completion/bash_completion ]; then

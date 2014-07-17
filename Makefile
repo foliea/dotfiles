@@ -1,5 +1,4 @@
 CWD=$(shell pwd)
-BINDIR=$(HOME)/bin
 
 .PHONY: devbox run-devbox install clean update vim bash git go
 
