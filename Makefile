@@ -1,12 +1,12 @@
 CWD=$(shell pwd)
 
-.PHONY: devbox run-devbox install clean update vim bash git go
+.PHONY: devbox run install clean update vim bash git go
 
 devbox:
 	docker build -t devbox .
 
-run-devbox:
-	docker run -v $(HOME)/dev/docker:/go/src/github.com/dotcloud/docker --privileged -i -t --name devbox devbox /bin/bash
+run:
+	docker run -v $(HOME)/dev/docker:/go/src/github.com/dotcloud/docker --privileged -i -t --name $(BOX) devbox /bin/bash
 
 install: clean bash git vim
 
