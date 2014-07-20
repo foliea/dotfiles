@@ -14,7 +14,7 @@ shopt -s checkwinsize
 export PATH="$PATH:$HOME/.rvm/bin"
 
 # Prompt
-export PS1="\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$ "
+export PS1="\033[33m\u\033[00m:\033[34m\w\033[00m\$ "
 export CLICOLOR=1
 
 # enable color support of ls and also add handy aliases
@@ -30,6 +30,8 @@ fi
 alias ll='ls -lF'
 alias la='ls -lA'
 alias l='ls -CF'
+
+alias j='jobs'
 
 # docker aliases
 alias drm='docker rm'
