@@ -6,6 +6,10 @@ My configuration for vim, bash and git.
 
   `$ make install`
   
-### Clean
+### Update
+
+  `$ make update`
+
+### Uninstall
 
   `$ make clean`
