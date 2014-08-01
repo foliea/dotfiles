@@ -31,6 +31,7 @@ autocmd vimenter * if !argc() | NERDTree | endif
 nmap <F8> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 let NERDTreeShowHidden=1
+let NERDTreeIgnore = ['\.pyc$', '\__pycache__$', '\ .*$]
 
 " Tagbar
 nmap <F9> :TagbarToggle<CR>
