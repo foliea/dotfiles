@@ -1,5 +1,5 @@
 " Editor options
-colorscheme base16-tomorrow
+colorscheme Tomorrow-Night
 
 set background=dark
 set guioptions-=r
@@ -31,7 +31,7 @@ autocmd vimenter * if !argc() | NERDTree | endif
 nmap <F8> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 let NERDTreeShowHidden=1
-let NERDTreeIgnore = ['\.pyc$', '\__pycache__$', '\.*$']
+let NERDTreeIgnore = ['\.DS_STORE$']
 
 " Tagbar
 nmap <F9> :TagbarToggle<CR>

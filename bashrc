@@ -14,7 +14,7 @@ shopt -s checkwinsize
 export PATH="$PATH:$HOME/.rvm/bin"
 
 # Prompt
-export PS1="\033[33m\u\033[00m:\033[34m\w\033[00m\$ "
+export PS1="\[\e[00;33m\]\u\[\e[0m\]\[\e[00;37m\]:\[\e[0m\]\[\e[00;34m\]\w\[\e[0m\]\[\e[00;37m\]\\$ \[\e[0m\]"
 export CLICOLOR=1
 
 # enable color support of ls and also add handy aliases
