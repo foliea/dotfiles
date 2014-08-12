@@ -12,6 +12,8 @@ HISTFILESIZE=2000
 shopt -s checkwinsize
 
 export PATH="$PATH:$HOME/.rvm/bin"
+export GOPATH="$HOME/dev/go"
+export PATH="$PATH:$GOPATH/bin"
 
 # Prompt
 export PS1="\[\e[00;33m\]\u\[\e[0m\]\[\e[00;37m\]:\[\e[0m\]\[\e[00;34m\]\w\[\e[0m\]\[\e[00;37m\]\\$ \[\e[0m\]"

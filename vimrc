@@ -35,3 +35,6 @@ let NERDTreeIgnore = ['\.DS_STORE$']
 
 " Tagbar
 nmap <F9> :TagbarToggle<CR>
+
+" Custom syntax highlighting
+au BufRead,BufNewFile Gomfile setlocal ft=ruby
