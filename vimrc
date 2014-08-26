@@ -23,8 +23,13 @@ set hlsearch
 
 " Pathogen
 execute pathogen#infect()
-syntax on
-filetype plugin indent on
+
+# Options
+set nocompatible      " We're running Vim, not Vi!
+syntax on             " Enable syntax highlighting
+filetype on           " Enable filetype detection
+filetype indent on    " Enable filetype-specific indenting
+filetype plugin on    " Enable filetype-specific plugins
 
 " NERDTree
 autocmd vimenter * if !argc() | NERDTree | endif
@@ -35,6 +40,9 @@ let NERDTreeIgnore = ['\.DS_STORE$']
 
 " Tagbar
 nmap <F9> :TagbarToggle<CR>
+
+# Ruby
+autocmd FileType ruby compiler ruby
 
 " Custom syntax highlighting
 au BufRead,BufNewFile Gomfile setlocal ft=ruby
