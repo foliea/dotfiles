@@ -24,7 +24,7 @@ set hlsearch
 " Pathogen
 execute pathogen#infect()
 
-# Options
+" Options
 set nocompatible      " We're running Vim, not Vi!
 syntax on             " Enable syntax highlighting
 filetype on           " Enable filetype detection
@@ -37,6 +37,9 @@ nmap <F8> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['\*.DS_STORE$']
+
+" Go
+let g:go_disable_autoinstall = 1
 
 " Tagbar
 nmap <F9> :TagbarToggle<CR>
