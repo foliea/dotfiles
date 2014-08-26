@@ -41,7 +41,7 @@ let NERDTreeIgnore = ['\*.DS_STORE$']
 " Tagbar
 nmap <F9> :TagbarToggle<CR>
 
-# Ruby
+" Ruby
 autocmd FileType ruby compiler ruby
 
 " Custom syntax highlighting
