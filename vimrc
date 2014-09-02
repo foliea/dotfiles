@@ -40,6 +40,7 @@ let NERDTreeIgnore = ['\*.DS_STORE$']
 
 " Go
 let g:go_disable_autoinstall = 1
+let g:go_fmt_fail_silently = 1
 
 " Tagbar
 nmap <F9> :TagbarToggle<CR>
