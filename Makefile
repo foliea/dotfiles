@@ -1,8 +1,12 @@
 CWD=$(shell pwd)
 
-.PHONY: install clean update vim bash git go
+.PHONY: install mac clean update vim bash git go
 
 install: clean bash git vim
+
+mac:
+	xcode-select --install
+	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 vim: go
 	git submodule update --init --recursive
