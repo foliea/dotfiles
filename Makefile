@@ -7,6 +7,7 @@ install: clean bash git vim
 mac:
 	xcode-select --install
 	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	brew bundle
 
 vim: go
 	git submodule update --init --recursive
