@@ -1,4 +1,6 @@
 # Install dependencies
+install wget
+install curl
 install rvm
 install ctags
 install phantomjs
