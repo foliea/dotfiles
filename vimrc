@@ -55,3 +55,4 @@ autocmd FileType ruby compiler ruby
 
 " Custom syntax highlighting
 au BufRead,BufNewFile Gomfile setlocal ft=ruby
+au BufRead,BufNewFile Caskfile setlocal ft=ruby
