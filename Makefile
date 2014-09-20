@@ -30,8 +30,8 @@ clean:
 	rm -f $(HOME)/.gitconfig
 	rm -f $(HOME)/.bashrc
 	rm -f $(HOME)/.vimrc
-	rm -f $(HOME)/.vim
-	rm -f $(HOME)/.vim-go
+	rm -rf $(HOME)/.vim
+	rm -rf $(HOME)/.vim-go
 	rm -f $(HOME)/.git-completion.bash
 update:
 	git submodule foreach git pull origin master
