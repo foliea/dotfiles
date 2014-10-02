@@ -11,7 +11,6 @@ HISTFILESIZE=2000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-export GOPATH="$HOME/dev/go"
 export PATH="$PATH:$GOPATH/bin:$HOME/.rvm/bin"
 export EDITOR="vim" 
 
