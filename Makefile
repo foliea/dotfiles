@@ -43,7 +43,7 @@ git:
 	sh scripts/git.sh
 
 clean:
-	rm -f $(HOME)/.fonts
+	rm -rf $(HOME)/.fonts
 	rm -f $(HOME)/.zshrc
 	rm -f $(HOME)/.vimrc
 	rm -f $(HOME)/.gvimrc

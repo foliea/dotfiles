@@ -14,7 +14,6 @@ runtime! stdheader.vim
 syntax on
 set encoding=utf-8
 set background=dark
-colorscheme gruvbox
 set number
 " Editor options
 
