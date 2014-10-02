@@ -6,7 +6,7 @@
 #    By: marin <mravenel@student.42.fr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/10/02 11:00:28 by marin             #+#    #+#              #
-#    Updated: 2014/10/02 12:27:25 by marin            ###   ########.fr        #
+#    Updated: 2014/10/02 14:46:25 by marin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ clean:
 	rm -rf $(HOME)/.fonts
 	rm -f $(HOME)/.zshrc
 	rm -f $(HOME)/.vimrc
+	rm -f $(ZSH)/themes/marin42.zsh-theme
 	rm -f $(HOME)/.gvimrc
 	rm -rf $(HOME)/.vim
 update:
