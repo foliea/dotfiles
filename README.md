@@ -31,7 +31,7 @@ My configuration for vim, zsh and git.
 		+ vim-rails
 		+ vim-ruby
 
-![Alt text](http://postimg.org/image/xslqpghjv/full/ "Your vim should look like this")
+![Alt text](/screens/vim.png "Your vim should look like this")
 
 	A few macros are pre-configured in the vimrc :
 		+ F1  prints the header (which you can change in the stdheader.vim file) 
@@ -40,4 +40,4 @@ My configuration for vim, zsh and git.
 		+ F8  toggles NERDTree
 		+ F9  toggles cTags
 
-![Alt text](http://postimg.org/image/d2oufva5v/full/ "And like this, with all options enabled")
+![Alt text](/screens/vimoptions.png "And like this, with all options enabled")
