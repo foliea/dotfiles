@@ -6,18 +6,16 @@
 "    By: marin <mravenel@student.42.fr>             +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2014/10/02 10:50:33 by marin             #+#    #+#              "
-"    Updated: 2014/10/02 13:03:22 by marin            ###   ########.fr        "
+"    Updated: 2014/10/02 14:26:00 by marin            ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
 runtime! stdheader.vim
 syntax on
 set encoding=utf-8
-set background=dark
 set number
 " Editor options
 
-set background=dark
 set guioptions-=r
 set guioptions-=L
 set number
@@ -30,13 +28,7 @@ set undodir=~/.vim/tmp/undo//
 
 " Tabs
 set noexpandtab
-autocmd FileType ruby setlocal shiftwidth=2 softtabstop=2
-autocmd FileType eruby setlocal shiftwidth=2 softtabstop=2
-autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2
-autocmd FileType json setlocal shiftwidth=2 softtabstop=2
-autocmd FileType scss setlocal shiftwidth=2 softtabstop=2
 set listchars=precedes:<,extends:>,trail:?,tab:>- "tabs characters
-set noexpandtab
 autocmd FileType ruby setlocal shiftwidth=2 expandtab softtabstop=2
 autocmd FileType eruby setlocal shiftwidth=2 expandtab softtabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 expandtab softtabstop=2
@@ -105,12 +97,12 @@ let g:airline_enable_branch=1
 let g:airline_enable_syntastic=1
 let g:airline_detect_paste=1
 let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#left_sep = ''
-"let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
 "let g:Powerline_dividers_override = ["\Ue0b0", "\Ue0b1", "\Ue0b2", "\Ue0b3"]
 "let g:Powerline_symbols_override = { 'BRANCH': "\Ue0a0", 'LINE': "\Ue0a1", 'RO': "\Ue0a2" }
-"let g:airline_detect_modified=1
-"let g:airline_inactive_collapse=1
+let g:airline_detect_modified=1
+let g:airline_inactive_collapse=1
 let g:airline_left_alt_sep= "\ue0b1"
 let g:airline_left_sep = "\ue0b0"
 let g:airline_right_sep = "\ue0b2"
