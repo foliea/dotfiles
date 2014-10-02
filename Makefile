@@ -6,15 +6,15 @@
 #    By: marin <mravenel@student.42.fr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/10/02 11:00:28 by marin             #+#    #+#              #
-#    Updated: 2014/10/02 12:12:16 by marin            ###   ########.fr        #
+#    Updated: 2014/10/02 12:27:25 by marin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CWD=$(PWD)
 
-.PHONY: install mac clean update vim zsh git go
+.PHONY: install mac clean update vim zsh git go fonts
 
-install: clean zsh git vim
+install: clean fonts zsh git vim
 
 mac:
 	xcode-select --install
@@ -22,6 +22,8 @@ mac:
 	"$(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)"
 	brew bundle
 
+fonts:
+	ln -s $(CWD)/fonts $(HOME)/.fonts
 
 vim:
 	git submodule update --init --recursive
@@ -31,7 +33,6 @@ vim:
 	ln -s $(CWD)/vim $(HOME)/.vim
 	ln -s $(CWD)/vimrc $(HOME)/.vimrc
 	ln -s $(CWD)/gvimrc $(HOME)/.gvimrc
-	ln -s $(CWD)/fonts $(HOME)/.fonts
 	ln -s $(CWD)/marin42.zsh-theme $(ZSH)/themes/marin42.zsh-theme
 	cd vim/bundle/YouCompleteMe && sh install.sh
 
@@ -47,7 +48,6 @@ clean:
 	rm -f $(HOME)/.vimrc
 	rm -f $(HOME)/.gvimrc
 	rm -rf $(HOME)/.vim
-	rm -rf $(HOME)/.vim-go
 update:
 	git submodule foreach git pull origin master
 
