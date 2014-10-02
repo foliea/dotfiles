@@ -1,15 +1,16 @@
 " **************************************************************************** "
 "                                                                              "
 "                                                         :::      ::::::::    "
-"    .vimrc                                             :+:      :+:    :+:    "
+"    .gvimrc                                            :+:      :+:    :+:    "
 "                                                     +:+ +:+         +:+      "
 "    By: marin <mravenel@student.42.fr>             +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
-"    Created: 2014/10/02 11:05:42 by marin             #+#    #+#              "
-"    Updated: 2014/10/02 11:06:46 by marin            ###   ########.fr        "
+"    Created: 2014/10/02 10:50:33 by marin             #+#    #+#              "
+"    Updated: 2014/10/02 11:47:06 by marin            ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
+runtime! stdheader.vim
 syntax on
 set encoding=utf-8
 set background=dark
@@ -104,17 +105,22 @@ endif
 let g:airline_enable_branch=1
 let g:airline_enable_syntastic=1
 let g:airline_detect_paste=1
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline_left_alt_sep= "\ue0b1"
-"let g:airline_left_sep = "\ue0b0"
-"let g:airline_right_sep = "\ue0b2"
-"let g:airline_right_alt_sep = "\ue0b3"
-"let g:airline_symbols.branch = "\Ue0a0"
-"let g:airline_symbols.readonly = "\ue0a2"
-"let g:airline_symbols.linenr = "\Ue0a1"
-"let g:airline_symbols.space = "\ua0"
-"let g:airline_powerline_fonts = 1
-
+let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#left_sep = ''
+"let g:airline#extensions#tabline#right_sep = ''
+"let g:Powerline_dividers_override = ["\Ue0b0", "\Ue0b1", "\Ue0b2", "\Ue0b3"]
+"let g:Powerline_symbols_override = { 'BRANCH': "\Ue0a0", 'LINE': "\Ue0a1", 'RO': "\Ue0a2" }
+"let g:airline_detect_modified=1
+"let g:airline_inactive_collapse=1
+let g:airline_left_alt_sep= "\ue0b1"
+let g:airline_left_sep = "\ue0b0"
+let g:airline_right_sep = "\ue0b2"
+let g:airline_right_alt_sep = "\ue0b3"
+let g:airline_symbols.branch = "\Ue0a0"
+let g:airline_symbols.readonly = "\ue0a2"
+let g:airline_symbols.linenr = "\Ue0a1"
+let g:airline_symbols.space = "\ua0"
+let g:airline_powerline_fonts = 1
 set noshowmode
 set laststatus=2
 colorscheme Tomorrow
@@ -136,3 +142,7 @@ function! s:Add_header()
 	execute "normal! Go" . '#ifndef '. name . "\n". '# define ' . name . "\n". "\n\n\n". '#endif /* !' . name . ' */'
 	execute "17"
 endfunction
+
+"Uncomment those lines to put the header automatically in each new file
+	"autocmd BufWritePre * :%s/\s\+$//e
+	"autocmd BufNewFile * call Header(1)

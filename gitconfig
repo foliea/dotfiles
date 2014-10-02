@@ -1,9 +1,9 @@
 [user]
-	name = Adrien Folie
-	email = folie.adrien@gmail.com
+	name = Marin Ravenel
+	email = kalasasta@gmail.com
 	
 [github]
-  	user = folieadrien
+  	user = marin42
 
 [filter "media"]
 	clean = git-media-clean %f
