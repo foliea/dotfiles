@@ -23,8 +23,8 @@ bash:
 	ln -s $(CWD)/bashrc $(HOME)/.bashrc
 	
 git:
-	ln -s $(CWD)/gitconfig $(HOME)/.gitconfig
 	ln -s $(CWD)/git-completion.bash $(HOME)/.git-completion.bash
+	scripts/git.sh
 
 clean:
 	rm -f $(HOME)/.gitconfig
