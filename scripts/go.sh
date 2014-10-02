@@ -4,7 +4,7 @@ set -e
 
 read -p "Please specify your $GOPATH: " gopath
 if [ -z "$gopath" ]; then
-    echo "$gopath" >> "$HOME"/.bashrc
+    echo "export GOPATH=$gopath" >> "$HOME"/.bashrc
     source "$HOME"/.bashrc
 fi
 
