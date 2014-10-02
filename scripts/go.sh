@@ -2,10 +2,12 @@
 
 set -e
 
-read -p "Please specify your $GOPATH: " gopath
-if [ -z "$gopath" ]; then
-    echo "export GOPATH=$gopath" >> "$HOME"/.bashrc
-    source "$HOME"/.bashrc
+if [ -z "$GOPATH" ]; then
+    read -p "Please specify your GOPATH: " gopath
+    if [ "$gopath" ]; then
+        echo "export GOPATH=$gopath" >> "$HOME"/.bashrc
+        exec $SHELL -i
+    fi
 fi
 
 if [ -z "$GOPATH" ]; then
