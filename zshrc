@@ -6,7 +6,7 @@
 #    By: marin <mravenel@student.42.fr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/10/02 10:51:08 by marin             #+#    #+#              #
-#    Updated: 2014/10/02 11:57:18 by marin            ###   ########.fr        #
+#    Updated: 2014/10/02 16:55:16 by marin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ alias la="ls -la"
 alias status="git status"
 alias c="clear"
 alias v="gvim"
+alias open="nautilus"
 export GOPATH="$HOME/dev/go"
 export PATH="$PATH:$GOPATH/bin:$HOME/.rvm/bin"
 export EDITOR="vim" 
