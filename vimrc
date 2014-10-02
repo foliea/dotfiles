@@ -6,7 +6,7 @@
 "    By: marin <mravenel@student.42.fr>             +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2014/10/02 11:05:42 by marin             #+#    #+#              "
-"    Updated: 2014/10/02 14:27:00 by marin            ###   ########.fr        "
+"    Updated: 2014/10/02 15:04:24 by marin            ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -97,13 +97,13 @@ set clipboard=unnamed
 set guifont=Monaco
 
 """" AIRLINE CONFIG
-if !exists('g:airline_symbols')
-	"let g:airline_symbols = {}
-endif
-let g:airline_enable_branch=1
-let g:airline_enable_syntastic=1
-let g:airline_detect_paste=1
+"if !exists('g:airline_symbols')
+"	let g:airline_symbols = {}
+"endif
 let g:airline#extensions#tabline#enabled = 1
+"let g:airline_enable_branch=1
+"let g:airline_enable_syntastic=1
+"let g:airline_detect_paste=1
 "let g:airline_left_alt_sep= "\ue0b1"
 "let g:airline_left_sep = "\ue0b0"
 "let g:airline_right_sep = "\ue0b2"
@@ -112,7 +112,7 @@ let g:airline#extensions#tabline#enabled = 1
 "let g:airline_symbols.readonly = "\ue0a2"
 "let g:airline_symbols.linenr = "\Ue0a1"
 "let g:airline_symbols.space = "\ua0"
-"let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1
 
 set noshowmode
 set laststatus=2
