@@ -2,7 +2,7 @@ CWD=$(shell pwd)
 
 .PHONY: install mac clean update vim bash git go
 
-install: clean bash git vim
+install: clean bash git vim go
 
 mac:
 	xcode-select --install

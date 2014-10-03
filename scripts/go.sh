@@ -2,11 +2,18 @@
 
 set -e
 
-$(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+while true; do
+    read -p "Do you wish to install vim-go? " yn
+    case $yn in
+        [Yy]* ) break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
 
-gvm install go1.3.1
-gvm use go1.3.1
+echo "Installing vim-go dependencies..."
 
+# Set GOPATH if none exists
 if [ -z "$GOPATH" ]; then
     read -p "Please specify your GOPATH: " gopath
     if [ "$gopath" ]; then
@@ -15,7 +22,8 @@ if [ -z "$GOPATH" ]; then
     fi
 fi
 
-if [ -z "$GOPATH" ]; then
+# Install go tools for vim-go
+if [ "$GOPATH" ]; then
     go get -u code.google.com/p/go.tools/cmd/oracle
     go get -u code.google.com/p/go.tools/cmd/goimports
     go get -u github.com/nsf/gocode
@@ -26,3 +34,5 @@ if [ -z "$GOPATH" ]; then
     
     ln -s "$GOPATH"/bin "$HOME"/.vim-go
 fi
+
+echo "vim-go dependencies installed."
