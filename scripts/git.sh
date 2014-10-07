@@ -19,3 +19,7 @@ ${config} push.default simple
 ${config} pull.rebase true
 ${config} rerere.enabled true
 ${config} color.ui true
+
+# Aliases
+${config} alias.s "status -s"
+${config} alias.lg "log --oneline --decorate --all --graph"
