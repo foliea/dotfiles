@@ -40,13 +40,6 @@ alias dps='docker ps'
 alias drun='docker run'
 alias dim='docker images'
 
-# git aliases
-alias gc='git commit'
-alias ga='git add'
-alias gs='git status'
-alias gck='git checkout'
-alias gf='git fetch'
-
 if ! shopt -oq posix; then
     if [ -f /usr/share/bash-completion/bash_completion ]; then
         . /usr/share/bash-completion/bash_completion
