@@ -2,12 +2,20 @@
 
 set -e
 
+config="git config --global"
+
 read -p "Please specify you git user name: " username
 if [ "$username" ]; then
-    git config --global user.name "$username"
+    ${config} user.name "$username"
 fi
 
 read -p "Please specify you git user email: " useremail
 if [ "$useremail" ]; then
-    git config --global user.email "$useremail"
+    ${config} user.email "$useremail"
 fi
+
+${config} core.autocrlf input
+${config} push.default simple
+${config} pull.rebase true
+${config} rerere.enabled true
+${config} color.ui true
