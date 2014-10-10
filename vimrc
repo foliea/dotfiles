@@ -6,7 +6,7 @@
 "    By: marin <mravenel@student.42.fr>             +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2014/10/02 11:05:42 by marin             #+#    #+#              "
-"    Updated: 2014/10/10 11:43:37 by modizy           ###   ########.fr        "
+"    Updated: 2014/10/10 12:17:43 by modizy           ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -117,7 +117,7 @@ let g:airline_symbols.linenr = "\Ue0a1"
 let g:airline_symbols.space = "\ua0"
 let g:airline_theme_map = {
      \ 'Tomorrow.*': 'tomorrow',
-     \ 'gruvbox.*': 'tomorrow',
+     \ 'gruvbox.*': 'gruvbox',
      \ }
 
 
