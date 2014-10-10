@@ -6,9 +6,11 @@
 "    By: marin <mravenel@student.42.fr>             +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2014/10/02 11:05:42 by marin             #+#    #+#              "
-"    Updated: 2014/10/02 15:04:24 by marin            ###   ########.fr        "
+"    Updated: 2014/10/10 11:43:37 by modizy           ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
+
+runtime! stdheader.vim
 
 syntax on
 set encoding=utf-8
@@ -94,29 +96,36 @@ set backspace=2 " make backspace work like most other apps
 set clipboard=unnamed
 
 "set guifont=DejaVuSansMonoforPowerline
-set guifont=Monaco
+"set guifont=Monaco
 
 """" AIRLINE CONFIG
-"if !exists('g:airline_symbols')
-"	let g:airline_symbols = {}
-"endif
-let g:airline#extensions#tabline#enabled = 1
-"let g:airline_enable_branch=1
-"let g:airline_enable_syntastic=1
-"let g:airline_detect_paste=1
-"let g:airline_left_alt_sep= "\ue0b1"
-"let g:airline_left_sep = "\ue0b0"
-"let g:airline_right_sep = "\ue0b2"
-"let g:airline_right_alt_sep = "\ue0b3"
-"let g:airline_symbols.branch = "\Ue0a0"
-"let g:airline_symbols.readonly = "\ue0a2"
-"let g:airline_symbols.linenr = "\Ue0a1"
-"let g:airline_symbols.space = "\ua0"
 let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+	let g:airline_symbols = {}
+endif
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_enable_branch=1
+let g:airline_enable_syntastic=1
+let g:airline_detect_paste=1
+let g:airline_left_alt_sep= "\ue0b1"
+let g:airline_left_sep = "\ue0b0"
+let g:airline_right_sep = "\ue0b2"
+let g:airline_right_alt_sep = "\ue0b3"
+let g:airline_symbols.branch = "\Ue0a0"
+let g:airline_symbols.readonly = "\ue0a2"
+let g:airline_symbols.linenr = "\Ue0a1"
+let g:airline_symbols.space = "\ua0"
+let g:airline_theme_map = {
+     \ 'Tomorrow.*': 'tomorrow',
+     \ 'gruvbox.*': 'tomorrow',
+     \ }
+
+
 
 set noshowmode
 set laststatus=2
-colorscheme Tomorrow
+"colorscheme Tomorrow
+colorscheme gruvbox 
 
 
 "add header for 42
