@@ -6,7 +6,7 @@
 #    By: marin <mravenel@student.42.fr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/10/02 10:51:08 by marin             #+#    #+#              #
-#    Updated: 2014/10/02 16:55:16 by marin            ###   ########.fr        #
+#    Updated: 2014/10/13 17:52:29 by modizy           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,8 +35,8 @@ alias l="ls -l"
 alias la="ls -la"
 alias status="git status"
 alias c="clear"
-alias v="gvim"
-alias open="nautilus"
+alias v="mvim"
+alias ll="ls -1 | less -M"
 export GOPATH="$HOME/dev/go"
 export PATH="$PATH:$GOPATH/bin:$HOME/.rvm/bin"
 export EDITOR="vim" 
@@ -45,3 +45,5 @@ export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
+export PATH="/Applications/MAMP/bin/php/php5.3.28/bin/:$PATH"
+export PHP_AUTOCONF="/usr/local/bin/autoconf"
