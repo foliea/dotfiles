@@ -23,3 +23,4 @@ ${config} color.ui true
 # Aliases
 ${config} alias.s "status -s"
 ${config} alias.lg "log --oneline --decorate --all --graph"
+${config} alias.pushall "push --recurse-submodules=on-demand"
