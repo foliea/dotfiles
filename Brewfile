@@ -1,4 +1,6 @@
 # Install dependencies
+install hub
+install curl
 install wget
 install rvm
 install nvm
