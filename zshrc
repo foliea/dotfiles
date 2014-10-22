@@ -6,7 +6,7 @@
 #    By: marin <mravenel@student.42.fr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/10/02 10:51:08 by marin             #+#    #+#              #
-#    Updated: 2014/10/13 17:52:29 by modizy           ###   ########.fr        #
+#    Updated: 2014/10/20 10:57:54 by modizy           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ alias la="ls -la"
 alias status="git status"
 alias c="clear"
 alias v="mvim"
-alias ll="ls -1 | less -M"
+alias ll="ls -a1 | less -M"
 export GOPATH="$HOME/dev/go"
 export PATH="$PATH:$GOPATH/bin:$HOME/.rvm/bin"
 export EDITOR="vim" 
@@ -47,3 +47,4 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export PATH="/Applications/MAMP/bin/php/php5.3.28/bin/:$PATH"
 export PHP_AUTOCONF="/usr/local/bin/autoconf"
+export GREP_OPTIONS="--color=always"

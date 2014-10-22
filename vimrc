@@ -6,14 +6,16 @@
 "    By: marin <mravenel@student.42.fr>             +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2014/10/02 11:05:42 by marin             #+#    #+#              "
-"    Updated: 2014/10/10 12:17:43 by modizy           ###   ########.fr        "
+"    Updated: 2014/10/22 15:42:19 by modizy           ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
 runtime! stdheader.vim
 
 syntax on
+
 set encoding=utf-8
+
 set background=dark
 set number
 " Editor options
@@ -26,7 +28,7 @@ set ruler
 
 " Temp files
 set backupdir=~/.vim/tmp/backup//
-set directory=~/.vim/tmp/swap//
+set directory=~/.vim/tmp/swap/
 set undodir=~/.vim/tmp/undo//
 
 " Tabs
@@ -144,3 +146,6 @@ function! s:Add_header()
 	execute "normal! Go" . '#ifndef '. name . "\n". '# define ' . name . "\n". "\n\n\n". '#endif /* !' . name . ' */'
 	execute "17"
 endfunction
+
+let g:neocomplcache_enable_at_startup = 1
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"

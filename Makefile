@@ -6,7 +6,7 @@
 #    By: marin <mravenel@student.42.fr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/10/02 11:00:28 by marin             #+#    #+#              #
-#    Updated: 2014/10/02 14:46:25 by marin            ###   ########.fr        #
+#    Updated: 2014/10/22 15:53:43 by modizy           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,6 @@ vim:
 	ln -s $(CWD)/vimrc $(HOME)/.vimrc
 	ln -s $(CWD)/gvimrc $(HOME)/.gvimrc
 	ln -s $(CWD)/marin42.zsh-theme $(ZSH)/themes/marin42.zsh-theme
-	cd vim/bundle/YouCompleteMe && sh install.sh
 
 zsh:
 	ln -s $(CWD)/zshrc $(HOME)/.zshrc
