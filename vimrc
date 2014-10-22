@@ -6,7 +6,7 @@
 "    By: marin <mravenel@student.42.fr>             +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2014/10/02 11:05:42 by marin             #+#    #+#              "
-"    Updated: 2014/10/22 17:45:11 by modizy           ###   ########.fr        "
+"    Updated: 2014/10/22 18:40:55 by modizy           ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -149,10 +149,13 @@ function! s:Add_header()
 endfunction
 
 
+
 "Enable neocomplcache at startup, and bind it to the TAB key
 let g:neocomplcache_enable_at_startup = 1
-inoremap <expr><s-TAB>  pumvisible() ? "\<C-n>" : "\<s-TAB>"
+let g:neocomplcache_enable_underbar_completion = 1 
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><s-tab>  neocomplcache#close_popup()
 
 "Bind snipMate to the Shift + Tab key
-"imap <> <Plug>snipMateNextOrTrigger
-"smap <C-a> <Plug>snipMateNextOrTrigger
+imap <C-S> <Plug>snipMateNextOrTrigger
+smap <C-S> <Plug>snipMateNextOrTrigger
