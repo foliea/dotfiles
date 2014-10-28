@@ -6,7 +6,7 @@
 "    By: marin <mravenel@student.42.fr>             +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2014/10/02 11:05:42 by marin             #+#    #+#              "
-"    Updated: 2014/10/22 18:40:55 by modizy           ###   ########.fr        "
+"    Updated: 2014/10/28 12:10:25 by modizy           ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -34,13 +34,7 @@ set undodir=~/.vim/tmp/undo//
 
 " Tabs
 set noexpandtab
-autocmd FileType ruby setlocal shiftwidth=2 softtabstop=2
-autocmd FileType eruby setlocal shiftwidth=2 softtabstop=2
-autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2
-autocmd FileType json setlocal shiftwidth=2 softtabstop=2
-autocmd FileType scss setlocal shiftwidth=2 softtabstop=2
 set listchars=precedes:<,extends:>,trail:?,tab:>- "tabs characters
-set noexpandtab
 autocmd FileType ruby setlocal shiftwidth=2 expandtab softtabstop=2
 autocmd FileType eruby setlocal shiftwidth=2 expandtab softtabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 expandtab softtabstop=2
@@ -49,6 +43,12 @@ autocmd FileType scss setlocal shiftwidth=2 expandtab softtabstop=2
 
 set tabstop=4 "tabs are 4 space long
 set shiftwidth=4
+
+"Settings for C and C++
+autocmd FileType c set colorcolumn=80
+autocmd FileType c set list
+autocmd FileType cpp set colorcolumn=80
+autocmd FileType cpp set list
 
 " Search
 set hlsearch
