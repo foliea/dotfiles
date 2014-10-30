@@ -23,6 +23,12 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 
+" Show whitespaces
+set list
+
+" Leader key
+let mapleader=","
+
 " Search
 set hlsearch
 
@@ -55,5 +61,6 @@ nmap <F9> :TagbarToggle<CR>
 autocmd FileType ruby compiler ruby
 
 " Custom syntax highlighting
-au BufRead,BufNewFile Gomfile setlocal ft=ruby
-au BufRead,BufNewFile Caskfile setlocal ft=ruby
+autocmd BufRead,BufNewFile Gomfile setlocal ft=ruby
+autocmd BufRead,BufNewFile Caskfile setlocal ft=ruby
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
