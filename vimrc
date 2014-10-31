@@ -6,7 +6,7 @@
 "    By: marin <mravenel@student.42.fr>             +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2014/10/02 11:05:42 by marin             #+#    #+#              "
-"    Updated: 2014/10/28 12:10:25 by modizy           ###   ########.fr        "
+"    Updated: 2014/10/31 16:55:21 by modizy           ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -128,7 +128,7 @@ let g:airline_theme_map = {
 set noshowmode
 set laststatus=2
 "colorscheme Tomorrow
-colorscheme gruvbox 
+colorscheme gruvbox
 
 
 "add header for 42
@@ -152,10 +152,19 @@ endfunction
 
 "Enable neocomplcache at startup, and bind it to the TAB key
 let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_underbar_completion = 1 
+let g:neocomplcache_enable_underbar_completion = 1
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><s-tab>  neocomplcache#close_popup()
 
 "Bind snipMate to the Shift + Tab key
 imap <C-S> <Plug>snipMateNextOrTrigger
 smap <C-S> <Plug>snipMateNextOrTrigger
+
+"Syntastic configuration for headers
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_signs=1
+let g:syntastic_cpp_include_dirs = ['inc']
+let g:syntastic_c_include_dirs = ['inc', 'inc/libft', '../libft']
+let g:syntastic_cpp_check_header = 1
+let g:syntastic_c_check_header = 1
+let g:syntastic_cpp_remove_include_errors = 1
