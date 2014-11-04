@@ -6,7 +6,7 @@
 "    By: marin <mravenel@student.42.fr>             +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2014/10/02 11:05:42 by marin             #+#    #+#              "
-"    Updated: 2014/11/04 12:09:31 by modizy           ###   ########.fr        "
+"    Updated: 2014/11/04 12:29:15 by modizy           ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -39,7 +39,11 @@ set undodir=~/.vim/tmp/undo//
 "List chars
 " invisible character setting
 " unicode for \u25b8 for `▸', \u00ac for `¬'
-set listchars=tab:▸\ ,eol:¬,trail:?,extends:>,precedes:<,nbsp:. 
+set listchars=tab:▸\ ,eol:¬,trail:?,extends:>,precedes:<,nbsp:.
+"Comment if you want invisible chars to show up only on C/C++
+set list
+"you can toggle invisble chars by pressing F7
+nmap <F7> :set list!<CR>
 
 " Tabs
 set noexpandtab
@@ -100,9 +104,7 @@ au BufRead,BufNewFile Caskfile setlocal ft=ruby
 nmap <F6> :set relativenumber!<CR>
 set guioptions-=L  "remove left-hand scroll bar
 set guioptions-=T  "remove toolbar
-set lines=50 columns=120 "default window size
-set nolist "display tabs
-nmap <F7> :set list!<CR>
+set lines=60 columns=90 "default window size
 set backspace=2 " make backspace work like most other apps
 set clipboard=unnamed
 
@@ -127,9 +129,9 @@ let g:airline_symbols.readonly = "\ue0a2"
 let g:airline_symbols.linenr = "\Ue0a1"
 let g:airline_symbols.space = "\ua0"
 let g:airline_theme_map = {
-     \ 'Tomorrow.*': 'tomorrow',
-     \ 'gruvbox.*': 'gruvbox',
-     \ }
+			\ 'Tomorrow.*': 'tomorrow',
+			\ 'gruvbox.*': 'gruvbox',
+			\ }
 
 
 
@@ -162,10 +164,10 @@ endfunction
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_underbar_completion = 1
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" Binding the popup closing to Shift + TAB 
+" Binding the popup closing to Shift + TAB
 inoremap <expr><s-tab>  neocomplcache#close_popup()
 
-"Bind snipMate to the Ctrl + s keystroke 
+"Bind snipMate to the Ctrl + s keystroke
 imap <C-S> <Plug>snipMateNextOrTrigger
 smap <C-S> <Plug>snipMateNextOrTrigger
 

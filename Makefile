@@ -6,7 +6,7 @@
 #    By: marin <mravenel@student.42.fr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/10/02 11:00:28 by marin             #+#    #+#              #
-#    Updated: 2014/11/04 12:19:58 by modizy           ###   ########.fr        #
+#    Updated: 2014/11/04 12:22:25 by modizy           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ vim:
 	git submodule update --init --recursive
 	mkdir -p $(CWD)/vim/tmp/backup
 	mkdir -p $(CWD)/vim/tmp/swap
-	mkdir -p $(CWD)/vim/tmp/undo	
+	mkdir -p $(CWD)/vim/tmp/undo
 	ln -s $(CWD)/vim $(HOME)/.vim
 	ln -s $(CWD)/vimrc $(HOME)/.vimrc
 	ln -s $(CWD)/gvimrc $(HOME)/.gvimrc
@@ -38,7 +38,7 @@ vim:
 
 zsh:
 	ln -s $(CWD)/zshrc $(HOME)/.zshrc
-	
+
 git:
 	sh scripts/git.sh
 
