@@ -6,7 +6,7 @@
 "    By: marin <mravenel@student.42.fr>             +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2014/10/02 11:05:42 by marin             #+#    #+#              "
-"    Updated: 2014/10/31 16:55:21 by modizy           ###   ########.fr        "
+"    Updated: 2014/11/04 12:09:31 by modizy           ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -21,20 +21,29 @@ set background=dark
 set number
 " Editor options
 
+set showmatch
+
 set background=dark
 set guioptions-=r
 set guioptions-=L
 set number
 set ruler
+set visualbell    " don't beep
+set noerrorbells  " don't beep
 
 " Temp files
 set backupdir=~/.vim/tmp/backup//
 set directory=~/.vim/tmp/swap/
 set undodir=~/.vim/tmp/undo//
 
+"List chars
+" invisible character setting
+" unicode for \u25b8 for `▸', \u00ac for `¬'
+set listchars=tab:▸\ ,eol:¬,trail:?,extends:>,precedes:<,nbsp:. 
+
 " Tabs
 set noexpandtab
-set listchars=precedes:<,extends:>,trail:?,tab:>- "tabs characters
+
 autocmd FileType ruby setlocal shiftwidth=2 expandtab softtabstop=2
 autocmd FileType eruby setlocal shiftwidth=2 expandtab softtabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 expandtab softtabstop=2
@@ -94,7 +103,6 @@ set guioptions-=T  "remove toolbar
 set lines=50 columns=120 "default window size
 set nolist "display tabs
 nmap <F7> :set list!<CR>
-set listchars=precedes:<,extends:>,trail:?,tab:>- "tabs characters
 set backspace=2 " make backspace work like most other apps
 set clipboard=unnamed
 
@@ -154,15 +162,17 @@ endfunction
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_underbar_completion = 1
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" Binding the popup closing to Shift + TAB 
 inoremap <expr><s-tab>  neocomplcache#close_popup()
 
-"Bind snipMate to the Shift + Tab key
+"Bind snipMate to the Ctrl + s keystroke 
 imap <C-S> <Plug>snipMateNextOrTrigger
 smap <C-S> <Plug>snipMateNextOrTrigger
 
-"Syntastic configuration for headers
+"Syntastic runs when opening a file
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
+"Syntastic configuration for headers
 let g:syntastic_cpp_include_dirs = ['inc']
 let g:syntastic_c_include_dirs = ['inc', 'inc/libft', '../libft']
 let g:syntastic_cpp_check_header = 1

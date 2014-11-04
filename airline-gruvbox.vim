@@ -20,7 +20,7 @@ function! airline#themes#gruvbox#refresh()
         \ }
   let g:airline#themes#gruvbox#palette.normal.airline_warning = warning_group
   let g:airline#themes#gruvbox#palette.normal_modified.airline_warning = warning_group
-
+    
   let s:I1 = [ '#ffffff', '#b0b326', 0, '', 'bold' ]
   let s:I2 = airline#themes#get_highlight2(['MoreMsg', 'fg'], ['Normal', 'bg'])
   let s:I3 = s:N3
