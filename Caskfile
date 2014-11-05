@@ -6,6 +6,5 @@ cask install caffeine
 cask install iterm2
 cask install skype
 cask install vlc
-cask install hipchat
 cask install gitx
 cask install unrarx
