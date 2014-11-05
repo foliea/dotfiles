@@ -8,3 +8,4 @@ cask install skype
 cask install vlc
 cask install gitx
 cask install unrarx
+cask install transmission
