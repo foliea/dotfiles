@@ -1649,8 +1649,6 @@
 	<false/>
 	<key>NSNavLastRootDirectory</key>
 	<string>~/Documents</string>
-	<key>NSNavPanelExpandedSizeForOpenMode</key>
-	<string>{1219, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
 	<key>NSRepeatCountBinding</key>
@@ -1675,9 +1673,11 @@
 	<key>NSTableView Sort Ordering KeyBingingTable</key>
 	<array/>
 	<key>NSWindow Frame Preferences</key>
-	<string>516 341 605 485 0 0 1440 900 </string>
+	<string>269 135 924 485 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>2 61 1438 817 0 0 1440 878 </string>
+	<string>467 809 570 401 0 0 2560 1417 </string>
+	<key>NSWindow Frame iTerm Window 1</key>
+	<string>398 166 570 401 0 0 2560 1417 </string>
 	<key>NeverWarnAboutShortLivedSessions_E7297A61-3324-44FC-944B-92A8E4D5B404</key>
 	<true/>
 	<key>New Bookmarks</key>
@@ -1876,7 +1876,7 @@
 			<key>Columns</key>
 			<integer>80</integer>
 			<key>Command</key>
-			<string>source .bashrc</string>
+			<string></string>
 			<key>Cursor Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -1900,7 +1900,7 @@
 			<key>Custom Command</key>
 			<string>No</string>
 			<key>Custom Directory</key>
-			<string>Yes</string>
+			<string>No</string>
 			<key>Default Bookmark</key>
 			<string>No</string>
 			<key>Disable Printing</key>
@@ -1929,7 +1929,7 @@
 			<key>Idle Code</key>
 			<integer>0</integer>
 			<key>Initial Text</key>
-			<string></string>
+			<string>source ~/.bashrc &amp;&amp; cd dev</string>
 			<key>Jobs to Ignore</key>
 			<array>
 				<string>rlogin</string>
@@ -2412,7 +2412,7 @@
 			<key>Window Type</key>
 			<integer>0</integer>
 			<key>Working Directory</key>
-			<string>/Users/folie_a/dev</string>
+			<string></string>
 		</dict>
 	</array>
 	<key>OnlyWhenMoreTabs</key>
@@ -2461,7 +2461,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/folie_a/Documents</string>
+	<string>/Users/folie_a/dev/dotfiles/iterm2</string>
 	<key>PromptOnClose</key>
 	<true/>
 	<key>PromptOnQuit</key>
@@ -2479,7 +2479,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2014-09-19T16:30:47Z</date>
+	<date>2014-11-05T19:13:53Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -2527,6 +2527,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>1.0.0.20140629</string>
+	<string>2.0.0.20141103</string>
 </dict>
 </plist>

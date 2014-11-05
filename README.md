@@ -2,14 +2,20 @@
 
 My configuration for vim, bash and git.
 
+## Experimental
+
+You can install every dependencies and applications on Darwin:
+
+    `./scripts/mac.sh
+
 ### Install
 
-  `$ make install`
-  
+    `make install`
+
 ### Update
 
-  `$ make update`
+    `make update`
 
 ### Uninstall
 
-  `$ make clean`
+    `make clean`

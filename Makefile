@@ -4,11 +4,6 @@ CWD=$(shell pwd)
 
 install: clean bash git vim go
 
-mac:
-	xcode-select --install
-	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-	brew bundle
-
 vim:
 	git submodule update --init --recursive
 	mkdir -p $(CWD)/vim/tmp/backup
@@ -32,6 +27,7 @@ clean:
 	rm -rf $(HOME)/.vim
 	rm -rf $(HOME)/.vim-go
 	rm -f $(HOME)/.git-completion.bash
+
 update:
 	git submodule foreach git pull origin master
 
