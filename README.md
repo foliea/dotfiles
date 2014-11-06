@@ -4,37 +4,37 @@ My configuration for vim, bash and git.
 
 ### Install
 
-    `make all`
+    make all
 
 ### Reinstall
 
-    `make re`
+    make re
 
 ### Update
 
-    `make update`
+    make update
 
 ### Uninstall
 
-    `make clean`
+    make clean
 
 ## Experimental
 
 You can install every dependencies and applications on Darwin:
 
-    `./scripts/mac.sh
+    ./scripts/mac.sh
 
 You can install ruby (with rvm):
 
-    `./scripts/ruby.sh`
+    ./scripts/ruby.sh
 
 You can install node (with nvm):
 
-    `./scripts/node.sh`
+    ./scripts/node.sh
 
 You can install go (with gvm):
 
-    `./scripts/go.sh`
+    ./scripts/go.sh
 
 >The go installation script also install dependencies required by
 vim plugin `vim-go`.
