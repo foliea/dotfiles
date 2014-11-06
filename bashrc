@@ -40,12 +40,6 @@ alias dps='docker ps'
 alias drun='docker run'
 alias dim='docker images'
 
-# boot2docker
-export DOCKER_HOST=tcp://192.168.59.103:2376
-export DOCKER_URL=https://192.168.59.103:2376
-export DOCKER_CERT_PATH=/$HOME/.boot2docker/certs/boot2docker-vm
-export DOCKER_TLS_VERIFY=1
-
 # bash completion
 if ! shopt -oq posix; then
     if [ -f /usr/share/bash-completion/bash_completion ]; then
@@ -58,7 +52,6 @@ fi
 if [ -f $HOME/.git-completion.bash ]; then
     . $HOME/.git-completion.bash
 fi
-export GOPATH=~/dev
 
-export NVM_DIR="/Users/folie_a/.nvm"
+export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

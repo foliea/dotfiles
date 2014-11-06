@@ -2,14 +2,19 @@
 
 set -e
 
-while true; do
-    read -p "Do you wish to install vim-go? " yn
-    case $yn in
-        [Yy]* ) break;;
-        [Nn]* ) exit;;
-        * ) echo "Please answer yes or no.";;
-    esac
-done
+VERSION=1.3.1
+
+# Install Go Version Manager
+curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer | bash
+
+# Source gvm
+source "$HOME/.gvm/scripts/gvm"
+
+# Install Go 1.3.1
+gvm install "go$VERSION"
+
+# Use Go 1.3.1 as default
+gvm use "go$VERSION" --default
 
 echo "Installing vim-go dependencies..."
 
@@ -31,7 +36,7 @@ if [ "$GOPATH" ]; then
     go get -u github.com/kisielk/errcheck
     go get -u code.google.com/p/rog-go/exp/cmd/godef
     go get -u github.com/jstemmer/gotags
-    
+
     ln -s "$GOPATH"/bin "$HOME"/.vim-go
 fi
 

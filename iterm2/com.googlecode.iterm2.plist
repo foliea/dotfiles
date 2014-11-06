@@ -1675,7 +1675,7 @@
 	<key>NSWindow Frame Preferences</key>
 	<string>269 135 924 485 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>467 809 570 401 0 0 2560 1417 </string>
+	<string>0 118 570 401 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>398 166 570 401 0 0 2560 1417 </string>
 	<key>NeverWarnAboutShortLivedSessions_E7297A61-3324-44FC-944B-92A8E4D5B404</key>
@@ -1876,7 +1876,7 @@
 			<key>Columns</key>
 			<integer>80</integer>
 			<key>Command</key>
-			<string></string>
+			<string>/bin/bash --login</string>
 			<key>Cursor Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -1898,7 +1898,7 @@
 			<key>Cursor Type</key>
 			<integer>2</integer>
 			<key>Custom Command</key>
-			<string>No</string>
+			<string>Yes</string>
 			<key>Custom Directory</key>
 			<string>No</string>
 			<key>Default Bookmark</key>

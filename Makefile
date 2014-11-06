@@ -1,8 +1,10 @@
 CWD=$(shell pwd)
 
-.PHONY: install mac clean update vim bash git go
+.PHONY: all re vim bash git clean update
 
-install: clean bash git vim go
+all: bash git vim
+
+re: clean all
 
 vim:
 	git submodule update --init --recursive
@@ -30,6 +32,3 @@ clean:
 
 update:
 	git submodule foreach git pull origin master
-
-go:
-	scripts/go.sh
