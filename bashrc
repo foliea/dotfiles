@@ -59,3 +59,6 @@ if [ -f $HOME/.git-completion.bash ]; then
     . $HOME/.git-completion.bash
 fi
 export GOPATH=~/dev
+
+export NVM_DIR="/Users/folie_a/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
