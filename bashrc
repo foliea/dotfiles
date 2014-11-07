@@ -47,6 +47,11 @@ alias dps='docker ps'
 alias drun='docker run'
 alias dim='docker images'
 
+# alias macvim on darwin
+if [ `uname` == "Darwin" ]; then
+    alias vim='mvim -v'
+fi
+
 # bash completion
 if ! shopt -oq posix; then
     if [ -f /usr/share/bash-completion/bash_completion ]; then
