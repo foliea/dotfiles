@@ -69,5 +69,8 @@ fi
 # additional env variables
 export PATH="$PATH:$GOPATH/bin:$HOME/.rvm/bin"
 export EDITOR="vim"
+export CLICOLOR=1
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# Load nvm
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
