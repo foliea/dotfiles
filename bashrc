@@ -11,12 +11,20 @@ HISTFILESIZE=2000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-export PATH="$PATH:$GOPATH/bin:$HOME/.rvm/bin"
-export EDITOR="vim" 
+# gitprompt configuration
 
-# Prompt
-export PS1="\[\e[00;33m\]\u\[\e[0m\]\[\e[00;37m\]:\[\e[0m\]\[\e[00;34m\]\w\[\e[0m\]\[\e[00;37m\]\\$ \[\e[0m\]"
-export CLICOLOR=1
+# Set config variables first
+GIT_PROMPT_ONLY_IN_REPO=1
+
+# GIT_PROMPT_FETCH_REMOTE_STATUS=0   # uncomment to avoid fetching remote status
+
+# GIT_PROMPT_START=...    # uncomment for custom prompt start sequence
+# GIT_PROMPT_END=...      # uncomment for custom prompt end sequence
+
+# as last entry source the gitprompt script
+# GIT_PROMPT_THEME=Custom # use custom .git-prompt-colors.sh
+# GIT_PROMPT_THEME=Solarized # use theme optimized for solarized color scheme
+source ~/.bash-git-prompt/gitprompt.sh
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -27,11 +35,10 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# ls aliases
+# aliases
 alias ll='ls -lF'
 alias la='ls -lA'
 alias l='ls -CF'
-
 alias j='jobs'
 
 # docker aliases
@@ -49,9 +56,13 @@ if ! shopt -oq posix; then
     fi
 fi
 
+# git bash completion
 if [ -f $HOME/.git-completion.bash ]; then
     . $HOME/.git-completion.bash
 fi
 
+# additional env variables
+export PATH="$PATH:$GOPATH/bin:$HOME/.rvm/bin"
+export EDITOR="vim"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
