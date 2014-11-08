@@ -55,7 +55,7 @@ if [ `uname` == "Darwin" ]; then
     export DOCKER_CERT_PATH=/Users/folie_a/.boot2docker/certs/boot2docker-vm
     export DOCKER_TLS_VERIFY=1
     export DOCKER_HOST=tcp://192.168.59.103:2376
-    export DOCKER_URL=https://192.168.59.103:2376$
+    export DOCKER_URL=https://192.168.59.103:2376
 fi
 
 # bash completion
