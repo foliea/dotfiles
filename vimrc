@@ -64,3 +64,12 @@ autocmd FileType ruby compiler ruby
 autocmd BufRead,BufNewFile Gomfile setlocal ft=ruby
 autocmd BufRead,BufNewFile Caskfile setlocal ft=ruby
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+" Trailing whitespaces
+set wrap
+set linebreak
+
+" note trailing space at end of next line
+set showbreak=>\ \ \
+
+autocmd BufWritePre * :%s/\s\+$//e
