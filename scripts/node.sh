@@ -5,7 +5,7 @@ set -e
 VERSION=0.10.30
 
 # Install Node Version Manager
-#curl https://raw.githubusercontent.com/creationix/nvm/v0.18.0/install.sh | bash
+curl https://raw.githubusercontent.com/creationix/nvm/v0.18.0/install.sh | bash
 
 # Source nvm
 source ~/.nvm/nvm.sh

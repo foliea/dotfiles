@@ -2,7 +2,7 @@ CWD=$(shell pwd)
 
 .PHONY: all re install update clean bash git vim
 
-all: bash git vim
+all: install bash git vim
 
 re: clean all
 
