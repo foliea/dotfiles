@@ -21,7 +21,7 @@ clean:
 	rm -rf $(HOME)/.vim-go
 	rm -f $(HOME)/.git-completion.bash
 
-bash: install
+bash:
 	ln -s $(CWD)/bash-git-prompt $(HOME)/.bash-git-prompt
 	ln -s $(CWD)/bashrc $(HOME)/.bashrc
 
@@ -29,7 +29,7 @@ git:
 	ln -s $(CWD)/git-completion.bash $(HOME)/.git-completion.bash
 	scripts/git.sh
 
-vim: install
+vim:
 	mkdir -p $(CWD)/vim/tmp/backup
 	mkdir -p $(CWD)/vim/tmp/swap
 	mkdir -p $(CWD)/vim/tmp/undo
