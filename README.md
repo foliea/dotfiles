@@ -4,7 +4,7 @@ My configuration for vim, bash and git.
 
 ### Install
 
-    make all
+    make
 
 ### Reinstall
 
