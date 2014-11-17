@@ -47,8 +47,8 @@ alias dps='docker ps'
 alias drun='docker run'
 alias dim='docker images'
 
-# alias macvim on darwin
 if [ `uname` == "Darwin" ]; then
+    # alias macvim on darwin
     alias vim='mvim -v'
 
     # Set boot2docker env variables
