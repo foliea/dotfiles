@@ -1,6 +1,6 @@
 CWD=$(shell pwd)
 
-.PHONY: all re install update clean bash git vim
+.PHONY: all re install update clean test dependencies bash git vim
 
 all: install bash git vim
 
@@ -20,6 +20,13 @@ clean:
 	rm -rf $(HOME)/.vim
 	rm -rf $(HOME)/.vim-go
 	rm -f $(HOME)/.git-completion.bash
+
+test:
+	docker build -t dotfiles .
+	docker run -ti dotfiles /bin/bash
+
+dependencies:
+	sh scripts/dependencies.sh
 
 bash:
 	ln -s $(CWD)/bash-git-prompt $(HOME)/.bash-git-prompt

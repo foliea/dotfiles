@@ -1,18 +1,17 @@
-## Dotfiles
+## dotfiles
 
-My configuration for vim, bash and git.
+My Unix/Linux configuration files.
 
 ### Install
 
     make
 
+>If you get an error pointing out that a configuration file
+already exist, please follow `Reinstall` instructions.
+
 ### Reinstall
 
     make re
-
-### Update
-
-    make update
 
 ### Uninstall
 
@@ -20,9 +19,25 @@ My configuration for vim, bash and git.
 
 ## Experimental
 
-You can install every dependencies and applications on Darwin:
+You can install every dependencies required:
 
-    ./scripts/mac.sh
+    make dependencies
+
+>Warning: dependencies are meant to be installed only on
+[Max OS 10.9+](https://www.apple.com/fr/osx/) and
+[Ubuntu 14.04+](http://http://www.ubuntu-fr.org/). You can try
+to install it on another version but this is at your own risk.
+
+You can try this configuration inside a Docker container:
+
+    make test
+
+This container already have every dependencies required.
+You can now use above make commands inside this container.
+
+>You need [Docker 1.3+](http://docker.com) to build this image.
+
+## Language stacks
 
 You can install ruby (with rvm):
 

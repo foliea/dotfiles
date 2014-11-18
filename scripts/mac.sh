@@ -12,4 +12,9 @@ brew tap homebrew/boneyard
 brew bundle
 
 # Install applications
-brew bundle Caskfile
+read -p "Also install applications? (y/n)" choice
+case "$choice" in
+  y|Y ) brew bundle Caskfile;;
+  n|N ) echo "Applications won't be installed.";;
+  * ) echo "Invalid choice. Aborting applications installation.";;
+esac

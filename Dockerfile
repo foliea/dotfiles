@@ -11,6 +11,4 @@ RUN sh ubuntu.sh && \
 
 COPY . $DEV/dotfiles
 
-#RUN cd $DEV/dotfiles && make
-
-WORKDIR $DEV
+WORKDIR $DEV/dotfiles
