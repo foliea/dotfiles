@@ -9,7 +9,10 @@ apt-get -qy install \
     git \
     mercurial \
     vim \
+    build-essential \
+    cmake \
+    python-dev \
     exuberant-ctags \
-    postgres \
+    postgresql \
     redis-server \
     phantomjs
