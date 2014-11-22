@@ -19,7 +19,6 @@ clean:
 	rm -f $(HOME)/.vimrc
 	rm -rf $(HOME)/.vim
 	rm -rf $(HOME)/.vim-go
-	rm -f $(HOME)/.git-completion.bash
 
 test:
 	docker build -t dotfiles .
@@ -33,7 +32,6 @@ bash:
 	ln -s $(CWD)/bashrc $(HOME)/.bashrc
 
 git:
-	ln -s $(CWD)/git-completion.bash $(HOME)/.git-completion.bash
 	scripts/git.sh
 
 vim:

@@ -67,13 +67,8 @@ if ! shopt -oq posix; then
     fi
 fi
 
-# git bash completion
-if [ -f $HOME/.git-completion.bash ]; then
-    . $HOME/.git-completion.bash
-fi
-
 # additional env variables
-export PATH="$PATH:$GOPATH/bin:$HOME/.rvm/bin"
+export PATH="/usr/local/bin:$PATH:$GOPATH/bin:$HOME/.rvm/bin"
 export EDITOR="vim"
 export CLICOLOR=1
 export NVM_DIR="$HOME/.nvm"

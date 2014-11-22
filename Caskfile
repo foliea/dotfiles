@@ -1,3 +1,6 @@
+# Install cask
+install caskroom/cask/brew-cask
+
 # Install applications
 cask install iterm2
 cask install macvim
