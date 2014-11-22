@@ -13,6 +13,10 @@ already exist, please follow `Reinstall` instructions.
 
     make re
 
+### Post-installation
+
+    source ~/.bashrc
+
 ### Uninstall
 
     make clean
