@@ -26,6 +26,9 @@ shopt -s checkwinsize
 # GIT_PROMPT_THEME=Solarized # use theme optimized for solarized color scheme
 source ~/.bash-git-prompt/gitprompt.sh
 
+# use hub as git
+eval "$(hub alias -s)"
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -49,13 +52,16 @@ alias dim='docker images'
 
 if [ `uname` == "Darwin" ]; then
     # alias macvim on darwin
-    alias vim='mvim -v'
-
+    if [ $(command -v mvim) ]; then
+        alias vim='mvim -v'
+    fi
     # Set boot2docker env variables
-    export DOCKER_CERT_PATH="$HOME/.boot2docker/certs/boot2docker-vm"
-    export DOCKER_TLS_VERIFY=1
-    export DOCKER_HOST="tcp://192.168.59.103:2376"
-    export DOCKER_URL="https://192.168.59.103:2376"
+    if [ $(command -v boot2docker) ]; then
+        export DOCKER_CERT_PATH="$HOME/.boot2docker/certs/boot2docker-vm"
+        export DOCKER_TLS_VERIFY=1
+        export DOCKER_HOST="tcp://$(boot2docker ip 2> /dev/null):2376"
+        export DOCKER_URL="https://$(boot2docker ip 2> /dev/null):2376"
+    fi
 fi
 
 # bash completion
@@ -73,5 +79,5 @@ export EDITOR="vim"
 export CLICOLOR=1
 export NVM_DIR="$HOME/.nvm"
 
-# Load nvm
+# load nvm
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"

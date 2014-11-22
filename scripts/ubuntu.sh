@@ -4,10 +4,10 @@ set -e
 
 apt-get update -q
 apt-get -qy install \
-    curl \
-    wget \
     git \
     mercurial \
+    curl \
+    wget \
     vim \
     build-essential \
     cmake \
