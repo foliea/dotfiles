@@ -13,6 +13,7 @@ brew install git \
              hub \
              curl \
              wget \
+             bash-completion \
              postgres \
              redis \
              ctags \

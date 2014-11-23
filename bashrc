@@ -26,9 +26,6 @@ shopt -s checkwinsize
 # GIT_PROMPT_THEME=Solarized # use theme optimized for solarized color scheme
 source ~/.bash-git-prompt/gitprompt.sh
 
-# use hub as git
-eval "$(hub alias -s)"
-
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -62,10 +59,14 @@ if [ `uname` == "Darwin" ]; then
         export DOCKER_HOST="tcp://$(boot2docker ip 2> /dev/null):2376"
         export DOCKER_URL="https://$(boot2docker ip 2> /dev/null):2376"
     fi
-fi
 
-# bash completion
-if ! shopt -oq posix; then
+    # use hub as git
+    eval "$(hub alias -s)"
+
+    if [ -f `brew --prefix`/etc/bash_completion ]; then
+        . `brew --prefix`/etc/bash_completion
+    fi
+elif ! shopt -oq posix; then
     if [ -f /usr/share/bash-completion/bash_completion ]; then
         . /usr/share/bash-completion/bash_completion
     elif [ -f /etc/bash_completion ]; then

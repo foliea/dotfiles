@@ -9,6 +9,7 @@ apt-get -qy install \
     curl \
     wget \
     vim \
+    bash-completion \
     build-essential \
     cmake \
     python-dev \
