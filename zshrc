@@ -6,7 +6,7 @@
 #    By: marin <mravenel@student.42.fr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/10/02 10:51:08 by marin             #+#    #+#              #
-#    Updated: 2014/10/20 10:57:54 by modizy           ###   ########.fr        #
+#    Updated: 2014/12/03 15:07:40 by modizy           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,10 +31,13 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/sbin:/usr/local/bin:/home/marin/bin"
 
+# This function called c makes ls command call automatically after a successful cd
+c() { cd "$@" && ls "-la"; }
+
 alias l="ls -l"
 alias la="ls -la"
 alias status="git status"
-alias c="clear"
+alias cl="clear"
 alias v="mvim"
 alias ll="ls -a1 | less -M"
 export GOPATH="$HOME/dev/go"
