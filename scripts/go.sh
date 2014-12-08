@@ -4,17 +4,7 @@ set -e
 
 VERSION=1.3.1
 
-# Install Go Version Manager
-curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer | bash
-
-# Source gvm
-source "$HOME/.gvm/scripts/gvm"
-
-# Install Go 1.3.1
-gvm install "go$VERSION"
-
-# Use Go 1.3.1 as default
-gvm use "go$VERSION" --default
+brew install go -v $VERSION
 
 echo "Installing vim-go dependencies..."
 
