@@ -28,7 +28,7 @@ You can install every dependencies required:
     make dependencies
 
 >Warning: dependencies are meant to be installed only on
-[Max OS 10.9+](https://www.apple.com/fr/osx/) and
+[Mac OS 10.9+](https://www.apple.com/fr/osx/) and
 [Ubuntu 14.04+](http://http://www.ubuntu-fr.org/). You can try
 to install it on another version but this is at your own risk.
 
