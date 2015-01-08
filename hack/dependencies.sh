@@ -5,7 +5,7 @@ echo "Installing dependencies..."
 echo "Warning! dependencies can be installed only on Darwin and Ubuntu"
 
 if [ `uname -s` = "Darwin" ]; then
-    ./hack/install.sh
+    ./darwin/install.sh
 
     # Install applications
     read -p "Also install applications? (y/n) " choice
@@ -15,7 +15,7 @@ if [ `uname -s` = "Darwin" ]; then
       * ) echo "Invalid choice. Aborting applications installation.";;
     esac
 elif [ `uname -s` = "Linux" ]; then
-    ./hack/install.sh
+    ./ubuntu/install.sh
 fi
 
 echo "Dependencies installed successfully."
