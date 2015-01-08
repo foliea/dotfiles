@@ -1,0 +1,13 @@
+#!/usr/bin/env expect
+
+spawn make re
+
+expect "Please specify you git user name: "
+send "Alec Sadler"
+send -- "\r"
+
+expect "Please specify you git user email: "
+send "alec@sadtech.com"
+send -- "\r"
+
+interact
