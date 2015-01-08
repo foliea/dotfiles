@@ -2,4 +2,4 @@
 sudo: false
 
 before_install:
-  - ubuntu/dependencies.sh
+  - ./hack/dependencies.sh
