@@ -19,26 +19,3 @@ brew install git \
              redis \
              ctags \
              phantomjs
-
-install_applications(){
-    brew cask install iterm2 \
-                      macvim \
-                      gitx \
-                      boot2docker \
-                      google-chrome \
-                      google-drive \
-                      caffeine \
-                      skype \
-                      vlc \
-                      unrarx \
-                      transmission
-    echo "Applications installed successfully!"
-}
-
-# Install applications
-read -p "Also install applications? (y/n) " choice
-case "$choice" in
-  y|Y ) eval install_applications;;
-  n|N ) echo "Applications won't be installed.";;
-  * ) echo "Invalid choice. Aborting applications installation.";;
-esac
