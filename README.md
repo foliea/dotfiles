@@ -45,15 +45,15 @@ You can now use above make commands inside this container.
 
 You can install ruby (with rvm):
 
-    ./scripts/ruby.sh
+    ./ruby/install.sh
 
 You can install node (with nvm):
 
-    ./scripts/node.sh
+    ./node/install.sh
 
 You can install go (with gvm):
 
-    ./scripts/go.sh
+    ./go/install.sh
 
 >The go installation script also install dependencies required by
 vim plugin `vim-go`.
