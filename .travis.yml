@@ -1,7 +1,10 @@
 # Use docker workers
 sudo: false
 
+cache: apt
+
 before_install:
   - ./hack/dependencies.sh
+
 
 script: ./hack/travis.exp
