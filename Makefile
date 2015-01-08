@@ -7,37 +7,25 @@ all: install bash git vim
 re: clean all
 
 install:
-	git submodule update --init --recursive
+	hack/install.sh
 
 update:
-	git submodule foreach git pull origin master
+	hack/update.sh
 
 clean:
-	rm -f $(HOME)/.gitconfig
-	rm -f $(HOME)/.bashrc
-	rm -rf $(HOME)/.bash-git-prompt
-	rm -f $(HOME)/.vimrc
-	rm -rf $(HOME)/.vim
-	rm -rf $(HOME)/.vim-go
+	hack/clean.sh
 
 test:
-	docker build -t dotfiles .
-	docker run -ti dotfiles /bin/bash
+	hack/test.sh
 
 dependencies:
-	sh scripts/dependencies.sh
+	hack/dependencies.sh
 
 bash:
-	ln -s $(CWD)/bash-git-prompt $(HOME)/.bash-git-prompt
-	ln -s $(CWD)/bashrc $(HOME)/.bashrc
+	bash/install.sh
 
 git:
-	scripts/git.sh
+	git/install.sh
 
 vim:
-	mkdir -p $(CWD)/vim/tmp/backup
-	mkdir -p $(CWD)/vim/tmp/swap
-	mkdir -p $(CWD)/vim/tmp/undo
-	ln -s $(CWD)/vim $(HOME)/.vim
-	ln -s $(CWD)/vimrc $(HOME)/.vimrc
-	cd vim/bundle/YouCompleteMe && sh install.sh
+	vim/install.sh

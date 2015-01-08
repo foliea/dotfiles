@@ -1,9 +1,8 @@
 #!/bin/sh
-
 set -e
 
 echo "Installing dependencies..."
-echo "Warning! dependencies can be installed only on Darwin or Ubuntu"
+echo "Warning! dependencies can be installed only on Darwin and Ubuntu"
 
 if [ `uname -s` = "Darwin" ]; then
     ./scripts/mac.sh

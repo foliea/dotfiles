@@ -34,8 +34,8 @@
 [submodule "vim/bundle/vim-airline"]
 	path = vim/bundle/vim-airline
 	url = https://github.com/bling/vim-airline
-[submodule "bash-git-prompt"]
-	path = bash-git-prompt
+[submodule "bash/prompt"]
+	path = bash/prompt
 	url = https://github.com/magicmonty/bash-git-prompt.git
 [submodule "vim/bundle/vim-gitgutter"]
 	path = vim/bundle/vim-gitgutter
