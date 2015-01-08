@@ -15,4 +15,5 @@ apt-get -qy install \
     exuberant-ctags \
     postgresql \
     redis-server \
-    phantomjs
+    phantomjs \
+    expect
