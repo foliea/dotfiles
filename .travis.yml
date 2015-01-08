@@ -4,7 +4,6 @@ sudo: false
 cache: apt
 
 before_install:
-  - ./hack/dependencies.sh
+  - sh hack/dependencies.sh
 
-
-script: ./hack/travis.exp
+script: expect hack/travis.exp
