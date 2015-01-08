@@ -1,2 +1,5 @@
+# Use docker workers
+sudo: false
+
 before_install:
-  - sudo ubuntu/install.sh
+  - ubuntu/dependencies.sh
