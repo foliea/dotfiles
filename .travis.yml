@@ -1,6 +1,6 @@
 cache: apt
 
 before_install:
-  - sh hack/dependencies.sh
+  - sudo ./hack/dependencies.sh
 
 script: expect hack/travis.exp
