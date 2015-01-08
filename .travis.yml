@@ -3,6 +3,6 @@ sudo: false
 
 before_install:
   - ./hack/dependencies.sh
-  - sudo apt-get install -qy expect
+  - apt-get install -y expect
   
 script: ./hack/travis.exp
