@@ -3,3 +3,5 @@ sudo: false
 
 before_install:
   - ./hack/dependencies.sh
+  
+script: make re
