@@ -1,7 +1,7 @@
 ## dotfiles
 [![Build Status](https://travis-ci.org/folieadrien/dotfiles.svg)](https://travis-ci.org/folieadrien/dotfiles)
 
-My Unix/Linux configuration files.
+My configuration files.
 
 ### Install
 
