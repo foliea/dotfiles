@@ -1,5 +1,3 @@
-CWD=$(shell pwd)
-
 .PHONY: all re install update clean test dependencies bash git vim
 
 all: install bash git vim
@@ -29,4 +27,3 @@ git:
 
 vim:
 	vim/install.sh
-	

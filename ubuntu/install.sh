@@ -13,7 +13,7 @@ apt-get -qy install \
     cmake \
     python-dev \
     exuberant-ctags \
-    postgresql \
+    postgresql-9.3 \
     redis-server \
     phantomjs \
     expect

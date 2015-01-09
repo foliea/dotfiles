@@ -4,10 +4,10 @@ ENV DEV /home/dev
 
 RUN mkdir -p $DEV
 
-COPY scripts/ubuntu.sh .
+COPY ubuntu/install.sh .
 
-RUN sh ubuntu.sh && \
-    rm ubuntu.sh
+RUN sh install.sh && \
+    rm install.sh
 
 COPY . $DEV/dotfiles
 
