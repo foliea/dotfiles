@@ -1,4 +1,4 @@
-## dotfiles
+# dotfiles
 [![Build Status](https://travis-ci.org/folieadrien/dotfiles.svg)](https://travis-ci.org/folieadrien/dotfiles)
 
 My configuration files.
