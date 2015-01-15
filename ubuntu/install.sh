@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-apt-get update -q
+apt-get update -qq
 apt-get -qy install \
     git \
     mercurial \
