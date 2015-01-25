@@ -1,9 +1,9 @@
 cache: apt
 
 before_install:
-  - sudo sh hack/dependencies.sh
+  - sudo sh scripts/dependencies.sh
 
-script: expect hack/travis.exp
+script: expect scripts/travis.exp
 
 addons:
   postgresql: "9.3"

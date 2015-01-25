@@ -5,19 +5,19 @@ all: install bash git vim
 re: clean all
 
 install:
-	hack/install.sh
+	scripts/install.sh
 
 update:
-	hack/update.sh
+	scripts/update.sh
 
 clean:
-	hack/clean.sh
+	scripts/clean.sh
 
 test:
-	hack/test.sh
+	scripts/test.sh
 
 dependencies:
-	hack/dependencies.sh
+	scripts/dependencies.sh
 
 bash:
 	bash/install.sh
