@@ -2,9 +2,9 @@
 
 set -e
 
-VERSION=1.3.1
+if [ ! $VERSION ]; then VERSION=1.3.1 fi
 
-brew install go -v $VERSION
+brew install go -v "$VERSION"
 
 echo "Installing vim-go dependencies..."
 
