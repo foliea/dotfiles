@@ -2,7 +2,7 @@
 
 set -e
 
-VERSION=2.1.4
+if [ ! $VERSION ]; then VERSION=2.1.4 fi
 
 # Install Ruby Version Manager
 \curl -sSL https://get.rvm.io | bash -s stable --ruby
