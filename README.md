@@ -44,17 +44,19 @@ You can now use above make commands inside this container.
 
 ## Language stacks
 
+>N.B. `VERSION` is optional.
+
 You can install ruby (with rvm):
 
-    ./ruby/install.sh
+    VERSION=2.1.2 ./ruby/install.sh
 
 You can install node (with nvm):
 
-    ./node/install.sh
+    VERSION=0.10.30 ./node/install.sh
 
 You can install go (with gvm):
 
-    ./go/install.sh
+    VERSION=1.3.1 ./go/install.sh
 
 >The go installation script also install dependencies required by
 vim plugin `vim-go`.
