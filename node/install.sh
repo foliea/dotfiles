@@ -2,7 +2,7 @@
 
 set -e
 
-VERSION=0.10.30
+if [ ! $VERSION ]; then VERSION=0.10.30 fi
 
 # Install Node Version Manager
 curl https://raw.githubusercontent.com/creationix/nvm/v0.18.0/install.sh | bash
