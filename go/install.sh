@@ -2,7 +2,7 @@
 
 set -e
 
-if [ ! $VERSION ]; then VERSION=1.3.1 fi
+if [ ! $VERSION ]; then VERSION=1.3.1 ; fi
 
 brew install go -v "$VERSION"
 
