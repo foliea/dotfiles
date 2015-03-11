@@ -52,12 +52,15 @@ if [ `uname` == "Darwin" ]; then
     if [ $(command -v mvim) ]; then
         alias vim='mvim -v'
     fi
-    # Set boot2docker env variables
     if [ $(command -v boot2docker) ]; then
+        boot2dockerIP = $(boot2docker ip 2> /dev/null)
+    fi
+    # Set boot2docker env variables
+    if [ $boot2dockerIP ]; then
         export DOCKER_CERT_PATH="$HOME/.boot2docker/certs/boot2docker-vm"
         export DOCKER_TLS_VERIFY=1
-        export DOCKER_HOST="tcp://$(boot2docker ip 2> /dev/null):2376"
-        export DOCKER_URL="https://$(boot2docker ip 2> /dev/null):2376"
+        export DOCKER_HOST="tcp://$boot2dockerIP:2376"
+        export DOCKER_URL="https://$boot2dockerIP:2376"
     fi
     # use hub as git
     eval "$(hub alias -s)"
