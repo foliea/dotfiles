@@ -64,6 +64,7 @@ autocmd FileType ruby compiler ruby
 autocmd BufRead,BufNewFile Gomfile setlocal ft=ruby
 autocmd BufRead,BufNewFile Caskfile setlocal ft=ruby
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.docker set filetype=dockerfile
 
 " Trailing whitespaces
 set wrap
