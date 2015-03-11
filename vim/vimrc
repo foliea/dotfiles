@@ -66,11 +66,8 @@ autocmd BufRead,BufNewFile Caskfile setlocal ft=ruby
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.docker set filetype=dockerfile
 
-" Trailing whitespaces
+" Remove trailing whitespaces on save
 set wrap
 set linebreak
-
-" note trailing space at end of next line
 set showbreak=>\ \ \
-
 autocmd BufWritePre * :%s/\s\+$//e
