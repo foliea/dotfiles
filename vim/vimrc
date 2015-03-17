@@ -48,7 +48,7 @@ nmap <F8> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 let NERDTreeShowHidden=1
-let NERDTreeIgnore = ['\*.DS_STORE$']
+let NERDTreeIgnore = ['\*.DS_Store$']
 
 " Go
 let g:go_disable_autoinstall = 1
