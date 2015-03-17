@@ -18,6 +18,7 @@ ${config} push.default simple
 ${config} pull.rebase true
 ${config} rerere.enabled true
 ${config} color.ui true
+${config} core.excludesfile *.DS_Store
 
 # Aliases
 ${config} alias.s "status -s"
