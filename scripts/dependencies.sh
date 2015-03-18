@@ -18,4 +18,6 @@ elif [ `uname -s` = "Linux" ]; then
     ./ubuntu/install.sh
 fi
 
+./docker-compose/install.sh
+
 echo "Dependencies installed successfully."
