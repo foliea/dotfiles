@@ -1,3 +1,6 @@
+#!/bin/sh
+set -e
+
 if [ ! $COMPOSE ]; then COMPOSE=1.1.0 ; fi
 
 # Install docker-compose
