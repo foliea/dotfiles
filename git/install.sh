@@ -3,15 +3,13 @@ set -e
 
 config="git config --global"
 
-read -p "Please specify you git user name: " username
-if [ "$username" ]; then
-    ${config} user.name "$username"
-fi
-
-read -p "Please specify you git user email: " useremail
-if [ "$useremail" ]; then
-    ${config} user.email "$useremail"
-fi
+for info in name email
+do
+    read -p "Please specify you git user $info: " userinfo
+    if [ "$userinfo" ]; then
+        ${config} user.$info "$userinfo"
+    fi
+done
 
 ${config} core.autocrlf input
 ${config} push.default simple
