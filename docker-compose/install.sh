@@ -4,7 +4,7 @@ if [ ! $COMPOSE ]; then COMPOSE=1.1.0 ; fi
 curl -L https://github.com/docker/compose/releases/download/$COMPOSE/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 
-
+# On darwin, bash completion is installed in brew path
 if [ `uname -s` = "Darwin" ]; then
     prefix=`brew --prefix`
 fi
