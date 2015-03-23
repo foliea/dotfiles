@@ -9,4 +9,4 @@ if [ `uname -s` = "Darwin" ]; then
     prefix=`brew --prefix`
 fi
 
-cat ./docker/docker-completion > $prefix/etc/bash_completion.d/docker
+cat ./docker/completion > $prefix/etc/bash_completion.d/docker
