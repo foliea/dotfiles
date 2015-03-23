@@ -43,6 +43,7 @@ alias j='jobs'
 
 # docker aliases
 alias drm='docker rm'
+alias drmi='docker rmi'
 alias dps='docker ps'
 alias drun='docker run'
 alias dim='docker images'
