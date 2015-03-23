@@ -12,5 +12,5 @@ if [ `uname -s` = "Darwin" ]; then
     prefix=`brew --prefix`
 fi
 
-# install docker-compose bash completion
+# Install docker-compose bash completion
 curl -L https://raw.githubusercontent.com/docker/compose/$COMPOSE/contrib/completion/bash/docker-compose > $prefix/etc/bash_completion.d/docker-compose
