@@ -46,21 +46,12 @@ alias drm='docker rm'
 alias dps='docker ps'
 alias drun='docker run'
 alias dim='docker images'
+alias dinit='$(docker-machine env) && export DOCKER_URL=http://$(docker-machine ip):2376'
 
 if [ `uname` == "Darwin" ]; then
     # alias macvim to vim
     if [ $(command -v mvim) ]; then
         alias vim='mvim -v'
-    fi
-    if [ $(command -v boot2docker) ]; then
-        boot2dockerIP="$(boot2docker ip 2> /dev/null)"
-    fi
-    # Set boot2docker env variables
-    if [ $boot2dockerIP ]; then
-        export DOCKER_CERT_PATH="$HOME/.boot2docker/certs/boot2docker-vm"
-        export DOCKER_TLS_VERIFY=1
-        export DOCKER_HOST="tcp://$boot2dockerIP:2376"
-        export DOCKER_URL="https://$boot2dockerIP:2376"
     fi
     # use hub as git
     eval "$(hub alias -s)"
@@ -82,9 +73,7 @@ export EDITOR="vim"
 export CLICOLOR=1
 
 # load go binaries
-if [ -d "$GOPATH" ]; then
-    export PATH="$PATH:$GOPATH/bin"
-fi
+if [ -d "$GOPATH" ]; then export PATH="$PATH:$GOPATH/bin"; fi
 
 # load nvm
 if [ -d "$HOME/.nvm" ]; then
