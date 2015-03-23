@@ -46,7 +46,7 @@ alias drm='docker rm'
 alias dps='docker ps'
 alias drun='docker run'
 alias dim='docker images'
-alias dinit='$(docker-machine env) && export DOCKER_URL=http://$(docker-machine ip):2376'
+alias dinit='$(docker-machine env) && export DOCKER_URL=https://$(docker-machine ip):2376'
 
 if [ `uname` == "Darwin" ]; then
     # alias macvim to vim
