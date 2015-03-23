@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-if [ ! $COMPOSE ]; then COMPOSE=1.1.0 ; fi
+if [ ! $COMPOSE ]; then COMPOSE="1.1.0" ; fi
 
 # Install docker-compose
 curl -L https://github.com/docker/compose/releases/download/$COMPOSE/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
