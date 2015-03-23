@@ -18,4 +18,5 @@ brew install git \
              postgres \
              redis \
              ctags \
-             phantomjs
+             phantomjs \
+             tutum
