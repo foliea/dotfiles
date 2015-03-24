@@ -1,5 +1,5 @@
 # dotfiles
-[![Build Status](https://travis-ci.org/folieadrien/dotfiles.svg)](https://travis-ci.org/folieadrien/dotfiles)
+[![Build Status](https://travis-ci.org/foliea/dotfiles.svg)](https://travis-ci.org/foliea/dotfiles)
 
 My configuration files.
 
