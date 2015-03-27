@@ -20,3 +20,11 @@ brew install git \
              ctags \
              phantomjs \
              tutum
+
+# Install applications
+read -p "Also install applications? (y/n) " choice
+case "$choice" in
+    y|Y ) eval ./darwin/applications.sh;;
+    n|N ) echo "Applications won't be installed.";;
+    * ) echo "Invalid choice. Aborting applications installation.";;
+esac
