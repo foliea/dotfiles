@@ -6,4 +6,4 @@ before_install:
 script: expect scripts/travis.exp
 
 addons:
-  postgresql: "9.3"
+  postgresql: '9.3'
