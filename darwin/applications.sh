@@ -1,15 +1,16 @@
 #!/bin/sh
 set -e
 
+brew reinstall caskroom/cask/brew-cask
+
 brew cask install iterm2 \
                   macvim \
-                  gitx \
-                  boot2docker \
                   google-chrome \
                   google-drive \
                   caffeine \
                   skype \
                   vlc \
                   unrarx \
+                  slack \
                   transmission
 echo "Applications installed successfully!"

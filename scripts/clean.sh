@@ -1,10 +1,14 @@
 #!/bin/sh
 set -e
 
-rm -f $HOME/.gitconfig
-rm -f $HOME/.gitignore-global
-rm -f $HOME/.bashrc
-rm -rf $HOME/.bash-git-prompt
-rm -f $HOME/.vimrc
-rm -rf $HOME/.vim
-rm -rf $HOME/.vim-go
+for file in gitconfig \
+            gitignore-global \
+            bashrc \
+            vimrc \
+            ctags \
+            bash-git-prompt \
+            vim \
+            vim-go
+do
+    rm -rf $HOME/.$file
+done
