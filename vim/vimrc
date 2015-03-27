@@ -54,9 +54,6 @@ let NERDTreeIgnore = ['\*.DS_Store$']
 let g:go_disable_autoinstall = 1
 let g:go_fmt_fail_silently = 1
 
-" Tagbar
-nmap <F9> :TagbarToggle<CR>
-
 " Ruby
 autocmd FileType ruby compiler ruby
 
@@ -72,17 +69,8 @@ set linebreak
 set showbreak=>\ \ \
 autocmd BufWritePre * :%s/\s\+$//e
 
-" Ctags
-let g:tagbar_type_ruby = {
-    \ 'kinds' : [
-        \ 'm:modules',
-        \ 'c:classes',
-        \ 'd:describes',
-        \ 'C:contexts',
-        \ 'f:methods',
-        \ 'F:singleton methods'
-    \ ]
-\ }
+" Tagbar
+nmap <F9> :TagbarToggle<CR>
 
 let g:tagbar_type_css = {
 \ 'ctagstype' : 'Css',
