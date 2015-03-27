@@ -6,20 +6,22 @@ if [ ! $(command -v brew) ]; then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
+brew prune
+
 brew update
 
 # Install dependencies
-brew install git \
-             mercurial \
-             hub \
-             curl \
-             wget \
-             bash-completion \
-             postgres \
-             redis \
-             ctags \
-             phantomjs \
-             tutum
+brew reinstall git \
+               mercurial \
+               hub \
+               curl \
+               wget \
+               bash-completion \
+               postgres \
+               redis \
+               ctags \
+               phantomjs \
+               tutum
 
 # Install applications
 read -p "Also install applications? (y/n) " choice

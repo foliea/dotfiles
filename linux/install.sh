@@ -2,7 +2,7 @@
 set -e
 
 apt-get update -qq
-apt-get -qy install \
+apt-get install -qy \
     git \
     mercurial \
     curl \
