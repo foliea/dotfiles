@@ -71,6 +71,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " Tagbar
 nmap <F9> :TagbarToggle<CR>
+autocmd VimEnter * nested :TagbarOpen
 
 let g:tagbar_type_css = {
 \ 'ctagstype' : 'Css',
