@@ -35,7 +35,7 @@ to install it on another version but this is at your own risk.
 
 You can try this configuration inside a Docker container:
 
-    make test
+    make dev
 
 This container already have every dependencies required.
 You can now use above make commands inside this container.

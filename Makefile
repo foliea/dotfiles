@@ -1,4 +1,4 @@
-.PHONY: all re install update clean test dependencies bash git vim
+.PHONY: all re install update clean test dependencies dev bash git vim
 
 all: install bash git vim
 
@@ -14,10 +14,13 @@ clean:
 	scripts/clean.sh
 
 test:
-	scripts/test.sh
+	scripts/test.exp
 
 dependencies:
 	scripts/dependencies.sh
+
+dev:
+	scripts/dev.sh
 
 bash:
 	bash/install.sh

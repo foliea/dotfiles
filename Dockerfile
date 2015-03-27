@@ -2,11 +2,11 @@ FROM ubuntu:14.04
 
 ENV DEV /home/dev
 
-COPY ubuntu/install.sh .
+COPY linux/install.sh .
 
 RUN sh install.sh && \
     rm install.sh
 
-COPY . $DEV/dotfiles
+COPY . $DEV
 
-WORKDIR $DEV/dotfiles
+WORKDIR $DEV
