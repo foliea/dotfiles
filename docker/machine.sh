@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-if [ ! $MACHINE ]; then MACHINE="0.1.0" ; fi
+if [ ! $MACHINE ]; then MACHINE="0.2.0" ; fi
 
 os=$(uname -s | awk '{print tolower($0)}')
 
