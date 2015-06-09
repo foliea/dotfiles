@@ -1,10 +1,7 @@
 #!/bin/sh
-
 set -e
 
-if [ ! $VERSION ]; then VERSION="1.3.1" ; fi
-
-brew install go -v "$VERSION"
+brew install go
 
 echo "Installing vim-go dependencies..."
 
@@ -19,7 +16,7 @@ fi
 
 # Install go tools for vim-go
 if [ "$GOPATH" ]; then
-    go get -u code.google.com/p/go.tools/cmd/oracle
+    go get -u golang.org/x/tools/cmd/oracle
     go get -u code.google.com/p/go.tools/cmd/goimports
     go get -u github.com/nsf/gocode
     go get -u github.com/golang/lint/golint

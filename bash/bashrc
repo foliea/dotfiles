@@ -89,3 +89,4 @@ if [ -d "$HOME/.rvm" ]; then
     source $HOME/.rvm/scripts/rvm
     export PATH="$PATH:$HOME/.rvm/bin"
 fi
+export GOPATH=~/dev/go
