@@ -14,6 +14,7 @@ brew cask install \
     unrarx \
     slack \
     transmission \
-    virtualbox
+    virtualbox \
+    android-file-transfer
 
 echo "Applications installed successfully!"
