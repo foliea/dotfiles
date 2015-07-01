@@ -1,6 +1,6 @@
 .PHONY: all re install update clean test dependencies dev bash git vim
 
-all: install bash git vim
+all: install bash git vim atom
 
 re: clean all
 
@@ -30,3 +30,7 @@ git:
 
 vim:
 	vim/install.sh
+
+atom:
+	ln -s $(PWD)/atom/ $(HOME)/.atom
+

@@ -1,0 +1,57 @@
+"*":
+  editor:
+    showIndentGuide: true
+    softWrap: true
+    fontSize: 11
+    invisibles: {}
+  core:
+    themes: [
+      "isotope-ui"
+      "base16-tomorrow-dark-theme"
+    ]
+    ignoredNames: [
+      ".git"
+      ".svn"
+      ".DS_Store"
+      ".o"
+      ".keep"
+    ]
+    projectHome: "/Users/folie_a/Dev/"
+  "exception-reporting":
+    userId: "d4314992-caba-a928-cb2e-fe3bf47b28fc"
+  "release-notes":
+    viewedVersion: "0.94.0"
+  welcome:
+    showOnStartup: false
+  metrics:
+    userId: "5e9f6bc91e3b3925689202f424ab8f33686c1114"
+  "tree-view":
+    hideIgnoredNames: true
+    hideVcsIgnoredFiles: true
+  "spell-check":
+    grammars: [
+      "source.gfm"
+      "text.git-commit"
+      "text.plain"
+      "text.plain.null-grammar"
+    ]
+  "markdown-preview":
+    grammars: [
+      "source.gfm"
+      "source.litcoffee"
+      "text.plain"
+      "text.plain.null-grammar"
+    ]
+  autoprefixer: {}
+  linter: {}
+  "isotope-ui":
+    customBackgroundColorPicker:
+      red: 49
+      green: 56
+      blue: 102
+      alpha: 1
+    fontFamily: "System Default"
+    lowContrastTooltip: true
+  term2: {}
+  "circle-ci": {}
+  "project-quick-open": {}
