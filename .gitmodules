@@ -40,3 +40,6 @@
 [submodule "vim/bundle/mustache"]
 	path = vim/bundle/mustache
 	url = git://github.com/mustache/vim-mustache-handlebars.git
+[submodule "vim/bundle/vim-javascript-syntax"]
+	path = vim/bundle/vim-javascript-syntax
+	url = git://github.com/jelera/vim-javascript-syntax.git
