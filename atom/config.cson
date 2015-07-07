@@ -55,3 +55,6 @@
   term2: {}
   "circle-ci": {}
   "project-quick-open": {}
+  minimap:
+    plugins:
+      "minimap-autohide": true
