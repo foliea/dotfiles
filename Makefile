@@ -1,4 +1,4 @@
-.PHONY: all re install update clean test dependencies dev bash git vim
+.PHONY: all re install update clean test dependencies dev bash git vim atom
 
 all: install bash git vim atom
 
