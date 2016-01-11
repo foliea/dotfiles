@@ -23,6 +23,8 @@ brew reinstall git \
                phantomjs \
                tutum
 
+brew link openssl --force
+
 # Install applications
 read -p "Also install applications? (y/n) " choice
 case "$choice" in
