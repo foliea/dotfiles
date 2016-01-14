@@ -5,7 +5,7 @@ _ = require 'underscore-plus'
 
 module.exports =
 class Replace extends OperatorWithInput
-  constructor: (@editor, @vimState, {@selectOptions}={}) ->
+  constructor: (@editor, @vimState) ->
     super(@editor, @vimState)
     @viewModel = new ViewModel(this, class: 'replace', hidden: true, singleChar: true, defaultText: '\n')
 
@@ -16,7 +16,7 @@ class Replace extends OperatorWithInput
       if @vimState.mode is "visual"
         @vimState.resetVisualMode()
       else
-        @vimState.activateCommandMode()
+        @vimState.activateNormalMode()
 
       return
 
@@ -47,4 +47,4 @@ class Replace extends OperatorWithInput
             @editor.moveDown()
           @editor.moveToFirstCharacterOfLine()
 
-    @vimState.activateCommandMode()
+    @vimState.activateNormalMode()

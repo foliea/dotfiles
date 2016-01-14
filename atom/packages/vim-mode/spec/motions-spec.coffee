@@ -1,7 +1,7 @@
 helpers = require './spec-helper'
 
 describe "Motions", ->
-  [editor, editorElement, vimState] = []
+  [editor, editorElement, parentElement, vimState] = []
 
   beforeEach ->
     vimMode = atom.packages.loadPackage('vim-mode')
@@ -11,20 +11,21 @@ describe "Motions", ->
       editorElement = element
       editor = editorElement.getModel()
       vimState = editorElement.vimState
-      vimState.activateCommandMode()
-      vimState.resetCommandMode()
+      vimState.activateNormalMode()
+      vimState.resetNormalMode()
 
   keydown = (key, options={}) ->
     options.element ?= editorElement
     helpers.keydown(key, options)
 
-  commandModeInputKeydown = (key, opts = {}) ->
-    editor.commandModeInputView.editorElement.getModel().setText(key)
+  normalModeInputKeydown = (key, opts = {}) ->
+    theEditor = opts.editor or editor
+    theEditor.normalModeInputView.editorElement.getModel().setText(key)
 
-  submitCommandModeInputText = (text) ->
-    commandEditor = editor.commandModeInputView.editorElement
-    commandEditor.getModel().setText(text)
-    atom.commands.dispatch(commandEditor, "core:confirm")
+  submitNormalModeInputText = (text) ->
+    inputEditor = editor.normalModeInputView.editorElement
+    inputEditor.getModel().setText(text)
+    atom.commands.dispatch(inputEditor, "core:confirm")
 
   describe "simple motions", ->
     beforeEach ->
@@ -144,30 +145,21 @@ describe "Motions", ->
         keydown('w')
         expect(editor.getCursorScreenPosition()).toEqual [2, 0]
 
-        # FIXME: The definition of Cursor#getEndOfCurrentWordBufferPosition,
-        # means that the end of the word can't be the current cursor
-        # position (even though it is when your cursor is on a new line).
-        #
-        # Therefore it picks the end of the next word here (which is [3,3])
-        # to start looking for the next word, which is also the end of the
-        # buffer so the cursor never advances.
-        #
-        # See atom/vim-mode#3
         keydown('w')
         expect(editor.getCursorScreenPosition()).toEqual [3, 0]
 
         keydown('w')
-        expect(editor.getCursorScreenPosition()).toEqual [3, 3]
+        expect(editor.getCursorScreenPosition()).toEqual [3, 2]
 
-        # After cursor gets to the EOF, it should stay there.
+        # When the cursor gets to the EOF, it should stay there.
         keydown('w')
-        expect(editor.getCursorScreenPosition()).toEqual [3, 3]
+        expect(editor.getCursorScreenPosition()).toEqual [3, 2]
 
       it "moves the cursor to the end of the word if last word in file", ->
         editor.setText("abc")
         editor.setCursorScreenPosition([0, 0])
         keydown('w')
-        expect(editor.getCursorScreenPosition()).toEqual([0, 3])
+        expect(editor.getCursorScreenPosition()).toEqual([0, 2])
 
     describe "as a selection", ->
       describe "within a word", ->
@@ -324,6 +316,54 @@ describe "Motions", ->
         it "selects to the end of the current word", ->
           expect(vimState.getRegister('"').text).toBe 'ab  cde1+-'
 
+  describe "the ) keybinding", ->
+    beforeEach ->
+      editor.setText "This is a sentence. This is a second sentence.\nThis is a third sentence.\n\nThis sentence is past the paragraph boundary."
+      editor.setCursorBufferPosition [0, 0]
+
+    describe "as a motion", ->
+      it "moves the cursor to the beginning of the next sentence", ->
+        keydown ')'
+        expect(editor.getCursorBufferPosition()).toEqual [0, 20]
+
+        keydown ')'
+        expect(editor.getCursorBufferPosition()).toEqual [1, 0]
+
+        keydown ')'
+        expect(editor.getCursorBufferPosition()).toEqual [2, 0]
+
+    describe "as a selection", ->
+      beforeEach ->
+        keydown('y')
+        keydown(')')
+
+      it 'selects to the start of the next sentence', ->
+        expect(vimState.getRegister('"').text).toBe "This is a sentence. "
+
+  describe "the ( keybinding", ->
+    beforeEach ->
+      editor.setText "This first sentence is in its own paragraph.\n\nThis is a sentence. This is a second sentence.\nThis is a third sentence"
+      editor.setCursorBufferPosition [3, 0]
+
+    describe "as a motion", ->
+      it "moves the cursor to the beginning of the previous sentence", ->
+        keydown '('
+        expect(editor.getCursorBufferPosition()).toEqual [2, 20]
+
+        keydown '('
+        expect(editor.getCursorBufferPosition()).toEqual [2, 0]
+
+        keydown '('
+        expect(editor.getCursorBufferPosition()).toEqual [1, 0]
+
+    describe "as a selection", ->
+      beforeEach ->
+        keydown('y')
+        keydown('(')
+
+      it 'selects to the end of the previous sentence', ->
+        expect(vimState.getRegister('"').text).toBe "This is a second sentence.\n"
+
   describe "the } keybinding", ->
     beforeEach ->
       editor.setText("abcde\n\nfghij\nhijk\n  xyz  \n\nzip\n\n  \nthe end")
@@ -460,10 +500,10 @@ describe "Motions", ->
 
     describe "as a selection", ->
       it "selects to the beginning of the whole word", ->
-        editor.setCursorScreenPosition([1, 10])
+        editor.setCursorScreenPosition([1, 9])
         keydown('y')
         keydown('B', shift: true)
-        expect(vimState.getRegister('"').text).toBe 'xyz-123'
+        expect(vimState.getRegister('"').text).toBe 'xyz-12'
 
       it "doesn't go past the beginning of the file", ->
         editor.setCursorScreenPosition([0, 0])
@@ -850,7 +890,7 @@ describe "Motions", ->
       editor.setCursorScreenPosition([0, 2])
 
     describe "as a motion", ->
-      describe "in command mode", ->
+      describe "in normal mode", ->
         beforeEach ->
           keydown('g')
           keydown('g')
@@ -885,7 +925,7 @@ describe "Motions", ->
           expect(editor.getCursorScreenPosition()).toEqual [0, 1]
 
     describe "as a repeated motion", ->
-      describe "in command mode", ->
+      describe "in normal mode", ->
         beforeEach ->
           keydown('2')
           keydown('g')
@@ -965,7 +1005,7 @@ describe "Motions", ->
       beforeEach -> keydown('G', shift: true)
 
       it "moves the cursor to the last line after whitespace", ->
-        expect(editor.getCursorScreenPosition()).toEqual [3, 1]
+        expect(editor.getCursorScreenPosition()).toEqual [3, 0]
 
     describe "as a repeated motion", ->
       beforeEach ->
@@ -997,61 +1037,77 @@ describe "Motions", ->
       editor.setText("abc\ndef\nabc\ndef\n")
       editor.setCursorBufferPosition([0, 0])
 
+      # clear search history
+      vimState.globalVimState.searchHistory = []
+      vimState.globalVimState.currentSearch = {}
+
     describe "as a motion", ->
+      it "beeps when repeating nonexistent last search", ->
+        keydown '/'
+        submitNormalModeInputText ''
+        expect(editor.getCursorBufferPosition()).toEqual [0, 0]
+        expect(atom.beep).toHaveBeenCalled()
+
       it "moves the cursor to the specified search pattern", ->
         keydown('/')
 
-        submitCommandModeInputText 'def'
+        submitNormalModeInputText 'def'
 
         expect(editor.getCursorBufferPosition()).toEqual [1, 0]
         expect(pane.activate).toHaveBeenCalled()
+        expect(atom.beep).not.toHaveBeenCalled()
 
       it "loops back around", ->
         editor.setCursorBufferPosition([3, 0])
         keydown('/')
-        submitCommandModeInputText 'def'
+        submitNormalModeInputText 'def'
 
         expect(editor.getCursorBufferPosition()).toEqual [1, 0]
+        expect(atom.beep).not.toHaveBeenCalled()
 
       it "uses a valid regex as a regex", ->
         keydown('/')
         # Cycle through the 'abc' on the first line with a character pattern
-        submitCommandModeInputText '[abc]'
+        submitNormalModeInputText '[abc]'
         expect(editor.getCursorBufferPosition()).toEqual [0, 1]
         keydown('n')
         expect(editor.getCursorBufferPosition()).toEqual [0, 2]
+        expect(atom.beep).not.toHaveBeenCalled()
 
       it "uses an invalid regex as a literal string", ->
         # Go straight to the literal [abc
         editor.setText("abc\n[abc]\n")
         keydown('/')
-        submitCommandModeInputText '[abc'
+        submitNormalModeInputText '[abc'
         expect(editor.getCursorBufferPosition()).toEqual [1, 0]
         keydown('n')
         expect(editor.getCursorBufferPosition()).toEqual [1, 0]
+        expect(atom.beep).not.toHaveBeenCalled()
 
       it "uses ? as a literal string", ->
         editor.setText("abc\n[a?c?\n")
         keydown('/')
-        submitCommandModeInputText '?'
+        submitNormalModeInputText '?'
         expect(editor.getCursorBufferPosition()).toEqual [1, 2]
         keydown('n')
         expect(editor.getCursorBufferPosition()).toEqual [1, 4]
+        expect(atom.beep).not.toHaveBeenCalled()
 
       it 'works with selection in visual mode', ->
         editor.setText('one two three')
         keydown('v')
         keydown('/')
-        submitCommandModeInputText 'th'
+        submitNormalModeInputText 'th'
         expect(editor.getCursorBufferPosition()).toEqual [0, 9]
         keydown('d')
         expect(editor.getText()).toBe 'hree'
+        expect(atom.beep).not.toHaveBeenCalled()
 
       it 'extends selection when repeating search in visual mode', ->
         editor.setText('line1\nline2\nline3')
         keydown('v')
         keydown('/')
-        submitCommandModeInputText 'line'
+        submitNormalModeInputText 'line'
         {start, end} = editor.getSelectedBufferRange()
         expect(start.row).toEqual 0
         expect(end.row).toEqual 1
@@ -1059,6 +1115,7 @@ describe "Motions", ->
         {start, end} = editor.getSelectedBufferRange()
         expect(start.row).toEqual 0
         expect(end.row).toEqual 2
+        expect(atom.beep).not.toHaveBeenCalled()
 
       describe "case sensitivity", ->
         beforeEach ->
@@ -1067,60 +1124,76 @@ describe "Motions", ->
           keydown('/')
 
         it "works in case sensitive mode", ->
-          submitCommandModeInputText 'ABC'
+          submitNormalModeInputText 'ABC'
           expect(editor.getCursorBufferPosition()).toEqual [2, 0]
           keydown('n')
           expect(editor.getCursorBufferPosition()).toEqual [2, 0]
+          expect(atom.beep).not.toHaveBeenCalled()
 
         it "works in case insensitive mode", ->
-          submitCommandModeInputText '\\cAbC'
+          submitNormalModeInputText '\\cAbC'
           expect(editor.getCursorBufferPosition()).toEqual [1, 0]
           keydown('n')
           expect(editor.getCursorBufferPosition()).toEqual [2, 0]
+          expect(atom.beep).not.toHaveBeenCalled()
 
         it "works in case insensitive mode wherever \\c is", ->
-          submitCommandModeInputText 'AbC\\c'
+          submitNormalModeInputText 'AbC\\c'
           expect(editor.getCursorBufferPosition()).toEqual [1, 0]
           keydown('n')
           expect(editor.getCursorBufferPosition()).toEqual [2, 0]
+          expect(atom.beep).not.toHaveBeenCalled()
 
         it "uses case insensitive search if useSmartcaseForSearch is true and searching lowercase", ->
           atom.config.set 'vim-mode.useSmartcaseForSearch', true
-          submitCommandModeInputText 'abc'
+          submitNormalModeInputText 'abc'
           expect(editor.getCursorBufferPosition()).toEqual [1, 0]
           keydown('n')
           expect(editor.getCursorBufferPosition()).toEqual [2, 0]
+          expect(atom.beep).not.toHaveBeenCalled()
 
         it "uses case sensitive search if useSmartcaseForSearch is true and searching uppercase", ->
           atom.config.set 'vim-mode.useSmartcaseForSearch', true
-          submitCommandModeInputText 'ABC'
+          submitNormalModeInputText 'ABC'
           expect(editor.getCursorBufferPosition()).toEqual [2, 0]
           keydown('n')
           expect(editor.getCursorBufferPosition()).toEqual [2, 0]
+          expect(atom.beep).not.toHaveBeenCalled()
 
       describe "repeating", ->
         it "does nothing with no search history", ->
-          # This tests that no exception is raised
+          editor.setCursorBufferPosition([0, 0])
           keydown('n')
+          expect(editor.getCursorBufferPosition()).toEqual [0, 0]
+          expect(atom.beep).toHaveBeenCalled()
 
+          editor.setCursorBufferPosition([1, 1])
+          keydown('n')
+          expect(editor.getCursorBufferPosition()).toEqual [1, 1]
+          expect(atom.beep.callCount).toBe 2
+
+      describe "repeating with search history", ->
         beforeEach ->
           keydown('/')
-          submitCommandModeInputText 'def'
+          submitNormalModeInputText 'def'
 
         it "repeats previous search with /<enter>", ->
           keydown('/')
-          submitCommandModeInputText('')
+          submitNormalModeInputText('')
           expect(editor.getCursorBufferPosition()).toEqual [3, 0]
+          expect(atom.beep).not.toHaveBeenCalled()
 
         it "repeats previous search with //", ->
           keydown('/')
-          submitCommandModeInputText('/')
+          submitNormalModeInputText('/')
           expect(editor.getCursorBufferPosition()).toEqual [3, 0]
+          expect(atom.beep).not.toHaveBeenCalled()
 
         describe "the n keybinding", ->
           it "repeats the last search", ->
             keydown('n')
             expect(editor.getCursorBufferPosition()).toEqual [3, 0]
+            expect(atom.beep).not.toHaveBeenCalled()
 
         describe "the N keybinding", ->
           it "repeats the last search backwards", ->
@@ -1129,98 +1202,109 @@ describe "Motions", ->
             expect(editor.getCursorBufferPosition()).toEqual [3, 0]
             keydown('N', shift: true)
             expect(editor.getCursorBufferPosition()).toEqual [1, 0]
+            expect(atom.beep).not.toHaveBeenCalled()
 
       describe "composing", ->
         it "composes with operators", ->
           keydown('d')
           keydown('/')
-          submitCommandModeInputText('def')
+          submitNormalModeInputText('def')
           expect(editor.getText()).toEqual "def\nabc\ndef\n"
+          expect(atom.beep).not.toHaveBeenCalled()
 
         it "repeats correctly with operators", ->
           keydown('d')
           keydown('/')
-          submitCommandModeInputText('def')
+          submitNormalModeInputText('def')
 
           keydown('.')
           expect(editor.getText()).toEqual "def\n"
+          expect(atom.beep).not.toHaveBeenCalled()
 
     describe "when reversed as ?", ->
       it "moves the cursor backwards to the specified search pattern", ->
         keydown('?')
-        submitCommandModeInputText('def')
+        submitNormalModeInputText('def')
         expect(editor.getCursorBufferPosition()).toEqual [3, 0]
+        expect(atom.beep).not.toHaveBeenCalled()
 
       it "accepts / as a literal search pattern", ->
         editor.setText("abc\nd/f\nabc\nd/f\n")
         editor.setCursorBufferPosition([0, 0])
         keydown('?')
-        submitCommandModeInputText('/')
+        submitNormalModeInputText('/')
         expect(editor.getCursorBufferPosition()).toEqual [3, 1]
         keydown('?')
-        submitCommandModeInputText('/')
+        submitNormalModeInputText('/')
         expect(editor.getCursorBufferPosition()).toEqual [1, 1]
+        expect(atom.beep).not.toHaveBeenCalled()
 
       describe "repeating", ->
         beforeEach ->
           keydown('?')
-          submitCommandModeInputText('def')
+          submitNormalModeInputText('def')
 
         it "repeats previous search as reversed with ?<enter>", ->
           keydown('?')
-          submitCommandModeInputText('')
+          submitNormalModeInputText('')
           expect(editor.getCursorBufferPosition()).toEqual [1, 0]
+          expect(atom.beep).not.toHaveBeenCalled()
 
         it "repeats previous search as reversed with ??", ->
           keydown('?')
-          submitCommandModeInputText('?')
+          submitNormalModeInputText('?')
           expect(editor.getCursorBufferPosition()).toEqual [1, 0]
+          expect(atom.beep).not.toHaveBeenCalled()
 
         describe 'the n keybinding', ->
           it "repeats the last search backwards", ->
             editor.setCursorBufferPosition([0, 0])
             keydown('n')
             expect(editor.getCursorBufferPosition()).toEqual [3, 0]
+            expect(atom.beep).not.toHaveBeenCalled()
 
         describe 'the N keybinding', ->
           it "repeats the last search forwards", ->
             editor.setCursorBufferPosition([0, 0])
             keydown('N', shift: true)
             expect(editor.getCursorBufferPosition()).toEqual [1, 0]
+            expect(atom.beep).not.toHaveBeenCalled()
 
     describe "using search history", ->
-      commandEditor = null
+      inputEditor = null
 
       beforeEach ->
         keydown('/')
-        submitCommandModeInputText('def')
+        submitNormalModeInputText('def')
         expect(editor.getCursorBufferPosition()).toEqual [1, 0]
 
         keydown('/')
-        submitCommandModeInputText('abc')
+        submitNormalModeInputText('abc')
         expect(editor.getCursorBufferPosition()).toEqual [2, 0]
 
-        commandEditor = editor.commandModeInputView.editorElement
+        inputEditor = editor.normalModeInputView.editorElement
 
       it "allows searching history in the search field", ->
         keydown('/')
-        atom.commands.dispatch(commandEditor, 'core:move-up')
-        expect(commandEditor.getModel().getText()).toEqual('abc')
-        atom.commands.dispatch(commandEditor, 'core:move-up')
-        expect(commandEditor.getModel().getText()).toEqual('def')
-        atom.commands.dispatch(commandEditor, 'core:move-up')
-        expect(commandEditor.getModel().getText()).toEqual('def')
+        atom.commands.dispatch(inputEditor, 'core:move-up')
+        expect(inputEditor.getModel().getText()).toEqual('abc')
+        atom.commands.dispatch(inputEditor, 'core:move-up')
+        expect(inputEditor.getModel().getText()).toEqual('def')
+        atom.commands.dispatch(inputEditor, 'core:move-up')
+        expect(inputEditor.getModel().getText()).toEqual('def')
+        expect(atom.beep).not.toHaveBeenCalled()
 
       it "resets the search field to empty when scrolling back", ->
         keydown('/')
-        atom.commands.dispatch(commandEditor, 'core:move-up')
-        expect(commandEditor.getModel().getText()).toEqual('abc')
-        atom.commands.dispatch(commandEditor, 'core:move-up')
-        expect(commandEditor.getModel().getText()).toEqual('def')
-        atom.commands.dispatch(commandEditor, 'core:move-down')
-        expect(commandEditor.getModel().getText()).toEqual('abc')
-        atom.commands.dispatch(commandEditor, 'core:move-down')
-        expect(commandEditor.getModel().getText()).toEqual ''
+        atom.commands.dispatch(inputEditor, 'core:move-up')
+        expect(inputEditor.getModel().getText()).toEqual('abc')
+        atom.commands.dispatch(inputEditor, 'core:move-up')
+        expect(inputEditor.getModel().getText()).toEqual('def')
+        atom.commands.dispatch(inputEditor, 'core:move-down')
+        expect(inputEditor.getModel().getText()).toEqual('abc')
+        atom.commands.dispatch(inputEditor, 'core:move-down')
+        expect(inputEditor.getModel().getText()).toEqual ''
+        expect(atom.beep).not.toHaveBeenCalled()
 
   describe "the * keybinding", ->
     beforeEach ->
@@ -1253,14 +1337,9 @@ describe "Motions", ->
 
         it "doesn't move cursor unless next match has exact word ending", ->
           editor.setText("abc\n@def\nabc\n@def1\n")
-          # FIXME: I suspect there is a bug laying around
-          # Cursor#getEndOfCurrentWordBufferPosition, this function
-          # is returning '@' as a word, instead of returning the whole
-          # word '@def', this behavior is avoided in this test, when we
-          # execute the '*' command when cursor is on character after '@'
-          # (in this particular example, the 'd' char)
           editor.setCursorBufferPosition([1, 1])
           keydown("*")
+          # this is because of the default isKeyword value of vim-mode that includes @
           expect(editor.getCursorBufferPosition()).toEqual [1, 0]
 
         # FIXME: This behavior is different from the one found in
@@ -1347,17 +1426,17 @@ describe "Motions", ->
       spyOn(editor.getLastCursor(), 'setScreenPosition')
 
     it "moves the cursor to the first row if visible", ->
-      spyOn(editor, 'getFirstVisibleScreenRow').andReturn(0)
+      spyOn(editorElement, 'getFirstVisibleScreenRow').andReturn(0)
       keydown('H', shift: true)
       expect(editor.getLastCursor().setScreenPosition).toHaveBeenCalledWith([0, 0])
 
     it "moves the cursor to the first visible row plus offset", ->
-      spyOn(editor, 'getFirstVisibleScreenRow').andReturn(2)
+      spyOn(editorElement, 'getFirstVisibleScreenRow').andReturn(2)
       keydown('H', shift: true)
       expect(editor.getLastCursor().setScreenPosition).toHaveBeenCalledWith([4, 0])
 
     it "respects counts", ->
-      spyOn(editor, 'getFirstVisibleScreenRow').andReturn(0)
+      spyOn(editorElement, 'getFirstVisibleScreenRow').andReturn(0)
       keydown('3')
       keydown('H', shift: true)
       expect(editor.getLastCursor().setScreenPosition).toHaveBeenCalledWith([2, 0])
@@ -1369,17 +1448,17 @@ describe "Motions", ->
       spyOn(editor.getLastCursor(), 'setScreenPosition')
 
     it "moves the cursor to the first row if visible", ->
-      spyOn(editor, 'getLastVisibleScreenRow').andReturn(10)
+      spyOn(editorElement, 'getLastVisibleScreenRow').andReturn(10)
       keydown('L', shift: true)
       expect(editor.getLastCursor().setScreenPosition).toHaveBeenCalledWith([10, 0])
 
     it "moves the cursor to the first visible row plus offset", ->
-      spyOn(editor, 'getLastVisibleScreenRow').andReturn(6)
+      spyOn(editorElement, 'getLastVisibleScreenRow').andReturn(6)
       keydown('L', shift: true)
       expect(editor.getLastCursor().setScreenPosition).toHaveBeenCalledWith([4, 0])
 
     it "respects counts", ->
-      spyOn(editor, 'getLastVisibleScreenRow').andReturn(10)
+      spyOn(editorElement, 'getLastVisibleScreenRow').andReturn(10)
       keydown('3')
       keydown('L', shift: true)
       expect(editor.getLastCursor().setScreenPosition).toHaveBeenCalledWith([8, 0])
@@ -1389,8 +1468,8 @@ describe "Motions", ->
       editor.setText("1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n")
       editor.setCursorScreenPosition([8, 0])
       spyOn(editor.getLastCursor(), 'setScreenPosition')
-      spyOn(editor, 'getLastVisibleScreenRow').andReturn(10)
-      spyOn(editor, 'getFirstVisibleScreenRow').andReturn(0)
+      spyOn(editorElement, 'getLastVisibleScreenRow').andReturn(10)
+      spyOn(editorElement, 'getFirstVisibleScreenRow').andReturn(0)
 
     it "moves the cursor to the first row if visible", ->
       keydown('M', shift: true)
@@ -1404,58 +1483,58 @@ describe "Motions", ->
     it 'moves to the beginning of the line of a mark', ->
       editor.setCursorBufferPosition([1, 1])
       keydown('m')
-      commandModeInputKeydown('a')
+      normalModeInputKeydown('a')
       editor.setCursorBufferPosition([0, 0])
       keydown('\'')
-      commandModeInputKeydown('a')
+      normalModeInputKeydown('a')
       expect(editor.getCursorBufferPosition()).toEqual [1, 4]
 
     it 'moves literally to a mark', ->
       editor.setCursorBufferPosition([1, 1])
       keydown('m')
-      commandModeInputKeydown('a')
+      normalModeInputKeydown('a')
       editor.setCursorBufferPosition([0, 0])
       keydown('`')
-      commandModeInputKeydown('a')
+      normalModeInputKeydown('a')
       expect(editor.getCursorBufferPosition()).toEqual [1, 1]
 
     it 'deletes to a mark by line', ->
       editor.setCursorBufferPosition([1, 5])
       keydown('m')
-      commandModeInputKeydown('a')
+      normalModeInputKeydown('a')
       editor.setCursorBufferPosition([0, 0])
       keydown('d')
       keydown('\'')
-      commandModeInputKeydown('a')
+      normalModeInputKeydown('a')
       expect(editor.getText()).toEqual '56\n'
 
     it 'deletes before to a mark literally', ->
       editor.setCursorBufferPosition([1, 5])
       keydown('m')
-      commandModeInputKeydown('a')
+      normalModeInputKeydown('a')
       editor.setCursorBufferPosition([0, 1])
       keydown('d')
       keydown('`')
-      commandModeInputKeydown('a')
+      normalModeInputKeydown('a')
       expect(editor.getText()).toEqual ' 4\n56\n'
 
     it 'deletes after to a mark literally', ->
       editor.setCursorBufferPosition([1, 5])
       keydown('m')
-      commandModeInputKeydown('a')
+      normalModeInputKeydown('a')
       editor.setCursorBufferPosition([2, 1])
       keydown('d')
       keydown('`')
-      commandModeInputKeydown('a')
+      normalModeInputKeydown('a')
       expect(editor.getText()).toEqual '  12\n    36\n'
 
     it 'moves back to previous', ->
       editor.setCursorBufferPosition([1, 5])
       keydown('`')
-      commandModeInputKeydown('`')
+      normalModeInputKeydown('`')
       editor.setCursorBufferPosition([2, 1])
       keydown('`')
-      commandModeInputKeydown('`')
+      normalModeInputKeydown('`')
       expect(editor.getCursorBufferPosition()).toEqual [1, 5]
 
   describe 'the f/F keybindings', ->
@@ -1465,56 +1544,57 @@ describe "Motions", ->
 
     it 'moves to the first specified character it finds', ->
       keydown('f')
-      commandModeInputKeydown('c')
+      normalModeInputKeydown('c')
       expect(editor.getCursorScreenPosition()).toEqual [0, 2]
 
     it 'moves backwards to the first specified character it finds', ->
       editor.setCursorScreenPosition([0, 2])
       keydown('F', shift: true)
-      commandModeInputKeydown('a')
+      normalModeInputKeydown('a')
       expect(editor.getCursorScreenPosition()).toEqual [0, 0]
 
     it 'respects count forward', ->
       keydown('2')
       keydown('f')
-      commandModeInputKeydown('a')
+      normalModeInputKeydown('a')
       expect(editor.getCursorScreenPosition()).toEqual [0, 6]
 
     it 'respects count backward', ->
       editor.setCursorScreenPosition([0, 6])
       keydown('2')
       keydown('F', shift: true)
-      commandModeInputKeydown('a')
+      normalModeInputKeydown('a')
       expect(editor.getCursorScreenPosition()).toEqual [0, 0]
 
     it "doesn't move if the character specified isn't found", ->
       keydown('f')
-      commandModeInputKeydown('d')
+      normalModeInputKeydown('d')
       expect(editor.getCursorScreenPosition()).toEqual [0, 0]
+      expect(atom.beep).not.toHaveBeenCalled()
 
     it "doesn't move if there aren't the specified count of the specified character", ->
       keydown('1')
       keydown('0')
       keydown('f')
-      commandModeInputKeydown('a')
+      normalModeInputKeydown('a')
       expect(editor.getCursorScreenPosition()).toEqual [0, 0]
       # a bug was making this behaviour depend on the count
       keydown('1')
       keydown('1')
       keydown('f')
-      commandModeInputKeydown('a')
+      normalModeInputKeydown('a')
       expect(editor.getCursorScreenPosition()).toEqual [0, 0]
       # and backwards now
       editor.setCursorScreenPosition([0, 6])
       keydown('1')
       keydown('0')
       keydown('F', shift: true)
-      commandModeInputKeydown('a')
+      normalModeInputKeydown('a')
       expect(editor.getCursorScreenPosition()).toEqual [0, 6]
       keydown('1')
       keydown('1')
       keydown('F', shift: true)
-      commandModeInputKeydown('a')
+      normalModeInputKeydown('a')
       expect(editor.getCursorScreenPosition()).toEqual [0, 6]
 
     it "composes with d", ->
@@ -1522,8 +1602,46 @@ describe "Motions", ->
       keydown('d')
       keydown('2')
       keydown('f')
-      commandModeInputKeydown('a')
+      normalModeInputKeydown('a')
       expect(editor.getText()).toEqual 'abcbc\n'
+
+    it "cancels c when no match found", ->
+      keydown('c')
+      keydown('f')
+      normalModeInputKeydown('d')
+      expect(editor.getText()).toBe("abcabcabcabc\n")
+      expect(editor.getCursorScreenPosition()).toEqual [0, 0]
+      expect(vimState.mode).toBe "normal"
+
+    describe 'with accented characters', ->
+      buildIMECompositionEvent = (event, {data, target}={}) ->
+        event = new Event(event)
+        event.data = data
+        Object.defineProperty(event, 'target', get: -> target)
+        event
+
+      buildTextInputEvent = ({data, target}) ->
+        event = new Event('textInput')
+        event.data = data
+        Object.defineProperty(event, 'target', get: -> target)
+        event
+
+      beforeEach ->
+        editor.setText("abcébcabcébc\n")
+        editor.setCursorScreenPosition([0, 0])
+
+      it 'works with IME composition', ->
+        keydown('f')
+        normalModeEditor = editor.normalModeInputView.editorElement
+        jasmine.attachToDOM(normalModeEditor)
+        domNode = normalModeEditor.component.domNode
+        inputNode = domNode.querySelector('.hidden-input')
+        domNode.dispatchEvent(buildIMECompositionEvent('compositionstart', target: inputNode))
+        domNode.dispatchEvent(buildIMECompositionEvent('compositionupdate', data: "´", target: inputNode))
+        expect(normalModeEditor.getModel().getText()).toEqual '´'
+        domNode.dispatchEvent(buildIMECompositionEvent('compositionend', data: "é", target: inputNode))
+        domNode.dispatchEvent(buildTextInputEvent(data: 'é', target: inputNode))
+        expect(editor.getCursorScreenPosition()).toEqual [0, 3]
 
   describe 'the t/T keybindings', ->
     beforeEach ->
@@ -1532,60 +1650,61 @@ describe "Motions", ->
 
     it 'moves to the character previous to the first specified character it finds', ->
       keydown('t')
-      commandModeInputKeydown('a')
+      normalModeInputKeydown('a')
       expect(editor.getCursorScreenPosition()).toEqual [0, 2]
       # or stays put when it's already there
       keydown('t')
-      commandModeInputKeydown('a')
+      normalModeInputKeydown('a')
       expect(editor.getCursorScreenPosition()).toEqual [0, 2]
 
     it 'moves backwards to the character after the first specified character it finds', ->
       editor.setCursorScreenPosition([0, 2])
       keydown('T', shift: true)
-      commandModeInputKeydown('a')
+      normalModeInputKeydown('a')
       expect(editor.getCursorScreenPosition()).toEqual [0, 1]
 
     it 'respects count forward', ->
       keydown('2')
       keydown('t')
-      commandModeInputKeydown('a')
+      normalModeInputKeydown('a')
       expect(editor.getCursorScreenPosition()).toEqual [0, 5]
 
     it 'respects count backward', ->
       editor.setCursorScreenPosition([0, 6])
       keydown('2')
       keydown('T', shift: true)
-      commandModeInputKeydown('a')
+      normalModeInputKeydown('a')
       expect(editor.getCursorScreenPosition()).toEqual [0, 1]
 
     it "doesn't move if the character specified isn't found", ->
       keydown('t')
-      commandModeInputKeydown('d')
+      normalModeInputKeydown('d')
       expect(editor.getCursorScreenPosition()).toEqual [0, 0]
+      expect(atom.beep).not.toHaveBeenCalled()
 
     it "doesn't move if there aren't the specified count of the specified character", ->
       keydown('1')
       keydown('0')
       keydown('t')
-      commandModeInputKeydown('a')
+      normalModeInputKeydown('a')
       expect(editor.getCursorScreenPosition()).toEqual [0, 0]
       # a bug was making this behaviour depend on the count
       keydown('1')
       keydown('1')
       keydown('t')
-      commandModeInputKeydown('a')
+      normalModeInputKeydown('a')
       expect(editor.getCursorScreenPosition()).toEqual [0, 0]
       # and backwards now
       editor.setCursorScreenPosition([0, 6])
       keydown('1')
       keydown('0')
       keydown('T', shift: true)
-      commandModeInputKeydown('a')
+      normalModeInputKeydown('a')
       expect(editor.getCursorScreenPosition()).toEqual [0, 6]
       keydown('1')
       keydown('1')
       keydown('T', shift: true)
-      commandModeInputKeydown('a')
+      normalModeInputKeydown('a')
       expect(editor.getCursorScreenPosition()).toEqual [0, 6]
 
     it "composes with d", ->
@@ -1593,8 +1712,33 @@ describe "Motions", ->
       keydown('d')
       keydown('2')
       keydown('t')
-      commandModeInputKeydown('b')
+      normalModeInputKeydown('b')
       expect(editor.getText()).toBe 'abcbcabc\n'
+
+    it "selects character under cursor even when no movement happens", ->
+      editor.setCursorBufferPosition([0, 0])
+      keydown('d')
+      keydown('t')
+      normalModeInputKeydown('b')
+      expect(editor.getText()).toBe 'bcabcabcabc\n'
+
+  describe 'the v keybinding', ->
+    beforeEach ->
+      editor.setText("01\n002\n0003\n00004\n000005\n")
+      editor.setCursorScreenPosition([1, 1])
+
+    it "selects down a line", ->
+      keydown('v')
+      keydown('j')
+      keydown('j')
+      expect(editor.getSelectedText()).toBe "02\n0003\n00"
+      expect(editor.getSelectedBufferRange().isSingleLine()).toBeFalsy()
+
+    it "selects right", ->
+      keydown('v')
+      keydown('l')
+      expect(editor.getSelectedText()).toBe "02"
+      expect(editor.getSelectedBufferRange().isSingleLine()).toBeTruthy()
 
   describe 'the V keybinding', ->
     beforeEach ->
@@ -1603,9 +1747,11 @@ describe "Motions", ->
 
     it "selects down a line", ->
       keydown('V', shift: true)
+      expect(editor.getSelectedBufferRange().isSingleLine()).toBeFalsy()
       keydown('j')
       keydown('j')
       expect(editor.getSelectedText()).toBe "002\n0003\n00004\n"
+      expect(editor.getSelectedBufferRange().isSingleLine()).toBeFalsy()
 
     it "selects up a line", ->
       keydown('V', shift: true)
@@ -1619,7 +1765,7 @@ describe "Motions", ->
 
     it "repeat f in same direction", ->
       keydown('f')
-      commandModeInputKeydown('c')
+      normalModeInputKeydown('c')
       expect(editor.getCursorScreenPosition()).toEqual [0, 2]
       keydown(';')
       expect(editor.getCursorScreenPosition()).toEqual [0, 5]
@@ -1629,7 +1775,7 @@ describe "Motions", ->
     it "repeat F in same direction", ->
       editor.setCursorScreenPosition([0, 10])
       keydown('F', shift: true)
-      commandModeInputKeydown('c')
+      normalModeInputKeydown('c')
       expect(editor.getCursorScreenPosition()).toEqual [0, 8]
       keydown(';')
       expect(editor.getCursorScreenPosition()).toEqual [0, 5]
@@ -1639,7 +1785,7 @@ describe "Motions", ->
     it "repeat f in opposite direction", ->
       editor.setCursorScreenPosition([0, 6])
       keydown('f')
-      commandModeInputKeydown('c')
+      normalModeInputKeydown('c')
       expect(editor.getCursorScreenPosition()).toEqual [0, 8]
       keydown(',')
       expect(editor.getCursorScreenPosition()).toEqual [0, 5]
@@ -1649,7 +1795,7 @@ describe "Motions", ->
     it "repeat F in opposite direction", ->
       editor.setCursorScreenPosition([0, 4])
       keydown('F', shift: true)
-      commandModeInputKeydown('c')
+      normalModeInputKeydown('c')
       expect(editor.getCursorScreenPosition()).toEqual [0, 2]
       keydown(',')
       expect(editor.getCursorScreenPosition()).toEqual [0, 5]
@@ -1658,7 +1804,7 @@ describe "Motions", ->
 
     it "alternate repeat f in same direction and reverse", ->
       keydown('f')
-      commandModeInputKeydown('c')
+      normalModeInputKeydown('c')
       expect(editor.getCursorScreenPosition()).toEqual [0, 2]
       keydown(';')
       expect(editor.getCursorScreenPosition()).toEqual [0, 5]
@@ -1668,7 +1814,7 @@ describe "Motions", ->
     it "alternate repeat F in same direction and reverse", ->
       editor.setCursorScreenPosition([0, 10])
       keydown('F', shift: true)
-      commandModeInputKeydown('c')
+      normalModeInputKeydown('c')
       expect(editor.getCursorScreenPosition()).toEqual [0, 8]
       keydown(';')
       expect(editor.getCursorScreenPosition()).toEqual [0, 5]
@@ -1677,7 +1823,7 @@ describe "Motions", ->
 
     it "repeat t in same direction", ->
       keydown('t')
-      commandModeInputKeydown('c')
+      normalModeInputKeydown('c')
       expect(editor.getCursorScreenPosition()).toEqual [0, 1]
       keydown(';')
       expect(editor.getCursorScreenPosition()).toEqual [0, 4]
@@ -1685,7 +1831,7 @@ describe "Motions", ->
     it "repeat T in same direction", ->
       editor.setCursorScreenPosition([0, 10])
       keydown('T', shift: true)
-      commandModeInputKeydown('c')
+      normalModeInputKeydown('c')
       expect(editor.getCursorScreenPosition()).toEqual [0, 9]
       keydown(';')
       expect(editor.getCursorScreenPosition()).toEqual [0, 6]
@@ -1693,7 +1839,7 @@ describe "Motions", ->
     it "repeat t in opposite direction first, and then reverse", ->
       editor.setCursorScreenPosition([0, 3])
       keydown('t')
-      commandModeInputKeydown('c')
+      normalModeInputKeydown('c')
       expect(editor.getCursorScreenPosition()).toEqual [0, 4]
       keydown(',')
       expect(editor.getCursorScreenPosition()).toEqual [0, 3]
@@ -1703,7 +1849,7 @@ describe "Motions", ->
     it "repeat T in opposite direction first, and then reverse", ->
       editor.setCursorScreenPosition([0, 4])
       keydown('T', shift: true)
-      commandModeInputKeydown('c')
+      normalModeInputKeydown('c')
       expect(editor.getCursorScreenPosition()).toEqual [0, 3]
       keydown(',')
       expect(editor.getCursorScreenPosition()).toEqual [0, 4]
@@ -1713,7 +1859,7 @@ describe "Motions", ->
     it "repeat with count in same direction", ->
       editor.setCursorScreenPosition([0, 0])
       keydown('f')
-      commandModeInputKeydown('c')
+      normalModeInputKeydown('c')
       expect(editor.getCursorScreenPosition()).toEqual [0, 2]
       keydown('2')
       keydown(';')
@@ -1722,11 +1868,44 @@ describe "Motions", ->
     it "repeat with count in reverse direction", ->
       editor.setCursorScreenPosition([0, 6])
       keydown('f')
-      commandModeInputKeydown('c')
+      normalModeInputKeydown('c')
       expect(editor.getCursorScreenPosition()).toEqual [0, 8]
       keydown('2')
       keydown(',')
       expect(editor.getCursorScreenPosition()).toEqual [0, 2]
+
+    it "shares the most recent find/till command with other editors", ->
+      helpers.getEditorElement (otherEditorElement) ->
+        otherEditor = otherEditorElement.getModel()
+
+        editor.setText("a baz bar\n")
+        editor.setCursorScreenPosition([0, 0])
+
+        otherEditor.setText("foo bar baz")
+        otherEditor.setCursorScreenPosition([0, 0])
+
+        # by default keyDown and such go in the usual editor
+        keydown('f')
+        normalModeInputKeydown('b')
+        expect(editor.getCursorScreenPosition()).toEqual [0, 2]
+        expect(otherEditor.getCursorScreenPosition()).toEqual [0, 0]
+
+        # replay same find in the other editor
+        keydown(';', element: otherEditorElement)
+        expect(editor.getCursorScreenPosition()).toEqual [0, 2]
+        expect(otherEditor.getCursorScreenPosition()).toEqual [0, 4]
+
+        # do a till in the other editor
+        keydown('t', element: otherEditorElement)
+        normalModeInputKeydown('r', editor: otherEditor)
+        expect(editor.getCursorScreenPosition()).toEqual [0, 2]
+        expect(otherEditor.getCursorScreenPosition()).toEqual [0, 5]
+
+        # and replay in the normal editor
+        keydown(';')
+        expect(editor.getCursorScreenPosition()).toEqual [0, 7]
+        expect(otherEditor.getCursorScreenPosition()).toEqual [0, 5]
+        expect(atom.beep).not.toHaveBeenCalled()
 
   describe 'the % motion', ->
     beforeEach ->
@@ -1780,7 +1959,7 @@ describe "Motions", ->
 
     it "does not affect search history", ->
       keydown('/')
-      submitCommandModeInputText 'func'
+      submitNormalModeInputText 'func'
       expect(editor.getCursorBufferPosition()).toEqual [0, 31]
       keydown('%')
       expect(editor.getCursorBufferPosition()).toEqual [0, 60]
@@ -1789,16 +1968,21 @@ describe "Motions", ->
 
   describe "scrolling screen and keeping cursor in the same screen position", ->
     beforeEach ->
-      editor.setText([0...80].join("\n"))
-      editor.setHeight(20 * 10)
-      editor.setLineHeightInPixels(10)
-      editor.setScrollTop(40 * 10)
+      jasmine.attachToDOM(editorElement)
+
+      editor.setText([0...100].join("\n"))
+
+      editorElement.setHeight(20 * 10)
+      editorElement.style.lineHeight = "10px"
+      atom.views.performDocumentPoll()
+
+      editorElement.setScrollTop(40 * 10)
       editor.setCursorBufferPosition([42, 0])
 
     describe "the ctrl-u keybinding", ->
-      it "moves the screen down by half screen size and keeps cursor onscreen", ->
+      it "moves the screen up by half screen size and keeps cursor onscreen", ->
         keydown('u', ctrl: true)
-        expect(editor.getScrollTop()).toEqual 300
+        expect(editorElement.getScrollTop()).toEqual 300
         expect(editor.getCursorBufferPosition()).toEqual [32, 0]
 
       it "selects on visual mode", ->
@@ -1807,15 +1991,15 @@ describe "Motions", ->
         keydown('u', ctrl: true)
         expect(editor.getSelectedText()).toEqual [32..42].join("\n")
 
-      it "selects on linewise mode", ->
+      it "selects in linewise mode", ->
         vimState.activateVisualMode('linewise')
         keydown('u', ctrl: true)
-        expect(editor.getSelectedText()).toEqual [32..42].join("\n").concat("\n")
+        expect(editor.getSelectedText()).toEqual [33..42].join("\n").concat("\n")
 
     describe "the ctrl-b keybinding", ->
       it "moves screen up one page", ->
         keydown('b', ctrl: true)
-        expect(editor.getScrollTop()).toEqual 200
+        expect(editorElement.getScrollTop()).toEqual 200
         expect(editor.getCursorScreenPosition()).toEqual [22, 0]
 
       it "selects on visual mode", ->
@@ -1824,16 +2008,15 @@ describe "Motions", ->
         keydown('b', ctrl: true)
         expect(editor.getSelectedText()).toEqual [22..42].join("\n")
 
-      it "selects on linewise mode", ->
+      it "selects in linewise mode", ->
         vimState.activateVisualMode('linewise')
         keydown('b', ctrl: true)
-        expect(editor.getSelectedText()).toEqual [22..42].join("\n").concat("\n")
-
+        expect(editor.getSelectedText()).toEqual [23..42].join("\n").concat("\n")
 
     describe "the ctrl-d keybinding", ->
       it "moves the screen down by half screen size and keeps cursor onscreen", ->
         keydown('d', ctrl: true)
-        expect(editor.getScrollTop()).toEqual 500
+        expect(editorElement.getScrollTop()).toEqual 500
         expect(editor.getCursorBufferPosition()).toEqual [52, 0]
 
       it "selects on visual mode", ->
@@ -1842,15 +2025,15 @@ describe "Motions", ->
         keydown('d', ctrl: true)
         expect(editor.getSelectedText()).toEqual [42..52].join("\n").slice(1, -1)
 
-      it "selects on linewise mode", ->
+      it "selects in linewise mode", ->
         vimState.activateVisualMode('linewise')
         keydown('d', ctrl: true)
-        expect(editor.getSelectedText()).toEqual [42..52].join("\n").concat("\n")
+        expect(editor.getSelectedText()).toEqual [42..53].join("\n").concat("\n")
 
     describe "the ctrl-f keybinding", ->
       it "moves screen down one page", ->
         keydown('f', ctrl: true)
-        expect(editor.getScrollTop()).toEqual 600
+        expect(editorElement.getScrollTop()).toEqual 600
         expect(editor.getCursorScreenPosition()).toEqual [62, 0]
 
       it "selects on visual mode", ->
@@ -1859,7 +2042,7 @@ describe "Motions", ->
         keydown('f', ctrl: true)
         expect(editor.getSelectedText()).toEqual [42..62].join("\n").slice(1, -1)
 
-      it "selects on linewise mode", ->
+      it "selects in linewise mode", ->
         vimState.activateVisualMode('linewise')
         keydown('f', ctrl: true)
-        expect(editor.getSelectedText()).toEqual [42..62].join("\n").concat("\n")
+        expect(editor.getSelectedText()).toEqual [42..63].join("\n").concat("\n")

@@ -6,8 +6,6 @@ SearchViewModel = require '../view-models/search-view-model'
 settings = require '../settings'
 
 class SearchBase extends MotionWithInput
-  operatesInclusively: false
-
   constructor: (@editor, @vimState, options = {}) ->
     super(@editor, @vimState)
     @reverse = @initiallyReversed = false
@@ -27,6 +25,8 @@ class SearchBase extends MotionWithInput
       atom.beep()
 
   scan: (cursor) ->
+    return [] if @input.characters is ""
+
     currentPosition = cursor.getBufferPosition()
 
     [rangesBefore, rangesAfter] = [[], []]
@@ -75,6 +75,16 @@ class Search extends SearchBase
   constructor: (@editor, @vimState) ->
     super(@editor, @vimState)
     @viewModel = new SearchViewModel(this)
+    @updateViewModel()
+
+  reversed: =>
+    @initiallyReversed = @reverse = true
+    @updateCurrentSearch()
+    @updateViewModel()
+    this
+
+  updateViewModel: ->
+    @viewModel.update(@initiallyReversed)
 
 class SearchCurrentWord extends SearchBase
   @keywordRegex: null

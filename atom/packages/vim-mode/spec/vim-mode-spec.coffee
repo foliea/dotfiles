@@ -18,15 +18,20 @@ describe "VimMode", ->
       editorElement = atom.views.getView(editor)
 
   describe ".activate", ->
-    it "puts the editor in command-mode initially by default", ->
+    it "puts the editor in normal-mode initially by default", ->
       expect(editorElement.classList.contains('vim-mode')).toBe(true)
-      expect(editorElement.classList.contains('command-mode')).toBe(true)
+      expect(editorElement.classList.contains('normal-mode')).toBe(true)
 
     it "shows the current vim mode in the status bar", ->
-      statusBarTile = workspaceElement.querySelector("#status-bar-vim-mode")
-      expect(statusBarTile.textContent).toBe("Command")
-      atom.commands.dispatch(editorElement, "vim-mode:activate-insert-mode")
-      expect(statusBarTile.textContent).toBe("Insert")
+      statusBarTile = null
+
+      waitsFor ->
+        statusBarTile = workspaceElement.querySelector("#status-bar-vim-mode")
+
+      runs ->
+        expect(statusBarTile.textContent).toBe("Normal")
+        atom.commands.dispatch(editorElement, "vim-mode:activate-insert-mode")
+        expect(statusBarTile.textContent).toBe("Insert")
 
     it "doesn't register duplicate command listeners for editors", ->
       editor.setText("12345")
@@ -44,7 +49,7 @@ describe "VimMode", ->
     it "removes the vim classes from the editor", ->
       atom.packages.deactivatePackage('vim-mode')
       expect(editorElement.classList.contains("vim-mode")).toBe(false)
-      expect(editorElement.classList.contains("command-mode")).toBe(false)
+      expect(editorElement.classList.contains("normal-mode")).toBe(false)
 
     it "removes the vim commands from the editor element", ->
       vimCommands = ->

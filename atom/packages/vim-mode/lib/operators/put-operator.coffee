@@ -9,7 +9,7 @@ module.exports =
 class Put extends Operator
   register: null
 
-  constructor: (@editor, @vimState, {@location, @selectOptions}={}) ->
+  constructor: (@editor, @vimState, {@location}={}) ->
     @location ?= 'after'
     @complete = true
     @register = settings.defaultRegister()
@@ -58,9 +58,9 @@ class Put extends Operator
       @editor.setCursorScreenPosition(originalPosition)
       @editor.moveToFirstCharacterOfLine()
 
-    @vimState.activateCommandMode()
     if type isnt 'linewise'
       @editor.moveLeft()
+    @vimState.activateNormalMode()
 
   # Private: Helper to determine if the editor is currently on the last row.
   #
