@@ -1,10 +1,14 @@
 [user]
 	name = Marin Ravenel
 	email = kalasasta@gmail.com
-	
+
 [github]
   	user = marin42
 
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
+[alias]
+    st = status
+	last = log -1 HEAD
+

@@ -80,3 +80,29 @@ autocmd BufWritePre * :%s/\s\+$//e
 set incsearch
 
 highlight Cursor guibg=Green guifg=NONE
+
+" Custom syntax highlighting
+au BufRead,BufNewFile Gomfile setlocal ft=ruby
+au BufRead,BufNewFile Caskfile setlocal ft=ruby
+
+
+"Enable neocomplcache at startup, and bind it to the TAB key
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_underbar_completion = 1
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" Binding the popup closing to Shift + TAB
+inoremap <expr><s-tab>  neocomplcache#close_popup()
+
+"Bind snipMate to the Ctrl + s keystroke
+imap <C-S> <Plug>snipMateNextOrTrigger
+smap <C-S> <Plug>snipMateNextOrTrigger
+
+"Syntastic runs when opening a file
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_signs=1
+"Syntastic configuration for headers
+let g:syntastic_cpp_include_dirs = ['inc']
+let g:syntastic_c_include_dirs = ['inc', 'inc/libft', '../libft']
+let g:syntastic_cpp_check_header = 1
+let g:syntastic_c_check_header = 1
+let g:syntastic_cpp_remove_include_errors = 1
