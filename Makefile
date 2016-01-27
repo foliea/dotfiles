@@ -33,10 +33,10 @@ vim:
 	ln -s $(CWD)/vim $(HOME)/.vim
 	ln -s $(CWD)/vimrc $(HOME)/.vimrc
 	ln -s $(CWD)/gvimrc $(HOME)/.gvimrc
-	#ln -s $(CWD)/marin42.zsh-theme $(ZSH)/themes/marin42.zsh-theme
+	ln -s $(CWD)/marin42.zsh-theme $(ZSH)/themes/marin42.zsh-theme
 
 zsh:
-	#ln -s $(CWD)/zshrc $(HOME)/.zshrc
+	ln -s $(CWD)/zshrc $(HOME)/.zshrc
 
 git:
 	sh scripts/git.sh
