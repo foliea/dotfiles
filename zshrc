@@ -49,3 +49,6 @@ export LANGUAGE=en_US.UTF-8
 export PATH="/Applications/MAMP/bin/php/php5.3.28/bin/:$PATH"
 export PHP_AUTOCONF="/usr/local/bin/autoconf"
 export GREP_OPTIONS="--color=always"
+
+#Improved less
+export LESS="-i-P%f (%i/%m) Line %lt/%L"
