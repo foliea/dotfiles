@@ -33,11 +33,10 @@ vim:
 	ln -s $(CWD)/vim $(HOME)/.vim
 	ln -s $(CWD)/vimrc $(HOME)/.vimrc
 	ln -s $(CWD)/gvimrc $(HOME)/.gvimrc
-	ln -s $(CWD)/marin42.zsh-theme $(ZSH)/themes/marin42.zsh-theme
-	cp -f $(CWD)/airline-gruvbox.vim $(CWD)/vim/bundle/vim-airline/autoload/airline/themes/gruvbox.vim
+	#ln -s $(CWD)/marin42.zsh-theme $(ZSH)/themes/marin42.zsh-theme
 
 zsh:
-	ln -s $(CWD)/zshrc $(HOME)/.zshrc
+	#ln -s $(CWD)/zshrc $(HOME)/.zshrc
 
 git:
 	sh scripts/git.sh
@@ -52,13 +51,13 @@ clean:
 update:
 	git submodule foreach git pull origin master
 
-go:
-	sh scripts/go.sh
-	go get -u code.google.com/p/go.tools/cmd/oracle
-	go get -u code.google.com/p/go.tools/cmd/goimports
-	go get -u github.com/nsf/gocode
-	go get -u github.com/golang/lint/golint
-	go get -u github.com/kisielk/errcheck
-	go get -u code.google.com/p/rog-go/exp/cmd/godef
-	go get -u github.com/jstemmer/gotags
-	ln -s $(GOPATH)/bin $(HOME)/.vim-go
+#go:
+#	sh scripts/go.sh
+#	go get -u code.google.com/p/go.tools/cmd/oracle
+#	go get -u code.google.com/p/go.tools/cmd/goimports
+#	go get -u github.com/nsf/gocode
+#	go get -u github.com/golang/lint/golint
+#	go get -u github.com/kisielk/errcheck
+#	go get -u code.google.com/p/rog-go/exp/cmd/godef
+#	go get -u github.com/jstemmer/gotags
+#	ln -s $(GOPATH)/bin $(HOME)/.vim-go

@@ -1,49 +1,25 @@
-" **************************************************************************** "
-"                                                                              "
-"                                                         :::      ::::::::    "
-"    .vimrc                                             :+:      :+:    :+:    "
-"                                                     +:+ +:+         +:+      "
-"    By: marin <mravenel@student.42.fr>             +#+  +:+       +#+         "
-"                                                 +#+#+#+#+#+   +#+            "
-"    Created: 2014/10/02 11:05:42 by marin             #+#    #+#              "
-"    Updated: 2014/11/04 12:42:39 by modizy           ###   ########.fr        "
-"                                                                              "
-" **************************************************************************** "
+call pathogen#infect()
+call pathogen#helptags()
 
-runtime! stdheader.vim
 
-syntax on
 
-set encoding=utf-8
-
-set background=dark
-
+set nocompatible "ensures vim over vi
 set number
-" Editor options
+set ruler "add line/column count to the bottom of screen
+"syntax on
+"
+set showmatch "Show matching brackets
+syntax enable
+set noerrorbells visualbell t_vb= "turn off annoying bells
+set tags=.tags "destination file for ctags
 
-set showmatch
 
-set background=dark
-set guioptions-=r
-set guioptions-=L
-set number
-set ruler
-set visualbell    " don't beep
-set noerrorbells  " don't beep
 
-" Temp files
-set backupdir=~/.vim/tmp/backup//
-set directory=~/.vim/tmp/swap/
-set undodir=~/.vim/tmp/undo//
 
-"List chars
-" invisible character setting
-" unicode for \u25b8 for `▸', \u00ac for `¬'
-set listchars=tab:▸\ ,eol:¬,trail:?,extends:>,precedes:<,nbsp:.
-"Comment if you want invisible chars to show up only on C/C++
-set list
-"you can toggle invisble chars by pressing F7
-nmap <F7> :set list!<CR>
+
+
+
+set autoindent
 
 " Tabs
 set noexpandtab
@@ -63,18 +39,18 @@ autocmd FileType c set list
 autocmd FileType cpp set colorcolumn=80
 autocmd FileType cpp set list
 
-" Search
-set hlsearch
+" Temp files
+set backupdir=~/.vim/tmp/backup//
+set directory=~/.vim/tmp/swap/
+set undodir=~/.vim/tmp/undo//
 
-" Pathogen
-execute pathogen#infect()
+"List chars
+" invisible character setting
+" unicode for \u25b8 for `▸', \u00ac for `¬'
+set listchars=tab:▸\ ,eol:¬,trail:?,extends:>,precedes:<,nbsp:.
 
-" Options
-set nocompatible      " We're running Vim, not Vi!
-syntax on             " Enable syntax highlighting
-filetype on           " Enable filetype detection
-filetype indent on    " Enable filetype-specific indenting
-filetype plugin on    " Enable filetype-specific plugins
+filetype plugin indent on
+
 
 " NERDTree
 "autocmd VimEnter * NERDTree
@@ -86,97 +62,21 @@ let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['\*.DS_STORE$']
 "let g:NERDTreeDirArrows=0
 
-" Go
-let g:go_disable_autoinstall = 1
-let g:go_fmt_fail_silently = 1
-
-" Tagbar
-nmap <F9> :TagbarToggle<CR>
-
-" Ruby
-autocmd FileType ruby compiler ruby
-
-" Custom syntax highlighting
-au BufRead,BufNewFile Gomfile setlocal ft=ruby
-au BufRead,BufNewFile Caskfile setlocal ft=ruby
-
-
-nmap <F6> :set relativenumber!<CR>
-set guioptions-=L  "remove left-hand scroll bar
-set guioptions-=T  "remove toolbar
-set lines=60 columns=90 "default window size
-set backspace=2 " make backspace work like most other apps
-set clipboard=unnamed
-
-"set guifont=DejaVuSansMonoforPowerline
-"set guifont=Monaco
-
-"""" AIRLINE CONFIG
-let g:airline_powerline_fonts = 1
-if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
+" For MacVim
+if has('gui_running')
+   syntax enable
+   set background=dark
+   colorscheme solarized
 endif
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_enable_branch=1
-let g:airline_enable_syntastic=1
-let g:airline_detect_paste=1
-let g:airline_left_alt_sep= "\ue0b1"
-let g:airline_left_sep = "\ue0b0"
-let g:airline_right_sep = "\ue0b2"
-let g:airline_right_alt_sep = "\ue0b3"
-let g:airline_symbols.branch = "\Ue0a0"
-let g:airline_symbols.readonly = "\ue0a2"
-let g:airline_symbols.linenr = "\Ue0a1"
-let g:airline_symbols.space = "\ua0"
-let g:airline_theme_map = {
-			\ 'Tomorrow.*': 'tomorrow',
-			\ 'gruvbox.*': 'gruvbox',
-			\ }
 
 
+set splitright "opens new split on the right
+set splitbelow "open new vsplit on the bottom
 
-set noshowmode
-set laststatus=2
-"colorscheme Tomorrow
-colorscheme gruvbox
+" Remove trailling whitespace on :w
+autocmd BufWritePre * :%s/\s\+$//e
 
+" Incremental search
+set incsearch
 
-"add header for 42
-function! Header(n)
-	if a:n
-		execute "Stdheader"
-		execute "13"
-		if expand("%:e") == "h"
-			call s:Add_header()
-		endif
-	endif
-endfunction
-
-function! s:Add_header()
-	let name = substitute(toupper(expand("%:t")), "\\.", "_", "g")
-	execute "normal! Go" . '#ifndef '. name . "\n". '# define ' . name . "\n". "\n\n\n". '#endif /* !' . name . ' */'
-	execute "17"
-endfunction
-
-
-
-"Enable neocomplcache at startup, and bind it to the TAB key
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_underbar_completion = 1
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" Binding the popup closing to Shift + TAB
-inoremap <expr><s-tab>  neocomplcache#close_popup()
-
-"Bind snipMate to the Ctrl + s keystroke
-imap <C-S> <Plug>snipMateNextOrTrigger
-smap <C-S> <Plug>snipMateNextOrTrigger
-
-"Syntastic runs when opening a file
-let g:syntastic_check_on_open=1
-let g:syntastic_enable_signs=1
-"Syntastic configuration for headers
-let g:syntastic_cpp_include_dirs = ['inc']
-let g:syntastic_c_include_dirs = ['inc', 'inc/libft', '../libft']
-let g:syntastic_cpp_check_header = 1
-let g:syntastic_c_check_header = 1
-let g:syntastic_cpp_remove_include_errors = 1
+highlight Cursor guibg=Green guifg=NONE
