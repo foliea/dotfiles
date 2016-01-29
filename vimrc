@@ -2,7 +2,6 @@ call pathogen#infect()
 call pathogen#helptags()
 
 
-
 set nocompatible "ensures vim over vi
 set number
 set ruler "add line/column count to the bottom of screen
@@ -10,6 +9,20 @@ set ruler "add line/column count to the bottom of screen
 "
 set showmatch "Show matching brackets
 syntax enable
+
+set t_Co=256
+
+if $TERM_PROGRAM == "iTerm.app" || has('gui_running')
+	set background=dark
+	"let g:solarized_termcolors=256
+	colorscheme solarized
+
+elseif $TERM_PROGRAM == 'Apple_Terminal'
+	"let g:solarized_termcolors = &t_Co
+	"let g:solarized_termtrans = 1
+	"colorscheme solarized
+endif
+
 set noerrorbells visualbell t_vb= "turn off annoying bells
 set tags=.tags "destination file for ctags
 
@@ -62,12 +75,6 @@ let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['\*.DS_STORE$']
 "let g:NERDTreeDirArrows=0
 
-" For MacVim
-if has('gui_running')
-   syntax enable
-   set background=dark
-   colorscheme solarized
-endif
 
 
 set splitright "opens new split on the right
@@ -106,3 +113,5 @@ let g:syntastic_c_include_dirs = ['inc', 'inc/libft', '../libft']
 let g:syntastic_cpp_check_header = 1
 let g:syntastic_c_check_header = 1
 let g:syntastic_cpp_remove_include_errors = 1
+
+set clipboard=unnamed
