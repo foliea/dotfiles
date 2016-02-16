@@ -59,7 +59,8 @@ autocmd vimenter * if !argc() | NERDTree | endif
 nmap <F8> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 let NERDTreeShowHidden=1
-let NERDTreeIgnore = ['\*.DS_STORE$']
+let NERDTreeIgnore = ['\.DS_Store$', '\.pyc$', '\.o$', '\.git']
+
 "let g:NERDTreeDirArrows=0
 
 " For MacVim
@@ -84,6 +85,7 @@ highlight Cursor guibg=Green guifg=NONE
 " Custom syntax highlighting
 au BufRead,BufNewFile Gomfile setlocal ft=ruby
 au BufRead,BufNewFile Caskfile setlocal ft=ruby
+
 
 
 "Enable neocomplcache at startup, and bind it to the TAB key

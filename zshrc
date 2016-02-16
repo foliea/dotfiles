@@ -50,6 +50,7 @@ export GREP_OPTIONS="--color=always"
 
 #PHP PATHS
 #export PATH="/Applications/MAMP/bin/php/php5.3.28/bin/:$PATH"
+export PATH="$HOME/bin:$PATH"
 #export PHP_AUTOCONF="/usr/local/bin/autoconf"
 
 #Improved less
