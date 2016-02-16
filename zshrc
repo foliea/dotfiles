@@ -6,7 +6,7 @@
 #    By: marin <mravenel@student.42.fr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/10/02 10:51:08 by marin             #+#    #+#              #
-#    Updated: 2016/01/27 17:29:28 by mravenel         ###   ########.fr        #
+#    Updated: 2016/01/29 17:47:13 by mravenel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,8 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 #export PATH="/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/sbin:/usr/local/bin:/home/marin/bin"
+
+export PATH="$HOME/.brew/bin:$HOME/dotfiles/bin:$PATH"
 
 # This function called c makes ls command call automatically after a successful cd
 c() { cd "$@" && ls "-la"; }
