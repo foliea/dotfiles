@@ -30,6 +30,7 @@
     fontFamily: "System Default"
     lowContrastTooltip: true
   linter: {}
+  "linter-ruby": {}
   "markdown-preview":
     grammars: [
       "source.gfm"

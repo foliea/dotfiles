@@ -1,58 +1,125 @@
 {CompositeDisposable} = require 'atom'
+IndentationManager = require './indentation-manager'
 
 module.exports =
   activate: (state) ->
     @disposables = new CompositeDisposable
     @disposables.add atom.workspace.observeTextEditors (editor) =>
       @_handleLoad editor
+    @disposables.add atom.commands.add('atom-text-editor', 'auto-detect-indentation:show-indentation-selector', @createIndentationListView)
+
+    @indentationListView = null
+    @indentationStatusView = null
 
   _handleLoad: (editor) ->
-    @_loadSettingsForEditor editor
-    @disposables.add editor.buffer.onDidSave =>
-      @_loadSettingsForEditor editor
+    @_attach editor
+
+    onSaveDisposable = editor.buffer.onDidSave =>
+      if IndentationManager.isManuallyIndented editor
+        onSaveDisposable?.dispose()
+      else
+        indentation = IndentationManager.autoDetectIndentation editor
+        IndentationManager.setIndentation editor, indentation, true
+
+    if editor.displayBuffer?.onDidTokenize
+      onTokenizeDisposable = editor.displayBuffer.onDidTokenize =>
+        # This event fires when the grammar is first loaded.
+        # We re-analyze the file's indentation, in order to ignore indentation inside comments
+        @_attach editor
+        onTokenizeDisposable?.dispose()
+        onTokenizeDisposable = null
+    else
+      onTokenizeDisposable = null
+
+    editor.onDidDestroy ->
+      onSaveDisposable?.dispose()
+      onTokenizeDisposable?.dispose()
 
   deactivate: ->
     @disposables.dispose()
 
-  _loadSettingsForEditor: (editor) ->
-    lineCount = editor.getLineCount()
-    shortest = 0
-    numLinesWithTabs = 0
-    numLinesWithSpaces = 0
-    found = false
+  createIndentationListView: =>
+    unless @indentationListView?
+      IndentationListView = require './indentation-list-view'
+      indentationListView = new IndentationListView()
+    indentationListView.toggle()
 
-    # loop through more than 100 lines only if we haven't found any spaces yet
-    for i in [0..lineCount-1] when (i < 100 or not found)
+  consumeStatusBar: (statusBar) ->
+    unless @IndentationStatusView?
+      IndentationStatusView = require './indentation-status-view'
+      indentationStatusView = new IndentationStatusView().initialize(statusBar)
+    indentationStatusView.attach()
 
-      # TODO: this doesn't help much until we can listen for an event post parsing
-      # continue if editor.isBufferRowCommented i
+  _attach: (editor) ->
+    # Disable atom's native detection of spaces/tabs
+    editor.shouldUseSoftTabs = ->
+      @softTabs
 
-      firstSpaces = editor.lineTextForBufferRow(i).match /^([ \t]+)[^ \t]/m
+    # Trigger "did-change-indentation" event when indentation is changed
+    editor.setSoftTabs = (@softTabs) ->
+      @emitter.emit 'did-change-indentation'
+      @softTabs
 
-      if firstSpaces
-        spaceChars = firstSpaces[1]
+    # Trigger "did-change-indentation" event when indentation is changed
+    editor.setTabLength = (tabLength) ->
+      value = @displayBuffer.setTabLength(tabLength)
+      @emitter.emit 'did-change-indentation'
+      value
 
-        if spaceChars[0] is '\t'
-          numLinesWithTabs++
-        else
-          length = spaceChars.length
+    indentation = IndentationManager.autoDetectIndentation editor
+    IndentationManager.setIndentation editor, indentation, true
 
-          # assume nobody uses single space spacing
-          continue if length is 1
-
-          numLinesWithSpaces++
-
-          shortest = length if length < shortest or shortest is 0
-
-        found = true
-
-    if found
-      if numLinesWithTabs > numLinesWithSpaces
-        editor.setSoftTabs false
-        editor.setTabLength atom.config.get("editor.tabLength", scope: editor.getRootScopeDescriptor().scopes)
-      else
-        editor.setSoftTabs true
-        editor.setTabLength shortest
-    else
-        editor.setSoftTabs atom.config.get("editor.softTabs", scope: editor.getRootScopeDescriptor().scopes)
-        editor.setTabLength atom.config.get("editor.tabLength", scope: editor.getRootScopeDescriptor().scopes)
+  config:
+    showSpacingInStatusBar:
+      type: 'boolean'
+      default: true
+      title: 'Show spacing in status bar'
+      description: 'Show current editor\'s spacing settings in status bar'
+    indentationTypes:
+      type: 'array'
+      items:
+        type: 'object'
+        properties:
+          name:
+            type: 'string'
+          softTabs:
+            type: 'boolean'
+          tabLength:
+            type: 'integer'
+      default:
+        [
+          {
+            name: "2 Spaces"
+            softTabs: true
+            tabLength: 2
+          }
+          {
+            name: "4 Spaces"
+            softTabs: true
+            tabLength: 4
+          }
+          {
+            name: "8 Spaces"
+            softTabs: true
+            tabLength: 8
+          }
+          {
+            name: "Tabs (default width)"
+            softTabs: false
+          }
+          {
+            name: "Tabs (2 wide)"
+            softTabs: false
+            tabLength: 2
+          }
+          {
+            name: "Tabs (4 wide)"
+            softTabs: false
+            tabLength: 4
+          }
+          {
+            name: "Tabs (8 wide)"
+            softTabs: false
+            tabLength: 8
+          }
+        ]

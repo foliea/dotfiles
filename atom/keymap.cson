@@ -12,7 +12,5 @@
 # '.editor':
 #   'enter': 'editor:newline'
 #
-# 'body':
-#   'ctrl-P': 'core:move-up'
-#   'ctrl-p': 'core:move-down'
-#
+'body':
+  'ctrl--': 'toggle-quotes:toggle'
