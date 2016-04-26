@@ -56,4 +56,9 @@ export PATH="$HOME/bin:$PATH"
 #export PHP_AUTOCONF="/usr/local/bin/autoconf"
 
 #Improved less
-export LESS="-i-P%f (%i/%m) Line %lt/%L"
+#export LESS="-i-P%f (%i/%m) Line %lt/%L"
+
+test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
+
+alias railsongs="ssh -i $HOME/.ssh/MarinMainKey.pem ubuntu@52.201.136.198"
+alias keyrepeat="defaults write -g ApplePressAndHoldEnabled -bool false"
