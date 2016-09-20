@@ -2,6 +2,7 @@
 
 import _ from 'underscore-plus'
 import Mixin from 'mixto'
+import Main from '../main'
 import CanvasLayer from '../canvas-layer'
 
 /**
@@ -101,8 +102,8 @@ export default class CanvasDrawer extends Mixin {
     const lastRow = this.minimap.getLastVisibleScreenRow()
 
     this.updateTokensLayer(firstRow, lastRow)
-    this.updateBackDecorationsLayers(firstRow, lastRow)
-    this.updateFrontDecorationsLayers(firstRow, lastRow)
+    this.updateBackDecorationsLayer(firstRow, lastRow)
+    this.updateFrontDecorationsLayer(firstRow, lastRow)
 
     this.pendingChanges = []
     this.pendingBackDecorationChanges = []
@@ -136,90 +137,31 @@ export default class CanvasDrawer extends Mixin {
   }
 
   /**
-   * Performs an update of the back decorations layer using the pending changes
-   * and the pending back decorations changes arrays.
+   * Performs an update of the back decorations layer using the pending back
+   * decorations changes arrays.
    *
    * @param  {number} firstRow firstRow the first row of the range to update
    * @param  {number} lastRow lastRow the last row of the range to update
    * @access private
    */
-  updateBackDecorationsLayers (firstRow, lastRow) {
-    const intactRanges = this.computeIntactRanges(firstRow, lastRow, this.pendingChanges.concat(this.pendingBackDecorationChanges))
+  updateBackDecorationsLayer (firstRow, lastRow) {
+    const intactRanges = this.computeIntactRanges(firstRow, lastRow, this.pendingBackDecorationChanges)
 
     this.redrawRangesOnLayer(this.backLayer, intactRanges, firstRow, lastRow, this.drawBackDecorationsForLines)
   }
 
   /**
-   * Performs an update of the front decorations layer using the pending changes
-   * and the pending front decorations changes arrays.
+   * Performs an update of the front decorations layer using the pending front
+   * decorations changes arrays.
    *
    * @param  {number} firstRow firstRow the first row of the range to update
    * @param  {number} lastRow lastRow the last row of the range to update
    * @access private
    */
-  updateFrontDecorationsLayers (firstRow, lastRow) {
-    const intactRanges = this.computeIntactRanges(firstRow, lastRow, this.pendingChanges.concat(this.pendingFrontDecorationChanges))
+  updateFrontDecorationsLayer (firstRow, lastRow) {
+    const intactRanges = this.computeIntactRanges(firstRow, lastRow, this.pendingFrontDecorationChanges)
 
     this.redrawRangesOnLayer(this.frontLayer, intactRanges, firstRow, lastRow, this.drawFrontDecorationsForLines)
-  }
-
-  /**
-   * Routine used to render changes in specific ranges for one layer.
-   *
-   * @param  {CanvasLayer} layer the layer to redraw
-   * @param  {Array<Object>} intactRanges an array of the ranges to leave intact
-   * @param  {number} firstRow firstRow the first row of the range to update
-   * @param  {number} lastRow lastRow the last row of the range to update
-   * @param  {Function} method the render method to use for the lines drawing
-   * @access private
-   */
-  redrawRangesOnLayer (layer, intactRanges, firstRow, lastRow, method) {
-    const devicePixelRatio = this.minimap.getDevicePixelRatio()
-    const lineHeight = this.minimap.getLineHeight() * devicePixelRatio
-
-    layer.clearCanvas()
-
-    if (intactRanges.length === 0) {
-      method.call(this, firstRow, lastRow, 0)
-    } else {
-      for (let j = 0, len = intactRanges.length; j < len; j++) {
-        const intact = intactRanges[j]
-
-        layer.copyPartFromOffscreen(
-          intact.offscreenRow * lineHeight,
-          (intact.start - firstRow) * lineHeight,
-          (intact.end - intact.start) * lineHeight
-        )
-      }
-      this.drawLinesForRanges(method, intactRanges, firstRow, lastRow)
-    }
-
-    layer.resetOffscreenSize()
-    layer.copyToOffscreen()
-  }
-
-  /**
-   * Renders the lines between the intact ranges when an update has pending
-   * changes.
-   *
-   * @param  {Function} method the render method to use for the lines drawing
-   * @param  {Array<Object>} intactRanges the intact ranges in the minimap
-   * @param  {number} firstRow the first row of the rendered region
-   * @param  {number} lastRow the last row of the rendered region
-   * @access private
-   */
-  drawLinesForRanges (method, ranges, firstRow, lastRow) {
-    let currentRow = firstRow
-    for (let i = 0, len = ranges.length; i < len; i++) {
-      const range = ranges[i]
-
-      method.call(this, currentRow, range.start - 1, currentRow - firstRow)
-
-      currentRow = range.end
-    }
-    if (currentRow <= lastRow) {
-      method.call(this, currentRow, lastRow, currentRow - firstRow)
-    }
   }
 
   //     ######   #######  ##        #######  ########   ######
@@ -279,8 +221,12 @@ export default class CanvasDrawer extends Mixin {
     const properties = decoration.getProperties()
     if (properties.color) { return properties.color }
 
-    const scopeString = properties.scope.split(/\s+/)
-    return this.retrieveStyleFromDom(scopeString, 'background-color', false)
+    if (properties.scope) {
+      const scopeString = properties.scope.split(/\s+/)
+      return this.retrieveStyleFromDom(scopeString, 'background-color', false)
+    } else {
+      return this.getDefaultColor()
+    }
   }
 
   /**
@@ -303,6 +249,65 @@ export default class CanvasDrawer extends Mixin {
   //    ##     ## ##   ##   ######### ##  ##  ##
   //    ##     ## ##    ##  ##     ## ##  ##  ##
   //    ########  ##     ## ##     ##  ###  ###
+
+  /**
+   * Routine used to render changes in specific ranges for one layer.
+   *
+   * @param  {CanvasLayer} layer the layer to redraw
+   * @param  {Array<Object>} intactRanges an array of the ranges to leave intact
+   * @param  {number} firstRow firstRow the first row of the range to update
+   * @param  {number} lastRow lastRow the last row of the range to update
+   * @param  {Function} method the render method to use for the lines drawing
+   * @access private
+   */
+  redrawRangesOnLayer (layer, intactRanges, firstRow, lastRow, method) {
+    const devicePixelRatio = this.minimap.getDevicePixelRatio()
+    const lineHeight = this.minimap.getLineHeight() * devicePixelRatio
+
+    layer.clearCanvas()
+
+    if (intactRanges.length === 0) {
+      method.call(this, firstRow, lastRow, 0)
+    } else {
+      for (let j = 0, len = intactRanges.length; j < len; j++) {
+        const intact = intactRanges[j]
+
+        layer.copyPartFromOffscreen(
+          intact.offscreenRow * lineHeight,
+          (intact.start - firstRow) * lineHeight,
+          (intact.end - intact.start) * lineHeight
+        )
+      }
+      this.drawLinesForRanges(method, intactRanges, firstRow, lastRow)
+    }
+
+    layer.resetOffscreenSize()
+    layer.copyToOffscreen()
+  }
+
+  /**
+   * Renders the lines between the intact ranges when an update has pending
+   * changes.
+   *
+   * @param  {Function} method the render method to use for the lines drawing
+   * @param  {Array<Object>} intactRanges the intact ranges in the minimap
+   * @param  {number} firstRow the first row of the rendered region
+   * @param  {number} lastRow the last row of the rendered region
+   * @access private
+   */
+  drawLinesForRanges (method, ranges, firstRow, lastRow) {
+    let currentRow = firstRow
+    for (let i = 0, len = ranges.length; i < len; i++) {
+      const range = ranges[i]
+
+      method.call(this, currentRow, range.start, currentRow - firstRow)
+
+      currentRow = range.end
+    }
+    if (currentRow <= lastRow) {
+      method.call(this, currentRow, lastRow, currentRow - firstRow)
+    }
+  }
 
   /**
    * Draws back decorations on the corresponding layer.
@@ -331,7 +336,8 @@ export default class CanvasDrawer extends Mixin {
       canvasHeight: canvasHeight,
       lineHeight: lineHeight,
       charWidth: charWidth,
-      charHeight: charHeight
+      charHeight: charHeight,
+      orders: Main.getPluginsOrder()
     }
 
     for (let screenRow = firstRow; screenRow <= lastRow; screenRow++) {
@@ -339,9 +345,11 @@ export default class CanvasDrawer extends Mixin {
       renderData.yRow = renderData.row * lineHeight
       renderData.screenRow = screenRow
 
-      this.drawDecorations(screenRow, decorations, 'line', renderData, this.drawLineDecoration)
-
-      this.drawDecorations(screenRow, decorations, 'highlight-under', renderData, this.drawHighlightDecoration)
+      this.drawDecorations(screenRow, decorations, renderData, {
+        'line': this.drawLineDecoration,
+        'highlight-under': this.drawHighlightDecoration,
+        'background-custom': this.drawCustomDecoration
+      })
     }
 
     this.backLayer.context.fill()
@@ -374,7 +382,8 @@ export default class CanvasDrawer extends Mixin {
       canvasHeight: canvasHeight,
       lineHeight: lineHeight,
       charWidth: charWidth,
-      charHeight: charHeight
+      charHeight: charHeight,
+      orders: Main.getPluginsOrder()
     }
 
     for (let screenRow = firstRow; screenRow <= lastRow; screenRow++) {
@@ -382,13 +391,75 @@ export default class CanvasDrawer extends Mixin {
       renderData.yRow = renderData.row * lineHeight
       renderData.screenRow = screenRow
 
-      this.drawDecorations(screenRow, decorations, 'highlight-over', renderData, this.drawHighlightDecoration)
-
-      this.drawDecorations(screenRow, decorations, 'highlight-outline', renderData, this.drawHighlightOutlineDecoration)
+      this.drawDecorations(screenRow, decorations, renderData, {
+        'gutter': this.drawGutterDecoration,
+        'highlight-over': this.drawHighlightDecoration,
+        'highlight-outline': this.drawHighlightOutlineDecoration,
+        'foreground-custom': this.drawCustomDecoration
+      })
     }
 
     renderData.context.fill()
   }
+
+  /**
+   * Returns an array of tokens by line.
+   *
+   * @param  {number} startRow The start row
+   * @param  {number} endRow The end row
+   * @return {Array<Array>} An array of tokens by line
+   * @access private
+   */
+  tokenLinesForScreenRows (startRow, endRow) {
+    const editor = this.getTextEditor()
+    let tokenLines = []
+    if (typeof editor.tokenizedLinesForScreenRows === 'function') {
+      for (let tokenizedLine of editor.tokenizedLinesForScreenRows(startRow, endRow)) {
+        if (tokenizedLine) {
+          const invisibleRegExp = this.getInvisibleRegExpForLine(tokenizedLine)
+          tokenLines.push(tokenizedLine.tokens.map((token) => {
+            return {
+              value: token.value.replace(invisibleRegExp, ' '),
+              scopes: token.scopes.slice()
+            }
+          }))
+        } else {
+          return {
+            value: '',
+            scopes: []
+          }
+        }
+      }
+    } else {
+      const displayLayer = editor.displayLayer
+      const invisibleRegExp = this.getInvisibleRegExp()
+      const screenLines = displayLayer.getScreenLines(startRow, endRow)
+      for (let {lineText, tagCodes} of screenLines) {
+        let tokens = []
+        let scopes = []
+        let textIndex = 0
+        // console.log(lineText, invisibleRegExp, lineText.replace(invisibleRegExp, ' '))
+        for (let tagCode of tagCodes) {
+          if (displayLayer.isOpenTagCode(tagCode)) {
+            scopes.push(displayLayer.tagForCode(tagCode))
+          } else if (displayLayer.isCloseTagCode(tagCode)) {
+            scopes.pop()
+          } else {
+            let value = lineText.substr(textIndex, tagCode)
+            if (invisibleRegExp) {
+              value = value.replace(invisibleRegExp, ' ')
+            }
+            tokens.push({ value: value, scopes: scopes.slice() })
+            textIndex += tagCode
+          }
+        }
+
+        tokenLines.push(tokens)
+      }
+    }
+    return tokenLines
+  }
+
   /**
    * Draws lines on the corresponding layer.
    *
@@ -405,7 +476,6 @@ export default class CanvasDrawer extends Mixin {
     if (firstRow > lastRow) { return }
 
     const devicePixelRatio = this.minimap.getDevicePixelRatio()
-    const lines = this.getTextEditor().tokenizedLinesForScreenRows(firstRow, lastRow)
     const lineHeight = this.minimap.getLineHeight() * devicePixelRatio
     const charHeight = this.minimap.getCharHeight() * devicePixelRatio
     const charWidth = this.minimap.getCharWidth() * devicePixelRatio
@@ -413,34 +483,31 @@ export default class CanvasDrawer extends Mixin {
     const context = this.tokensLayer.context
     const {width: canvasWidth} = this.tokensLayer.getSize()
 
-    let line = lines[0]
-    const invisibleRegExp = this.getInvisibleRegExp(line)
+    if (typeof this.tokenLinesForScreenRows !== 'function') {
+      console.error(`tokenLinesForScreenRows should be a function but it was ${typeof this.tokenLinesForScreenRows}`, this.tokenLinesForScreenRows)
 
-    for (let i = 0, len = lines.length; i < len; i++) {
-      line = lines[i]
-      const yRow = (offsetRow + i) * lineHeight
+      return
+    }
+
+    const screenRowsTokens = this.tokenLinesForScreenRows(firstRow, lastRow)
+
+    let y = offsetRow * lineHeight
+    for (let i = 0; i < screenRowsTokens.length; i++) {
+      let tokens = screenRowsTokens[i]
       let x = 0
-
-      if ((line != null ? line.tokens : void 0) != null) {
-        const tokens = line.tokens
-        for (let j = 0, tokensCount = tokens.length; j < tokensCount; j++) {
-          const token = tokens[j]
-          const w = token.screenDelta
-          if (!token.isOnlyWhitespace()) {
-            const color = displayCodeHighlights ? this.getTokenColor(token) : this.getDefaultColor()
-
-            let value = token.value
-            if (invisibleRegExp != null) {
-              value = value.replace(invisibleRegExp, ' ')
-            }
-            x = this.drawToken(context, value, color, x, yRow, charWidth, charHeight)
-          } else {
-            x += w * charWidth
-          }
-
-          if (x > canvasWidth) { break }
+      context.clearRect(x, y, canvasWidth, lineHeight)
+      for (let j = 0; j < tokens.length; j++) {
+        let token = tokens[j]
+        if (/^\s+$/.test(token.value)) {
+          x += token.value.length * charWidth
+        } else {
+          const color = displayCodeHighlights ? this.getTokenColor(token) : this.getDefaultColor()
+          x = this.drawToken(context, token.value, color, x, y, charWidth, charHeight)
         }
+        if (x > canvasWidth) { break }
       }
+
+      y += lineHeight
     }
 
     context.fill()
@@ -450,12 +517,32 @@ export default class CanvasDrawer extends Mixin {
    * Returns the regexp to replace invisibles substitution characters
    * in editor lines.
    *
-   * @param  {TokenizedLine} line a tokenized lize to read the invisible
-   *                              characters
    * @return {RegExp} the regular expression to match invisible characters
    * @access private
    */
-  getInvisibleRegExp (line) {
+  getInvisibleRegExp () {
+    let invisibles = this.getTextEditor().getInvisibles()
+    let regexp = []
+    if (invisibles.cr != null) { regexp.push(invisibles.cr) }
+    if (invisibles.eol != null) { regexp.push(invisibles.eol) }
+    if (invisibles.space != null) { regexp.push(invisibles.space) }
+    if (invisibles.tab != null) { regexp.push(invisibles.tab) }
+
+    return regexp.length === 0 ? null : RegExp(regexp.filter((s) => {
+      return typeof s === 'string'
+    }).map(_.escapeRegExp).join('|'), 'g')
+  }
+
+  /**
+   * Returns the regexp to replace invisibles substitution characters
+   * in editor lines.
+   *
+   * @param  {Object} line the tokenized line
+   * @return {RegExp} the regular expression to match invisible characters
+   * @deprecated Is used only to support Atom version before display layer API
+   * @access private
+   */
+  getInvisibleRegExpForLine (line) {
     if ((line != null) && (line.invisibles != null)) {
       const invisibles = []
       if (line.invisibles.cr != null) { invisibles.push(line.invisibles.cr) }
@@ -485,23 +572,30 @@ export default class CanvasDrawer extends Mixin {
   drawToken (context, text, color, x, y, charWidth, charHeight) {
     context.fillStyle = color
 
-    let chars = 0
-    for (let j = 0, len = text.length; j < len; j++) {
-      const char = text[j]
-      if (/\s/.test(char)) {
-        if (chars > 0) {
-          context.fillRect(x - (chars * charWidth), y, chars * charWidth, charHeight)
+    if (this.ignoreWhitespacesInTokens) {
+      const length = text.length * charWidth
+      context.fillRect(x, y, length, charHeight)
+
+      return x + length
+    } else {
+      let chars = 0
+      for (let j = 0, len = text.length; j < len; j++) {
+        const char = text[j]
+        if (/\s/.test(char)) {
+          if (chars > 0) {
+            context.fillRect(x - (chars * charWidth), y, chars * charWidth, charHeight)
+          }
+          chars = 0
+        } else {
+          chars++
         }
-        chars = 0
-      } else {
-        chars++
+        x += charWidth
       }
-      x += charWidth
+      if (chars > 0) {
+        context.fillRect(x - (chars * charWidth), y, chars * charWidth, charHeight)
+      }
+      return x
     }
-    if (chars > 0) {
-      context.fillRect(x - (chars * charWidth), y, chars * charWidth, charHeight)
-    }
-    return x
   }
 
   /**
@@ -513,19 +607,32 @@ export default class CanvasDrawer extends Mixin {
    * @param  {number} screenRow the screen row index for which
    *                            render decorations
    * @param  {Object} decorations the object containing all the decorations
-   * @param  {string} type the type of decorations to render
    * @param  {Object} renderData the object containing the render data
-   * @param  {Fundtion} renderMethod the method to call to render
-   *                                 the decorations
+   * @param  {Object} types an object with the type to render as key and the
+   *                        render method as value
    * @access private
    */
-  drawDecorations (screenRow, decorations, type, renderData, renderMethod) {
-    let ref
-    decorations = (ref = decorations[type]) != null ? ref[screenRow] : void 0
+  drawDecorations (screenRow, decorations, renderData, types) {
+    let decorationsToRender = []
 
-    if (decorations != null ? decorations.length : void 0) {
-      for (let i = 0, len = decorations.length; i < len; i++) {
-        renderMethod.call(this, decorations[i], renderData)
+    renderData.context.clearRect(
+      0, renderData.yRow,
+      renderData.canvasWidth, renderData.lineHeight
+    )
+
+    for (let i in types) {
+      decorationsToRender = decorationsToRender.concat(
+        decorations[i] != null ? decorations[i][screenRow] || [] : []
+      )
+    }
+
+    decorationsToRender.sort((a, b) =>
+      (renderData.orders[a.properties.plugin] || 0) - (renderData.orders[b.properties.plugin] || 0)
+    )
+
+    if (decorationsToRender != null ? decorationsToRender.length : void 0) {
+      for (let i = 0, len = decorationsToRender.length; i < len; i++) {
+        types[decorationsToRender[i].properties.type].call(this, decorationsToRender[i], renderData)
       }
     }
   }
@@ -540,6 +647,18 @@ export default class CanvasDrawer extends Mixin {
   drawLineDecoration (decoration, data) {
     data.context.fillStyle = this.getDecorationColor(decoration)
     data.context.fillRect(0, data.yRow, data.canvasWidth, data.lineHeight)
+  }
+
+  /**
+   * Draws a gutter decoration.
+   *
+   * @param  {Decoration} decoration the decoration to render
+   * @param  {Object} data the data need to perform the render
+   * @access private
+   */
+  drawGutterDecoration (decoration, data) {
+    data.context.fillStyle = this.getDecorationColor(decoration)
+    data.context.fillRect(0, data.yRow, 1, data.lineHeight)
   }
 
   /**
@@ -648,6 +767,25 @@ export default class CanvasDrawer extends Mixin {
           data.context.fillRect(xEnd, yEnd, canvasWidth - xEnd, 1)
         }
       }
+    }
+  }
+
+  /**
+   * Draws a custom decoration.
+   *
+   * It renders only the part of the highlight corresponding to the specified
+   * row.
+   *
+   * @param  {Decoration} decoration the decoration to render
+   * @param  {Object} data the data need to perform the render
+   * @access private
+   */
+  drawCustomDecoration (decoration, data) {
+    const renderRoutine = decoration.getProperties().render
+
+    if (renderRoutine) {
+      data.color = this.getDecorationColor(decoration)
+      renderRoutine(decoration, data)
     }
   }
 

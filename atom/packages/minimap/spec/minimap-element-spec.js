@@ -1,7 +1,7 @@
 'use babel'
 
 import fs from 'fs-plus'
-import path from 'path'
+import Main from '../lib/main'
 import Minimap from '../lib/minimap'
 import MinimapElement from '../lib/minimap-element'
 import {stylesheet} from './helpers/workspace'
@@ -19,13 +19,19 @@ function realOffsetLeft (o) {
   return o.offsetLeft
 }
 
-function isVisible (node) {
-  return node.offsetWidth > 0 || node.offsetHeight > 0
+function sleep (duration) {
+  const t = new Date()
+  waitsFor(`${duration}ms`, () => { return new Date() - t > duration })
 }
 
-function sleep (duration) {
-  let t = new Date()
-  waitsFor(() => { return new Date() - t > duration })
+function createPlugin () {
+  const plugin = {
+    active: false,
+    activatePlugin () { this.active = true },
+    deactivatePlugin () { this.active = false },
+    isActive () { return this.active }
+  }
+  return plugin
 }
 
 describe('MinimapElement', () => {
@@ -41,6 +47,8 @@ describe('MinimapElement', () => {
     atom.config.set('minimap.interline', 1)
     atom.config.set('minimap.textOpacity', 1)
     atom.config.set('minimap.smoothScrolling', true)
+    atom.config.set('minimap.adjustMinimapWidthOnlyIfSmaller', true)
+    atom.config.set('minimap.plugins', {})
 
     MinimapElement.registerViewProvider(Minimap)
 
@@ -48,7 +56,6 @@ describe('MinimapElement', () => {
     editorElement = atom.views.getView(editor)
     jasmineContent.insertBefore(editorElement, jasmineContent.firstChild)
     editorElement.setHeight(50)
-    // editor.setLineHeightInPixels(10)
 
     minimap = new Minimap({textEditor: editor})
     dir = atom.project.getDirectories()[0]
@@ -87,15 +94,16 @@ describe('MinimapElement', () => {
   //    ##     ##    ##       ##    ##     ##  ######  ##     ##
 
   describe('when attached to the text editor element', () => {
-    let [noAnimationFrame, nextAnimationFrame, lastFn, canvas, visibleArea] = []
+    let [noAnimationFrame, nextAnimationFrame, requestAnimationFrameSafe, canvas, visibleArea] = []
 
     beforeEach(() => {
-      noAnimationFrame = () => { throw new Error('No animation frame requested') }
+      noAnimationFrame = () => {
+        throw new Error('No animation frame requested')
+      }
       nextAnimationFrame = noAnimationFrame
 
-      let requestAnimationFrameSafe = window.requestAnimationFrame
-      spyOn(window, 'requestAnimationFrame').andCallFake(function(fn) {
-        lastFn = fn
+      requestAnimationFrameSafe = window.requestAnimationFrame
+      spyOn(window, 'requestAnimationFrame').andCallFake((fn) => {
         nextAnimationFrame = () => {
           nextAnimationFrame = noAnimationFrame
           fn()
@@ -113,7 +121,14 @@ describe('MinimapElement', () => {
       minimapElement.attach()
     })
 
-    afterEach(() => { minimap.destroy() })
+    afterEach(() => {
+      minimap.destroy()
+      window.requestAnimationFrame = requestAnimationFrameSafe
+    })
+
+    it('adds a with-minimap attribute on the text editor element', () => {
+      expect(editorElement.hasAttribute('with-minimap')).toBeTruthy()
+    })
 
     it('takes the height of the editor', () => {
       expect(minimapElement.offsetHeight).toEqual(editorElement.clientHeight)
@@ -132,6 +147,14 @@ describe('MinimapElement', () => {
 
     it('requests an update', () => {
       expect(minimapElement.frameRequested).toBeTruthy()
+    })
+
+    describe('when detached', () => {
+      it('removes the attribute from the editor', () => {
+        minimapElement.detach()
+
+        expect(editorElement.hasAttribute('with-minimap')).toBeFalsy()
+      })
     })
 
     //     ######   ######   ######
@@ -162,7 +185,9 @@ describe('MinimapElement', () => {
         })
 
         it('computes the new color by applying the hue rotation', () => {
-          waitsFor(() => { return nextAnimationFrame !== noAnimationFrame })
+          waitsFor('new animation frame', () => {
+            return nextAnimationFrame !== noAnimationFrame
+          })
           runs(() => {
             nextAnimationFrame()
             expect(minimapElement.retrieveStyleFromDom(['.editor'], 'color')).toEqual(`rgb(0, ${0x6d}, ${0x6d})`)
@@ -181,7 +206,7 @@ describe('MinimapElement', () => {
             ${stylesheet}
 
             .editor {
-              color: rgba(255,0,0,0);
+              color: rgba(255, 0, 0, 0);
               -webkit-filter: hue-rotate(180deg);
             }
           `
@@ -190,7 +215,9 @@ describe('MinimapElement', () => {
         })
 
         it('computes the new color by applying the hue rotation', () => {
-          waitsFor(() => { return nextAnimationFrame !== noAnimationFrame })
+          waitsFor('a new animation frame request', () => {
+            return nextAnimationFrame !== noAnimationFrame
+          })
           runs(() => {
             nextAnimationFrame()
             expect(minimapElement.retrieveStyleFromDom(['.editor'], 'color')).toEqual(`rgba(0, ${0x6d}, ${0x6d}, 0)`)
@@ -198,7 +225,6 @@ describe('MinimapElement', () => {
         })
       })
     })
-
 
     //    ##     ## ########  ########     ###    ######## ########
     //    ##     ## ##     ## ##     ##   ## ##      ##    ##
@@ -210,7 +236,9 @@ describe('MinimapElement', () => {
 
     describe('when the update is performed', () => {
       beforeEach(() => {
-        waitsFor(() => { return nextAnimationFrame !== noAnimationFrame })
+        waitsFor('a new animation frame request', () => {
+          return nextAnimationFrame !== noAnimationFrame
+        })
         runs(() => {
           nextAnimationFrame()
           visibleArea = minimapElement.shadowRoot.querySelector('.minimap-visible-area')
@@ -218,19 +246,23 @@ describe('MinimapElement', () => {
       })
 
       it('sets the visible area width and height', () => {
-        expect(visibleArea.offsetWidth).toEqual(minimapElement.clientWidth)
+        expect(visibleArea.offsetWidth).toEqual(minimapElement.clientWidth + Math.floor(minimap.getTextEditorScaledScrollLeft()))
         expect(visibleArea.offsetHeight).toBeCloseTo(minimap.getTextEditorScaledHeight(), 0)
       })
 
       it('sets the visible visible area offset', () => {
         expect(realOffsetTop(visibleArea)).toBeCloseTo(minimap.getTextEditorScaledScrollTop() - minimap.getScrollTop(), 0)
-        expect(realOffsetLeft(visibleArea)).toBeCloseTo(minimap.getTextEditorScaledScrollLeft(), 0)
+
+        expect(Math.floor(parseFloat(visibleArea.style.borderLeftWidth)))
+        .toEqual(Math.floor(minimap.getTextEditorScaledScrollLeft()))
       })
 
       it('offsets the canvas when the scroll does not match line height', () => {
         editorElement.setScrollTop(1004)
 
-        waitsFor(() => { return nextAnimationFrame !== noAnimationFrame })
+        waitsFor('a new animation frame request', () => {
+          return nextAnimationFrame !== noAnimationFrame
+        })
         runs(() => {
           nextAnimationFrame()
 
@@ -245,16 +277,69 @@ describe('MinimapElement', () => {
         expect(() => { nextAnimationFrame() }).not.toThrow()
       })
 
-      it('renders the visible line decorations', () => {
-        spyOn(minimapElement, 'drawLineDecoration').andCallThrough()
+      it('renders the decorations based on the order settings', () => {
+        atom.config.set('minimap.displayPluginsControls', true)
 
-        minimap.decorateMarker(editor.markBufferRange([[1,0], [1,10]]), {type: 'line', color: '#0000FF'})
-        minimap.decorateMarker(editor.markBufferRange([[10,0], [10,10]]), {type: 'line', color: '#0000FF'})
-        minimap.decorateMarker(editor.markBufferRange([[100,0], [100,10]]), {type: 'line', color: '#0000FF'})
+        const pluginFoo = createPlugin()
+        const pluginBar = createPlugin()
+
+        Main.registerPlugin('foo', pluginFoo)
+        Main.registerPlugin('bar', pluginBar)
+
+        atom.config.set('minimap.plugins.fooDecorationsZIndex', 1)
+
+        const calls = []
+        spyOn(minimapElement, 'drawLineDecoration').andCallFake((d) => {
+          calls.push(d.getProperties().plugin)
+        })
+        spyOn(minimapElement, 'drawHighlightDecoration').andCallFake((d) => {
+          calls.push(d.getProperties().plugin)
+        })
+
+        minimap.decorateMarker(editor.markBufferRange([[1, 0], [1, 10]]), {type: 'line', color: '#0000FF', plugin: 'bar'})
+        minimap.decorateMarker(editor.markBufferRange([[1, 0], [1, 10]]), {type: 'highlight-under', color: '#0000FF', plugin: 'foo'})
 
         editorElement.setScrollTop(0)
 
-        waitsFor(() => { return nextAnimationFrame !== noAnimationFrame })
+        waitsFor('a new animation frame request', () => {
+          return nextAnimationFrame !== noAnimationFrame
+        })
+        runs(() => {
+          nextAnimationFrame()
+
+          expect(calls).toEqual(['bar', 'foo'])
+
+          atom.config.set('minimap.plugins.fooDecorationsZIndex', -1)
+
+          calls.length = 0
+        })
+
+        waitsFor('a new animation frame request', () => {
+          return nextAnimationFrame !== noAnimationFrame
+        })
+
+        runs(() => {
+          nextAnimationFrame()
+
+          expect(calls).toEqual(['foo', 'bar'])
+
+          Main.unregisterPlugin('foo')
+          Main.unregisterPlugin('bar')
+        })
+      })
+
+      it('renders the visible line decorations', () => {
+        spyOn(minimapElement, 'drawLineDecoration').andCallThrough()
+
+        minimap.decorateMarker(editor.markBufferRange([[1, 0], [1, 10]]), {type: 'line', color: '#0000FF'})
+        minimap.decorateMarker(editor.markBufferRange([[10, 0], [10, 10]]), {type: 'line', color: '#0000FF'})
+        minimap.decorateMarker(editor.markBufferRange([[100, 0], [100, 10]]), {type: 'line', color: '#0000FF'})
+
+        editorElement.setScrollTop(0)
+
+        waitsFor('a new animation frame request', () => {
+          return nextAnimationFrame !== noAnimationFrame
+        })
         runs(() => {
           nextAnimationFrame()
 
@@ -263,16 +348,38 @@ describe('MinimapElement', () => {
         })
       })
 
-      it('renders the visible highlight decorations', () => {
-        spyOn(minimapElement, 'drawHighlightDecoration').andCallThrough()
+      it('renders the visible gutter decorations', () => {
+        spyOn(minimapElement, 'drawGutterDecoration').andCallThrough()
 
-        minimap.decorateMarker(editor.markBufferRange([[1,0], [1,4]]), {type: 'highlight-under', color: '#0000FF'})
-        minimap.decorateMarker(editor.markBufferRange([[2,20], [2,30]]), {type: 'highlight-over', color: '#0000FF'})
-        minimap.decorateMarker(editor.markBufferRange([[100,3], [100,5]]), {type: 'highlight-under', color: '#0000FF'})
+        minimap.decorateMarker(editor.markBufferRange([[1, 0], [1, 10]]), {type: 'gutter', color: '#0000FF'})
+        minimap.decorateMarker(editor.markBufferRange([[10, 0], [10, 10]]), {type: 'gutter', color: '#0000FF'})
+        minimap.decorateMarker(editor.markBufferRange([[100, 0], [100, 10]]), {type: 'gutter', color: '#0000FF'})
 
         editorElement.setScrollTop(0)
 
-        waitsFor(() => { return nextAnimationFrame !== noAnimationFrame })
+        waitsFor('a new animation frame request', () => {
+          return nextAnimationFrame !== noAnimationFrame
+        })
+        runs(() => {
+          nextAnimationFrame()
+
+          expect(minimapElement.drawGutterDecoration).toHaveBeenCalled()
+          expect(minimapElement.drawGutterDecoration.calls.length).toEqual(2)
+        })
+      })
+
+      it('renders the visible highlight decorations', () => {
+        spyOn(minimapElement, 'drawHighlightDecoration').andCallThrough()
+
+        minimap.decorateMarker(editor.markBufferRange([[1, 0], [1, 4]]), {type: 'highlight-under', color: '#0000FF'})
+        minimap.decorateMarker(editor.markBufferRange([[2, 20], [2, 30]]), {type: 'highlight-over', color: '#0000FF'})
+        minimap.decorateMarker(editor.markBufferRange([[100, 3], [100, 5]]), {type: 'highlight-under', color: '#0000FF'})
+
+        editorElement.setScrollTop(0)
+
+        waitsFor('a new animation frame request', () => {
+          return nextAnimationFrame !== noAnimationFrame
+        })
         runs(() => {
           nextAnimationFrame()
 
@@ -284,13 +391,15 @@ describe('MinimapElement', () => {
       it('renders the visible outline decorations', () => {
         spyOn(minimapElement, 'drawHighlightOutlineDecoration').andCallThrough()
 
-        minimap.decorateMarker(editor.markBufferRange([[1,4], [3,6]]), {type: 'highlight-outline', color: '#0000ff'})
-        minimap.decorateMarker(editor.markBufferRange([[6,0], [6,7]]), {type: 'highlight-outline', color: '#0000ff'})
-        minimap.decorateMarker(editor.markBufferRange([[100,3], [100,5]]), {type: 'highlight-outline', color: '#0000ff'})
+        minimap.decorateMarker(editor.markBufferRange([[1, 4], [3, 6]]), {type: 'highlight-outline', color: '#0000ff'})
+        minimap.decorateMarker(editor.markBufferRange([[6, 0], [6, 7]]), {type: 'highlight-outline', color: '#0000ff'})
+        minimap.decorateMarker(editor.markBufferRange([[100, 3], [100, 5]]), {type: 'highlight-outline', color: '#0000ff'})
 
         editorElement.setScrollTop(0)
 
-        waitsFor(() => { return nextAnimationFrame !== noAnimationFrame })
+        waitsFor('a new animation frame request', () => {
+          return nextAnimationFrame !== noAnimationFrame
+        })
         runs(() => {
           nextAnimationFrame()
 
@@ -299,30 +408,95 @@ describe('MinimapElement', () => {
         })
       })
 
+      it('renders the visible custom foreground decorations', () => {
+        spyOn(minimapElement, 'drawCustomDecoration').andCallThrough()
+
+        const renderRoutine = jasmine.createSpy('renderRoutine')
+
+        const properties = {
+          type: 'foreground-custom',
+          render: renderRoutine
+        }
+
+        minimap.decorateMarker(editor.markBufferRange([[1, 4], [3, 6]]), properties)
+        minimap.decorateMarker(editor.markBufferRange([[6, 0], [6, 7]]), properties)
+        minimap.decorateMarker(editor.markBufferRange([[100, 3], [100, 5]]), properties)
+
+        editorElement.setScrollTop(0)
+
+        waitsFor('a new animation frame request', () => {
+          return nextAnimationFrame !== noAnimationFrame
+        })
+        runs(() => {
+          nextAnimationFrame()
+
+          expect(minimapElement.drawCustomDecoration).toHaveBeenCalled()
+          expect(minimapElement.drawCustomDecoration.calls.length).toEqual(4)
+
+          expect(renderRoutine).toHaveBeenCalled()
+          expect(renderRoutine.calls.length).toEqual(4)
+        })
+      })
+
+      it('renders the visible custom background decorations', () => {
+        spyOn(minimapElement, 'drawCustomDecoration').andCallThrough()
+
+        const renderRoutine = jasmine.createSpy('renderRoutine')
+
+        const properties = {
+          type: 'background-custom',
+          render: renderRoutine
+        }
+
+        minimap.decorateMarker(editor.markBufferRange([[1, 4], [3, 6]]), properties)
+        minimap.decorateMarker(editor.markBufferRange([[6, 0], [6, 7]]), properties)
+        minimap.decorateMarker(editor.markBufferRange([[100, 3], [100, 5]]), properties)
+
+        editorElement.setScrollTop(0)
+
+        waitsFor('a new animation frame request', () => {
+          return nextAnimationFrame !== noAnimationFrame
+        })
+        runs(() => {
+          nextAnimationFrame()
+
+          expect(minimapElement.drawCustomDecoration).toHaveBeenCalled()
+          expect(minimapElement.drawCustomDecoration.calls.length).toEqual(4)
+
+          expect(renderRoutine).toHaveBeenCalled()
+          expect(renderRoutine.calls.length).toEqual(4)
+        })
+      })
+
       describe('when the editor is scrolled', () => {
         beforeEach(() => {
           editorElement.setScrollTop(2000)
           editorElement.setScrollLeft(50)
 
-          waitsFor(() => { return nextAnimationFrame !== noAnimationFrame })
+          waitsFor('a new animation frame request', () => {
+            return nextAnimationFrame !== noAnimationFrame
+          })
           runs(() => { nextAnimationFrame() })
         })
 
         it('updates the visible area', () => {
           expect(realOffsetTop(visibleArea)).toBeCloseTo(minimap.getTextEditorScaledScrollTop() - minimap.getScrollTop(), 0)
-          expect(realOffsetLeft(visibleArea)).toBeCloseTo(minimap.getTextEditorScaledScrollLeft(), 0)
+
+          expect(Math.floor(parseFloat(visibleArea.style.borderLeftWidth)))
+          .toEqual(Math.floor(minimap.getTextEditorScaledScrollLeft()))
         })
       })
 
       describe('when the editor is resized to a greater size', () => {
         beforeEach(() => {
-          let height = editorElement.getHeight()
           editorElement.style.width = '800px'
           editorElement.style.height = '500px'
 
           minimapElement.measureHeightAndWidth()
 
-          waitsFor(() => { return nextAnimationFrame !== noAnimationFrame })
+          waitsFor('a new animation frame request', () => {
+            return nextAnimationFrame !== noAnimationFrame
+          })
           runs(() => { nextAnimationFrame() })
         })
 
@@ -341,7 +515,9 @@ describe('MinimapElement', () => {
           editorElement.setScrollTop(1400)
           editor.setSelectedBufferRange([[101, 0], [102, 20]])
 
-          waitsFor(() => { return nextAnimationFrame !== noAnimationFrame })
+          waitsFor('a new animation frame request', () => {
+            return nextAnimationFrame !== noAnimationFrame
+          })
           runs(() => {
             nextAnimationFrame()
 
@@ -351,13 +527,17 @@ describe('MinimapElement', () => {
         })
 
         it('rerenders the part that have changed', () => {
-          waitsFor(() => { return nextAnimationFrame !== noAnimationFrame })
+          waitsFor('a new animation frame request', () => {
+            return nextAnimationFrame !== noAnimationFrame
+          })
           runs(() => {
             nextAnimationFrame()
 
             expect(minimapElement.drawLines).toHaveBeenCalled()
-            expect(minimapElement.drawLines.argsForCall[0][0]).toEqual(100)
-            expect(minimapElement.drawLines.argsForCall[0][1]).toEqual(101)
+
+            const [firstLine, lastLine] = minimapElement.drawLines.argsForCall[0]
+            expect(firstLine).toEqual(100)
+            expect(lastLine === 102 || lastLine === 111).toBeTruthy()
           })
         })
       })
@@ -370,7 +550,9 @@ describe('MinimapElement', () => {
 
           minimapElement.measureHeightAndWidth()
 
-          waitsFor(() => { return nextAnimationFrame !== noAnimationFrame })
+          waitsFor('a new animation frame request', () => {
+            return nextAnimationFrame !== noAnimationFrame
+          })
           runs(() => {
             nextAnimationFrame()
 
@@ -414,19 +596,52 @@ describe('MinimapElement', () => {
 
         minimapElement.measureHeightAndWidth()
 
-        waitsFor(() => { return nextAnimationFrame !== noAnimationFrame })
+        waitsFor('a new animation frame request', () => {
+          return nextAnimationFrame !== noAnimationFrame
+        })
         runs(() => { nextAnimationFrame() })
       })
 
       describe('using the mouse scrollwheel over the minimap', () => {
-        beforeEach(() => {
+        it('relays the events to the editor view', () => {
           spyOn(editorElement.component.presenter, 'setScrollTop').andCallFake(() => {})
 
           mousewheel(minimapElement, 0, 15)
+
+          expect(editorElement.component.presenter.setScrollTop).toHaveBeenCalled()
         })
 
-        it('relays the events to the editor view', () => {
-          expect(editorElement.component.presenter.setScrollTop).toHaveBeenCalled()
+        describe('when the independentMinimapScroll setting is true', () => {
+          let previousScrollTop
+
+          beforeEach(() => {
+            atom.config.set('minimap.independentMinimapScroll', true)
+            atom.config.set('minimap.scrollSensitivity', 0.5)
+
+            spyOn(editorElement.component.presenter, 'setScrollTop').andCallFake(() => {})
+
+            previousScrollTop = minimap.getScrollTop()
+
+            mousewheel(minimapElement, 0, -15)
+          })
+
+          it('does not relay the events to the editor', () => {
+            expect(editorElement.component.presenter.setScrollTop).not.toHaveBeenCalled()
+          })
+
+          it('scrolls the minimap instead', () => {
+            expect(minimap.getScrollTop()).not.toEqual(previousScrollTop)
+          })
+
+          it('clamp the minimap scroll into the legit bounds', () => {
+            mousewheel(minimapElement, 0, -100000)
+
+            expect(minimap.getScrollTop()).toEqual(minimap.getMaxScrollTop())
+
+            mousewheel(minimapElement, 0, 100000)
+
+            expect(minimap.getScrollTop()).toEqual(0)
+          })
         })
       })
 
@@ -446,7 +661,7 @@ describe('MinimapElement', () => {
         })
 
         describe('scrolling to the middle using the middle mouse button', () => {
-          let canvasMidY = undefined
+          let canvasMidY
 
           beforeEach(() => {
             let editorMidY = editorElement.getHeight() / 2.0
@@ -462,7 +677,9 @@ describe('MinimapElement', () => {
           })
 
           it('updates the visible area to be centered', () => {
-            waitsFor(() => { return nextAnimationFrame !== noAnimationFrame })
+            waitsFor('a new animation frame request', () => {
+              return nextAnimationFrame !== noAnimationFrame
+            })
             runs(() => {
               nextAnimationFrame()
               let {top, height} = visibleArea.getBoundingClientRect()
@@ -478,13 +695,15 @@ describe('MinimapElement', () => {
 
           beforeEach(() => {
             scrollTo = 101 // pixels
-            scrollRatio = (scrollTo - minimap.getTextEditorScaledHeight()/2) / (minimap.getVisibleHeight() - minimap.getTextEditorScaledHeight())
+            scrollRatio = (scrollTo - minimap.getTextEditorScaledHeight() / 2) / (minimap.getVisibleHeight() - minimap.getTextEditorScaledHeight())
             scrollRatio = Math.max(0, scrollRatio)
             scrollRatio = Math.min(1, scrollRatio)
 
             mousedown(canvas, {x: originalLeft + 1, y: scrollTo, btn: 1})
 
-            waitsFor(() => { return nextAnimationFrame !== noAnimationFrame })
+            waitsFor('a new animation frame request', () => {
+              return nextAnimationFrame !== noAnimationFrame
+            })
             runs(() => { nextAnimationFrame() })
           })
 
@@ -493,7 +712,7 @@ describe('MinimapElement', () => {
             expect(editorElement.getScrollTop()).toBeCloseTo(expectedScroll, 0)
           })
 
-          describe( 'dragging the visible area with middle mouse button ' +
+          describe('dragging the visible area with middle mouse button ' +
           'after scrolling to the arbitrary location', () => {
             let [originalTop] = []
 
@@ -501,7 +720,9 @@ describe('MinimapElement', () => {
               originalTop = visibleArea.getBoundingClientRect().top
               mousemove(visibleArea, {x: originalLeft + 1, y: scrollTo + 40, btn: 1})
 
-              waitsFor(() => { return nextAnimationFrame !== noAnimationFrame })
+              waitsFor('a new animation frame request', () => {
+                return nextAnimationFrame !== noAnimationFrame
+              })
               runs(() => { nextAnimationFrame() })
             })
 
@@ -509,7 +730,7 @@ describe('MinimapElement', () => {
               minimapElement.endDrag()
             })
 
-            it( 'scrolls the editor so that the visible area was moved down ' +
+            it('scrolls the editor so that the visible area was moved down ' +
             'by 40 pixels from the arbitrary location', () => {
               let {top} = visibleArea.getBoundingClientRect()
               expect(top).toBeCloseTo(originalTop + 40, -1)
@@ -519,61 +740,117 @@ describe('MinimapElement', () => {
       })
 
       describe('pressing the mouse on the minimap canvas (without scroll animation)', () => {
+        let canvas
+
         beforeEach(() => {
           let t = 0
-          spyOn(minimapElement, 'getTime').andCallFake(() => { return n = t, t += 100, n })
+          spyOn(minimapElement, 'getTime').andCallFake(() => {
+            let n = t
+            t += 100
+            return n
+          })
           spyOn(minimapElement, 'requestUpdate').andCallFake(() => {})
 
           atom.config.set('minimap.scrollAnimation', false)
 
           canvas = minimapElement.getFrontCanvas()
-          mousedown(canvas)
         })
 
         it('scrolls the editor to the line below the mouse', () => {
-          let scrollTop
-          let {top, left, width, height} = minimapElement.getFrontCanvas().getBoundingClientRect()
-          let middle = top + height / 2
+          mousedown(canvas)
+          expect(editorElement.getScrollTop()).toBeCloseTo(480)
+        })
 
-          // Should be 400 on stable and 480 on beta.
-          // I'm still looking for a reason.
-          scrollTop =
-          expect(editorElement.getScrollTop()).toBeGreaterThan(380)
+        describe('when independentMinimapScroll setting is enabled', () => {
+          beforeEach(() => {
+            minimap.setScrollTop(1000)
+            atom.config.set('minimap.independentMinimapScroll', true)
+          })
+
+          it('scrolls the editor to the line below the mouse', () => {
+            mousedown(canvas)
+            expect(editorElement.getScrollTop()).toBeCloseTo(480)
+          })
         })
       })
 
       describe('pressing the mouse on the minimap canvas (with scroll animation)', () => {
-        beforeEach(() => {
+        let canvas
 
+        beforeEach(() => {
           let t = 0
-          spyOn(minimapElement, 'getTime').andCallFake(() => { return n = t, t += 100, n })
+          spyOn(minimapElement, 'getTime').andCallFake(() => {
+            let n = t
+            t += 100
+            return n
+          })
           spyOn(minimapElement, 'requestUpdate').andCallFake(() => {})
 
           atom.config.set('minimap.scrollAnimation', true)
           atom.config.set('minimap.scrollAnimationDuration', 300)
 
           canvas = minimapElement.getFrontCanvas()
-          mousedown(canvas)
-
-          waitsFor(() => { return nextAnimationFrame !== noAnimationFrame })
         })
 
         it('scrolls the editor gradually to the line below the mouse', () => {
+          mousedown(canvas)
+          waitsFor('a new animation frame request', () => {
+            return nextAnimationFrame !== noAnimationFrame
+          })
           // wait until all animations run out
           waitsFor(() => {
-            // Should be 400 on stable and 480 on beta.
-            // I'm still looking for a reason.
             nextAnimationFrame !== noAnimationFrame && nextAnimationFrame()
-            return editorElement.getScrollTop() >= 380
+            return editorElement.getScrollTop() >= 480
           })
         })
 
         it('stops the animation if the text editor is destroyed', () => {
-          editor.destroy()
+          mousedown(canvas)
+          waitsFor('a new animation frame request', () => {
+            return nextAnimationFrame !== noAnimationFrame
+          })
 
-          nextAnimationFrame !== noAnimationFrame && nextAnimationFrame()
+          runs(() => {
+            editor.destroy()
 
-          expect(nextAnimationFrame === noAnimationFrame)
+            nextAnimationFrame !== noAnimationFrame && nextAnimationFrame()
+
+            expect(nextAnimationFrame === noAnimationFrame)
+          })
+        })
+
+        describe('when independentMinimapScroll setting is enabled', () => {
+          beforeEach(() => {
+            minimap.setScrollTop(1000)
+            atom.config.set('minimap.independentMinimapScroll', true)
+          })
+
+          it('scrolls the editor gradually to the line below the mouse', () => {
+            mousedown(canvas)
+            waitsFor('a new animation frame request', () => {
+              return nextAnimationFrame !== noAnimationFrame
+            })
+            // wait until all animations run out
+            waitsFor(() => {
+              nextAnimationFrame !== noAnimationFrame && nextAnimationFrame()
+              return editorElement.getScrollTop() >= 480
+            })
+          })
+
+          it('stops the animation if the text editor is destroyed', () => {
+            mousedown(canvas)
+            waitsFor('a new animation frame request', () => {
+              return nextAnimationFrame !== noAnimationFrame
+            })
+
+            runs(() => {
+              editor.destroy()
+
+              nextAnimationFrame !== noAnimationFrame && nextAnimationFrame()
+
+              expect(nextAnimationFrame === noAnimationFrame)
+            })
+          })
         })
       })
 
@@ -589,7 +866,9 @@ describe('MinimapElement', () => {
           mousedown(visibleArea, {x: left + 10, y: originalTop + 10})
           mousemove(visibleArea, {x: left + 10, y: originalTop + 50})
 
-          waitsFor(() => { return nextAnimationFrame !== noAnimationFrame })
+          waitsFor('a new animation frame request', () => {
+            return nextAnimationFrame !== noAnimationFrame
+          })
           runs(() => { nextAnimationFrame() })
         })
 
@@ -625,7 +904,9 @@ describe('MinimapElement', () => {
           touchstart(visibleArea, {x: left + 10, y: originalTop + 10})
           touchmove(visibleArea, {x: left + 10, y: originalTop + 50})
 
-          waitsFor(() => { return nextAnimationFrame !== noAnimationFrame })
+          waitsFor('a new animation frame request', () => {
+            return nextAnimationFrame !== noAnimationFrame
+          })
           runs(() => { nextAnimationFrame() })
         })
 
@@ -660,7 +941,9 @@ describe('MinimapElement', () => {
 
         describe('dragging the visible area', () => {
           beforeEach(() => {
-            waitsFor(() => { return nextAnimationFrame !== noAnimationFrame })
+            waitsFor('a new animation frame request', () => {
+              return nextAnimationFrame !== noAnimationFrame
+            })
             runs(() => {
               nextAnimationFrame()
 
@@ -672,7 +955,9 @@ describe('MinimapElement', () => {
               mousemove(visibleArea, {x: left + 10, y: top + 50})
             })
 
-            waitsFor(() => { return nextAnimationFrame !== noAnimationFrame })
+            waitsFor('a new animation frame request', () => {
+              return nextAnimationFrame !== noAnimationFrame
+            })
             runs(() => { nextAnimationFrame() })
           })
 
@@ -691,11 +976,11 @@ describe('MinimapElement', () => {
         beforeEach(() => {
           atom.config.set('editor.scrollPastEnd', true)
 
-          waitsFor(() => { return nextAnimationFrame !== noAnimationFrame })
+          waitsFor('a new animation frame request', () => {
+            return nextAnimationFrame !== noAnimationFrame
+          })
           runs(() => { nextAnimationFrame() })
         })
-
-
 
         describe('dragging the visible area', () => {
           let [originalTop, visibleArea] = []
@@ -708,7 +993,9 @@ describe('MinimapElement', () => {
             mousedown(visibleArea, {x: left + 10, y: top + 10})
             mousemove(visibleArea, {x: left + 10, y: top + 50})
 
-            waitsFor(() => { return nextAnimationFrame !== noAnimationFrame })
+            waitsFor('a new animation frame request', () => {
+              return nextAnimationFrame !== noAnimationFrame
+            })
             runs(() => { nextAnimationFrame() })
           })
 
@@ -767,7 +1054,9 @@ describe('MinimapElement', () => {
       it('removes the quick settings button', () => {
         atom.config.set('minimap.displayPluginsControls', true)
 
-        waitsFor(() => { return nextAnimationFrame !== noAnimationFrame })
+        waitsFor('a new animation frame request', () => {
+          return nextAnimationFrame !== noAnimationFrame
+        })
         runs(() => {
           nextAnimationFrame()
           expect(minimapElement.openQuickSettings).toBeUndefined()
@@ -778,13 +1067,17 @@ describe('MinimapElement', () => {
         editor.setText(mediumSample)
         editorElement.setScrollTop(50)
 
-        waitsFor(() => { return minimapElement.frameRequested })
+        waitsFor('minimap frame requested', () => {
+          return minimapElement.frameRequested
+        })
         runs(() => {
           nextAnimationFrame()
           atom.config.set('minimap.minimapScrollIndicator', true)
         })
 
-        waitsFor(() => { return minimapElement.frameRequested })
+        waitsFor('minimap frame requested', () => {
+          return minimapElement.frameRequested
+        })
         runs(() => {
           nextAnimationFrame()
           expect(minimapElement.shadowRoot.querySelector('.minimap-scroll-indicator')).toBeNull()
@@ -796,7 +1089,11 @@ describe('MinimapElement', () => {
           jasmineContent.appendChild(minimapElement)
 
           let t = 0
-          spyOn(minimapElement, 'getTime').andCallFake(() => { return n = t, t += 100, n })
+          spyOn(minimapElement, 'getTime').andCallFake(() => {
+            let n = t
+            t += 100
+            return n
+          })
           spyOn(minimapElement, 'requestUpdate').andCallFake(() => {})
 
           atom.config.set('minimap.scrollAnimation', false)
@@ -863,7 +1160,9 @@ describe('MinimapElement', () => {
 
     describe('when the atom styles are changed', () => {
       beforeEach(() => {
-        waitsFor(() => { return nextAnimationFrame !== noAnimationFrame })
+        waitsFor('a new animation frame request', () => {
+          return nextAnimationFrame !== noAnimationFrame
+        })
         runs(() => {
           nextAnimationFrame()
           spyOn(minimapElement, 'requestForcedUpdate').andCallThrough()
@@ -874,7 +1173,9 @@ describe('MinimapElement', () => {
           atom.styles.emitter.emit('did-add-style-element', styleNode)
         })
 
-        waitsFor(() => { return minimapElement.frameRequested })
+        waitsFor('minimap frame requested', () => {
+          return minimapElement.frameRequested
+        })
       })
 
       it('forces a refresh with cache invalidation', () => {
@@ -888,7 +1189,9 @@ describe('MinimapElement', () => {
         spyOn(minimapElement, 'requestForcedUpdate').andCallThrough()
         atom.config.set('minimap.textOpacity', 0.3)
 
-        waitsFor(() => { return minimapElement.frameRequested })
+        waitsFor('minimap frame requested', () => {
+          return minimapElement.frameRequested
+        })
         runs(() => { nextAnimationFrame() })
       })
 
@@ -902,7 +1205,9 @@ describe('MinimapElement', () => {
         spyOn(minimapElement, 'requestForcedUpdate').andCallThrough()
         atom.config.set('minimap.displayCodeHighlights', true)
 
-        waitsFor(() => { return minimapElement.frameRequested })
+        waitsFor('minimap frame requested', () => {
+          return minimapElement.frameRequested
+        })
         runs(() => { nextAnimationFrame() })
       })
 
@@ -916,7 +1221,9 @@ describe('MinimapElement', () => {
         spyOn(minimapElement, 'requestForcedUpdate').andCallThrough()
         atom.config.set('minimap.charWidth', 1)
 
-        waitsFor(() => { return minimapElement.frameRequested })
+        waitsFor('minimap frame requested', () => {
+          return minimapElement.frameRequested
+        })
         runs(() => { nextAnimationFrame() })
       })
 
@@ -930,7 +1237,9 @@ describe('MinimapElement', () => {
         spyOn(minimapElement, 'requestForcedUpdate').andCallThrough()
         atom.config.set('minimap.charHeight', 1)
 
-        waitsFor(() => { return minimapElement.frameRequested })
+        waitsFor('minimap frame requested', () => {
+          return minimapElement.frameRequested
+        })
         runs(() => { nextAnimationFrame() })
       })
 
@@ -944,7 +1253,9 @@ describe('MinimapElement', () => {
         spyOn(minimapElement, 'requestForcedUpdate').andCallThrough()
         atom.config.set('minimap.interline', 2)
 
-        waitsFor(() => { return minimapElement.frameRequested })
+        waitsFor('minimap frame requested', () => {
+          return minimapElement.frameRequested
+        })
         runs(() => { nextAnimationFrame() })
       })
 
@@ -982,17 +1293,16 @@ describe('MinimapElement', () => {
     })
 
     describe('when minimap.adjustMinimapWidthToSoftWrap is true', () => {
-      let [minimapWidth] = []
       beforeEach(() => {
-        minimapWidth = minimapElement.offsetWidth
-
         atom.config.set('editor.softWrap', true)
         atom.config.set('editor.softWrapAtPreferredLineLength', true)
         atom.config.set('editor.preferredLineLength', 2)
 
         atom.config.set('minimap.adjustMinimapWidthToSoftWrap', true)
 
-        waitsFor(() => { return minimapElement.frameRequested })
+        waitsFor('minimap frame requested', () => {
+          return minimapElement.frameRequested
+        })
         runs(() => { nextAnimationFrame() })
       })
 
@@ -1009,7 +1319,9 @@ describe('MinimapElement', () => {
         it('does not change the value', () => {
           atom.views.performDocumentPoll()
 
-          waitsFor(() => { return nextAnimationFrame !== noAnimationFrame })
+          waitsFor('a new animation frame request', () => {
+            return nextAnimationFrame !== noAnimationFrame
+          })
           runs(() => {
             nextAnimationFrame()
             expect(minimapElement.getFrontCanvas().width / devicePixelRatio).toEqual(4)
@@ -1025,7 +1337,9 @@ describe('MinimapElement', () => {
 
           atom.views.performDocumentPoll()
 
-          waitsFor(() => { return nextAnimationFrame !== noAnimationFrame })
+          waitsFor('a new animation frame request', () => {
+            return nextAnimationFrame !== noAnimationFrame
+          })
           runs(() => { nextAnimationFrame() })
         })
 
@@ -1040,13 +1354,17 @@ describe('MinimapElement', () => {
           editor.setText(mediumSample)
           editorElement.setScrollTop(50)
 
-          waitsFor(() => { return minimapElement.frameRequested })
+          waitsFor('minimap frame requested', () => {
+            return minimapElement.frameRequested
+          })
           runs(() => {
             nextAnimationFrame()
             atom.config.set('minimap.minimapScrollIndicator', true)
           })
 
-          waitsFor(() => { return minimapElement.frameRequested })
+          waitsFor('minimap frame requested', () => {
+            return minimapElement.frameRequested
+          })
           runs(() => { nextAnimationFrame() })
         })
 
@@ -1071,7 +1389,9 @@ describe('MinimapElement', () => {
         beforeEach(() => {
           atom.config.set('minimap.adjustMinimapWidthToSoftWrap', false)
 
-          waitsFor(() => { return minimapElement.frameRequested })
+          waitsFor('minimap frame requested', () => {
+            return minimapElement.frameRequested
+          })
           runs(() => { nextAnimationFrame() })
         })
 
@@ -1085,13 +1405,34 @@ describe('MinimapElement', () => {
         beforeEach(() => {
           atom.config.set('editor.preferredLineLength', 16384)
 
-          waitsFor(() => { return minimapElement.frameRequested })
+          waitsFor('minimap frame requested', () => {
+            return minimapElement.frameRequested
+          })
           runs(() => { nextAnimationFrame() })
         })
 
         it('adjusts the width of the minimap', () => {
           expect(minimapElement.offsetWidth).toBeCloseTo(editorElement.offsetWidth / 10, -1)
           expect(minimapElement.style.width).toEqual('')
+        })
+      })
+
+      describe('when adjustMinimapWidthOnlyIfSmaller is disabled', () => {
+        describe('and when preferredLineLength >= 16384', () => {
+          beforeEach(() => {
+            atom.config.set('minimap.adjustMinimapWidthOnlyIfSmaller', false)
+            atom.config.set('editor.preferredLineLength', 16384)
+
+            waitsFor('minimap frame requested', () => {
+              return minimapElement.frameRequested
+            })
+            runs(() => { nextAnimationFrame() })
+          })
+
+          it('adjusts the width of the minimap', () => {
+            expect(minimapElement.offsetWidth).toBeCloseTo(16384 * 2)
+            expect(minimapElement.style.width).toEqual(16384 * 2 + 'px')
+          })
         })
       })
     })
@@ -1101,7 +1442,9 @@ describe('MinimapElement', () => {
         editor.setText(mediumSample)
         editorElement.setScrollTop(50)
 
-        waitsFor(() => { return minimapElement.frameRequested })
+        waitsFor('minimap frame requested', () => {
+          return minimapElement.frameRequested
+        })
         runs(() => { nextAnimationFrame() })
 
         atom.config.set('minimap.minimapScrollIndicator', true)
@@ -1120,12 +1463,13 @@ describe('MinimapElement', () => {
 
       describe('on update', () => {
         beforeEach(() => {
-          let height = editorElement.getHeight()
           editorElement.style.height = '500px'
 
           atom.views.performDocumentPoll()
 
-          waitsFor(() => { return nextAnimationFrame !== noAnimationFrame })
+          waitsFor('a new animation frame request', () => {
+            return nextAnimationFrame !== noAnimationFrame
+          })
           runs(() => { nextAnimationFrame() })
         })
 
@@ -1144,7 +1488,9 @@ describe('MinimapElement', () => {
         beforeEach(() => {
           editor.setText(smallSample)
 
-          waitsFor(() => { return minimapElement.frameRequested })
+          waitsFor('minimap frame requested', () => {
+            return minimapElement.frameRequested
+          })
           runs(() => { nextAnimationFrame() })
         })
 
@@ -1156,12 +1502,16 @@ describe('MinimapElement', () => {
           beforeEach(() => {
             editor.setText(largeSample)
 
-            waitsFor(() => { return minimapElement.frameRequested })
+            waitsFor('minimap frame requested', () => {
+              return minimapElement.frameRequested
+            })
             runs(() => { nextAnimationFrame() })
           })
 
           it('attaches the scroll indicator', () => {
-            waitsFor(() => { return minimapElement.shadowRoot.querySelector('.minimap-scroll-indicator') })
+            waitsFor('minimap scroll indicator', () => {
+              return minimapElement.shadowRoot.querySelector('.minimap-scroll-indicator')
+            })
           })
         })
       })
@@ -1183,6 +1533,44 @@ describe('MinimapElement', () => {
           expect(minimapElement.classList.contains('left')).toBeTruthy()
         })
       })
+
+      describe('when minimap.adjustAbsoluteModeHeight setting is true', () => {
+        beforeEach(() => {
+          atom.config.set('minimap.adjustAbsoluteModeHeight', true)
+        })
+        describe('when the content of the minimap is smaller that the editor height', () => {
+          beforeEach(() => {
+            editor.setText(smallSample)
+            editorElement.setHeight(400)
+            minimapElement.measureHeightAndWidth()
+
+            waitsFor('a new animation frame request', () => {
+              return nextAnimationFrame !== noAnimationFrame
+            })
+
+            runs(() => nextAnimationFrame())
+          })
+          it('adjusts the canvas height to the minimap height', () => {
+            expect(minimapElement.shadowRoot.querySelector('canvas').offsetHeight).toEqual(minimap.getHeight())
+          })
+
+          describe('when the content is modified', () => {
+            beforeEach(() => {
+              editor.insertText('foo\n\nbar\n')
+
+              waitsFor('a new animation frame request', () => {
+                return nextAnimationFrame !== noAnimationFrame
+              })
+
+              runs(() => nextAnimationFrame())
+            })
+
+            it('adjusts the canvas height to the new minimap height', () => {
+              expect(minimapElement.shadowRoot.querySelector('canvas').offsetHeight).toEqual(minimap.getHeight())
+            })
+          })
+        })
+      })
     })
 
     describe('when the smoothScrolling setting is disabled', () => {
@@ -1192,7 +1580,9 @@ describe('MinimapElement', () => {
       it('does not offset the canvas when the scroll does not match line height', () => {
         editorElement.setScrollTop(1004)
 
-        waitsFor(() => { return nextAnimationFrame !== noAnimationFrame })
+        waitsFor('a new animation frame request', () => {
+          return nextAnimationFrame !== noAnimationFrame
+        })
         runs(() => {
           nextAnimationFrame()
 
@@ -1275,7 +1665,6 @@ describe('MinimapElement', () => {
 
           it('positions the quick settings view next to the minimap', () => {
             let minimapBounds = minimapElement.getFrontCanvas().getBoundingClientRect()
-            let settingsBounds = quickSettingsElement.getBoundingClientRect()
 
             expect(realOffsetTop(quickSettingsElement)).toBeCloseTo(minimapBounds.top, 0)
             expect(realOffsetLeft(quickSettingsElement)).toBeCloseTo(minimapBounds.right, 0)
@@ -1299,7 +1688,9 @@ describe('MinimapElement', () => {
           editorElement.style.width = '1024px'
 
           atom.views.performDocumentPoll()
-          waitsFor(() => { return minimapElement.frameRequested })
+          waitsFor('minimap frame requested', () => {
+            return minimapElement.frameRequested
+          })
           runs(() => { nextAnimationFrame() })
         })
 
@@ -1347,7 +1738,6 @@ describe('MinimapElement', () => {
 
             it('positions the quick settings view next to the minimap', () => {
               let minimapBounds = minimapElement.getFrontCanvas().getBoundingClientRect()
-              let settingsBounds = quickSettingsElement.getBoundingClientRect()
 
               expect(realOffsetTop(quickSettingsElement)).toBeCloseTo(minimapBounds.top, 0)
               expect(realOffsetLeft(quickSettingsElement)).toBeCloseTo(minimapBounds.right, 0)
@@ -1445,7 +1835,6 @@ describe('MinimapElement', () => {
           })
         })
 
-
         describe('clicking on the open settings button again', () => {
           beforeEach(() => {
             mousedown(openQuickSettings)
@@ -1485,7 +1874,7 @@ describe('MinimapElement', () => {
         let [minimapPackage, pluginA, pluginB] = []
         beforeEach(() => {
           waitsForPromise(() => {
-            return atom.packages.activatePackage('minimap').then(function(pkg) {
+            return atom.packages.activatePackage('minimap').then((pkg) => {
               minimapPackage = pkg.mainModule
             })
           })
@@ -1493,9 +1882,9 @@ describe('MinimapElement', () => {
           runs(() => {
             class Plugin {
               active = false
-              activatePlugin() { this.active = true }
-              deactivatePlugin() { this.active = false }
-              isActive() { return this.active }
+              activatePlugin () { this.active = true }
+              deactivatePlugin () { this.active = false }
+              isActive () { return this.active }
             }
 
             pluginA = new Plugin()
@@ -1515,7 +1904,7 @@ describe('MinimapElement', () => {
         })
 
         it('creates one list item for each registered plugin', () => {
-          expect(quickSettingsElement.querySelectorAll('li').length).toEqual(5)
+          expect(quickSettingsElement.querySelectorAll('li').length).toEqual(6)
         })
 
         it('selects the first item of the list', () => {
@@ -1569,6 +1958,22 @@ describe('MinimapElement', () => {
               expect(atom.config.get('minimap.absoluteMode')).toEqual(!initial)
             })
           })
+
+          describe('on the adjust absolute mode height item', () => {
+            let [initial] = []
+            beforeEach(() => {
+              initial = atom.config.get('minimap.adjustAbsoluteModeHeight')
+              atom.commands.dispatch(quickSettingsElement, 'core:move-down')
+              atom.commands.dispatch(quickSettingsElement, 'core:move-down')
+              atom.commands.dispatch(quickSettingsElement, 'core:move-down')
+              atom.commands.dispatch(quickSettingsElement, 'core:move-down')
+              atom.commands.dispatch(quickSettingsElement, 'core:confirm')
+            })
+
+            it('toggles the code highlights on the minimap element', () => {
+              expect(atom.config.get('minimap.adjustAbsoluteModeHeight')).toEqual(!initial)
+            })
+          })
         })
 
         describe('core:move-down', () => {
@@ -1612,6 +2017,7 @@ describe('MinimapElement', () => {
 
           describe('reaching a separator', () => {
             beforeEach(() => {
+              atom.commands.dispatch(quickSettingsElement, 'core:move-up')
               atom.commands.dispatch(quickSettingsElement, 'core:move-up')
               atom.commands.dispatch(quickSettingsElement, 'core:move-up')
             })

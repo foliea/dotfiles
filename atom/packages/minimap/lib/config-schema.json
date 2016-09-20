@@ -35,6 +35,11 @@
     "default":true,
     "description":"If this option is enabled and Soft Wrap is checked then the Minimap max width is set to the Preferred Line Length value."
   },
+  "adjustMinimapWidthOnlyIfSmaller": {
+    "type":"boolean",
+    "default":true,
+    "description":"If this option and `adjustMinimapWidthToSoftWrap` are enabled the minimap width will never go past the limit sets by CSS. On the other hand, when disabled the minimap will expand to honor the preferred line width."
+  },
   "devicePixelRatioRounding":{
     "type":"boolean",
     "default":true,
@@ -78,6 +83,17 @@
     "default": true,
     "description": "Whether to offset the minimap canvas when scrolling to keep the scroll smooth. When `true` the minimap canvas will be offseted, resulting in a smoother scroll, but with the side-effect of a blurry minimap when the canvas is placed between pixels. When `false` the canvas will always stay at the same position, and will never look blurry, but the scroll will appear more jagged."
   },
+  "independentMinimapScroll": {
+    "type": "boolean",
+    "title": "Independent Minimap Scroll On Mouse Wheel Events",
+    "default": false,
+    "description": "When enabled, using the mouse wheel over the Minimap will make it scroll independently of the text editor. The Minimap will still sync with the editor whenever the editor is scrolled, but it will no longer relay the mouse wheel events to the editor."
+  },
+  "scrollSensitivity": {
+    "type": "number",
+    "default": 0.5,
+    "description": "The scrolling speed when the `Independent Minimap Scroll On Mouse Wheel Events` setting is enabled."
+  },
   "createPluginInDevMode":{
     "type":"boolean",
     "default":false
@@ -86,5 +102,15 @@
     "type":"boolean",
     "default":false,
     "description":"When enabled the text editor content will be able to flow below the minimap."
+  },
+  "adjustAbsoluteModeHeight":{
+    "type":"boolean",
+    "default":false,
+    "description":"When enabled and `Absolute Mode` is also enabled, the minimap height will be adjusted to only take the space required by the text editor content, leaving the space below triggering mouse events on the text editor. **Be aware this can have some impact on performances as the minimap canvases will be resized every time a change in the editor make its height change.**"
+  },
+  "ignoreWhitespacesInTokens": {
+    "type":"boolean",
+    "default":false,
+    "description":"When enabled, text editor tokens are rendered as plain blocks, with no regards to the whitespaces they contains."
   }
 }

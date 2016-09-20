@@ -18,10 +18,10 @@
 
   border-radius: @component-border-radius;
   box-sizing: border-box;
-  border: 1px solid darken(@bg, 12%);
+  border: 1px solid @stroke;
   transition: all .2s .1s;
-  height: ~"calc("@component-line-height ~"+ 2px)";
-  line-height: ~"calc("@component-line-height ~"- 2px)";
+  height: ~"calc("@component-line-height ~"+ 4px)";
+  line-height: ~"calc("@component-line-height ~"- 4px)";
 
   &.btn-xs {
     padding: 0 @space;
@@ -37,20 +37,23 @@
   }
 
   &:focus,
-  &:hover {
+  &:hover,
+  &:active {
     color: @fg;
+    border: 1px solid @stroke;
+  }
+  &:not([disabled]):focus,
+  &:not([disabled]):hover {
     background-position: 0 0;
     transition: all .1s;
-    border: 1px solid darken(@bg, 12%);
   }
-  &:active {
+  &:not([disabled]):active {
     color: @fg;
     background-image: linear-gradient(
       mix(#00D4FF, @bg-level1 , 3%) 0%,
       darken(@bg-level1, 6%) 50%,
       darken(@bg-level1, 12%) 100%);
     background-position: 0 100%;
-    border: 1px solid darken(@bg, 12%);
   }
   &.selected {
     color: @fg-selected;
@@ -60,16 +63,18 @@
       darken(@bg-level2 , 12%) 100%);
     background-size: auto 200%;
     background-position: 0 100%;
-    border: 1px solid darken(@bg, 12%);
     &:hover {
       color: @fg-selected;
+    }
+    &:not([disabled]):hover {
       background-position: 0 50%;
-      border: 1px solid darken(@bg, 12%);
     }
-    &:active {
+    &:not([disabled]):active {
       background-position: 0 0;
-      border: 1px solid darken(@bg, 12%);
     }
+  }
+  &[disabled] {
+    background: transparent;
   }
 }
 

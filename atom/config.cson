@@ -43,6 +43,7 @@
   minimap:
     plugins:
       "minimap-autohide": true
+      "minimap-autohideDecorationsZIndex": 0
   "project-quick-open": {}
   "release-notes":
     viewedVersion: "0.94.0"
