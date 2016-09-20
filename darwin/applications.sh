@@ -16,6 +16,7 @@ brew cask install \
     slack \
     transmission \
     virtualbox \
-    android-file-transfer
+    android-file-transfer \
+    docker
 
 echo "Applications installed successfully!"

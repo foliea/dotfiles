@@ -1,11 +1,11 @@
-.PHONY: all re install update clean test dependencies dev bash git vim atom
+.PHONY: all re prepare update clean test dependencies dev bash git vim atom
 
-all: install bash git vim atom
+all: prepare bash git vim atom
 
 re: clean all
 
-install:
-	scripts/install.sh
+prepare:
+	scripts/prepare.sh
 
 update:
 	scripts/update.sh
@@ -33,4 +33,3 @@ vim:
 
 atom:
 	ln -s $(PWD)/atom/ $(HOME)/.atom
-
