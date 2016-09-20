@@ -1,0 +1,249 @@
+@modified-icon-width: @component-icon-size / 2;
+@tab-top-padding: @space/3;
+@tab-max-width: 160px;
+@tab-min-width: 60px;
+
+@tab-text-color: @fg-subtle;
+
+.close-icon-mixin() {
+  margin-top: -8px;
+  margin-right: -6px;
+  top: 50%;
+  right: @scale-a-l * 1rem;
+  width: 12px;
+  height: 12px;
+  border: none !important; //overrule default modified indicator
+  background: transparent;
+  opacity: 0;
+
+  &:before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    line-height: 1;
+    color: inherit;
+  }
+
+  &:hover {
+    color: @ui-accent;
+    opacity: 1;
+  }
+}
+
+.tab-bar {
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background: @tab-bar-background-color;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab {
+    max-width: @tab-max-width;
+    height: ~"calc("@tab-height ~"- 4px)";
+    line-height: ~"calc("@tab-height ~"- 4px)";
+    font-size: @scale-a-m * 1rem;
+    padding: 0;
+    margin: 0;
+    color: @tab-text-color;
+    background: transparent;
+    border-bottom: none;
+    border-top: none;
+    text-align: center;
+
+    &:hover {
+      color: @base-fg;
+      background: fade(@level-3-bg, 30%);
+      .close-icon {
+        opacity: 1;
+        color: @base-fg;
+      }
+    }
+
+    .title {
+      padding: 0 20px 0 @space;
+    }
+
+    .close-icon {
+      .close-icon-mixin();
+    }
+  }
+
+  .tab.modified {
+    .close-icon:before {
+      content: "\f052";
+    }
+    &:not(:hover) .close-icon {
+      .close-icon-mixin();
+      opacity: 1;
+      transform: scale(1);
+      &:before {
+        display: block; // overrule default style
+      }
+    }
+    &:hover .close-icon {
+      color: @base-fg;
+      transform: scale(1);
+
+      &:hover {
+        color: @ui-accent;
+      }
+    }
+  }
+
+  .tab.is-dragging {
+    .close-icon,
+    &:before {
+      visibility: hidden;
+    }
+    &::after {
+      background: darken(@tab-background-color, 6%);
+      border-color: transparent;
+      opacity: .5;
+    }
+  }
+
+  .placeholder {
+    margin: 0;
+    height: @tab-height + @tab-top-padding;
+    background: @ui-accent;
+    pointer-events: none;
+    &:after {
+      display: none;
+    }
+
+    &:last-child {
+      margin-left: -2px;
+
+      &:after {
+        margin-left: -10px;
+        border-color: transparent @ui-accent transparent transparent;
+      }
+    }
+  }
+}
+
+atom-pane .tab-bar .tab.active {
+  z-index: 1;
+  background: fade(@level-3-bg, 60%);
+  min-width: @tab-min-width;
+  border-color: @stroke;
+  .title {
+    padding-right: 20px; //overrule default
+  }
+  .close-icon {
+    opacity: 1;
+  }
+}
+
+// only show active tab in the active pane
+atom-pane.active .tab-bar .tab.active {
+  background-color: @tab-background-color-active;
+  color: contrast(@ui-theme-color, @base-fg, @level-1-bg);
+
+  .close-icon {
+    color: contrast(@ui-theme-color, @base-fg, @level-1-bg);
+  }
+
+  &:hover .close-icon {
+    color: contrast(@ui-theme-color, @base-fg, @level-1-bg);
+  }
+  &:hover .close-icon:hover {
+    color: @ui-accent;
+  }
+
+  &:not([data-type="TextEditor"]) {
+    background-color: @level-3-bg;
+    color: contrast(@level-3-bg, @base-fg, @level-1-bg);
+    & .close-icon {
+      color:contrast(@level-3-bg, @base-fg, @level-1-bg);
+    }
+    &:hover .close-icon {
+      color: contrast(@level-3-bg, @base-fg, @level-1-bg);
+
+      &:hover {
+        color: @ui-accent;
+      }
+    }
+    &[data-type="MarkdownPreviewView"] {
+      background-color: #fff;
+      color: contrast(#fff, @base-fg, @level-1-bg);
+      & .close-icon {
+        color:contrast(#fff, @base-fg, @level-1-bg);
+      }
+      &:hover .close-icon {
+        color: contrast(#fff, @base-fg, @level-1-bg);
+
+        &:hover {
+          color: @ui-accent;
+        }
+      }
+    }
+    &[data-type="GitControlView"] {
+      background-color: @level-2-bg;
+      color: contrast(@level-2-bg, @base-fg, @level-1-bg);
+      & .close-icon {
+        color:contrast(@level-2-bg, @base-fg, @level-1-bg);
+      }
+      &:hover .close-icon {
+        color: contrast(@level-2-bg, @base-fg, @level-1-bg);
+
+        &:hover {
+          color: @ui-accent;
+        }
+      }
+    }
+  }
+}
+
+
+body[data-isotope-ui-spacious='true'] {
+  .tab-bar {
+    height: ~"calc("@tab-height + @tab-top-padding ~"+ 2px)" !important;
+    &:before {
+      top: ~"calc("@tab-height + @tab-top-padding ~"+ 2px)" !important;
+    }
+    .tab {
+      height: ~"calc("@tab-height ~"+ 2px)" !important;
+      line-height: ~"calc("@tab-height ~"+ 1px)" !important;
+    }
+  }
+  atom-pane .tab-bar .tab .title:before {
+    line-height: pow(@scale-b, 4) * 1rem !important;
+  }
+  .tab-bar .tab .close-icon {
+    margin-top: -5px !important;
+  }
+}
+
+body:not([data-isotope-ui-minimal='true']) .tab-bar {
+  height: ~"calc("@tab-height + @tab-top-padding ~"- 2px)";
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: ~"calc("@tab-height + @tab-top-padding ~"- 2px)";
+    left: 0;
+    width: 100%;
+    height: 1px;
+    margin-top: -1px;
+    background: @stroke;
+    z-index: 1;
+  }
+  .tab {
+    top: @tab-top-padding;
+    border-top-left-radius: @component-border-radius * 1.5;
+    border-top-right-radius: @component-border-radius * 1.5;
+    border: 1px solid transparent;
+    height: ~"calc("@tab-height + @tab-top-padding ~"- 1px)";
+  }
+}
+
+body[data-isotope-ui-minimal='true'] {
+  .tab-bar .tab .close-icon {
+    margin-top: -6px !important;
+  }
+}

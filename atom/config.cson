@@ -1,0 +1,60 @@
+"*":
+  autoprefixer: {}
+  "circle-ci": {}
+  core:
+    ignoredNames: [
+      ".git"
+      ".svn"
+      ".DS_Store"
+      ".o"
+      ".keep"
+    ]
+    projectHome: "/Users/folie_a/Dev/"
+    themes: [
+      "isotope-ui"
+      "base16-tomorrow-dark-theme"
+    ]
+  editor:
+    fontSize: 11
+    invisibles: {}
+    showIndentGuide: true
+    softWrap: true
+  "exception-reporting":
+    userId: "d4314992-caba-a928-cb2e-fe3bf47b28fc"
+  "isotope-ui":
+    customBackgroundColorPicker:
+      red: 49
+      green: 56
+      blue: 102
+      alpha: 1
+    fontFamily: "System Default"
+    lowContrastTooltip: true
+  linter: {}
+  "linter-ruby": {}
+  "markdown-preview":
+    grammars: [
+      "source.gfm"
+      "source.litcoffee"
+      "text.plain"
+      "text.plain.null-grammar"
+    ]
+  metrics:
+    userId: "5e9f6bc91e3b3925689202f424ab8f33686c1114"
+  minimap:
+    plugins:
+      "minimap-autohide": true
+  "project-quick-open": {}
+  "release-notes":
+    viewedVersion: "0.94.0"
+  "spell-check":
+    grammars: [
+      "source.gfm"
+      "text.git-commit"
+      "text.plain"
+      "text.plain.null-grammar"
+    ]
+  term2: {}
+  "tree-view":
+    hideIgnoredNames: true
+  welcome:
+    showOnStartup: false

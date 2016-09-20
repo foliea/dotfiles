@@ -1,0 +1,15 @@
+ul.background-message {
+    color: @fg-faded;
+    font-size: @scale-b-xxl * 1rem;
+}
+atom-notifications {
+  atom-notification {
+    &:first-child.has-close .message {
+      padding-right: 12rem;
+    }
+    &:only-child.has-close .message,
+    &.has-close .message {
+      padding-right: 4rem;
+    }
+  }
+}

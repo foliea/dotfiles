@@ -1,0 +1,111 @@
+.project-root(@height) {
+  li.project-root,
+  li.project-root:not(.list-nested-item),
+  li.project-root.list-nested-item > .list-item {
+    //align it with tab titles
+    min-height: @height;
+    line-height: @height;
+  }
+  li.project-root.selected:before,
+  li.project-root:not(.list-nested-item).selected:before,
+  li.project-root.list-nested-item.selected > .list-item:before {
+    height: @height;
+    min-height: @height;
+    line-height: @height;
+  }
+}
+
+.tree-view.list-tree {
+
+  .li-mixin (@fg-subtle, @scale-b-xl * 1rem);
+
+  padding: @space/3 0 0 0;
+
+  li {
+    &.selected,
+    &:not(.list-nested-item).selected,
+    &.list-nested-item.selected > .list-item {
+      color: @base-fg;
+      &:before {
+        border-top-left-radius: @component-border-radius;
+        border-bottom-left-radius: @component-border-radius;
+      }
+    }
+
+    //add these variations in here as well for specicifty
+    .li-variation-mixin ( status-modified, @fg-modified, lighten(@fg-modified, 12%) );
+    .li-variation-mixin ( status-added,    @fg-added,    lighten(@fg-added, 12%) );
+  }
+
+  .project-root(~"calc("@tab-height ~"- 2px)");
+
+  // hide pointer icons in treeview
+  &.has-collapsable-children {
+    .list-nested-item > .list-item:before {
+      display: none;
+    }
+    .list-nested-item > .list-tree > li,
+    .list-nested-item > .list-group > li {
+      margin-left: 0;
+    }
+  }
+
+  // correct git icon size
+  .icon-file-directory[data-name=".git"] {
+    &:before {
+      top: 2px;
+      font-size: medium;
+    }
+  }
+
+  &:focus {
+    li {
+      &.selected,
+      &:not(.list-nested-item).selected,
+      &.list-nested-item.selected > .list-item {
+        &:before {
+          background: @level-1-bg;
+        }
+      }
+    }
+  }
+}
+
+.tree-view-resizer {
+  padding-left: @space/3;
+}
+
+.right {
+  .tree-view.list-tree {
+    li {
+      &.selected,
+      &:not(.list-nested-item).selected,
+      &.list-nested-item.selected > .list-item {
+        &:before {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+          border-top-right-radius: @component-border-radius;
+          border-bottom-right-radius: @component-border-radius;
+        }
+      }
+    }
+  }
+  .tree-view-resizer {
+    padding-left: 0;
+    padding-right: @space/3;
+  }
+}
+
+body[data-isotope-ui-spacious='true'] .tree-view.list-tree {
+  .project-root(~"calc("@component-line-height ~" + 12px)");
+}
+
+body[data-isotope-ui-minimal='true'] {
+  .tree-view-resizer {
+    padding-left: 0;
+  }
+  .tree-view.list-tree {
+    padding-top: 0;
+    .project-root(~"calc("@tab-height ~"- 4px)");
+  }
+}

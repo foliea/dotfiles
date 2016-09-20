@@ -6,6 +6,7 @@ brew reinstall caskroom/cask/brew-cask
 brew cask install \
     iterm2 \
     macvim \
+    atom \
     google-chrome \
     google-drive \
     caffeine \
