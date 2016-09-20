@@ -21,7 +21,8 @@ brew reinstall git \
                redis \
                ctags \
                phantomjs \
-               tutum
+               tutum \
+               heroku-toolbelt
 
 brew link openssl --force
 
