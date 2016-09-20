@@ -182,47 +182,38 @@ export default class Minimap {
       this.adapter = new LegacyAdater(this.textEditor)
     }
 
-    if (this.standAlone) {
-      /**
-       * When in stand-alone mode, a Minimap doesn't scroll and will use this
-       * value instead.
-       *
-       * @type {number}
-       * @access private
-       */
-      this.scrollTop = 0
-    }
+    /**
+     * When in stand-alone or independent scrolling mode, this value can be used
+     * instead of the computed scroll.
+     *
+     * @type {number}
+     * @access private
+     */
+    this.scrollTop = 0
 
-    let subs = this.subscriptions
-    subs.add(atom.config.observe('editor.scrollPastEnd', (scrollPastEnd) => {
-      this.scrollPastEnd = scrollPastEnd
-      this.adapter.scrollPastEnd = this.scrollPastEnd
-      this.emitter.emit('did-change-config')
+    const subs = this.subscriptions
+    let configSubscription = this.subscribeToConfig()
+
+    subs.add(configSubscription)
+
+    subs.add(this.textEditor.onDidChangeGrammar(() => {
+      subs.remove(configSubscription)
+      configSubscription.dispose()
+
+      configSubscription = this.subscribeToConfig()
+      subs.add(configSubscription)
     }))
-    subs.add(atom.config.observe('minimap.charHeight', (configCharHeight) => {
-      this.configCharHeight = configCharHeight
-      this.emitter.emit('did-change-config')
-    }))
-    subs.add(atom.config.observe('minimap.charWidth', (configCharWidth) => {
-      this.configCharWidth = configCharWidth
-      this.emitter.emit('did-change-config')
-    }))
-    subs.add(atom.config.observe('minimap.interline', (configInterline) => {
-      this.configInterline = configInterline
-      this.emitter.emit('did-change-config')
-    }))
-    // cdprr is shorthand for configDevicePixelRatioRounding
-    subs.add(atom.config.observe(
-      'minimap.devicePixelRatioRounding',
-      (cdprr) => {
-        this.configDevicePixelRatioRounding = cdprr
-        this.emitter.emit('did-change-config')
-      }
-    ))
 
     subs.add(this.adapter.onDidChangeScrollTop(() => {
-      if (!this.standAlone) {
+      if (!this.standAlone && !this.ignoreTextEditorScroll && !this.inChangeScrollTop) {
+        this.inChangeScrollTop = true
+        this.updateScrollTop()
         this.emitter.emit('did-change-scroll-top', this)
+        this.inChangeScrollTop = false
+      }
+
+      if (this.ignoreTextEditorScroll) {
+        this.ignoreTextEditorScroll = false
       }
     }))
     subs.add(this.adapter.onDidChangeScrollLeft(() => {
@@ -243,7 +234,11 @@ export default class Minimap {
     resulting in extra lines appearing at the end of the minimap.
     Forcing a whole repaint to fix that bug is suboptimal but works.
     */
-    subs.add(this.textEditor.displayBuffer.onDidTokenize(() => {
+    const tokenizedBuffer = this.textEditor.tokenizedBuffer
+      ? this.textEditor.tokenizedBuffer
+      : this.textEditor.displayBuffer.tokenizedBuffer
+
+    subs.add(tokenizedBuffer.onDidTokenize(() => {
       this.emitter.emit('did-change-config')
     }))
   }
@@ -364,6 +359,57 @@ export default class Minimap {
   }
 
   /**
+   * Registers to the config changes for the current editor scope.
+   *
+   * @return {Disposable} the disposable to dispose all the registered events
+   * @access private
+   */
+  subscribeToConfig () {
+    const subs = new CompositeDisposable()
+    const opts = {scope: this.textEditor.getRootScopeDescriptor()}
+
+    subs.add(atom.config.observe('editor.scrollPastEnd', opts, (scrollPastEnd) => {
+      this.scrollPastEnd = scrollPastEnd
+      this.adapter.scrollPastEnd = this.scrollPastEnd
+      this.emitter.emit('did-change-config')
+    }))
+    subs.add(atom.config.observe('minimap.charHeight', opts, (configCharHeight) => {
+      this.configCharHeight = configCharHeight
+      this.updateScrollTop()
+      this.emitter.emit('did-change-config')
+    }))
+    subs.add(atom.config.observe('minimap.charWidth', opts, (configCharWidth) => {
+      this.configCharWidth = configCharWidth
+      this.updateScrollTop()
+      this.emitter.emit('did-change-config')
+    }))
+    subs.add(atom.config.observe('minimap.interline', opts, (configInterline) => {
+      this.configInterline = configInterline
+      this.updateScrollTop()
+      this.emitter.emit('did-change-config')
+    }))
+    subs.add(atom.config.observe('minimap.independentMinimapScroll', opts, (independentMinimapScroll) => {
+      this.independentMinimapScroll = independentMinimapScroll
+      this.updateScrollTop()
+    }))
+    subs.add(atom.config.observe('minimap.scrollSensitivity', opts, (scrollSensitivity) => {
+      this.scrollSensitivity = scrollSensitivity
+    }))
+    // cdprr is shorthand for configDevicePixelRatioRounding
+    subs.add(atom.config.observe(
+      'minimap.devicePixelRatioRounding',
+      opts,
+      (cdprr) => {
+        this.configDevicePixelRatioRounding = cdprr
+        this.updateScrollTop()
+        this.emitter.emit('did-change-config')
+      }
+    ))
+
+    return subs
+  }
+
+  /**
    * Returns `true` when the current Minimap is a stand-alone minimap.
    *
    * @return {boolean} whether this Minimap is in stand-alone mode or not.
@@ -442,7 +488,10 @@ export default class Minimap {
    *
    * @param {number} scrollTop the new scroll top value
    */
-  setTextEditorScrollTop (scrollTop) { this.adapter.setScrollTop(scrollTop) }
+  setTextEditorScrollTop (scrollTop, ignoreTextEditorScroll = false) {
+    this.ignoreTextEditorScroll = ignoreTextEditorScroll
+    this.adapter.setScrollTop(scrollTop)
+  }
 
   /**
    * Returns the `TextEditor` scroll left value.
@@ -571,6 +620,7 @@ export default class Minimap {
   setScreenHeightAndWidth (height, width) {
     this.height = height
     this.width = width
+    this.updateScrollTop()
   }
 
   /**
@@ -738,6 +788,13 @@ export default class Minimap {
   }
 
   /**
+   * Returns true when the `independentMinimapScroll` setting have been enabled.
+   *
+   * @return {boolean} whether the minimap can scroll independently
+   */
+  scrollIndependentlyOnMouseWheel () { return this.independentMinimapScroll }
+
+  /**
    * Returns the current scroll of the Minimap.
    *
    * The Minimap can scroll only when its height is greater that the height
@@ -746,13 +803,9 @@ export default class Minimap {
    * @return {number} the scroll top of the Minimap
    */
   getScrollTop () {
-    if (this.standAlone) {
-      return this.scrollTop
-    } else {
-      return Math.abs(
-        this.getCapedTextEditorScrollRatio() * this.getMaxScrollTop()
-      )
-    }
+    return this.standAlone || this.independentMinimapScroll
+      ? this.scrollTop
+      : this.getScrollTopFromEditor()
   }
 
   /**
@@ -762,10 +815,44 @@ export default class Minimap {
    * @emits {did-change-scroll-top} if the Minimap's stand-alone mode is enabled
    */
   setScrollTop (scrollTop) {
-    this.scrollTop = scrollTop
-    if (this.standAlone) {
+    this.scrollTop = Math.max(0, Math.min(this.getMaxScrollTop(), scrollTop))
+
+    if (this.standAlone || this.independentMinimapScroll) {
       this.emitter.emit('did-change-scroll-top', this)
     }
+  }
+
+  /**
+   * Returns the minimap scroll as a ration between 0 and 1.
+   *
+   * @return {number} the minimap scroll ratio
+   */
+  getScrollRatio () {
+    return this.getScrollTop() / this.getMaxScrollTop()
+  }
+
+  /**
+   * Updates the scroll top value with the one computed from the text editor
+   * when the minimap is in the independent scrolling mode.
+   *
+   * @access private
+   */
+  updateScrollTop () {
+    if (this.independentMinimapScroll) {
+      this.setScrollTop(this.getScrollTopFromEditor())
+      this.emitter.emit('did-change-scroll-top', this)
+    }
+  }
+
+  /**
+   * Returns the scroll top as computed from the text editor scroll top.
+   *
+   * @return {number} the computed scroll top value
+   */
+  getScrollTopFromEditor () {
+    return Math.abs(
+      this.getCapedTextEditorScrollRatio() * this.getMaxScrollTop()
+    )
   }
 
   /**
@@ -783,6 +870,24 @@ export default class Minimap {
    * @return {boolean} whether this Minimap can scroll or not
    */
   canScroll () { return this.getMaxScrollTop() > 0 }
+
+  /**
+   * Updates the minimap scroll top value using a mouse event when the
+   * independent scrolling mode is enabled
+   *
+   * @param  {MouseEvent} event the mouse wheel event
+   * @access private
+   */
+  onMouseWheel (event) {
+    if (!this.canScroll()) { return }
+
+    const {wheelDeltaY} = event
+    const previousScrollTop = this.getScrollTop()
+    const updatedScrollTop = previousScrollTop - Math.round(wheelDeltaY * this.scrollSensitivity)
+
+    event.preventDefault()
+    this.setScrollTop(updatedScrollTop)
+  }
 
   /**
    * Delegates to `TextEditor#getMarker`.

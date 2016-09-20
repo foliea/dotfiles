@@ -120,7 +120,7 @@ describe('Minimap', () => {
     it('adjust the scrolling ratio', () => {
       editorElement.setScrollTop(editorElement.getScrollHeight())
 
-      let maxScrollTop = editorElement.getScrollHeight() - editorElement.getHeight() - (editorElement.getHeight() - 3 * editor.displayBuffer.getLineHeightInPixels())
+      let maxScrollTop = editorElement.getScrollHeight() - editorElement.getHeight() - (editorElement.getHeight() - 3 * editor.getLineHeightInPixels())
 
       expect(minimap.getTextEditorScrollRatio()).toEqual(editorElement.getScrollTop() / maxScrollTop)
     })
@@ -174,7 +174,7 @@ describe('Minimap', () => {
   })
 
   describe('when the editor is scrolled', () => {
-    let [largeLineCount, editorHeight, editorScrollRatio] = []
+    let [largeLineCount, editorScrollRatio] = []
 
     beforeEach(() => {
       // Same here, without a view, the getScrollWidth method always returns 1
@@ -187,7 +187,6 @@ describe('Minimap', () => {
       editorElement.setScrollLeft(200)
 
       largeLineCount = editor.getScreenLineCount()
-      editorHeight = largeLineCount * editor.getLineHeightInPixels()
       editorScrollRatio = editorElement.getScrollTop() / (editorElement.getScrollHeight() - editorElement.getHeight())
     })
 
@@ -246,11 +245,62 @@ describe('Minimap', () => {
 
   describe('destroying the text editor', () => {
     it('destroys the model', () => {
-      spyOn(minimap,'destroy')
+      spyOn(minimap, 'destroy')
 
       editor.destroy()
 
       expect(minimap.destroy).toHaveBeenCalled()
+    })
+  })
+
+  describe('with scoped settings', () => {
+    beforeEach(() => {
+      waitsForPromise(() => {
+        return atom.packages.activatePackage('language-javascript')
+      })
+
+      runs(() => {
+        const opts = {scopeSelector: '.source.js'}
+
+        atom.config.set('minimap.charHeight', 8, opts)
+        atom.config.set('minimap.charWidth', 4, opts)
+        atom.config.set('minimap.interline', 2, opts)
+
+        editor.setGrammar(atom.grammars.grammarForScopeName('source.js'))
+      })
+    })
+
+    it('honors the scoped settings for the current editor new grammar', () => {
+      expect(minimap.getCharHeight()).toEqual(8)
+      expect(minimap.getCharWidth()).toEqual(4)
+      expect(minimap.getInterline()).toEqual(2)
+    })
+  })
+
+  describe('when independentMinimapScroll is true', () => {
+    let editorScrollRatio
+    beforeEach(() => {
+      editor.setText(largeSample)
+      editorElement.setScrollTop(1000)
+      editorScrollRatio = editorElement.getScrollTop() / (editorElement.getScrollHeight() - editorElement.getHeight())
+
+      atom.config.set('minimap.independentMinimapScroll', true)
+    })
+
+    it('ignores the scroll computed from the editor and return the one of the minimap instead', () => {
+      expect(minimap.getScrollTop()).toEqual(editorScrollRatio * minimap.getMaxScrollTop())
+
+      minimap.setScrollTop(200)
+
+      expect(minimap.getScrollTop()).toEqual(200)
+    })
+
+    describe('scrolling the editor', () => {
+      it('changes the minimap scroll top', () => {
+        editorElement.setScrollTop(2000)
+
+        expect(minimap.getScrollTop()).not.toEqual(editorScrollRatio * minimap.getMaxScrollTop())
+      })
     })
   })
 
@@ -271,7 +321,7 @@ describe('Minimap', () => {
       changeSpy = jasmine.createSpy('didChange')
       minimap.onDidChangeDecorationRange(changeSpy)
 
-      marker = minimap.markBufferRange([[0,6], [1,11]])
+      marker = minimap.markBufferRange([[0, 6], [1, 11]])
       decoration = minimap.decorateMarker(marker, {type: 'highlight', class: 'dummy'})
     })
 
@@ -289,7 +339,7 @@ describe('Minimap', () => {
       beforeEach(() => {
         let markerChangeSpy = jasmine.createSpy('marker-did-change')
         marker.onDidChange(markerChangeSpy)
-        marker.setBufferRange([[0,6], [3,11]])
+        marker.setBufferRange([[0, 6], [3, 11]])
 
         waitsFor(() => { return markerChangeSpy.calls.length > 0 })
       })
@@ -357,7 +407,7 @@ describe('Minimap', () => {
       })
 
       it('prevents the creation of new decorations', () => {
-        marker = editor.markBufferRange([[0,6], [0,11]])
+        marker = editor.markBufferRange([[0, 6], [0, 11]])
         decoration = minimap.decorateMarker(marker, {type: 'highlight', class: 'dummy'})
 
         expect(decoration).toBeUndefined()
@@ -371,18 +421,17 @@ describe('Minimap', () => {
     beforeEach(() => {
       editor.setText(largeSample)
 
-      let createDecoration = function(type, range) {
-        let decoration
+      function createDecoration (type, range) {
         let marker = minimap.markBufferRange(range)
-        decoration = minimap.decorateMarker(marker, {type})
+        minimap.decorateMarker(marker, {type})
       }
 
       createDecoration('highlight', [[6, 0], [11, 0]])
       createDecoration('highlight', [[7, 0], [8, 0]])
-      createDecoration('highlight-over', [[1, 0], [2,0]])
-      createDecoration('line', [[3,0], [4,0]])
-      createDecoration('line', [[12,0], [12,0]])
-      createDecoration('highlight-under', [[0,0], [10,1]])
+      createDecoration('highlight-over', [[1, 0], [2, 0]])
+      createDecoration('line', [[3, 0], [4, 0]])
+      createDecoration('line', [[12, 0], [12, 0]])
+      createDecoration('highlight-under', [[0, 0], [10, 1]])
 
       decorations = minimap.decorationsByTypeThenRows(0, 12)
     })
@@ -557,6 +606,7 @@ describe('Stand alone minimap', () => {
   it('has a scroll top that is not bound to the text editor', () => {
     let scrollSpy = jasmine.createSpy('didScroll')
     minimap.onDidChangeScrollTop(scrollSpy)
+    minimap.setScreenHeightAndWidth(100, 100)
 
     editor.setText(largeSample)
     editorElement.setScrollTop(1000)
@@ -593,7 +643,7 @@ describe('Stand alone minimap', () => {
   })
 
   it('returns the rounding number of devicePixelRatio', () => {
-    devicePixelRatio = 1.25
+    window.devicePixelRatio = 1.25
 
     minimap.setDevicePixelRatioRounding(true)
 
@@ -602,7 +652,7 @@ describe('Stand alone minimap', () => {
   })
 
   it('prevents the rounding number of devicePixelRatio', () => {
-    devicePixelRatio = 1.25
+    window.devicePixelRatio = 1.25
 
     minimap.setDevicePixelRatioRounding(false)
 

@@ -1,7 +1,6 @@
 'use babel'
 
 const Interact = require('interact.js')
-const Clipboard = require('clipboard')
 import {CompositeDisposable} from 'atom'
 import {Message} from './message-element'
 
@@ -32,7 +31,7 @@ export default class BottomPanel {
       })
     element.addEventListener('keydown', function(e) {
       if (e.which === 67 && e.ctrlKey) {
-        Clipboard.writeText(getSelection().toString())
+        atom.clipboard.write(getSelection().toString())
       }
     })
 

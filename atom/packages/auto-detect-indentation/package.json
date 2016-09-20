@@ -1,7 +1,7 @@
 {
   "name": "auto-detect-indentation",
   "main": "./lib/auto-detect-indentation",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Automatically detect indentation of opened files.",
   "author": {
     "name": "Jason Tokoph",
@@ -32,10 +32,10 @@
     "url": "https://github.com/jtokoph/auto-detect-indentation/issues"
   },
   "homepage": "https://github.com/jtokoph/auto-detect-indentation#readme",
-  "_id": "auto-detect-indentation@1.0.0",
-  "_shasum": "ae865597048be5ad91850cb0805ba26d08c9e247",
-  "_resolved": "file:../d-11634-74116-1yb3hdl/package.tgz",
-  "_from": "../d-11634-74116-1yb3hdl/package.tgz",
+  "_id": "auto-detect-indentation@1.1.0",
+  "_shasum": "42cc1b805816121342dde89373b0fa03f806ff6f",
+  "_resolved": "file:../d-116529-55038-1ba7sna/package.tgz",
+  "_from": "../d-116529-55038-1ba7sna/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [

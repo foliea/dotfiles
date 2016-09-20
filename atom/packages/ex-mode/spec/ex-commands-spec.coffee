@@ -496,27 +496,52 @@ describe "the commands", ->
       submitNormalModeInputText('tabnew')
       expect(atom.workspace.open).toHaveBeenCalled()
 
-  describe ":split", ->
-    it "splits the current file upwards", ->
-      pane = atom.workspace.getActivePane()
-      spyOn(pane, 'splitUp').andCallThrough()
-      filePath = projectPath('split')
-      editor.saveAs(filePath)
+    it "opens a new tab for editing when provided an argument", ->
+      spyOn(Ex, 'tabnew').andCallThrough()
+      spyOn(Ex, 'tabedit')
       keydown(':')
-      submitNormalModeInputText('split')
-      expect(pane.splitUp).toHaveBeenCalled()
+      submitNormalModeInputText('tabnew tabnew-test')
+      expect(Ex.tabedit)
+        .toHaveBeenCalledWith(Ex.tabnew.calls[0].args...)
+
+  describe ":split", ->
+    it "splits the current file upwards/downward", ->
+      pane = atom.workspace.getActivePane()
+      if atom.config.get('ex-mode.splitbelow')
+        spyOn(pane, 'splitDown').andCallThrough()
+        filePath = projectPath('split')
+        editor.saveAs(filePath)
+        keydown(':')
+        submitNormalModeInputText('split')
+        expect(pane.splitDown).toHaveBeenCalled()
+      else
+        spyOn(pane, 'splitUp').andCallThrough()
+        filePath = projectPath('split')
+        editor.saveAs(filePath)
+        keydown(':')
+        submitNormalModeInputText('split')
+        expect(pane.splitUp).toHaveBeenCalled()
       # FIXME: Should test whether the new pane contains a TextEditor
       #        pointing to the same path
 
   describe ":vsplit", ->
-    it "splits the current file to the left", ->
-      pane = atom.workspace.getActivePane()
-      spyOn(pane, 'splitLeft').andCallThrough()
-      filePath = projectPath('vsplit')
-      editor.saveAs(filePath)
-      keydown(':')
-      submitNormalModeInputText('vsplit')
-      expect(pane.splitLeft).toHaveBeenCalled()
+    it "splits the current file to the left/right", ->
+      if atom.config.get('ex-mode.splitright')
+        pane = atom.workspace.getActivePane()
+        spyOn(pane, 'splitRight').andCallThrough()
+        filePath = projectPath('vsplit')
+        editor.saveAs(filePath)
+        keydown(':')
+        submitNormalModeInputText('vsplit')
+        expect(pane.splitLeft).toHaveBeenCalled()
+      else
+        pane = atom.workspace.getActivePane()
+        spyOn(pane, 'splitLeft').andCallThrough()
+        filePath = projectPath('vsplit')
+        editor.saveAs(filePath)
+        keydown(':')
+        submitNormalModeInputText('vsplit')
+        expect(pane.splitLeft).toHaveBeenCalled()
       # FIXME: Should test whether the new pane contains a TextEditor
       #        pointing to the same path
 
@@ -529,6 +554,11 @@ describe "the commands", ->
       keydown(':')
       submitNormalModeInputText('delete')
       expect(editor.getText()).toEqual('abc\ndef\njkl')
+
+    it "copies the deleted text", ->
+      keydown(':')
+      submitNormalModeInputText('delete')
+      expect(atom.clipboard.read()).toEqual('ghi\n')
 
     it "deletes the lines in the given range", ->
       processedOpStack = false
@@ -584,6 +614,21 @@ describe "the commands", ->
       atom.commands.dispatch(editorElement, 'ex-mode:open')
       submitNormalModeInputText(':%substitute/abc/ghi/ig')
       expect(editor.getText()).toEqual('ghiaghi\ndefdDEF\nghiaghi')
+
+    describe ":yank", ->
+      beforeEach ->
+        editor.setText('abc\ndef\nghi\njkl')
+        editor.setCursorBufferPosition([2, 0])
+
+      it "yanks the current line", ->
+        keydown(':')
+        submitNormalModeInputText('yank')
+        expect(atom.clipboard.read()).toEqual('ghi\n')
+
+      it "yanks the lines in the given range", ->
+        keydown(':')
+        submitNormalModeInputText('1,2yank')
+        expect(atom.clipboard.read()).toEqual('abc\ndef\n')
 
     describe "illegal delimiters", ->
       test = (delim) ->

@@ -1,8 +1,9 @@
 .status-bar {
 
-  height: ~"calc("@component-line-height ~"+ 1px)";
-  line-height: @component-line-height;
+  height: ~"calc("@component-line-height ~"+ 3px)";
+  line-height: ~"calc("@component-line-height ~"+ 2px)";
   background: @tool-panel-background-color;
+  border: none;
   font-size: 1rem;
 
   > * {
@@ -15,9 +16,4 @@
   .status-bar-right .inline-block {
     vertical-align: top;
   }
-}
-
-body[data-isotope-ui-spacious='true'] .status-bar {
-  height: round(pow(@scale-b, 4) * 1rem);
-  line-height: round(pow(@scale-b, 4) * 1rem);
 }

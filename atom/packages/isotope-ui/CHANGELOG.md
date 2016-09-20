@@ -1,3 +1,16 @@
+# 2.7.0 - Atom 1.1.0
+* Removes Markdown customizations that are now integrated into core
+
+# 2.6.0 - Fresh up
+* Back on track to remain the cleanest UI for Atom!
+* Lots of little tweaks and tucks.
+* Now defaults to the system UI font so it looks awesome everywhere. Packaged fonts still available in settings!
+* Spacious mode was constantly 'breaking' so it's gone. Sorry!
+
+# 2.5.0 - Markdown
+* The Markdown Preview tab now has a styling to match the UI.
+* Lots of little tweaks
+
 # 2.4.0 - Minimal mode!
 * Added a truly minimal layout mode!
 * Removed some of the transitions to make it feel more snappy

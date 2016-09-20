@@ -4,7 +4,8 @@
   The following hack clears the require cache of all the paths to the minimap when this file is laoded. It should prevents errors of partial reloading after an update.
  */
 import path from 'path'
-if (!atom.inSpecMode()) {
+
+if (!atom.inSpecMode()) {
   Object.keys(require.cache).filter((p) => {
     return p !== __filename && p.indexOf(path.resolve(__dirname, '..') + path.sep) > -1
   }).forEach((p) => {
@@ -253,6 +254,17 @@ class Main {
    */
   onDidDeactivatePlugin (callback) {
     return this.emitter.on('did-deactivate-plugin', callback)
+  }
+
+  /**
+   * Registers a callback to listen to the `did-change-plugin-order` event of
+   * the package.
+   *
+   * @param  {function(event:Object):void} callback the callback function
+   * @return {Disposable} a disposable to stop listening to the event
+   */
+  onDidChangePluginOrder (callback) {
+    return this.emitter.on('did-change-plugin-order', callback)
   }
 
   /**
