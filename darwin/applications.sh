@@ -10,10 +10,8 @@ brew cask install \
     google-chrome \
     google-drive \
     caffeine \
-    skype \
     vlc \
     unrarx \
-    slack \
     transmission \
     virtualbox \
     android-file-transfer \
