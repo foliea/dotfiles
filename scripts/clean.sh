@@ -6,7 +6,6 @@ for file in gitconfig \
             bashrc \
             vimrc \
             bash-git-prompt \
-            atom \
             vim \
             vim-go
 do

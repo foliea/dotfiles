@@ -17,19 +17,7 @@ brew reinstall git \
                curl \
                wget \
                bash-completion \
-               postgres \
-               redis \
                ctags \
-               phantomjs \
-               tutum \
-               heroku-toolbelt
+               phantomjs
 
 brew link openssl --force
-
-# Install applications
-read -p "Also install applications? (y/n) " choice
-case "$choice" in
-    y|Y ) eval ./darwin/applications.sh;;
-    n|N ) echo "Applications won't be installed.";;
-    * ) echo "Invalid choice. Aborting applications installation.";;
-esac

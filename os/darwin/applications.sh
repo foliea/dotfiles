@@ -1,7 +1,8 @@
 #!/bin/sh
 set -e
 
-brew reinstall caskroom/cask/brew-cask
+brew reinstall caskroom/cask/brew-cask \
+               heroku-toolbelt
 
 brew cask install \
     iterm2 \
@@ -16,5 +17,3 @@ brew cask install \
     virtualbox \
     android-file-transfer \
     docker
-
-echo "Applications installed successfully!"

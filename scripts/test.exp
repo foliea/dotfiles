@@ -3,11 +3,11 @@
 spawn make re
 
 expect "Please specify you git user name: "
-send "Alec Sadler"
+send "John Snow"
 send -- "\r"
 
 expect "Please specify you git user email: "
-send "alec@sadtech.com"
+send "john.snow@youknownothing.com"
 send -- "\r"
 
 interact
