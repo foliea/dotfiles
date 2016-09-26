@@ -2,4 +2,5 @@
 set -e
 
 yaourt -Sy --noconfirm heroku-toolbelt \
-                       atom-editor
+                       atom-editor \
+                       caffeine-ng

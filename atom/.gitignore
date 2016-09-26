@@ -7,3 +7,4 @@ storage
 .apm
 packages/
 atom-shell/
+nohup.out

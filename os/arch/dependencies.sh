@@ -5,6 +5,7 @@ yaourt -Syu --noconfirm base-devel \
                         make \
                         cmake \
                         python2 \
+                        openssh \
                         git \
                         mercurial \
                         curl \
