@@ -4,6 +4,3 @@ before_install:
   - sudo make dependencies
 
 script: make test
-
-addons:
-  postgresql: '9.3'
