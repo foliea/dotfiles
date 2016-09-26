@@ -1,8 +1,8 @@
-.PHONY: all re prepare update clean test dependencies applications dev bash git vim
+.PHONY: all re prepare update clean test dependencies applications dev bash git vim atom
 
 OS_BASE := $(if $(OS_BASE),$(OS_BASE),'arch')
 
-all: prepare bash git vim
+all: prepare bash git vim atom
 
 re: clean all
 
@@ -35,3 +35,6 @@ git:
 
 vim:
 	vim/install.sh
+
+atom:
+	ln -s $(PWD)/atom/ $(HOME)/.atom
