@@ -1,0 +1,70 @@
+"*":
+  core:
+    ignoredNames: [
+      ".git"
+      ".svn"
+      ".DS_Store"
+      ".o"
+      ".keep"
+    ]
+    projectHome: "/Users/folie_a/Dev/"
+    themes: [
+      "isotope-ui"
+      "base16-tomorrow-dark-theme"
+    ]
+  editor:
+    fontSize: 11
+    showIndentGuide: true
+    softWrap: true
+  "exception-reporting":
+    userId: "d4314992-caba-a928-cb2e-fe3bf47b28fc"
+  "isotope-ui":
+    customBackgroundColorPicker:
+      red: 49
+      green: 56
+      blue: 102
+      alpha: 1
+    fontFamily: "System Default"
+    lowContrastTooltip: true
+  "markdown-preview":
+    grammars: [
+      "source.gfm"
+      "source.litcoffee"
+      "text.plain"
+      "text.plain.null-grammar"
+    ]
+  metrics:
+    userId: "5e9f6bc91e3b3925689202f424ab8f33686c1114"
+  minimap:
+    plugins:
+      "minimap-autohide": true
+      "minimap-autohideDecorationsZIndex": 0
+  "package-sync":
+    createOnChange: true
+  "platformio-ide-terminal":
+    core:
+      autoRunCommand: "source ~/.bashrc"
+  "release-notes":
+    viewedVersion: "0.94.0"
+  "spell-check":
+    grammars: [
+      "source.gfm"
+      "text.git-commit"
+      "text.plain"
+      "text.plain.null-grammar"
+    ]
+  "sync-settings":
+    _analyticsUserId: "9d1deaca-38ec-4994-8e8d-afde7e705686"
+    _lastBackupHash: "089d1a38a56c3571ad34c16932320f64f4d01720"
+    gistDescription: "atom-config"
+    gistId: "ae919f3302bd404505d409c50bbb7410"
+    personalAccessToken: "d5dd01065c111419d942b850c2c31f6510d39bd1"
+  "terminal-plus":
+    core:
+      autoRunCommand: "source ~/.bashrc"
+    toggles:
+      autoClose: true
+  "tree-view":
+    hideIgnoredNames: true
+  welcome:
+    showOnStartup: false
