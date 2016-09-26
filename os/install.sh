@@ -24,4 +24,4 @@ else
   exit 1
 fi
 
-eval ./linux/$os_base/$target.sh
+eval ./os/$os_base/$target.sh
