@@ -41,6 +41,7 @@
       "minimap-autohideDecorationsZIndex": 0
   "package-sync":
     createOnChange: true
+    forceOverwrite: true
   "platformio-ide-terminal":
     core:
       autoRunCommand: "source ~/.bashrc"

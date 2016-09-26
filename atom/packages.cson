@@ -14,7 +14,6 @@ packages: [
   "pigments"
   "platformio-ide-terminal"
   "project-quick-open"
-  "sync-settings"
   "toggle-quotes"
   "vim-mode"
 ]
