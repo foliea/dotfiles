@@ -1,5 +1,10 @@
 "*":
+  "atom-ctags":
+    autoBuildTagsWhenActive: true
   core:
+    disabledPackages: [
+      "symbols-view"
+    ]
     ignoredNames: [
       ".git"
       ".svn"

@@ -1,5 +1,7 @@
 packages: [
+  "atom-ctags"
   "auto-detect-indentation"
+  "auto-update-packages"
   "ex-mode"
   "file-icons"
   "isotope-ui"
