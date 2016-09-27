@@ -4,6 +4,7 @@ packages: [
   "auto-update-packages"
   "ex-mode"
   "file-icons"
+  "git-time-machine"
   "isotope-ui"
   "language-docker"
   "linter"

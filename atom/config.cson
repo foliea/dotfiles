@@ -59,6 +59,12 @@
       "text.plain"
       "text.plain.null-grammar"
     ]
+  "split-diff":
+    diffWords: true
+    ignoreWhitespace: true
+    leftEditorColor: "red"
+    rightEditorColor: "green"
+    syncHorizontalScroll: true
   "sync-settings":
     _analyticsUserId: "9d1deaca-38ec-4994-8e8d-afde7e705686"
     _lastBackupHash: "089d1a38a56c3571ad34c16932320f64f4d01720"
