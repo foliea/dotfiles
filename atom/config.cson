@@ -2,6 +2,7 @@
   "atom-ctags":
     autoBuildTagsWhenActive: true
   core:
+    allowPendingPaneItems: false
     disabledPackages: [
       "symbols-view"
     ]
