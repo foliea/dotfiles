@@ -17,6 +17,7 @@ packages: [
   "pigments"
   "platformio-ide-terminal"
   "project-quick-open"
+  "ruby-test-switcher"
   "toggle-quotes"
   "vim-mode"
 ]
