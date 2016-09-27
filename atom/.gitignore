@@ -8,3 +8,5 @@ storage
 packages/
 atom-shell/
 nohup.out
+git-time-machine
+split-diff
