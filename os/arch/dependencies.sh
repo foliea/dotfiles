@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
 
+pacman -Sy --noconfirm docker
+
 yaourt -Syu --noconfirm base-devel \
                         make \
                         cmake \
