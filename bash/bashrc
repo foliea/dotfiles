@@ -84,9 +84,7 @@ if [ -d "$HOME/.nvm" ]; then
 fi
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
-# load rvm
-if [ -d "$HOME/.rvm" ]; then
-    source $HOME/.rvm/scripts/rvm
-    export PATH="$PATH:$HOME/.rvm/bin"
-fi
+# Load rbenv
+eval "$(rbenv init -)"
+
 export GOPATH=~/dev/go
