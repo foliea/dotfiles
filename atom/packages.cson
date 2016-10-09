@@ -1,7 +1,5 @@
 packages: [
-  "atom-ctags"
   "auto-detect-indentation"
-  "auto-update-packages"
   "ex-mode"
   "file-icons"
   "git-time-machine"
@@ -19,5 +17,4 @@ packages: [
   "project-quick-open"
   "ruby-test-switcher"
   "toggle-quotes"
-  "vim-mode"
 ]
