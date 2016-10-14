@@ -1,6 +1,6 @@
 packages: [
+  "atomic-emacs"
   "auto-detect-indentation"
-  "ex-mode"
   "file-icons"
   "git-time-machine"
   "isotope-ui"
