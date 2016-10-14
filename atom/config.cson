@@ -19,7 +19,6 @@
       "base16-tomorrow-dark-theme"
     ]
   editor:
-    fontSize: 15
     showIndentGuide: true
     softWrap: true
   "exception-reporting":

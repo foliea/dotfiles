@@ -1,5 +1,4 @@
 packages: [
-  "atomic-emacs"
   "auto-detect-indentation"
   "file-icons"
   "git-time-machine"
