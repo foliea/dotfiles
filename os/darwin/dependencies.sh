@@ -18,6 +18,7 @@ brew reinstall git \
                wget \
                bash-completion \
                ctags \
+               cmake \
                phantomjs
 
 brew link openssl --force
