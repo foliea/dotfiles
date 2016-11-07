@@ -13,6 +13,7 @@ brew cask install \
     google-chrome \
     google-drive \
     caffeine \
+    slack \
     vlc \
     unrarx \
     transmission \
