@@ -4,6 +4,8 @@ packages: [
   "git-time-machine"
   "isotope-ui"
   "language-docker"
+  "language-haml"
+  "language-slim"
   "linter"
   "linter-erb"
   "linter-ruby"

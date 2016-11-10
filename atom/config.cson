@@ -19,16 +19,13 @@
       "base16-tomorrow-dark-theme"
     ]
   editor:
+    fontSize: 12
     showIndentGuide: true
     softWrap: true
   "exception-reporting":
     userId: "d4314992-caba-a928-cb2e-fe3bf47b28fc"
   "isotope-ui":
-    customBackgroundColorPicker:
-      red: 49
-      green: 56
-      blue: 102
-      alpha: 1
+    customBackgroundColorPicker: "#313866"
     fontFamily: "System Default"
     lowContrastTooltip: true
   "markdown-preview":

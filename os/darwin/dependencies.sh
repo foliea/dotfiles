@@ -10,6 +10,8 @@ brew prune
 
 brew update
 
+brew tap homebrew/versions
+
 # Install dependencies
 brew reinstall git \
                mercurial \
@@ -19,6 +21,11 @@ brew reinstall git \
                bash-completion \
                ctags \
                cmake \
-               phantomjs
+               phantomjs \
+               mysql \
+               openssl \
+               imagemagick
 
-brew link openssl --force
+brew link --force openssl
+
+brew link --force qt55
