@@ -1,6 +1,11 @@
 "*":
   "atom-ctags":
     autoBuildTagsWhenActive: true
+  "atom-fuzzy-grep":
+    grepCommandString: '''
+      rg --ignore-case --with-filename --no-heading --column
+      
+    '''
   core:
     allowPendingPaneItems: false
     disabledPackages: [
@@ -19,7 +24,7 @@
       "base16-tomorrow-dark-theme"
     ]
   editor:
-    fontSize: 12
+    fontSize: 13
     showIndentGuide: true
     softWrap: true
   "exception-reporting":
@@ -28,6 +33,8 @@
     customBackgroundColorPicker: "#313866"
     fontFamily: "System Default"
     lowContrastTooltip: true
+  linter:
+    errorPanelHeight: 70
   "markdown-preview":
     grammars: [
       "source.gfm"
@@ -73,6 +80,8 @@
       autoRunCommand: "source ~/.bashrc"
     toggles:
       autoClose: true
+  toggl:
+    togglApiKey: "a07547c9052d33addc08864e4f98c8cb"
   "tree-view":
     hideIgnoredNames: true
   welcome:

@@ -3,6 +3,7 @@ packages: [
   "file-icons"
   "git-time-machine"
   "isotope-ui"
+  "language-csv"
   "language-docker"
   "language-haml"
   "language-slim"
@@ -16,6 +17,7 @@ packages: [
   "pigments"
   "platformio-ide-terminal"
   "project-quick-open"
+  "react"
   "ruby-test-switcher"
   "toggle-quotes"
 ]

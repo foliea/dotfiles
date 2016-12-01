@@ -23,8 +23,14 @@ brew reinstall git \
                cmake \
                phantomjs \
                mysql \
+               postgresql \
+               redis \
                openssl \
-               imagemagick
+               imagemagick \
+               ripgrep \
+               https://raw.githubusercontent.com/Homebrew/homebrew-core/c5674f07fcabc3b4d6814eacbf5ec98fac9acfe9/Formula/chromedriver.rb # 2.24
+
+
 
 brew link --force openssl
 
