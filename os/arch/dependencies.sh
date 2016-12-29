@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-pacman -Sy --noconfirm docker p7zip
+pacman -Sy --noconfirm docker p7zip ripgrep
 
 yaourt -Syu --noconfirm base-devel \
                         make \
