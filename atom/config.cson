@@ -30,7 +30,11 @@
   "exception-reporting":
     userId: "d4314992-caba-a928-cb2e-fe3bf47b28fc"
   "isotope-ui":
-    customBackgroundColorPicker: "#313866"
+    customBackgroundColorPicker:
+      red: 49
+      green: 56
+      blue: 102
+      alpha: 1
     fontFamily: "System Default"
     lowContrastTooltip: true
   linter:

@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-pacman -Sy --noconfirm docker p7zip ripgrep
+pacman -Sy --noconfirm docker p7zip ripgrep mariadb
 
 yaourt -Syu --noconfirm base-devel \
                         make \
@@ -15,4 +15,5 @@ yaourt -Syu --noconfirm base-devel \
                         vim \
                         bash-completion \
                         phantomjs \
-                        expect
+                        expect \
+                        chromedriver
