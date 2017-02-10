@@ -91,3 +91,6 @@ eval "$(rbenv init -)"
 export LC_ALL=en_US.UTF-8
 
 export GOPATH=~/dev/go
+
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

@@ -8,6 +8,7 @@ for file in gitconfig \
             vimrc \
             vim \
             vim-go \
+            fzf \
             atom
 do
     rm -rf $HOME/.$file

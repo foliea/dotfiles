@@ -12,6 +12,10 @@ set backupdir=~/.vim/tmp/backup//
 set directory=~/.vim/tmp/swap//
 set undodir=~/.vim/tmp/undo//
 
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+
 " Tabs
 autocmd FileType ruby setlocal shiftwidth=2 softtabstop=2
 autocmd FileType eruby setlocal shiftwidth=2 softtabstop=2
@@ -20,10 +24,6 @@ autocmd FileType json setlocal shiftwidth=2 softtabstop=2
 autocmd FileType scss setlocal shiftwidth=2 softtabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2
 autocmd FileType html.handlebars setlocal shiftwidth=2 softtabstop=2
-
-set softtabstop=4
-set shiftwidth=4
-set expandtab
 
 " Show whitespaces
 set list
@@ -45,12 +45,11 @@ filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
 
 " NERDTree
-autocmd vimenter * if !argc() | NERDTree | endif
 nmap <F8> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-let NERDTreeShowHidden=1
-let NERDTreeIgnore = ['\.DS_Store$', '\.git$']
+let g:NERDTreeShowHidden=1
+let g:NERDTreeIgnore = ['\.DS_Store$', '\.git$']
+let g:NERDTreeHijackNetrw=0
 
 " Go
 let g:go_disable_autoinstall = 1
@@ -80,3 +79,19 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Tagbar
 nmap <F9> :TagbarToggle<CR>
 autocmd VimEnter * nested :TagbarOpen
+
+" Split panes
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+set rtp+=~/.fzf
+
+" Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
+ command! -bang -nargs=* Rg
+   \ call fzf#vim#grep(
+     \   'rg --column --line-number --no-heading --color=always'.shellescape(<q-args>), 1,
+       \   <bang>0 ? fzf#vim#with_preview('up:60%')
+         \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+           \   <bang>0)
