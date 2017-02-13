@@ -78,7 +78,6 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " Tagbar
 nmap <F9> :TagbarToggle<CR>
-autocmd VimEnter * nested :TagbarOpen
 
 " Split panes
 nnoremap <C-J> <C-W><C-J>
@@ -89,3 +88,6 @@ nnoremap <C-H> <C-W><C-H>
 " Fuzzy finder
 set rtp+=~/.fzf
 nmap <C-P> :FZF<CR>
+
+" Ripgrep
+nmap <C-S-F> :Rg<space>
