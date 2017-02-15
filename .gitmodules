@@ -49,3 +49,9 @@
 [submodule "vim/bundle/vim-ripgrep"]
 	path = vim/bundle/vim-ripgrep
 	url = https://github.com/jremmen/vim-ripgrep.git
+[submodule "vim/bundle/vim-test"]
+	path = vim/bundle/vim-test
+	url = https://github.com/janko-m/vim-test.git
+[submodule "vim/bundle/asyncrun.vim"]
+	path = vim/bundle/asyncrun.vim
+	url = git://github.com/skywind3000/asyncrun.vim.git
