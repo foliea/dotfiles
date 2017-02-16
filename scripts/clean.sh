@@ -10,6 +10,7 @@ for file in gitconfig \
             vim-go \
             fzf \
             tmux.conf \
+            tmux-colors.conf \
             atom
 do
     rm -rf $HOME/.$file
