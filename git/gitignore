@@ -1,3 +1,4 @@
+*.subset
 *.DS_Store
 *.swp
 *__Tagbar__

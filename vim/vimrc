@@ -80,6 +80,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 nmap <F9> :TagbarToggle<CR>
 
 " Split panes
+nnoremap <C-H> <C-W><C-H>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
@@ -99,8 +100,6 @@ nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>f :TestFile<CR>
 nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>v :TestVisit<CR>
-
-let test#strategy = 'asyncrun'
 
 " Quickfix list
 nmap <leader>e :cwindow<CR>
