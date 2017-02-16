@@ -9,6 +9,7 @@ for file in gitconfig \
             vim \
             vim-go \
             fzf \
+            tmux.conf \
             atom
 do
     rm -rf $HOME/.$file

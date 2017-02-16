@@ -101,5 +101,7 @@ nmap <silent> <leader>f :TestFile<CR>
 nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>v :TestVisit<CR>
 
+let test#strategy = "tslime"
+
 " Quickfix list
 nmap <leader>e :cwindow<CR>
