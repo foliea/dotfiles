@@ -105,3 +105,6 @@ let test#strategy = "tslime"
 
 " Quickfix list
 nmap <leader>e :cwindow<CR>
+
+" Tmux command
+nmap <silent> <leader>c :Tmux<space>
