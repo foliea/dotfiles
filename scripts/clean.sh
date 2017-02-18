@@ -4,6 +4,7 @@ set -e
 for file in gitconfig \
             gitignore-global \
             bashrc \
+            bash_profile \
             bash-git-prompt \
             vimrc \
             vim \
