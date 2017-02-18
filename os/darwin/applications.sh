@@ -4,15 +4,12 @@ set -e
 brew reinstall caskroom/cask/brew-cask \
                heroku-toolbelt \
                rbenv \
-               ruby-build \
-               macvim
+               ruby-build
 
 brew linkapps macvim
 
 brew cask install \
     iterm2 \
-    macvim \
-    atom \
     google-chrome \
     google-drive \
     caffeine \

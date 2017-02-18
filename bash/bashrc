@@ -51,10 +51,6 @@ alias dinit='eval "$(docker-machine env)" && export DOCKER_URL=https://$(docker-
 alias dreset='unset DOCKER_HOST; unset DOCKER_TLS_VERIFY; unset DOCKER_CERT_PATH'
 
 if [ `uname` == "Darwin" ]; then
-    # alias macvim to vim
-    if [ $(command -v mvim) ]; then
-        alias vim='mvim -v'
-    fi
     # use hub as git
     eval "$(hub alias -s)"
     # use brew bash completion
