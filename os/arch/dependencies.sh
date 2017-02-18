@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-pacman -Sy --noconfirm docker p7zip ctags tmux ripgrep mariadb
+pacman -Sy --noconfirm docker p7zip ctags tmux fzf ripgrep mariadb
 
 yaourt -Syu --noconfirm base-devel \
                         make \
@@ -17,7 +17,3 @@ yaourt -Syu --noconfirm base-devel \
                         phantomjs \
                         expect \
                         chromedriver
-
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-
-sh $HOME/.fzf/install --all

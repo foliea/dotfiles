@@ -12,4 +12,8 @@ mkdir -p $tmp/undo
 ln -s $PWD/vim/ $HOME/.vim
 ln -s $PWD/vim/vimrc $HOME/.vimrc
 
-cd $PWD/vim/bundle/YouCompleteMe && sh install.sh
+sh $PWD/vim/bundle/YouCompleteMe/install.sh
+
+ln -s $PWD/vim/fzf $HOME/.fzf
+
+$HOME/.fzf/install --all

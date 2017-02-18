@@ -35,7 +35,3 @@ brew reinstall git \
 brew link --force openssl
 
 brew link --force qt55
-
-ln -s $(find /usr/local/Cellar -name fzf -type f | sed -e "s/\/bin\/fzf/\//g") $HOME/.fzf
-
-$HOME/.fzf/install --all

@@ -8,6 +8,7 @@ for file in gitconfig \
             vimrc \
             vim \
             vim-go \
+            fzf \
             atom \
             tmux.conf \
             tmux-colors.conf
