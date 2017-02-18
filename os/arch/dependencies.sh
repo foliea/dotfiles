@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-pacman -Sy --noconfirm docker p7zip ctags ripgrep mariadb
+pacman -Sy --noconfirm docker p7zip ctags tmux ripgrep mariadb
 
 yaourt -Syu --noconfirm base-devel \
                         make \

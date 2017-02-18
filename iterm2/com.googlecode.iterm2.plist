@@ -1798,7 +1798,7 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>650 513 620 392 0 0 1920 1057 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>439 522 796 473 0 0 1920 1080 </string>
+	<string>439 500 796 473 0 0 1920 1080 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>160 183 585 402 0 0 1920 1057 </string>
 	<key>NeverWarnAboutShortLivedSessions_E7297A61-3324-44FC-944B-92A8E4D5B404</key>
@@ -2052,7 +2052,7 @@
 			<key>Idle Code</key>
 			<integer>0</integer>
 			<key>Initial Text</key>
-			<string>source ~/.bashrc &amp;&amp; cd dev</string>
+			<string></string>
 			<key>Jobs to Ignore</key>
 			<array>
 				<string>rlogin</string>
@@ -2614,7 +2614,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-02-14T15:32:11Z</date>
+	<date>2017-02-15T15:32:11Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUSkippedVersion</key>

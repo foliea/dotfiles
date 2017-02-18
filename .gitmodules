@@ -55,3 +55,6 @@
 [submodule "vim/bundle/asyncrun.vim"]
 	path = vim/bundle/asyncrun.vim
 	url = git://github.com/skywind3000/asyncrun.vim.git
+[submodule "vim/bundle/tslime.vim"]
+	path = vim/bundle/tslime.vim
+	url = https://github.com/jgdavey/tslime.vim.git
