@@ -2,7 +2,7 @@
 
 OS_BASE := $(if $(OS_BASE),$(OS_BASE),'arch')
 
-all: prepare bash git tmux vim atom
+all: prepare bash git tmux vim
 
 re: clean all
 
