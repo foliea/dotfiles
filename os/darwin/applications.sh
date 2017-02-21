@@ -6,8 +6,6 @@ brew reinstall caskroom/cask/brew-cask \
                rbenv \
                ruby-build
 
-brew linkapps macvim
-
 brew cask install \
     iterm2 \
     google-chrome \
