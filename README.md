@@ -52,10 +52,6 @@ You can now use above make commands inside this container.
 
 >N.B. `VERSION` is optional.
 
-You can install ruby (with rvm):
-
-    VERSION=2.1.2 ./ruby/install.sh
-
 You can install node (with nvm):
 
     VERSION=0.10.30 ./node/install.sh
