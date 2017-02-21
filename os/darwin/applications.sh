@@ -3,8 +3,11 @@ set -e
 
 brew reinstall caskroom/cask/brew-cask \
                heroku-toolbelt \
-               rbenv \
                ruby-build
+
+brew link ruby-build
+
+brew reinstall rbenv
 
 brew cask install \
     iterm2 \
