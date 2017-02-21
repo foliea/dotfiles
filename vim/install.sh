@@ -15,5 +15,3 @@ ln -s $PWD/vim/vimrc $HOME/.vimrc
 sh $PWD/vim/bundle/YouCompleteMe/install.sh
 
 ln -s $PWD/vim/fzf $HOME/.fzf
-
-$HOME/.fzf/install --all
