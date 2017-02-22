@@ -16,6 +16,9 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 
+" Backspace MacOS Sierra
+set backspace=indent,eol,start
+
 " Tabs
 autocmd FileType ruby setlocal shiftwidth=2 softtabstop=2
 autocmd FileType eruby setlocal shiftwidth=2 softtabstop=2
