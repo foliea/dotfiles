@@ -61,3 +61,6 @@
 [submodule "vim/fzf"]
 	path = vim/fzf
 	url = git://github.com/junegunn/fzf.git
+[submodule "vim/bundle/vim-elixir"]
+	path = vim/bundle/vim-elixir
+	url = https://github.com/elixir-lang/vim-elixir.git
