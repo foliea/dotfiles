@@ -47,8 +47,6 @@ alias drmi='docker rmi'
 alias dps='docker ps'
 alias drun='docker run'
 alias dim='docker images'
-alias dinit='eval "$(docker-machine env)" && export DOCKER_URL=https://$(docker-machine ip):2376'
-alias dreset='unset DOCKER_HOST; unset DOCKER_TLS_VERIFY; unset DOCKER_CERT_PATH'
 
 if [ `uname` == "Darwin" ]; then
     # use hub as git
@@ -73,13 +71,6 @@ export CLICOLOR=1
 
 # load go binaries
 if [ -d "$GOPATH" ]; then export PATH="$PATH:$GOPATH/bin"; fi
-
-# load nvm
-if [ -d "$HOME/.nvm" ]; then
-    export NVM_DIR="$HOME/.nvm"
-    export PATH="$PATH:$HOME/.nvm/bin"
-fi
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 # Load rbenv
 eval "$(rbenv init -)"
