@@ -12,7 +12,8 @@ for file in gitconfig \
             fzf \
             atom \
             tmux.conf \
-            tmux-colors.conf
+            tmux-colors.conf \
+            config/fish
 do
     rm -rf $HOME/.$file
 done
