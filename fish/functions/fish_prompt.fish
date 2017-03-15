@@ -32,7 +32,7 @@ set GIT_PROMPT_CHANGED "$Blue✚ "
 set GIT_PROMPT_REMOTE " "
 set GIT_PROMPT_UNTRACKED "…"
 set GIT_PROMPT_STASHED "⚑ "
-set GIT_PROMPT_CLEAN "$BGreen✔ "
+set GIT_PROMPT_CLEAN "$BGreen✔"
 
 function fish_prompt
 
@@ -94,13 +94,13 @@ function fish_prompt
             set STATUS "$STATUS$GIT_PROMPT_STASHED$GIT_STASHED$ResetColor"
         end
 
+        if [ "$GIT_CLEAN" = "0" ]
+            set PS1 "$STATUS$GIT_PROMPT_CLEAN"
+        end
+
         set STATUS "$STATUS$ResetColor$GIT_PROMPT_SUFFIX"
 
         set PS1 "$PROMPT_START$STATUS$PROMPT_END"
-
-        if [ "$GIT_CLEAN" = "1" ]
-            set PS1 "$GIT_PROMPT_CLEAN$PS1"
-        end
     else
         set PS1 "$PROMPT_START$PROMPT_END"
     end
