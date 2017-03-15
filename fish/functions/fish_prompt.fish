@@ -102,7 +102,7 @@ function fish_prompt
 
         set PS1 "$PROMPT_START$STATUS$PROMPT_END"
     else
-        set PS1 "$PROMPT_START$PROMPT_END"
+        set PS1 "$PROMPT_START$PROMPT_END$GIT_CLEAN"
     end
 
     echo -e $PS1
