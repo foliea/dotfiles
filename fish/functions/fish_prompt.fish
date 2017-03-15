@@ -98,7 +98,7 @@ function fish_prompt
 
         set PS1 "$PROMPT_START$STATUS$PROMPT_END"
 
-        if [ "$GIT_CLEAN" = "0" ]
+        if [ "$GIT_CLEAN" = "1" ]
             set PS1 "$GIT_PROMPT_CLEAN$PS1"
         end
     else
