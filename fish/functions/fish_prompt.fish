@@ -94,7 +94,7 @@ function fish_prompt
             set STATUS "$STATUS$GIT_PROMPT_STASHED$GIT_STASHED$ResetColor"
         end
 
-        if [ "$GIT_CLEAN" = "1" ]
+        if [ "$GIT_CLEAN" != "0" ]
             set PS1 "$STATUS$GIT_PROMPT_CLEAN"
         end
 
