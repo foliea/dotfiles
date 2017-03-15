@@ -13,13 +13,13 @@ set Blue (set_color blue)               # Blue
 set WHITE (set_color white)
 
 # Bold
-set BGreen (set_color -o green)         # Green
+set BGreen (set_color green)         # Green
 
 # High Intensty
-set IBlack (set_color -o black)         # Black
+set IBlack (set_color black)         # Black
 
 # Bold High Intensty
-set Magenta (set_color -o purple)       # Purple
+set Magenta (set_color purple)       # Purple
 
 # Default values for the appearance of the prompt. Configure at will.
 set GIT_PROMPT_PREFIX "["
@@ -94,8 +94,8 @@ function fish_prompt
             set STATUS "$STATUS$GIT_PROMPT_STASHED$GIT_STASHED$ResetColor"
         end
 
-        if [ "$GIT_CLEAN" = "1" ]
-            set STATUS "$STATUS$GIT_PROMPT_CLEAN"
+        if [ "$GIT_CLEAN" = "0" ]
+            set STATUS "$STATUS $GIT_PROMPT_CLEAN"
         end
 
         set STATUS "$STATUS$ResetColor$GIT_PROMPT_SUFFIX"
