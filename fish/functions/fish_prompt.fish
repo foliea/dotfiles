@@ -95,13 +95,12 @@ function fish_prompt
         end
 
         if [ "$GIT_CLEAN" != "0" ]
-            set PS1 "$STATUS$GIT_PROMPT_CLEAN"
+            set STATUS "$STATUS$GIT_PROMPT_CLEAN"
         end
 
         set STATUS "$STATUS$ResetColor$GIT_PROMPT_SUFFIX"
 
-        set PS1 "$GIT_CLEAN"
-#        set PS1 "$PROMPT_START$STATUS$PROMPT_END"
+        set PS1 "$PROMPT_START$STATUS$PROMPT_END"
     else
         set PS1 "$PROMPT_START$PROMPT_END"
     end
