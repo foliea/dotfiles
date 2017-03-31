@@ -34,9 +34,6 @@
 [submodule "bash/prompt"]
 	path = bash/prompt
 	url = https://github.com/magicmonty/bash-git-prompt.git
-[submodule "vim/bundle/vim-gitgutter"]
-	path = vim/bundle/vim-gitgutter
-	url = https://github.com/airblade/vim-gitgutter.git
 [submodule "vim/bundle/mustache"]
 	path = vim/bundle/mustache
 	url = git://github.com/mustache/vim-mustache-handlebars.git
