@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-pacman -Sy --noconfirm docker p7zip ctags tmux fzf ripgrep mariadb
+pacman -Sy --noconfirm cmake docker p7zip ctags tmux fzf ripgrep mariadb vim
 
 yaourt -Syu --noconfirm base-devel \
                         make \
@@ -12,8 +12,6 @@ yaourt -Syu --noconfirm base-devel \
                         mercurial \
                         curl \
                         wget \
-                        vim \
                         bash-completion \
                         phantomjs \
-                        expect \
-                        chromedriver
+                        expect
