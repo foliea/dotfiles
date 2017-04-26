@@ -1,6 +1,6 @@
 # marin42.zsh-theme
 
-local ret_status="%(?:%{$fg_bold[magenta]%}❯ :%{$fg_bold[red]%}❯ )"
+local ret_status="%(?:%{$fg_bold[magenta]%}❯%{$reset_color%} :%{$fg_bold[red]%}❯%{$reset_color%} )"
 
 # primary prompt
 PROMPT='%{$fg_bold[blue]%}%~ $(git_prompt_info)% %{$reset_color%}${ret_status}'
