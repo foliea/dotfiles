@@ -16,7 +16,7 @@ already exist, please follow `Reinstall` instructions.
 
 ### Post-installation
 
-    source ~/.bashrc
+Spawn a new shell.
 
 ### Uninstall
 

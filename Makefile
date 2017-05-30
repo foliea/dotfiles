@@ -1,8 +1,8 @@
-.PHONY: all re prepare update clean test dependencies applications dev bash git vim tmux atom
+.PHONY: all re prepare update clean test dependencies applications dev bash fish git vim tmux atom
 
 OS_BASE := $(if $(OS_BASE),$(OS_BASE),'arch')
 
-all: prepare bash git tmux vim
+all: prepare git vim tmux fish
 
 re: clean all
 
@@ -29,6 +29,10 @@ dev:
 
 bash:
 	bash/install.sh
+
+# TODO: Extract prompt from bash install as standalone
+fish: bash
+	fish/install.sh
 
 git:
 	git/install.sh

@@ -1,17 +1,30 @@
 #!/bin/sh
 set -e
 
-pacman -Sy --noconfirm cmake docker p7zip ctags tmux fzf ripgrep mariadb vim
+pacman -Sy --noconfirm \
+    awk \
+    sed \
+    make \
+    cmake \
+    python2 \
+    gcc \
+    git \
+    docker \
+    p7zip \
+    ctags \
+    tmux \
+    fzf \
+    ripgrep \
+    mariadb \
+    vim \
+    fish
 
-yaourt -Syu --noconfirm base-devel \
-                        make \
-                        cmake \
-                        python2 \
-                        openssh \
-                        git \
-                        mercurial \
-                        curl \
-                        wget \
-                        bash-completion \
-                        phantomjs \
-                        expect
+yaourt -Syu --noconfirm \
+    base-devel \
+    openssh \
+    mercurial \
+    curl \
+    wget \
+    bash-completion \
+    phantomjs \
+    expect
