@@ -1,4 +1,4 @@
-.PHONY: all re prepare update clean test dependencies applications dev bash fish git vim tmux atom
+.PHONY: all re prepare update clean test dependencies applications dev bash fish git vim tmux
 
 OS_BASE := $(if $(OS_BASE),$(OS_BASE),'arch')
 
@@ -42,6 +42,3 @@ vim:
 
 tmux:
 	tmux/install.sh
-
-atom:
-	ln -s $(PWD)/atom/ $(HOME)/.atom

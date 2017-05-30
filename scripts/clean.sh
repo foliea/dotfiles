@@ -10,7 +10,6 @@ for file in gitconfig \
             vim \
             vim-go \
             fzf \
-            atom \
             tmux.conf \
             tmux-colors.conf \
             config/fish
