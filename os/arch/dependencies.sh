@@ -25,6 +25,5 @@ yaourt -Syu --noconfirm \
     mercurial \
     curl \
     wget \
-    bash-completion \
     phantomjs \
     expect

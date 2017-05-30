@@ -11,7 +11,6 @@ apt-get install -qy \
     curl \
     wget \
     vim \
-    bash-completion \
     exuberant-ctags \
     phantomjs \
     expect

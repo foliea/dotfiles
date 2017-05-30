@@ -18,7 +18,6 @@ brew reinstall git \
                hub \
                curl \
                wget \
-               bash-completion \
                ctags \
                cmake \
                phantomjs \
