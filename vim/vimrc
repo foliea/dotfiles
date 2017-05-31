@@ -119,7 +119,6 @@ nnoremap <leader>q <C-W>_
 nmap <leader>w :resize 10<CR>
 
 " Fuzzy finder
-set rtp+=~/.fzf
 nmap <C-P> :FZF<CR>
 
 " Ripgrep
