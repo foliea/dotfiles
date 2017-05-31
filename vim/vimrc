@@ -5,7 +5,7 @@ call plug#begin('~/.vim/plugins')
 
 Plug 'scrooloose/nerdtree'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
-"Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
