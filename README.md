@@ -16,7 +16,8 @@ already exist, please follow `Reinstall` instructions.
 
 ### Post-installation
 
-Spawn a new shell.
+1. Spawn a new shell
+2. Run `:PlugInstall` from vim to install all plugins
 
 ### Uninstall
 
@@ -47,18 +48,3 @@ This container will already have every dependencies required.
 You can now use above make commands inside this container.
 
 >You need [Docker 1.3+](http://docker.com) to build this image.
-
-## Language stacks
-
->N.B. `VERSION` is optional.
-
-You can install node (with nvm):
-
-    VERSION=0.10.30 ./node/install.sh
-
-You can install go (with gvm):
-
-    VERSION=1.3.1 ./go/install.sh
-
->The go installation script also install dependencies required by
-vim plugin `vim-go`.
