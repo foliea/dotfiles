@@ -26,6 +26,7 @@ Plug 'pbrisbin/vim-mkdir'
 Plug 'tpope/vim-fugitive'
 Plug 'ngmy/vim-rubocop'
 Plug 'vim-ruby/vim-ruby'
+Plug 'ap/vim-buftabline'
 
 call plug#end()
 
