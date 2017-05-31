@@ -1,3 +1,33 @@
+" Plugins
+let g:fzf_install = 'yes | ./install'
+
+call plug#begin('~/.vim/plugins')
+
+Plug 'scrooloose/nerdtree'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+"Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-rails'
+Plug 'vim-ruby/vim-ruby'
+Plug 'scrooloose/syntastic'
+Plug 'moll/vim-node'
+Plug 'elzr/vim-json'
+Plug 'scrooloose/nerdcommenter'
+Plug 'bling/vim-airline'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'jremmen/vim-ripgrep'
+Plug 'janko-m/vim-test'
+Plug 'jgdavey/tslime.vim'
+Plug 'junegunn/fzf', { 'do': g:fzf_install }
+Plug 'elixir-lang/vim-elixir'
+Plug 'pbrisbin/vim-mkdir'
+Plug 'tpope/vim-fugitive'
+Plug 'ngmy/vim-rubocop'
+Plug 'vim-ruby/vim-ruby'
+
+call plug#end()
+
 " Editor options
 colorscheme Tomorrow-Night
 
@@ -37,9 +67,6 @@ let mapleader=","
 " Search
 set hlsearch
 
-" Pathogen
-execute pathogen#infect()
-
 " Options
 set nocompatible      " We're running Vim, not Vi!
 syntax on             " Enable syntax highlighting
@@ -51,7 +78,7 @@ filetype plugin on    " Enable filetype-specific plugins
 nmap <F8> :NERDTreeToggle<CR>
 
 let g:NERDTreeShowHidden=1
-let g:NERDTreeIgnore = ['\.DS_Store$', '\.git$']
+let g:NERDTreeIgnore = ['\.DS_Store$', '\$']
 let g:NERDTreeHijackNetrw=0
 
 " Go
