@@ -16,7 +16,7 @@ already exist, please follow `Reinstall` instructions.
 
 ### Post-installation
 
-1. Run `chsh -s $(`which fish`) $USER`
+1. Run ```chsh -s $(`which fish`) $USER```
 1. Spawn a new shell
 1. Run `:PlugInstall` from vim to install all plugins
 
