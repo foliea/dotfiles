@@ -1,5 +1,5 @@
 " Plugins
-let g:fzf_install = 'yes | ./install'
+let g:fzf_install = 'yes | ./install --bin'
 
 call plug#begin('~/.vim/plugins')
 
