@@ -7,6 +7,7 @@ pacman -Sy --noconfirm \
     make \
     cmake \
     python2 \
+    python-pip \
     gcc \
     git \
     docker \
@@ -27,3 +28,5 @@ yaourt -Syu --noconfirm \
     wget \
     phantomjs \
     expect
+
+pip install docker-compose
