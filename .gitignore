@@ -1,2 +1,3 @@
 *.swp
 vim/plugins/*
+fish/functions/fzf_key_bindings.fish
