@@ -11,12 +11,17 @@ set PATH /usr/local/bin /usr/sbin $PATH
 
 # rbenv
 if type rbenv > /dev/null
-  source (rbenv init - | psub)
+    source (rbenv init - | psub)
 end
 
 # Tmux
 if not test $TMUX;
     tmux has-session -t remote; and tmux attach-session -t remote; or tmux new-session -s remote; and kill %self
+end
+
+# Caps lock
+if type setxkbmap > /dev/null
+    setxkbmap -layout us -option ctrl:nocaps
 end
 
 alias ll='ls -lF'
