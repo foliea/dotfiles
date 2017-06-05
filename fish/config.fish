@@ -14,6 +14,11 @@ if type rbenv > /dev/null
   source (rbenv init - | psub)
 end
 
+# Tmux
+if not test $TMUX;
+    tmux has-session -t remote; and tmux attach-session -t remote; or tmux new-session -s remote; and kill %self
+end
+
 alias ll='ls -lF'
 alias la='ls -lA'
 alias l='ls -CF'
