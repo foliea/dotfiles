@@ -1,13 +1,10 @@
-.PHONY: all re update clean test dependencies applications dev fish git vim tmux
+.PHONY: all re clean test dependencies applications dev fish git vim tmux
 
 OS_BASE := $(if $(OS_BASE),$(OS_BASE),'arch')
 
 all: git vim tmux fish
 
 re: clean all
-
-update:
-	scripts/update.sh
 
 clean:
 	scripts/clean.sh
