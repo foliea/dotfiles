@@ -10,17 +10,19 @@ set -x GOPATH ~/dev/go
 set PATH /usr/local/bin /usr/sbin $PATH
 
 # rbenv
-if type rbenv > /dev/null
+if type rbenv > /dev/null 2>&1
     source (rbenv init - | psub)
 end
 
 # Tmux
 if not test $TMUX;
-    tmux has-session -t remote; and tmux attach-session -t remote; or tmux new-session -s remote; and kill %self
+    if type tmux > /dev/null 2>&1
+        tmux has-session -t remote; and tmux attach-session -t remote; or tmux new-session -s remote; and kill %self
+    end
 end
 
 # Caps lock
-if type setxkbmap > /dev/null
+if type setxkbmap > /dev/null 2>&1
     setxkbmap -layout us -option ctrl:nocaps
 end
 
