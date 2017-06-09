@@ -27,6 +27,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'ngmy/vim-rubocop'
 Plug 'vim-ruby/vim-ruby'
 Plug 'ap/vim-buftabline'
+Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
 
