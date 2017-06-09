@@ -9,6 +9,7 @@ for file in gitconfig \
             fzf \
             tmux.conf \
             tmux-colors.conf \
+            tmux \
             config/fish
 do
     rm -rf $HOME/.$file
