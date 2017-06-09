@@ -18,7 +18,8 @@ already exist, please follow `Reinstall` instructions.
 
 1. Run `chsh -s $(which fish) $USER` to change your login shell
 1. Spawn a new login shell
-1. Run `:PlugInstall` from vim to install all plugins
+1. Install vim plugins (see [documentation](https://github.com/junegunn/vim-plug))
+1. Install tmux plugins (see [documentation](https://github.com/tmux-plugins/tpm))
 
 ### Uninstall
 
