@@ -17,7 +17,7 @@ end
 # Tmux
 if not test $TMUX;
     if type tmux > /dev/null 2>&1
-        tmux has-session -t remote; and tmux attach-session -t remote; or tmux new-session -s remote; and kill %self
+        tmux has-session -t default; and tmux attach-session -t default; or tmux new-session -s default; and kill %self
     end
 end
 
