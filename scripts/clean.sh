@@ -8,7 +8,6 @@ for file in gitconfig \
             vim-go \
             fzf \
             tmux.conf \
-            tmux-colors.conf \
             tmux \
             config/fish
 do
