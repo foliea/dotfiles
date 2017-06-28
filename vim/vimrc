@@ -140,3 +140,9 @@ nmap <leader>e :cwindow<CR>
 
 " Tmux command
 nmap <silent> <leader>c :Tmux<space>
+
+" Shell
+set shell=/bin/bash
+
+" Fix display
+set t_ut=
