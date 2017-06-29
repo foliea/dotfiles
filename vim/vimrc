@@ -26,7 +26,6 @@ Plug 'pbrisbin/vim-mkdir'
 Plug 'tpope/vim-fugitive'
 Plug 'ngmy/vim-rubocop'
 Plug 'vim-ruby/vim-ruby'
-Plug 'ap/vim-buftabline'
 Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
@@ -37,6 +36,7 @@ colorscheme Tomorrow-Night
 set background=dark
 set guioptions-=r
 set guioptions-=L
+set relativenumber
 set number
 set ruler
 
@@ -146,3 +146,8 @@ set shell=/bin/bash
 
 " Fix display
 set t_ut=
+
+" Tabline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#buffer_nr_show = 1
