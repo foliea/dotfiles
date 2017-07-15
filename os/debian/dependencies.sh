@@ -11,6 +11,10 @@ apt-get install -qy \
     curl \
     wget \
     vim \
+    fish \
+    tmux \
+    rbenv \
+    ruby-build \
     exuberant-ctags \
     phantomjs \
     expect
