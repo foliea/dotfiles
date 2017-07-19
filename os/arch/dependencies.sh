@@ -30,3 +30,4 @@ yaourt -Syu --noconfirm \
     expect
 
 pip install docker-compose
+pip install grip
