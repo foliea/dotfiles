@@ -27,6 +27,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'ngmy/vim-rubocop'
 Plug 'vim-ruby/vim-ruby'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-system-copy'
 
 call plug#end()
 
