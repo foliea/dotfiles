@@ -9,7 +9,10 @@ for file in gitconfig \
             fzf \
             tmux.conf \
             tmux \
-            config/fish
+            config/fish \
+            config/prompt
 do
     rm -rf $HOME/.$file
 done
+
+rm -rf tmux/plugins/tpm
