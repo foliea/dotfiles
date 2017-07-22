@@ -18,7 +18,8 @@ pacman -Sy --noconfirm \
     ripgrep \
     mariadb \
     vim \
-    fish
+    fish \
+    xsel
 
 yaourt -Syu --noconfirm \
     base-devel \
