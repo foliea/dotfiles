@@ -31,6 +31,7 @@ brew reinstall git \
                tmux \
                fish \
                gawk \
+               ncdu \
                grip \
                reattach-to-user-namespace \
                https://raw.githubusercontent.com/Homebrew/homebrew-core/c5674f07fcabc3b4d6814eacbf5ec98fac9acfe9/Formula/chromedriver.rb # 2.24

@@ -15,6 +15,19 @@ apt-get install -qy \
     tmux \
     rbenv \
     ruby-build \
+    fzf \
+    python-pip \
     exuberant-ctags \
+    libmysqlclient-dev \
+    openvpn \
+    nodejs \
+    npm \
+    imagemagick \
     phantomjs \
     expect
+
+curl -fsSL get.docker.com -o get-docker.sh
+
+pip install docker-compose
+
+npm install -g yarn
