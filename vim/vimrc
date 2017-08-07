@@ -28,7 +28,6 @@ Plug 'ngmy/vim-rubocop'
 Plug 'vim-ruby/vim-ruby'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'christoomey/vim-system-copy'
-Plug 'JamshedVesuna/vim-markdown-preview'
 
 call plug#end()
 
@@ -154,13 +153,19 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
-" Markdown Preview
-let vim_markdown_preview_hotkey='<C-m>'
-let vim_markdown_preview_browser='Google Chrome'
-let vim_markdown_preview_github=1
-
 " Disable arrow keys
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
+
+" Markdown Preview
+function! Preview_Markdown()
+  let s:preview_cmd = 'grip ' . resolve(expand('%:p')) . ' 0.0.0.0'
+
+  call Send_keys_to_Tmux('c-c')
+  call Send_to_Tmux(s:preview_cmd)
+  call Send_keys_to_Tmux('Enter')
+endfunction
+
+noremap <C-M> :call Preview_Markdown()<CR>
