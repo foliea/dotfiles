@@ -30,4 +30,4 @@ curl -fsSL get.docker.com -o get-docker.sh
 
 pip install docker-compose
 
-npm install -g yarn
+pip install docker-compose grip
