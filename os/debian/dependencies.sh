@@ -20,6 +20,7 @@ apt-get install -qy \
     exuberant-ctags \
     libmysqlclient-dev \
     openvpn \
+    resolvconf \
     nodejs \
     npm \
     imagemagick \
