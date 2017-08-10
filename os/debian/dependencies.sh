@@ -29,6 +29,8 @@ apt-get install -qy \
 
 curl -fsSL get.docker.com -o get-docker.sh
 
-pip install docker-compose
-
 pip install docker-compose grip
+
+curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path
+
+$HOME/.cargo/bin/cargo install ripgrep

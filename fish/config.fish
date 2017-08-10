@@ -8,7 +8,7 @@ set -g -x LC_ALL en_US.UTF-8
 
 set -x GOPATH ~/dev/go
 
-set PATH /usr/local/bin /usr/sbin $PATH
+set PATH /usr/local/bin /usr/sbin $HOME/.cargo/bin $PATH
 
 # rbenv
 if type rbenv > /dev/null 2>&1
