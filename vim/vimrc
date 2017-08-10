@@ -136,9 +136,6 @@ nmap <silent> <leader>v :TestVisit<CR>
 
 let test#strategy = "tslime"
 
-" Quickfix list
-nmap <leader>e :cwindow<CR>
-
 " Tmux command
 nmap <silent> <leader>c :Tmux<space>
 
@@ -168,4 +165,4 @@ function! Preview_Markdown()
   call Send_keys_to_Tmux('Enter')
 endfunction
 
-noremap <C-M> :call Preview_Markdown()<CR>
+noremap <leader>e :call Preview_Markdown()<CR>
