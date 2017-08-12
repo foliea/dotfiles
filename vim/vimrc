@@ -28,6 +28,7 @@ Plug 'ngmy/vim-rubocop'
 Plug 'vim-ruby/vim-ruby'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'christoomey/vim-system-copy'
+Plug 'Yggdroot/indentline'
 
 call plug#end()
 
