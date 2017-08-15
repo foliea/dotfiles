@@ -27,6 +27,8 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'vim-ruby/vim-ruby'
 Plug 'ngmy/vim-rubocop'
 Plug 'tpope/vim-rails'
+Plug 'tpope/vim-haml'
+Plug 'slim-template/vim-slim'
 Plug 'moll/vim-node'
 Plug 'elzr/vim-json'
 Plug 'elixir-lang/vim-elixir'
@@ -109,6 +111,7 @@ autocmd BufRead,BufNewFile Caskfile setlocal ft=ruby
 autocmd BufRead,BufNewFile *.es6 set filetype=javascript
 autocmd BufRead,BufReadPost *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.docker set filetype=dockerfile
+autocmd BufRead,BufNewFile *.slim setlocal filetype=slim
 
 " Remove trailing whitespaces on save
 set wrap
