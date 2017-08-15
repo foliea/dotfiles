@@ -3,32 +3,35 @@ let g:fzf_install = 'yes | ./install --bin'
 
 call plug#begin('~/.vim/plugins')
 
-Plug 'scrooloose/nerdtree'
+" Common
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-Plug 'majutsushi/tagbar'
-Plug 'tpope/vim-rails'
-Plug 'vim-ruby/vim-ruby'
 Plug 'scrooloose/syntastic'
-Plug 'moll/vim-node'
-Plug 'elzr/vim-json'
+Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
+Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'jelera/vim-javascript-syntax'
+Plug 'junegunn/fzf', { 'do': g:fzf_install }
 Plug 'jremmen/vim-ripgrep'
 Plug 'janko-m/vim-test'
-Plug 'jgdavey/tslime.vim'
-Plug 'junegunn/fzf', { 'do': g:fzf_install }
-Plug 'elixir-lang/vim-elixir'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'tpope/vim-fugitive'
-Plug 'ngmy/vim-rubocop'
-Plug 'vim-ruby/vim-ruby'
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'christoomey/vim-system-copy'
 Plug 'Yggdroot/indentline'
+
+" Tmux
+Plug 'jgdavey/tslime.vim'
+Plug 'christoomey/vim-tmux-navigator'
+
+" Languages / Frameworks
+Plug 'vim-ruby/vim-ruby'
+Plug 'ngmy/vim-rubocop'
+Plug 'tpope/vim-rails'
+Plug 'moll/vim-node'
+Plug 'elzr/vim-json'
+Plug 'elixir-lang/vim-elixir'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
 call plug#end()
 
