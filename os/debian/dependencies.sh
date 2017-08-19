@@ -6,6 +6,7 @@ apt-get install -qy \
     build-essential \
     python-dev \
     cmake \
+    gawk \
     git \
     mercurial \
     curl \
