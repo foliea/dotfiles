@@ -8,7 +8,11 @@ set -g -x LC_ALL en_US.UTF-8
 
 set -x GOPATH ~/dev/go
 
-set PATH /usr/local/bin /usr/sbin $HOME/.cargo/bin $PATH
+set PATH /usr/local/bin /usr/sbin $PATH
+
+if test -d $HOME/.cargo/bin
+    set PATH $HOME/.cargo/bin $PATH
+end
 
 # rbenv
 if type rbenv > /dev/null 2>&1
@@ -22,7 +26,7 @@ if not test $TMUX;
     end
 end
 
-# Caps lock
+# Caps lock as Ctrl (on linux)
 if type setxkbmap > /dev/null 2>&1
     setxkbmap -layout us -option ctrl:nocaps
 end
