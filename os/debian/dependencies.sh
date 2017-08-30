@@ -15,8 +15,6 @@ apt-get install -qy \
     fish \
     tmux \
     rbenv \
-    ruby-build \
-    fzf \
     python-pip \
     exuberant-ctags \
     libmysqlclient-dev \
