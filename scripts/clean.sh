@@ -5,6 +5,8 @@ for file in gitconfig \
             gitignore-global \
             vimrc \
             vim \
+            vifmrc \
+            vifm \
             vim-go \
             fzf \
             tmux.conf \
