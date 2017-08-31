@@ -18,6 +18,7 @@ pacman -Sy --noconfirm \
     ripgrep \
     mariadb \
     vim \
+    vifm \
     fish \
     xsel
 
