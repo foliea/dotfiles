@@ -33,6 +33,7 @@ Plug 'moll/vim-node'
 Plug 'elzr/vim-json'
 Plug 'elixir-lang/vim-elixir'
 Plug 'jelera/vim-javascript-syntax'
+Plug 'dag/vim-fish'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
 call plug#end()
