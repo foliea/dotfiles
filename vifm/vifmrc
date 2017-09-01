@@ -1,5 +1,12 @@
+" Color scheme
 colorscheme Default
 colorscheme g80 ~/.vifm/colors/g80
 colorscheme g80
 
+" Open movies, pdf, etc... with system apps
 filetype * xdg-open %c &
+
+" Unarchive a file or a group of files
+command! unarchive unarchive %f
+
+nnoremap U :unarchive<cr>

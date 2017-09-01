@@ -20,6 +20,7 @@ pacman -Sy --noconfirm \
     vim \
     vifm \
     fish \
+    unrar \
     xsel
 
 yaourt -Syu --noconfirm \
