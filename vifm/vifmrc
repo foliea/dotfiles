@@ -4,7 +4,13 @@ colorscheme g80 ~/.vifm/colors/g80
 colorscheme g80
 
 " Open movies, pdf, etc... with system apps
-filetype * xdg-open %c &
+filetype *.pdf  xdg-open %c &
+filetype *.jpeg xdg-open %c &
+filetype *.jpg  xdg-open %c &
+filetype *.png  xdg-open %c &
+filetype *.mp4c xdg-open %c &
+filetype *.avi  xdg-open %c &
+filetype *.mkv  xdg-open %c &
 
 " Unarchive a file or a group of files
 command! unarchive unarchive %f
