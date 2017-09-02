@@ -176,3 +176,33 @@ function! Preview_Markdown()
 endfunction
 
 noremap <leader>e :call Preview_Markdown()<CR>
+
+" Buffers handling
+function! ClearBuffers()
+  silent! bufdo bdelete
+  silent! tabdo tabclose
+  edit .
+endfunction
+command! B :call ClearBuffers()
+
+function! DeleteHiddenBuffers()
+  let tpbl=[]
+  call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
+  let filter = 'bufexists(v:val) && index(tpbl, v:val) == -1 && match(bufname(v:val), "term://") == -1'
+  for buf in filter(range(1, bufnr('$')), filter)
+    silent execute 'bwipeout' buf
+  endfor
+endfunction
+command! BH :call DeleteHiddenBuffers()
+
+" Rename file
+function! RenameFile()
+  let old_name = expand('%')
+  let new_name = input('New file name: ', expand('%'), 'file')
+  if new_name != '' && new_name != old_name
+    exec ':saveas ' . new_name
+    exec ':silent !rm ' . old_name
+    redraw!
+  endif
+endfunction
+command! R :call RenameFile()
