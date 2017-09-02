@@ -15,7 +15,8 @@ for file in gitconfig \
             config/prompt \
             config/i3 \
             config/polybar \
-            config/nitrogen
+            config/nitrogen \
+            config/terminator
 do
     rm -rf $HOME/.$file
 done

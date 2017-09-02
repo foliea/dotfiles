@@ -10,4 +10,5 @@ yaourt -Sy --noconfirm heroku-toolbelt \
                        ruby-build \
                        i3-gaps \
                        polybar-git \
-                       nitrogen
+                       nitrogen \
+                       terminator
