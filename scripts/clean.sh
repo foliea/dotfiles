@@ -12,7 +12,10 @@ for file in gitconfig \
             tmux.conf \
             tmux \
             config/fish \
-            config/prompt
+            config/prompt \
+            config/i3 \
+            config/polybar \
+            config/nitrogen
 do
     rm -rf $HOME/.$file
 done
