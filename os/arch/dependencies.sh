@@ -6,6 +6,7 @@ pacman -Sy --noconfirm \
     sed \
     make \
     cmake \
+    curl \
     python2 \
     python-pip \
     gcc \
