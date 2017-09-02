@@ -1,0 +1,23 @@
+[global_config]
+  borderless = True
+  extra_styling = False
+  window_state = maximise
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    palette = "#000000:#f2777a:#99cc99:#ffcc66:#6699cc:#cc99cc:#66cccc:#ffffff:#000000:#f2777a:#99cc99:#ffcc66:#6699cc:#cc99cc:#66cccc:#ffffff"
+    background_color = "#2d2d2d"
+    cursor_color = "#cccccc"
+    foreground_color = "#cccccc"
+    background_image = None
+    scrollbar_position = hidden
+    show_titlebar = False
