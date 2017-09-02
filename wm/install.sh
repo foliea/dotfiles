@@ -5,6 +5,6 @@ config_dir="$HOME/.config"
 
 mkdir -p $config_dir
 
-ln -s $PWD/i3 $config_dir/
-ln -s $PWD/polybar $config_dir/
-ln -s $PWD/nitrogen $config_dir/
+for file in i3 polybar nitrogen ; do
+    ln -s $PWD/wm/$file $config_dir/
+done
