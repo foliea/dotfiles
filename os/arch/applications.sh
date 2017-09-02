@@ -7,4 +7,7 @@ yaourt -Sy --noconfirm heroku-toolbelt \
                        qt4 \ # Required by VLC
                        albert \
                        rbenv \
-                       ruby-build
+                       ruby-build \
+                       i3-gaps \
+                       polybar-git \
+                       nitrogen
