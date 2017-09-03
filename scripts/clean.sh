@@ -10,13 +10,7 @@ for file in gitconfig \
             vim-go \
             fzf \
             tmux.conf \
-            tmux \
-            config/fish \
-            config/prompt \
-            config/i3 \
-            config/polybar \
-            config/nitrogen \
-            config/terminator
+            tmux
 do
     rm -rf $HOME/.$file
 done

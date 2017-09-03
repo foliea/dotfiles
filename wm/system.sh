@@ -4,4 +4,5 @@ set -e
 pacman -Sy --noconfirm \
     i3-gaps \
     nitrogen \
-    numix-gtk-theme
+    numix-gtk-theme \
+    capitaine-icon-theme-git

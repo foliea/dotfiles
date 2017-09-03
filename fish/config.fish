@@ -26,11 +26,6 @@ if not test $TMUX;
     end
 end
 
-# Caps lock as Ctrl (on linux)
-if type setxkbmap > /dev/null 2>&1
-    setxkbmap -layout us -option ctrl:nocaps
-end
-
 alias ll='ls -lF'
 alias la='ls -lA'
 alias l='ls -CF'
