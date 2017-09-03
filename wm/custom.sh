@@ -2,4 +2,5 @@
 set -e
 
 yaourt -S --noconfirm \
-    polybar-git
+    polybar-git \
+    ttf-font-awesome
