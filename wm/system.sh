@@ -7,3 +7,5 @@ pacman -Sy --noconfirm \
     xorg-xbacklight \
     numix-gtk-theme \
     capitaine-icon-theme-git
+
+sh install_pulse
