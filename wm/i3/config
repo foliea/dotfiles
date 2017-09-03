@@ -153,3 +153,7 @@ client.urgent #2f343a #900000 #ffffff #900000
 
 # Map caps lock as control
  exec --no-startup-id "setxkbmap -layout us -option ctrl:nocaps"
+
+# Function keys
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +10
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -10
