@@ -1,14 +1,9 @@
 #!/bin/sh
 set -e
 
-yaourt -Sy --noconfirm heroku-toolbelt \
-                       google-chrome \
-                       vlc \
-                       qt4 \ # Required by VLC
-                       albert \
+yaourt -Sy --noconfirm google-chrome \
+                       terminator \
                        rbenv \
-                       ruby-build \
-                       i3-gaps \
-                       polybar-git \
-                       nitrogen \
-                       terminator
+                       ruby-build
+
+sh $PWD/terminator/install.sh

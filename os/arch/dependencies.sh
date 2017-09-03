@@ -33,5 +33,10 @@ yaourt -Syu --noconfirm \
     phantomjs \
     expect
 
-pip install docker-compose
-pip install grip
+pip install grip docker-compose
+
+systemctl enable docker
+systemctl start docker
+
+groupadd docker
+usermod -aG docker $USER
