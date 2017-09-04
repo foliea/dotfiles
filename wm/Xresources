@@ -1,0 +1,32 @@
+#if __has_include(".extend.Xresources")
+#include ".extend.Xresources"
+#endif
+
+! ------------------------------------------------------------------------------
+! -- Xft
+! ------------------------------------------------------------------------------
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: false
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+
+! ------------------------------------------------------------------------------
+! Rofi
+! ------------------------------------------------------------------------------
+
+! Theme
+rofi.color-enabled: true
+rofi.color-window: #303030, #5e5e5e, #5e5e5e
+rofi.color-normal: #303030, #ffffff, #3a3a3a, #5e5e5e, #ffffff
+rofi.color-active: #8abeb7, #ffffff, #81a2be, #268bd2, #ffffff
+rofi.color-urgent: #f0c674, #ffffff, #de935f, #cc6666, #ffffff
+
+! Runner
+rofi.terminal: terminator
+
+! Keyboard
+rofi.kb-clear-line: Control+c
+rofi.kb-remove-word-back: Control+w

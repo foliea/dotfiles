@@ -10,7 +10,8 @@ for file in gitconfig \
             vim-go \
             fzf \
             tmux.conf \
-            tmux
+            tmux \
+            config/fish
 do
     rm -rf $HOME/.$file
 done

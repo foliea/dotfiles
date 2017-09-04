@@ -10,3 +10,5 @@ for file in config/fish \
 do
     rm -rf $HOME/.$file
 done
+
+rm $HOME/.Xresources
