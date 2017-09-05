@@ -14,26 +14,28 @@ brew tap homebrew/versions
 
 # Install dependencies
 brew reinstall git \
-               mercurial \
-               hub \
-               curl \
-               wget \
-               ctags \
-               cmake \
-               phantomjs \
-               mysql \
-               postgresql \
-               redis \
-               imagemagick \
-               ripgrep \
-               vim \
-               fzf \
-               tmux \
-               fish \
-               gawk \
-               ncdu \
-               grip \
-               reattach-to-user-namespace \
-               https://raw.githubusercontent.com/Homebrew/homebrew-core/c5674f07fcabc3b4d6814eacbf5ec98fac9acfe9/Formula/chromedriver.rb # 2.24
+    mercurial \
+    hub \
+    curl \
+    wget \
+    ctags \
+    cmake \
+    phantomjs \
+    mysql \
+    postgresql \
+    redis \
+    imagemagick \
+    ripgrep \
+    vim \
+    fzf \
+    tmux \
+    fish \
+    gawk \
+    grip \
+    openssl \
+    reattach-to-user-namespace \
+    rbenv \
+    ruby-build \
+    https://raw.githubusercontent.com/Homebrew/homebrew-core/c5674f07fcabc3b4d6814eacbf5ec98fac9acfe9/Formula/chromedriver.rb # 2.24
 
-brew reinstall openssl
+brew link ruby-build

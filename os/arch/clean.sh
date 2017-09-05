@@ -1,8 +1,7 @@
 #!/bin/sh
 set -e
 
-for file in config/fish \
-    config/prompt \
+for file in i3 \
     config/i3 \
     config/polybar \
     config/nitrogen \
