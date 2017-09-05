@@ -15,6 +15,7 @@ for package in i3-gaps \
     nitrogen \
     rofi \
     dunst \
+    compton \
     xorg-xbacklight \
     manjaro-pulse \
     pa-applet \
