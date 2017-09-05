@@ -14,6 +14,7 @@ install_package() {
 for package in i3-gaps \
     nitrogen \
     rofi \
+    dunst \
     xorg-xbacklight \
     manjaro-pulse \
     pa-applet \

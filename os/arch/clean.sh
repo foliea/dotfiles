@@ -5,7 +5,8 @@ for file in i3 \
     config/i3 \
     config/polybar \
     config/nitrogen \
-    config/terminator
+    config/terminator \
+    config/dunst
 do
     rm -rf $HOME/.$file
 done
