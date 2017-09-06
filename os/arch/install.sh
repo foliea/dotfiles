@@ -5,11 +5,13 @@ install_package() {
     package=$1
 
     if type yaourt > /dev/null; then
-        yaourt -Sy --noconfirm --needed $package
+        yaourt -S --noconfirm --needed $package
     else
-        sudo pacman -Sy --noconfirm --needed $package
+        sudo pacman -S --noconfirm --needed $package
     fi
 }
+
+sudo pacman -Sy
 
 for package in i3-gaps \
     nitrogen \
