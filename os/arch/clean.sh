@@ -7,6 +7,7 @@ for file in i3 \
     config/nitrogen \
     config/terminator \
     config/dunst \
+    config/clipit \
     config/gtk-3.0 \
     config/compton.conf
 do

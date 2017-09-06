@@ -16,6 +16,7 @@ for package in i3-gaps \
     rofi \
     dunst \
     compton \
+    clipit \
     xorg-xbacklight \
     manjaro-pulse \
     pa-applet \
