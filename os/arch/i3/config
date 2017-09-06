@@ -1,4 +1,5 @@
 set $mod Mod1
+set $sup Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -166,3 +167,5 @@ bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -10"
 bindsym Print exec --no-startup-id "scrot -m & notify-send 'Screen captured'"
 bindsym --release Shift+Print exec --no-startup-id "scrot -s"
 
+# Lock
+bindsym $sup+l exec --no-startup-id "i3lock-fancy -- scrot -z"

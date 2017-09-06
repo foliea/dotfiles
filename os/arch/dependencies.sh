@@ -9,7 +9,7 @@ pacman -Sy --noconfirm \
     curl \
     python2 \
     python-pip \
-    gcc \
+    gcc5 \
     git \
     docker \
     p7zip \

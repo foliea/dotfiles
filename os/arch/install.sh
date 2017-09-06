@@ -14,6 +14,8 @@ install_package() {
 sudo pacman -Sy
 
 for package in i3-gaps \
+    i3lock-color-git \
+    i3lock-fancy-git \
     nitrogen \
     rofi \
     dunst \
