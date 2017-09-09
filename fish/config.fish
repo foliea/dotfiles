@@ -6,8 +6,6 @@ set -g -x TERM xterm-256color
 
 set -g -x LC_ALL en_US.UTF-8
 
-set -x GOPATH ~/dev/go
-
 set PATH /usr/local/bin /usr/sbin $PATH
 
 if test -d $HOME/.cargo/bin
