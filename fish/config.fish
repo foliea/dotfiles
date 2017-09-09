@@ -19,14 +19,5 @@ if type rbenv > /dev/null 2>&1
     source (rbenv init - | psub)
 end
 
-# Tmux
-if not test $TMUX;
-    if type tmux > /dev/null 2>&1
-        tmux has-session -t default; and tmux attach-session -d -t default; or tmux new-session -s default; and kill %self
-    end
-end
-
 alias ll='ls -lF'
 alias la='ls -lA'
-alias l='ls -CF'
-alias j='jobs'
