@@ -18,4 +18,8 @@ do
     ln -s $PWD/os/arch/$file $config_dir/
 done
 
-ln -s $PWD/os/arch/Xresources $HOME/.Xresources
+for file in Xresources \
+    gtkrc-2.0
+do
+    ln -s $PWD/os/arch/$file $HOME/.$file
+done

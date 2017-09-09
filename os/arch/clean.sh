@@ -10,9 +10,9 @@ for file in i3 \
     config/clipit \
     config/gtk-3.0 \
     config/transmission \
-    config/compton.conf
+    config/compton.conf \
+    Xresources \
+    gtkrc-2.0
 do
     rm -rf $HOME/.$file
 done
-
-rm $HOME/.Xresources
