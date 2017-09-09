@@ -9,6 +9,7 @@ for file in i3 \
     config/dunst \
     config/clipit \
     config/gtk-3.0 \
+    config/transmission \
     config/compton.conf
 do
     rm -rf $HOME/.$file

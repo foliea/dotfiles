@@ -33,6 +33,7 @@ for package in i3-gaps \
     terminator \
     google-chrome \
     slack-desktop \
+    transmission-gtk \
     yakyak
 do
     install_package $package
