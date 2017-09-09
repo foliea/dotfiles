@@ -20,7 +20,7 @@ font pango:DejaVu Sans Mono 8
 floating_modifier $mod
 
 # start a terminal
-# bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+t exec terminator
 
 # kill focused window
 bindsym $mod+q kill
@@ -141,10 +141,10 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Status bar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id "$HOME/.config/polybar/launch.sh"
 
 # Wallpaper
-exec --no-startup-id nitrogen --restore
+exec --no-startup-id "nitrogen --restore"
 
 # Colors
 client.focused #444444 #444444 #ffffff #2d2d2d
