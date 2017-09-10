@@ -1,5 +1,5 @@
 [global]
-    font = Cantarell 10
+    font = Noto Sans 10
 
     # Allow a small subset of html markup:
     #   <b>bold</b>
@@ -161,7 +161,7 @@
     # Xev might be helpful to find names for keys.
 
     # Close notification.
-    close = mod1+space
+    close = ctrl+mod4+space
 
     # Close all notifications.
     # close_all = ctrl+shift+space

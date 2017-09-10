@@ -30,6 +30,7 @@ for package in i3-gaps \
     numix-gtk-theme \
     numix-icon-theme-git \
     ttf-font-awesome \
+    noto-fonts \
     terminator \
     google-chrome \
     slack-desktop \
