@@ -17,6 +17,7 @@ for package in i3-gaps \
     i3lock-color-git \
     i3lock-fancy-git \
     i3-scrot \
+    i3exit \
     polybar-git \
     nitrogen \
     rofi \
@@ -24,9 +25,23 @@ for package in i3-gaps \
     compton \
     clipit \
     xorg-xbacklight \
+    lightdm \
+    manjaro-base-skel \
+    manjaro-system \
+    manjaro-keyring \
+    manjaro-printer \
+    manjaro-release \
+    manjaro-hotfixes \
+    manjaro-firmware \
+    manjaro-settings-manager \
+    manjaro-settings-manager-notifier \
+    alsa-utils \
+    alsa-firmware \
+    pulseaudio-alsa \
     manjaro-pulse \
     pa-applet \
     pavucontrol \
+    xfce4-power-manager \
     numix-gtk-theme \
     numix-icon-theme-git \
     numix-cursor-theme-git \
@@ -44,4 +59,5 @@ done
 sh $PWD/os/arch/clean.sh
 sh $PWD/os/arch/link.sh
 
+sudo cp -rf $PWD/os/arch/lightdm /etc/lightdm
 sudo cp -f $PWD/os/arch/applications/tui.desktop /usr/share/applications/
