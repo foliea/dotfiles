@@ -3,7 +3,7 @@ background = #2d2d2d
 background-alt = #333333
 foreground = #f9f9f9
 foreground-alt = #999
-primary = #ffb52a
+primary = #d64937
 secondary = #e60053
 alert = #d64937
 
