@@ -165,8 +165,8 @@ bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight +10"
 bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -10"
 
 # Screenshots
-bindsym Print exec --no-startup-id "scrot -m & notify-send 'Screen captured'"
-bindsym --release Shift+Print exec --no-startup-id "scrot -s"
+bindsym Print exec --no-startup-id "i3-scrot"
+bindsym --release Shift+Print exec --no-startup-id "i3-scrot -s"
 
 # Lock
 bindsym $sup+l exec --no-startup-id "i3lock-fancy -- scrot -z"

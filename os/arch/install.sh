@@ -16,13 +16,13 @@ sudo pacman -Sy
 for package in i3-gaps \
     i3lock-color-git \
     i3lock-fancy-git \
+    i3-scrot \
     polybar-git \
     nitrogen \
     rofi \
     dunst \
     compton \
     clipit \
-    scrot \
     xorg-xbacklight \
     manjaro-pulse \
     pa-applet \
