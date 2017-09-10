@@ -16,6 +16,7 @@ sudo pacman -Sy
 for package in i3-gaps \
     i3lock-color-git \
     i3lock-fancy-git \
+    polybar-git \
     nitrogen \
     rofi \
     dunst \
@@ -27,8 +28,7 @@ for package in i3-gaps \
     pa-applet \
     pavucontrol \
     numix-gtk-theme \
-    la-capitaine-icon-theme-git \
-    polybar-git \
+    numix-icon-theme-git \
     ttf-font-awesome \
     terminator \
     google-chrome \
