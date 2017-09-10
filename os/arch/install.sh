@@ -29,6 +29,7 @@ for package in i3-gaps \
     pavucontrol \
     numix-gtk-theme \
     numix-icon-theme-git \
+    numix-cursor-theme-git \
     ttf-font-awesome \
     noto-fonts \
     terminator \
