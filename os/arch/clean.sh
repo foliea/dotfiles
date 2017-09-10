@@ -12,6 +12,9 @@ for file in i3 \
     config/transmission \
     config/compton.conf \
     Xresources \
+    Xclients \
+    xinitrc \
+    dmrc \
     gtkrc-2.0
 do
     rm -rf $HOME/.$file

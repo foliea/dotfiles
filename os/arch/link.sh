@@ -19,6 +19,9 @@ do
 done
 
 for file in Xresources \
+    Xclients \
+    xinitrc \
+    dmrc \
     gtkrc-2.0
 do
     ln -s $PWD/os/arch/$file $HOME/.$file
