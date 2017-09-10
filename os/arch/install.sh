@@ -43,3 +43,5 @@ done
 
 sh $PWD/os/arch/clean.sh
 sh $PWD/os/arch/link.sh
+
+sudo cp -f $PWD/os/arch/applications/tui.desktop /usr/share/applications/

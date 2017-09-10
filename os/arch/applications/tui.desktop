@@ -1,0 +1,11 @@
+[Desktop Entry]
+Categories=System;Utility;ConsoleOnly;
+Comment=Network Manager
+Exec=nmtui
+GenericName=Network Manager
+Icon=Terminator
+Name=Network Manager
+Terminal=true
+TryExec=nmtui
+Type=Application
+Keywords=Network;Wifi;Ethernet
