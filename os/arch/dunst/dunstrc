@@ -151,7 +151,7 @@
     icon_folders = /usr/share/icons/Numix/16/status/:/usr/share/icons/Numix/16/devices/
 [frame]
     width = 1
-    color = "#5e5e5e"
+    color = "#dedede"
 
 [shortcuts]
 
@@ -178,18 +178,18 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#303030"
-    foreground = "#5e5e5e"
+    background = "#2d2d2d"
+    foreground = "#999999"
     timeout = 10
 
 [urgency_normal]
-    background = "#303030"
-    foreground = "#ffffff"
+    background = "#333333"
+    foreground = "#f9f9f9"
     timeout = 10
 
 [urgency_critical]
-    background = "#3a3a3a"
-    foreground = "#de935f"
+    background = "#d64937"
+    foreground = "#f9f9f9"
     timeout = 0
 #
 # vim: ft=cfg
