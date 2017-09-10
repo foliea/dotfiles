@@ -1,13 +1,11 @@
 [colors]
-;background = ${xrdb:color0:#222}
-background = #303030
-background-alt = #444
-;foreground = ${xrdb:color7:#222}
-foreground = #dfdfdf
-foreground-alt = #555
+background = #2d2d2d
+background-alt = #333333
+foreground = #f9f9f9
+foreground-alt = #999
 primary = #ffb52a
 secondary = #e60053
-alert = #bd2c40
+alert = #d64937
 
 [bar/top]
 ;monitor = ${env:MONITOR:HDMI-1}
@@ -121,7 +119,7 @@ ramp-signal-2 = 
 ramp-signal-3 = 
 ramp-signal-4 = 
 
-ramp-signal-foreground = #ffffff
+ramp-signal-foreground = #f9f9f9
 
 [module/date]
 type = internal/date
