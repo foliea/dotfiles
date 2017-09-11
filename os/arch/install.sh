@@ -61,4 +61,7 @@ sh $PWD/os/arch/clean.sh
 sh $PWD/os/arch/link.sh
 
 sudo cp -rf $PWD/os/arch/lightdm /etc/lightdm
-sudo cp -f $PWD/os/arch/applications/tui.desktop /usr/share/applications/
+
+for app in tui dev ; do
+    sudo cp -f $PWD/os/arch/applications/$app.desktop /usr/share/applications/
+done

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Categories=System;Utility;ConsoleOnly;
+Comment=Launch development environment
+Exec=dev
+GenericName=Development Environment
+Icon=Terminator
+Name=Development Environment
+Terminal=true
+TryExec=dev
+Type=Application
+Keywords=Vim;Tmux;Dev
