@@ -11,6 +11,7 @@ for file in i3 \
     config/gtk-3.0 \
     config/transmission \
     config/compton.conf \
+    config/qutebrowser \
     Xresources \
     Xclients \
     xinitrc \

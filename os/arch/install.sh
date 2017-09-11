@@ -52,6 +52,9 @@ for package in i3-gaps \
     google-chrome \
     slack-desktop \
     transmission-gtk \
+    qutebrowser \
+    python-opengl \
+    qt5-webengine \
     yakyak
 do
     install_package $package
@@ -62,6 +65,7 @@ sh $PWD/os/arch/link.sh
 
 sudo cp -rf $PWD/os/arch/lightdm /etc/lightdm
 
-for app in tui dev ; do
+for app in tui dev qutebrowser ; do
     sudo cp -f $PWD/os/arch/applications/$app.desktop /usr/share/applications/
 done
+

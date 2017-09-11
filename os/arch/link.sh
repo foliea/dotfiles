@@ -13,7 +13,8 @@ for file in i3 \
     gtk-3.0 \
     transmission \
     compton.conf \
-    clipit
+    clipit \
+    qutebrowser
 do
     ln -s $PWD/os/arch/$file $config_dir/
 done
