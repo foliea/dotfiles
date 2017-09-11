@@ -47,7 +47,7 @@ for package in i3-gaps \
     numix-icon-theme-git \
     numix-cursor-theme-git \
     ttf-font-awesome \
-    noto-fonts \
+    ttf-opensans \
     terminator \
     google-chrome \
     slack-desktop \
