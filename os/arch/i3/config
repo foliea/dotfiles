@@ -168,3 +168,7 @@ bindsym --release Shift+Print exec --no-startup-id "i3-scrot -s"
 
 # Lock
 bindsym $sup+l exec --no-startup-id "i3lock-fancy -- scrot -z"
+
+# Preview mode
+bindsym $sup+p exec --no-startup-id "~/.config/i3/preview.sh"
+

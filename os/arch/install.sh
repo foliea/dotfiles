@@ -27,6 +27,7 @@ for package in i3-gaps \
     compton \
     clipit \
     xorg-xbacklight \
+    xorg-server-xephyr \
     lightdm \
     manjaro-base-skel \
     manjaro-system \
