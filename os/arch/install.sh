@@ -18,6 +18,7 @@ for package in i3-gaps \
     i3lock-fancy-git \
     i3-scrot \
     i3exit \
+    conky-i3 \
     polybar-git \
     nitrogen \
     rofi \
