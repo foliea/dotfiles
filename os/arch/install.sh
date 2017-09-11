@@ -20,6 +20,7 @@ for package in i3-gaps \
     i3exit \
     conky-i3 \
     polybar-git \
+    cower \
     nitrogen \
     rofi \
     dunst \
