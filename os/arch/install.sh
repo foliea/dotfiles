@@ -29,6 +29,8 @@ for package in i3-gaps \
     xorg-xbacklight \
     xorg-server-xephyr \
     lightdm \
+    gtk2 \
+    gtk3 \
     manjaro-base-skel \
     manjaro-system \
     manjaro-keyring \
@@ -57,6 +59,8 @@ for package in i3-gaps \
     qutebrowser \
     python-opengl \
     qt5-webengine \
+    viewnior \
+    epdfview \
     yakyak
 do
     install_package $package
