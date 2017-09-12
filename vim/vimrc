@@ -18,6 +18,7 @@ Plug 'pbrisbin/vim-mkdir'
 Plug 'tpope/vim-fugitive'
 Plug 'christoomey/vim-system-copy'
 Plug 'Yggdroot/indentline'
+Plug 'chrisbra/Colorizer'
 
 " Tmux
 Plug 'jgdavey/tslime.vim'
