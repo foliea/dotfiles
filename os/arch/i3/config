@@ -145,6 +145,9 @@ exec_always --no-startup-id "$HOME/.config/polybar/launch.sh"
 # Wallpaper
 exec --no-startup-id "nitrogen --restore"
 
+# Style
+hide_edge_borders vertical
+
 # Colors
 client.focused #2d2d2d #2d2d2d2 #f9f9f9 #2d2d2d
 client.focused_inactive #333333 #333333 #999999 #333333
@@ -171,4 +174,3 @@ bindsym $sup+l exec --no-startup-id "i3lock-fancy -- scrot -z"
 
 # Preview mode
 bindsym $sup+p exec --no-startup-id "~/.config/i3/preview.sh"
-
