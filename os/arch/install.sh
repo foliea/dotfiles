@@ -69,9 +69,9 @@ done
 sh $PWD/os/arch/clean.sh
 sh $PWD/os/arch/link.sh
 
+sudo rm -rf /etc/lightdm
 sudo cp -rf $PWD/os/arch/lightdm /etc/lightdm
 
 for app in tui dev qutebrowser ; do
     sudo cp -f $PWD/os/arch/applications/$app.desktop /usr/share/applications/
 done
-
