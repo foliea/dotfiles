@@ -23,13 +23,8 @@ Xft.lcdfilter: lcddefault
 rofi.color-enabled: true
 rofi.color-window: #2d2d2d, #333333, #333333
 rofi.color-normal: #2d2d2d, #f9f9f9, #333333, #dedede, #333333
-rofi.color-active: #8abeb7, #f9f9f9, #81a2be, #268bd2, #f9f9f9
-rofi.color-urgent: #f0c674, #f9f9f9, #de935f, #d64937, #f9f9f9
-!rofi.color-enabled: true
-!rofi.color-window: #303030, #5e5e5e, #5e5e5e
-!rofi.color-normal: #303030, #ffffff, #3a3a3a, #5e5e5e, #ffffff
-!rofi.color-active: #8abeb7, #ffffff, #81a2be, #268bd2, #ffffff
-!rofi.color-urgent: #f0c674, #ffffff, #de935f, #cc6666, #ffffff
+rofi.color-active: #067bc2, #f9f9f9, #067bc2, #067bc2, #f9f9f9
+rofi.color-urgent: #ffe74c, #f9f9f9, #ec4e20, #d64937, #f9f9f9
 
 ! Runner
 rofi.terminal: terminator
