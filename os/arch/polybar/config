@@ -37,8 +37,8 @@ font-2 = siji:pixelsize=10;1
 font-3 = FontAwesome:size=11;1
 
 modules-left = i3
-modules-center =
-modules-right = volume wlan battery pkg date
+modules-center = window
+modules-right = volume memory wlan battery pkg date power
 
 tray-position = right
 tray-padding = 2
@@ -64,7 +64,7 @@ wrapping-scroll = false
 
 ws-icon-0 = 1;
 ws-icon-1 = 2;
-ws-icon-2 = 3;
+ws-icon-2 = 3;
 ws-icon-default = 
 
 ; Only show workspaces on the same output as the bar
@@ -95,13 +95,22 @@ label-urgent = %icon%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
+[module/window]
+type = internal/xwindow
+
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+
+label =   %title%
+label-maxlen = 50
+
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-;format-underline = #4bffdc
-label = %percentage_used%%
+
+format = <label>
+
+label =  %percentage_used%%
 
 [module/wlan]
 type = internal/network
@@ -135,7 +144,7 @@ time-alt = %H:%M:%S
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
 
-label = %time% %date%
+label =  %time% %date%
 
 [module/volume]
 type = internal/volume
@@ -187,12 +196,26 @@ animation-charging-framerate = 750
 
 [module/pkg]
 type = custom/script
-interval = 1200
+interval = 60
 format = <label>
 format-underline = ${colors.alert}
 label = "%output:0:30%"
 exec = ~/.config/polybar/pkg.sh
 exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
+
+[module/power]
+type = custom/menu
+
+expand-right = false
+
+label-open = 
+label-close = 
+label-separator = " | "
+
+menu-0-0 = Reboot
+menu-0-0-exec = i3exit reboot
+menu-0-1 = Shutdown
+menu-0-1-exec = i3exit shutdown
 
 [settings]
 screenchange-reload = true
