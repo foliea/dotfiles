@@ -1,0 +1,11 @@
+[Desktop Entry]
+Categories=System;Utility;ConsoleOnly;
+Comment=Update system dependencies
+Exec=/usr/sbin/system-update
+GenericName=System Update
+Icon=Terminator
+Name=System Update
+Terminal=true
+TryExec=/usr/sbin/system-update
+Type=Application
+Keywords=System;Update;Pacman;Yaourt
