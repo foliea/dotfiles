@@ -17,3 +17,8 @@ filetype *.torrent  xdg-open %c &
 command! unarchive unarchive %f
 
 nnoremap U :unarchive<cr>
+
+" Fuzzy finder
+command! fzf :execute '!fzf 2>&0 %%IU' | normal! gf
+
+nnoremap <C-P> :fzf<cr>
