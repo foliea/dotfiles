@@ -31,6 +31,8 @@ for package in i3-gaps \
     lightdm \
     gtk2 \
     gtk3 \
+    lightdm \
+    lightdm-gtk-greeter \
     manjaro-base-skel \
     manjaro-system \
     manjaro-keyring \
@@ -40,6 +42,8 @@ for package in i3-gaps \
     manjaro-firmware \
     manjaro-settings-manager \
     manjaro-settings-manager-notifier \
+    xf86-video-intel \
+    acpid \
     alsa-utils \
     alsa-firmware \
     pulseaudio-alsa \
