@@ -34,6 +34,7 @@ for package in i3-gaps \
     gtk3 \
     lightdm \
     lightdm-gtk-greeter \
+    NetworkManager \
     xdg-su \
     xdg-user-dirs \
     xdg-utils \
@@ -83,3 +84,5 @@ for app in tui dev qutebrowser system-update ; do
 done
 
 xdg-settings set default-web-browser qutebrowser.desktop
+
+sudo systemctl enable NetworkManager
