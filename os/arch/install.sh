@@ -36,21 +36,17 @@ for package in i3-gaps \
     manjaro-base-skel \
     manjaro-system \
     manjaro-keyring \
-    manjaro-printer \
     manjaro-release \
     manjaro-hotfixes \
     manjaro-firmware \
-    manjaro-settings-manager \
-    manjaro-settings-manager-notifier \
+    manjaro-pulse \
     xf86-video-intel \
     acpid \
     alsa-utils \
     alsa-firmware \
     pulseaudio-alsa \
-    manjaro-pulse \
     pa-applet \
     pavucontrol \
-    xfce4-power-manager \
     numix-gtk-theme \
     numix-icon-theme-git \
     numix-cursor-theme-git \
