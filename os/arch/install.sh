@@ -33,6 +33,9 @@ for package in i3-gaps \
     gtk3 \
     lightdm \
     lightdm-gtk-greeter \
+    xdg-su \
+    xdg-user-dirs \
+    xdg-utils \
     manjaro-base-skel \
     manjaro-system \
     manjaro-keyring \
@@ -77,3 +80,5 @@ sudo cp -f $PWD/os/arch/system-update.sh /usr/sbin/system-update
 for app in tui dev qutebrowser system-update ; do
     sudo cp -f $PWD/os/arch/applications/$app.desktop /usr/share/applications/
 done
+
+xdg-settings set default-web-browser qutebrowser.desktop
