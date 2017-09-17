@@ -179,3 +179,6 @@ bindsym $sup+p exec --no-startup-id "~/.config/i3/preview.sh"
 
 # Reload polybar
 bindsym $sup+u exec --no-startup-id "~/.config/polybar/launch.sh"
+
+# Switch monitor
+bindsym $sup+m exec --no-startup-id "~/.config/i3/switch-monitor.sh"

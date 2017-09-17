@@ -28,6 +28,7 @@ for package in i3-gaps \
     clipit \
     xorg-xbacklight \
     xorg-server-xephyr \
+    xorg-xrandr \
     lightdm \
     gtk2 \
     gtk3 \
