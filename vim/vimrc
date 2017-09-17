@@ -166,19 +166,23 @@ noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
 
+" Open
+function! Open(target)
+  if system('uname') == "Darwin\n"
+    call system('open ' . a:target)
+  else
+    call system('xdg-open ' . a:target)
+  endif
+endfunction
+
 " Markdown Preview
 function! Preview_Markdown()
-  let s:preview_cmd = 'grip ' . resolve(expand('%:p')) . ' 0.0.0.0'
+  let s:preview_cmd = 'grip ' . resolve(expand('%:p')) . ' 127.0.0.1'
 
   call Send_keys_to_Tmux('c-c')
   call Send_to_Tmux(s:preview_cmd)
   call Send_keys_to_Tmux('Enter')
-
-  if system('uname') == "Darwin\n"
-    call system('open http://localhost:6419')
-  else
-    call system('xdg-open http://localhost:6419')
-  endif
+  call Open('http://localhost:6419')
 endfunction
 
 noremap <leader>e :call Preview_Markdown()<CR>

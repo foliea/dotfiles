@@ -4,14 +4,25 @@ colorscheme Tomorrow-Night ~/.vifm/colors/Tomorrow-Night
 colorscheme Tomorrow-Night
 
 " Open movies, pdf, etc... with system apps
-filetype *.pdf      xdg-open %c &
-filetype *.jpeg     xdg-open %c &
-filetype *.jpg      xdg-open %c &
-filetype *.png      xdg-open %c &
-filetype *.mp4      xdg-open %c &
-filetype *.avi      xdg-open %c &
-filetype *.mkv      xdg-open %c &
-filetype *.torrent  xdg-open %c &
+if has('darwin')
+    filetype *.pdf      open %c &
+    filetype *.jpeg     open %c &
+    filetype *.jpg      open %c &
+    filetype *.png      open %c &
+    filetype *.mp4      open %c &
+    filetype *.avi      open %c &
+    filetype *.mkv      open %c &
+    filetype *.torrent  open %c &
+else
+    filetype *.pdf      xdg-open %c &
+    filetype *.jpeg     xdg-open %c &
+    filetype *.jpg      xdg-open %c &
+    filetype *.png      xdg-open %c &
+    filetype *.mp4      xdg-open %c &
+    filetype *.avi      xdg-open %c &
+    filetype *.mkv      xdg-open %c &
+    filetype *.torrent  xdg-open %c &
+end
 
 " Unarchive a file or a group of files
 command! unarchive unarchive %f
