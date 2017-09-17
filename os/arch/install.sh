@@ -66,6 +66,7 @@ for package in i3-gaps \
     qt5-webengine \
     viewnior \
     epdfview \
+    mpv \
     yakyak
 do
     install_package $package
