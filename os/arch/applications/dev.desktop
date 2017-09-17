@@ -2,7 +2,7 @@
 Categories=System;Utility;ConsoleOnly;
 Comment=Launch development environment
 Exec=dev
-GenericName=Development Environment
+GenericName=Terminal
 Icon=Terminator
 Name=Development Environment
 Terminal=true
