@@ -160,12 +160,11 @@ client.urgent #d64937 #d64937 #f9f9f9f #d64937
  exec --no-startup-id "setxkbmap -layout us -option ctrl:nocaps"
 
 # Function keys
-bindcode 121 exec --no-startup-id "amixer -D pulse set Master toggle"
-bindcode 122 exec --no-startup-id "amixer -D pulse set Master '10%-'"
-bindcode 123 exec --no-startup-id "amixer -D pulse set Master '10%+'"
-
-bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight +10"
+bindsym XF86AudioMute         exec --no-startup-id "amixer -D pulse set Master toggle"
+bindsym XF86AudioLowerVolume  exec --no-startup-id "amixer -D pulse set Master '10%-'"
+bindsym XF86AudioRaiseVolume  exec --no-startup-id "amixer -D pulse set Master '10%+'"
 bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -10"
+bindsym XF86MonBrightnessUp   exec --no-startup-id "xbacklight +10"
 
 # Screenshots
 bindsym Print exec --no-startup-id "i3-scrot"
