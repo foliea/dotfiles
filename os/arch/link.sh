@@ -27,5 +27,5 @@ for file in Xresources \
     gnupg \
     pam_environment
 do
-    ln -s $PWD/os/arch/$file $HOME/.$file
+    ln -s $PWD/os/arch/root/$file $HOME/.$file
 done
