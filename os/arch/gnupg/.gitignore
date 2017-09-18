@@ -3,3 +3,6 @@ private-keys-v1.d
 pubring.kbx
 *.status
 sshcontrol
+trustdb.gpg
+crls.d
+*~
