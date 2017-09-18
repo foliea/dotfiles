@@ -1,0 +1,5 @@
+gpg-agent.log
+private-keys-v1.d
+pubring.kbx
+*.status
+sshcontrol

@@ -67,7 +67,12 @@ for package in i3-gaps \
     viewnior \
     epdfview \
     mpv \
-    yakyak
+    yakyak \
+    yubikey-manager \
+    pcsclite \
+    pcsc-tools \
+    gnupg2 \
+    pam
 do
     install_package $package
 done
@@ -80,10 +85,15 @@ sudo cp -rf $PWD/os/arch/lightdm /etc/lightdm
 
 sudo cp -f $PWD/os/arch/system-update.sh /usr/sbin/system-update
 
+for service in NetworkManager pcscd ; do
+    sudo systemctl enable $service
+    sudo systemctl start $service
+done
+
+sudo curl -s "https://sks-keyservers.net/sks-keyservers.netCA.pem" -o /etc/sks-keyservers.netCA.pem
+
 for app in tui dev qutebrowser system-update ; do
     sudo cp -f $PWD/os/arch/applications/$app.desktop /usr/share/applications/
 done
 
 xdg-settings set default-web-browser qutebrowser.desktop
-
-sudo systemctl enable NetworkManager

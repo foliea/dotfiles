@@ -16,7 +16,9 @@ for file in i3 \
     Xclients \
     xinitrc \
     dmrc \
-    gtkrc-2.0
+    gtkrc-2.0 \
+    gnupg \
+    pam_environment
 do
     rm -rf $HOME/.$file
 done
