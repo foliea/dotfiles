@@ -48,6 +48,7 @@ for package in i3-gaps \
     manjaro-pulse \
     manjaro-printer \
     xf86-video-intel \
+    xf86-input-synaptics \
     acpid \
     alsa-utils \
     alsa-firmware \
@@ -98,5 +99,7 @@ sudo curl -s "https://sks-keyservers.net/sks-keyservers.netCA.pem" -o /etc/sks-k
 for app in tui dev qutebrowser system-update ; do
     sudo cp -f $PWD/os/arch/applications/$app.desktop /usr/share/applications/
 done
+
+sudo cp -f $OS/arch/misc/30-touchpad.conf /etc/X11/xorg.conf.d/
 
 xdg-settings set default-web-browser qutebrowser.desktop
