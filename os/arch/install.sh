@@ -35,6 +35,7 @@ for package in i3-gaps \
     lightdm \
     lightdm-gtk-greeter \
     NetworkManager \
+    blueman \
     xdg-su \
     xdg-user-dirs \
     xdg-utils \
@@ -45,6 +46,7 @@ for package in i3-gaps \
     manjaro-hotfixes \
     manjaro-firmware \
     manjaro-pulse \
+    manjaro-printer \
     xf86-video-intel \
     acpid \
     alsa-utils \
@@ -86,7 +88,7 @@ sudo cp -rf $PWD/os/arch/lightdm /etc/lightdm
 
 sudo cp -f $PWD/os/arch/system-update.sh /usr/sbin/system-update
 
-for service in NetworkManager pcscd ; do
+for service in NetworkManager pcscd org.cups.cupsd.service ; do
     sudo systemctl enable $service
     sudo systemctl start $service
 done
