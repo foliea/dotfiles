@@ -23,5 +23,10 @@ if test -d $GNUPGHOME/gpg-agent.conf
     set -g -x SSH_AUTH_SOCK $HOME/.gnupg/S.gpg-agent.ssh
 end
 
+# Share system clipboard (on darwin)
+if type reattach-to-user-namespace > /dev/null 2>&1
+    reattach-to-user-namespace -l $SHELL
+end
+
 alias ll='ls -lF'
 alias la='ls -lA'
