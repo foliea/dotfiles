@@ -69,8 +69,9 @@ for package in i3-gaps \
     mpv \
     yakyak \
     yubikey-manager \
-    pcsclite \
     pcsc-tools \
+    ccid \
+    libusb-compat \
     gnupg2 \
     pam
 do
