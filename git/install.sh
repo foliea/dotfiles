@@ -11,6 +11,11 @@ do
     fi
 done
 
+read -p "Do you want to sign git commits with gpg key? (y/n): " gpgsign
+if [ "$gpgsign" == "y" ]; then
+    ${config} commit.gpgsign true
+fi
+
 ${config} core.autocrlf input
 ${config} push.default simple
 ${config} pull.rebase true

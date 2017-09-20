@@ -10,4 +10,8 @@ expect "Please specify you git user email: "
 send "john.snow@youknownothing.com"
 send -- "\r"
 
+expect "Do you want to sign git commits with your gpg key? (y/n): "
+send "y"
+send -- "\r"
+
 interact

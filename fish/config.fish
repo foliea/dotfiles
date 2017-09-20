@@ -1,4 +1,4 @@
-set -g -x __GIT_PROMPT_DIR ~/.config/fish/tools
+set -g -x __GIT_PROMPT_DIR $HOME/.config/fish/tools
 
 set -g -x EDITOR vim
 set -g -x SHELL (which fish)
@@ -15,6 +15,12 @@ end
 # rbenv
 if type rbenv > /dev/null 2>&1
     source (rbenv init - | psub)
+end
+
+# Verify that gpg-agent config exists
+if test -d $GNUPGHOME/gpg-agent.conf
+    set -g -x SSH_AGENT_PID
+    set -g -x SSH_AUTH_SOCK $HOME/.gnupg/S.gpg-agent.ssh
 end
 
 alias ll='ls -lF'

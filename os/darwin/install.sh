@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-sh $PWD/os/darwin/dependencies.sh
+brew reinstall gnupg2
 
 brew reinstall caskroom/cask/brew-cask
 
@@ -14,3 +14,5 @@ brew cask install \
     unrarx \
     transmission \
     docker
+
+cp -f $PWD/os/darwin/environment.plist $HOME/Library/LaunchAgents/

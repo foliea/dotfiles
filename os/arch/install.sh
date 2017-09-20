@@ -97,5 +97,3 @@ for app in tui dev qutebrowser system-update ; do
 done
 
 xdg-settings set default-web-browser qutebrowser.desktop
-
-git config --global commit.gpgsign true
