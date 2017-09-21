@@ -136,7 +136,7 @@ nmap <leader>w :resize 10<CR>
 nmap <C-P> :FZF<CR>
 
 " Ripgrep
-nmap <C-F> :Rg<space>
+nmap <C-F> :Rg<space>""<Left>
 
 " Tests
 nmap <silent> <leader>t :TestNearest<CR>
