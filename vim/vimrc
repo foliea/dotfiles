@@ -6,7 +6,6 @@ call plug#begin('~/.vim/plugins')
 " Common
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'scrooloose/syntastic'
-Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
@@ -87,22 +86,6 @@ filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
 
-" NERDTree
-nmap <F8> :NERDTreeToggle<CR>
-
-let g:NERDTreeShowHidden=1
-let g:NERDTreeIgnore = ['\.DS_Store$', '\$']
-let g:NERDTreeHijackNetrw=0
-
-" Go
-let g:go_disable_autoinstall = 1
-let g:go_fmt_fail_silently = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-
 " Ruby
 autocmd FileType ruby compiler ruby
 
@@ -114,6 +97,7 @@ autocmd BufRead,BufNewFile *.md     setlocal filetype=markdown
 autocmd BufRead,BufNewFile *.docker setlocal filetype=dockerfile
 autocmd BufRead,BufNewFile *.slim   setlocal filetype=slim
 autocmd BufRead,BufNewFile *.vim    setlocal filetype=viml
+autocmd BufRead,BufNewFile vifmrc    setlocal filetype=viml
 
 " Remove trailing whitespaces on save
 set wrap

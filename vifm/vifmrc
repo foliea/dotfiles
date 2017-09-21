@@ -33,3 +33,5 @@ nnoremap U :unarchive<cr>
 command! fzf :execute '!fzf 2>&0 %%IU' | normal! gf
 
 nnoremap <C-P> :fzf<cr>
+
+" vim:ft=vim
