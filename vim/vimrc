@@ -61,15 +61,15 @@ set expandtab
 set backspace=indent,eol,start
 
 " Tabs
-autocmd FileType ruby setlocal shiftwidth=2 softtabstop=2
+autocmd FileType ruby  setlocal shiftwidth=2 softtabstop=2
 autocmd FileType eruby setlocal shiftwidth=2 softtabstop=2
-autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2
-autocmd FileType haml setlocal shiftwidth=2 softtabstop=2
-autocmd FileType slim setlocal shiftwidth=2 softtabstop=2
-autocmd FileType json setlocal shiftwidth=2 softtabstop=2
-autocmd FileType scss setlocal shiftwidth=2 softtabstop=2
+autocmd FileType yaml  setlocal shiftwidth=2 softtabstop=2
+autocmd FileType haml  setlocal shiftwidth=2 softtabstop=2
+autocmd FileType slim  setlocal shiftwidth=2 softtabstop=2
+autocmd FileType json  setlocal shiftwidth=2 softtabstop=2
+autocmd FileType scss  setlocal shiftwidth=2 softtabstop=2
+autocmd FileType vim   setlocal shiftwidth=2 softtabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2
-autocmd FileType html.handlebars setlocal shiftwidth=2 softtabstop=2
 
 " Show whitespaces
 set list
@@ -107,12 +107,13 @@ let g:go_highlight_build_constraints = 1
 autocmd FileType ruby compiler ruby
 
 " Custom syntax highlighting
-autocmd BufRead,BufNewFile Gomfile setlocal ft=ruby
-autocmd BufRead,BufNewFile Caskfile setlocal ft=ruby
-autocmd BufRead,BufNewFile *.es6 set filetype=javascript
-autocmd BufRead,BufReadPost *.md set filetype=markdown
-autocmd BufRead,BufNewFile *.docker set filetype=dockerfile
-autocmd BufRead,BufNewFile *.slim setlocal filetype=slim
+autocmd BufRead,BufNewFile Gomfile  setlocal filetype=ruby
+autocmd BufRead,BufNewFile Caskfile setlocal filetype=ruby
+autocmd BufRead,BufNewFile *.es6    setlocal filetype=javascript
+autocmd BufRead,BufNewFile *.md     setlocal filetype=markdown
+autocmd BufRead,BufNewFile *.docker setlocal filetype=dockerfile
+autocmd BufRead,BufNewFile *.slim   setlocal filetype=slim
+autocmd BufRead,BufNewFile *.vim    setlocal filetype=viml
 
 " Remove trailing whitespaces on save
 set wrap
@@ -128,9 +129,6 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
-
-nnoremap <leader>q <C-W>_
-nmap <leader>w :resize 10<CR>
 
 " Fuzzy finder
 nmap <C-P> :FZF<CR>
