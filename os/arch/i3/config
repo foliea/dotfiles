@@ -171,7 +171,9 @@ bindsym Print exec --no-startup-id "i3-scrot"
 bindsym --release Shift+Print exec --no-startup-id "i3-scrot -s"
 
 # Lock
-bindsym $sup+l exec --no-startup-id "i3lock-fancy -- scrot -z"
+exec --no-startup-id "xss-lock -- ~/.config/i3/lock.sh"
+
+bindsym $sup+l exec --no-startup-id "~/.config/i3/lock.sh"
 
 # Preview mode
 bindsym $sup+p exec --no-startup-id "~/.config/i3/preview.sh"
