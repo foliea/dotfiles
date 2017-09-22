@@ -7,12 +7,16 @@ primary = #d64937
 secondary = #e60053
 alert = #d64937
 
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
 [bar/top]
-;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 height = 27
-;offset-x = 1%
-;offset-y = 1%
 radius = 6.0
 fixed-center = false
 
@@ -42,19 +46,6 @@ modules-right = volume memory wlan battery pkg date power
 
 tray-position = right
 tray-padding = 2
-;tray-transparent = true
-;tray-background = #0063ff
-
-;wm-restack = bspwm
-;wm-restack = i3
-
-;override-redirect = true
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
 
 [module/i3]
 type = internal/i3
@@ -67,30 +58,23 @@ ws-icon-1 = 2;
 ws-icon-2 = 3;
 ws-icon-default = 
 
-; Only show workspaces on the same output as the bar
-;pin-workspaces = true
-
 label-mode-padding = 2
 label-mode-foreground = ${colors.foreground}
 label-mode-background = ${colors.primary}
 
-; focused = Active workspace on focused monitor
 label-focused = %icon%
 label-focused-background = ${colors.background-alt}
 label-focused-underline = ${colors.primary}
 label-focused-padding = 2
 
-; unfocused = Inactive workspace on any monitor
 label-unfocused = %icon%
 label-unfocused-padding = 2
 
-; visible = Active workspace on unfocused monitor
 label-visible = %icon%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
-; urgent = Workspace with urgency hint set
 label-urgent = %icon%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
@@ -199,7 +183,7 @@ type = custom/script
 interval = 60
 format = <label>
 format-underline = ${colors.alert}
-label = "%output:0:30%"
+label = "%output%"
 exec = ~/.config/polybar/pkg.sh
 exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
 
@@ -216,16 +200,5 @@ menu-0-0 = Reboot
 menu-0-0-exec = i3exit reboot
 menu-0-1 = Shutdown
 menu-0-1-exec = i3exit shutdown
-
-[settings]
-screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
-
-[global/wm]
-margin-top = 5
-margin-bottom = 5
 
 ; vim:ft=dosini

@@ -32,6 +32,7 @@ for package in i3-gaps \
     gtk3 \
     lightdm \
     lightdm-gtk-greeter \
+    light-locker \
     NetworkManager \
     blueman \
     xdg-su \
