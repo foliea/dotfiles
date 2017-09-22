@@ -27,7 +27,6 @@ for package in i3-gaps \
     xorg-xbacklight \
     xorg-server-xephyr \
     xorg-xrandr \
-    lightdm \
     gtk2 \
     gtk3 \
     lightdm \
@@ -35,6 +34,7 @@ for package in i3-gaps \
     light-locker \
     NetworkManager \
     blueman \
+    lxinput \
     xdg-su \
     xdg-user-dirs \
     xdg-utils \
