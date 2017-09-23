@@ -1,6 +1,4 @@
-if not set -q __GIT_PROMPT_DIR
-    set __GIT_PROMPT_DIR ~/.gitprompt
-end
+set __GIT_PROMPT_DIR $HOME/.config/fish/tools
 
 # Colors
 # Reset

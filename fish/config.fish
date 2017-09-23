@@ -1,9 +1,6 @@
-set -g -x __GIT_PROMPT_DIR $HOME/.config/fish/tools
-
 set -g -x EDITOR vim
 set -g -x SHELL (which fish)
 set -g -x TERM xterm-256color
-
 set -g -x LC_ALL en_US.UTF-8
 
 set PATH /usr/local/bin /usr/sbin $PATH
