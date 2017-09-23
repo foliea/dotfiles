@@ -13,7 +13,16 @@ install_package() {
 
 sudo pacman -Sy
 
-for package in i3-gaps \
+for package in NetworkManager \
+    manjaro-base-skel \
+    manjaro-system \
+    manjaro-keyring \
+    manjaro-release \
+    manjaro-hotfixes \
+    manjaro-firmware \
+    manjaro-pulse \
+    manjaro-printer \
+    i3-gaps \
     i3-scrot \
     i3exit \
     conky-i3 \
@@ -32,20 +41,12 @@ for package in i3-gaps \
     lightdm \
     lightdm-gtk-greeter \
     light-locker \
-    NetworkManager \
     blueman \
     lxinput \
     xdg-su \
     xdg-user-dirs \
     xdg-utils \
-    manjaro-base-skel \
-    manjaro-system \
-    manjaro-keyring \
-    manjaro-release \
-    manjaro-hotfixes \
-    manjaro-firmware \
-    manjaro-pulse \
-    manjaro-printer \
+    xflux \
     xf86-video-intel \
     xf86-input-synaptics \
     acpid \
