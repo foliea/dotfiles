@@ -1,17 +1,9 @@
 #!/bin/sh
 set -e
 
-install_package() {
-    package=$1
+sudo pacman -Sy --noconfirm
 
-    if type yaourt > /dev/null; then
-        yaourt -S --noconfirm --needed $package
-    else
-        sudo pacman -S --noconfirm --needed $package
-    fi
-}
-
-sudo pacman -Sy
+yaourt -Sy --noconfirm
 
 for package in networkmanager \
     manjaro-base-skel \
@@ -80,7 +72,7 @@ for package in networkmanager \
     gnupg2 \
     pam
 do
-    install_package $package
+    sh $PWD/os/arch/install-package.sh $package
 done
 
 sh $PWD/os/arch/clean.sh
