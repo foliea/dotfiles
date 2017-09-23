@@ -13,7 +13,7 @@ install_package() {
 
 sudo pacman -Sy
 
-for package in NetworkManager \
+for package in networkmanager \
     manjaro-base-skel \
     manjaro-system \
     manjaro-keyring \
@@ -33,9 +33,11 @@ for package in NetworkManager \
     dunst \
     compton \
     clipit \
-    xorg-xbacklight \
+    xorg-server \
     xorg-server-xephyr \
+    xorg-xinit \
     xorg-xrandr \
+    xorg-xbacklight \
     gtk2 \
     gtk3 \
     lightdm \
@@ -89,7 +91,7 @@ sudo cp -rf $PWD/os/arch/lightdm /etc/lightdm
 
 sudo cp -f $PWD/os/arch/system-update.sh /usr/sbin/system-update
 
-for service in NetworkManager pcscd org.cups.cupsd.service ; do
+for service in NetworkManager pcscd org.cups.cupsd lightdm ; do
     sudo systemctl enable $service
     sudo systemctl start $service
 done
@@ -100,6 +102,7 @@ for app in tui dev qutebrowser system-update ; do
     sudo cp -f $PWD/os/arch/applications/$app.desktop /usr/share/applications/
 done
 
-sudo cp -f $OS/arch/misc/30-touchpad.conf /etc/X11/xorg.conf.d/
+sudo rm -rf /etc/X11/xorg.conf.d
+sudo cp -rf $PWD/os/arch/misc/xorg.conf.d /etc/X11/
 
 xdg-settings set default-web-browser qutebrowser.desktop
