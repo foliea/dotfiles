@@ -34,21 +34,6 @@ You can install every dependencies required:
     make dependencies
 
 >Warning: dependencies are meant to be installed only on
-[Mac OS 10.9+](https://www.apple.com/fr/osx/) and on
-[Debian](https://www.debian.org/) /
-[Arch](https://www.archlinux.org/) based linux distributions.
-
-You can try this configuration inside a Docker container:
-
-    make dev
-
-This will create a container with `archlinux` by default, but you can specify
-the os base with the environment variable `OS_BASE`:
-
-    OS_BASE=debian make dev
-
-This container will already have every dependencies required.
-
-You can now use above make commands inside this container.
-
->You need [Docker 1.3+](http://docker.com) to build this image.
+[Mac OS Sierra](https://www.apple.com/fr/osx/) and on
+[Ubuntu 17.04](https://www.ubuntu.com/) /
+[Arch based](https://www.archlinux.org/) linux distributions.

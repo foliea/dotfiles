@@ -1,6 +1,4 @@
-.PHONY: all re clean test dependencies dev fish git vim vifm tmux
-
-OS_BASE := $(if $(OS_BASE),$(OS_BASE),'arch')
+.PHONY: all re clean test dependencies fish git vim vifm tmux
 
 all: git vim tmux fish vifm
 
@@ -13,10 +11,7 @@ test:
 	scripts/test.exp
 
 dependencies:
-	os/install.sh dependencies
-
-dev:
-	scripts/dev.sh $(OS_BASE)
+	os/install.sh
 
 fish:
 	fish/install.sh
