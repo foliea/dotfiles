@@ -32,6 +32,7 @@ for package in networkmanager \
     xorg-xbacklight \
     gtk2 \
     gtk3 \
+    gtk-engine-murrine \
     lightdm \
     lightdm-gtk-greeter \
     light-locker \
