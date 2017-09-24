@@ -177,10 +177,10 @@ bindsym $sup+l exec --no-startup-id "dm-tool lock"
 exec --no-startup-id "xflux -r 1 -l 48.86 -g 2.34 -nofork"
 
 # Preview mode
-bindsym $sup+p exec --no-startup-id "~/.config/i3/preview.sh"
+bindsym $sup+m exec --no-startup-id "~/.config/i3/preview.sh"
 
-# Reload polybar
-bindsym $sup+u exec --no-startup-id "~/.config/polybar/launch.sh"
+# Reload i3 + polybar
+bindsym $sup+u exec --no-startup-id "i3-msg reload ; ~/.config/polybar/launch.sh"
 
 # Switch monitor
-bindsym $sup+m exec --no-startup-id "~/.config/i3/switch-monitor.sh"
+bindsym $sup+p exec --no-startup-id "~/.config/i3/switch-monitor.sh"
