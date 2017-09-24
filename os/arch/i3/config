@@ -174,7 +174,9 @@ exec --no-startup-id "light-locker --lock-on-suspend"
 bindsym $sup+l exec --no-startup-id "dm-tool lock"
 
 # Night Mode
-exec --no-startup-id "xflux -r 1 -l 48.86 -g 2.34 -nofork"
+exec --no-startup-id "~/.config/i3/night-mode.sh"
+
+bindsym $sup+n exec --no-startup-id "~/.config/i3/night-mode.sh"
 
 # Preview mode
 bindsym $sup+m exec --no-startup-id "~/.config/i3/preview.sh"
