@@ -79,7 +79,7 @@ sh $PWD/os/arch/clean.sh
 sh $PWD/os/arch/link.sh
 
 sudo rm -rf /etc/lightdm
-sudo cp -rf $PWD/os/arch/lightdm /etc/lightdm
+sudo cp -rf $PWD/os/arch/misc/lightdm /etc/lightdm
 
 sudo cp -f $PWD/os/arch/system-update.sh /usr/sbin/system-update
 
@@ -90,7 +90,7 @@ done
 sudo curl -s "https://sks-keyservers.net/sks-keyservers.netCA.pem" -o /etc/sks-keyservers.netCA.pem
 
 for app in tui dev qutebrowser system-update ; do
-    sudo cp -f $PWD/os/arch/applications/$app.desktop /usr/share/applications/
+    sudo cp -f $PWD/os/arch/misc/applications/$app.desktop /usr/share/applications/
 done
 
 sudo rm -rf /etc/X11/xorg.conf.d
