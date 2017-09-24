@@ -11,8 +11,7 @@ for file in gitconfig \
     fzf \
     tmux.conf \
     tmux \
-    config/fish \
-    config/prompt
+    config/fish
 do
     rm -rf $HOME/.$file
 done
