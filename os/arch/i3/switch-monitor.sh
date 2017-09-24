@@ -27,6 +27,8 @@ else
         xrandr --output $internal_output --auto --output $external_output --auto --left-of $internal_output
 fi
 
+echo "${monitor_mode}" > /tmp/monitor_mode.dat
+
 notify-send "Switch monitor" "Selected mode: ${monitor_mode}"
 
-echo "${monitor_mode}" > /tmp/monitor_mode.dat
+sh $HOME/.config/polybar/launch.sh
