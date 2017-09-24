@@ -8,6 +8,7 @@ mkdir -p $config_dir
 for file in i3 \
     polybar \
     nitrogen \
+    fontconfig \
     terminator \
     dunst \
     gtk-3.0 \

@@ -5,6 +5,7 @@ for file in i3 \
     config/i3 \
     config/polybar \
     config/nitrogen \
+    config/fontconfig \
     config/terminator \
     config/dunst \
     config/clipit \
