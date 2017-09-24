@@ -64,7 +64,6 @@ for package in networkmanager \
     viewnior \
     epdfview \
     mpv \
-    yakyak \
     yubikey-manager \
     pcsc-tools \
     ccid \
@@ -85,7 +84,6 @@ sudo cp -f $PWD/os/arch/system-update.sh /usr/sbin/system-update
 
 for service in NetworkManager pcscd org.cups.cupsd lightdm ; do
     sudo systemctl enable $service
-    sudo systemctl start $service
 done
 
 sudo curl -s "https://sks-keyservers.net/sks-keyservers.netCA.pem" -o /etc/sks-keyservers.netCA.pem

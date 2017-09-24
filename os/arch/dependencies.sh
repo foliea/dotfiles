@@ -5,8 +5,7 @@ sudo pacman -Sy --noconfirm
 
 yaourt -Sy --noconfirm
 
-for package in networkmanager \
-    awk \
+for package in awk \
     sed \
     make \
     cmake \
