@@ -82,9 +82,7 @@
     # default 120
     idle_threshold = 120
 
-    # Which monitor should the notifications be displayed on.
     monitor = 0
-
     # Display notification on focused monitor.  Possible modes are:
     #   mouse: follow mouse pointer
     #   keyboard: follow window with keyboard focus
@@ -96,7 +94,7 @@
     #
     # If this option is set to mouse or keyboard, the monitor option
     # will be ignored.
-    follow = mouse
+    follow = none
 
     # Should a notification popped up from history be sticky or timeout
     # as if it would normally do.
@@ -106,7 +104,7 @@
     history_length = 20
 
     # Display indicators for URLs (U) and actions (A).
-    show_indicators = yes
+    show_indicators = no
 
     # The height of a single line.  If the height is smaller than the
     # font height, it will get raised to the font height.
@@ -139,10 +137,10 @@
     startup_notification = false
 
     # dmenu path.
-    dmenu = /usr/bin/dmenu -p dunst:
+    dmenu = /usr/bin/rofi -dmenu -p dunst:
 
     # Browser for opening urls in context menu.
-    browser = google-chrome
+    browser = xdg-open
 
     # Align icons left/right/off
     icon_position = left
@@ -151,7 +149,7 @@
     icon_folders = /usr/share/icons/Numix/16/status/:/usr/share/icons/Numix/16/devices/
 [frame]
     width = 1
-    color = "#dedede"
+    color = "#2d2d2d"
 
 [shortcuts]
 

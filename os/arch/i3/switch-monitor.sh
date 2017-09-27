@@ -18,10 +18,7 @@ if [ $monitor_mode = "all" ]; then
     xrandr --output $internal_output --off --output $external_output --auto
 elif [ $monitor_mode = "external" ]; then
     monitor_mode="internal"
-    xrandr --output $internal_output --auto --output $external_output --off
-elif [ $monitor_mode = "internal" ]; then
-    monitor_mode="clones"
-    xrandr --output $internal_output --auto --output $external_output --auto --same-as $internal_output
+    xrandr --output $internal_output --auto --primary --output $external_output --off
 else
     monitor_mode="all"
     xrandr --output $internal_output --auto --output $external_output --auto --left-of $internal_output

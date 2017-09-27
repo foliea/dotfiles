@@ -44,6 +44,8 @@ modules-left = i3
 modules-center = window
 modules-right = volume memory wlan battery pkg date power
 
+monitor-strict = true
+
 tray-position =
 tray-padding = 2
 
