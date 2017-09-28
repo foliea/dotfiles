@@ -23,7 +23,7 @@ if uname -a | grep 'Darwin' >/dev/null
 end
 
 # Share system clipboard (on darwin)
-if reattach-to-user-namespace > /dev/null 2>&1
+if type reattach-to-user-namespace > /dev/null 2>&1
     if test $REATTACHED_TO_USER_NAMESPACE != 1
         env REATTACHED_TO_USER_NAMESPACE=1 reattach-to-user-namespace -l $SHELL
     end
