@@ -70,7 +70,8 @@ for package in networkmanager \
     ccid \
     libusb-compat \
     gnupg2 \
-    pam
+    pam \
+    pass
 do
     sh $PWD/os/arch/install-package.sh $package
 done
