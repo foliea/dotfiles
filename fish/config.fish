@@ -14,10 +14,12 @@ if type rbenv > /dev/null 2>&1
     source (rbenv init - | psub)
 end
 
-# Verify that gpg-agent config exists
-if test -d $GNUPGHOME
-    set -g -x SSH_AGENT_PID
-    set -g -x SSH_AUTH_SOCK $HOME/.gnupg/S.gpg-agent.ssh
+if uname -a | grep 'Darwin' >/dev/null
+    # Verify that gpg-agent config exists
+    if test -d $GNUPGHOME
+        set -g -x SSH_AGENT_PID
+        set -g -x SSH_AUTH_SOCK $HOME/.gnupg/S.gpg-agent.ssh
+    end
 end
 
 # Share system clipboard (on darwin)
