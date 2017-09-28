@@ -185,4 +185,8 @@ bindsym $sup+m exec --no-startup-id "~/.config/i3/preview.sh"
 bindsym $sup+u exec --no-startup-id "i3-msg reload ; ~/.config/polybar/launch.sh"
 
 # Switch monitor
-bindsym $sup+p exec --no-startup-id "~/.config/i3/switch-monitor.sh"
+exec --no-startup-id "~/.config/i3/switch-monitor.sh internal"
+
+bindsym $sup+p exec --no-startup-id "~/.config/i3/switch-monitor.sh cycle"
+bindsym $sup+c exec --no-startup-id "~/.config/i3/switch-monitor.sh clone"
+bindsym $sup+e exec --no-startup-id "~/.config/i3/switch-monitor.sh extended"
