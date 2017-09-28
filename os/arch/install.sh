@@ -82,7 +82,9 @@ sh $PWD/os/arch/link.sh
 sudo rm -rf /etc/lightdm
 sudo cp -rf $PWD/os/arch/misc/lightdm /etc/lightdm
 
-sudo cp -f $PWD/os/arch/system-update.sh /usr/sbin/system-update
+for binary in system-update switch-monitor ; do
+    sudo cp -f $PWD/os/arch/$binary.sh /usr/sbin/$binary
+done
 
 for service in NetworkManager pcscd org.cups.cupsd lightdm ; do
     sudo systemctl enable $service
