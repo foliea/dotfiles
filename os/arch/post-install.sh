@@ -7,6 +7,7 @@ key_id=$(gpg --card-status | awk '( $1 == "sec#" ){ print $2 }' | cut -d '/' -f 
 
 gpg --edit-key $key_id
 
-git clone git@github.com:foliea/passwords.git $HOME/.password-store
-
 sudo chmod 700 $GNUPGHOME
+
+git remote remove origin
+git remote add origin git@github.com:foliea/dotfiles.git
