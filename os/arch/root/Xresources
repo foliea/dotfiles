@@ -2,12 +2,12 @@
 ! System
 ! ------------------------------------------------------------------------------
 Xcursor.theme: Numix
-Xcursor.size: 0
+Xcursor.size: 64
 
 ! ------------------------------------------------------------------------------
 ! -- Xft
 ! ------------------------------------------------------------------------------
-Xft.dpi: 144
+Xft.dpi: 192
 Xft.antialias: true
 Xft.hinting: true
 Xft.rgba: rgb
@@ -15,12 +15,13 @@ Xft.autohint: false
 Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
 
+*.dpi: 192
 ! ------------------------------------------------------------------------------
 ! Rofi
 ! ------------------------------------------------------------------------------
 
 ! Theme
-rofi.dpi: 144
+rofi.dpi: 192
 
 rofi.color-enabled: true
 rofi.color-window: #2d2d2d, #333333, #333333

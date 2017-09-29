@@ -55,6 +55,7 @@ for package in networkmanager \
     numix-gtk-theme \
     numix-icon-theme-git \
     numix-cursor-theme-git \
+    pango \
     ttf-font-awesome \
     ttf-opensans \
     terminator \
