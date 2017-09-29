@@ -44,6 +44,8 @@ for package in networkmanager \
     xflux \
     xf86-video-intel \
     xf86-input-synaptics \
+    tlp \
+    tlp-rdw \
     acpid \
     alsa-utils \
     alsa-firmware \

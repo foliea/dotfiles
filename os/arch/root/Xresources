@@ -7,7 +7,7 @@ Xcursor.size: 0
 ! ------------------------------------------------------------------------------
 ! -- Xft
 ! ------------------------------------------------------------------------------
-Xft.dpi: 96
+Xft.dpi: 144
 Xft.antialias: true
 Xft.hinting: true
 Xft.rgba: rgb
@@ -20,6 +20,8 @@ Xft.lcdfilter: lcddefault
 ! ------------------------------------------------------------------------------
 
 ! Theme
+rofi.dpi: 144
+
 rofi.color-enabled: true
 rofi.color-window: #2d2d2d, #333333, #333333
 rofi.color-normal: #2d2d2d, #f9f9f9, #333333, #dedede, #333333
