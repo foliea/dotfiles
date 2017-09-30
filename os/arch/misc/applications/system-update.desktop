@@ -1,7 +1,7 @@
 [Desktop Entry]
 Categories=System;Utility;ConsoleOnly;
 Comment=Update system dependencies
-Exec=/usr/sbin/system-update
+Exec=/usr/local/bin/system-update
 GenericName=System Management
 Icon=Terminator
 Name=System Update

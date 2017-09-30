@@ -120,9 +120,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Status bar
-exec_always --no-startup-id "$HOME/.config/polybar/launch.sh"
-
 # Wallpaper
 exec --no-startup-id "nitrogen --restore"
 
@@ -138,7 +135,7 @@ client.unfocused #333333 #333333 #999999 #333333
 client.urgent #d64937 #d64937 #f9f9f9f #d64937
 
 # Map caps lock as control
- exec --no-startup-id "setxkbmap -layout us -option ctrl:nocaps"
+exec --no-startup-id "setxkbmap -layout us -option ctrl:nocaps"
 
 # Function keys
 bindsym XF86AudioMute         exec --no-startup-id "amixer -D pulse set Master toggle"
@@ -166,8 +163,8 @@ bindsym $sup+m exec --no-startup-id "~/.config/i3/preview.sh"
 bindsym $sup+u exec --no-startup-id "i3-msg reload ; ~/.config/polybar/launch.sh"
 
 # Switch monitor
-exec --no-startup-id "/usr/sbin/switch-monitor internal"
+exec_always --no-startup-id "/usr/local/bin/switch-monitor window"
 
-bindsym $sup+p exec --no-startup-id "/usr/sbin/switch-monitor cycle"
-bindsym $sup+c exec --no-startup-id "/usr/sbin/switch-monitor clone"
-bindsym $sup+e exec --no-startup-id "/usr/sbin/switch-monitor extended"
+bindsym $sup+p exec --no-startup-id "/usr/local/bin/switch-monitor cycle"
+bindsym $sup+c exec --no-startup-id "/usr/local/bin/switch-monitor clone"
+bindsym $sup+e exec --no-startup-id "/usr/local/bin/switch-monitor extended"

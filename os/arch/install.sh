@@ -97,7 +97,7 @@ getent group autologin || sudo groupadd -r autologin
 sudo gpasswd -a foliea autologin
 
 for binary in system-update switch-dpi switch-monitor ; do
-    sudo cp -f $PWD/os/arch/$binary.sh /usr/sbin/$binary
+    sudo cp -f $PWD/os/arch/$binary.sh /usr/local/bin/$binary
 done
 
 for service in NetworkManager pcscd org.cups.cupsd lightdm ; do
