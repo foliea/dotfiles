@@ -46,14 +46,24 @@ function activate_monitor_mode() {
     internal_output=${monitors[0]}
     external_output=${monitors[1]}
 
+    multiple_monitors_flags="--mode 1920x1080"
+
     if [ $monitor_mode = "external" ]; then
-        xrandr --output $internal_output --off --output $external_output --auto --primary
+        xrandr \
+            --output $internal_output --off \
+            --output $external_output --auto --primary
     elif [ $monitor_mode = "internal" ]; then
-        xrandr --output $internal_output --auto --primary --output $external_output --off
+        xrandr \
+            --output $internal_output --auto --primary \
+            --output $external_output --off
     elif [ $monitor_mode = "clone" ]; then
-        xrandr --output $internal_output --auto --primary --output $external_output --auto --same-as $internal_output
+        xrandr \
+            --output $internal_output $multiple_monitors_flags --primary \
+            --output $external_output $multiple_monitors_flags --same-as $internal_output
     elif [ $monitor_mode = "extended" ]; then
-        xrandr --output $internal_output --auto --output $external_output --auto --primary --left-of $internal_output
+        xrandr \
+            --output $internal_output $multiple_monitors_flags \
+            --output $external_output --auto --left-of $internal_output
     fi
 }
 
