@@ -84,7 +84,11 @@ sh $PWD/os/arch/link.sh
 
 read -p "Please specify screen dpi: " dpi
 
-sh $PWD/os/arch/dpi.sh "$dpi"
+sudo mkdir -p /opt/default
+
+sudo bash -c "echo '$dpi' > /opt/default/dpi"
+
+sh $PWD/os/arch/switch-dpi.sh
 
 sudo rm -rf /etc/lightdm
 sudo cp -rf $PWD/os/arch/misc/lightdm /etc/lightdm
@@ -92,7 +96,7 @@ sudo cp -rf $PWD/os/arch/misc/lightdm /etc/lightdm
 getent group autologin || sudo groupadd -r autologin
 sudo gpasswd -a foliea autologin
 
-for binary in system-update switch-monitor ; do
+for binary in system-update switch-dpi switch-monitor ; do
     sudo cp -f $PWD/os/arch/$binary.sh /usr/sbin/$binary
 done
 
