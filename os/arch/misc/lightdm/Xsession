@@ -60,8 +60,6 @@ if [ -x "$script" -a ! -d "$script" ]; then
 fi
 
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
-export QT_AUTO_SCREEN_SCALE_FACTOR=0
-export QT_SCREEN_SCALE_FACTORS=$(cat ~/.Xresources.d/screen | awk '($2 == "SCALING") { print $3 }')
 
 echo "X session wrapper complete, running session $@"
 

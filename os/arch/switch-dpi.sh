@@ -23,7 +23,6 @@ scaling=$(($dpi / $base_dpi))
 cursor=$((($scaling - 1) * 64))
 
 echo "#define DPI $dpi" > $xscreen
-echo "#define SCALING $scaling" >> $xscreen
 echo "#define CURSOR $cursor" >> $xscreen
 
 cat $xscreen

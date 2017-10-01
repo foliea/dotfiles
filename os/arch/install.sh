@@ -96,7 +96,7 @@ sudo cp -rf $PWD/os/arch/misc/lightdm /etc/lightdm
 getent group autologin || sudo groupadd -r autologin
 sudo gpasswd -a foliea autologin
 
-for binary in system-update switch-dpi switch-monitor ; do
+for binary in system-update switch-dpi switch-monitor launch-qt5-app ; do
     sudo cp -f $PWD/os/arch/$binary.sh /usr/local/bin/$binary
 done
 
