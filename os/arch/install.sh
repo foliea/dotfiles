@@ -71,6 +71,7 @@ for package in networkmanager \
     viewnior \
     epdfview \
     mpv \
+    galculator \
     yubikey-manager \
     pcsc-tools \
     ccid \
