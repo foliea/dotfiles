@@ -19,12 +19,11 @@ else
 fi
 
 scaling=$(($dpi / $base_dpi))
+
 cursor=$((($scaling - 1) * 64))
-top_bar_height=$((27 * $dpi / $base_dpi))
 
 echo "#define DPI $dpi" > $xscreen
 echo "#define SCALING $scaling" >> $xscreen
 echo "#define CURSOR $cursor" >> $xscreen
-echo "#define TOP_BAR_HEIGHT $top_bar_height" >> $xscreen
 
 cat $xscreen

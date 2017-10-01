@@ -10,7 +10,7 @@ else
 fi
 
 function keep_current_monitor_mode() {
-    without_notification=true
+    automatic=true
 
     if [ -z "$current_monitor_mode" ] ; then
         monitor_mode="internal"
@@ -74,13 +74,13 @@ function save_monitor_mode() {
 }
 
 function notify() {
-    if [ -z "$without_notification" ] ; then
+    if [ -z "$automatic" ] ; then
         notify-send "Switch monitor" "Selected mode: ${monitor_mode}"
     fi
 }
 
 function reload() {
-    if [ -z "$greeter_mode" ] ; then
+    if [ -z "$automatic" ] ; then
         sh $HOME/.config/polybar/launch.sh
     fi
 }

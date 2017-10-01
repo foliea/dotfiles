@@ -100,10 +100,6 @@ for binary in system-update switch-dpi switch-monitor ; do
     sudo cp -f $PWD/os/arch/$binary.sh /usr/local/bin/$binary
 done
 
-for service in NetworkManager pcscd org.cups.cupsd lightdm ; do
-    sudo systemctl enable $service
-done
-
 sudo curl -s "https://sks-keyservers.net/sks-keyservers.netCA.pem" -o /etc/sks-keyservers.netCA.pem
 
 for app in tui dev qutebrowser system-update ; do
@@ -114,3 +110,7 @@ sudo rm -rf /etc/X11/xorg.conf.d
 sudo cp -rf $PWD/os/arch/misc/xorg.conf.d /etc/X11/
 
 xdg-settings set default-web-browser qutebrowser.desktop
+
+for service in NetworkManager pcscd org.cups.cupsd lightdm ; do
+    sudo systemctl enable $service
+done

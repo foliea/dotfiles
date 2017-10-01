@@ -89,8 +89,6 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
@@ -119,9 +117,6 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-
-# Wallpaper
-exec --no-startup-id "nitrogen --restore"
 
 # Style
 hide_edge_borders both
@@ -162,8 +157,14 @@ bindsym $sup+m exec --no-startup-id "~/.config/i3/preview.sh"
 # Reload i3 + polybar
 bindsym $sup+u exec --no-startup-id "i3-msg reload ; ~/.config/polybar/launch.sh"
 
+# Wallpaper
+exec --no-startup-id "nitrogen --restore"
+
+# Polybar
+exec --no-startup-id "~/.config/polybar/launch.sh"
+
 # Switch monitor
-exec_always --no-startup-id "/usr/local/bin/switch-monitor window"
+exec --no-startup-id "/usr/local/bin/switch-monitor window"
 
 bindsym $sup+p exec --no-startup-id "/usr/local/bin/switch-monitor cycle"
 bindsym $sup+c exec --no-startup-id "/usr/local/bin/switch-monitor clone"
