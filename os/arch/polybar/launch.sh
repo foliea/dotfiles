@@ -6,9 +6,13 @@ if [ -z $PREVIEW ]; then
     while pgrep -x polybar >/dev/null; do sleep 1; done
 fi
 
-dpi=$(cat ~/.Xresources.d/screen | awk '($2 == "DPI") { print $3 }')
-
 base_dpi=96
+
+dpi=$(cat ~/.Xresources.d/screen 2>/dev/null | awk '($2 == "DPI") { print $3 }')
+
+if [ -z "$dpi" ]; then
+    dpi=$base_dpi
+fi
 
 top_bar_height=$((27 * $dpi / $base_dpi))
 
