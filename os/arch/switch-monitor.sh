@@ -81,7 +81,7 @@ function notify() {
 
 function reload() {
     if [ -z "$automatic" ] ; then
-        sh $HOME/.config/polybar/launch.sh
+        sh $HOME/.config/i3/reload-all.sh
     fi
 }
 

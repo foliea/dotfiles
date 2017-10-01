@@ -154,13 +154,13 @@ bindsym $sup+n exec --no-startup-id "~/.config/i3/night-mode.sh"
 # Preview mode
 bindsym $sup+m exec --no-startup-id "~/.config/i3/preview.sh"
 
-# Reload i3 + polybar
-bindsym $sup+u exec --no-startup-id "i3-msg reload ; ~/.config/polybar/launch.sh"
+# Reload all (xrdb, window, wallpaper, status bar)
+bindsym $sup+u exec --no-startup-id "~/.config/i3/reload-all.sh"
 
 # Wallpaper
 exec --no-startup-id "nitrogen --restore"
 
-# Polybar
+# Status bar
 exec --no-startup-id "~/.config/polybar/launch.sh"
 
 # Switch monitor
