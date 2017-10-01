@@ -9,13 +9,9 @@ else
     requested_mode="$1"
 fi
 
-function keep_current_monitor_mode() {
-    if [ -z "$current_monitor_mode" ] ; then
-        monitor_mode="internal"
-    else
-        monitor_mode=$current_monitor_mode
-    fi
-}
+if [ -z "$current_monitor_mode" ] ; then
+    current_monitor_mode="internal"
+fi
 
 function select_monitor_mode() {
     if [ $requested_mode = "greeter" ]; then
@@ -23,7 +19,7 @@ function select_monitor_mode() {
         # set root as the file owner.
         greeter_mode=true
 
-        keep_current_monitor_mode
+        monitor_mode=$current_monitor_mode
     elif [ $requested_mode = "cycle" ]; then
         # Cycle between internal and external
         if [ $current_monitor_mode = "internal" ]; then
