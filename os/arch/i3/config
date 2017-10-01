@@ -164,8 +164,6 @@ exec --no-startup-id "nitrogen --restore"
 exec --no-startup-id "~/.config/polybar/launch.sh"
 
 # Switch monitor
-exec --no-startup-id "/usr/local/bin/switch-monitor window"
-
 bindsym $sup+p exec --no-startup-id "/usr/local/bin/switch-monitor cycle"
 bindsym $sup+c exec --no-startup-id "/usr/local/bin/switch-monitor clone"
 bindsym $sup+e exec --no-startup-id "/usr/local/bin/switch-monitor extended"

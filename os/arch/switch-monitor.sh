@@ -10,8 +10,6 @@ else
 fi
 
 function keep_current_monitor_mode() {
-    automatic=true
-
     if [ -z "$current_monitor_mode" ] ; then
         monitor_mode="internal"
     else
@@ -26,8 +24,6 @@ function select_monitor_mode() {
         greeter_mode=true
 
         keep_current_monitor_mode
-    elif [ $requested_mode = "window" ]; then
-        keep_current_monitor_mode
     elif [ $requested_mode = "cycle" ]; then
         # Cycle between internal and external
         if [ $current_monitor_mode = "internal" ]; then
@@ -41,7 +37,7 @@ function select_monitor_mode() {
 }
 
 function switch_dpi() {
-    if [ -z "$automatic" ] ; then
+    if [ -z "$greeter_mode" ] ; then
         /usr/local/bin/switch-dpi $1
     fi
 }
@@ -89,13 +85,13 @@ function save_monitor_mode() {
 }
 
 function notify() {
-    if [ -z "$automatic" ] ; then
+    if [ -z "$greeter_mode" ] ; then
         notify-send "Switch monitor" "Selected mode: ${monitor_mode}"
     fi
 }
 
 function reload() {
-    if [ -z "$automatic" ] ; then
+    if [ -z "$greeter_mode" ] ; then
         sh $HOME/.config/i3/reload-all.sh
     fi
 }
