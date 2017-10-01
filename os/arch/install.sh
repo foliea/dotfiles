@@ -44,6 +44,8 @@ for package in networkmanager \
     xflux \
     xf86-video-intel \
     xf86-input-synaptics \
+    tlp \
+    tlp-rdw \
     acpid \
     alsa-utils \
     alsa-firmware \
@@ -53,6 +55,7 @@ for package in networkmanager \
     numix-gtk-theme \
     numix-icon-theme-git \
     numix-cursor-theme-git \
+    pango \
     ttf-font-awesome \
     ttf-opensans \
     terminator \
@@ -79,11 +82,22 @@ done
 sh $PWD/os/arch/clean.sh
 sh $PWD/os/arch/link.sh
 
+read -p "Please specify screen dpi: " dpi
+
+sudo mkdir -p /opt/default
+
+sudo bash -c "echo '$dpi' > /opt/default/dpi"
+
+sh $PWD/os/arch/switch-dpi.sh
+
 sudo rm -rf /etc/lightdm
 sudo cp -rf $PWD/os/arch/misc/lightdm /etc/lightdm
 
-for binary in system-update switch-monitor ; do
-    sudo cp -f $PWD/os/arch/$binary.sh /usr/sbin/$binary
+getent group autologin || sudo groupadd -r autologin
+sudo gpasswd -a foliea autologin
+
+for binary in system-update switch-dpi switch-monitor ; do
+    sudo cp -f $PWD/os/arch/$binary.sh /usr/local/bin/$binary
 done
 
 for service in NetworkManager pcscd org.cups.cupsd lightdm ; do

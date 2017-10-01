@@ -1,21 +1,7 @@
 set $mod Mod1
 set $sup Mod4
 
-font Open Sans 10
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-# font pango:monospace 8
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-# font pango:DejaVu Sans Mono 8
-
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
+font pango:Open Sans 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -79,9 +65,6 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-# focus the child container
-#bindsym $mod+d focus child
-
 # switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -137,9 +120,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Status bar
-exec_always --no-startup-id "$HOME/.config/polybar/launch.sh"
-
 # Wallpaper
 exec --no-startup-id "nitrogen --restore"
 
@@ -155,7 +135,7 @@ client.unfocused #333333 #333333 #999999 #333333
 client.urgent #d64937 #d64937 #f9f9f9f #d64937
 
 # Map caps lock as control
- exec --no-startup-id "setxkbmap -layout us -option ctrl:nocaps"
+exec --no-startup-id "setxkbmap -layout us -option ctrl:nocaps"
 
 # Function keys
 bindsym XF86AudioMute         exec --no-startup-id "amixer -D pulse set Master toggle"
@@ -174,8 +154,6 @@ exec --no-startup-id "light-locker --lock-on-suspend"
 bindsym $sup+l exec --no-startup-id "dm-tool lock"
 
 # Night Mode
-exec --no-startup-id "~/.config/i3/night-mode.sh"
-
 bindsym $sup+n exec --no-startup-id "~/.config/i3/night-mode.sh"
 
 # Preview mode
@@ -185,8 +163,8 @@ bindsym $sup+m exec --no-startup-id "~/.config/i3/preview.sh"
 bindsym $sup+u exec --no-startup-id "i3-msg reload ; ~/.config/polybar/launch.sh"
 
 # Switch monitor
-exec --no-startup-id "/usr/sbin/switch-monitor internal"
+exec_always --no-startup-id "/usr/local/bin/switch-monitor window"
 
-bindsym $sup+p exec --no-startup-id "/usr/sbin/switch-monitor cycle"
-bindsym $sup+c exec --no-startup-id "/usr/sbin/switch-monitor clone"
-bindsym $sup+e exec --no-startup-id "/usr/sbin/switch-monitor extended"
+bindsym $sup+p exec --no-startup-id "/usr/local/bin/switch-monitor cycle"
+bindsym $sup+c exec --no-startup-id "/usr/local/bin/switch-monitor clone"
+bindsym $sup+e exec --no-startup-id "/usr/local/bin/switch-monitor extended"

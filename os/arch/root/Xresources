@@ -1,13 +1,14 @@
+#include "/home/foliea/.Xresources.d/screen"
 ! ------------------------------------------------------------------------------
 ! System
 ! ------------------------------------------------------------------------------
 Xcursor.theme: Numix
-Xcursor.size: 0
+Xcursor.size: CURSOR
 
 ! ------------------------------------------------------------------------------
 ! -- Xft
 ! ------------------------------------------------------------------------------
-Xft.dpi: 96
+Xft.dpi: DPI
 Xft.antialias: true
 Xft.hinting: true
 Xft.rgba: rgb
@@ -15,11 +16,14 @@ Xft.autohint: false
 Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
 
+*.dpi: DPI
 ! ------------------------------------------------------------------------------
 ! Rofi
 ! ------------------------------------------------------------------------------
 
 ! Theme
+rofi.dpi: DPI
+
 rofi.color-enabled: true
 rofi.color-window: #2d2d2d, #333333, #333333
 rofi.color-normal: #2d2d2d, #f9f9f9, #333333, #dedede, #333333

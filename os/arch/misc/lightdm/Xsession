@@ -59,6 +59,12 @@ if [ -x "$script" -a ! -d "$script" ]; then
     . "$script"
 fi
 
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+export DPI=$(cat ~/.Xresources.d/screen | awk '($2 == "DPI") { print $3 }')
+export TOP_BAR_HEIGHT=$(cat ~/.Xresources.d/screen | awk '($2 == "TOP_BAR_HEIGHT") { print $3 }')
+export QT_AUTO_SCREEN_SCALE_FACTOR=0
+export QT_SCREEN_SCALE_FACTORS=$(cat ~/.Xresources.d/screen | awk '($2 == "SCALING") { print $3 }')
+
 echo "X session wrapper complete, running session $@"
 
 exec $@
