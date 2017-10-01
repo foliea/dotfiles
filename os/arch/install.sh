@@ -121,8 +121,10 @@ read -p "Please specify linux kernel (e.g 413): " kernel
 
 sudo mkinitcpio -p "linux$kernel"
 
-# Fix suspend loop issue and add plymouth splash
-sudo sed -i -e 's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash button.lid_init_state=open"/' /etc/default/grub > /dev/null
+# Fix suspend loop issue, fix screen flickering and add plymouth splash
+sudo sed -i -e \
+    's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash i915.enable_rc6=0 i915.enable_psr=0 button.lid_init_state=open"/' \
+    /etc/default/grub 1>/dev/null
 
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
