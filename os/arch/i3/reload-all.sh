@@ -2,7 +2,7 @@
 
 xrdb -merge ~/.Xresources
 
-i3-msg reload
+i3-msg restart
 
 sh $HOME/.config/polybar/launch.sh
 

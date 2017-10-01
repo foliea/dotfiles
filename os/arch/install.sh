@@ -82,7 +82,7 @@ done
 sh $PWD/os/arch/clean.sh
 sh $PWD/os/arch/link.sh
 
-read -p "Please specify screen dpi: " dpi
+read -p "Please specify default dpi: " dpi
 
 sudo mkdir -p /opt/default
 
@@ -111,6 +111,6 @@ sudo cp -rf $PWD/os/arch/misc/xorg.conf.d /etc/X11/
 
 xdg-settings set default-web-browser qutebrowser.desktop
 
-for service in NetworkManager pcscd org.cups.cupsd lightdm ; do
+for service in NetworkManager pcscd org.cups.cupsd tlp lightdm ; do
     sudo systemctl enable $service
 done
