@@ -117,7 +117,7 @@ xdg-settings set default-web-browser qutebrowser.desktop
 
 sudo cp -f $PWD/os/arch/misc/mkinitcpio.conf /etc/mkinitcpio.conf
 
-read -p "Please specify linux kernel (e.g 413): " kernel
+kernel=$(uname -r | cut -c 1,3,4)
 
 sudo mkinitcpio -p "linux$kernel"
 
