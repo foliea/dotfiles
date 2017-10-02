@@ -48,7 +48,7 @@ function binaries() {
 function boot() {
     sudo cp -f $PWD/os/arch/misc/mkinitcpio.conf /etc/mkinitcpio.conf
 
-    kernel=$(uname -r | cut -c 1,3,4)
+    local kernel=$(uname -r | cut -c 1,3,4)
 
     sudo mkinitcpio -p "linux$kernel"
 
