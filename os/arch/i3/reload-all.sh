@@ -7,3 +7,5 @@ i3-msg restart
 sh $HOME/.config/polybar/launch.sh
 
 nitrogen --restore
+
+pkill dunst
