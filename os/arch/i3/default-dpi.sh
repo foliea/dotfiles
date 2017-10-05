@@ -4,7 +4,7 @@ launcher='rofi -dmenu -i -p default-dpi:'
 
 options=""
 
-for dpi in 96 192 220 ; do
+for dpi in 96 120 144 192 ; do
     options="$options\ninternal: $dpi"
     options="$options\nexternal: $dpi"
 done
