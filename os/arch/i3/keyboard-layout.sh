@@ -8,11 +8,11 @@ option=$(echo -e $options | $launcher | awk '{ print $1 }' | tr -d '\r\n')
 if [ ${#option} -gt 0 ]; then
     case $option in
         Qwerty)
-          layout=us
-          ;;
+            layout=us
+            ;;
         Azerty)
-          layout=fr
-          ;;
+            layout=fr
+            ;;
     esac
 
     if [[ $(setxkbmap -layout "$layout") ]]; then
