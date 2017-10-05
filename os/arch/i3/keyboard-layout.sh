@@ -1,25 +1,21 @@
 #!/bin/bash
 
 launcher='rofi -dmenu -i -p keyboard:'
-options="Qwerty\nAzerty"
+options="Qwerty\nQwerty International\nAzerty"
 
-option=$(echo -e $options | $launcher | awk '{ print $1 }' | tr -d '\r\n')
+option=$(echo -e $options | $launcher)
 
 if [ ${#option} -gt 0 ]; then
-    case $option in
-        Qwerty)
-            layout=us
-            ;;
-        Azerty)
-            layout=fr
-            ;;
-    esac
-
-    if [[ $(setxkbmap -layout "$layout") ]]; then
-        notify-send --urgency=failure "Could not load layout $option"
-    else
-        notify-send --urgency=normal "Keyboard set to $option"
+    if [ "$option" == "Qwerty" ]; then
+        layout=us
+    elif [ "$option" == "Qwerty International" ]; then
+        layout=us
+        flags="-variant altgr-intl -option nodeadkeys"
+    elif [ "$option" == "Azerty" ]; then
+        layout=fr
     fi
 
-    setxkbmap -layout us -option ctrl:nocaps
+    setxkbmap -layout $layout $flags -option ctrl:nocaps
+
+    notify-send --urgency=normal "Keyboard set to $option"
 fi
