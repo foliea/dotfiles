@@ -12,29 +12,28 @@ function activate_monitor_mode() {
     local internal_output=${monitors[0]}
     local external_output=${monitors[1]}
 
-    local base_dpi=96
     local multiple_monitors_flags="--mode 1920x1080"
 
     if [ $monitor_mode = "external" ]; then
-        switch-dpi $base_dpi
+        switch-dpi external
 
         xrandr \
             --output $internal_output --off \
             --output $external_output --auto --primary
     elif [ $monitor_mode = "internal" ]; then
-        switch_dpi
+        switch_dpi internal
 
         xrandr \
             --output $internal_output --auto --primary \
             --output $external_output --off
     elif [ $monitor_mode = "clone" ]; then
-        switch-dpi $base_dpi
+        switch-dpi external
 
         xrandr \
             --output $internal_output $multiple_monitors_flags --primary \
             --output $external_output $multiple_monitors_flags --same-as $internal_output
     elif [ $monitor_mode = "extended" ]; then
-        switch-dpi $base_dpi
+        switch-dpi external
 
         xrandr \
             --output $internal_output $multiple_monitors_flags \

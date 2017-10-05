@@ -27,6 +27,7 @@ for package in networkmanager \
     dunst \
     compton \
     clipit \
+    zenity \
     xorg-server \
     xorg-server-xephyr \
     xorg-xinit \

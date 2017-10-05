@@ -11,13 +11,11 @@ function config() {
 }
 
 function dpi() {
-    read -p "Please specify default dpi: " dpi
+    read -p "Please specify internal default dpi: " dpi
 
     sudo mkdir -p /opt/default
 
-    sudo bash -c "echo '$dpi' > /opt/default/dpi"
-
-    sh $PWD/os/arch/switch-dpi.sh
+    sudo bash -c "echo '$dpi' > /opt/default/internal-dpi"
 }
 
 function display() {

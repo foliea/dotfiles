@@ -1,28 +1,30 @@
 #!/bin/bash
 
-set -e
+function use() {
+    local xdir=$HOME/.Xresources.d
 
-xdir=$HOME/.Xresources.d
+    local xscreen=$xdir/screen
 
-xscreen=$xdir/screen
+    local base_dpi=96
 
-mkdir -p $xdir
+    local dpi="$1"
 
-base_dpi=96
+    if [ -z "$dpi" ]; then
+        dpi=$base_dpi
+    fi
 
-default_dpi=$(cat /opt/default/dpi)
+    local scaling=$(($dpi / $base_dpi))
 
-if [ -z "$1" ] ; then
-    dpi=$default_dpi
-else
-    dpi=$1
-fi
+    local cursor=$((($scaling - 1) * 64))
 
-scaling=$(($dpi / $base_dpi))
+    mkdir -p $xdir
 
-cursor=$((($scaling - 1) * 64))
+    echo "#define DPI $dpi" > $xscreen
+    echo "#define CURSOR $cursor" >> $xscreen
 
-echo "#define DPI $dpi" > $xscreen
-echo "#define CURSOR $cursor" >> $xscreen
+    cat $xscreen
+}
 
-cat $xscreen
+default_dpi=$(cat /opt/default/$1-dpi 2>/dev/null)
+
+use $default_dpi
