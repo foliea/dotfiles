@@ -157,6 +157,9 @@ bindsym $sup+m exec --no-startup-id "~/.config/i3/preview.sh"
 # Default dpi
 bindsym $sup+d exec --no-startup-id "~/.config/i3/default-dpi.sh"
 
+# Keyboard layout
+bindsym $sup+k exec --no-startup-id "~/.config/i3/keyboard-layout.sh"
+
 # Reload all (xrdb, window, wallpaper, status bar)
 bindsym $sup+u exec --no-startup-id "~/.config/i3/reload-all.sh"
 
