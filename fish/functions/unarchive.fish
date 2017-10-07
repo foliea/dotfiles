@@ -11,6 +11,8 @@ function unarchive
                 unzip -d $filename $file
             case tar
                 tar -xf $file -C $filename
+            case tgz
+                tar zxvf $file -C $filename
             case rar
                 unrar e $file $filename
             end
