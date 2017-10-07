@@ -1,3 +1,3 @@
 #!/bin/sh
 
-zenity --password
+zenity --password --title "Please enter root password"

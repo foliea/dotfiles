@@ -18,5 +18,5 @@ if [ ${#option} -gt 0 ]; then
 
     dpi=$(echo $option | cut -d " " -f 2)
 
-    zenity --password | sudo bash -c "echo '$dpi' > /opt/default/$mode-dpi"
+    sudo -A bash -c "echo '$dpi' > /opt/default/$mode-dpi"
 fi
