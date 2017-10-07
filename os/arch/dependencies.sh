@@ -33,7 +33,9 @@ for package in awk \
     wget \
     phantomjs \
     expect \
-    docker-compose
+    docker-compose \
+    rbenv \
+    ruby-build
 do
     sh $PWD/os/arch/install-package.sh $package
 done
