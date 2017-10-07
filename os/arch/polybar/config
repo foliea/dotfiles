@@ -202,6 +202,6 @@ label-separator = " | "
 menu-0-0 = Restart
 menu-0-0-exec = systemctl reboot
 menu-0-1 = Shutdown
-menu-0-1-exec = systemctl shutdown
+menu-0-1-exec = systemctl poweroff
 
 ; vim:ft=dosini

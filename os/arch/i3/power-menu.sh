@@ -17,7 +17,7 @@ if [ ${#option} -gt 0 ]; then
             systemctl reboot
             ;;
         Shutdown)
-            systemctl shutdown
+            systemctl poweroff
             ;;
     esac
 fi
