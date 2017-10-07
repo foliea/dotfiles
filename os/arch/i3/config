@@ -168,6 +168,9 @@ bindsym $mod+p exec --no-startup-id "~/.config/i3/power-menu.sh"
 # Reload all (xrdb, window, wallpaper, status bar)
 bindsym $sup+u exec --no-startup-id "~/.config/i3/reload-all.sh"
 
+# VPN menu
+bindsym $sup+j exec --no-startup-id "~/.config/i3/vpn.sh"
+
 # Wallpaper
 exec --no-startup-id "nitrogen --restore"
 

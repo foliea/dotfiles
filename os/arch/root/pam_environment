@@ -2,3 +2,5 @@ GNUPGHOME	DEFAULT=@{HOME}/.gnupg
 
 SSH_AGENT_PID	DEFAULT=
 SSH_AUTH_SOCK	DEFAULT="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
+
+SUDO_ASKPASS=/usr/local/bin/askpass
