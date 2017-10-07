@@ -3,3 +3,4 @@
 *.swp
 *__Tagbar__
 *.tags*
+vendor/bundle/ruby
