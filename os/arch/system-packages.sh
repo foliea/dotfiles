@@ -71,6 +71,7 @@ for package in networkmanager \
     qutebrowser \
     python-opengl \
     qt5-webengine \
+    qt5-styleplugins \
     viewnior \
     epdfview \
     mpv \
