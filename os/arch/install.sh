@@ -6,6 +6,9 @@ function packages() {
 }
 
 function config() {
+    sudo cp -f $PWD/os/arch/gtk-3.0/* /etc/gtk-3.0/
+    sudo cp -f $PWD/os/arch/root/gtkrc-2.0 /etc/gtk-2.0/gtkrc
+
     sh $PWD/os/arch/clean.sh
     sh $PWD/os/arch/link.sh
 }
