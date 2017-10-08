@@ -25,13 +25,17 @@ function display() {
     sudo rm -rf /etc/lightdm
     sudo cp -rf $PWD/os/arch/misc/lightdm /etc/lightdm
 
+    sudo sed -i -e \
+        "s/#autologin-user={{USER}}/autologin-user=$USER/" \
+        /etc/lightdm/lightdm.conf 1>/dev/null
+
     sudo rm -rf /etc/X11/xorg.conf.d
     sudo cp -rf $PWD/os/arch/misc/xorg.conf.d /etc/X11/
 }
 
 function autologin() {
     getent group autologin || sudo groupadd -r autologin
-    sudo gpasswd -a foliea autologin
+    sudo gpasswd -a $USER autologin
 }
 
 function binaries() {
