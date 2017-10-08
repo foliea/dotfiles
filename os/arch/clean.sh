@@ -21,3 +21,5 @@ for file in i3 \
 do
     rm -rf $HOME/.$file
 done
+
+rm -rf $HOME/Mount

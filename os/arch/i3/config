@@ -143,6 +143,9 @@ bindsym XF86MonBrightnessUp   exec --no-startup-id "xbacklight +10"
 bindsym Print exec --no-startup-id "i3-scrot"
 bindsym --release Shift+Print exec --no-startup-id "i3-scrot -s"
 
+# Auto mount
+exec --no-startup-id "udiskie --use-udisks2 &"
+
 # Lock
 exec --no-startup-id "light-locker --lock-on-suspend"
 

@@ -28,3 +28,5 @@ for file in Xresources \
 do
     ln -s $PWD/os/arch/root/$file $HOME/.$file
 done
+
+ln -s /run/media/$USER $HOME/Mount
