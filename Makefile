@@ -1,4 +1,4 @@
-.PHONY: all re clean test dependencies fish git vim vifm tmux
+.PHONY: all re clean test fish git vim vifm tmux
 
 all: git vim tmux fish vifm
 
@@ -9,9 +9,6 @@ clean:
 
 test:
 	scripts/test.exp
-
-dependencies:
-	os/install.sh
 
 fish:
 	fish/install.sh
