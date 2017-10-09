@@ -4,7 +4,7 @@ xrdb -merge ~/.Xresources
 
 i3-msg restart
 
-sh $HOME/.config/polybar/launch.sh
+sh $HOME/.config/i3/polybar.sh
 
 nitrogen --restore
 

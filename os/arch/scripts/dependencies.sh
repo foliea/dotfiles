@@ -37,7 +37,7 @@ for package in awk \
     rbenv \
     ruby-build
 do
-    sh $PWD/os/arch/install-package.sh $package
+    sh $PWD/bin/install-package.sh $package
 done
 
 sudo systemctl enable docker

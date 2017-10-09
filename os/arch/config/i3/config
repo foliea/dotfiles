@@ -178,7 +178,7 @@ bindsym $sup+j exec --no-startup-id "~/.config/i3/vpn.sh"
 exec --no-startup-id "nitrogen --restore"
 
 # Status bar
-exec --no-startup-id "~/.config/polybar/launch.sh"
+exec --no-startup-id "~/.config/i3/polybar.sh"
 
 # Switch monitor
 bindsym $sup+p exec --no-startup-id "/usr/local/bin/switch-monitor cycle"

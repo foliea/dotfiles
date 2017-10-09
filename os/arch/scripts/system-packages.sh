@@ -85,5 +85,5 @@ for package in networkmanager \
     pam \
     pass
 do
-    sh $PWD/os/arch/install-package.sh $package
+    $PWD/bin/install-package.sh $package
 done

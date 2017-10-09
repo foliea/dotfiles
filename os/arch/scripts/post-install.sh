@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-gpg --import < $PWD/os/arch/misc/foliea.gpg
+gpg --import < $GNUPGHOME/foliea.gpg
 
 key_id=$(gpg --card-status | awk '( $1 == "sec#" ){ print $2 }' | cut -d '/' -f 2)
 
