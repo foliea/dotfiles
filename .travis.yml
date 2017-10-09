@@ -1,6 +1,6 @@
 cache: apt
 
 before_install:
-  - sudo make dependencies
+  - sh os/ubuntu/dependencies
 
 script: make test
