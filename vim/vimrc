@@ -61,14 +61,14 @@ set expandtab
 set backspace=indent,eol,start
 
 " Tabs
-autocmd FileType ruby  setlocal shiftwidth=2 softtabstop=2
-autocmd FileType eruby setlocal shiftwidth=2 softtabstop=2
-autocmd FileType yaml  setlocal shiftwidth=2 softtabstop=2
-autocmd FileType haml  setlocal shiftwidth=2 softtabstop=2
-autocmd FileType slim  setlocal shiftwidth=2 softtabstop=2
-autocmd FileType json  setlocal shiftwidth=2 softtabstop=2
-autocmd FileType scss  setlocal shiftwidth=2 softtabstop=2
-autocmd FileType vim   setlocal shiftwidth=2 softtabstop=2
+autocmd FileType ruby       setlocal shiftwidth=2 softtabstop=2
+autocmd FileType eruby      setlocal shiftwidth=2 softtabstop=2
+autocmd FileType yaml       setlocal shiftwidth=2 softtabstop=2
+autocmd FileType haml       setlocal shiftwidth=2 softtabstop=2
+autocmd FileType slim       setlocal shiftwidth=2 softtabstop=2
+autocmd FileType json       setlocal shiftwidth=2 softtabstop=2
+autocmd FileType scss       setlocal shiftwidth=2 softtabstop=2
+autocmd FileType vim        setlocal shiftwidth=2 softtabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2
 
 " Show whitespaces
@@ -98,7 +98,7 @@ autocmd BufRead,BufNewFile *.md     setlocal filetype=markdown
 autocmd BufRead,BufNewFile *.docker setlocal filetype=dockerfile
 autocmd BufRead,BufNewFile *.slim   setlocal filetype=slim
 autocmd BufRead,BufNewFile *.vim    setlocal filetype=viml
-autocmd BufRead,BufNewFile vifmrc    setlocal filetype=viml
+autocmd BufRead,BufNewFile vifmrc   setlocal filetype=viml
 
 " Remove trailing whitespaces on save
 set wrap
@@ -118,7 +118,7 @@ nnoremap <C-L> <C-W><C-L>
 " Fuzzy finder
 nmap <C-P> :FZF<CR>
 
-" Ripgrep
+" Search
 nmap <C-F> :Rg<space>""<Left>
 
 " Tests
@@ -130,7 +130,7 @@ nmap <silent> <leader>v :TestVisit<CR>
 let test#strategy = "tslime"
 
 " Tmux command
-nmap <silent> <leader>c :Tmux<space>
+nmap <leader>c :Tmux<space>""<Left>
 
 " Shell
 set shell=/bin/bash
@@ -165,7 +165,7 @@ function! Preview_Markdown()
   call Send_keys_to_Tmux('c-c')
   call Send_to_Tmux(s:preview_cmd)
   call Send_keys_to_Tmux('Enter')
-  call Open('http://localhost:6419')
+  call Open('127.0.0.1:6419')
 endfunction
 
 noremap <leader>e :call Preview_Markdown()<CR>
