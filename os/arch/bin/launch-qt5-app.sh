@@ -10,4 +10,4 @@ fi
 
 scaling=$(($dpi / $base_dpi))
 
-eval "QT_AUTO_SCREEN_SCALE_FACTOR=0 QT_SCREEN_SCALE_FACTORS=$scaling $1"
+eval "QT_AUTO_SCREEN_SCALE_FACTOR=0 QT_SCREEN_SCALE_FACTORS=$scaling $@"

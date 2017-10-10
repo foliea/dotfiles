@@ -165,7 +165,7 @@ function! Preview_Markdown()
   call Send_keys_to_Tmux('c-c')
   call Send_to_Tmux(s:preview_cmd)
   call Send_keys_to_Tmux('Enter')
-  call Open('127.0.0.1:6419')
+  call Open('http://127.0.0.1:6419')
 endfunction
 
 noremap <leader>e :call Preview_Markdown()<CR>
