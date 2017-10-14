@@ -3,6 +3,7 @@ private-keys-v1.d
 pubring.kbx
 *.status
 sshcontrol
+random_seed
 trustdb.gpg
 crls.d
 *~
