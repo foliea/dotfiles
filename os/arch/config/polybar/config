@@ -43,7 +43,7 @@ font-3 = FontAwesome:size=11;1
 
 modules-left = i3
 modules-center = window
-modules-right = volume memory wlan battery pkg date power
+modules-right = volume memory cpu wlan battery pkg date power
 
 monitor-strict = true
 
@@ -98,6 +98,11 @@ interval = 2
 format = <label>
 
 label =  %percentage_used%%
+
+[module/cpu]
+type = internal/cpu
+
+label =  %percentage%%
 
 [module/wlan]
 type = internal/network
