@@ -15,6 +15,10 @@ function activate_monitor_mode() {
     local multiple_monitors_flags="--mode 1920x1080"
 
     if [ $monitor_mode = "external" ]; then
+        if [ -z "$external_output"]; then
+            exit 1
+        fi
+
         switch-dpi external
 
         xrandr \
@@ -87,7 +91,7 @@ else
     monitor_mode=$requested_mode
 fi
 
-save_monitor_mode
 activate_monitor_mode
+save_monitor_mode
 reload
 notify
