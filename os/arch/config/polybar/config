@@ -43,7 +43,7 @@ font-3 = FontAwesome:size=11;1
 
 modules-left = i3
 modules-center = window
-modules-right = volume memory cpu wlan battery pkg date power
+modules-right = volume memory cpu wlan vpn battery pkg date power
 
 monitor-strict = true
 
@@ -123,6 +123,15 @@ ramp-signal-4 = 
 
 ramp-signal-foreground = #f9f9f9
 
+[module/vpn]
+type = custom/script
+exec = ps aux | grep openvpn | head -n 1 | cut -d "/" -f 5
+exec-if = pgrep openvpn
+interval = 5
+label = %output%
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground}
+
 [module/date]
 type = internal/date
 interval = 5
@@ -188,12 +197,11 @@ animation-charging-framerate = 750
 
 [module/pkg]
 type = custom/script
-interval = 60
+interval = 5
 format = <label>
 format-underline = ${colors.alert}
-label = "%output%"
+label = %output%
 exec = ~/.config/polybar/pkg.sh
-exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
 
 [module/power]
 type = custom/menu

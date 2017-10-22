@@ -23,6 +23,4 @@ if [ ${#option} -gt 0 ]; then
     if [ "$option" != "stop" ]; then
         sudo -A openvpn --script-security 2 --config /usr/share/openvpn/$option/$option.conf &
     fi
-
-    notify-send "VPN" "Selected: $option"
 fi
