@@ -374,7 +374,7 @@ c.fonts.downloads = '10pt monospace'
 
 # Font used for the hints.
 # Type: Font
-c.fonts.hints = 'bold 13pt monospace'
+c.fonts.hints = 'bold 10pt monospace'
 
 # Font used in the keyhint widget.
 # Type: Font
@@ -443,3 +443,20 @@ c.url.start_pages = 'https://calendar.google.com/calendar/b/1/render?pli=1#main_
 # * `{current_url}` : The url of the current web page.
 # Type: FormatString
 c.window.title_format = '{perc}{title} {private}'
+
+# Custom keybindings
+config.bind(';D', 'hint links userscript ~/.config/qutebrowser/open.sh')
+
+config.bind('pw', 'spawn --userscript ~/.config/qutebrowser/password.sh')
+
+config.bind('J', 'tab-prev')
+config.bind('K', 'tab-next')
+config.bind('<Ctrl-1>', 'tab-focus 1')
+config.bind('<Ctrl-2>', 'tab-focus 2')
+config.bind('<Ctrl-3>', 'tab-focus 3')
+config.bind('<Ctrl-4>', 'tab-focus 4')
+config.bind('<Ctrl-5>', 'tab-focus 5')
+config.bind('<Ctrl-6>', 'tab-focus 6')
+config.bind('<Ctrl-7>', 'tab-focus 7')
+config.bind('<Ctrl-8>', 'tab-focus 8')
+config.bind('<Ctrl-9>', 'tab-focus 9')
