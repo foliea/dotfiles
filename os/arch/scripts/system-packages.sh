@@ -72,11 +72,13 @@ for package in networkmanager \
     qutebrowser \
     python-opengl \
     qt5-webengine \
+    qt5-webengine-widevine \
     qt5-styleplugins \
     viewnior \
     epdfview \
     mpv \
     galculator \
+    unzip \
     yubikey-manager \
     pcsc-tools \
     ccid \
