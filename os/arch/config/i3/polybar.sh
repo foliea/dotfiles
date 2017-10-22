@@ -14,6 +14,10 @@ if [ -z "$dpi" ]; then
     dpi=$base_dpi
 fi
 
-top_bar_height=$((27 * $dpi / $base_dpi))
+theme=$(cat ~/.Xresources.d/theme 2>/dev/null | awk '{ print $2"="$3 }')
 
-DPI=$dpi TOP_BAR_HEIGHT=$top_bar_height polybar top &
+export $theme
+export DPI=$dpi
+export TOP_BAR_HEIGHT=$((27 * $dpi / $base_dpi))
+
+polybar top &
