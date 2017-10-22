@@ -1,9 +1,7 @@
 #!/bin/bash
 
 function use() {
-    local xdir=$HOME/.Xresources.d
-
-    local xscreen=$xdir/screen
+    local xscreen=$HOME/.Xresources.d/screen
 
     local base_dpi=96
 
@@ -16,8 +14,6 @@ function use() {
     local scaling=$(($dpi / $base_dpi))
 
     local cursor=$((($scaling - 1) * 64))
-
-    mkdir -p $xdir
 
     echo "#define DPI $dpi" > $xscreen
     echo "#define CURSOR $cursor" >> $xscreen

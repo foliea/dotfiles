@@ -1,4 +1,5 @@
 #include ".Xresources.d/screen"
+#include ".Xresources.d/colors"
 ! ------------------------------------------------------------------------------
 ! System
 ! ------------------------------------------------------------------------------
@@ -25,10 +26,10 @@ Xft.lcdfilter: lcddefault
 rofi.dpi: DPI
 
 rofi.color-enabled: true
-rofi.color-window: #2d2d2d, #333333, #333333
-rofi.color-normal: #2d2d2d, #f9f9f9, #333333, #dedede, #333333
-rofi.color-active: #067bc2, #f9f9f9, #067bc2, #067bc2, #f9f9f9
-rofi.color-urgent: #ffe74c, #f9f9f9, #ec4e20, #d64937, #f9f9f9
+rofi.color-window: BACKGROUND_COLOR_1, BACKGROUND_COLOR_2, BACKGROUND_COLOR_2
+rofi.color-normal: BACKGROUND_COLOR_1, FOREGROUND_COLOR_1, BACKGROUND_COLOR_2, HIGHLIGHTED_COLOR_1, BACKGROUND_COLOR_2
+rofi.color-active: HIGHLIGHTED_COLOR_3, FOREGROUND_COLOR_1, HIGHLIGHTED_COLOR_3, HIGHLIGHTED_COLOR_3, FOREGROUND_COLOR_1
+rofi.color-urgent: WARNING_COLOR, FOREGROUND_COLOR_1, URGENT_COLOR, ERROR_COLOR, FOREGROUND_COLOR_1
 
 ! Runner
 rofi.terminal: terminator
