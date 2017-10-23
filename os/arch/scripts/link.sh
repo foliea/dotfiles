@@ -20,6 +20,7 @@ do
 done
 
 for file in Xresources \
+    Xresources.d \
     dmrc \
     gtkrc-2.0 \
     gnupg \

@@ -14,6 +14,7 @@ for file in i3 \
     config/compton.conf \
     config/qutebrowser \
     Xresources \
+    Xresources.d \
     dmrc \
     gtkrc-2.0 \
     gnupg \

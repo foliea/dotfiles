@@ -1,11 +1,11 @@
 [colors]
-background = #2d2d2d
-background-alt = #333333
-foreground = #f9f9f9
-foreground-alt = #999
-primary = #d64937
-secondary = #e60053
-alert = #d64937
+background = ${env:BACKGROUND_COLOR_1}
+background-alt = ${env:BACKGROUND_COLOR_2}
+foreground = ${env:FOREGROUND_COLOR_1}
+foreground-alt = ${env:FOREGROUND_COLOR_2}
+highlighted = ${env:HIGHLIGHTED_COLOR_2}
+warning = ${env:WARNING_COLOR}
+error = ${env:ERROR_COLOR}
 
 [settings]
 screenchange-reload = false
@@ -25,10 +25,10 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 3
-line-color = #d64937
+line-color = ${colors.highlighted}
 
 border-size = 4
-border-color = #00000000
+border-color = #000000
 
 padding-left = 0
 padding-right = 2
@@ -63,11 +63,11 @@ ws-icon-default = 
 
 label-mode-padding = 2
 label-mode-foreground = ${colors.foreground}
-label-mode-background = ${colors.primary}
+label-mode-background = ${colors.highlighted}
 
 label-focused = %icon%
 label-focused-background = ${colors.background-alt}
-label-focused-underline = ${colors.primary}
+label-focused-underline = ${colors.highlighted}
 label-focused-padding = 2
 
 label-unfocused = %icon%
@@ -79,7 +79,7 @@ label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 label-urgent = %icon%
-label-urgent-background = ${colors.alert}
+label-urgent-background = ${colors.error}
 label-urgent-padding = 2
 
 [module/window]
@@ -121,7 +121,7 @@ ramp-signal-2 = 
 ramp-signal-3 = 
 ramp-signal-4 = 
 
-ramp-signal-foreground = #f9f9f9
+ramp-signal-foreground = ${colors.foreground}
 
 [module/vpn]
 type = custom/script
@@ -152,7 +152,7 @@ type = internal/volume
 
 format-volume = <ramp-volume> <label-volume>
 label-muted = 
-label-muted-foreground = #999999
+label-muted-foreground = ${colors.foreground-alt}
 
 ramp-volume-0 = 
 ramp-volume-1 = 
@@ -172,9 +172,9 @@ format-discharging = <ramp-capacity> <label-discharging>
 format-full = <ramp-capacity> <label-full>
 
 ramp-capacity-0 = 
-ramp-capacity-0-foreground = #d64937
+ramp-capacity-0-foreground = ${colors.error}
 ramp-capacity-1 = 
-ramp-capacity-1-foreground = #ffe74c
+ramp-capacity-1-foreground = ${colors.warning}
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
@@ -182,11 +182,11 @@ ramp-capacity-4 = 
 bar-capacity-width = 10
 bar-capacity-format = %{+u}%{+o}%fill%%empty%%{-u}%{-o}
 bar-capacity-fill = █
-bar-capacity-fill-foreground = #f9f9f9
+bar-capacity-fill-foreground = ${colors.foreground}
 bar-capacity-fill-font = 3
 bar-capacity-empty = █
 bar-capacity-empty-font = 3
-bar-capacity-empty-foreground = #00f6ed
+bar-capacity-empty-foreground = ${colors.error}
 
 animation-charging-0 = 
 animation-charging-1 = 
@@ -199,7 +199,7 @@ animation-charging-framerate = 750
 type = custom/script
 interval = 5
 format = <label>
-format-underline = ${colors.alert}
+format-underline = ${colors.error}
 label = %output%
 exec = ~/.config/polybar/pkg.sh
 
