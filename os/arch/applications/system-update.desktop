@@ -1,11 +1,11 @@
 [Desktop Entry]
 Categories=System;Utility;ConsoleOnly;
 Comment=Update system dependencies
-Exec=/usr/local/bin/system-update
+Exec=system-update
 GenericName=System Management
 Icon=Terminator
 Name=System Update
 Terminal=true
-TryExec=/usr/sbin/system-update
+TryExec=system-update
 Type=Application
 Keywords=System;Update;Pacman;Yaourt

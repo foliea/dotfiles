@@ -6,6 +6,6 @@ GenericName=Terminal
 Icon=Terminator
 Name=Development Environment
 Terminal=true
-TryExec=dev
+TryExec=/usr/sbin/fish
 Type=Application
 Keywords=Vim;Tmux;Dev

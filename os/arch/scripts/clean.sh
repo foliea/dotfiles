@@ -23,4 +23,8 @@ do
     rm -rf $HOME/.$file
 done
 
+for file in tui dev qutebrowser system-update ; do
+    rm -rf $HOME/.local/share/applications/$file.desktop
+done
+
 rm -rf $HOME/Mount

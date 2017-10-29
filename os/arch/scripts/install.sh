@@ -36,10 +36,6 @@ function binaries() {
         sudo cp -f $PWD/bin/$binary.sh /usr/local/bin/$binary
     done
 
-    for app in tui dev qutebrowser system-update ; do
-        sudo cp -f $PWD/applications/$app.desktop /usr/share/applications/
-    done
-
     xdg-settings set default-web-browser qutebrowser.desktop
 }
 

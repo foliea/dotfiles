@@ -29,6 +29,10 @@ do
     ln -s $PWD/config/$file $HOME/.$file
 done
 
+for file in tui dev qutebrowser system-update ; do
+    ln -s $PWD/applications/$file.desktop $HOME/.local/share/applications/$file.desktop
+done
+
 ln -s /run/media/$USER $HOME/Mount
 
 # Transmission is using the same config file to update its own
