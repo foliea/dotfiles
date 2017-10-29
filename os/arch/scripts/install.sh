@@ -40,7 +40,9 @@ function binaries() {
 }
 
 function boot() {
-    sudo cp -f $PWD/etc/mkinitcpio.conf /etc/mkinitcpio.conf
+    for file in mkinitcpio.conf plymouth ; do
+        sudo cp -rf $PWD/etc/$file /etc/
+    done
 
     local kernel=$(uname -r | cut -c 1,3,4)
 
@@ -52,6 +54,8 @@ function boot() {
         /etc/default/grub 1>/dev/null
 
     sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+    sudo plymouth-set-default-theme -R solar
 }
 
 function services() {
