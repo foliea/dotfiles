@@ -165,6 +165,9 @@ bindsym $sup+d exec --no-startup-id "~/.config/i3/default-dpi.sh"
 # Keyboard layout
 bindsym $sup+k exec --no-startup-id "~/.config/i3/keyboard-layout.sh"
 
+# Password menu
+bindsym $mod+i exec --no-startup-id "rofi-pass"
+
 # Power menu
 bindsym $mod+p exec --no-startup-id "~/.config/i3/power-menu.sh"
 

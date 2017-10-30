@@ -441,8 +441,6 @@ c.window.title_format = '{perc}{title} {private}'
 # Custom keybindings
 config.bind(';D', 'hint links userscript ~/.config/qutebrowser/open.sh')
 
-config.bind('pw', 'spawn --userscript ~/.config/qutebrowser/password.sh')
-
 config.bind('J', 'tab-prev')
 config.bind('K', 'tab-next')
 config.bind('<Ctrl-1>', 'tab-focus 1')

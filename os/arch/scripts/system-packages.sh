@@ -85,7 +85,8 @@ for package in networkmanager \
     libusb-compat \
     gnupg2 \
     pam \
-    pass
+    pass \
+    rofi-pass
 do
     $PWD/bin/install-package.sh $package
 done
