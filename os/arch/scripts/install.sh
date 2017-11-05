@@ -35,8 +35,6 @@ function binaries() {
     for binary in askpass system-update switch-dpi switch-monitor launch-qt5-app install-package ; do
         sudo cp -f $PWD/bin/$binary.sh /usr/local/bin/$binary
     done
-
-    xdg-settings set default-web-browser qutebrowser.desktop
 }
 
 function boot() {

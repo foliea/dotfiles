@@ -14,7 +14,8 @@ for file in i3 \
     gtk-3.0 \
     compton.conf \
     clipit \
-    qutebrowser
+    qutebrowser \
+    mimeapps.list
 do
     ln -s $PWD/config/$file $config_dir/
 done
