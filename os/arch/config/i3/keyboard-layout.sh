@@ -15,7 +15,7 @@ if [ ${#option} -gt 0 ]; then
         layout=fr
     fi
 
-    setxkbmap -layout $layout $flags -option ctrl:nocaps
+    $HOME/.config/i3/switch-keyboard.sh $layout $flags
 
     notify-send --urgency=normal "Keyboard set to $option"
 fi
