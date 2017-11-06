@@ -129,6 +129,9 @@ client.focused_inactive #333333 #333333 #999999 #333333
 client.unfocused #333333 #333333 #999999 #333333
 client.urgent #d64937 #d64937 #f9f9f9f #d64937
 
+# Authentication agent
+exec --no-startup-id "~/.config/i3/authentication-agent.sh"
+
 # Map caps lock as control
 exec --no-startup-id "~/.config/i3/switch-keyboard.sh"
 

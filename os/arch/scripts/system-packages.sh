@@ -42,6 +42,7 @@ for package in networkmanager \
     plymouth \
     blueman \
     lxinput \
+    lxqt-policykit-agent \
     xdg-su \
     xdg-user-dirs \
     xdg-utils \
@@ -79,6 +80,7 @@ for package in networkmanager \
     mpv \
     galculator \
     unzip \
+    gparted \
     yubikey-manager \
     pcsc-tools \
     ccid \
