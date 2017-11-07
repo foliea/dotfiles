@@ -133,7 +133,7 @@ client.urgent #d64937 #d64937 #f9f9f9f #d64937
 exec --no-startup-id "~/.config/i3/authentication-agent.sh"
 
 # Map caps lock as control
-exec --no-startup-id "~/.config/i3/switch-keyboard.sh"
+exec --no-startup-id "~/.config/i3/switch-keyboard-layout.sh"
 
 # Function keys
 bindsym XF86AudioMute         exec --no-startup-id "amixer -D pulse set Master toggle"
