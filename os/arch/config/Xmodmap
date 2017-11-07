@@ -1,0 +1,18 @@
+! Remove unused keys in favor of commonly used ones
+
+! CapsLock → Control
+clear lock
+clear control
+keycode 66 = Control_L
+add control = Control_L Control_R
+
+! Facilitates using Alt as i3 primary modifier key and Qwerty International
+! keyboard layout with no dead keys and still have the AltGr key available as
+! i3 modifier key. Allow to bring characters with accent with Ins key instead
+! of AltGr.
+
+! AltGr -> Alt
+keycode 108 = Alt_L
+
+! Ins -> AltGr
+keycode 118 = ISO_Level3_Shift

@@ -16,6 +16,7 @@ for file in i3 \
     config/mimeapps.list \
     Xresources \
     Xresources.d \
+    Xmodmap \
     dmrc \
     gtkrc-2.0 \
     gnupg \

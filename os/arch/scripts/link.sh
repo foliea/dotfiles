@@ -22,6 +22,7 @@ done
 
 for file in Xresources \
     Xresources.d \
+    Xmodmap \
     dmrc \
     gtkrc-2.0 \
     gnupg \
