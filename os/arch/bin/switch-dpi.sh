@@ -3,15 +3,9 @@
 function use() {
     local xscreen=$HOME/.Xresources.d/screen
 
-    local base_dpi=96
-
     local dpi="$1"
 
-    if [ -z "$dpi" ]; then
-        dpi=$base_dpi
-    fi
-
-    local scaling=$(($dpi / $base_dpi))
+    local scaling=$(($dpi / 96))
 
     local cursor=$((($scaling - 1) * 64))
 
@@ -23,4 +17,4 @@ function use() {
 
 default_dpi=$(cat /opt/default/$1-dpi 2>/dev/null)
 
-use $default_dpi
+[ ! -z "$default_dpi" ] && use $default_dpi
