@@ -15,7 +15,9 @@ if [ ${#option} -gt 0 ]; then
         layout=fr
     fi
 
-    $HOME/.config/i3/switch-keyboard-layout.sh $layout $flags
+    echo "$layout $flags" > $HOME/.config/keyboard-layout.conf
+
+    $HOME/.config/i3/switch-keyboard-layout.sh
 
     notify-send --urgency=normal "Keyboard set to $option"
 fi

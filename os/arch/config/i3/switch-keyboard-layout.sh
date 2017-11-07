@@ -1,10 +1,9 @@
 #!/bin/bash
 
-layout=$1
-flags=$2
+layout=`cat $HOME/.config/keyboard-layout.conf 2>/dev/null`
 
 if [ -z "$layout" ]; then
     layout="us"
 fi
 
-setxkbmap -layout $layout $flags -option ctrl:nocaps
+setxkbmap -layout $layout -option ctrl:nocaps
