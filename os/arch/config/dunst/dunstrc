@@ -11,7 +11,7 @@
     # <http://developer.gnome.org/pango/stable/PangoMarkupFormat.html>.
     # If markup is not allowed, those tags will be stripped out of the
     # message.
-    allow_markup = yes
+    allow_markup = full
 
     # The format of the message.  Possible variables are:
     #   %a  appname
@@ -65,7 +65,7 @@
     # the top and down respectevly.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "0x4-25+25"
+    geometry = "0x4-25+65"
 
     # Shrink window if it's smaller than the width.  Will be ignored if
     # width is 0.
@@ -149,7 +149,6 @@
     icon_folders = /usr/share/icons/Numix/16/status/:/usr/share/icons/Numix/16/devices/
 [frame]
     width = 1
-    color = "#2d2d2d"
 
 [shortcuts]
 
@@ -178,16 +177,19 @@
     # Otherwise the "#" and following would be interpreted as a comment.
     background = "#2d2d2d"
     foreground = "#999999"
+    frame_color = "#999999"
     timeout = 10
 
 [urgency_normal]
-    background = "#333333"
+    background = "#2d2d2d"
     foreground = "#f9f9f9"
+    frame_color = "#f9f9f9"
     timeout = 10
 
 [urgency_critical]
     background = "#d64937"
     foreground = "#f9f9f9"
+    frame_color = "#d64937"
     timeout = 0
 #
 # vim: ft=cfg
