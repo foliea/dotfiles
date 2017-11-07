@@ -41,15 +41,15 @@ function activate_monitor_mode() {
 
         xrandr \
             --output $internal_output $multiple_monitors_flags \
-            --output $external_output --auto --left-of $internal_output
+            --output $external_output --auto $position $internal_output
     fi
 }
 
-function save_monitor_mode() {
-    # Writing file from display manager greeter would
-    # set root as the file owner.
+function save_configuration() {
+    # Writing file from display manager greeter would set root as the file owner.
     if [ "$requested_mode" != "greeter" ]; then
         echo "${monitor_mode}" > /tmp/monitor_mode.dat
+        echo "${monitor_position}" > /tmp/monitor_position.dat
     fi
 }
 
@@ -91,7 +91,9 @@ else
     monitor_mode=$requested_mode
 fi
 
+position="$2"
+
 activate_monitor_mode
-save_monitor_mode
+save_configuration
 reload
 notify

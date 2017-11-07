@@ -188,5 +188,4 @@ exec --no-startup-id "~/.config/i3/polybar.sh"
 
 # Switch monitor
 bindsym $sup+p exec --no-startup-id "/usr/local/bin/switch-monitor cycle"
-bindsym $sup+c exec --no-startup-id "/usr/local/bin/switch-monitor clone"
-bindsym $sup+e exec --no-startup-id "/usr/local/bin/switch-monitor extended"
+bindsym $sup+e exec --no-startup-id "~/.config/i3/monitors-modes.sh"
