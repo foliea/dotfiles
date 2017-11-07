@@ -132,8 +132,8 @@ client.urgent #d64937 #d64937 #f9f9f9f #d64937
 # Authentication agent
 exec --no-startup-id "~/.config/i3/authentication-agent.sh"
 
-# Map caps lock as control
-exec --no-startup-id "~/.config/i3/switch-keyboard-layout.sh"
+# Load keyboard layout
+exec --no-startup-id "~/.config/i3/load-keyboard-layout.sh"
 
 # Function keys
 bindsym XF86AudioMute         exec --no-startup-id "amixer -D pulse set Master toggle"
@@ -162,8 +162,8 @@ bindsym $sup+n exec --no-startup-id "~/.config/i3/night-mode.sh"
 # Preview mode
 bindsym $sup+m exec --no-startup-id "~/.config/i3/preview.sh"
 
-# Default dpi
-bindsym $sup+d exec --no-startup-id "~/.config/i3/default-dpi.sh"
+# Default dpi menu
+bindsym $sup+d exec --no-startup-id "~/.config/i3/default-dpi-menu.sh"
 
 # Keyboard layouts menu
 bindsym $sup+k exec --no-startup-id "~/.config/i3/keyboard-layouts-menu.sh"

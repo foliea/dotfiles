@@ -17,7 +17,7 @@ if [ ${#option} -gt 0 ]; then
 
     echo "$layout $flags" > $HOME/.config/keyboard-layout.conf
 
-    $HOME/.config/i3/switch-keyboard-layout.sh
+    $HOME/.config/i3/load-keyboard-layout.sh
 
     notify-send --urgency=normal "Keyboard set to $option"
 fi
