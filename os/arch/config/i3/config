@@ -165,8 +165,8 @@ bindsym $sup+m exec --no-startup-id "~/.config/i3/preview.sh"
 # Default dpi
 bindsym $sup+d exec --no-startup-id "~/.config/i3/default-dpi.sh"
 
-# Keyboard layout
-bindsym $sup+k exec --no-startup-id "~/.config/i3/keyboard-layout.sh"
+# Keyboard layouts menu
+bindsym $sup+k exec --no-startup-id "~/.config/i3/keyboard-layouts-menu.sh"
 
 # Password menu
 bindsym $mod+i exec --no-startup-id "rofi-pass"
@@ -178,7 +178,7 @@ bindsym $mod+p exec --no-startup-id "~/.config/i3/power-menu.sh"
 bindsym $sup+u exec --no-startup-id "~/.config/i3/reload-all.sh"
 
 # VPN menu
-bindsym $sup+j exec --no-startup-id "~/.config/i3/vpn.sh"
+bindsym $sup+j exec --no-startup-id "~/.config/i3/vpn-menu.sh"
 
 # Wallpaper
 exec --no-startup-id "nitrogen --restore"
@@ -188,4 +188,4 @@ exec --no-startup-id "~/.config/i3/polybar.sh"
 
 # Switch monitor
 bindsym $sup+p exec --no-startup-id "/usr/local/bin/switch-monitor cycle"
-bindsym $sup+e exec --no-startup-id "~/.config/i3/monitors-modes.sh"
+bindsym $sup+e exec --no-startup-id "~/.config/i3/monitors-menu.sh"

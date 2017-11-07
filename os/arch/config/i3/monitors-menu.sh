@@ -12,20 +12,22 @@ options="$options\nExtended (Below computer)"
 
 option=$(echo -e $options | $launcher)
 
+cmd=/usr/local/bin/switch-monitor
+
 if [ ${#option} -gt 0 ]; then
     if [ "$option" == "Clone" ]; then
-        /usr/local/bin/switch-monitor clone
+        $cmd clone
     elif [ "$option" == "Internal" ]; then
-        /usr/local/bin/switch-monitor internal
+        $cmd internal
     elif [ "$option" == "External" ]; then
-        /usr/local/bin/switch-monitor external
+        $cmd external
     elif [ "$option" == "Extended (Left of computer)" ]; then
-        /usr/local/bin/switch-monitor extended --left-of
+        $cmd extended --left-of
     elif [ "$option" == "Extended (Right of computer)" ]; then
-        /usr/local/bin/switch-monitor extended --right-of
+        $cmd extended --right-of
     elif [ "$option" == "Extended (Above computer)" ]; then
-        /usr/local/bin/switch-monitor extended --above
+        $cmd extended --above
     elif [ "$option" == "Extended (Below computer)" ]; then
-        /usr/local/bin/switch-monitor extended --below
+        $cmd extended --below
     fi
 fi
