@@ -13,6 +13,7 @@ for file in i3 \
     config/transmission \
     config/compton.conf \
     config/qutebrowser \
+    config/zathura \
     config/mimeapps.list \
     Xresources \
     Xresources.d \

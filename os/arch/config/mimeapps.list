@@ -1,6 +1,6 @@
 [Default Applications]
 application/ogg=mpv.desktop;
-application/pdf=epdfview.desktop;
+application/pdf=zathura.desktop;
 application/pkcs10=gcr-viewer.desktop;
 application/pkcs10+pem=gcr-viewer.desktop;
 application/pkcs12=gcr-viewer.desktop;

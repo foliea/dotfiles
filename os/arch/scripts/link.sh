@@ -15,6 +15,7 @@ for file in i3 \
     compton.conf \
     clipit \
     qutebrowser \
+    zathura \
     mimeapps.list
 do
     ln -s $PWD/config/$file $config_dir/

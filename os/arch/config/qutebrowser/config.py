@@ -328,6 +328,10 @@ c.content.local_content_can_access_remote_urls = True
 #   - ask
 c.content.ssl_strict = False
 
+# Enable pdf.js to view PDF files in the browser.
+# Note that the files can still be downloaded by clicking the download button in the pdf.js viewer.
+c.content.pdfjs = True
+
 # Prompt the user for the download location. If set to false,
 # `downloads.location.directory` will be used.
 # Type: Bool

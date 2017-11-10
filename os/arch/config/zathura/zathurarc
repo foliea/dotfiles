@@ -1,0 +1,28 @@
+set show-scrollbars false
+
+set font "Noto Sans 10"
+
+set default-bg "#dedede"
+set default-fg "#f9f9f9"
+
+set statusbar-bg "#2d2d2d"
+set statusbar-fg "#f9f9f9"
+
+set inputbar-bg "#2d2d2d"
+set inputbar-fg "#f9f9f9"
+
+set completion-bg "#333333"
+set completion-fg "#f9f9f9"
+set completion-highlight-bg "#f9f9f9"
+set completion-highlight-fg "#333333"
+set completion-group-bg "#2d2d2d"
+set completion-group-fg "#f9f9f9"
+
+set highlight-color "#ffe74c"
+set highlight-active-color "#ec4e20"
+set highlight-transparency 0.5
+
+set notification-error-bg "#d64237"
+set notification-error-fg "#f9f9f9"
+set notification-warning-bg "#ec4e20"
+set notification-warning-fg "#f9f9f9"

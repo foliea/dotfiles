@@ -77,7 +77,8 @@ for package in networkmanager \
     qt5-webengine-widevine \
     qt5-styleplugins \
     viewnior \
-    epdfview \
+    zathura \
+    zathura-pdf-poppler \
     mpv \
     galculator \
     unzip \
