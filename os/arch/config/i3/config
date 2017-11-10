@@ -1,7 +1,7 @@
 set $mod Mod1
 set $sup Mod4
 
-font pango:Open Sans 10
+font pango:Noto Sans 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

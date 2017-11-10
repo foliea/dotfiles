@@ -389,7 +389,7 @@ c.fonts.messages.warning = '10pt monospace'
 # Default monospace fonts. Whenever "monospace" is used in a font
 # setting, it's replaced with the fonts listed here.
 # Type: Font
-c.fonts.monospace = 'Open Sans'
+c.fonts.monospace = 'Noto Sans'
 
 # Font used for prompts.
 # Type: Font

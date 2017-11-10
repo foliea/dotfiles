@@ -62,9 +62,9 @@ for package in networkmanager \
     numix-icon-theme-git \
     numix-cursor-theme-git \
     pango \
+    noto-fonts \
     noto-fonts-emoji \
     ttf-font-awesome \
-    ttf-opensans \
     ttf-dejavu \
     terminus-font \
     terminator \
