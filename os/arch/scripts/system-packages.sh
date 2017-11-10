@@ -39,6 +39,7 @@ for package in networkmanager \
     lightdm \
     lightdm-gtk-greeter \
     light-locker \
+    terminus-font \
     plymouth \
     blueman \
     lxinput \
@@ -66,7 +67,6 @@ for package in networkmanager \
     noto-fonts-emoji \
     ttf-font-awesome \
     ttf-dejavu \
-    terminus-font \
     terminator \
     firefox \
     slack-desktop \

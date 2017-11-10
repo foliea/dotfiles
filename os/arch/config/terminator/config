@@ -15,8 +15,9 @@
   [[default]]
     background_color = "#2d2d2d"
     cursor_color = "#cccccc"
+    font = Noto Mono 10
     foreground_color = "#cccccc"
-    use_system_font = False
     palette = "#000000:#f2777a:#99cc99:#ffcc66:#6699cc:#cc99cc:#66cccc:#ffffff:#000000:#f2777a:#99cc99:#ffcc66:#6699cc:#cc99cc:#66cccc:#ffffff"
     scrollbar_position = hidden
     show_titlebar = False
+    use_system_font = False
