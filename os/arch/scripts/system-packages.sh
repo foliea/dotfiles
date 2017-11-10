@@ -68,7 +68,7 @@ for package in networkmanager \
     ttf-dejavu \
     terminus-font \
     terminator \
-    google-chrome \
+    firefox \
     slack-desktop \
     transmission-gtk \
     qutebrowser \
