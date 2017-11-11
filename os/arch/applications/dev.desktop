@@ -1,11 +1,11 @@
 [Desktop Entry]
 Categories=System;Utility;ConsoleOnly;
 Comment=Launch development environment
-Exec=dev
+Exec=development-environment
 GenericName=Terminal
 Icon=Terminator
 Name=Development Environment
 Terminal=true
-TryExec=/usr/sbin/fish
+TryExec=development-environment
 Type=Application
 Keywords=Vim;Tmux;Dev

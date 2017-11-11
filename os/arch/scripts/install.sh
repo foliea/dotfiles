@@ -32,7 +32,14 @@ function autologin() {
 }
 
 function binaries() {
-    for binary in askpass system-update switch-dpi switch-monitor launch-qt5-app install-package ; do
+    for binary in askpass \
+        system-update \
+        switch-dpi \
+        switch-monitor \
+        launch-qt5-app \
+        install-package \
+        development-environment
+    do
         sudo cp -f $PWD/bin/$binary.sh /usr/local/bin/$binary
     done
 }
