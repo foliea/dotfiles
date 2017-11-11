@@ -199,3 +199,11 @@ function! RenameFile()
   endif
 endfunction
 command! R :call RenameFile()
+
+" Make file executable
+function! MakeExecutable()
+  let filename = expand('%:p')
+
+  call system('chmod +x ' . filename)
+endfunction
+command! ME :call MakeExecutable()
