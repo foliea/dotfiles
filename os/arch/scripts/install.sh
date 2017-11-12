@@ -2,8 +2,8 @@
 set -e
 
 function config() {
-    sudo cp -f $HOME/.config/gtk-3.0/* /etc/gtk-3.0/
-    sudo cp -f $HOME/.gtkrc-2.0 /etc/gtk-2.0/gtkrc
+    sudo cp -f $PWD/config/gtk-3.0/* /etc/gtk-3.0/
+    sudo cp -f $PWD/config/gtkrc-2.0 /etc/gtk-2.0/gtkrc
 }
 
 function dpi() {
@@ -16,7 +16,7 @@ function dpi() {
 
 function display() {
     sudo rm -rf /etc/lightdm
-    sudo cp -rf $PWD/etc/lightdm /etc/lightdm
+    sudo cp -rf $PWD/etc/lightdm /etc/
 
     sudo sed -i -e \
         "s/#autologin-user={{USER}}/autologin-user=$USER/" \
@@ -56,4 +56,4 @@ function services() {
     done
 }
 
-eval "$1"
+$1
