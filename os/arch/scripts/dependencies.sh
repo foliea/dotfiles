@@ -5,9 +5,7 @@ sudo pacman -Sy --noconfirm
 
 yaourt -Sy --noconfirm
 
-for package in awk \
-    sed \
-    make \
+for package in base-devel \
     cmake \
     curl \
     python2 \
@@ -25,7 +23,6 @@ for package in awk \
     fish \
     unrar \
     xsel \
-    base-devel \
     python-grip \
     openssh \
     mercurial \
