@@ -37,7 +37,7 @@ for package in networkmanager \
     gtk3 \
     gtk-engine-murrine \
     lightdm \
-    lightdm-gtk-greeter \
+    lightdm-mini-greeter \
     light-locker \
     terminus-font \
     plymouth \

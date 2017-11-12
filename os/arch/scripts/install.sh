@@ -22,6 +22,10 @@ function display() {
         "s/autologin-user={{USER}}/autologin-user=$USER/" \
         /etc/lightdm/lightdm.conf 1>/dev/null
 
+    sudo sed -i -e \
+        "s/user = {{USER}}/user = $USER/" \
+        /etc/lightdm/lightdm-mini-greeter.conf 1>/dev/null
+
     sudo rm -rf /etc/X11/xorg.conf.d
     sudo cp -rf $PWD/etc/xorg.conf.d /etc/X11/
 }
