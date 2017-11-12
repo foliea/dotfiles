@@ -4,6 +4,7 @@ set -e
 function config() {
     sudo cp -f $PWD/config/gtk-3.0/* /etc/gtk-3.0/
     sudo cp -f $PWD/config/gtkrc-2.0 /etc/gtk-2.0/gtkrc
+    sudo cp -f $PWD/backgrounds/* /usr/share/backgrounds
 }
 
 function dpi() {
