@@ -3,8 +3,6 @@ set -g -x SHELL (which fish)
 set -g -x TERM xterm-256color
 set -g -x LC_ALL en_US.UTF-8
 
-set PATH /usr/local/bin /usr/sbin $PATH
-
 if test -d $HOME/.cargo/bin
     set PATH $HOME/.cargo/bin $PATH
 end

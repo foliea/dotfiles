@@ -31,20 +31,6 @@ function autologin() {
     sudo gpasswd -a $USER autologin
 }
 
-function binaries() {
-    for binary in askpass \
-        system-update \
-        monitors-information \
-        switch-dpi \
-        switch-monitor \
-        launch-qt5-app \
-        install-package \
-        development-environment
-    do
-        sudo cp -f $PWD/bin/$binary.sh /usr/local/bin/$binary
-    done
-}
-
 function boot() {
     for file in mkinitcpio.conf plymouth ; do
         sudo cp -rf $PWD/etc/$file /etc/

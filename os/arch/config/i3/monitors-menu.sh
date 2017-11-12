@@ -12,7 +12,7 @@ options="$options\nExtended (Below computer)"
 
 option=$(echo -e $options | $launcher)
 
-cmd=/usr/local/bin/switch-monitor
+cmd=switch-monitor
 
 if [ ${#option} -gt 0 ]; then
     if [ "$option" == "Clone" ]; then

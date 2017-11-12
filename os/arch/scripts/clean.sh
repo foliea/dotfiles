@@ -2,6 +2,7 @@
 set -e
 
 for file in i3 \
+    local/bin \
     config/i3 \
     config/polybar \
     config/nitrogen \

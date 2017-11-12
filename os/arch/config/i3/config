@@ -187,5 +187,6 @@ exec --no-startup-id "nitrogen --restore"
 exec --no-startup-id "~/.config/i3/polybar.sh"
 
 # Switch monitor
-bindsym $sup+p exec --no-startup-id "/usr/local/bin/switch-monitor cycle"
+bindsym $sup+p exec --no-startup-id "switch-monitor cycle"
+
 bindsym $sup+e exec --no-startup-id "~/.config/i3/monitors-menu.sh"

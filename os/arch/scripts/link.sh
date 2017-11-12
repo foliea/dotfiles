@@ -37,6 +37,10 @@ for file in tui dev qutebrowser system-update ; do
     ln -s $PWD/applications/$file.desktop $HOME/.local/share/applications/$file.desktop
 done
 
+# Link custom binaries
+ln -s $PWD/bin $HOME/.local/bin
+
+# Link usb storage to user director
 ln -s /run/media/$USER $HOME/Mount
 
 # Transmission is using the same config file to update its own
