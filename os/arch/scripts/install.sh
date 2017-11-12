@@ -50,6 +50,14 @@ function boot() {
 
     sudo sed -i -e \ 's/GRUB_GFXMODE=.*/GRUB_GFXMODE="3200x1800x32,auto"/' /etc/default/grub 1>/dev/null
 
+    local hidden_menu=$(cat /etc/default/grub | grep "GRUB_FORCE_HIDDEN_MENU")
+
+    if [ -z "$hidden_menu" ]; then
+        sudo bash -c "echo 'GRUB_FORCE_HIDDEN_MENU=\"true\"' >> /etc/default/grub"
+    fi
+
+    sudo cp $PWD/etc/grub.d/* /etc/grub.d/
+
     sudo grub-mkconfig -o /boot/grub/grub.cfg
 }
 
