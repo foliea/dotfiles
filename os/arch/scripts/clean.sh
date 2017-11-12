@@ -18,6 +18,7 @@ for file in i3 \
     Xresources \
     Xresources.d \
     Xmodmap \
+    xprofile \
     dmrc \
     gtkrc-2.0 \
     gnupg \

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+switch-dpi
+
 xrdb -merge ~/.Xresources
 
 i3-msg restart

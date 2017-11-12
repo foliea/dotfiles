@@ -15,6 +15,4 @@ function use() {
     cat $xscreen
 }
 
-default_dpi=$(cat /opt/default/$1-dpi 2>/dev/null)
-
-[ ! -z "$default_dpi" ] && use $default_dpi
+use $(monitors-information dpi)
