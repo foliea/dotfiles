@@ -19,7 +19,7 @@ function display() {
     sudo cp -rf $PWD/etc/lightdm /etc/
 
     sudo sed -i -e \
-        "s/#autologin-user={{USER}}/autologin-user=$USER/" \
+        "s/autologin-user={{USER}}/autologin-user=$USER/" \
         /etc/lightdm/lightdm.conf 1>/dev/null
 
     sudo rm -rf /etc/X11/xorg.conf.d
