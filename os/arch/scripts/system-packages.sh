@@ -41,6 +41,7 @@ for package in networkmanager \
     light-locker \
     terminus-font \
     plymouth \
+    plymouth-theme-manjaro \
     blueman \
     lxinput \
     lxqt-policykit-agent \

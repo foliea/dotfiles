@@ -36,18 +36,16 @@ function boot() {
         sudo cp -rf $PWD/etc/$file /etc/
     done
 
-    local kernel=$(uname -r | cut -c 1,3,4)
-
-    sudo mkinitcpio -p "linux$kernel"
+    sudo plymouth-set-default-theme -R manjaro-logo
 
     # Fix suspend loop issue, fix screen flickering and add plymouth splash
     sudo sed -i -e \
         's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash i915.enable_rc6=0 i915.enable_psr=0 button.lid_init_state=open"/' \
         /etc/default/grub 1>/dev/null
 
-    sudo grub-mkconfig -o /boot/grub/grub.cfg
+    sudo sed -i -e \ 's/GRUB_GFXMODE=.*/GRUB_GFXMODE="3200x1800x32,auto"/' /etc/default/grub 1>/dev/null
 
-    sudo plymouth-set-default-theme -R solar
+    sudo grub-mkconfig -o /boot/grub/grub.cfg
 }
 
 function services() {
