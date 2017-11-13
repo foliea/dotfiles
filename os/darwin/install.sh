@@ -5,7 +5,7 @@ brew reinstall gnupg2
 
 brew reinstall caskroom/cask/brew-cask
 
-brew cask install \
+brew cask reinstall \
     iterm2 \
     google-chrome \
     caffeine \
