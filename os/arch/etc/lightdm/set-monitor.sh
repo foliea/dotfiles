@@ -15,7 +15,7 @@ function switch_dpi() {
 }
 
 if [ -z ${monitors[1]} ]; then
-    #xrandr --output ${monitors[0]} --auto --primary
+    xrandr --output ${monitors[0]} --auto --primary
 
     switch_dpi internal
 else
