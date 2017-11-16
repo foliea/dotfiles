@@ -1,0 +1,26 @@
+#!/bin/sh
+
+function check_and_fallback() {
+    local monitor_mode=$(monitors-information current_mode)
+    local external_output=$(monitors-information external)
+
+    if [ "$monitor_mode" != "internal" ] && [ -z "$external_output" ]; then
+        sleep 1 && switch-monitor internal
+    fi
+}
+
+function on_signal() {
+    while read signal stamp sender arrow dest rest; do
+        case "$rest" in
+            *Unlock)
+                check_and_fallback
+                ;;
+        esac
+    done
+}
+
+session=/org/freedesktop/login1/session/$XDG_SESSION_ID
+
+interface=org.freedesktop.login1.Session
+
+dbus-monitor --system "type=signal,path=$session,interface=$interface" 2>/dev/null | on_signal
