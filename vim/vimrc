@@ -35,6 +35,7 @@ Plug 'elzr/vim-json'
 Plug 'elixir-lang/vim-elixir'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'dag/vim-fish'
+Plug 'rhysd/vim-crystal'
 
 call plug#end()
 
@@ -63,6 +64,7 @@ set backspace=indent,eol,start
 " Tabs
 autocmd FileType ruby       setlocal shiftwidth=2 softtabstop=2
 autocmd FileType eruby      setlocal shiftwidth=2 softtabstop=2
+autocmd FileType crystal    setlocal shiftwidth=2 softtabstop=2
 autocmd FileType yaml       setlocal shiftwidth=2 softtabstop=2
 autocmd FileType haml       setlocal shiftwidth=2 softtabstop=2
 autocmd FileType slim       setlocal shiftwidth=2 softtabstop=2
