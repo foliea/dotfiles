@@ -36,6 +36,7 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'dag/vim-fish'
 Plug 'rhysd/vim-crystal'
+Plug 'cespare/vim-toml'
 
 call plug#end()
 
@@ -67,6 +68,7 @@ autocmd FileType eruby      setlocal shiftwidth=2 softtabstop=2
 autocmd FileType crystal    setlocal shiftwidth=2 softtabstop=2
 autocmd FileType yaml       setlocal shiftwidth=2 softtabstop=2
 autocmd FileType haml       setlocal shiftwidth=2 softtabstop=2
+autocmd FileType toml       setlocal shiftwidth=2 softtabstop=2
 autocmd FileType slim       setlocal shiftwidth=2 softtabstop=2
 autocmd FileType json       setlocal shiftwidth=2 softtabstop=2
 autocmd FileType scss       setlocal shiftwidth=2 softtabstop=2
@@ -91,6 +93,9 @@ filetype plugin on    " Enable filetype-specific plugins
 
 " Ruby
 autocmd FileType ruby compiler ruby
+
+" Crystal
+let g:crystal_auto_format = 1
 
 " Custom syntax highlighting
 autocmd BufRead,BufNewFile Gomfile  setlocal filetype=ruby
