@@ -192,4 +192,4 @@ bindsym $sup+p exec --no-startup-id "switch-monitor cycle"
 bindsym $sup+e exec --no-startup-id "~/.config/i3/monitors-menu.sh"
 
 # Firegrid
-bindsym $mod+c exec --no-startup-id "~/.config/i3/firegrid.sh"
+bindsym $mod+c exec --no-startup-id "firegrid"
