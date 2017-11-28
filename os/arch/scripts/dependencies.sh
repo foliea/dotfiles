@@ -32,7 +32,8 @@ for package in base-devel \
     expect \
     docker-compose \
     rbenv \
-    ruby-build
+    ruby-build \
+    crystal
 do
     sh $PWD/bin/install-package.sh $package
 done
@@ -41,3 +42,5 @@ sudo systemctl enable docker
 sudo systemctl start docker
 
 sudo usermod -aG docker $USER
+
+curl -L https://raw.github.com/pine/crenv/master/install.sh | bash
