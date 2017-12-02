@@ -13,3 +13,5 @@ pkill dbus-monitor
 watch-monitors &
 
 switch-dpi
+
+compton -b
