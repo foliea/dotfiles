@@ -1,8 +1,8 @@
 dist: trusty
 sudo: false
-cache: apt
 
 before_install:
   - sh os/ubuntu/dependencies.sh
 
-script: make test
+script:
+  - make test
