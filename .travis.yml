@@ -1,8 +1,7 @@
-dist: trusty
-sudo: false
+os: osx
 
 before_install:
-  - sh os/ubuntu/dependencies.sh
+  - sh os/darwin/dependencies.sh
 
 script:
   - make test
