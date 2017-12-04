@@ -13,14 +13,11 @@ if type rbenv > /dev/null 2>&1
 end
 
 # crenv
-if test -d $HOME/.crenv/bin
+if test -d $HOME/.crenv
     set PATH $HOME/.crenv/bin $PATH
     set PATH $HOME/.crenv/shims $PATH
 
     set CRENV_SHELL $SHELL
-end
-
-if type crenv > /dev/null 2>&1
 end
 
 if uname -a | grep 'Darwin' >/dev/null

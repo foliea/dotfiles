@@ -205,7 +205,7 @@ function! RenameFile()
     redraw!
   endif
 endfunction
-command! R :call RenameFile()
+command! RF :call RenameFile()
 
 " Make file executable
 function! MakeExecutable()
