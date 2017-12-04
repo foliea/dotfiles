@@ -1,3 +1,5 @@
+dist: trusty
+sudo: false
 cache: apt
 
 before_install:
