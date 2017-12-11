@@ -4,7 +4,8 @@ set -e
 function config() {
     sudo cp -f $PWD/config/gtk-3.0/* /etc/gtk-3.0/
     sudo cp -f $PWD/config/gtkrc-2.0 /etc/gtk-2.0/gtkrc
-    sudo cp -f $PWD/backgrounds/* /usr/share/backgrounds
+    sudo cp -f $PWD/backgrounds/* /usr/share/backgrounds/
+    sudo cp -f $PWD/etc/udev/rules.d/* /etc/udev/rules.d/
 }
 
 function dpi() {
@@ -31,9 +32,12 @@ function display() {
     sudo cp -rf $PWD/etc/xorg.conf.d /etc/X11/
 }
 
-function autologin() {
+function permissions() {
     getent group autologin || sudo groupadd -r autologin
     sudo gpasswd -a $USER autologin
+
+    getent group plugdev || sudo groupadd -r plugdev
+    sudo gpasswd -a $USER plugdev
 }
 
 function boot() {

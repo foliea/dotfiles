@@ -1,6 +1,6 @@
-.PHONY: all re clean dependencies packages config dpi display autologin binaries services boot
+.PHONY: all re clean dependencies packages config dpi display permissions binaries services boot
 
-all: dependencies packages config dpi display autologin services boot
+all: dependencies packages config dpi display permissions services boot
 
 clean:
 	scripts/clean.sh
@@ -23,8 +23,8 @@ dpi:
 display:
 	scripts/install.sh display
 
-autologin:
-	scripts/install.sh autologin
+permissions:
+	scripts/install.sh permissions
 
 boot:
 	scripts/install.sh boot
