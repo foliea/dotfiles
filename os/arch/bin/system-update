@@ -3,3 +3,5 @@
 sudo pacman -Syu --noconfirm
 
 yaourt -Su --aur --noconfirm
+
+sudo mv /usr/lib/chromium/libwidevinecdmadapter.so /usr/lib/chromium/libwidevinecdmadapter.so.bak
