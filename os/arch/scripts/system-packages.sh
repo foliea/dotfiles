@@ -70,7 +70,7 @@ for package in networkmanager \
     ttf-dejavu \
     terminator \
     firefox \
-    slack-desktop \
+    chromium \
     transmission-gtk \
     qutebrowser \
     python-opengl \
