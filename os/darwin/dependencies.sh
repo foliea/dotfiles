@@ -36,5 +36,3 @@ brew reinstall git \
     reattach-to-user-namespace \
     rbenv \
     https://raw.githubusercontent.com/Homebrew/homebrew-core/c5674f07fcabc3b4d6814eacbf5ec98fac9acfe9/Formula/chromedriver.rb # 2.24
-
-cd "$(rbenv root)"/plugins/ruby-build && git pull
