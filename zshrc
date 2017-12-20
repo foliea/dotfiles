@@ -31,7 +31,8 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 #export PATH="/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/sbin:/usr/local/bin:/home/marin/bin"
 
-export PATH="$HOME/.brew/bin:$HOME/dotfiles/bin:$PATH"
+export PATH="/usr/local/bin:$HOME/dotfiles/bin:$PATH"
+export PATH="$PATH:$HOME/android-sdk-macosx/platform-tools"
 
 # This function called c makes ls command call automatically after a successful cd
 c() { cd "$@" && ls "-la"; }
@@ -63,12 +64,18 @@ export PATH="$HOME/bin:$PATH"
 test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
 
 alias railsongs="ssh -i $HOME/.ssh/MarinMainKey.pem ubuntu@52.201.136.198"
-alias keyrepeat="defaults write -g ApplePressAndHoldEnabled -bool false"
-alias keyrepeat_on="defaults write -g ApplePressAndHoldEnabled -bool true"
+alias keyrepeat="defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false"
+alias keyrepeat_on="defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool true"
 alias mdv='$HOME/bin/terminal_markdown_viewer/mdv.py'
+alias localhost="ruby -run -e httpd . -b 0.0.0.0 -p 8000"
 
 #Azure rg keys
 export AZURE_STORAGE_ACCESS_KEY=nozic0IQz4/BXOWxMacgghOCi3W6fvNaeKmY1AmmOvBe+d0kKWv7Jq2McJYEsyCN5PJ80PDb+EFBaogAX9GiMw==
 export AZURE_STORAGE_ACCOUNT=mojjocdnstorage
+export HOMEBREW_GITHUB_API_TOKEN=5b305cebe4c228815c9956faa8788b768424c968
 
 
+export PATH="/usr/local/opt/libiconv/bin:$PATH"
+#alias h="echo \$(date '+%D %T' | toilet -f term  --gay)"
+#
+alias co="code-insiders"

@@ -12,17 +12,6 @@ syntax enable
 
 set t_Co=256
 
-if $TERM_PROGRAM == "iTerm.app" || has('gui_running')
-	set background=dark
-	"let g:solarized_termcolors=256
-	colorscheme dracula
-
-elseif $TERM_PROGRAM == 'Apple_Terminal'
-	"let g:solarized_termcolors = &t_Co
-	"let g:solarized_termtrans = 1
-	colorscheme solarized
-endif
-
 set noerrorbells visualbell t_vb= "turn off annoying bells
 set tags=.tags "destination file for ctags
 

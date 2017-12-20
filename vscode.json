@@ -1,0 +1,13 @@
+{
+    "editor.fontFamily": "Hack",
+	"editor.fontSize": 13,
+    "files.associations": {"*.jbuilder" : "ruby", "*.js.erb": "javascript", "*.es6.erb": "javascript", "*.html.erb": "html"},
+    "editor.scrollBeyondLastLine": false,
+    "git.confirmSync": false,
+    "window.zoomLevel": 0,
+    "workbench.colorTheme": "Material Palenight",
+    "editor.minimap.enabled": false,
+    "[javascript]": {},
+    "javascript.validate.enable": false,
+    "eslint.autoFixOnSave": true,
+    "git.autofetch": true
