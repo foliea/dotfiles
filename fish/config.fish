@@ -12,14 +12,6 @@ if type rbenv > /dev/null 2>&1
     source (rbenv init - | psub)
 end
 
-# crenv
-if test -d $HOME/.crenv
-    set PATH $HOME/.crenv/bin $PATH
-    set PATH $HOME/.crenv/shims $PATH
-
-    set CRENV_SHELL $SHELL
-end
-
 if uname -a | grep 'Darwin' > /dev/null
     # Verify that gpg-agent config exists
     if test -d $GNUPGHOME

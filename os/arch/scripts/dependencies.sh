@@ -42,5 +42,3 @@ sudo systemctl enable docker
 sudo systemctl start docker
 
 sudo usermod -aG docker $USER
-
-curl -L https://raw.github.com/pine/crenv/master/install.sh | bash
