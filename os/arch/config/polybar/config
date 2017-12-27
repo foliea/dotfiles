@@ -66,12 +66,12 @@ label-mode-padding = 2
 label-mode-foreground = ${colors.foreground}
 label-mode-background = ${colors.highlighted}
 
-label-focused = %icon%
+label-focused = %index%  %icon%
 label-focused-background = ${colors.background-alt}
 label-focused-underline = ${colors.highlighted}
 label-focused-padding = 2
 
-label-unfocused = %icon%
+label-unfocused = %index%  %icon%
 label-unfocused-padding = 2
 
 label-visible = %icon%
