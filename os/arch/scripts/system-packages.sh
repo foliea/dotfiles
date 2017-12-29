@@ -84,6 +84,7 @@ for package in networkmanager \
     galculator \
     unzip \
     gparted \
+    peerflix \
     yubikey-manager \
     pcsc-tools \
     ccid \
