@@ -30,7 +30,7 @@ function activate_mode() {
         extended)
             xrandr \
                 --output $internal_output $multiple_monitors_flags \
-                --output $external_output --auto $position $internal_output
+                --output $external_output --primary --auto $position $internal_output
             ;;
     esac
 }

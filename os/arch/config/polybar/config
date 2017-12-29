@@ -15,10 +15,12 @@ margin-top = 5
 margin-bottom = 5
 
 [bar/top]
+monitor = ${env:MONITOR}
+dpi = ${env:DPI}
+
 width = 100%
 height = ${env:TOP_BAR_HEIGHT}
 fixed-center = true
-dpi = ${env:DPI}
 
 background = ${colors.background}
 foreground = ${colors.foreground}

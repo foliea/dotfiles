@@ -20,4 +20,10 @@ export $theme
 export DPI=$dpi
 export TOP_BAR_HEIGHT=$((27 * $dpi / $base_dpi))
 
-polybar top &
+if type "xrandr"; then
+  for monitor in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+    MONITOR=$monitor polybar top &
+  done
+else
+  polybar top &
+fi
