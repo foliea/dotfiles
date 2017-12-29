@@ -43,9 +43,12 @@ ln -s $PWD/bin $HOME/.local/bin
 # Link usb storage to user director
 ln -s /run/media/$USER $HOME/Mount
 
+# Link trash
+ln -s $HOME/.local/share/vifm/Trash $HOME/Trash
+
 # Transmission is using the same config file to update its own
-# variables, making it painful to have linked to a file in source
-# control.
+# variables, making it painful to it have linked to a file from
+# source control.
 cp -r $PWD/config/transmission $config_dir/
 
 sed -i -e "s/{{USER}}/$USER/" $config_dir/transmission/settings.json 1>/dev/null

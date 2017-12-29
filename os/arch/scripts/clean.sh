@@ -29,7 +29,9 @@ do
 done
 
 for file in tui dev qutebrowser system-update ; do
-    rm -rf $HOME/.local/share/applications/$file.desktop
+    rm -f $HOME/.local/share/applications/$file.desktop
 done
 
-rm -rf $HOME/Mount
+for file in Mount Trash ; do
+    rm -f $HOME/$file
+done
