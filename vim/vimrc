@@ -54,7 +54,6 @@ set ruler
 set backupdir=~/.vim/tmp/backup//
 set directory=~/.vim/tmp/swap//
 set undodir=~/.vim/tmp/undo//
-
 set softtabstop=4
 set shiftwidth=4
 set expandtab
@@ -228,6 +227,14 @@ function! RenameFile()
   endif
 endfunction
 command! RF :call RenameFile()
+
+" Delete temp files
+function! DeleteTempFiles()
+  call system('rm $HOME/.vim/tmp/backup/*')
+  call system('rm $HOME/.vim/tmp/undo/*')
+  call system('rm $HOME/.vim/tmp/swap/*')
+endfunction
+command! DTF :call DeleteTempFiles()
 
 " Make file executable
 function! MakeExecutable()
