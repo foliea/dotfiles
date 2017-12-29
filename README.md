@@ -10,7 +10,6 @@ My configuration files.
 To install every dependency required:
 
 * [Mac OS Sierra](https://www.apple.com/fr/osx/): `sh os/darwin/dependencies.sh`
-* [Ubuntu 17.04](https://www.ubuntu.com/): `sh os/ubuntu/dependencies.sh`
 * [Arch](https://www.archlinux.org/): `cd os/arch && make dependencies`
 
 ## Install
