@@ -20,7 +20,7 @@ for package in networkmanager \
     i3-scrot \
     i3exit \
     conky-i3 \
-    polybar-git \
+    polybar \
     cower \
     nitrogen \
     rofi \
