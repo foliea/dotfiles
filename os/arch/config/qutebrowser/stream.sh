@@ -1,3 +1,3 @@
 #!/bin/sh
 
-peerflix "$QUTE_URL" --all --mpv
+terminator --command="peerflix \"$QUTE_URL\" --all --mpv"
