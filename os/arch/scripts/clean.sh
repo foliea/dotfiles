@@ -16,6 +16,7 @@ for file in i3 \
     config/qutebrowser \
     config/zathura \
     config/mimeapps.list \
+    config/firegrid \
     Xresources \
     Xresources.d \
     Xmodmap \

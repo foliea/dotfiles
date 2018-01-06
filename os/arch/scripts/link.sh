@@ -16,7 +16,8 @@ for file in i3 \
     clipit \
     qutebrowser \
     zathura \
-    mimeapps.list
+    mimeapps.list \
+    firegrid
 do
     ln -s $PWD/config/$file $config_dir/
 done
