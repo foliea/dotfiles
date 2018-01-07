@@ -200,21 +200,9 @@ noremap <leader>e :call Preview_Markdown()<CR>
 
 " Buffers handling
 function! ClearBuffers()
-  silent! bufdo bdelete
-  silent! tabdo tabclose
-  edit .
+  w | %bd | e#
 endfunction
 command! B :call ClearBuffers()
-
-function! DeleteHiddenBuffers()
-  let tpbl=[]
-  call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
-  let filter = 'bufexists(v:val) && index(tpbl, v:val) == -1 && match(bufname(v:val), "term://") == -1'
-  for buf in filter(range(1, bufnr('$')), filter)
-    silent execute 'bwipeout' buf
-  endfor
-endfunction
-command! BH :call DeleteHiddenBuffers()
 
 " Rename file
 function! RenameFile()
