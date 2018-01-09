@@ -133,7 +133,7 @@ exec = ps aux | grep openvpn | head -n 1 | cut -d "/" -f 5
 exec-if = pgrep openvpn
 interval = 5
 label = %output%
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground}
 
 [module/date]
