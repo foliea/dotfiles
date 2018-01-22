@@ -5,7 +5,7 @@ font = "#d64937"
 [keys]
 exit = "Escape"
 
-squares = [
+tiles = [
   "a",
   "b",
   "c",
