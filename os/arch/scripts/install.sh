@@ -57,7 +57,7 @@ function boot() {
     local hidden_menu=$(cat /etc/default/grub | grep "GRUB_FORCE_HIDDEN_MENU")
 
     if [ -z "$hidden_menu" ]; then
-        sudo bash -c "echo 'GRUB_FORCE_HIDDEN_MENU=\"true\"' >> /etc/default/grub"
+        sudo bash -c "echo \'GRUB_FORCE_HIDDEN_MENU=\"true\"\'" >> /etc/default/grub
     fi
 
     sudo cp $PWD/etc/grub.d/* /etc/grub.d/
@@ -66,8 +66,13 @@ function boot() {
 }
 
 function services() {
-    for service in NetworkManager pcscd org.cups.cupsd tlp tlp-sleep lightdm-plymouth ; do
-        sudo systemctl enable $service
+    for service in systemd-rfkill; do
+        sudo systemctl mask --now systemd-rfkill.service
+        sudo systemctl disable --now systemd-rfkill.socket
+    done
+    # N.b: tlp.service starts NetworkManager.service if it is available.
+    for service in pcscd org.cups.cupsd tlp tlp-sleep lightdm-plymouth ; do
+        sudo systemctl enable --now $service
     done
 }
 
