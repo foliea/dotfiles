@@ -66,7 +66,7 @@ function boot() {
 }
 
 function services() {
-    for service in NetworkManager pcscd org.cups.cupsd tlp lightdm-plymouth ; do
+    for service in NetworkManager pcscd org.cups.cupsd tlp tlp-sleep lightdm-plymouth ; do
         sudo systemctl enable $service
     done
 }
