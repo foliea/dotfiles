@@ -27,7 +27,6 @@ for package in base-devel \
     mercurial \
     curl \
     wget \
-    phantomjs \
     expect \
     docker-compose \
     rbenv \
