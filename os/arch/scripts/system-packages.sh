@@ -94,5 +94,5 @@ for package in networkmanager \
     pass \
     rofi-pass
 do
-    $PWD/bin/install-package.sh $package
+    $PWD/bin/install-package $package
 done

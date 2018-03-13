@@ -9,7 +9,6 @@ for package in base-devel \
     cmake \
     curl \
     python2 \
-    gcc5 \
     git \
     docker \
     p7zip \
@@ -35,7 +34,7 @@ for package in base-devel \
     ruby-build \
     crystal
 do
-    sh $PWD/bin/install-package.sh $package
+    sh $PWD/bin/install-package $package
 done
 
 sudo systemctl enable docker
