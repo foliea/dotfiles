@@ -20,6 +20,7 @@ for package in networkmanager \
     i3-scrot \
     i3exit \
     conky-i3 \
+    libmpdclient \
     polybar \
     cower \
     nitrogen \
@@ -44,7 +45,6 @@ for package in networkmanager \
     plymouth-theme-manjaro \
     blueman \
     lxinput \
-    lxqt-policykit-agent \
     xdg-su \
     xdg-user-dirs \
     xdg-utils \

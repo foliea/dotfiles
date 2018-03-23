@@ -2,6 +2,7 @@
 set -e
 
 function config() {
+    sudo mkdir -p /usr/share/backgrounds
     sudo cp -f $PWD/config/gtk-3.0/* /etc/gtk-3.0/
     sudo cp -f $PWD/config/gtkrc-2.0 /etc/gtk-2.0/gtkrc
     sudo cp -f $PWD/backgrounds/* /usr/share/backgrounds/
@@ -57,7 +58,7 @@ function boot() {
     local hidden_menu=$(cat /etc/default/grub | grep "GRUB_FORCE_HIDDEN_MENU")
 
     if [ -z "$hidden_menu" ]; then
-        sudo bash -c "echo \'GRUB_FORCE_HIDDEN_MENU=\"true\"\'" >> /etc/default/grub
+        sudo bash -c "echo GRUB_FORCE_HIDDEN_MENU=\"true\" >> /etc/default/grub"
     fi
 
     sudo cp $PWD/etc/grub.d/* /etc/grub.d/
@@ -72,7 +73,7 @@ function services() {
     done
     # N.b: tlp.service starts NetworkManager.service if it is available.
     for service in pcscd org.cups.cupsd tlp tlp-sleep lightdm-plymouth ; do
-        sudo systemctl enable --now $service
+        sudo systemctl enable $service
     done
 }
 

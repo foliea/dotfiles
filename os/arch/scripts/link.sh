@@ -34,6 +34,8 @@ do
     ln -s $PWD/config/$file $HOME/.$file
 done
 
+mkdir -p $HOME/.local/share/applications
+
 for file in tui dev qutebrowser system-update ; do
     ln -s $PWD/applications/$file.desktop $HOME/.local/share/applications/$file.desktop
 done

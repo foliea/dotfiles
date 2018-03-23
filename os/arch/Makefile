@@ -1,4 +1,4 @@
-.PHONY: all re clean dependencies packages config dpi display permissions binaries services boot
+.PHONY: all re clean dependencies packages config dpi display permissions services boot
 
 all: dependencies packages config dpi display permissions services boot
 
