@@ -39,6 +39,8 @@ function permissions() {
 
     getent group plugdev || sudo groupadd -r plugdev
     sudo gpasswd -a $USER plugdev
+
+    sudo usermod -aG docker $USER
 }
 
 function boot() {
@@ -72,7 +74,7 @@ function services() {
         sudo systemctl disable --now systemd-rfkill.socket
     done
     # N.b: tlp.service starts NetworkManager.service if it is available.
-    for service in pcscd org.cups.cupsd tlp tlp-sleep lightdm-plymouth ; do
+    for service in pcscd org.cups.cupsd tlp tlp-sleep lightdm-plymouth docker ; do
         sudo systemctl enable $service
     done
 }

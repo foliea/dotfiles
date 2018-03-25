@@ -35,8 +35,3 @@ for package in base-devel \
 do
     sh $PWD/bin/install-package $package
 done
-
-sudo systemctl enable docker
-sudo systemctl start docker
-
-sudo usermod -aG docker $USER
