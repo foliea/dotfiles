@@ -179,11 +179,7 @@ noremap <Right> <Nop>
 
 " Open
 function! Open(target)
-  if system('uname') == "Darwin\n"
-    call system('open ' . a:target)
-  else
-    call system('xdg-open ' . a:target)
-  endif
+  call system('xdg-open ' . a:target)
 endfunction
 
 " Markdown Preview

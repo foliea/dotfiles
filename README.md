@@ -7,10 +7,9 @@ My configuration files.
 
 ## Dependencies
 
-To install every dependency required:
+To install every dependency required (only works on [Arch](https://www.archlinux.org/) based distributions):
 
-* [Mac OS Sierra](https://www.apple.com/fr/osx/): `sh os/darwin/dependencies.sh`
-* [Arch](https://www.archlinux.org/): `cd os/arch && make dependencies`
+    cd os/arch && make dependencies
 
 ## Install
 

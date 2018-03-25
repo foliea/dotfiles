@@ -1,7 +1,0 @@
-os: osx
-
-before_install:
-  - sh os/darwin/dependencies.sh
-
-script:
-  - make test

@@ -12,19 +12,5 @@ if type rbenv > /dev/null 2>&1
     source (rbenv init - | psub)
 end
 
-if uname -a | grep 'Darwin' > /dev/null
-    # Verify that gpg-agent config exists
-    if test -d $GNUPGHOME
-        set -g -x SSH_AGENT_PID
-        set -g -x SSH_AUTH_SOCK $HOME/.gnupg/S.gpg-agent.ssh
-    end
-    # Share system clipboard
-    if type reattach-to-user-namespace > /dev/null 2>&1
-        if test -z $REATTACHED_TO_USER_NAMESPACE
-            env REATTACHED_TO_USER_NAMESPACE=1 reattach-to-user-namespace -l $SHELL
-        end
-    end
-end
-
 alias ll='ls -lF'
 alias la='ls -lA'
