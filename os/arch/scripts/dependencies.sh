@@ -21,6 +21,7 @@ for package in base-devel \
     vifm \
     fish \
     unrar \
+    most \
     xsel \
     python-grip \
     openssh \
