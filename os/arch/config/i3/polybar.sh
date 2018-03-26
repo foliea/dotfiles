@@ -19,6 +19,7 @@ theme=$(cat ~/.Xresources.d/theme 2>/dev/null | awk '{ print $2"="$3 }')
 export $theme
 export DPI=$dpi
 export TOP_BAR_HEIGHT=$((27 * $dpi / $base_dpi))
+export WLAN_NAME=$(ip link | grep wlp | cut -d ' ' -f2 | cut -d ':' -f1)
 
 if type "xrandr"; then
   for monitor in $(xrandr --query | grep " connected" | cut -d" " -f1); do

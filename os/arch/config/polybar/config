@@ -110,7 +110,7 @@ label =  %percentage%%
 
 [module/wlan]
 type = internal/network
-interface = wlp1s0
+interface = ${env:WLAN_NAME}
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
