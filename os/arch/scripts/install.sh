@@ -48,10 +48,19 @@ function boot() {
 
     sudo plymouth-set-default-theme -R manjaro-logo
 
-    # Fix suspend loop issue, fix screen flickering and add plymouth splash
-    sudo sed -i -e \
-        's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash i915.enable_rc6=0 i915.enable_psr=0 button.lid_init_state=open"/' \
-        /etc/default/grub 1>/dev/null
+    read -p "Do you want to install RBS boot options: " choice
+    if [ "$choice" == "y" ]; then
+        # Fix suspend loop issue, fix screen flickering and add plymouth splash
+        sudo sed -i -e \
+            's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash i915.enable_rc6=0 i915.enable_psr=0 button.lid_init_state=open"/' \
+            /etc/default/grub 1>/dev/null
+    fi
+    read -p "Do you want to install Dell XPS 15 9560 boot options: " choice
+    if [ "$choice" == "y" ]; then
+        sudo sed -i -e \
+            "s/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT=\"quiet pcie_port_pm=off acpi_backlight=none acpi_osi=Linux acpi_osi=! acpi_osi='Windows 2009'\"/" \
+            /etc/default/grub 1>/dev/null
+    fi
 
     sudo sed -i -e \ 's/GRUB_GFXMODE=.*/GRUB_GFXMODE="3200x1800x32,auto"/' /etc/default/grub 1>/dev/null
 
