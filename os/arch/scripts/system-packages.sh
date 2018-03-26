@@ -48,7 +48,6 @@ for package in networkmanager \
     xdg-su \
     xdg-user-dirs \
     xdg-utils \
-    xf86-video-intel \
     xf86-input-synaptics \
     redshift \
     tlp \
