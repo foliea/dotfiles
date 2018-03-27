@@ -59,7 +59,7 @@ function boot() {
     read -p "Do you want to install Dell XPS 15 9560 boot options: " choice
     if [ "$choice" == "y" ]; then
         sudo sed -i -e \
-            "s/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT=\"quiet pcie_port_pm=off acpi_backlight=none acpi_osi=Linux acpi_osi=! acpi_osi='Windows 2009'\"/" \
+            's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash acpi_rev_override=1"/' \
             /etc/default/grub 1>/dev/null
     fi
 
