@@ -85,6 +85,8 @@ function services() {
     for service in pcscd org.cups.cupsd tlp tlp-sleep lightdm-plymouth ; do
         sudo systemctl enable $service
     done
+
+    sudo cp $PWD/lib/systemd/system-sleep/gpg.sh /usr/lib/systemd/system-sleep/
 }
 
 $1
