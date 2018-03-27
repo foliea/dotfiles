@@ -48,8 +48,9 @@ function boot() {
 
     sudo plymouth-set-default-theme -R manjaro-logo
 
-    read -p "Do you want to install RBS boot options: " choice
-    if [ "$choice" == "y" ]; then
+    local model=$(sudo dmidecode -s system-product-name)
+
+    if [ "$model" == "Blade Stealth" ]; then
         # Fix suspend loop issue, fix screen flickering and add plymouth splash
         sudo sed -i -e \
             's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash i915.enable_rc6=0 i915.enable_psr=0 button.lid_init_state=open"/' \

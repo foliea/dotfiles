@@ -54,6 +54,7 @@ for package in networkmanager \
     tlp-rdw \
     acpid \
     udiskie \
+    dmidecode \
     alsa-utils \
     alsa-firmware \
     pulseaudio-alsa \
