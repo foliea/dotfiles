@@ -39,7 +39,7 @@ for package in networkmanager \
     gtk-engine-murrine \
     lightdm \
     lightdm-mini-greeter \
-    light-locker \
+    xss-lock \
     terminus-font \
     plymouth \
     plymouth-theme-manjaro \

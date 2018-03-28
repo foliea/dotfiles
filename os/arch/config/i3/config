@@ -150,7 +150,7 @@ bindsym --release Shift+Print exec --no-startup-id "i3-scrot -s"
 exec --no-startup-id "udiskie --use-udisks2 &"
 
 # Lock
-exec --no-startup-id "light-locker --lock-on-suspend"
+exec --no-startup-id "xss-lock -- dm-tool lock"
 
 bindsym $sup+l exec --no-startup-id "dm-tool lock"
 
