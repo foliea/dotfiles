@@ -48,16 +48,15 @@ function boot() {
 
     sudo plymouth-set-default-theme -R manjaro-logo
 
-    local model=$(sudo dmidecode -s system-product-name)
+    local product_name=$(sudo dmidecode -s system-product-name)
 
-    if [ "$model" == "Blade Stealth" ]; then
+    if [ "$product_name" == "Blade Stealth" ]; then
         # Fix suspend loop issue, fix screen flickering and add plymouth splash
         sudo sed -i -e \
             's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash i915.enable_rc6=0 i915.enable_psr=0 button.lid_init_state=open"/' \
             /etc/default/grub 1>/dev/null
     fi
-    read -p "Do you want to install Dell XPS 15 9560 boot options: " choice
-    if [ "$choice" == "y" ]; then
+    if [ "$product_name" == "XPS 15 9560" ]; then
         sudo sed -i -e \
             's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash acpi_rev_override=1"/' \
             /etc/default/grub 1>/dev/null
