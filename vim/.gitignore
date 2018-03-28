@@ -1,3 +1,5 @@
+autoload/*
+!autoload/.gitkeep
 plugins/*
 tmp/*
 .netrwhist
