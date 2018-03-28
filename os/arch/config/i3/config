@@ -124,10 +124,17 @@ hide_edge_borders both
 new_window 1pixel
 
 # Colors
-client.focused #2d2d2d #2d2d2d2 #f9f9f9 #2d2d2d
-client.focused_inactive #333333 #333333 #999999 #333333
-client.unfocused #333333 #333333 #999999 #333333
-client.urgent #d64937 #d64937 #f9f9f9f #d64937
+
+set_from_resource $background_color_1 i3wm.background-color-1
+set_from_resource $background_color_2 i3wm.background-color-2
+set_from_resource $foreground_color_1 i3wm.foreground-color-1
+set_from_resource $foreground_color_2 i3wm.foreground-color-2
+set_from_resource $error_color        i3wm.error-color
+
+client.focused $background_color_1 $background_color_1 $foreground_color_1 $background_color_1
+client.focused_inactive $background_color_2 $background_color_2 $foreground_color_2 $background_color_2
+client.unfocused $background_color_2 $background_color_2 $foreground_color_2 $background_color_2
+client.urgent $error_color $error_color $foreground_color_1 $error_color
 
 # Authentication agent
 exec --no-startup-id "~/.config/i3/authentication-agent.sh"

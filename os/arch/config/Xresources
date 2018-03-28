@@ -37,3 +37,10 @@ rofi.terminal: terminator
 ! Keyboard
 rofi.kb-clear-line: Control+c
 rofi.kb-remove-word-back: Control+w
+
+! i3
+i3wm.background-color-1: BACKGROUND_COLOR_1
+i3wm.background-color-2: BACKGROUND_COLOR_2
+i3wm.foreground-color-1: FOREGROUND_COLOR_1
+i3wm.foreground-color-2: FOREGROUND_COLOR_2
+i3wm.error-color: ERROR_COLOR
