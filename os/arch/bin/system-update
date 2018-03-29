@@ -1,7 +1,8 @@
 #!/bin/sh
+set -e
 
-sudo pacman -Syu --noconfirm
+sudo pacman-mirrors --country France Belgium United_Kingdom
+
+sudo pacman -Syyu --noconfirm
 
 yaourt -Su --aur --noconfirm
-
-sudo mv /usr/lib/chromium/libwidevinecdmadapter.so /usr/lib/chromium/libwidevinecdmadapter.so.bak
