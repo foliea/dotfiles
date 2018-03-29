@@ -18,6 +18,8 @@ options=${options#"\n"}
 option=$(echo -e ${options} | $launcher)
 
 if [ ${#option} -gt 0 ]; then
+    sudo -A
+
     sudo -A pkill openvpn
 
     if [ "$option" != "stop" ]; then
