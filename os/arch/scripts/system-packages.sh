@@ -69,7 +69,7 @@ for package in networkmanager \
     ttf-font-awesome \
     ttf-dejavu \
     terminator \
-    firefox \
+    firefox-developer-edition \
     chromium \
     transmission-gtk \
     qutebrowser \
