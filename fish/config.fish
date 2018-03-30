@@ -15,3 +15,5 @@ end
 
 alias ll='ls -lF'
 alias la='ls -lA'
+
+set -g fish_key_bindings fish_vi_key_bindings
