@@ -15,6 +15,8 @@ function unarchive
                 tar zxvf $file -C $filename
             case rar
                 unrar e $file $filename
+            case 7z
+                7z x -o$filename $file
             end
         else
             echo "$file is not a valid file"

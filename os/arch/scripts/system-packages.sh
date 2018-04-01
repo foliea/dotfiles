@@ -83,6 +83,7 @@ for package in networkmanager \
     mpv \
     galculator \
     unzip \
+    p7zip \
     gparted \
     peerflix \
     yubikey-manager \
