@@ -136,8 +136,8 @@ client.focused_inactive $background_color_2 $background_color_2 $foreground_colo
 client.unfocused $background_color_2 $background_color_2 $foreground_color_2 $background_color_2
 client.urgent $error_color $error_color $foreground_color_1 $error_color
 
-# Load keyboard layout
-exec --no-startup-id "~/.config/i3/load-keyboard-layout.sh"
+# Status bar
+exec --no-startup-id "~/.config/i3/status-bar.sh"
 
 # Function keys
 bindsym XF86AudioMute         exec --no-startup-id "amixer -D pulse set Master toggle"
@@ -150,18 +150,11 @@ bindsym XF86MonBrightnessUp   exec --no-startup-id "xbacklight +10"
 bindsym Print exec --no-startup-id "i3-scrot"
 bindsym --release Shift+Print exec --no-startup-id "i3-scrot -s"
 
-# Auto mount
-exec --no-startup-id "udiskie --use-udisks2 &"
-
 # Lock
-exec --no-startup-id "xss-lock -- dm-tool switch-to-greeter"
-
 bindsym $sup+l exec --no-startup-id "dm-tool switch-to-greeter"
 
 # Night Mode
-exec --no-startup-id "~/.config/i3/night-mode.sh"
-
-bindsym $sup+n exec --no-startup-id "~/.config/i3/night-mode.sh"
+bindsym $sup+n exec --no-startup-id "night-mode"
 
 # Preview mode
 bindsym $sup+m exec --no-startup-id "~/.config/i3/preview.sh"
@@ -183,12 +176,6 @@ bindsym $sup+u exec --no-startup-id "~/.config/i3/reload-all.sh"
 
 # VPN menu
 bindsym $sup+j exec --no-startup-id "~/.config/i3/vpn-menu.sh"
-
-# Wallpaper
-exec --no-startup-id "nitrogen --restore"
-
-# Status bar
-exec --no-startup-id "~/.config/i3/polybar.sh"
 
 # Switch monitor
 bindsym $sup+p exec --no-startup-id "switch-monitor cycle"

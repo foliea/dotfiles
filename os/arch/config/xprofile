@@ -12,6 +12,20 @@ monitors-information current_mode > /tmp/monitor_mode.dat
 pkill dbus-monitor
 watch-monitors &
 
+# Auto-mount usb devices
+udiskie --use-udisks2 &
+
+# Lock on suspend
+xss-lock -- dm-tool switch-to-greeter &
+
+night-mode
+
+load-keyboard-layout
+
 switch-dpi
 
+# Load compositor
 compton -b
+
+# Restore wallpaper
+nitrogen --restore
