@@ -136,9 +136,6 @@ client.focused_inactive $background_color_2 $background_color_2 $foreground_colo
 client.unfocused $background_color_2 $background_color_2 $foreground_color_2 $background_color_2
 client.urgent $error_color $error_color $foreground_color_1 $error_color
 
-# Authentication agent
-exec --no-startup-id "~/.config/i3/authentication-agent.sh"
-
 # Load keyboard layout
 exec --no-startup-id "~/.config/i3/load-keyboard-layout.sh"
 
