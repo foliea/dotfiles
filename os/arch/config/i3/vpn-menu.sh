@@ -4,7 +4,7 @@ launcher='rofi -dmenu -i -p vpn:'
 
 modes=($(ls -I *.txt -I contrib -I examples /usr/share/openvpn | tr ' ', '\n'))
 
-options="stop"
+options="Disconnect"
 
 for mode in "${modes[@]}"
 do
@@ -20,7 +20,7 @@ if [ ${#option} -gt 0 ]; then
 
     sudo -A pkill openvpn
 
-    if [ "$option" != "stop" ]; then
+    if [ "$option" != "Disconnect" ]; then
         sudo -A openvpn --script-security 2 --config /usr/share/openvpn/$option/$option.conf &
     fi
 fi
