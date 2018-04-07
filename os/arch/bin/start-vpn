@@ -1,0 +1,5 @@
+#!/bin/sh
+
+pkill openvpn
+
+openvpn --script-security 2 --config /usr/share/openvpn/$1/$1.conf &

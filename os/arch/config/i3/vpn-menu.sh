@@ -16,11 +16,9 @@ options=${options#"\n"}
 option=$(echo -e ${options} | $launcher)
 
 if [ ${#option} -gt 0 ]; then
-    sudo -A
-
-    sudo -A pkill openvpn
-
-    if [ "$option" != "Disconnect" ]; then
-        sudo -A openvpn --script-security 2 --config /usr/share/openvpn/$option/$option.conf &
+    if [ "$option" == "Disconnect" ]; then
+        sudo -A pkill openvpn
+    else
+        sudo -A start-vpn $option
     fi
 fi
