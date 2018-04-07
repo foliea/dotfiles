@@ -2,15 +2,13 @@
 
 launcher='rofi -dmenu -i -p vpn:'
 
-modes=($(ls /usr/share/openvpn | tr ' ', '\n'))
+modes=($(ls -I *.txt -I contrib -I examples /usr/share/openvpn | tr ' ', '\n'))
 
 options="stop"
 
 for mode in "${modes[@]}"
 do
-    if [[ "$mode" != "contrib" && "$mode" != "examples" ]]; then
-        options="$options\n$mode"
-    fi
+    options="$options\n$mode"
 done
 
 options=${options#"\n"}
