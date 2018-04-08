@@ -21,4 +21,20 @@ function start() {
     echo $1 > /opt/default/current-vpn
 }
 
-$1 $2
+function restart() {
+    current_vpn=$(cat /opt/default/current-vpn 2>/dev/null)
+
+    echo $current_vpn > /tmp/vpn2.log
+
+    if [ ! -z $current_vpn ]; then
+        stop
+
+        start $current_vpn
+    fi
+}
+
+if [ -z $1 ]; then
+    restart
+else
+    $1 $2
+fi

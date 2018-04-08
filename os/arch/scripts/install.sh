@@ -1,5 +1,6 @@
 #!/bin/sh
 set -e
+
 function config() {
     sudo mkdir -p /usr/share/backgrounds
     sudo cp -f $PWD/config/gtk-3.0/* /etc/gtk-3.0/
@@ -87,6 +88,8 @@ function services() {
     for script in gpg; do
         sudo cp $PWD/lib/systemd/system-sleep/$script.sh /usr/lib/systemd/system-sleep/
     done
+
+    sudo cp $PWD/bin/vpn-control /etc/NetworkManager/dispatcher.d/50vpn
 }
 
 function vpn() {
