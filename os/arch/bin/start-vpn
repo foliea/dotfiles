@@ -1,8 +1,0 @@
-#!/bin/sh
-set -e
-
-if [ $(pgrep openvpn) ]; then
-    pkill openvpn
-fi
-
-openvpn --script-security 2 --config /etc/openvpn/client/$1.conf &

@@ -129,8 +129,8 @@ ramp-signal-foreground = ${colors.foreground}
 
 [module/vpn]
 type = custom/script
-exec = ps aux | grep openvpn | head -n 1 | cut -d "/" -f 5 | cut -d "." -f 1
-exec-if = pgrep openvpn
+exec = cat /opt/default/current-vpn
+exec-if = find /opt/default/current-vpn
 interval = 5
 label = %output%
 format-prefix = " "

@@ -1,0 +1,24 @@
+#!/bin/sh
+set -e
+
+function stop() {
+    if [ -f /opt/default/current-vpn ]; then
+        current_vpn=$(cat /opt/default/current-vpn)
+
+        systemctl stop openvpn-client@$current_vpn
+        systemctl disable openvpn-client@$current_vpn
+
+        rm /opt/default/current-vpn
+    fi
+}
+
+function start() {
+    stop
+
+    systemctl start openvpn-client@$1
+    systemctl enable openvpn-client@$1
+
+    echo $1 > /opt/default/current-vpn
+}
+
+$1 $2
