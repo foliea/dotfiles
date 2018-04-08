@@ -85,14 +85,16 @@ function services() {
         sudo systemctl enable $service
     done
 
-    sudo cp $PWD/lib/systemd/system-sleep/gpg.sh /usr/lib/systemd/system-sleep/
+    for script in gpg vpn; do
+        sudo cp $PWD/lib/systemd/system-sleep/$script.sh /usr/lib/systemd/system-sleep/
+    done
 }
 
 function vpn() {
     local username=$(pass show PerfectPrivacy/Personal | tail -n 1 | cut -d" " -f2)
     local password=$(pass show PerfectPrivacy/Personal | head -n 1)
 
-    sudo bash -c "echo -e '$username\n$password' > /usr/share/openvpn/perfect_privacy.txt"
+    sudo bash -c "echo -e '$username\n$password' > /etc/openvpn/client/perfect_privacy.txt"
 
     cd /tmp
 
@@ -103,10 +105,9 @@ function vpn() {
     local modes=($(ls *.ovpn | cut -d"." -f1 | tr ' ', '\n'))
 
     for mode in "${modes[@]}" ; do
-        sudo sed -i -e \ 's/auth-user-pass.*/auth-user-pass \/usr\/share\/openvpn\/perfect_privacy.txt/' /tmp/$mode.ovpn 1>/dev/null
+        sudo sed -i -e \ 's/auth-user-pass.*/auth-user-pass \/etc\/openvpn\/client\/perfect_privacy.txt/' /tmp/$mode.ovpn 1>/dev/null
 
-        sudo mkdir -p /usr/share/openvpn/$mode
-        sudo mv /tmp/$mode.ovpn /usr/share/openvpn/$mode/$mode.conf
+        sudo mv /tmp/$mode.ovpn /etc/openvpn/client/$mode.conf
     done
 }
 

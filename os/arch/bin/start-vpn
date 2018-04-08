@@ -1,5 +1,8 @@
 #!/bin/sh
+set -e
 
-pkill openvpn
+if [ $(pgrep openvpn) ]; then
+    pkill openvpn
+fi
 
-openvpn --script-security 2 --config /usr/share/openvpn/$1/$1.conf &
+openvpn --script-security 2 --config /etc/openvpn/client/$1.conf &
