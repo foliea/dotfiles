@@ -45,7 +45,7 @@ font-4 = Font Awesome 5 Free:pixelsize=11:antialias=true:style=Solid
 
 modules-left = i3
 modules-center = window
-modules-right = volume memory cpu wlan vpn battery pkg date power
+modules-right = volume memory cpu wlan vpn battery pkg date
 
 monitor-strict = true
 
@@ -206,19 +206,5 @@ format = <label>
 format-underline = ${colors.error}
 label = %output%
 exec = ~/.config/polybar/pkg.sh
-
-[module/power]
-type = custom/menu
-
-expand-right = false
-
-label-open = 
-label-close = 
-label-separator = " | "
-
-menu-0-0 = Restart
-menu-0-0-exec = systemctl reboot
-menu-0-1 = Shutdown
-menu-0-1-exec = systemctl poweroff
 
 ; vim:ft=dosini
