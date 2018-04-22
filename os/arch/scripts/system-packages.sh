@@ -93,7 +93,9 @@ for package in networkmanager \
     gnupg2 \
     pam \
     pass \
-    rofi-pass
+    rofi-pass \
+    openvpn \
+    openresolv
 do
     $PWD/bin/install-package $package
 done

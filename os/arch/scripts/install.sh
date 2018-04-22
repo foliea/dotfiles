@@ -85,7 +85,34 @@ function services() {
         sudo systemctl enable $service
     done
 
-    sudo cp $PWD/lib/systemd/system-sleep/gpg.sh /usr/lib/systemd/system-sleep/
+    for script in gpg; do
+        sudo cp $PWD/lib/systemd/system-sleep/$script.sh /usr/lib/systemd/system-sleep/
+    done
+
+    sudo cp $PWD/bin/vpn-control /etc/NetworkManager/dispatcher.d/50vpn
+}
+
+function vpn() {
+    sudo cp $PWD/etc/openvpn/* /etc/openvpn/
+
+    local username=$(pass show PerfectPrivacy/Personal | tail -n 1 | cut -d" " -f2)
+    local password=$(pass show PerfectPrivacy/Personal | head -n 1)
+
+    sudo bash -c "echo -e '$username\n$password' > /etc/openvpn/client/perfect_privacy.txt"
+
+    cd /tmp
+
+    sudo wget -v --post-data "username=$username&password=$password&uri=/member/download/?file=linux_udp.zip" -O linux_udp.zip "https://www.perfect-privacy.com/member/"
+
+    sudo unzip -j linux_udp.zip
+
+    local modes=($(ls *.ovpn | cut -d"." -f1 | tr ' ', '\n'))
+
+    for mode in "${modes[@]}" ; do
+        sudo sed -i -e \ 's/auth-user-pass.*/auth-user-pass \/etc\/openvpn\/client\/perfect_privacy.txt/' /tmp/$mode.ovpn 1>/dev/null
+
+        sudo mv /tmp/$mode.ovpn /etc/openvpn/client/$mode.conf
+    done
 }
 
 $1
