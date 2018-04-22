@@ -93,6 +93,8 @@ function services() {
 }
 
 function vpn() {
+    sudo cp $PWD/etc/openvpn/* /etc/openvpn/
+
     local username=$(pass show PerfectPrivacy/Personal | tail -n 1 | cut -d" " -f2)
     local password=$(pass show PerfectPrivacy/Personal | head -n 1)
 
