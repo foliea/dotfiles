@@ -2,7 +2,7 @@
 
 launcher='rofi -dmenu -i -p vpn:'
 
-modes=($(ls -I *.txt /etc/openvpn/client | cut -d '.' -f 1 | tr ' ', '\n'))
+modes=($(ls /etc/openvpn/client | grep .conf | cut -d '.' -f 1 | tr ' ', '\n'))
 
 options="Disconnect"
 
