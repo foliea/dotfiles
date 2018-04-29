@@ -53,7 +53,7 @@ function boot() {
     if [ "$product_name" == "Blade Stealth" ]; then
         # Fix suspend loop issue, fix screen flickering and add plymouth splash
         sudo sed -i -e \
-            's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash i915.enable_rc6=0 i915.enable_psr=0 button.lid_init_state=open"/' \
+            's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash pci=nomsi i915.enable_rc6=0 i915.enable_psr=0 button.lid_init_state=open"/' \
             /etc/default/grub 1>/dev/null
     fi
     if [ "$product_name" == "XPS 15 9560" ]; then
