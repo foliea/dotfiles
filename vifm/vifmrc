@@ -11,6 +11,8 @@ filetype *.png      xdg-open %c &
 filetype *.mp4      xdg-open %c &
 filetype *.avi      xdg-open %c &
 filetype *.mkv      xdg-open %c &
+filetype *.wav      xdg-open %c &
+filetype *.mp3      xdg-open %c &
 
 " Unarchive a file or a group of files
 command! unarchive unarchive %f
