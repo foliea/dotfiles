@@ -19,6 +19,7 @@ for package in base-devel \
     mariadb \
     vim \
     vifm \
+    ncdu \
     fish \
     unrar \
     most \
