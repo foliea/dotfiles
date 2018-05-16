@@ -86,6 +86,7 @@ for package in networkmanager \
     p7zip \
     gparted \
     peerflix \
+    caffeine-ng \
     yubikey-manager \
     pcsc-tools \
     ccid \

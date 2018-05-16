@@ -45,7 +45,7 @@ font-4 = Font Awesome 5 Free:pixelsize=11:antialias=true:style=Solid
 
 modules-left = i3
 modules-center = window
-modules-right = volume memory cpu wlan vpn battery pkg date
+modules-right = caffeine volume memory cpu wlan vpn battery pkg date
 
 monitor-strict = true
 
@@ -136,6 +136,12 @@ interval = 5
 label = %output%
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground}
+
+[module/caffeine]
+type = custom/script
+interval = 5
+exec = ~/.config/polybar/caffeine.sh
+label = %output% Active
 
 [module/date]
 type = internal/date
