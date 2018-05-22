@@ -65,6 +65,7 @@ for package in networkmanager \
     qt5-webengine \
     qt5-webengine-widevine \
     qt5-styleplugins \
+    peerflix \
     viewnior \
     zathura \
     zathura-pdf-poppler \
@@ -90,7 +91,6 @@ for package in networkmanager \
 do
     $PWD/bin/install-package $package
 done
-
 # Build polybar after to ensure that libmpdclient is installed.
 $PWD/bin/install-package polybar
 
