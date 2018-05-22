@@ -64,6 +64,7 @@ for package in networkmanager \
     qt5-webengine \
     qt5-webengine-widevine \
     qt5-styleplugins \
+    peerflix \
     viewnior \
     zathura \
     zathura-pdf-poppler \
@@ -86,7 +87,7 @@ do
     $PWD/bin/install-package $package
 done
 
-# TODO: restore peerflix (was broken upstream)
+$PWD/bin/install-package --skippgpcheck cower
 
 product_name=$(sudo dmidecode -s system-product-name)
 
