@@ -29,8 +29,7 @@ function display() {
         "s/user = {{USER}}/user = $USER/" \
         /etc/lightdm/lightdm-mini-greeter.conf 1>/dev/null
 
-    sudo rm -rf /etc/X11/xorg.conf.d
-    sudo cp -rf $PWD/etc/xorg.conf.d /etc/X11/
+    sudo cp -rf $PWD/etc/xorg.conf.d/00-keyboard.conf /etc/X11/xorg.conf.d/00-keyboard.conf
 }
 
 function permissions() {
@@ -90,7 +89,7 @@ function services() {
         sudo systemctl disable --now systemd-rfkill.socket
     done
     # N.b: tlp.service starts NetworkManager.service if it is available.
-    for service in pcscd org.cups.cupsd tlp tlp-sleep lightdm-plymouth ; do
+    for service in pcscd tlp tlp-sleep lightdm-plymouth ; do
         sudo systemctl enable $service
     done
 

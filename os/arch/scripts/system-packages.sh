@@ -8,21 +8,10 @@ sudo pacman -Sy --noconfirm
 yaourt -Sy --noconfirm
 
 for package in networkmanager \
-    manjaro-base-skel \
-    manjaro-system \
-    manjaro-keyring \
-    manjaro-release \
-    manjaro-hotfixes \
-    manjaro-firmware \
-    manjaro-pulse \
-    manjaro-printer \
     i3-gaps \
     i3-scrot \
-    i3exit \
-    conky-i3 \
     libmpdclient \
     polybar \
-    cower \
     nitrogen \
     rofi \
     dunst \
@@ -34,6 +23,7 @@ for package in networkmanager \
     xorg-xinit \
     xorg-xrandr \
     xorg-xbacklight \
+    xf86-video-intel \
     gtk2 \
     gtk3 \
     gtk-engine-murrine \
@@ -42,10 +32,8 @@ for package in networkmanager \
     xss-lock \
     terminus-font \
     plymouth \
-    plymouth-theme-manjaro \
     blueman \
     lxinput \
-    xdg-su \
     xdg-user-dirs \
     xdg-utils \
     xf86-input-synaptics \
@@ -58,7 +46,6 @@ for package in networkmanager \
     alsa-utils \
     alsa-firmware \
     pulseaudio-alsa \
-    pa-applet \
     pavucontrol \
     numix-gtk-theme \
     numix-icon-theme-git \
@@ -85,7 +72,6 @@ for package in networkmanager \
     unzip \
     p7zip \
     gparted \
-    peerflix \
     yubikey-manager \
     pcsc-tools \
     ccid \
@@ -99,6 +85,8 @@ for package in networkmanager \
 do
     $PWD/bin/install-package $package
 done
+
+# TODO: restore peerflix (was broken upstream)
 
 product_name=$(sudo dmidecode -s system-product-name)
 
