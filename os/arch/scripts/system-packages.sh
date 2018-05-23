@@ -49,6 +49,8 @@ for package in networkmanager \
     alsa-firmware \
     pulseaudio-alsa \
     pavucontrol \
+    cups \
+    system-config-printer \
     numix-gtk-theme \
     numix-icon-theme-git \
     numix-cursor-theme-git \
