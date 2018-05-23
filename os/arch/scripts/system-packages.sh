@@ -42,6 +42,7 @@ for package in networkmanager \
     tlp \
     tlp-rdw \
     acpid \
+    upower \
     udiskie \
     dmidecode \
     alsa-utils \
