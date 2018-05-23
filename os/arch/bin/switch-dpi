@@ -1,4 +1,14 @@
 #!/bin/bash
+set -e
+
+function change_firefox_preferences() {
+    local directories=$(ls $HOME/.mozilla/firefox | grep default)
+    local setting="layout.css.devPixelsPerPx"
+
+    for directory in $directories ; do
+        sed -i -e "s/user_pref(\"$setting.*/user_pref(\"$setting\", \"$1\");/" "$HOME/.mozilla/firefox/$directory/prefs.js"
+    done
+}
 
 function use() {
     local xscreen=$HOME/.Xresources.d/screen
@@ -11,6 +21,8 @@ function use() {
 
     echo "#define DPI $dpi" > $xscreen
     echo "#define CURSOR $cursor" >> $xscreen
+
+    change_firefox_preferences $scaling
 
     cat $xscreen
 }
