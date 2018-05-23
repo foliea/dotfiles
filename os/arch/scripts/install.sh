@@ -51,7 +51,7 @@ function boot() {
         sudo cp -rf $PWD/etc/$file /etc/
     done
 
-    sudo plymouth-set-default-theme -R manjaro-logo
+    sudo plymouth-set-default-theme -R arch-logo
 
     local hidden_menu=$(cat /etc/default/grub | grep "GRUB_FORCE_HIDDEN_MENU")
 

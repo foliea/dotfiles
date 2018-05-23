@@ -32,6 +32,7 @@ for package in networkmanager \
     xss-lock \
     terminus-font \
     plymouth \
+    plymouth-theme-arch-logo \
     blueman \
     lxinput \
     xdg-user-dirs \
