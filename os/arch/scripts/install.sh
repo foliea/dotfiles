@@ -48,6 +48,18 @@ function boot() {
 
     sudo plymouth-set-default-theme -R manjaro-logo
 
+    local hidden_menu=$(cat /etc/default/grub | grep "GRUB_FORCE_HIDDEN_MENU")
+
+    if [ -z "$hidden_menu" ]; then
+        sudo bash -c "echo GRUB_FORCE_HIDDEN_MENU=\"true\" >> /etc/default/grub"
+    fi
+
+    sudo sed -i -e \
+        's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"/' \
+        /etc/default/grub 1>/dev/null
+
+    sudo sed -i -e \ 's/GRUB_GFXMODE=.*/GRUB_GFXMODE="3840x2160x32,1920x1200x32,1920x1080x32,auto"/' /etc/default/grub 1>/dev/null
+
     local product_name=$(sudo dmidecode -s system-product-name)
 
     if [ "$product_name" == "Blade Stealth" ]; then
@@ -55,6 +67,7 @@ function boot() {
         sudo sed -i -e \
             's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash pci=nomsi i915.enable_rc6=0 i915.enable_psr=0 button.lid_init_state=open"/' \
             /etc/default/grub 1>/dev/null
+        sudo sed -i -e \ 's/GRUB_GFXMODE=.*/GRUB_GFXMODE="1600x900x32,1920x1200x32,1920x1080x32,auto"/' /etc/default/grub 1>/dev/null
     fi
     if [ "$product_name" == "XPS 15 9560" ]; then
         sudo sed -i -e \
@@ -64,14 +77,6 @@ function boot() {
         sudo cp $PWD/etc/modprobe.d/* /etc/modprobe.d/
         sudo cp $PWD/etc/modules-load.d/* /etc/modules-load.d/
         sudo cp $PWD/etc/tmpfiles.d/* /etc/tmpfiles.d/
-    fi
-
-    sudo sed -i -e \ 's/GRUB_GFXMODE=.*/GRUB_GFXMODE="3200x1800x32,auto"/' /etc/default/grub 1>/dev/null
-
-    local hidden_menu=$(cat /etc/default/grub | grep "GRUB_FORCE_HIDDEN_MENU")
-
-    if [ -z "$hidden_menu" ]; then
-        sudo bash -c "echo GRUB_FORCE_HIDDEN_MENU=\"true\" >> /etc/default/grub"
     fi
 
     sudo cp $PWD/etc/grub.d/* /etc/grub.d/
