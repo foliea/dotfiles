@@ -1,7 +1,9 @@
 #!/bin/sh
 set -e
 
-sudo pacman-mirrors --country France Belgium United_Kingdom
+if [ $(which pacman-mirrors &> /dev/null) ]; then
+    sudo pacman-mirrors --country France Belgium United_Kingdom
+fi
 
 sudo pacman -Syyu --noconfirm
 
