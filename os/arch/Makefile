@@ -1,6 +1,6 @@
 .PHONY: all re clean dependencies packages config dpi display permissions services boot
 
-all: dependencies packages config dpi display permissions services
+all: dependencies packages config dpi display permissions services boot
 
 clean:
 	scripts/clean.sh

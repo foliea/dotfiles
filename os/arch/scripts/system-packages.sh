@@ -33,6 +33,7 @@ for package in networkmanager \
     terminus-font \
     otf-ipafont \
     plymouth \
+    plymouth-theme-arch-logo \
     blueman \
     lxinput \
     xdg-user-dirs \
