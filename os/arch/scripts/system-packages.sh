@@ -11,6 +11,7 @@ for package in networkmanager \
     i3-gaps \
     i3-scrot \
     libmpdclient \
+    wireless_tools \
     polybar \
     nitrogen \
     rofi \
