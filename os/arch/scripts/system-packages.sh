@@ -94,6 +94,7 @@ for package in networkmanager \
 do
     $PWD/bin/install-package $package
 done
+
 # Build polybar after to ensure that libmpdclient is installed.
 $PWD/bin/install-package polybar
 
