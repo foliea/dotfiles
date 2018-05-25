@@ -45,7 +45,7 @@ font-4 = Font Awesome 5 Free:pixelsize=11:antialias=true:style=Solid
 
 modules-left = i3
 modules-center = window
-modules-right = volume memory cpu wlan vpn battery pkg date
+modules-right = volume memory cpu wlan vpn battery battery-fallback pkg date
 
 monitor-strict = true
 
@@ -199,6 +199,13 @@ animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
 animation-charging-framerate = 750
+
+[module/battery-fallback]
+type = custom/script
+interval = 2
+format = <label>
+label = %output%
+exec = ~/.config/polybar/battery-indicator.sh
 
 [module/pkg]
 type = custom/script

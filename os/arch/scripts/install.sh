@@ -29,8 +29,13 @@ function display() {
         "s/user = {{USER}}/user = $USER/" \
         /etc/lightdm/lightdm-mini-greeter.conf 1>/dev/null
 
-    sudo rm -rf /etc/X11/xorg.conf.d
-    sudo cp -rf $PWD/etc/xorg.conf.d /etc/X11/
+    local hostname=$(cat /etc/hostname | cut -d "-" -f2)
+
+    if [ "$hostname" == "pocket" ]; then
+        sudo cp -rf $PWD/etc/xorg.conf.d/00-keyboard.conf /etc/X11/xorg.conf.d/00-keyboard.conf
+    else
+        sudo cp -rf $PWD/etc/xorg.conf.d/* /etc/X11/xorg.conf.d/
+    fi
 }
 
 function permissions() {
@@ -46,7 +51,7 @@ function boot() {
         sudo cp -rf $PWD/etc/$file /etc/
     done
 
-    sudo plymouth-set-default-theme -R manjaro-logo
+    sudo plymouth-set-default-theme -R arch-logo
 
     local hidden_menu=$(cat /etc/default/grub | grep "GRUB_FORCE_HIDDEN_MENU")
 

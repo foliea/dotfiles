@@ -5,9 +5,12 @@ function activate_mode() {
     local position="$2"
     local internal_output=$(monitors-information internal)
     local external_output=$(monitors-information external)
+    local internal_custom_flags="--mode 1920x1080"
+    local external_custom_flags="--mode 1920x1080"
 
-    local multiple_monitors_flags="--mode 1920x1080"
-
+    if [ "$internal_output" == "DSI1" ]; then
+        internal_custom_flags="--mode 1200x1920 --rotate right"
+    fi
     case $mode in
         external)
             if [ -z "$external_output" ]; then
@@ -19,18 +22,18 @@ function activate_mode() {
             ;;
         internal)
             xrandr \
-                --output $internal_output --auto --primary \
+                --output $internal_output $internal_custom_flags --auto --primary \
                 --output $external_output --off
             ;;
         clone)
             xrandr \
-                --output $internal_output $multiple_monitors_flags --primary \
-                --output $external_output $multiple_monitors_flags --same-as $internal_output
+                --output $internal_output $internal_custom_flags --primary \
+                --output $external_output $external_custom_flags --same-as $internal_output
             ;;
         extended)
             xrandr \
-                --output $internal_output $multiple_monitors_flags \
-                --output $external_output --primary --auto $position $internal_output
+                --output $internal_output $internal_custom_flags \
+                --output $external_output --primary --auto $position  $internal_output
             ;;
     esac
 }
