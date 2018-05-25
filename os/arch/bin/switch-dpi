@@ -6,7 +6,11 @@ function change_firefox_preferences() {
     local setting="layout.css.devPixelsPerPx"
 
     for directory in $directories ; do
-        sed -i -e "s/user_pref(\"$setting.*/user_pref(\"$setting\", \"$1\");/" "$HOME/.mozilla/firefox/$directory/prefs.js"
+        local filename="$HOME/.mozilla/firefox/$directory/prefs.js"
+
+        if [ -e $filename ]; then
+            sed -i -e "s/user_pref(\"$setting.*/user_pref(\"$setting\", \"$1\");/" $filename
+        fi
     done
 }
 
