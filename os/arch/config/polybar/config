@@ -44,7 +44,6 @@ font-3 = Font Awesome 5 Brands:pizelsize=11;1:antialias=true:style=Solid
 font-4 = Font Awesome 5 Free:pixelsize=11:antialias=true:style=Solid
 
 modules-left = i3
-modules-center = window
 modules-right = caffeine volume memory cpu wlan vpn battery pkg date
 
 monitor-strict = true
@@ -86,15 +85,6 @@ label-visible-padding = ${self.label-focused-padding}
 label-urgent = %icon%
 label-urgent-background = ${colors.error}
 label-urgent-padding = 2
-
-[module/window]
-type = internal/xwindow
-
-format-background = ${colors.background}
-format-foreground = ${colors.foreground}
-
-label =   %title%
-label-maxlen = 50
 
 [module/memory]
 type = internal/memory
