@@ -100,13 +100,3 @@ for package in networkmanager \
 do
     $PWD/bin/install-package $package
 done
-
-product_name=$(sudo dmidecode -s system-product-name)
-
-kernel_release="linux$(uname -r | cut -d "." -f1)$(uname -r | cut -d "." -f2)"
-
-if [ "$product_name" == "XPS 15 9560" ]; then
-    for package in $kernel_release-acpi_call xf86-video-intel; do
-        $PWD/bin/install-package $package
-    done
-fi

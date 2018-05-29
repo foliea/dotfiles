@@ -69,15 +69,6 @@ function boot() {
             /etc/default/grub 1>/dev/null
         sudo sed -i -e \ 's/GRUB_GFXMODE=.*/GRUB_GFXMODE="1600x900x32,1920x1200x32,1920x1080x32,auto"/' /etc/default/grub 1>/dev/null
     fi
-    if [ "$product_name" == "XPS 15 9560" ]; then
-        sudo sed -i -e \
-            's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash acpi_rev_override=5 enable_fbc=1 enable_psr=1 disable_power_well=0 pci=noaer pcie_aspm=force nmi_watchdog=0"/' \
-            /etc/default/grub 1>/dev/null
-        sudo modprobe acpi_call
-        sudo cp $PWD/etc/modprobe.d/* /etc/modprobe.d/
-        sudo cp $PWD/etc/modules-load.d/* /etc/modules-load.d/
-        sudo cp $PWD/etc/tmpfiles.d/* /etc/tmpfiles.d/
-    fi
 
     sudo cp $PWD/etc/grub.d/* /etc/grub.d/
 
