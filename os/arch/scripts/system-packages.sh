@@ -80,6 +80,7 @@ for package in networkmanager \
     viewnior \
     zathura \
     zathura-pdf-poppler \
+    simple-scan \
     mpv \
     galculator \
     unzip \
