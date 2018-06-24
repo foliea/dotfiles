@@ -21,8 +21,7 @@ for package in networkmanager \
     i3exit \
     conky-i3 \
     libmpdclient \
-    polybar \
-    cower \
+    wireless_tools \
     nitrogen \
     rofi \
     dunst \
@@ -101,3 +100,8 @@ for package in networkmanager \
 do
     $PWD/bin/install-package $package
 done
+
+# Build polybar after to ensure that libmpdclient is installed.
+$PWD/bin/install-package polybar
+
+yaourt -S --m-arg --skippgpcheck --noconfirm cower
