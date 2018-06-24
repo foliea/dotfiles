@@ -67,7 +67,7 @@ function boot() {
         sudo sed -i -e \
             's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash pci=nomsi i915.enable_rc6=0 i915.enable_psr=0 button.lid_init_state=open"/' \
             /etc/default/grub 1>/dev/null
-        sudo sed -i -e \ 's/GRUB_GFXMODE=.*/GRUB_GFXMODE="1600x900x32,1920x1200x32,1920x1080x32,auto"/' /etc/default/grub 1>/dev/null
+        sudo sed -i -e \ 's/GRUB_GFXMODE=.*/GRUB_GFXMODE="3200x1800x32,1920x1200x32,1920x1080x32,auto"/' /etc/default/grub 1>/dev/null
     fi
 
     sudo cp $PWD/etc/grub.d/* /etc/grub.d/
