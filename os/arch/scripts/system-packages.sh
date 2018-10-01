@@ -51,6 +51,7 @@ for package in networkmanager \
     pavucontrol \
     cups \
     system-config-printer \
+    hplip \
     numix-gtk-theme \
     numix-icon-theme-git \
     numix-cursor-theme-git \
