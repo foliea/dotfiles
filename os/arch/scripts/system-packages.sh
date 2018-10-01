@@ -82,6 +82,7 @@ for package in networkmanager \
     simple-scan \
     mpv \
     galculator \
+    cheese \
     unzip \
     p7zip \
     gparted \
