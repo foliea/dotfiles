@@ -1,9 +1,7 @@
 #!/bin/sh
 set -e
 
-if [ $(which pacman-mirrors &> /dev/null) ]; then
-    sudo pacman-mirrors --country France Belgium United_Kingdom
-fi
+sudo reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
 
 sudo pacman -Syyu --noconfirm
 
