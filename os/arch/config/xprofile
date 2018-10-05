@@ -18,8 +18,6 @@ udiskie --use-udisks2 &
 # Lock on suspend
 xss-lock -- dm-tool switch-to-greeter &
 
-night-mode
-
 load-keyboard-layout
 
 switch-dpi
