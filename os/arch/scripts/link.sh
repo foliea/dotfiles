@@ -43,7 +43,7 @@ done
 # Link custom binaries
 ln -s $PWD/bin $HOME/.local/bin
 
-# Link usb storage to user director
+# Link usb storage to user directory
 ln -s /run/media/$USER $HOME/Mount
 
 # Link trash
