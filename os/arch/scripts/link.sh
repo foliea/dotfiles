@@ -50,7 +50,7 @@ ln -s /run/media/$USER $HOME/Mount
 ln -s $HOME/.local/share/vifm/Trash $HOME/Trash
 
 # Transmission is using the same config file to update its own
-# variables, making it painful to it have linked to a file from
+# variables, making it painful to have it linked to a file from
 # source control.
 cp -r $PWD/config/transmission $config_dir/
 
