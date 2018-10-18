@@ -40,6 +40,7 @@ for package in networkmanager \
     lightdm-mini-greeter \
     xss-lock \
     terminus-font \
+    otf-ipafont \
     plymouth \
     plymouth-theme-manjaro \
     blueman \
