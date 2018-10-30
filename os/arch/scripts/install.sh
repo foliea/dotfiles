@@ -81,7 +81,7 @@ function services() {
         sudo systemctl disable --now systemd-rfkill.socket
     done
     # N.b: tlp.service starts NetworkManager.service if it is available.
-    for service in pcscd org.cups.cupsd tlp tlp-sleep lightdm-plymouth ; do
+    for service in pcscd org.cups.cupsd systemd-timesyncd tlp tlp-sleep lightdm-plymouth ; do
         sudo systemctl enable $service
     done
 
