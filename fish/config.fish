@@ -15,5 +15,6 @@ end
 
 alias ll='ls -lF'
 alias la='ls -lA'
+alias git='hub'
 
 set -g fish_key_bindings fish_vi_key_bindings

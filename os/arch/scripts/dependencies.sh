@@ -10,6 +10,7 @@ for package in base-devel \
     curl \
     python2 \
     git \
+    hub \
     docker \
     p7zip \
     ctags \
