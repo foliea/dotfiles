@@ -1,3 +1,6 @@
 fishd.*
 functions/fzf_key_bindings.fish
+functions/fisher.fish
 fish_history
+completions
+conf.d
