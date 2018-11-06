@@ -1,6 +1,7 @@
 fishd.*
 functions/fzf_key_bindings.fish
 functions/fisher.fish
+functions/*bass*
 fish_history
 completions
 conf.d
