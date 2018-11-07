@@ -1,11 +1,11 @@
 [Desktop Entry]
 Categories=System;Utility;ConsoleOnly;
 Comment=Update system dependencies
-Exec=system-update
+Exec=terminator -x "bash -c 'system-update;$SHELL'"
 GenericName=System Management
 Icon=Terminator
 Name=System Update
-Terminal=true
+Terminal=false
 TryExec=system-update
 Type=Application
 Keywords=System;Update;Pacman;Yaourt
