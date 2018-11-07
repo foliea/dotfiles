@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=System;Utility;ConsoleOnly;
+Comment=Launch slack terminal
+Exec=terminator -x "bash -c 'slack-term;$SHELL'"
+GenericName=Messaging
+Icon=Terminator
+Name=Slack
+Terminal=false
+Type=Application
+Keywords=Slack;Chat;Messaging

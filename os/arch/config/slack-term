@@ -1,0 +1,5 @@
+{
+    "slack_token": "{{SLACK_TOKEN}}",
+    "sidebar_width": 3,
+    "emoji": true
+}

@@ -29,7 +29,7 @@ do
     rm -rf $HOME/.$file
 done
 
-for file in tui dev qutebrowser system-update system-config-printer gparted ; do
+for file in tui dev slack qutebrowser system-update system-config-printer gparted ; do
     rm -f $HOME/.local/share/applications/$file.desktop
 done
 

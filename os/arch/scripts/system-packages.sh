@@ -107,3 +107,7 @@ done
 $PWD/bin/install-package polybar
 
 yaourt -S --m-arg --skippgpcheck --noconfirm cower
+
+wget https://github.com/erroneousboat/slack-term/releases/download/v0.4.1/slack-term-linux-amd64 && \
+    chmod +x slack-term-linux-amd64 && \
+    sudo mv slack-term-linux-amd64 /usr/local/bin/slack-term
