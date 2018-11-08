@@ -1,5 +1,18 @@
 {
     "slack_token": "{{SLACK_TOKEN}}",
     "sidebar_width": 3,
-    "emoji": true
+    "emoji": true,
+    "theme": {
+        "message": {
+            "time_format": "02/01 15:04",
+            "time": "fg-green,fg-bold",
+            "name": "colorize,fg-bold",
+            "text": "fg-blue"
+        },
+        "channel": {
+            "prefix": "fg-red,fg-bold",
+            "icon": "fg-green,fg-bold",
+            "text": "fg-blue,fg-bold"
+        }
+    }
 }
