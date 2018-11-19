@@ -22,7 +22,7 @@ ${config} pull.rebase true
 ${config} rerere.enabled true
 ${config} color.ui true
 ${config} core.excludesfile ~/.gitignore-global
-${config} protocol.version 2
+${config} protocol.version 1
 
 # Aliases
 ${config} alias.s "status -s"
