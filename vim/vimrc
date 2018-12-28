@@ -38,6 +38,7 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'dag/vim-fish'
 Plug 'rhysd/vim-crystal'
 Plug 'cespare/vim-toml'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
