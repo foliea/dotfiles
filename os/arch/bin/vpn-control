@@ -2,13 +2,13 @@
 set -e
 
 function stop() {
-    if [ -f /opt/default/current-vpn ]; then
-        current_vpn=$(cat /opt/default/current-vpn)
+    if [ -f /var/default/current-vpn ]; then
+        current_vpn=$(cat /var/default/current-vpn)
 
         systemctl stop openvpn-client@$current_vpn
         systemctl disable openvpn-client@$current_vpn
 
-        rm /opt/default/current-vpn
+        rm /var/default/current-vpn
     fi
 }
 
@@ -18,11 +18,11 @@ function start() {
     systemctl start openvpn-client@$1
     systemctl enable openvpn-client@$1
 
-    echo $1 > /opt/default/current-vpn
+    echo $1 > /var/default/current-vpn
 }
 
 function restart() {
-    current_vpn=$(cat /opt/default/current-vpn 2>/dev/null)
+    current_vpn=$(cat /var/default/current-vpn 2>/dev/null)
 
     echo $current_vpn > /tmp/vpn2.log
 

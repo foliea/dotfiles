@@ -3,7 +3,7 @@
 monitors=($(xrandr | awk '( $2 == "connected" ){ print $1 }'))
 
 function switch_dpi() {
-    local dpi=$(cat /opt/default/$1-dpi 2>/dev/null)
+    local dpi=$(cat /var/default/$1-dpi 2>/dev/null)
 
     if [ -z "$dpi" ]; then dpi=96 ; fi
 
