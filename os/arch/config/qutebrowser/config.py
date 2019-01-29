@@ -444,6 +444,7 @@ c.window.title_format = '{perc}{title} {private}'
 
 # Permissions
 config.set('content.register_protocol_handler', True, 'https://inbox.google.com/?mailto=%25s')
+config.set('content.register_protocol_handler', True, 'https://calendar.google.com/calendar/b/1/r?cid=%25s')
 
 # Custom keybindings
 config.bind(';D', 'hint links userscript ~/.config/qutebrowser/open.sh')
