@@ -198,7 +198,7 @@ animation-charging-framerate = 750
 
 [module/pkg]
 type = custom/script
-interval = 5
+interval = 3600
 format = <label>
 format-underline = ${colors.error}
 label = %output%
