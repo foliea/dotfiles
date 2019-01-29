@@ -29,6 +29,7 @@ for file in Xresources \
     dmrc \
     gtkrc-2.0 \
     gnupg \
+    grip \
     pam_environment
 do
     ln -s $PWD/config/$file $HOME/.$file

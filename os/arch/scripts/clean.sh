@@ -24,6 +24,7 @@ for file in i3 \
     dmrc \
     gtkrc-2.0 \
     gnupg \
+    grip \
     pam_environment
 do
     rm -rf $HOME/.$file
