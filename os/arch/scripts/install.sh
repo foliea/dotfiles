@@ -53,6 +53,15 @@ function boot() {
         sudo bash -c "echo GRUB_FORCE_HIDDEN_MENU=\"true\" >> /etc/default/grub"
     fi
 
+    local theme=$(cat /etc/default/grub | grep "GRUB_THEME")
+
+    if [ -z "$theme" ]; then
+        sudo bash -c 'echo GRUB_THEME="/boot/grub/themes/Vimix/theme.txt"' >> /etc/default/grub
+    fi
+
+    sudo sed -i -e 's/GRUB_THEME=.*/GRUB_THEME="\/boot\/grub\/themes\/Vimix\/theme.txt"/' \
+        /etc/default/grub 1>/dev/null
+
     sudo sed -i -e \
         's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"/' \
         /etc/default/grub 1>/dev/null

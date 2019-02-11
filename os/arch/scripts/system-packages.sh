@@ -34,6 +34,7 @@ for package in networkmanager \
     otf-ipafont \
     plymouth \
     plymouth-theme-arch-logo \
+    grub-themes-vimix \
     blueman \
     lxinput \
     xdg-user-dirs \
