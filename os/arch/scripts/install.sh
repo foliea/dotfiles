@@ -12,9 +12,9 @@ function config() {
 function dpi() {
     read -p "Please specify internal default dpi: " dpi
 
-    sudo mkdir -p /opt/default
+    sudo mkdir -p /var/default
 
-    sudo bash -c "echo '$dpi' > /opt/default/internal-dpi"
+    sudo bash -c "echo '$dpi' > /var/default/internal-dpi"
 }
 
 function display() {
@@ -29,8 +29,7 @@ function display() {
         "s/user = {{USER}}/user = $USER/" \
         /etc/lightdm/lightdm-mini-greeter.conf 1>/dev/null
 
-    sudo rm -rf /etc/X11/xorg.conf.d
-    sudo cp -rf $PWD/etc/xorg.conf.d /etc/X11/
+    sudo cp -rf $PWD/etc/xorg.conf.d/* /etc/X11/xorg.conf.d/
 }
 
 function permissions() {
@@ -46,7 +45,7 @@ function boot() {
         sudo cp -rf $PWD/etc/$file /etc/
     done
 
-    sudo plymouth-set-default-theme -R manjaro-logo
+    sudo plymouth-set-default-theme -R arch-logo
 
     local hidden_menu=$(cat /etc/default/grub | grep "GRUB_FORCE_HIDDEN_MENU")
 

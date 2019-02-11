@@ -8,18 +8,8 @@ sudo pacman -Sy --noconfirm
 yaourt -Sy --noconfirm
 
 for package in networkmanager \
-    manjaro-base-skel \
-    manjaro-system \
-    manjaro-keyring \
-    manjaro-release \
-    manjaro-hotfixes \
-    manjaro-firmware \
-    manjaro-pulse \
-    manjaro-printer \
     i3-gaps \
     i3-scrot \
-    i3exit \
-    conky-i3 \
     libmpdclient \
     wireless_tools \
     nitrogen \
@@ -33,6 +23,7 @@ for package in networkmanager \
     xorg-xinit \
     xorg-xrandr \
     xorg-xbacklight \
+    xf86-video-intel \
     gtk2 \
     gtk3 \
     gtk-engine-murrine \
@@ -42,13 +33,13 @@ for package in networkmanager \
     terminus-font \
     otf-ipafont \
     plymouth \
-    plymouth-theme-manjaro \
+    plymouth-theme-arch-logo \
     blueman \
     lxinput \
-    xdg-su \
     xdg-user-dirs \
     xdg-utils \
     xf86-input-synaptics \
+    reflector \
     redshift \
     tlp \
     tlp-rdw \
@@ -58,8 +49,10 @@ for package in networkmanager \
     alsa-utils \
     alsa-firmware \
     pulseaudio-alsa \
-    pa-applet \
     pavucontrol \
+    cups \
+    system-config-printer \
+    hplip \
     numix-gtk-theme \
     numix-icon-theme-git \
     numix-cursor-theme-git \
@@ -77,6 +70,7 @@ for package in networkmanager \
     qt5-webengine \
     qt5-webengine-widevine \
     qt5-styleplugins \
+    peerflix \
     viewnior \
     zathura \
     zathura-pdf-poppler \

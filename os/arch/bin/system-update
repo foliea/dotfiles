@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-sudo pacman-mirrors --country France Belgium United_Kingdom
+sudo reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
 
 sudo pacman -Syyu --noconfirm
 
