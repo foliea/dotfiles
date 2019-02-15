@@ -79,6 +79,7 @@ for package in networkmanager \
     mpv \
     galculator \
     cheese \
+    zoom \
     unzip \
     p7zip \
     gparted \

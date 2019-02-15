@@ -37,7 +37,7 @@ done
 
 mkdir -p $HOME/.local/share/applications
 
-for file in tui dev slack qutebrowser system-update system-config-printer gparted ; do
+for file in tui dev slack qutebrowser system-update system-config-printer gparted Zoom ; do
     ln -s $PWD/applications/$file.desktop $HOME/.local/share/applications/$file.desktop
 done
 
