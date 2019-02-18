@@ -106,6 +106,7 @@ autocmd BufRead,BufNewFile *.md     setlocal filetype=markdown
 autocmd BufRead,BufNewFile *.docker setlocal filetype=dockerfile
 autocmd BufRead,BufNewFile *.slim   setlocal filetype=slim
 autocmd BufRead,BufNewFile *.vim    setlocal filetype=viml
+autocmd BufRead,BufNewFile *.avsc   setlocal filetype=json
 autocmd BufRead,BufNewFile vifmrc   setlocal filetype=viml
 
 " Remove trailing whitespaces on save
