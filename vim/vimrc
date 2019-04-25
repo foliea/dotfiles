@@ -39,6 +39,7 @@ Plug 'dag/vim-fish'
 Plug 'rhysd/vim-crystal'
 Plug 'cespare/vim-toml'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'vim-scripts/groovy.vim'
 
 call plug#end()
 
@@ -73,8 +74,10 @@ autocmd FileType toml       setlocal shiftwidth=2 softtabstop=2
 autocmd FileType slim       setlocal shiftwidth=2 softtabstop=2
 autocmd FileType json       setlocal shiftwidth=2 softtabstop=2
 autocmd FileType scss       setlocal shiftwidth=2 softtabstop=2
+autocmd FileType css        setlocal shiftwidth=2 softtabstop=2
 autocmd FileType vim        setlocal shiftwidth=2 softtabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2
+autocmd FileType groovy     setlocal shiftwidth=2 softtabstop=2
 
 " Show whitespaces
 set list
