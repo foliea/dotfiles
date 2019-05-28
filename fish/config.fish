@@ -13,6 +13,11 @@ if type rbenv > /dev/null 2>&1
     source (rbenv init - | psub)
 end
 
+# golang
+if which go > /dev/null 2>&1
+    set -g -x GOPATH $HOME/dev/go
+end
+
 alias ll='ls -lF'
 alias la='ls -lA'
 alias git='hub'
