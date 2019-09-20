@@ -34,7 +34,7 @@ for package in networkmanager \
     otf-ipafont \
     plymouth \
     plymouth-theme-arch-logo \
-    grub-themes-vimix \
+    grub-theme-vimix-git \
     blueman \
     lxinput \
     xdg-user-dirs \
@@ -54,7 +54,7 @@ for package in networkmanager \
     cups \
     system-config-printer \
     hplip \
-    numix-gtk-theme \
+    numix-gtk-theme-git \
     numix-icon-theme-git \
     numix-cursor-theme-git \
     pango \
@@ -69,7 +69,6 @@ for package in networkmanager \
     qutebrowser \
     python-opengl \
     qt5-webengine \
-    qt5-webengine-widevine \
     qt5-styleplugins \
     peerflix \
     viewnior \
@@ -89,7 +88,7 @@ for package in networkmanager \
     pcsc-tools \
     ccid \
     libusb-compat \
-    gnupg2 \
+    gnupg \
     pam \
     pass \
     rofi-pass \

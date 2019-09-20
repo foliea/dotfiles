@@ -45,8 +45,6 @@ function boot() {
         sudo cp -rf $PWD/etc/$file /etc/
     done
 
-    sudo plymouth-set-default-theme -R arch-logo
-
     local hidden_menu=$(cat /etc/default/grub | grep "GRUB_FORCE_HIDDEN_MENU")
 
     if [ -z "$hidden_menu" ]; then
@@ -80,6 +78,8 @@ function boot() {
 
     sudo cp $PWD/etc/grub.d/* /etc/grub.d/
 
+    sudo plymouth-set-default-theme -R arch-logo
+
     sudo grub-mkconfig -o /boot/grub/grub.cfg
 }
 
@@ -88,8 +88,7 @@ function services() {
         sudo systemctl mask --now systemd-rfkill.service
         sudo systemctl disable --now systemd-rfkill.socket
     done
-    # N.b: tlp.service starts NetworkManager.service if it is available.
-    for service in pcscd org.cups.cupsd systemd-timesyncd tlp tlp-sleep lightdm-plymouth ; do
+    for service in pcscd org.cups.cupsd systemd-timesyncd tlp tlp-sleep NetworkManager lightdm-plymouth ; do
         sudo systemctl enable $service
     done
 

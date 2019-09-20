@@ -440,7 +440,7 @@ c.url.start_pages = 'https://calendar.google.com/calendar/b/1/render?pli=1#main_
 # ''webengine'' * `{private}` : Indicates when private mode is enabled.
 # * `{current_url}` : The url of the current web page.
 # Type: FormatString
-c.window.title_format = '{perc}{title} {private}'
+c.window.title_format = '{perc}{current_title} {private}'
 
 # Permissions
 config.set('content.register_protocol_handler', True, 'https://mail.google.com/mail/?extsrc=mailto&url=%25s')

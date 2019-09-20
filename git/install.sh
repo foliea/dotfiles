@@ -29,7 +29,4 @@ ${config} alias.s "status -s"
 ${config} alias.lg "log --oneline --decorate --all --graph"
 ${config} alias.pushall "push --recurse-submodules=on-demand"
 
-# Fix private repositories issue with go modules
-${config} url."git@github.com:".insteadOf "https://github.com/"
-
 ln -s $PWD/git/gitignore $HOME/.gitignore-global
