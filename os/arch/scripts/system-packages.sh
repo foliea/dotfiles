@@ -40,7 +40,6 @@ for package in networkmanager \
     xdg-user-dirs \
     xdg-utils \
     xf86-input-synaptics \
-    reflector \
     redshift \
     tlp \
     tlp-rdw \

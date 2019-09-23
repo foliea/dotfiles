@@ -1,7 +1,15 @@
 #!/bin/sh
 set -e
 
-sudo reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
+# Vanilla Arch
+if [ -x "$(command -v  reflector)" ]; then
+    sudo reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
+fi
+
+# Manjaro
+if [ -x "$(command -v  pacman-mirrors)" ]; then
+    sudo pacman-mirrors --country France Belgium United_Kingdom
+fi
 
 sudo pacman -Syyu --noconfirm
 
