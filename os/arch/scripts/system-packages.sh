@@ -86,6 +86,7 @@ for package in networkmanager \
     yubikey-manager \
     pcsc-tools \
     ccid \
+    acsccid \
     libusb-compat \
     gnupg \
     pam \
