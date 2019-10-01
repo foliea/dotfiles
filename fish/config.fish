@@ -18,6 +18,11 @@ if which go > /dev/null 2>&1
     set -g -x GOPATH $HOME/dev/go
 end
 
+# python
+if which pyenv > /dev/null 2>&1
+    set PATH (pyenv root)/shims $PATH
+end
+
 alias ll='ls -lF'
 alias la='ls -lA'
 alias git='hub'

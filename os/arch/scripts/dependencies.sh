@@ -34,7 +34,13 @@ for package in base-devel \
     docker-compose \
     rbenv \
     ruby-build \
-    crystal
+    crystal \
+    pyenv \
+    ffmpeg \
+    aws-cli \
+    jq \
+    kubectl \
+    kubectx \
 do
     sh $PWD/bin/install-package $package
 done
