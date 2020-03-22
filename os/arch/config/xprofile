@@ -13,7 +13,7 @@ pkill dbus-monitor
 watch-monitors &
 
 # Auto-mount usb devices
-udiskie --use-udisks2 &
+udiskie &
 
 # Lock on suspend
 xss-lock -- dm-tool switch-to-greeter &
