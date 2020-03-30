@@ -15,6 +15,10 @@ function dpi() {
     sudo mkdir -p /var/default
 
     sudo bash -c "echo '$dpi' > /var/default/internal-dpi"
+
+    local product_name=$(sudo dmidecode -s system-product-name)
+
+    sudo bash -c "echo '$product_name' > /var/default/product-name"
 }
 
 function display() {

@@ -2,12 +2,23 @@
 
 monitors=($(xrandr | awk '( $2 == "connected" ){ print $1 }'))
 
+product_name=($(cat /var/default/product-name))
+
+# On Thinkpad X1 Carbon Extreme monitors are in reverse order
 function internal() {
-    echo ${monitors[0]}
+    if [[ $product_name == "20MFS0R500" ]]; then
+        echo ${monitors[1]}
+    else
+        echo ${monitors[0]}
+    fi
 }
 
 function external() {
-    echo ${monitors[1]}
+    if [[ $product_name == "20MFS0R500" ]]; then
+        echo ${monitors[0]}
+    else
+        echo ${monitors[1]}
+    fi
 }
 
 function current_mode() {
