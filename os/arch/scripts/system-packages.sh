@@ -64,6 +64,7 @@ for package in networkmanager \
     terminator \
     firefox-developer-edition \
     chromium \
+    chromium-widevine \
     transmission-gtk \
     qutebrowser \
     python-opengl \
