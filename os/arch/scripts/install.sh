@@ -92,7 +92,7 @@ function services() {
         sudo systemctl mask --now systemd-rfkill.service
         sudo systemctl disable --now systemd-rfkill.socket
     done
-    for service in pcscd org.cups.cupsd systemd-timesyncd tlp tlp-sleep NetworkManager lightdm-plymouth ; do
+    for service in pcscd org.cups.cupsd systemd-timesyncd tlp tlp-sleep NetworkManager bluetooth lightdm-plymouth ; do
         sudo systemctl enable $service
     done
 
