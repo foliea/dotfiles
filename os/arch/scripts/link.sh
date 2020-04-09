@@ -55,4 +55,7 @@ ln -s $HOME/.local/share/vifm/Trash $HOME/Trash
 # source control.
 cp -r $PWD/config/transmission $config_dir/
 
+# Pulseaudio as issues with symbolic links
+cp -r $PWD/config/pulse $config_dir/pulse
+
 sed -i -e "s/{{USER}}/$USER/" $config_dir/transmission/settings.json 1>/dev/null

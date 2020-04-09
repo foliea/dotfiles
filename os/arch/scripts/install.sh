@@ -7,6 +7,7 @@ function config() {
     sudo cp -f $PWD/config/gtkrc-2.0 /etc/gtk-2.0/gtkrc
     sudo cp -f $PWD/backgrounds/* /usr/share/backgrounds/
     sudo cp -f $PWD/etc/udev/rules.d/* /etc/udev/rules.d/
+    sudo cp -f $PWD/etc/bluetooth/* /etc/bluetooth/
 }
 
 function dpi() {
@@ -42,6 +43,10 @@ function permissions() {
 
     getent group plugdev || sudo groupadd -r plugdev
     sudo gpasswd -a $USER plugdev
+
+    sudo groupadd --system pulse
+    sudo useradd --system -g pulse -G audio,lp --home-dir /var/run/pulse pulse
+    sudo groupadd --system pulse-access
 }
 
 function boot() {

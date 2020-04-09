@@ -49,6 +49,7 @@ for package in networkmanager \
     alsa-utils \
     alsa-firmware \
     pulseaudio-alsa \
+    pulseaudio-bluetooth \
     pavucontrol \
     cups \
     system-config-printer \

@@ -17,6 +17,7 @@ for file in i3 \
     config/zathura \
     config/mimeapps.list \
     config/firegrid \
+    config/pulse \
     Xresources \
     Xresources.d \
     Xmodmap \

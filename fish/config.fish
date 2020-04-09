@@ -18,10 +18,10 @@ if which go > /dev/null 2>&1
     set -g -x GOPATH $HOME/dev/go
 end
 
-# python
-if which pyenv > /dev/null 2>&1
-    set PATH (pyenv root)/shims $PATH
-end
+## python
+#if which pyenv > /dev/null 2>&1
+    #set PATH (pyenv root)/shims $PATH
+#end
 
 alias ll='ls -lF'
 alias la='ls -lA'
@@ -37,3 +37,7 @@ set fish_complete_path $fish_complete_path[1] $fisher_path/completions $fish_com
 for file in $fisher_path/conf.d/*.fish
     builtin source $file 2> /dev/null
 end
+
+# tabtab source for packages
+# uninstall by removing these lines
+[ -f ~/.config/tabtab/__tabtab.fish ]; and . ~/.config/tabtab/__tabtab.fish; or true
