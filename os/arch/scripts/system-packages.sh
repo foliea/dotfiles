@@ -36,6 +36,7 @@ for package in networkmanager \
     plymouth-theme-arch-logo \
     grub-theme-vimix-git \
     blueman \
+    bluetooth-autoconnect \
     lxinput \
     xdg-user-dirs \
     xdg-utils \

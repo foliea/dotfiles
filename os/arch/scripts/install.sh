@@ -97,9 +97,11 @@ function services() {
         sudo systemctl mask --now systemd-rfkill.service
         sudo systemctl disable --now systemd-rfkill.socket
     done
-    for service in pcscd org.cups.cupsd systemd-timesyncd tlp tlp-sleep NetworkManager bluetooth lightdm-plymouth ; do
+    for service in pcscd org.cups.cupsd systemd-timesyncd tlp tlp-sleep NetworkManager bluetooth bluetooth-autoconnect lightdm-plymouth ; do
         sudo systemctl enable $service
     done
+
+    systemctl --user enable pulseaudio-bluetooth-autoconnect
 
     for script in gpg; do
         sudo cp $PWD/lib/systemd/system-sleep/$script.sh /usr/lib/systemd/system-sleep/
