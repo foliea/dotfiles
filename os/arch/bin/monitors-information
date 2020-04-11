@@ -6,7 +6,7 @@ product_name=($(cat /var/default/product-name))
 
 # On Thinkpad X1 Carbon Extreme monitors are in reverse order
 function internal() {
-    if [[ $product_name == "20MFS0R500" ]]; then
+    if [ $product_name == "20MFS0R500" ] && [ ! -z "${monitors[1]}" ]; then
         echo ${monitors[1]}
     else
         echo ${monitors[0]}
@@ -14,7 +14,7 @@ function internal() {
 }
 
 function external() {
-    if [[ $product_name == "20MFS0R500" ]]; then
+    if [ $product_name == "20MFS0R500" ] && [ ! -z "${monitors[1]}" ]; then
         echo ${monitors[0]}
     else
         echo ${monitors[1]}
