@@ -8,6 +8,10 @@ if test -d $HOME/.cargo/bin
     set PATH $HOME/.cargo/bin $PATH
 end
 
+if test -n "$WSL_DISTRO_NAME"
+    cd $HOME/dev; and attach dev
+end
+
 # rbenv
 if type rbenv > /dev/null 2>&1
     source (rbenv init - | psub)
