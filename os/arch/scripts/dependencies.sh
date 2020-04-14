@@ -40,13 +40,15 @@ for package in base-devel \
     aws-cli \
     jq \
     kubectl \
-    kubectx \
+    kubectx
 do
-    sh $PWD/bin/install-package $package
+    $PWD/bin/install-package $package
 done
 
-sudo systemctl enable docker
-sudo systemctl start docker
+if [ -z "$WSL_DISTRO_NAME" ]; then
+    sudo systemctl enable docker
+    sudo systemctl start docker
+fi
 
 sudo usermod -aG docker $USER
 
