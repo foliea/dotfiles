@@ -11,6 +11,7 @@ for package in base-devel \
     python2 \
     git \
     hub \
+    tig \
     docker \
     p7zip \
     ctags \
