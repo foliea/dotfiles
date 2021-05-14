@@ -40,6 +40,7 @@ Plug 'rhysd/vim-crystal'
 Plug 'cespare/vim-toml'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'vim-scripts/groovy.vim'
+Plug 'OmniSharp/omnisharp-vim'
 
 call plug#end()
 
@@ -78,6 +79,7 @@ autocmd FileType css        setlocal shiftwidth=2 softtabstop=2
 autocmd FileType vim        setlocal shiftwidth=2 softtabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2
 autocmd FileType groovy     setlocal shiftwidth=2 softtabstop=2
+autocmd FileType cs         setlocal tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab
 
 " Show whitespaces
 set list
