@@ -4,8 +4,8 @@ let g:fzf_install = 'yes | ./install --bin'
 call plug#begin('~/.vim/plugins')
 
 " Common
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
-Plug 'scrooloose/syntastic'
+Plug 'vim-syntastic/syntastic'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdcommenter'
 Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
@@ -26,22 +26,12 @@ Plug 'jgdavey/tslime.vim'
 Plug 'christoomey/vim-tmux-navigator'
 
 " Languages / Frameworks
-Plug 'vim-ruby/vim-ruby'
-Plug 'ngmy/vim-rubocop'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-haml'
-Plug 'slim-template/vim-slim'
 Plug 'moll/vim-node'
-Plug 'prettier/vim-prettier'
+Plug 'pantharshit00/vim-prisma'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'elzr/vim-json'
-Plug 'elixir-lang/vim-elixir'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'dag/vim-fish'
-Plug 'rhysd/vim-crystal'
-Plug 'cespare/vim-toml'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'vim-scripts/groovy.vim'
-Plug 'OmniSharp/omnisharp-vim'
 
 call plug#end()
 
@@ -101,8 +91,9 @@ filetype plugin on    " Enable filetype-specific plugins
 " Ruby
 autocmd FileType ruby compiler ruby
 
-" Crystal
-let g:crystal_auto_format = 1
+" Javascript
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
 
 " Custom syntax highlighting
 autocmd BufRead,BufNewFile Gomfile  setlocal filetype=ruby
