@@ -32,6 +32,7 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'elzr/vim-json'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'dag/vim-fish'
+Plug 'leafgarland/typescript-vim'
 
 call plug#end()
 
@@ -69,8 +70,11 @@ autocmd FileType scss       setlocal shiftwidth=2 softtabstop=2
 autocmd FileType css        setlocal shiftwidth=2 softtabstop=2
 autocmd FileType vim        setlocal shiftwidth=2 softtabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2
+autocmd FileType typescript setlocal shiftwidth=2 softtabstop=2
 autocmd FileType groovy     setlocal shiftwidth=2 softtabstop=2
 autocmd FileType cs         setlocal tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab
+
+let g:typescript_indent_disable = 1
 
 " Show whitespaces
 set list
@@ -190,6 +194,12 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = []
+
+" Coc - GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 " Open
 function! Open(target)
