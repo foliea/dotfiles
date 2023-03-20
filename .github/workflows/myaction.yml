@@ -10,13 +10,13 @@ jobs:
     steps:
     - name: Get current date
       id: date
-      run: echo "::set-output name=date::$(date +'%Y%m%d')"
+      run: echo "DATE=$(date +'%Y%m%d')" >> $GITHUB_OUTPUT
     - uses: tzkhan/pr-update-action@v2
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
         base-branch-regex: 'master'
         head-branch-regex: 'develop'
-        title-template: "feat: Release ${{ steps.date.outputs.date }}"
+        title-template: "feat: Release ${{ steps.date.outputs.DATE }}"
         title-update-action: 'replace'
         body-template: |
           Merging into '%basebranch%'
