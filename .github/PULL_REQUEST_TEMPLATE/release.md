@@ -11,3 +11,4 @@ assignees: ''
 *** Bonjour ***
 feat: Release "`r format(Sys.time(), '%Y%m%d')`"
 feat: Release YYYYMMDD
+feat: Test
