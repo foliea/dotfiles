@@ -26,6 +26,5 @@ jobs:
     - uses: actions-ecosystem/action-add-labels@v1
       if: ${{ github.base_ref == 'master' && github.head_ref == 'develop' }}
       with:
-      labels: |
-        Release
+        labels: Release
 
