@@ -1,0 +1,21 @@
+name: "Update Pull Request"
+on: pull_request
+
+jobs:
+  update_pr:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get current date
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y%m%d')"
+    - uses: tzkhan/pr-update-action@v2
+      with:
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        base-branch-regex: 'master'
+        head-branch-regex: 'develop'
+        title-template: "feat: Release ${{ steps.date.outputs.date }}"
+        body-template: |
+          Merging into '%basebranch%'
+          [Link to %headbranch%](https://url/to/browse/ticket/%headbranch%)
+        body-update-action: 'suffix'
+        body-uppercase-base-match: false
