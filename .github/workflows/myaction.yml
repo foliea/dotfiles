@@ -10,16 +10,6 @@ jobs:
     steps:
     - run: |
         echo "${{ github.event_name }} "
-    - uses: actions/checkout@v2.3.4
-      with:
-        fetch-depth: 0
-    - name: Get Pull Request Number
-      id: pr
-      run: echo "::set-output name=pull_request_number::$(gh pr view --json number -q .number || echo "")"
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - run: echo ${{ steps.pr.outputs.pull_request_number }}
-    - run: echo ${{ github.event.pull_request.title }}
     - uses: actions/checkout@v1
     - uses: 8BitJonny/gh-get-current-pr@1.4.0
       id: PR
