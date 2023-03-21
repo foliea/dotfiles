@@ -1,35 +1,37 @@
-name: "Find pull request number"
+name: Update release PR
+
 on:
-  push:
+  pull_request:
     branches:
-      - develop
+      -master 
+
+permissions:
+  contents: read
+  pull-requests: write
 
 jobs:
-  test_action:
+  update_release_pr:
     runs-on: ubuntu-latest
     steps:
-    - run: |
-        echo "${{ github.event_name }} "
-    - uses: actions/checkout@v1
-    - uses: 8BitJonny/gh-get-current-pr@1.4.0
-      id: PR
+    - name: Get current date
+      id: date
+      run: echo "DATE=$(date +'%Y%m%d')" >> $GITHUB_OUTPUT
+    - uses: the-wright-jamie/update-pr-info-action@v1
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        # Verbose setting SHA when using Pull_Request event trigger to fix #16
-        sha: ${{ github.event.pull_request.head.sha }}
-        # Only return if PR is still open
-        filterOutClosed: true
-    - run: echo "Your PR is ${{steps.PR.outputs.number}} and its JSON is ${{steps.PR.outputs.pr_labels}}"
-      if: success() && steps.PR.outputs.number
-      env:
-        prNumber: ${{ steps.PR.outputs.number }}
-        # JSON object with the full PR object
-        prJSON: ${{ steps.PR.outputs.pr }}
-        # Direct access to common PR properties
-        prUrl: ${{ steps.PR.outputs.pr_url }}
-        prTitle: ${{ steps.PR.outputs.pr_title }}
-        prBody: ${{ steps.PR.outputs.pr_body }}
-        prCreatedAt: ${{ steps.PR.outputs.pr_created_at }}
-        prMergedAt: ${{ steps.PR.outputs.pr_merged_at }}
-        prClosedAt: ${{ steps.PR.outputs.pr_closed_at }}
-        prLabel: ${{ steps.PR.outputs.pr_labels }}
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        base-branch-regex: 'master'
+        head-branch-regex: 'develop'
+        title-template: "feat: Release ${{ steps.date.outputs.DATE }}"
+        title-update-action: 'replace'
+        body-template: |
+          If you want to release a minor or major version, please suffix the PR title with `--major` or `--minor`
+          Default behavior is patch version.
+          Merging into '%basebranch%'
+          **DO NOT SQUASH THIS PR**
+        body-update-action: 'replace'
+        body-uppercase-base-match: false
+    - uses: actions-ecosystem/action-add-labels@v1
+      if: ${{ github.base_ref == 'master' && github.head_ref == 'develop' }}
+      with:
+        labels: Release
+
