@@ -19,3 +19,4 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - run: echo ${{ steps.pr.outputs.pull_request_number }}
+    - run: echo ${{ github.event.pull_request.title }}
