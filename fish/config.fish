@@ -22,10 +22,10 @@ if which go > /dev/null 2>&1
     set -g -x GOPATH $HOME/dev/go
 end
 
-## python
-#if which pyenv > /dev/null 2>&1
-    #set PATH (pyenv root)/shims $PATH
-#end
+## brew
+if which brew > /dev/null 2>&1
+    alias python=/opt/homebrew/bin/python3
+end
 
 alias ll='ls -lF'
 alias la='ls -lA'

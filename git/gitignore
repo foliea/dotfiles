@@ -4,3 +4,5 @@
 *__Tagbar__
 *.tags*
 vendor/bundle/ruby
+.prettierignore
+
