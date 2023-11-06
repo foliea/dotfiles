@@ -26,7 +26,6 @@ Plug 'jgdavey/tslime.vim'
 Plug 'christoomey/vim-tmux-navigator'
 
 " Languages / Frameworks
-Plug 'prabirshrestha/vim-lsp'
 Plug 'moll/vim-node'
 Plug 'pantharshit00/vim-prisma'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
