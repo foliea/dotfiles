@@ -27,6 +27,9 @@ if which brew > /dev/null 2>&1
     alias python=/opt/homebrew/bin/python3
 end
 
+# nvm
+set -gx NVM_DIR $HOME/.nvm
+
 alias ll='ls -lF'
 alias la='ls -lA'
 alias git='hub'

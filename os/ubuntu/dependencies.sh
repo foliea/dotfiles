@@ -2,20 +2,20 @@
 set -e
 
 add-apt-repository -y ppa:longsleep/golang-backports
-add-apt-repository -y ppa:cpick/hub
 apt-get update -qq
 apt-get install -qy \
     build-essential \
-    python-dev \
+    python2-dev \
     python-setuptools \
-    python-pip \
+    python3-pip \
     python3-dev \
     python3-setuptools \
+    python-is-python3 \
     cmake \
     gawk \
     git \
-    mercurial \
     hub \
+    mercurial \
     curl \
     wget \
     vim \
@@ -28,8 +28,6 @@ apt-get install -qy \
     resolvconf \
     nodejs \
     npm \
-    imagemagick \
-    phantomjs \
     expect
 
 pip install grip
@@ -37,3 +35,5 @@ pip install grip
 curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path
 
 $HOME/.cargo/bin/cargo install ripgrep
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash

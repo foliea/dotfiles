@@ -34,7 +34,3 @@ for extension in coc-tsserver \
 do
     npm install $extension --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
 done
-
-cd -
-
-npm i -g bash-language-server
