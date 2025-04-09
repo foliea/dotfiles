@@ -1,6 +1,4 @@
 " Color scheme
-colorscheme Default
-colorscheme Tomorrow-Night ~/.vifm/colors/Tomorrow-Night
 colorscheme Tomorrow-Night
 
 " Open movies, pdf, etc... with system apps
