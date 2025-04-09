@@ -34,6 +34,7 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'dag/vim-fish'
 Plug 'leafgarland/typescript-vim'
 Plug 'jparise/vim-graphql'
+Plug 'vim-ruby/vim-ruby'
 
 call plug#end()
 
