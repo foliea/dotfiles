@@ -2,22 +2,23 @@ set __GIT_PROMPT_DIR $HOME/.config/fish/tools
 
 # Colors
 # Reset
-set ResetColor (set_color normal)       # Text Reset
+set ResetColor (set_color normal) # Text Reset
 
 # Regular Colors
-set Red (set_color red)                 # Red
-set Yellow (set_color yellow);          # Yellow
-set Blue (set_color blue)               # Blue
+set Red (set_color red) # Red
+set Yellow (set_color yellow)
+# Yellow
+set Blue (set_color blue) # Blue
 set WHITE (set_color white)
 
 # Bold
-set BGreen (set_color green)         # Green
+set BGreen (set_color green) # Green
 
 # High Intensty
-set IBlack (set_color black)         # Black
+set IBlack (set_color black) # Black
 
 # Bold High Intensty
-set Magenta (set_color purple)       # Purple
+set Magenta (set_color purple) # Purple
 
 # Default values for the appearance of the prompt. Configure at will.
 set GIT_PROMPT_PREFIX "["
@@ -49,7 +50,7 @@ function fish_prompt
 
     set __CURRENT_GIT_STATUS_PARAM_COUNT (count $__CURRENT_GIT_STATUS)
 
-    if not test "0" -eq $__CURRENT_GIT_STATUS_PARAM_COUNT
+    if not test 0 -eq $__CURRENT_GIT_STATUS_PARAM_COUNT
         set GIT_BRANCH $__CURRENT_GIT_STATUS[1]
         set GIT_REMOTE "$__CURRENT_GIT_STATUS[2]"
         if contains "." "$GIT_REMOTE"
@@ -72,27 +73,27 @@ function fish_prompt
 
         set STATUS "$STATUS$GIT_PROMPT_SEPARATOR"
 
-        if [ $GIT_STAGED != "0" ]
+        if [ $GIT_STAGED != 0 ]
             set STATUS "$STATUS$GIT_PROMPT_STAGED$GIT_STAGED$ResetColor"
         end
 
-        if [ $GIT_CONFLICTS != "0" ]
+        if [ $GIT_CONFLICTS != 0 ]
             set STATUS "$STATUS$GIT_PROMPT_CONFLICTS$GIT_CONFLICTS$ResetColor"
         end
 
-        if [ $GIT_CHANGED != "0" ]
+        if [ $GIT_CHANGED != 0 ]
             set STATUS "$STATUS$GIT_PROMPT_CHANGED$GIT_CHANGED$ResetColor"
         end
 
-        if [ "$GIT_UNTRACKED" != "0" ]
+        if [ "$GIT_UNTRACKED" != 0 ]
             set STATUS "$STATUS$GIT_PROMPT_UNTRACKED$GIT_UNTRACKED$ResetColor"
         end
 
-        if [ "$GIT_STASHED" != "0" ]
+        if [ "$GIT_STASHED" != 0 ]
             set STATUS "$STATUS$GIT_PROMPT_STASHED$GIT_STASHED$ResetColor"
         end
 
-        if [ "$GIT_CLEAN" != "0" ]
+        if [ "$GIT_CLEAN" != 0 ]
             set STATUS "$STATUS$GIT_PROMPT_CLEAN"
         end
 
@@ -106,5 +107,3 @@ function fish_prompt
     echo -e $PS1
 
 end
-
-

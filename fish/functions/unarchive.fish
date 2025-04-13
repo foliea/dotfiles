@@ -7,16 +7,16 @@ function unarchive
             set --local filename (basename $file .$extension)
 
             switch $extension
-            case zip
-                unzip -d $filename $file
-            case tar
-                tar -xf $file -C $filename
-            case tgz
-                tar zxvf $file -C $filename
-            case rar
-                unrar e $file $filename
-            case 7z
-                7z x -o$filename $file
+                case zip
+                    unzip -d $filename $file
+                case tar
+                    tar -xf $file -C $filename
+                case tgz
+                    tar zxvf $file -C $filename
+                case rar
+                    unrar e $file $filename
+                case 7z
+                    7z x -o$filename $file
             end
         else
             echo "$file is not a valid file"

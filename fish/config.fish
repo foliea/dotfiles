@@ -13,17 +13,17 @@ if test -n "$WSL_DISTRO_NAME"
 end
 
 # rbenv
-if type rbenv > /dev/null 2>&1
+if type rbenv >/dev/null 2>&1
     source (rbenv init - | psub)
 end
 
 # golang
-if which go > /dev/null 2>&1
+if which go >/dev/null 2>&1
     set -g -x GOPATH $HOME/dev/go
 end
 
 ## brew
-if which brew > /dev/null 2>&1
+if which brew >/dev/null 2>&1
     alias python=/opt/homebrew/bin/python3
 end
 
@@ -42,7 +42,7 @@ set fish_function_path $fish_function_path[1] $fisher_path/functions $fish_funct
 set fish_complete_path $fish_complete_path[1] $fisher_path/completions $fish_complete_path
 
 for file in $fisher_path/conf.d/*.fish
-    builtin source $file 2> /dev/null
+    builtin source $file 2>/dev/null
 end
 
 # tabtab source for packages
