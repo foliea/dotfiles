@@ -96,6 +96,7 @@ filetype plugin on    " Enable filetype-specific plugins
 
 " Ruby
 autocmd FileType ruby compiler ruby
+autocmd FileType ruby nnoremap <leader>b irequire 'pry'; binding.pry<Esc>:w<CR>
 
 " Javascript
 let g:prettier#autoformat = 1

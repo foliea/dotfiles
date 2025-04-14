@@ -1,0 +1,27 @@
+{
+    "window.commandCenter": 1,
+    "workbench.colorTheme": "Tomorrow Night Eighties",
+    "terminal.integrated.defaultProfile.osx": "fish-tmux-session",
+    "terminal.integrated.profiles.osx": {
+        "fish-tmux-session": {
+            "path": "fish",
+            "args": ["-c", "attach cursor"]
+        }
+    },
+    "terminal.integrated.env.osx": {
+        "LANG": "en_US.UTF-8"
+    },
+    "ruby.useBundler": true,
+    "ruby.useLanguageServer": true,
+    "ruby.lint": {
+        "rubocop": {
+            "useBundler": true
+        }
+    },
+    "ruby.format": "rubocop",
+    "ruby.intellisense": "rubyLocate",
+    "ruby.lsp.commandPath": "solargraph",
+    "ruby.lsp.logfile": "~/.cursor/ruby-lsp.log",
+    "ruby.lsp.solargraph.commandPath": "solargraph",
+    "ruby.lsp.solargraph.logfile": "~/.cursor/solargraph.log"
+}
