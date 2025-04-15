@@ -1,0 +1,12 @@
+bmalehorn.vscode-fish
+docker.docker
+github.copilot
+github.copilot-chat
+ms-azuretools.vscode-docker
+ms-vscode.makefile-tools
+ms-vscode.theme-tomorrowkit
+ryuta46.multi-command
+shopify.ruby-extensions-pack
+shopify.ruby-lsp
+sorbet.sorbet-vscode-extension
+vscodevim.vim

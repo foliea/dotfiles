@@ -1,23 +1,15 @@
 {
-    "ruby.useBundler": true,
-    "ruby.useLanguageServer": false,
-    "ruby.lint": {
-        "rubocop": {
-            "useBundler": true
-        }
-    },
-    "ruby.format": "rubocop",
-    "ruby.intellisense": "rubyLocate",
-    "ruby.lsp.commandPath": "solargraph",
-    "ruby.lsp.logfile": "~/.cursor/ruby-lsp.log",
-    "ruby.lsp.solargraph.commandPath": "solargraph",
-    "ruby.lsp.solargraph.logfile": "~/.cursor/solargraph.log",
     "window.commandCenter": 1,
     "terminal.integrated.defaultProfile.osx": "tmux-session",
     "terminal.integrated.profiles.osx": {
         "tmux-session": {
             "path": "tmux",
-            "args": ["new-session", "-A", "-s", "vscode:${workspaceFolder}"]
+            "args": [
+                "new-session",
+                "-A",
+                "-s",
+                "vscode:${workspaceFolder}"
+            ]
         }
     },
     "terminal.integrated.env.osx": {
@@ -35,6 +27,9 @@
     "editor.autoClosingBrackets": "never",
     "editor.autoClosingQuotes": false,
     "editor.snippetSuggestions": "none",
+    "editor.autoSurround": "never",
+    "editor.formatOnSave": true,
+    "editor.semanticHighlighting.enabled": true,
     "multiCommand.commands": [
         {
             "command": "extension.smartCtrlJ",
@@ -62,7 +57,8 @@
             ]
         }
     ],
-    "editor.autoSurround": "never",
     "vim.useSystemClipboard": true,
-    "vim.easymotion": true
+    "vim.easymotion": true,
+    "github.copilot.advanced": {},
+    "makefile.configureOnOpen": true
 }

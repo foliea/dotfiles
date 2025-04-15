@@ -33,5 +33,15 @@
         "key": "shift+l",
         "command": "workbench.action.focusRightGroup",
         "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+o",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "!terminalFocus"
+    },
+    {
+        "key": "shift+o",
+        "command": "workbench.action.toggleMaximizedPanel",
+        "when": "terminalFocus"
     }
 ]

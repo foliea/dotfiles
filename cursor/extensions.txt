@@ -1,7 +1,0 @@
-bmalehorn.vscode-fish
-ms-vscode.theme-tomorrowkit
-habibium.toggle-relative-line-numbers@1.1.0
-ms-azuretools.vscode-docker
-rebornix.ruby
-vscodevim.vim
-wingrunr21.vscode-ruby

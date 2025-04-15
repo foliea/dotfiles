@@ -1,6 +1,6 @@
-.PHONY: all re clean test fish git vim vifm tmux cursor
+.PHONY: all re clean test fish git vim vifm tmux vscode
 
-all: git vim tmux fish vifm cursor
+all: git vim tmux fish vifm vscode
 
 re: clean all
 
@@ -25,5 +25,5 @@ vifm:
 tmux:
 	tmux/install.sh
 
-cursor:
-	cursor/install.sh
+vscode:
+	vscode/install.sh
