@@ -1,18 +1,6 @@
 {
-    "window.commandCenter": 1,
-    "workbench.colorTheme": "Tomorrow Night Eighties",
-    "terminal.integrated.defaultProfile.osx": "fish-tmux-session",
-    "terminal.integrated.profiles.osx": {
-        "fish-tmux-session": {
-            "path": "fish",
-            "args": ["-c", "attach cursor"]
-        }
-    },
-    "terminal.integrated.env.osx": {
-        "LANG": "en_US.UTF-8"
-    },
     "ruby.useBundler": true,
-    "ruby.useLanguageServer": true,
+    "ruby.useLanguageServer": false,
     "ruby.lint": {
         "rubocop": {
             "useBundler": true
@@ -23,5 +11,58 @@
     "ruby.lsp.commandPath": "solargraph",
     "ruby.lsp.logfile": "~/.cursor/ruby-lsp.log",
     "ruby.lsp.solargraph.commandPath": "solargraph",
-    "ruby.lsp.solargraph.logfile": "~/.cursor/solargraph.log"
+    "ruby.lsp.solargraph.logfile": "~/.cursor/solargraph.log",
+    "window.commandCenter": 1,
+    "terminal.integrated.defaultProfile.osx": "tmux-session",
+    "terminal.integrated.profiles.osx": {
+        "tmux-session": {
+            "path": "tmux",
+            "args": ["new-session", "-A", "-s", "vscode:${workspaceFolder}"]
+        }
+    },
+    "terminal.integrated.env.osx": {
+        "LANG": "en_US.UTF-8"
+    },
+    "workbench.colorTheme": "Tomorrow Night Eighties",
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#393939",
+        "statusBar.foreground": "#cccccc",
+        "statusBar.noFolderBackground": "#bd93f9",
+        "statusBarItem.activeBackground": "#ffcc66",
+        "statusBarItem.hoverBackground": "#50fa7b"
+    },
+    "editor.lineNumbers": "relative",
+    "editor.autoClosingBrackets": "never",
+    "editor.autoClosingQuotes": false,
+    "editor.snippetSuggestions": "none",
+    "multiCommand.commands": [
+        {
+            "command": "extension.smartCtrlJ",
+            "sequence": [
+                {
+                    "command": "workbench.action.focusBelowGroup"
+                },
+                {
+                    "command": "workbench.action.terminal.focus",
+                    "when": "!editorFocus"
+                }
+            ]
+        },
+        {
+            "command": "extension.smartCtrlK",
+            "sequence": [
+                {
+                    "command": "workbench.action.focusAboveGroup",
+                    "when": "editorFocus"
+                },
+                {
+                    "command": "workbench.action.focusFirstEditorGroup",
+                    "when": "terminalFocus"
+                }
+            ]
+        }
+    ],
+    "editor.autoSurround": "never",
+    "vim.useSystemClipboard": true,
+    "vim.easymotion": true
 }

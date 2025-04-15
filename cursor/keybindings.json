@@ -3,5 +3,35 @@
     {
         "key": "cmd+i",
         "command": "composerMode.agent"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "workbench.action.quickOpen",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+f",
+        "command": "workbench.action.findInFiles",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+j",
+        "command": "extension.smartCtrlJ",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+k",
+        "command": "extension.smartCtrlK",
+        "when": "terminalFocus || editorTextFocus"
+    },
+    {
+        "key": "shift+h",
+        "command": "workbench.action.focusLeftGroup",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+l",
+        "command": "workbench.action.focusRightGroup",
+        "when": "editorTextFocus"
     }
 ]
