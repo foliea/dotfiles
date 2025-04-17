@@ -60,5 +60,7 @@
     "vim.useSystemClipboard": true,
     "vim.easymotion": true,
     "github.copilot.advanced": {},
-    "makefile.configureOnOpen": true
+    "makefile.configureOnOpen": true,
+    "workbench.editor.editorActionsLocation": "hidden",
+    "editor.renderWhitespace": "all"
 }
