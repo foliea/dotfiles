@@ -66,5 +66,8 @@
     "makefile.configureOnOpen": true,
     "workbench.editor.editorActionsLocation": "hidden",
     "editor.renderWhitespace": "all",
-    "workbench.iconTheme": "material-icon-theme"
+    "workbench.iconTheme": "material-icon-theme",
+    "files.associations": {
+        "vimrc": "Vimscript"
+    }
 }

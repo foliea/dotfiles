@@ -3,38 +3,38 @@ let g:fzf_install = 'yes | ./install --bin'
 
 call plug#begin('~/.vim/plugins')
 
-    " Common
-    Plug 'vim-syntastic/syntastic'
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'scrooloose/nerdcommenter'
-    Plug 'majutsushi/tagbar'
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
-    Plug 'junegunn/fzf', { 'do': g:fzf_install }
-    Plug 'jremmen/vim-ripgrep'
-    Plug 'janko-m/vim-test'
-    Plug 'pbrisbin/vim-mkdir'
-    Plug 'tpope/vim-fugitive'
-    Plug 'tpope/vim-surround'
-    Plug 'christoomey/vim-system-copy'
-    Plug 'Yggdroot/indentline'
-    Plug 'chrisbra/Colorizer'
-    Plug 'easymotion/vim-easymotion'
+" Common
+Plug 'vim-syntastic/syntastic'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'scrooloose/nerdcommenter'
+Plug 'majutsushi/tagbar'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'junegunn/fzf', { 'do': g:fzf_install }
+Plug 'jremmen/vim-ripgrep'
+Plug 'janko-m/vim-test'
+Plug 'pbrisbin/vim-mkdir'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'christoomey/vim-system-copy'
+Plug 'Yggdroot/indentline'
+Plug 'chrisbra/Colorizer'
+Plug 'easymotion/vim-easymotion'
 
-    " Tmux
-    Plug 'jgdavey/tslime.vim'
-    Plug 'christoomey/vim-tmux-navigator'
+" Tmux
+Plug 'jgdavey/tslime.vim'
+Plug 'christoomey/vim-tmux-navigator'
 
-    " Languages / Frameworks
-    Plug 'moll/vim-node'
-    Plug 'pantharshit00/vim-prisma'
-    Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-    Plug 'elzr/vim-json'
-    Plug 'jelera/vim-javascript-syntax'
-    Plug 'dag/vim-fish'
-    Plug 'leafgarland/typescript-vim'
-    Plug 'jparise/vim-graphql'
-    Plug 'vim-ruby/vim-ruby'
+" Languages / Frameworks
+Plug 'moll/vim-node'
+Plug 'pantharshit00/vim-prisma'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'elzr/vim-json'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'dag/vim-fish'
+Plug 'leafgarland/typescript-vim'
+Plug 'jparise/vim-graphql'
+Plug 'vim-ruby/vim-ruby'
 
 call plug#end()
 
@@ -70,7 +70,7 @@ autocmd FileType slim       setlocal shiftwidth=2 softtabstop=2
 autocmd FileType json       setlocal shiftwidth=2 softtabstop=2
 autocmd FileType scss       setlocal shiftwidth=2 softtabstop=2
 autocmd FileType css        setlocal shiftwidth=2 softtabstop=2
-autocmd FileType vim        setlocal shiftwidth=4 softtabstop=4
+autocmd FileType vim        setlocal shiftwidth=2 softtabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2
 autocmd FileType typescript setlocal shiftwidth=2 softtabstop=2
 autocmd FileType groovy     setlocal shiftwidth=2 softtabstop=2
@@ -207,55 +207,56 @@ nmap <silent> gr <Plug>(coc-references)
 
 " Open
 function! Open(target)
-    if has('macunix')
-        call system('open ' . a:target)
-    else
-        call system('xdg-open ' . a:target)
-    endif
+  if has('macunix')
+    call system('open ' . a:target)
+  else
+    call system('xdg-open ' . a:target)
+  endif
 endfunction
 
 " Markdown Preview
 function! Preview_Markdown()
-    let s:preview_cmd = 'grip ' . resolve(expand('%:p'))
+  let s:preview_cmd = 'grip ' . resolve(expand('%:p'))
 
-    call Send_keys_to_Tmux('c-c')
-    call Send_to_Tmux(s:preview_cmd)
-    call Send_keys_to_Tmux('Enter')
-    call Open('http://localhost:6419')
+  call Send_keys_to_Tmux('c-c')
+  call Send_to_Tmux(s:preview_cmd)
+  call Send_keys_to_Tmux('Enter')
+  call Open('http://localhost:6419')
 endfunction
 
 noremap <leader>e :call Preview_Markdown()<CR>
 
 " Buffers handling
 function! ClearBuffers()
-    w | %bd | e#
+  w | %bd | e#
 endfunction
 command! B :call ClearBuffers()
 
 " Rename file
 function! RenameFile()
-    let old_name = expand('%')
-    let new_name = input('New file name: ', expand('%'), 'file')
-    if new_name != '' && new_name != old_name
-        exec ':saveas ' . new_name
-        exec ':silent !rm ' . old_name
-        redraw!
-    endif
+  let old_name = expand('%')
+  let new_name = input('New file name: ', expand('%'), 'file')
+
+  if new_name != '' && new_name != old_name
+      exec ':saveas ' . new_name
+      exec ':silent !rm ' . old_name
+      redraw!
+  endif
 endfunction
 command! RF :call RenameFile()
 
 " Delete temp files
 function! DeleteTempFiles()
-    call system('rm $HOME/.vim/tmp/backup/*')
-    call system('rm $HOME/.vim/tmp/undo/*')
-    call system('rm $HOME/.vim/tmp/swap/*')
+  call system('rm $HOME/.vim/tmp/backup/*')
+  call system('rm $HOME/.vim/tmp/undo/*')
+  call system('rm $HOME/.vim/tmp/swap/*')
 endfunction
 command! DTF :call DeleteTempFiles()
 
 " Make file executable
 function! MakeExecutable()
-    let filename = expand('%:p')
+  let filename = expand('%:p')
 
-    call system('chmod +x ' . filename)
+  call system('chmod +x ' . filename)
 endfunction
 command! ME :call MakeExecutable()
