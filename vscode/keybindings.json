@@ -43,5 +43,10 @@
         "key": "shift+o",
         "command": "workbench.action.toggleMaximizedPanel",
         "when": "terminalFocus"
+    },
+    {
+        "key": ", c c",
+        "command": "editor.action.commentLine",
+        "when": "editorTextFocus"
     }
 ]

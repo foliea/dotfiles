@@ -1,6 +1,11 @@
 #!/bin/sh
 set -e
 
+if ! command -v code >/dev/null 2>&1; then
+    echo "Error: 'code' command not found. Please ensure Visual Studio Code is installed and the 'code' command is added to your PATH."
+    exit 1
+fi
+
 case "$(uname -s)" in
     Darwin*)    # macOS
         VS_CODE_CONFIG_DIR="$HOME/Library/Application Support/Code/User"
@@ -25,5 +30,3 @@ while IFS= read -r extension; do
         code --install-extension "$extension" --force
     fi
 done < "$PWD/vscode/extensions.txt"
-
-echo "Cursor configuration and extensions installed successfully!" 

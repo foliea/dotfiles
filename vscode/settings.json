@@ -62,5 +62,6 @@
     "github.copilot.advanced": {},
     "makefile.configureOnOpen": true,
     "workbench.editor.editorActionsLocation": "hidden",
-    "editor.renderWhitespace": "all"
+    "editor.renderWhitespace": "all",
+    "workbench.iconTheme": "material-icon-theme"
 }

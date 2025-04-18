@@ -2,9 +2,12 @@ bmalehorn.vscode-fish
 docker.docker
 github.copilot
 github.copilot-chat
+github.vscode-pull-request-github
+hashicorp.terraform
 ms-azuretools.vscode-docker
 ms-vscode.makefile-tools
 ms-vscode.theme-tomorrowkit
+pkief.material-icon-theme
 ryuta46.multi-command
 shopify.ruby-extensions-pack
 shopify.ruby-lsp
