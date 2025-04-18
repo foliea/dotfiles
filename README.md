@@ -6,9 +6,15 @@ My configuration files.
 
 ## Dependencies
 
-To install every dependency required (only works on [Arch](https://www.archlinux.org/)-based distributions):
+To install every dependency required:
 
-    cd os/arch && make dependencies
+- For macOS: See the [Darwin script](os/darwin/install.sh).
+- For Ubuntu: See the [Ubuntu script](os/ubuntu/install.sh).  
+  *Note: I primarily use macOS, so the Ubuntu script might not be up to date.*
+
+The `os/arch` scripts were designed to install everything on a minimal Arch Linux CLI installation, including the window manager and applications. However, it is now deprecated and may not work as expected.
+
+    cd os/darwin && make dependencies
 
 ## Install
 
