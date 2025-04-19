@@ -30,6 +30,11 @@
     "editor.autoSurround": "never",
     "editor.formatOnSave": true,
     "editor.semanticHighlighting.enabled": true,
+    "editor.renderWhitespace": "all",
+    "editor.tabSize": 2,
+    "[css]": {
+        "editor.tabSize": 2
+    },
     "files.trimTrailingWhitespace": true,
     "multiCommand.commands": [
         {
@@ -65,7 +70,6 @@
     "github.copilot.advanced": {},
     "makefile.configureOnOpen": true,
     "workbench.editor.editorActionsLocation": "hidden",
-    "editor.renderWhitespace": "all",
     "workbench.iconTheme": "material-icon-theme",
     "files.associations": {
         "vimrc": "Vimscript"
