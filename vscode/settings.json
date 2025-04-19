@@ -69,5 +69,6 @@
     "workbench.iconTheme": "material-icon-theme",
     "files.associations": {
         "vimrc": "Vimscript"
-    }
+    },
+    "database-client.autoSync": true
 }
