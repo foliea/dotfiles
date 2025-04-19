@@ -45,7 +45,7 @@
         "when": "terminalFocus"
     },
     {
-        "key": ", c c",
+        "key": "shift+c",
         "command": "editor.action.commentLine",
         "when": "editorTextFocus"
     }
