@@ -1,13 +1,3 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": [
-    "prisma"
-  ],
-  "languageserver": {
-    "bash": {
-      "command": "bash-language-server",
-      "args": ["start"],
-      "filetypes": ["sh"],
-      "ignoredRootPaths": ["~"]
-    }
-  }
+  "coc.preferences.formatOnSaveFiletypes": ["prisma"]
 }

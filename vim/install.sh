@@ -25,6 +25,7 @@ if [ ! -f package.json ]; then
 fi
 
 for extension in coc-tsserver \
+    coc-solargraph \
     coc-json \
     coc-prisma \
     coc-sh \
