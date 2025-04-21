@@ -65,8 +65,6 @@
     ],
     "vim.useSystemClipboard": true,
     "vim.easymotion": true,
-    "vim.vimrc.enable": true,
-    "vim.vimrc.path": "~/.vim/vimrc",
     "github.copilot.advanced": {},
     "makefile.configureOnOpen": true,
     "workbench.editor.editorActionsLocation": "hidden",
