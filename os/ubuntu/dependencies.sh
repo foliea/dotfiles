@@ -24,6 +24,7 @@ apt-get install -qy \
     rbenv \
     libffi-dev \
     libyaml-dev \
+    libpq-dev \
     golang-go \
     exuberant-ctags \
     openvpn \
