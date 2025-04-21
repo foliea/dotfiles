@@ -38,7 +38,7 @@
     "files.trimTrailingWhitespace": true,
     "multiCommand.commands": [
         {
-            "command": "extension.smartCtrlJ",
+            "command": "extension.smartDown",
             "sequence": [
                 {
                     "command": "workbench.action.focusBelowGroup"
@@ -50,7 +50,7 @@
             ]
         },
         {
-            "command": "extension.smartCtrlK",
+            "command": "extension.smartUp",
             "sequence": [
                 {
                     "command": "workbench.action.focusAboveGroup",
