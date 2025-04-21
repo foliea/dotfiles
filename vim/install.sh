@@ -9,8 +9,8 @@ mkdir -p $tmp/backup
 mkdir -p $tmp/swap
 mkdir -p $tmp/undo
 
-ln -s $PWD/vim/ $HOME/.vim
-ln -s $PWD/vim/tern-config $HOME/.tern-config
+ln -sf $PWD/vim/ $HOME/.vim
+ln -sf $PWD/vim/tern-config $HOME/.tern-config
 
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -35,3 +35,6 @@ for extension in coc-tsserver \
 do
     npm install $extension --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
 done
+
+cd -
+rm $PWD/vim/vim
