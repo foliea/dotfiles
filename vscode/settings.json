@@ -15,6 +15,18 @@
     "terminal.integrated.env.osx": {
         "LANG": "en_US.UTF-8"
     },
+    "terminal.integrated.defaultProfile.linux": "tmux-session",
+    "terminal.integrated.profiles.linux": {
+        "tmux-session": {
+            "path": "tmux",
+            "args": [
+            "new-session",
+            "-A",
+            "-s",
+            "vscode:${workspaceFolder}"
+            ]
+        }
+    },
     "workbench.colorTheme": "Tomorrow Night Eighties",
     "workbench.colorCustomizations": {
         "statusBar.background": "#393939",
