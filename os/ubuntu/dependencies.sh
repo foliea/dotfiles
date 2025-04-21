@@ -22,6 +22,8 @@ apt-get install -qy \
     fish \
     tmux \
     rbenv \
+    libffi-dev \
+    libyaml-dev \
     golang-go \
     exuberant-ctags \
     openvpn \
@@ -35,5 +37,8 @@ pip install grip
 curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path
 
 $HOME/.cargo/bin/cargo install ripgrep
+
+mkdir -p "$HOME/.rbenv/plugins"
+git clone https://github.com/rbenv/ruby-build.git "$HOME/.rbenv/plugins/ruby-build"
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
