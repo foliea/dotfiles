@@ -1,0 +1,7 @@
+vscodevim.vim
+ryuta46.multi-command
+pkief.material-icon-theme
+ms-vscode.theme-tomorrowkit
+aaron-bond.better-comments
+formulahendry.auto-close-tag
+formulahendry.auto-rename-tag

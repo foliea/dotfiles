@@ -1,5 +1,5 @@
 {
-    "window.commandCenter": 1,
+    "window.commandCenter": true,
     "terminal.integrated.defaultProfile.osx": "tmux-session",
     "terminal.integrated.profiles.osx": {
         "tmux-session": {
@@ -25,7 +25,7 @@
     },
     "editor.lineNumbers": "relative",
     "editor.autoClosingBrackets": "never",
-    "editor.autoClosingQuotes": false,
+    "editor.autoClosingQuotes": "never",
     "editor.snippetSuggestions": "none",
     "editor.autoSurround": "never",
     "editor.formatOnSave": true,
