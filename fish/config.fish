@@ -25,6 +25,7 @@ end
 
 # nvm
 set -gx NVM_DIR $HOME/.nvm
+set --universal nvm_default_version 20
 
 alias ll='ls -lF'
 alias la='ls -lA'
