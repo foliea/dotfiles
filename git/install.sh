@@ -29,4 +29,4 @@ ${config} alias.s "status -s"
 ${config} alias.lg "log --oneline --decorate --all --graph"
 ${config} alias.pushall "push --recurse-submodules=on-demand"
 
-ln -s $PWD/git/gitignore $HOME/.gitignore-global
+ln -sf $PWD/git/gitignore $HOME/.gitignore-global

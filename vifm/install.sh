@@ -2,4 +2,4 @@
 
 set -e
 
-ln -s $PWD/vifm/ $HOME/.vifm
+ln -sf $PWD/vifm/ $HOME/.vifm

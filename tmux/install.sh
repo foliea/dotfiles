@@ -1,7 +1,11 @@
 #!/bin/sh
 set -e
 
-ln -s $PWD/tmux $HOME/.tmux
-ln -s $PWD/tmux/tmux.conf $HOME/.tmux.conf
+ln -sf $PWD/tmux $HOME/.tmux
+ln -sf $PWD/tmux/tmux.conf $HOME/.tmux.conf
 
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+tpm_dir="$HOME/.tmux/plugins"
+
+if [ ! -d $tpm_dir ]; then
+  git clone https://github.com/tmux-plugins/tpm $tpm_dir
+fi
