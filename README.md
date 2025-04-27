@@ -3,39 +3,90 @@
 [![Run tests on macOS](https://github.com/foliea/dotfiles/actions/workflows/test-macOS.yml/badge.svg)](https://github.com/foliea/dotfiles/actions/workflows/test-macOS.yml)
 [![Run tests on Ubuntu](https://github.com/foliea/dotfiles/actions/workflows/test-ubuntu.yml/badge.svg)](https://github.com/foliea/dotfiles/actions/workflows/test-ubuntu.yml)
 
-My configuration files.
+My personal configuration files for setting up and managing development environments across macOS and Linux systems.
 
 <img src="/images/env.png" width="350"/>
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Dependencies](#dependencies)
+- [Installation](#installation)
+- [Post-installation](#post-installation)
+- [Reinstallation](#reinstallation)
+- [Uninstallation](#uninstallation)
+- [Features](#features)
+- [Contributing](#contributing)
+
+## Overview
+
+This repository contains configuration files and scripts to automate the setup of development environments. It includes:
+
+- Shell configurations (Fish shell)
+- Vim and Tmux setups
+- System-specific dependencies for macOS and Ubuntu
+- Git configurations
+- VS Code extensions and settings
 
 ## Dependencies
 
 To install every dependency required:
 
-- For macOS: See the [macOS script](os/macOS/install.sh).
-- For Ubuntu 22.04: See the [Ubuntu script](os/ubuntu/install.sh).
+- **macOS**: See the [macOS script](os/macOS/dependencies.sh).
+- **Ubuntu 22.04**: See the [Ubuntu script](os/ubuntu/dependencies.sh).
 
-The `os/arch` scripts were designed to install everything on a minimal Arch Linux CLI installation, including the window manager and applications. However, it is now deprecated and may not work as expected.
+```bash
+./os/macOS/dependencies.sh
+```
 
-    cd os/macOS && make dependencies
+> **Note**: The `os/arch` scripts were designed to install everything on a minimal Arch Linux CLI installation, including the window manager and applications. However, it is now deprecated and may not work as expected.
 
-## Install
+## Installation
 
-    make
+Run the following command to install the dotfiles:
 
-> If you get an error pointing out that a configuration file
-> already exists, please follow the `Reinstall` instructions.
+```bash
+make
+```
+
+> If you encounter an error indicating that a configuration file already exists, please follow the [Reinstallation](#reinstallation) instructions.
 
 ## Post-installation
 
-1. Run `chsh -s $(which fish) $USER` to change your login shell
-1. Spawn a new login shell
-1. Install Vim plugins (see [documentation](https://github.com/junegunn/vim-plug))
-1. Install Tmux plugins (see [documentation](https://github.com/tmux-plugins/tpm))
+After installation, complete the following steps:
 
-## Reinstall
+1. Change your login shell to Fish:
+   ```bash
+   chsh -s $(which fish) $USER
+   ```
+2. Spawn a new login shell.
+3. Install Vim plugins using [vim-plug](https://github.com/junegunn/vim-plug).
+4. Install Tmux plugins using [TPM](https://github.com/tmux-plugins/tpm).
 
-    make re
+## Reinstallation
 
-## Uninstall
+To reinstall the dotfiles, run:
 
-    make clean
+```bash
+make re
+```
+
+## Uninstallation
+
+To remove the dotfiles, run:
+
+```bash
+make clean
+```
+
+## Features
+
+- **Cross-platform support**: Works on macOS and Ubuntu.
+- **Custom shell setup**: Includes Fish shell configurations and plugins.
+- **Editor configurations**: Preconfigured Vim and VS Code settings.
+- **Tmux enhancements**: Includes plugins for better terminal multiplexing.
+- **Automated setup**: Scripts to install dependencies and configure the environment.
+
+## Contributing
+
+Contributions are welcome! Feel free to open issues or submit pull requests to improve this repository.
