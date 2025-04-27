@@ -42,4 +42,4 @@ $HOME/.cargo/bin/cargo install ripgrep
 mkdir -p "$HOME/.rbenv/plugins"
 git clone https://github.com/rbenv/ruby-build.git "$HOME/.rbenv/plugins/ruby-build"
 
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
