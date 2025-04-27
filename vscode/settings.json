@@ -84,5 +84,8 @@
     "files.associations": {
         "vimrc": "Vimscript"
     },
-    "database-client.autoSync": true
+    "database-client.autoSync": true,
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }
