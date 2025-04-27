@@ -1,0 +1,24 @@
+name: Run tests on macOS
+
+on:
+  push:
+    branches: # Run on all branches
+      - "*"
+
+jobs:
+  run-test-darwin:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: |
+          chmod +x os/macOS/dependencies.sh
+          ./os/macOS/dependencies.sh
+
+      - name: Run tests
+        run: |
+          chmod +x scripts/test.exp
+          ./scripts/test.exp

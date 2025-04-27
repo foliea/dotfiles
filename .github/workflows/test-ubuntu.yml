@@ -1,0 +1,24 @@
+name: Run tests on Ubuntu
+
+on:
+  push:
+    branches:
+      - "*"
+
+jobs:
+  run-test-ubuntu:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: |
+          chmod +x os/ubuntu/dependencies.sh
+          sudo ./os/ubuntu/dependencies.sh
+
+      - name: Run tests
+        run: |
+          chmod +x scripts/test.exp
+          ./scripts/test.exp

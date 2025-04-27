@@ -1,5 +1,8 @@
 # dotfiles
 
+[![Run tests on macOS](https://github.com/foliea/dotfiles/actions/workflows/test-macOS.yml/badge.svg)](https://github.com/foliea/dotfiles/actions/workflows/test-macOS.yml)
+[![Run tests on Ubuntu](https://github.com/foliea/dotfiles/actions/workflows/test-ubuntu.yml/badge.svg)](https://github.com/foliea/dotfiles/actions/workflows/test-ubuntu.yml)
+
 My configuration files.
 
 <img src="/images/env.png" width="350"/>
@@ -8,20 +11,19 @@ My configuration files.
 
 To install every dependency required:
 
-- For macOS: See the [Darwin script](os/darwin/install.sh).
-- For Ubuntu: See the [Ubuntu script](os/ubuntu/install.sh).  
-  *Note: I primarily use macOS, so the Ubuntu script might not be up to date.*
+- For macOS: See the [macOS script](os/macOS/install.sh).
+- For Ubuntu 22.04: See the [Ubuntu script](os/ubuntu/install.sh).
 
 The `os/arch` scripts were designed to install everything on a minimal Arch Linux CLI installation, including the window manager and applications. However, it is now deprecated and may not work as expected.
 
-    cd os/darwin && make dependencies
+    cd os/macOS && make dependencies
 
 ## Install
 
     make
 
->If you get an error pointing out that a configuration file
-already exists, please follow the `Reinstall` instructions.
+> If you get an error pointing out that a configuration file
+> already exists, please follow the `Reinstall` instructions.
 
 ## Post-installation
 
