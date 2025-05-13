@@ -37,4 +37,4 @@ do
 done
 
 cd -
-rm $PWD/vim/vim
+rm -f $PWD/vim/vim
