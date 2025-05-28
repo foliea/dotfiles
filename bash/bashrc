@@ -1,0 +1,142 @@
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# Environment variables
+export EDITOR=vim
+export SHELL=$(which bash)
+export TERM=xterm-256color
+export LC_ALL=en_US.UTF-8
+export PAGER=most
+
+# Prompt configuration
+# Colors
+RESET="\[\033[0m\]"
+RED="\[\033[0;31m\]"
+YELLOW="\[\033[0;33m\]"
+BLUE="\[\033[0;34m\]"
+WHITE="\[\033[0;37m\]"
+GREEN="\[\033[0;32m\]"
+PURPLE="\[\033[0;35m\]"
+
+# Git prompt symbols
+GIT_PROMPT_PREFIX="["
+GIT_PROMPT_SUFFIX="]"
+GIT_PROMPT_SEPARATOR="|"
+GIT_PROMPT_STAGED="$RED● "
+GIT_PROMPT_CONFLICTS="$RED✖ "
+GIT_PROMPT_CHANGED="$BLUE✚ "
+GIT_PROMPT_UNTRACKED="…"
+GIT_PROMPT_STASHED="⚑ "
+GIT_PROMPT_CLEAN="$GREEN✔"
+
+# Git status function
+git_status() {
+    local branch staged conflicts changed untracked stashed clean
+    
+    # Get current branch
+    branch=$(git symbolic-ref HEAD 2>/dev/null)
+    if [[ -n "$branch" ]]; then
+        branch=${branch##*/}
+        
+        # Count staged files
+        staged=$(git diff --staged --numstat | wc -l)
+        # Count conflicts
+        conflicts=$(git diff --name-only --diff-filter=U | wc -l)
+        # Count changed files
+        changed=$(git diff --numstat | wc -l)
+        # Count untracked files
+        untracked=$(git ls-files --others --exclude-standard | wc -l)
+        # Check if stash exists
+        if [[ -n $(git stash list) ]]; then
+            stashed=1
+        else
+            stashed=0
+        fi
+        # Check if clean
+        if [[ $staged -eq 0 && $conflicts -eq 0 && $changed -eq 0 && $untracked -eq 0 ]]; then
+            clean=1
+        else
+            clean=0
+        fi
+        
+        # Build status string
+        local status="$GIT_PROMPT_PREFIX$PURPLE$branch$RESET$GIT_PROMPT_SEPARATOR"
+        
+        [[ $staged -gt 0 ]] && status+="$GIT_PROMPT_STAGED"
+        [[ $conflicts -gt 0 ]] && status+="$GIT_PROMPT_CONFLICTS"
+        [[ $changed -gt 0 ]] && status+="$GIT_PROMPT_CHANGED"
+        [[ $untracked -gt 0 ]] && status+="$GIT_PROMPT_UNTRACKED"
+        [[ $stashed -gt 0 ]] && status+="$GIT_PROMPT_STASHED"
+        [[ $clean -eq 1 ]] && status+="$GIT_PROMPT_CLEAN"
+        
+        echo -n "$status$RESET$GIT_PROMPT_SUFFIX"
+    fi
+}
+
+# Set prompt command
+PROMPT_COMMAND=__prompt_command
+
+__prompt_command() {
+    local EXIT="$?"
+    local PATH_SHORT="${PWD/#$HOME/\~}"
+    local TIME="\$(date +%R)"
+    
+    PS1="$YELLOW$PATH_SHORT$RESET"
+    
+    # Add git status if in a git repository
+    if git rev-parse --git-dir > /dev/null 2>&1; then
+        PS1+=" \$(git_status)"
+    fi
+    
+    PS1+="\n$WHITE$TIME$RESET \$ "
+}
+
+# rbenv setup
+if command -v rbenv >/dev/null 2>&1; then
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
+fi
+
+# nvm setup
+export NVM_DIR="$HOME/.nvm"
+export NVM_DEFAULT_VERSION=20
+
+if [ -d "$NVM_DIR" ]; then
+    [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
+    command -v nvm >/dev/null 2>&1 && nvm use "$NVM_DEFAULT_VERSION" >/dev/null 2>&1
+fi
+
+# golang configuration
+if command -v go >/dev/null 2>&1; then
+    export GOPATH="$HOME/dev/go"
+fi
+
+# brew configuration
+if command -v brew >/dev/null 2>&1; then
+    alias python=/opt/homebrew/bin/python3
+fi
+
+# PATH modifications
+if [ -d "$HOME/.cargo/bin" ]; then
+    export PATH="$HOME/.cargo/bin:$PATH"
+fi
+
+# Vi mode
+set -o vi
+
+# Aliases
+alias ll='ls -lF'
+alias la='ls -lA'
+alias git='hub'
+
+# Load all configurations from conf.d
+if [ -d "$HOME/.config/bash/conf.d" ]; then
+    for file in "$HOME/.config/bash/conf.d"/*.sh; do
+        [ -r "$file" ] && source "$file"
+    done
+fi
+
+# Load local customizations if they exist
+[ -f "$HOME/.bashrc.local" ] && source "$HOME/.bashrc.local"
+
