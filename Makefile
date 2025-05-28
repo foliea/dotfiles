@@ -1,4 +1,4 @@
-.PHONY: all re clean test bash git vim vifm tmux vscode
+.PHONY: all re clean test fish git vim vifm tmux vscode
 
 all: git vim tmux bash vifm vscode
 
@@ -10,8 +10,8 @@ clean:
 test:
 	scripts/test.exp
 
-bash:
-	bash/install.sh
+fish:
+	fish/install.sh
 
 git:
 	git/install.sh
