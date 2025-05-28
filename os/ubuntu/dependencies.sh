@@ -5,8 +5,6 @@ add-apt-repository -y ppa:longsleep/golang-backports
 apt-get update -qq
 apt-get install -qy \
     build-essential \
-    python2-dev \
-    python-setuptools \
     python3-pip \
     python3-dev \
     python3-setuptools \
