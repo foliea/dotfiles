@@ -12,7 +12,7 @@ do
 done
 
 read -p "Do you want to sign git commits with gpg key? (y/n): " gpgsign
-if [ "$gpgsign" == "y" ]; then
+if [ "$gpgsign" = "y" ]; then
     ${config} commit.gpgsign true
 fi
 
@@ -23,6 +23,19 @@ ${config} rerere.enabled true
 ${config} color.ui true
 ${config} core.excludesfile ~/.gitignore-global
 ${config} protocol.version 1
+
+# Performance optimizations for faster git operations (especially in WSL)
+# - fsmonitor/untrackedcache: Improve status/add performance
+# - fscache: Cache filesystem operations
+# - preloadindex: Load index in memory on startup
+# - index.version 4: Use latest index format
+# - manyFiles: Optimize for repositories with many files
+${config} core.fsmonitor true
+${config} core.untrackedcache true
+${config} core.fscache true
+${config} core.preloadindex true
+${config} index.version 4
+${config} feature.manyFiles true
 
 # Aliases
 ${config} alias.s "status -s"
