@@ -10,7 +10,7 @@ end
 
 # rbenv
 if type rbenv >/dev/null 2>&1
-    source (rbenv init - | psub)
+    status --is-interactive; and source (rbenv init -|psub)
 end
 
 # golang
