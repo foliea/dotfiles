@@ -29,6 +29,7 @@ apt-get install -qy \
     resolvconf \
     nodejs \
     npm \
+    most \
     expect
 
 pip install grip
