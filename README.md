@@ -61,7 +61,6 @@ After installation, complete the following steps:
    ```
 2. Spawn a new login shell.
 3. Install Vim plugins using [vim-plug](https://github.com/junegunn/vim-plug).
-4. Install Tmux plugins using [TPM](https://github.com/tmux-plugins/tpm).
 
 ## Reinstallation
 
