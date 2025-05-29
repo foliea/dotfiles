@@ -33,7 +33,7 @@ This repository contains configuration files and scripts to automate the setup o
 To install every dependency required:
 
 - **macOS**: See the [macOS script](os/macOS/dependencies.sh).
-- **Ubuntu 22.04**: See the [Ubuntu script](os/ubuntu/dependencies.sh).
+- **Ubuntu 24.04 LTS**: See the [Ubuntu script](os/ubuntu/dependencies.sh).
 
 ```bash
 ./os/macOS/dependencies.sh
