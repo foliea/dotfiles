@@ -16,7 +16,6 @@ brew install cmake \
              fzf \
              ripgrep \
              hub \
-             grip \
              rar \
              p7zip \
              kubectx \

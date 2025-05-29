@@ -214,18 +214,6 @@ function! Open(target)
   endif
 endfunction
 
-" Markdown Preview
-function! Preview_Markdown()
-  let s:preview_cmd = 'grip ' . resolve(expand('%:p'))
-
-  call Send_keys_to_Tmux('c-c')
-  call Send_to_Tmux(s:preview_cmd)
-  call Send_keys_to_Tmux('Enter')
-  call Open('http://localhost:6419')
-endfunction
-
-noremap <leader>e :call Preview_Markdown()<CR>
-
 " Buffers handling
 function! ClearBuffers()
   w | %bd | e#
