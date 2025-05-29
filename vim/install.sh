@@ -31,7 +31,8 @@ for extension in coc-tsserver \
     coc-sh \
     coc-yaml \
     coc-cmake \
-    coc-swagger
+    coc-swagger \
+    coc-markdownlint
 do
     npm install $extension --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
 done

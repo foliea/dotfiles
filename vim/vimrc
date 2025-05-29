@@ -20,6 +20,7 @@ Plug 'christoomey/vim-system-copy'
 Plug 'Yggdroot/indentline'
 Plug 'chrisbra/Colorizer'
 Plug 'easymotion/vim-easymotion'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
 
 " Tmux
 Plug 'jgdavey/tslime.vim'
