@@ -43,6 +43,7 @@ if [ "$IS_WSL" = false ]; then
 else
     win_user=$(cmd.exe /C 'echo %USERNAME%' 2>/dev/null | tr -d '\r')
 
+    cp "$PWD/vscode/settings.json" "/mnt/c/Users/$win_user/AppData/Roaming/Code/User/settings.json"
     cp "$PWD/vscode/keybindings.json" "/mnt/c/Users/$win_user/AppData/Roaming/Code/User/keybindings.json"
 fi
 
