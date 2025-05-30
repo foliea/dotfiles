@@ -65,7 +65,7 @@ def get_stash():
     stash_file = '%s%s' % (so.decode('utf-8').rstrip(), '/logs/refs/stash')
 
     try:
-        with open(stash_file) as f:
+        with open(stash_file, encoding="utf-8", errors="replace") as f:
             return sum(1 for _ in f)
     except IOError:
         return 0
