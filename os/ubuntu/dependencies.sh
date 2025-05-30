@@ -19,18 +19,22 @@ apt-get install -qy \
     libffi-dev \
     libyaml-dev \
     libpq-dev \
-    golang-go \
     exuberant-ctags \
     openvpn \
     resolvconf \
     nodejs \
     npm \
     most \
+    fzf \
+    ripgrep \
+    ncdu \
+    jq \
+    rar \
+    p7zip-full \
+    kubectx \
     expect
 
 curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path
-
-$HOME/.cargo/bin/cargo install ripgrep
 
 mkdir -p "$HOME/.rbenv/plugins"
 git clone https://github.com/rbenv/ruby-build.git "$HOME/.rbenv/plugins/ruby-build"
