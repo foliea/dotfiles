@@ -5,4 +5,4 @@
 *.tags*
 vendor/bundle/ruby
 .prettierignore
-
+.vscode
