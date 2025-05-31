@@ -1,0 +1,18 @@
+# Ignore files and folders that should not be copied into the Docker image
+.git
+.gitignore
+.vscode
+images/
+node_modules/
+*.swp
+*.swo
+*.subset
+*.DS_Store
+*.tags*
+vendor/
+__pycache__/
+*.pyc
+*.pyo
+*.log
+*.tmp
+*.bak

@@ -1,7 +1,6 @@
 #!/bin/sh
 set -e
 
-add-apt-repository -y ppa:longsleep/golang-backports
 apt-get update -qq
 apt-get install -qy \
   build-essential \
