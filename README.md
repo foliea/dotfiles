@@ -43,10 +43,26 @@ To install every dependency required:
 
 ## Installation
 
-Run the following command to install the dotfiles:
+This repository is **modular**: you can install all configurations at once, or install only the components you need (such as Vim, Fish, Bash, etc.).
+
+### Install everything
 
 ```bash
 make
+```
+
+### Install a specific component
+
+You can install only a specific configuration by running its target. For example:
+
+```bash
+make vim      # Install only Vim configuration
+make fish     # Install only Fish shell configuration
+make bash     # Install only Bash configuration
+make git      # Install only Git configuration
+make vifm     # Install only Vifm configuration
+make tmux     # Install only Tmux configuration
+make vscode   # Install only VS Code configuration
 ```
 
 > If you encounter an error indicating that a configuration file already exists, please follow the [Reinstallation](#reinstallation) instructions.
@@ -76,6 +92,8 @@ To remove the dotfiles, run:
 ```bash
 make clean
 ```
+
+> **Note:** The `clean` target is **not modular** and will attempt to remove all installed configuration files and related data. Use with caution, as it may erase files for all components (vim, fish, bash, etc.) regardless of which ones you installed.
 
 ## Features
 
