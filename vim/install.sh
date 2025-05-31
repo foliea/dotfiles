@@ -15,13 +15,18 @@ ln -sf $PWD/vim/tern-config $HOME/.tern-config
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-# Install CoC extensions
-mkdir -p $HOME/.config/coc/extensions
+# Install plugins
+vim +'PlugInstall --sync' +qa
 
-cd $HOME/.config/coc/extensions
+# Install coc extensions
+coc_extensions_dir="$HOME/.config/coc/extensions"
 
-if [ ! -f package.json ]; then
-  echo '{"dependencies":{}}'> package.json
+mkdir -p "$coc_extensions_dir"
+
+package_json="$coc_extensions_dir/package.json"
+
+if [ ! -f "$package_json" ]; then
+    echo '{"dependencies":{}}' > "$package_json"
 fi
 
 for extension in coc-tsserver \
@@ -34,8 +39,5 @@ for extension in coc-tsserver \
     coc-swagger \
     coc-markdownlint
 do
-    npm install $extension --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
+    npm install "$extension" --prefix "$coc_extensions_dir" --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
 done
-
-cd -
-rm -f $PWD/vim/vim

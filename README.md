@@ -60,7 +60,6 @@ After installation, complete the following steps:
    chsh -s $(which fish) $USER
    ```
 2. Spawn a new login shell.
-3. Install Vim plugins using [vim-plug](https://github.com/junegunn/vim-plug).
 
 ## Reinstallation
 
