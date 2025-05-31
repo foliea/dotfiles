@@ -1,15 +1,9 @@
-.PHONY: all re clean test fish bash git vim vifm tmux vscode help
+.PHONY: all re clean test help fish bash git vim vifm tmux vscode
 
 SCRIPTS_DIR := scripts
-FISH_DIR := fish
-BASH_DIR := bash
-GIT_DIR := git
-VIM_DIR := vim
-VIFM_DIR := vifm
-TMUX_DIR := tmux
-VSCODE_DIR := vscode
+MODULES := fish bash git vim vifm tmux vscode
 
-all: fish bash git vim vifm tmux vscode
+all: $(MODULES)
 
 re: clean all
 
@@ -19,26 +13,8 @@ clean:
 test:
 	@$(SCRIPTS_DIR)/test.exp
 
-fish:
-	@$(FISH_DIR)/install.sh
-
-bash:
-	@$(BASH_DIR)/install.sh
-
-git:
-	@$(GIT_DIR)/install.sh
-
-vim:
-	@$(VIM_DIR)/install.sh
-
-vifm:
-	@$(VIFM_DIR)/install.sh
-
-tmux:
-	@$(TMUX_DIR)/install.sh
-
-vscode:
-	@$(VSCODE_DIR)/install.sh
+$(MODULES):
+	@./$@/install.sh
 
 help:
 	@echo "Available targets:"
