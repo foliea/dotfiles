@@ -18,3 +18,4 @@ cweijan.dbclient-jdbc
 cweijan.vscode-postgresql-client2
 postman.postman-for-vscode
 ms-vscode.powershell
+streetsidesoftware.code-spell-checker
