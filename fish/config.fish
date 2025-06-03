@@ -4,6 +4,10 @@ set -g -x TERM xterm-256color
 set -g -x LC_ALL en_US.UTF-8
 set -g -x PAGER most
 
+if test -d /opt/homebrew/bin
+    set -U fish_user_paths /opt/homebrew/bin $fish_user_paths
+end
+
 if test -d $HOME/.cargo/bin
     set PATH $HOME/.cargo/bin $PATH
 end
@@ -30,6 +34,7 @@ set --universal nvm_default_version 24
 alias ll='ls -lF'
 alias la='ls -lA'
 alias git='hub'
+alias python=python3
 
 set -g fish_key_bindings fish_vi_key_bindings
 

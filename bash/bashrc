@@ -39,6 +39,14 @@ if [ -d "$HOME/.cargo/bin" ]; then
     export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
+# Prepend /opt/homebrew/bin to PATH if it exists
+if [ -d "/opt/homebrew/bin" ]; then
+    export PATH="/opt/homebrew/bin:$PATH"
+fi
+
+# Always alias python to python3
+alias python=python3
+
 set -o vi
 
 # Aliases
