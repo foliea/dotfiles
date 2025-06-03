@@ -21,6 +21,10 @@ brew install cmake \
   p7zip \
   kubectx \
   kubeseal \
-  helm
+  helm \
+  sshuttle \
+  coreutils \
+  awscli \
+  session-manager-plugin
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
