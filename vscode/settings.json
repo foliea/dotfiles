@@ -5,6 +5,7 @@
         "tmux-session": {
             "path": "tmux",
             "args": [
+                "-l",
                 "new-session",
                 "-A",
                 "-s",
@@ -20,6 +21,7 @@
         "tmux-session": {
             "path": "tmux",
             "args": [
+            "-l",
             "new-session",
             "-A",
             "-s",
