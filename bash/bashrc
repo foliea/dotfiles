@@ -61,3 +61,6 @@ fi
 
 # Load local customizations if they exist
 [ -f "$HOME/.bashrc.local" ] && source "$HOME/.bashrc.local"
+
+# Load AWS CLI configuration if it exists
+[ -f "$HOME/.aws/cli.bash" ] && source "$HOME/.aws/cli.bash"
