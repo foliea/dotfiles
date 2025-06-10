@@ -14,19 +14,14 @@ if command -v rbenv >/dev/null 2>&1; then
     eval "$(rbenv init -)"
 fi
 
-# Node
-export NVM_DIR="$HOME/.nvm"
-export NVM_DEFAULT_VERSION=24
-
-if [ -d "$NVM_DIR" ]; then
-    [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
-    [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
-    command -v nvm >/dev/null 2>&1 && nvm use "$NVM_DEFAULT_VERSION" >/dev/null 2>&1
-fi
-
 # Golang
 if command -v go >/dev/null 2>&1; then
     export GOPATH="$HOME/dev/go"
+fi
+
+# Node.js
+if command -v fnm >/dev/null 2>&1; then
+    eval "$(fnm env --use-on-cd)"
 fi
 
 # Brew

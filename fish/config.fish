@@ -17,6 +17,11 @@ if type rbenv >/dev/null 2>&1
     status --is-interactive; and source (rbenv init -|psub)
 end
 
+# node.js
+if type -q fnm
+    fnm env --use-on-cd | source
+end
+
 # golang
 if which go >/dev/null 2>&1
     set -g -x GOPATH $HOME/dev/go
@@ -26,10 +31,6 @@ end
 if which brew >/dev/null 2>&1
     alias python=/opt/homebrew/bin/python3
 end
-
-# nvm
-set -gx NVM_DIR $HOME/.nvm
-set --universal nvm_default_version 24
 
 alias ll='ls -lF'
 alias la='ls -lA'
