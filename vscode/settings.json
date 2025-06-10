@@ -1,93 +1,83 @@
 {
-    "window.commandCenter": true,
-    "terminal.integrated.defaultProfile.osx": "tmux-session",
-    "terminal.integrated.profiles.osx": {
-        "tmux-session": {
-            "path": "tmux",
-            "args": [
-                "-l",
-                "new-session",
-                "-A",
-                "-s",
-                "vscode:${workspaceFolder}"
-            ]
-        }
-    },
-    "terminal.integrated.env.osx": {
-        "LANG": "en_US.UTF-8"
-    },
-    "terminal.integrated.defaultProfile.linux": "tmux-session",
-    "terminal.integrated.profiles.linux": {
-        "tmux-session": {
-            "path": "tmux",
-            "args": [
-            "-l",
-            "new-session",
-            "-A",
-            "-s",
-            "vscode:${workspaceFolder}"
-            ]
-        }
-    },
-    "workbench.colorTheme": "Tomorrow Night Eighties",
-    "workbench.colorCustomizations": {
-        "statusBar.background": "#393939",
-        "statusBar.foreground": "#cccccc",
-        "statusBar.noFolderBackground": "#bd93f9",
-        "statusBarItem.activeBackground": "#ffcc66",
-        "statusBarItem.hoverBackground": "#50fa7b"
-    },
-    "editor.lineNumbers": "relative",
-    "editor.autoClosingBrackets": "never",
-    "editor.autoClosingQuotes": "never",
-    "editor.snippetSuggestions": "none",
-    "editor.autoSurround": "never",
-    "editor.formatOnSave": true,
-    "editor.semanticHighlighting.enabled": true,
-    "editor.renderWhitespace": "all",
-    "editor.tabSize": 2,
-    "[css]": {
-        "editor.tabSize": 2
-    },
-    "files.trimTrailingWhitespace": true,
-    "multiCommand.commands": [
+  "window.commandCenter": true,
+  "terminal.integrated.defaultProfile.osx": "tmux-session",
+  "terminal.integrated.profiles.osx": {
+    "tmux-session": {
+      "path": "tmux",
+      "args": ["-l", "new-session", "-A", "-s", "vscode:${workspaceFolder}"]
+    }
+  },
+  "terminal.integrated.env.osx": {
+    "LANG": "en_US.UTF-8"
+  },
+  "terminal.integrated.defaultProfile.linux": "tmux-session",
+  "terminal.integrated.profiles.linux": {
+    "tmux-session": {
+      "path": "tmux",
+      "args": ["-l", "new-session", "-A", "-s", "vscode:${workspaceFolder}"]
+    }
+  },
+  "workbench.colorTheme": "Tomorrow Night Eighties",
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#393939",
+    "statusBar.foreground": "#cccccc",
+    "statusBar.noFolderBackground": "#bd93f9",
+    "statusBarItem.activeBackground": "#ffcc66",
+    "statusBarItem.hoverBackground": "#50fa7b"
+  },
+  "editor.lineNumbers": "relative",
+  "editor.autoClosingBrackets": "never",
+  "editor.autoClosingQuotes": "never",
+  "editor.snippetSuggestions": "none",
+  "editor.autoSurround": "never",
+  "editor.formatOnSave": true,
+  "editor.semanticHighlighting.enabled": true,
+  "editor.renderWhitespace": "all",
+  "editor.tabSize": 2,
+  "[css]": {
+    "editor.tabSize": 2
+  },
+  "files.trimTrailingWhitespace": true,
+  "multiCommand.commands": [
+    {
+      "command": "extension.smartDown",
+      "sequence": [
         {
-            "command": "extension.smartDown",
-            "sequence": [
-                {
-                    "command": "workbench.action.focusBelowGroup"
-                },
-                {
-                    "command": "workbench.action.terminal.focus",
-                    "when": "!editorFocus"
-                }
-            ]
+          "command": "workbench.action.focusBelowGroup"
         },
         {
-            "command": "extension.smartUp",
-            "sequence": [
-                {
-                    "command": "workbench.action.focusAboveGroup",
-                    "when": "editorFocus"
-                },
-                {
-                    "command": "workbench.action.focusFirstEditorGroup",
-                    "when": "terminalFocus"
-                }
-            ]
+          "command": "workbench.action.terminal.focus",
+          "when": "!editorFocus"
         }
-    ],
-    "vim.useSystemClipboard": true,
-    "vim.easymotion": true,
-    "github.copilot.advanced": {},
-    "makefile.configureOnOpen": true,
-    "workbench.editor.editorActionsLocation": "hidden",
-    "workbench.iconTheme": "material-icon-theme",
-    "files.associations": {
-        "vimrc": "Vimscript"
+      ]
     },
-    "database-client.autoSync": true,
-    "[jsonc]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    {
+      "command": "extension.smartUp",
+      "sequence": [
+        {
+          "command": "workbench.action.focusAboveGroup",
+          "when": "editorFocus"
+        },
+        {
+          "command": "workbench.action.focusFirstEditorGroup",
+          "when": "terminalFocus"
+        }
+      ]
     }
+  ],
+  "vim.useSystemClipboard": true,
+  "vim.easymotion": true,
+  "github.copilot.advanced": {},
+  "makefile.configureOnOpen": true,
+  "workbench.editor.editorActionsLocation": "hidden",
+  "workbench.iconTheme": "material-icon-theme",
+  "files.associations": {
+    "vimrc": "Vimscript"
+  },
+  "database-client.autoSync": true,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false
 }
