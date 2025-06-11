@@ -16,6 +16,7 @@ end
 if type rbenv >/dev/null 2>&1
     status --is-interactive; and source (rbenv init -|psub)
 end
+set -gx OBJC_DISABLE_INITIALIZE_FORK_SAFETY YES
 
 # node.js
 if type -q fnm
