@@ -49,5 +49,10 @@
         "key": "alt+c",
         "command": "editor.action.commentLine",
         "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+u",
+        "command": "workbench.panel.chat.view.copilot.focus",
+        "when": ""
     }
 ]
