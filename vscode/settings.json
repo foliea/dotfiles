@@ -34,6 +34,7 @@
   "editor.semanticHighlighting.enabled": true,
   "editor.renderWhitespace": "all",
   "editor.tabSize": 2,
+  "editor.detectIndentation": true,
   "[css]": {
     "editor.tabSize": 2
   },
