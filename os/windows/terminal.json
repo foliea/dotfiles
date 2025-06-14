@@ -1,0 +1,108 @@
+{
+    "$help": "https://aka.ms/terminal-documentation",
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "actions": [],
+    "copyFormatting": "none",
+    "copyOnSelect": false,
+    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+    "keybindings":
+    [
+        {
+            "id": "Terminal.CopyToClipboard",
+            "keys": "ctrl+c"
+        },
+        {
+            "id": "Terminal.FindText",
+            "keys": "ctrl+shift+f"
+        },
+        {
+            "id": "Terminal.PasteFromClipboard",
+            "keys": "ctrl+v"
+        },
+        {
+            "id": "Terminal.DuplicatePaneAuto",
+            "keys": "alt+shift+d"
+        }
+    ],
+    "newTabMenu":
+    [
+        {
+            "type": "remainingProfiles"
+        }
+    ],
+    "profiles":
+    {
+        "defaults":
+        {
+            "font":
+            {
+                "face": "Consolas",
+                "size": 11
+            }
+        },
+        "list":
+        [
+            {
+                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "hidden": true,
+                "name": "Windows PowerShell",
+                "colorScheme": "Tomorrow Night Eighties"
+            },
+            {
+                "commandline": "%SystemRoot%\\System32\\cmd.exe",
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "hidden": true,
+                "name": "Command Prompt",
+                "colorScheme": "Tomorrow Night Eighties"
+            },
+            {
+                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+                "hidden": true,
+                "name": "Azure Cloud Shell",
+                "source": "Windows.Terminal.Azure",
+                "colorScheme": "Tomorrow Night Eighties"
+            },
+            {
+                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+                "hidden": false,
+                "name": "PowerShell",
+                "source": "Windows.Terminal.PowershellCore",
+                "colorScheme": "Tomorrow Night Eighties"
+            },
+            {
+                "guid": "{d96f7780-5aeb-5c77-93b1-4bf2de58552f}",
+                "hidden": false,
+                "name": "Ubuntu",
+                "source": "Microsoft.WSL",
+                "colorScheme": "Tomorrow Night Eighties"
+            }
+        ]
+    },
+    "schemes": [
+        {
+            "name": "Tomorrow Night Eighties",
+            "black": "#000000",
+            "red": "#f2777a",
+            "green": "#99cc99",
+            "yellow": "#ffcc66",
+            "blue": "#6699cc",
+            "purple": "#cc99cc",
+            "cyan": "#66cccc",
+            "white": "#ffffff",
+            "brightBlack": "#000000",
+            "brightRed": "#f2777a",
+            "brightGreen": "#99cc99",
+            "brightYellow": "#ffcc66",
+            "brightBlue": "#6699cc",
+            "brightPurple": "#cc99cc",
+            "brightCyan": "#66cccc",
+            "brightWhite": "#ffffff",
+            "background": "#2d2d2d",
+            "foreground": "#cccccc",
+            "selectionBackground": "#515151",
+            "cursorColor": "#cccccc"
+        }
+    ],
+    "themes": []
+}
