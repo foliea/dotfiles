@@ -31,11 +31,11 @@ bash_git_prompt() {
     status="[\033[1;35m${branch}\033[0m"
 
     [[ $staged -ne 0 ]]    && status+="|\033[0;31m● $staged\033[0m"
-    [[ $conflicts -ne 0 ]] && status+="|\033[0;31m✖ $conflicts\033[0m"
+    [[ $conflicts -ne 0 ]] && status+="|\033[0;31m✖  $conflicts\033[0m"
     [[ $changed -ne 0 ]]   && status+="|\033[0;34m✚ $changed\033[0m"
     [[ $untracked -ne 0 ]] && status+="|\033[0;33m…$untracked\033[0m"
     [[ $stashed -ne 0 ]]   && status+="|\033[0;33m⚑ $stashed\033[0m"
-    [[ $clean -eq 1 ]]     && status+="|\033[1;32m✔\033[0m"
+    [[ $clean -eq 1 ]]     && status+="|\033[1;32m✔ \033[0m"
 
     status+="]"
     echo -ne " $status"
