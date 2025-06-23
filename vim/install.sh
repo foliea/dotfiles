@@ -33,7 +33,6 @@ for extension in coc-tsserver \
     coc-solargraph \
     coc-json \
     coc-prisma \
-    coc-sh \
     coc-yaml \
     coc-cmake \
     coc-swagger \
