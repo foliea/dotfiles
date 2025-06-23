@@ -15,6 +15,7 @@ brew install cmake \
   ncdu \
   fzf \
   ripgrep \
+  fd \
   hub \
   rar \
   rbenv \

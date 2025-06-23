@@ -40,6 +40,8 @@ if [ -d "/opt/homebrew/bin" ]; then
     export PATH="/opt/homebrew/bin:$PATH"
 fi
 
+export PATH="$HOME/.local/bin:$PATH"
+
 # Always alias python to python3
 alias python=python3
 
