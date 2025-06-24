@@ -1,4 +1,4 @@
-set -g -x EDITOR vim
+set -g -x EDITOR nvim
 set -g -x SHELL (which fish)
 set -g -x TERM xterm-256color
 set -g -x LC_ALL en_US.UTF-8
