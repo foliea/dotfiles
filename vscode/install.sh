@@ -13,7 +13,7 @@ case "$(uname -s)" in
         VS_CODE_CONFIG_DIR="$HOME/Library/Application Support/Code/User"
         ;;
     Linux*)     # Linux / WSL
-        if grep -qEi "(Microsoft|WSL)" /proc/version &>/dev/null; then
+        if grep -qEi "WSL" /proc/version; then
             VS_CODE_CONFIG_DIR="$HOME/.vscode-server/data/Machine"
             IS_WSL=true
         else
