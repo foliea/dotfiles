@@ -47,18 +47,27 @@ vim.cmd [[
   Plug 'leafgarland/typescript-vim'
   Plug 'jparise/vim-graphql'
   Plug 'vim-ruby/vim-ruby'
+  Plug 'NTBBloodbath/doom-one.nvim'
   call plug#end()
 ]]
 
+-- Doom One theme setup
+pcall(function()
+  vim.g.doom_one_terminal_colors = true
+  vim.g.doom_one_italic_comments = true
+  vim.g.doom_one_enable_treesitter = true
+  vim.g.doom_one_transparent_background = false
+  vim.cmd [[colorscheme doom-one]]
+end)
+
 -- Editor options
-vim.cmd [[colorscheme Tomorrow-Night]]
 vim.opt.background = 'dark'
 vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.ruler = true
-vim.opt.backupdir = vim.fn.expand('~/.local/share/nvim/tmp/backup//')
-vim.opt.directory = vim.fn.expand('~/.local/share/nvim/tmp/swap//')
-vim.opt.undodir = vim.fn.expand('~/.local/share/nvim/tmp/undo//')
+vim.opt.backupdir = vim.fn.expand('~/.config/nvim/tmp/backup//')
+vim.opt.directory = vim.fn.expand('~/.config/nvim/tmp/swap//')
+vim.opt.undodir = vim.fn.expand('~/.config/nvim/tmp/undo//')
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true

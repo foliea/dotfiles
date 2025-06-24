@@ -3,6 +3,8 @@ set -e
 
 brew install cmake \
   curl \
+  git \
+  cmake \
   wget \
   gawk \
   readline \
