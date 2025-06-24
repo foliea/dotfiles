@@ -49,6 +49,5 @@ vim.cmd [[
   Plug 'jparise/vim-graphql'
   Plug 'vim-ruby/vim-ruby'
   Plug 'chriskempson/base16-vim'
-  Plug 'ekalinin/Dockerfile.vim'
   call plug#end()
 ]]

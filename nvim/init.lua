@@ -41,7 +41,6 @@ pcall(function()
     ensure_installed = { "ruby", "javascript", "typescript", "lua", "bash", "dockerfile", "json", "yaml", "markdown" },
     highlight = {
       enable = true,
-      disable = { "dockerfile" },
       additional_vim_regex_highlighting = false,
     },
   }
