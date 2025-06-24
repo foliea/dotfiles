@@ -26,4 +26,6 @@ brew install cmake \
   helm \
   k9s \
   awscli \
-  fnm
+  fnm \
+  font-hack-nerd-font
+

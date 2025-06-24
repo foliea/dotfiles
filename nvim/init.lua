@@ -2,12 +2,9 @@ vim.cmd [[
   let g:fzf_install = 'yes | ./install --bin'
   call plug#begin('~/.config/nvim/plugins')
   Plug 'vim-syntastic/syntastic'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'neovim/nvim-lspconfig'
   Plug 'scrooloose/nerdcommenter'
   Plug 'majutsushi/tagbar'
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
-  Plug 'junegunn/fzf', { 'do': g:fzf_install }
   Plug 'jremmen/vim-ripgrep'
   Plug 'janko-m/vim-test'
   Plug 'pbrisbin/vim-mkdir'
@@ -20,6 +17,27 @@ vim.cmd [[
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
   Plug 'jgdavey/tslime.vim'
   Plug 'christoomey/vim-tmux-navigator'
+  Plug 'github/copilot.vim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'do': 'make tiktoken' }
+  Plug 'nvim-telescope/telescope.nvim'
+  Plug 'nvim-telescope/telescope-ui-select.nvim'
+  Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-lualine/lualine.nvim'
+  Plug 'nvim-tree/nvim-web-devicons'
+  Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
+  Plug 'lewis6991/gitsigns.nvim'
+  Plug 'nvim-tree/nvim-tree.lua'
+  Plug 'folke/todo-comments.nvim'
+  Plug 'folke/trouble.nvim'
+  Plug 'hrsh7th/nvim-cmp'
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/cmp-path'
+  Plug 'hrsh7th/cmp-cmdline'
+  Plug 'L3MON4D3/LuaSnip'
+  Plug 'saadparwaiz1/cmp_luasnip'
   Plug 'moll/vim-node'
   Plug 'pantharshit00/vim-prisma'
   Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
@@ -139,8 +157,8 @@ vim.api.nvim_set_keymap('n', '<C-J>', '<C-W><C-J>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-K>', '<C-W><C-K>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-L>', '<C-W><C-L>', { noremap = true })
 
-vim.api.nvim_set_keymap('n', '<C-P>', ':FZF<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-F>', ':Rg ""<Left>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-P>', [[<cmd>lua require('telescope.builtin').find_files()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-F', [[<cmd>lua require('telescope.builtin').live_grep()<CR>]], { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap('n', '<leader>t', ':TestNearest<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>f', ':TestFile<CR>', { noremap = true, silent = true })
@@ -150,32 +168,6 @@ vim.g['test#strategy'] = 'tslime'
 vim.api.nvim_set_keymap('n', '<leader>c', ':Tmux ""<Left>', { noremap = true })
 vim.g['tslime_always_current_session'] = 1
 
-vim.g['airline#extensions#tabline#enabled'] = 1
-vim.g['airline#extensions#tabline#fnamemod'] = ':t'
-vim.g['airline#extensions#tabline#buffer_nr_show'] = 1
-
-vim.g.fzf_colors = {
-  fg = { 'fg', 'Normal' },
-  bg = { 'bg', 'Normal' },
-  hl = { 'fg', 'Comment' },
-  ['fg+'] = { 'fg', 'CursorLine', 'CursorColumn', 'Normal' },
-  ['bg+'] = { 'bg', 'CursorLine', 'CursorColumn' },
-  ['hl+'] = { 'fg', 'Statement' },
-  info = { 'fg', 'PreProc' },
-  border = { 'fg', 'Ignore' },
-  prompt = { 'fg', 'Conditional' },
-  pointer = { 'fg', 'Exception' },
-  marker = { 'fg', 'Keyword' },
-  spinner = { 'fg', 'Label' },
-  header = { 'fg', 'Comment' },
-}
-
-vim.g.fzf_action = {
-  ['ctrl-t'] = 'tab split',
-  ['ctrl-s'] = 'split',
-  ['ctrl-v'] = 'vsplit',
-}
-
 vim.api.nvim_set_keymap('', '<Up>', '<Nop>', { noremap = true })
 vim.api.nvim_set_keymap('', '<Down>', '<Nop>', { noremap = true })
 vim.api.nvim_set_keymap('', '<Left>', '<Nop>', { noremap = true })
@@ -183,18 +175,17 @@ vim.api.nvim_set_keymap('', '<Right>', '<Nop>', { noremap = true })
 
 vim.g.EasyMotion_leader_key = ';'
 
-vim.opt.statusline = vim.opt.statusline:get() .. '%#warningmsg#%{SyntasticStatuslineFlag()}%*'
-
 vim.g.syntastic_always_populate_loc_list = 1
 vim.g.syntastic_auto_loc_list = 1
 vim.g.syntastic_check_on_open = 1
 vim.g.syntastic_check_on_wq = 0
 vim.g.syntastic_python_checkers = {}
 
-vim.api.nvim_set_keymap('n', 'gd', '<Plug>(coc-definition)', { silent = true })
-vim.api.nvim_set_keymap('n', 'gy', '<Plug>(coc-type-definition)', { silent = true })
-vim.api.nvim_set_keymap('n', 'gi', '<Plug>(coc-implementation)', { silent = true })
-vim.api.nvim_set_keymap('n', 'gr', '<Plug>(coc-references)', { silent = true })
+-- Native LSP keymaps
+vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'gy', '<cmd>lua vim.lsp.buf.type_definition()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', { noremap = true, silent = true })
 
 -- Custom functions
 function Open(target)
@@ -236,3 +227,121 @@ function MakeExecutable()
   vim.fn.system('chmod +x ' .. filename)
 end
 vim.api.nvim_create_user_command('ME', MakeExecutable, {})
+
+-- CopilotChat.nvim setup
+pcall(function()
+  require("CopilotChat").setup {
+    model = "gpt-4.1"
+  }
+end)
+
+-- Telescope ui-select setup
+pcall(function()
+  require("telescope").setup {
+    extensions = {
+      ["ui-select"] = {
+        require("telescope.themes").get_dropdown {
+        }
+      },
+      fzf = {
+        fuzzy = true,
+        override_generic_sorter = true,
+        override_file_sorter = true,
+        case_mode = "smart_case",
+      }
+    }
+  }
+  require("telescope").load_extension("ui-select")
+  require("telescope").load_extension("fzf")
+end)
+
+-- Treesitter setup for better syntax highlighting
+pcall(function()
+  require'nvim-treesitter.configs'.setup {
+    ensure_installed = "all",
+    highlight = {
+      enable = true,
+      additional_vim_regex_highlighting = false,
+    },
+  }
+end)
+
+-- Gitsigns setup
+pcall(function()
+  require('gitsigns').setup()
+end)
+
+-- NvimTree setup
+pcall(function()
+  require('nvim-tree').setup()
+end)
+
+pcall(function()
+  require("todo-comments").setup()
+end)
+
+pcall(function()
+  require("trouble").setup {}
+end)
+
+-- Lualine setup (after plugin block)
+pcall(function()
+  require('lualine').setup {
+    options = {
+      theme = 'auto',
+      icons_enabled = true,
+      section_separators = '',
+      component_separators = '',
+    },
+    -- You can customize sections/components here
+  }
+end)
+
+-- Bufferline setup
+vim.opt.termguicolors = true
+
+pcall(function()
+  require("bufferline").setup{
+    options = {
+      show_buffer_icons = true, -- enable filetype icons
+      show_buffer_close_icons = true,
+      show_close_icon = true,
+      separator_style = "slant", -- looks modern with icons
+    }
+  }
+end)
+
+vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>tq', ":TodoTelescope<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>xx', "<cmd>TroubleToggle<CR>", { noremap = true, silent = true })
+
+-- LSP setup (replace coc.nvim)
+pcall(function()
+  local lspconfig = require('lspconfig')
+  lspconfig.ts_ls.setup{}
+  lspconfig.lua_ls.setup{}
+  -- Add more language servers as needed
+end)
+
+pcall(function()
+  local cmp = require'cmp'
+  cmp.setup({
+    snippet = {
+      expand = function(args)
+        require('luasnip').lsp_expand(args.body)
+      end,
+    },
+    mapping = cmp.mapping.preset.insert({
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+      ['<Tab>'] = cmp.mapping.select_next_item(),
+      ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+    }),
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'luasnip' },
+      { name = 'buffer' },
+      { name = 'path' },
+    })
+  })
+end)
