@@ -1,6 +1,6 @@
 -- Autocommands
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'ruby', 'eruby', 'crystal', 'yaml', 'haml', 'toml', 'slim', 'json', 'scss', 'css', 'vim', 'javascript', 'typescript', 'groovy' },
+  pattern = { 'ruby', 'eruby', 'crystal', 'yaml', 'haml', 'toml', 'slim', 'json', 'scss', 'css', 'vim', 'javascript', 'typescript', 'groovy', 'lua' },
   callback = function()
     vim.opt_local.shiftwidth = 2
     vim.opt_local.softtabstop = 2

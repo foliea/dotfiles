@@ -56,7 +56,20 @@ end)
 
 -- NvimTree setup
 pcall(function()
-  require('nvim-tree').setup()
+  require('nvim-tree').setup {
+    filters = {
+      custom = {
+        '^.git$',
+        '^.DS_Store$',
+        '^node_modules$',
+        'dist',
+        'build',
+        '__pycache__',
+        '%.o$',
+        '%.swp$',
+      }
+    },
+  }
 end)
 
 pcall(function()
