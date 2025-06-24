@@ -8,6 +8,22 @@ export TERM=xterm-256color
 export LC_ALL=en_US.UTF-8
 export PAGER=most
 
+# Rust
+if [ -d "$HOME/.cargo/bin" ]; then
+    export PATH="$HOME/.cargo/bin:$PATH"
+fi
+
+# Prepend /opt/homebrew/bin to PATH if it exists
+if [ -d "/opt/homebrew/bin" ]; then
+    export PATH="/opt/homebrew/bin:$PATH"
+fi
+
+if [ -d "/opt/nvim/bin" ]; then
+    export PATH="/opt/nvim/bin:$PATH"
+fi
+
+export PATH="$HOME/.local/bin:$PATH"
+
 # Ruby
 if command -v rbenv >/dev/null 2>&1; then
     export PATH="$HOME/.rbenv/bin:$PATH"
@@ -29,22 +45,6 @@ fi
 if command -v brew >/dev/null 2>&1; then
     alias python=/opt/homebrew/bin/python3
 fi
-
-# Rust
-if [ -d "$HOME/.cargo/bin" ]; then
-    export PATH="$HOME/.cargo/bin:$PATH"
-fi
-
-# Prepend /opt/homebrew/bin to PATH if it exists
-if [ -d "/opt/homebrew/bin" ]; then
-    export PATH="/opt/homebrew/bin:$PATH"
-fi
-
-if [ -d "/opt/nvim/bin" ]; then
-    export PATH="/opt/nvim/bin:$PATH"
-fi
-
-export PATH="$HOME/.local/bin:$PATH"
 
 # Always alias python to python3
 alias python=python3

@@ -4,6 +4,12 @@ set -g -x TERM xterm-256color
 set -g -x LC_ALL en_US.UTF-8
 set -g -x PAGER most
 
+if test -d /opt/nvim/bin
+    set PATH /opt/nvim/bin $PATH
+end
+
+set PATH $HOME/.local/bin $PATH
+
 if test -d /opt/homebrew/bin
     set -U fish_user_paths /opt/homebrew/bin $fish_user_paths
 end
@@ -33,11 +39,6 @@ if which brew >/dev/null 2>&1
     alias python=/opt/homebrew/bin/python3
 end
 
-if test -d /opt/nvim/bin
-    set PATH /opt/nvim/bin $PATH
-end
-
-set PATH $HOME/.local/bin $PATH
 
 alias ll='ls -lF'
 alias la='ls -lA'
