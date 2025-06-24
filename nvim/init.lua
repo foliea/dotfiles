@@ -11,7 +11,10 @@ require('usercmds')
 -- CopilotChat.nvim setup
 pcall(function()
   require("CopilotChat").setup {
-    model = "gpt-4.1"
+    model = "gpt-4.1",
+    markdown = {
+      enabled = true
+    }
   }
 end)
 
