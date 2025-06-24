@@ -16,7 +16,7 @@ curl -fLo "$HOME/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
 nvim +'PlugInstall --sync' +qa
 
 # Install language servers
-npm install -g typescript typescript-language-server
-npm install -g bash-language-server
-npm install -g dockerfile-language-server-nodejs
+sudo npm install -g typescript typescript-language-server
+sudo npm install -g bash-language-server
+sudo npm install -g dockerfile-language-server-nodejs
 gem install solargraph
