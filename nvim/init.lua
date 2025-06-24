@@ -320,7 +320,9 @@ pcall(function()
   local lspconfig = require('lspconfig')
   lspconfig.ts_ls.setup{}
   lspconfig.lua_ls.setup{}
-  -- Add more language servers as needed
+  lspconfig.solargraph.setup{}
+  lspconfig.bashls.setup{}
+  lspconfig.dockerls.setup{}
 end)
 
 pcall(function()

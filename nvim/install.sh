@@ -14,3 +14,9 @@ curl -fLo "$HOME/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 nvim +'PlugInstall --sync' +qa
+
+# Install language servers
+npm install -g typescript typescript-language-server
+npm install -g bash-language-server
+npm install -g dockerfile-language-server-nodejs
+gem install solargraph
