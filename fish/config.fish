@@ -33,6 +33,10 @@ if which brew >/dev/null 2>&1
     alias python=/opt/homebrew/bin/python3
 end
 
+if test -d /opt/nvim/bin
+    set PATH /opt/nvim/bin $PATH
+end
+
 set PATH $HOME/.local/bin $PATH
 
 alias ll='ls -lF'

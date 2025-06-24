@@ -12,7 +12,6 @@ apt-get install -qy \
   curl \
   wget \
   vim \
-  neovim \
   fish \
   tmux \
   rbenv \
@@ -34,6 +33,13 @@ apt-get install -qy \
   p7zip-full \
   kubectx \
   expect
+
+# Install latest version of neovim
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz && \
+  rm -rf /opt/nvim && \
+  mkdir -p /opt/nvim && \
+  tar -C /opt/nvim --strip-components=1 -xzf nvim-linux-x86_64.tar.gz && \
+  rm nvim-linux-x86_64.tar.gz
 
 # Install k9s
 wget https://github.com/derailed/k9s/releases/latest/download/k9s_linux_amd64.deb && apt install ./k9s_linux_amd64.deb && rm k9s_linux_amd64.deb
