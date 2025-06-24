@@ -80,5 +80,8 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "explorer.confirmDragAndDrop": false,
-  "explorer.confirmDelete": false
+  "explorer.confirmDelete": false,
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  }
 }

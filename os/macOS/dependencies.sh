@@ -11,6 +11,7 @@ brew install cmake \
   fish \
   tmux \
   macvim \
+  neovim \
   vifm \
   ncdu \
   fzf \

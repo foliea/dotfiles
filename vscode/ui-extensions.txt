@@ -1,4 +1,4 @@
-vscodevim.vim
+asvetliakov.vscode-neovim
 ryuta46.multi-command
 pkief.material-icon-theme
 ms-vscode.theme-tomorrowkit

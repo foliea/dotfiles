@@ -12,6 +12,7 @@ apt-get install -qy \
   curl \
   wget \
   vim \
+  neovim \
   fish \
   tmux \
   rbenv \
