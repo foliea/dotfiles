@@ -49,5 +49,6 @@ vim.cmd [[
   Plug 'jparise/vim-graphql'
   Plug 'vim-ruby/vim-ruby'
   Plug 'chriskempson/base16-vim'
+  Plug 'rcarriga/nvim-notify'
   call plug#end()
 ]]
