@@ -56,7 +56,7 @@ make
 You can install only a specific configuration by running its target. For example:
 
 ```bash
-make vim      # Install only Vim configuration
+make nvim     # Install only Neovim configuration
 make fish     # Install only Fish shell configuration
 make bash     # Install only Bash configuration
 make git      # Install only Git configuration
@@ -93,7 +93,7 @@ To remove the dotfiles, run:
 make clean
 ```
 
-> **Note:** The `clean` target is **not modular** and will attempt to remove all installed configuration files and related data. Use with caution, as it may erase files for all components (vim, fish, bash, etc.) regardless of which ones you installed.
+> **Note:** The `clean` target is **not modular** and will attempt to remove all installed configuration files and related data. Use with caution, as it may erase files for all components (fish, bash, etc.) regardless of which ones you installed.
 
 ## Features
 
