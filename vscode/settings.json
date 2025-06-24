@@ -27,6 +27,8 @@
     "statusBarItem.activeBackground": "#ffcc66",
     "statusBarItem.hoverBackground": "#50fa7b"
   },
+  "editor.fontFamily": "Hack Nerd Font, monospace",
+  "editor.fontSize": 13,
   "editor.lineNumbers": "relative",
   "editor.autoClosingBrackets": "never",
   "editor.autoClosingQuotes": "never",
