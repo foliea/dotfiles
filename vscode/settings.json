@@ -83,5 +83,8 @@
   "explorer.confirmDelete": false,
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
-  }
+  },
+  "vscode-neovim.useWSL": true,
+  "vscode-neovim.neovimExecutablePaths.windows": "\\\\wsl$\\Ubuntu\\opt\\nvim\\bin\\nvim",
+  "vscode-neovim.neovimExecutablePaths.linux": "/opt/nvim/bin/nvim"
 }
