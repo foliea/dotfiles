@@ -24,6 +24,8 @@ vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = tru
 vim.api.nvim_set_keymap('n', '<leader>tq', ":TodoTelescope<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>xx', "<cmd>TroubleToggle<CR>", { noremap = true, silent = true })
 
+vim.api.nvim_set_keymap('n', '<C-u>', "<cmd>lua require('CopilotChat').toggle()<CR>", { noremap = true, silent = true })
+
 vim.g.EasyMotion_leader_key = ';'
 
 -- Native LSP keymaps
