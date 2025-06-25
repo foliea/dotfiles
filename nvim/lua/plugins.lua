@@ -21,6 +21,8 @@ vim.cmd [[
   Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-lualine/lualine.nvim'
+  Plug 'folke/trouble.nvim'
+  Plug 'stevearc/conform.nvim'
   Plug 'jremmen/vim-ripgrep'
   Plug 'christoomey/vim-system-copy'
   Plug 'pbrisbin/vim-mkdir'

@@ -5,8 +5,7 @@ require('keymaps')
 require('autocmds')
 require('lsp')
 require('usercmds')
-
--- Set Tomorrow Night Eighties as the colorscheme (base16)
+require('linters')
 
 -- CopilotChat.nvim setup
 pcall(function()
@@ -105,7 +104,10 @@ pcall(function()
   }
 end)
 
-vim.notify = require("notify")
+pcall(function()
+  vim.notify = require("notify")
+end)
+
 vim.diagnostic.config({
   signs = true,
   virtual_text = true,
