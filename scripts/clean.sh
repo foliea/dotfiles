@@ -3,9 +3,7 @@ set -e
 
 for file in gitconfig \
     gitignore-global \
-    vimrc \
     tern-config \
-    vim \
     vifmrc \
     vifm \
     vim-go \

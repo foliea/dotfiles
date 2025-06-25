@@ -12,7 +12,6 @@ brew install cmake \
   jq \
   fish \
   tmux \
-  macvim \
   neovim \
   vifm \
   ncdu \

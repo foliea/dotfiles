@@ -11,7 +11,6 @@ apt-get install -qy \
   mercurial \
   curl \
   wget \
-  vim \
   fish \
   tmux \
   rbenv \
