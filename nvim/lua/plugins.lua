@@ -2,22 +2,17 @@
 vim.cmd [[
   let g:fzf_install = 'yes | ./install --bin'
   call plug#begin('~/.config/nvim/plugins')
-  Plug 'vim-syntastic/syntastic'
   Plug 'neovim/nvim-lspconfig'
+  Plug 'vim-syntastic/syntastic'
   Plug 'scrooloose/nerdcommenter'
   Plug 'majutsushi/tagbar'
-  Plug 'jremmen/vim-ripgrep'
-  Plug 'janko-m/vim-test'
-  Plug 'pbrisbin/vim-mkdir'
-  Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-surround'
-  Plug 'christoomey/vim-system-copy'
+  Plug 'easymotion/vim-easymotion'
   Plug 'Yggdroot/indentline'
   Plug 'chrisbra/Colorizer'
-  Plug 'easymotion/vim-easymotion'
-  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
   Plug 'jgdavey/tslime.vim'
   Plug 'christoomey/vim-tmux-navigator'
+  Plug 'chriskempson/base16-vim'
+  Plug 'rcarriga/nvim-notify'
   Plug 'github/copilot.vim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'do': 'make tiktoken' }
@@ -26,6 +21,13 @@ vim.cmd [[
   Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-lualine/lualine.nvim'
+  Plug 'jremmen/vim-ripgrep'
+  Plug 'christoomey/vim-system-copy'
+  Plug 'pbrisbin/vim-mkdir'
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-surround'
+  Plug 'janko-m/vim-test'
   Plug 'nvim-tree/nvim-web-devicons'
   Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
   Plug 'lewis6991/gitsigns.nvim'
@@ -40,16 +42,14 @@ vim.cmd [[
   Plug 'hrsh7th/cmp-cmdline'
   Plug 'L3MON4D3/LuaSnip'
   Plug 'saadparwaiz1/cmp_luasnip'
-  Plug 'moll/vim-node'
-  Plug 'pantharshit00/vim-prisma'
-  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-  Plug 'elzr/vim-json'
-  Plug 'jelera/vim-javascript-syntax'
   Plug 'dag/vim-fish'
-  Plug 'leafgarland/typescript-vim'
-  Plug 'jparise/vim-graphql'
+  Plug 'elzr/vim-json'
   Plug 'vim-ruby/vim-ruby'
-  Plug 'chriskempson/base16-vim'
-  Plug 'rcarriga/nvim-notify'
+  Plug 'jelera/vim-javascript-syntax'
+  Plug 'leafgarland/typescript-vim'
+  Plug 'moll/vim-node'
+  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+  Plug 'pantharshit00/vim-prisma'
+  Plug 'jparise/vim-graphql'
   call plug#end()
 ]]
