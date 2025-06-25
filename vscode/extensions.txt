@@ -4,9 +4,7 @@ esbenp.prettier-vscode
 hashicorp.terraform
 ms-vscode.makefile-tools
 rubocop.vscode-rubocop
-shopify.ruby-extensions-pack
-shopify.ruby-lsp
-sorbet.sorbet-vscode-extension
+castwide.solargraph
 oderwat.indent-rainbow
 naumovs.color-highlight
 docker.docker
