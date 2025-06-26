@@ -98,10 +98,10 @@ make clean
 
 ## Features
 
-- **Cross-platform support**: Works on macOS and Ubuntu.
-- **Custom shell setup**: Includes Fish shell configurations and plugins.
-- **Editor configurations**: Preconfigured Vim and VS Code settings.
-- **TUI configurations**: Preconfigured btop theme.
+- **Cross-platform support**: Works on macOS and Ubuntu (native or WSL 2).
+- **Custom shell setup**: Includes Fish and Bash shell configurations and plugins.
+- **Editor configurations**: Preconfigured Neovim and VS Code settings.
+- **TUI configurations**: Preconfigured btop, k9s, etc...
 - **Tmux enhancements**: Includes plugins for better terminal multiplexing.
 - **Automated setup**: Scripts to install dependencies and configure the environment.
 
