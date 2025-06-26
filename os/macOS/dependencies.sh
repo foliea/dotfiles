@@ -33,6 +33,6 @@ brew install cmake \
   zoxide \
   fastfetch \
   lazygit \
-  jesseduffield/lazydocker/lazydocker
+  jesseduffield/lazydocker/lazydocker \
   btop
 
