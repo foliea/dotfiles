@@ -27,7 +27,7 @@ vim.cmd [[colorscheme base16-tomorrow-night-eighties]]
 -- Clipboard integration for vim-system-copy in WSL, Wayland, X11, and VS Code
 if vim.fn.has('wsl') == 1 then
   vim.g['system_copy#copy_command'] = 'clip.exe'
-  vim.g['system_copy#paste_command'] = 'powershell.exe -c Get-Clipboard'
+  vim.g['system_copy#paste_command'] = "powershell.exe -NoLogo -NoProfile -Command \"[Console]::Write((Get-Clipboard -Raw) -replace '\r', '')\""
 elseif vim.fn.has('macunix') == 1 then
   vim.g['system_copy#copy_command'] = 'pbcopy'
   vim.g['system_copy#paste_command'] = 'pbpaste'
