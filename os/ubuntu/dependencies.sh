@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
 
+add-apt-repository -y ppa:zhangsongcui3371/fastfetch
+
 apt-get update -qq
 apt-get install -qy \
   build-essential \
@@ -33,7 +35,8 @@ apt-get install -qy \
   p7zip-full \
   kubectx \
   expect \
-  btop
+  btop \
+  fastfetch
 
 # Install latest version of neovim
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz && \
