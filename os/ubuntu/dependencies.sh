@@ -31,7 +31,8 @@ apt-get install -qy \
   rar \
   p7zip-full \
   kubectx \
-  expect
+  expect \
+  btop
 
 # Install latest version of neovim
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz && \
@@ -56,9 +57,18 @@ curl -fsSL https://fnm.vercel.app/install | bash
 
 # Setup fd-find
 mkdir -p $HOME/.local/bin
-ln -s $(which fdfind) $HOME/.local/bin/fd
+ln -sf $(which fdfind) $HOME/.local/bin/fd
 
-# Install eza
+# Install cli tools
 curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path
 
-cargo install eza zoxide
+$HOME/.cargo/bin/cargo install eza zoxide
+
+# Install TUIs
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+tar xf lazygit.tar.gz lazygit
+install lazygit -D -t /usr/local/bin/
+rm lazygit.tar.gz lazygit
+
+curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash

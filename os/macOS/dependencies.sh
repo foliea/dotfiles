@@ -30,5 +30,9 @@ brew install cmake \
   fnm \
   font-hack-nerd-font \
   eza \
-  zoxide
+  zoxide \
+  fastfetch \
+  lazygit \
+  jesseduffield/lazydocker/lazydocker
+  btop
 
