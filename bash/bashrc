@@ -61,6 +61,10 @@ if [ -f "$HOME/.config/bash/prompt.bash" ]; then
     source "$HOME/.config/bash/prompt.bash"
 fi
 
+install_lsp() {
+    "$HOME/.config/nvim/install_lsp.sh" "$@"
+}
+
 # Load local customizations if they exist
 [ -f "$HOME/.bashrc.local" ] && source "$HOME/.bashrc.local"
 
