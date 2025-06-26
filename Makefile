@@ -1,7 +1,7 @@
-.PHONY: all re clean test help fish bash git nvim vifm tmux vscode k9s
+.PHONY: all re clean test help fish bash git nvim vifm tmux vscode tuis
 
 SCRIPTS_DIR := scripts
-MODULES := fish bash git nvim vifm tmux vscode k9s
+MODULES := fish bash git nvim vifm tmux vscode tuis
 
 all: $(MODULES)
 
@@ -29,5 +29,6 @@ help:
 	@echo "  vifm       Install Vifm config"
 	@echo "  tmux       Install Tmux config"
 	@echo "  vscode     Install VS Code config"
-	@echo "  k9s        Install k9s config"
+	
+	@echo "  tuis       Install TUI config"
 	@echo "  help       Show this help message"

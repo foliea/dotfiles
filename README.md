@@ -63,6 +63,7 @@ make git      # Install only Git configuration
 make vifm     # Install only Vifm configuration
 make tmux     # Install only Tmux configuration
 make vscode   # Install only VS Code configuration
+make tuis     # Install only TUI configuration
 ```
 
 > If you encounter an error indicating that a configuration file already exists, please follow the [Reinstallation](#reinstallation) instructions.
@@ -100,6 +101,7 @@ make clean
 - **Cross-platform support**: Works on macOS and Ubuntu.
 - **Custom shell setup**: Includes Fish shell configurations and plugins.
 - **Editor configurations**: Preconfigured Vim and VS Code settings.
+- **TUI configurations**: Preconfigured btop theme.
 - **Tmux enhancements**: Includes plugins for better terminal multiplexing.
 - **Automated setup**: Scripts to install dependencies and configure the environment.
 
