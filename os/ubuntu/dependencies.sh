@@ -61,4 +61,4 @@ ln -s $(which fdfind) $HOME/.local/bin/fd
 # Install eza
 curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path
 
-cargo install eza
+cargo install eza zoxide

@@ -29,5 +29,6 @@ brew install cmake \
   awscli \
   fnm \
   font-hack-nerd-font \
-  eza
+  eza \
+  zoxide
 

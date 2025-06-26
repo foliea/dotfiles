@@ -39,9 +39,9 @@ if which brew >/dev/null 2>&1
     alias python=/opt/homebrew/bin/python3
 end
 
-
 alias ll='eza -lF --icons'
 alias la='eza -lA --icons'
+alias z='zoxide'
 alias git='hub'
 alias python=python3
 
