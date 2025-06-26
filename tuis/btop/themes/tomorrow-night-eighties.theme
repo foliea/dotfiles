@@ -1,0 +1,82 @@
+# btop theme: "Tomorrow Night Eighties"
+
+# All colors are in 24-bit RGB format: "#RRGGBB", "#BW" or "0-255 0-255 0-255"
+
+# Main background color
+theme[main_bg]="#2d2d2d"
+
+# Main text color
+theme[main_fg]="#cccccc"
+
+# Title color for boxes
+theme[title]="#cccccc"
+
+# Higlight color for keyboard shortcuts
+theme[hi_fg]="#cccccc"
+
+# Background color of selected item in processes box
+theme[selected_bg]="#515151"
+
+# Foreground color of selected item in processes box
+theme[selected_fg]="#cccccc"
+
+# Color of inactive/disabled text
+theme[inactive_fg]="#999999"
+
+# Misc colors for processes box including mini cpu graphs, details memory graph and details status text
+theme[proc_misc]="#999999"
+
+# Cpu box outline color
+theme[cpu_box]="#6699cc"
+
+# Memory/disks box outline color
+theme[mem_box]="#6699cc"
+
+# Net up/down box outline color
+theme[net_box]="#6699cc"
+
+# Processes box outline color
+theme[proc_box]="#6699cc"
+
+# Box divider line and small boxes line color
+theme[div_line]="#6699cc"
+
+# Temperature graph colors
+theme[temp_start]="#99cc99"
+theme[temp_mid]="#ffcc66"
+theme[temp_end]="#f2777a"
+
+# CPU graph colors
+theme[cpu_start]="#99cc99"
+theme[cpu_mid]="#ffcc66"
+theme[cpu_end]="#f2777a"
+
+# Mem/Disk free meter
+theme[free_start]="#99cc99"
+theme[free_mid]="#ffcc66"
+theme[free_end]="#f2777a"
+
+# Mem/Disk cached meter
+theme[cached_start]="#99cc99"
+theme[cached_mid]="#ffcc66"
+theme[cached_end]="#f2777a"
+
+# Mem/Disk available meter
+theme[available_start]="#99cc99"
+theme[available_mid]="#ffcc66"
+theme[available_end]="#f2777a"
+
+# Mem/Disk used meter
+theme[used_start]="#99cc99"
+theme[used_mid]="#ffcc66"
+theme[used_end]="#f2777a"
+
+# Download graph colors
+theme[download_start]="#99cc99"
+theme[download_mid]="#ffcc66"
+theme[download_end]="#f2777a"
+
+# Upload graph colors
+theme[upload_start]="#99cc99"
+theme[upload_mid]="#ffcc66"
+theme[upload_end]="#f2777a"
