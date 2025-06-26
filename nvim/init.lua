@@ -105,6 +105,19 @@ pcall(function()
 end)
 
 pcall(function()
+  require("nvim-highlight-colors").setup {
+    render = "background",
+    enable_tailwind = true,
+    tailwind = {
+      colors = {
+        ["bg"] = "#1a202c",
+        ["text"] = "#cbd5e0",
+      },
+    },
+  }
+end)
+
+pcall(function()
   vim.notify = require("notify")
 end)
 

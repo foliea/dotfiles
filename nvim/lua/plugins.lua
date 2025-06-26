@@ -8,7 +8,7 @@ vim.cmd [[
   Plug 'majutsushi/tagbar'
   Plug 'easymotion/vim-easymotion'
   Plug 'Yggdroot/indentline'
-  Plug 'chrisbra/Colorizer'
+  Plug 'brenoprata10/nvim-highlight-colors'
   Plug 'jgdavey/tslime.vim'
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'chriskempson/base16-vim'
