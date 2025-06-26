@@ -13,6 +13,7 @@ apt-get install -qy \
   wget \
   fish \
   tmux \
+  vifm \
   rbenv \
   libffi-dev \
   libyaml-dev \
