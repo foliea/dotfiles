@@ -28,5 +28,6 @@ brew install cmake \
   k9s \
   awscli \
   fnm \
-  font-hack-nerd-font
+  font-hack-nerd-font \
+  eza
 

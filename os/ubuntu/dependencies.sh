@@ -43,8 +43,6 @@ curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x8
 # Install k9s
 wget https://github.com/derailed/k9s/releases/latest/download/k9s_linux_amd64.deb && apt install ./k9s_linux_amd64.deb && rm k9s_linux_amd64.deb
 
-curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path
-
 # Install ruby version manager
 mkdir -p "$HOME/.rbenv/plugins"
 if [ ! -d "$HOME/.rbenv/plugins/ruby-build" ]; then
@@ -59,3 +57,8 @@ curl -fsSL https://fnm.vercel.app/install | bash
 # Setup fd-find
 mkdir -p $HOME/.local/bin
 ln -s $(which fdfind) $HOME/.local/bin/fd
+
+# Install eza
+curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path
+
+cargo install eza

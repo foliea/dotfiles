@@ -40,8 +40,8 @@ if which brew >/dev/null 2>&1
 end
 
 
-alias ll='ls -lF'
-alias la='ls -lA'
+alias ll='eza -lF --icons'
+alias la='eza -lA --icons'
 alias git='hub'
 alias python=python3
 
