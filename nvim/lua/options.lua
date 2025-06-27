@@ -24,6 +24,18 @@ vim.opt.showbreak = '=>   '
 vim.opt.termguicolors = true
 vim.cmd [[colorscheme base16-tomorrow-night-eighties]]
 
+vim.api.nvim_set_hl(0, "Delimiter", { fg = "#ffffff" })
+vim.api.nvim_set_hl(0, "@string.special", { fg = "#f99157" })
+vim.api.nvim_set_hl(0, "@string.regexp", { fg = "#99cc99" })
+vim.api.nvim_set_hl(0, "@string.escape", { fg = "#f99157" })
+vim.api.nvim_set_hl(0, "@variable", { fg = "#f2777a" })
+vim.api.nvim_set_hl(0, "DevIconRb", { fg = "#e8274b" })
+vim.api.nvim_set_hl(0, "DevIconErb", { fg = "#e8274b" })
+vim.api.nvim_set_hl(0, "DevIconConfigRu", { fg = "#e8274b" })
+vim.api.nvim_set_hl(0, "DevIconGemfile", { fg = "#e8274b" })
+vim.api.nvim_set_hl(0, "DevIconRake", { fg = "#e8274b" })
+vim.api.nvim_set_hl(0, "DevIconRakefile", { fg = "#e8274b" })
+
 -- Clipboard integration for vim-system-copy in WSL, Wayland, X11, and VS Code
 if vim.fn.has('wsl') == 1 then
   vim.g['system_copy#copy_command'] = 'clip.exe'
