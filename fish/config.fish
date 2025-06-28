@@ -6,10 +6,6 @@ set -g -x PAGER most
 
 if test -d /opt/homebrew/bin
     set -U fish_user_paths /opt/homebrew/bin $fish_user_paths
-
-    if which brew >/dev/null 2>&1
-        alias python=/opt/homebrew/bin/python3
-    end
 end
 
 if test -d /home/linuxbrew
@@ -43,7 +39,6 @@ alias ll='eza -lF --icons'
 alias la='eza -lA --icons'
 alias z='zoxide'
 alias git='hub'
-alias python=python3
 
 set -g fish_key_bindings fish_vi_key_bindings
 

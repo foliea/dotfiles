@@ -10,10 +10,6 @@ export PAGER=most
 
 if [ -d "/opt/homebrew/bin" ]; then
     export PATH="/opt/homebrew/bin:$PATH"
-
-    if command -v brew >/dev/null 2>&1; then
-        alias python=/opt/homebrew/bin/python3
-    fi
 fi
 
 export PATH="$HOME/.local/bin:$PATH"
@@ -29,8 +25,6 @@ export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 if command -v fnm >/dev/null 2>&1; then
     eval "$(fnm env --use-on-cd)"
 fi
-
-alias python=python3
 
 set -o vi
 
