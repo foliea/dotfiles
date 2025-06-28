@@ -3,7 +3,6 @@ set -g -x SHELL (which fish)
 set -g -x TERM xterm-256color
 set -g -x LC_ALL en_US.UTF-8
 set -g -x PAGER most
-
 if test -d /opt/homebrew/bin
     set -U fish_user_paths /opt/homebrew/bin $fish_user_paths
 end
@@ -12,6 +11,7 @@ if test -d /home/linuxbrew
     set --global --export HOMEBREW_PREFIX "/home/linuxbrew/.linuxbrew"
     set --global --export HOMEBREW_CELLAR "/home/linuxbrew/.linuxbrew/Cellar"
     set --global --export HOMEBREW_REPOSITORY "/home/linuxbrew/.linuxbrew/Homebrew"
+
     fish_add_path --global --move --path "/home/linuxbrew/.linuxbrew/bin" "/home/linuxbrew/.linuxbrew/sbin"
 
     if test -n "$MANPATH[1]"

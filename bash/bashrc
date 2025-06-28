@@ -12,6 +12,22 @@ if [ -d "/opt/homebrew/bin" ]; then
     export PATH="/opt/homebrew/bin:$PATH"
 fi
 
+if [ -d "/home/linuxbrew" ]; then
+    export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
+    export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar"
+    export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew"
+
+    export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
+
+    if [ -n "$MANPATH" ]; then
+        export MANPATH=":$MANPATH"
+    fi
+    case ":$INFOPATH:" in
+        *:/home/linuxbrew/.linuxbrew/share/info:*) ;;
+        *) export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH" ;;
+    esac
+fi
+
 export PATH="$HOME/.local/bin:$PATH"
 
 # Ruby

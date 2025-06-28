@@ -15,7 +15,7 @@
   "terminal.integrated.defaultProfile.linux": "tmux-session",
   "terminal.integrated.profiles.linux": {
     "tmux-session": {
-      "path": "tmux",
+      "path": "/home/linuxbrew/.linuxbrew/bin/tmux",
       "args": ["-l", "new-session", "-A", "-s", "vscode:${workspaceFolder}"]
     }
   },
