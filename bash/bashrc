@@ -26,6 +26,8 @@ if [ -d "/home/linuxbrew" ]; then
         *:/home/linuxbrew/.linuxbrew/share/info:*) ;;
         *) export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH" ;;
     esac
+
+    export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
 fi
 
 export PATH="$HOME/.local/bin:$PATH"

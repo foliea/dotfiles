@@ -20,6 +20,8 @@ if test -d /home/linuxbrew
     if not contains "/home/linuxbrew/.linuxbrew/share/info" $INFOPATH
         set --global --export INFOPATH "/home/linuxbrew/.linuxbrew/share/info" $INFOPATH
     end
+
+    set -gx RUBY_CONFIGURE_OPTS "--with-openssl-dir=$(brew --prefix openssl@3)"
 end
 
 set PATH $HOME/.local/bin $PATH
