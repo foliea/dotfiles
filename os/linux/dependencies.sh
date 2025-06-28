@@ -33,4 +33,5 @@ brew install cmake \
   fastfetch \
   lazygit \
   jesseduffield/lazydocker/lazydocker \
-  btop
+  btop \
+  gemini-cli
