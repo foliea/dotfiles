@@ -4,39 +4,39 @@ set -g -x TERM xterm-256color
 set -g -x LC_ALL en_US.UTF-8
 set -g -x PAGER most
 
-if test -d /opt/nvim/bin
-    set PATH /opt/nvim/bin $PATH
+if test -d /opt/homebrew/bin
+    set -U fish_user_paths /opt/homebrew/bin $fish_user_paths
+
+    if which brew >/dev/null 2>&1
+        alias python=/opt/homebrew/bin/python3
+    end
+end
+
+if test -d /home/linuxbrew
+    set --global --export HOMEBREW_PREFIX "/home/linuxbrew/.linuxbrew"
+    set --global --export HOMEBREW_CELLAR "/home/linuxbrew/.linuxbrew/Cellar"
+    set --global --export HOMEBREW_REPOSITORY "/home/linuxbrew/.linuxbrew/Homebrew"
+    fish_add_path --global --move --path "/home/linuxbrew/.linuxbrew/bin" "/home/linuxbrew/.linuxbrew/sbin"
+
+    if test -n "$MANPATH[1]"
+        set --global --export MANPATH '' $MANPATH
+    end
+    if not contains "/home/linuxbrew/.linuxbrew/share/info" $INFOPATH
+        set --global --export INFOPATH "/home/linuxbrew/.linuxbrew/share/info" $INFOPATH
+    end
 end
 
 set PATH $HOME/.local/bin $PATH
 
-if test -d /opt/homebrew/bin
-    set -U fish_user_paths /opt/homebrew/bin $fish_user_paths
-end
-
-if test -d $HOME/.cargo/bin
-    set PATH $HOME/.cargo/bin $PATH
-end
-
-# rbenv
+# Ruby
 if type rbenv >/dev/null 2>&1
     status --is-interactive; and source (rbenv init -|psub)
 end
 set -gx OBJC_DISABLE_INITIALIZE_FORK_SAFETY YES
 
-# node.js
+# Node.js
 if type -q fnm
     fnm env --use-on-cd | source
-end
-
-# golang
-if which go >/dev/null 2>&1
-    set -g -x GOPATH $HOME/dev/go
-end
-
-## brew
-if which brew >/dev/null 2>&1
-    alias python=/opt/homebrew/bin/python3
 end
 
 alias ll='eza -lF --icons'

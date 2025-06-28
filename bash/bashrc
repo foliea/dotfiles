@@ -8,18 +8,12 @@ export TERM=xterm-256color
 export LC_ALL=en_US.UTF-8
 export PAGER=most
 
-# Rust
-if [ -d "$HOME/.cargo/bin" ]; then
-    export PATH="$HOME/.cargo/bin:$PATH"
-fi
-
-# Prepend /opt/homebrew/bin to PATH if it exists
 if [ -d "/opt/homebrew/bin" ]; then
     export PATH="/opt/homebrew/bin:$PATH"
-fi
 
-if [ -d "/opt/nvim/bin" ]; then
-    export PATH="/opt/nvim/bin:$PATH"
+    if command -v brew >/dev/null 2>&1; then
+        alias python=/opt/homebrew/bin/python3
+    fi
 fi
 
 export PATH="$HOME/.local/bin:$PATH"
@@ -31,22 +25,11 @@ if command -v rbenv >/dev/null 2>&1; then
 fi
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
-# Golang
-if command -v go >/dev/null 2>&1; then
-    export GOPATH="$HOME/dev/go"
-fi
-
 # Node.js
 if command -v fnm >/dev/null 2>&1; then
     eval "$(fnm env --use-on-cd)"
 fi
 
-# Brew
-if command -v brew >/dev/null 2>&1; then
-    alias python=/opt/homebrew/bin/python3
-fi
-
-# Always alias python to python3
 alias python=python3
 
 set -o vi
