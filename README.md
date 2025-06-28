@@ -33,13 +33,13 @@ This repository contains configuration files and scripts to automate the setup o
 To install every dependency required:
 
 - **macOS**: See the [macOS script](os/macOS/dependencies.sh).
-- **linux**: See the [Linux script](os/linux/dependencies.sh).
+- Linux**: See the [Linux script](os/linux/dependencies.sh).
 
 ```bash
 ./os/macOS/dependencies.sh
 ```
 
-> **Note**: The `os/arch` scripts were designed to install everything on a minimal Arch Linux CLI installation, including the window manager and applications. However, it is now deprecated and may not work as expected.
+> **Note**: The misc/arch` scripts were designed to install everything on a minimal Arch Linux CLI installation, including the window manager and applications. However, it is deprecated since 2020 and may not work as expected.
 
 ## Installation
 
