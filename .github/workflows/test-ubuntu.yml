@@ -13,10 +13,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Install brew
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential procps curl file git python3 sudo locales
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+          echo "PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH" >> $GITHUB_ENV
+          echo "HOMEBREW_NO_ANALYTICS=1" >> $GITHUB_ENV
+
       - name: Install dependencies
         run: |
-          chmod +x os/ubuntu/dependencies.sh
-          sudo ./os/ubuntu/dependencies.sh
+          chmod +x os/linux/dependencies.sh
+          ./os/linux/dependencies.sh
 
       - name: Run tests
         run: |

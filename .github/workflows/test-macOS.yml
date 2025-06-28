@@ -2,7 +2,7 @@ name: Run tests on macOS
 
 on:
   push:
-    branches: # Run on all branches
+    branches:
       - "*"
 
 jobs:

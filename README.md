@@ -24,7 +24,7 @@ This repository contains configuration files and scripts to automate the setup o
 
 - Shell configurations (Fish shell)
 - Vim and Tmux setups
-- System-specific dependencies for macOS and Ubuntu
+- System-specific dependencies for macOS and Linux (brew required)
 - Git configurations
 - VS Code extensions and settings
 
@@ -33,7 +33,7 @@ This repository contains configuration files and scripts to automate the setup o
 To install every dependency required:
 
 - **macOS**: See the [macOS script](os/macOS/dependencies.sh).
-- **Ubuntu 24.04 LTS**: See the [Ubuntu script](os/ubuntu/dependencies.sh).
+- **linux**: See the [Linux script](os/linux/dependencies.sh).
 
 ```bash
 ./os/macOS/dependencies.sh
