@@ -3,7 +3,6 @@ vim.cmd [[
   let g:fzf_install = 'yes | ./install --bin'
   call plug#begin('~/.config/nvim/plugins')
   Plug 'neovim/nvim-lspconfig'
-  Plug 'vim-syntastic/syntastic'
   Plug 'scrooloose/nerdcommenter'
   Plug 'majutsushi/tagbar'
   Plug 'easymotion/vim-easymotion'
