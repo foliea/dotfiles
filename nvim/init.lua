@@ -36,7 +36,22 @@ end)
 
 -- Colorize indentation levels
 pcall(function()
-  require("ibl").setup({ exclude = { filetypes = { "dashboard" } } })
+  local highlight = {
+    "Whitespace",
+    "CursorColumn",
+  }
+  require("ibl").setup({
+    exclude = { filetypes = { "dashboard" } },
+    indent = {
+      highlight = highlight,
+      char = " "
+    },
+    whitespace = {
+      highlight = highlight,
+      remove_blankline_trail = false,
+    },
+    scope = { enabled = false },
+  })
 end)
 
 -- CopilotChat.nvim setup
