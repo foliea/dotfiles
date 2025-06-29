@@ -5,6 +5,8 @@ install_node_ls() {
     npm install -g typescript typescript-language-server
     npm install -g bash-language-server
     npm install -g dockerfile-language-server-nodejs
+    npm install -g @prisma/language-server
+    npm install -g vscode-json-languageserver
 }
 
 install_ruby_ls() {

@@ -87,7 +87,7 @@ end)
 -- Treesitter setup for better syntax highlighting
 pcall(function()
   require'nvim-treesitter.configs'.setup {
-    ensure_installed = { "ruby", "javascript", "typescript", "lua", "bash", "dockerfile", "json", "yaml", "markdown" },
+    ensure_installed = { "ruby", "javascript", "typescript", "lua", "bash", "fish", "dockerfile", "json", "yaml", "markdown", "prisma", "graphql" },
     highlight = {
       enable = true,
       additional_vim_regex_highlighting = false,
