@@ -83,9 +83,9 @@
     [
         {
             "background": "#2D2D2D",
-            "black": "#000000",
+            "black": "#999999",
             "blue": "#6699CC",
-            "brightBlack": "#000000",
+            "brightBlack": "#999999",
             "brightBlue": "#6699CC",
             "brightCyan": "#66CCCC",
             "brightGreen": "#99CC99",
