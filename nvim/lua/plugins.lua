@@ -1,6 +1,7 @@
 -- Plugin management (vim-plug block)
 vim.cmd [[
-  let g:fzf_install = 'yes | ./install --bin'
+
+let g:fzf_install = 'yes | ./install --bin'
   call plug#begin('~/.config/nvim/plugins')
   Plug 'nvimdev/dashboard-nvim'
   Plug 'neovim/nvim-lspconfig'
@@ -21,6 +22,7 @@ vim.cmd [[
   Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-lualine/lualine.nvim'
+  Plug 'sindrets/diffview.nvim'
   Plug 'folke/trouble.nvim'
   Plug 'stevearc/conform.nvim'
   Plug 'jremmen/vim-ripgrep'

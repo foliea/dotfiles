@@ -101,6 +101,11 @@ pcall(function()
   require('gitsigns').setup()
 end)
 
+-- Git diff view setup
+pcall(function()
+  require('diffview').setup()
+end)
+
 -- NvimTree setup
 pcall(function()
   require('nvim-tree').setup {
