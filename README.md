@@ -5,7 +5,7 @@
 
 My personal configuration files for setting up and managing development environments across macOS and Linux systems.
 
-<img src="/images/env.png" width="350"/>
+<img src="/misc/images/env.png" width="350"/>
 
 ## Table of Contents
 
@@ -60,7 +60,6 @@ make nvim     # Install only Neovim configuration
 make fish     # Install only Fish shell configuration
 make bash     # Install only Bash configuration
 make git      # Install only Git configuration
-make vifm     # Install only Vifm configuration
 make tmux     # Install only Tmux configuration
 make vscode   # Install only VS Code configuration
 make tuis     # Install only TUI configuration
@@ -101,7 +100,7 @@ make clean
 - **Cross-platform support**: Works on macOS and Ubuntu (native or WSL 2).
 - **Custom shell setup**: Includes Fish and Bash shell configurations and plugins.
 - **Editor configurations**: Preconfigured Neovim and VS Code settings.
-- **TUI configurations**: Preconfigured btop, k9s, etc...
+- **TUI configurations**: Preconfigured btop, k9s, vifm, etc...
 - **Tmux enhancements**: Includes plugins for better terminal multiplexing.
 - **Automated setup**: Scripts to install dependencies and configure the environment.
 

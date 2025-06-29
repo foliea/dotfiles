@@ -1,10 +1,13 @@
 #!/bin/sh
 set -e
 
+# btop
 mkdir -p $HOME/.config/btop/themes
 
 ln -sf "$PWD/tuis/btop/themes/tomorrow-night-eighties.theme" $HOME/.config/btop/themes/tomorrow-night-eighties.theme
 
+
+# k9s
 OS="$(uname -s)"
 
 if [ "$OS" = "Darwin" ]; then
@@ -19,3 +22,7 @@ fi
 mkdir -p "$K9S_CONFIG_SUPPORT/skins"
 ln -sf "$PWD/tuis/k9s/skins/tomorrow-night-eighties.yaml" "$K9S_CONFIG_SUPPORT/skins/tomorrow-night-eighties.yaml"
 ln -sf "$PWD/tuis/k9s/config.yaml" "$K9S_CONFIG_SUPPORT/config.yaml"
+
+
+# vifm
+ln -sf "$PWD/tuis/vifm/" "$HOME/.vifm"
