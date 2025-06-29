@@ -24,6 +24,7 @@ vim.api.nvim_set_keymap('', '<Right>', '<Nop>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>tq', ":TodoTelescope<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>xx', ":Trouble<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><C-P>', ":Telescope commands<CR>", { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap('n', '<C-i>', "<cmd>lua require('CopilotChat').toggle()<CR>", { noremap = true, silent = true })
 
