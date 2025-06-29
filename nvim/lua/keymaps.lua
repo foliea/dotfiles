@@ -29,6 +29,8 @@ vim.api.nvim_set_keymap('n', '<C-i>', "<cmd>lua require('CopilotChat').toggle()<
 
 vim.g.EasyMotion_leader_key = ';'
 
+vim.api.nvim_set_keymap('n', '<leader>gb', '<cmd>lua require("gitsigns").blame_line({full = true})<CR>', { noremap = true, silent = true })
+
 -- Native LSP keymaps
 vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'gy', '<cmd>lua vim.lsp.buf.type_definition()<CR>', { noremap = true, silent = true })
