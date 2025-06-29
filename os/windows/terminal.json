@@ -65,17 +65,17 @@
             },
             {
                 "colorScheme": "Tomorrow Night Eighties",
-                "guid": "{d96f7780-5aeb-5c77-93b1-4bf2de58552f}",
-                "hidden": false,
-                "name": "Ubuntu",
-                "source": "Microsoft.WSL"
-            },
-            {
-                "colorScheme": "Tomorrow Night Eighties",
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
                 "name": "PowerShell",
                 "source": "Windows.Terminal.PowershellCore"
+            },
+            {
+                "colorScheme": "Tomorrow Night Eighties",
+                "guid": "{d96f7780-5aeb-5c77-93b1-4bf2de58552f}",
+                "hidden": false,
+                "name": "Ubuntu",
+                "commandline": "wsl.exe -d Ubuntu --cd ~"
             }
         ]
     },
