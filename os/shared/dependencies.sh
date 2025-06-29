@@ -12,6 +12,7 @@ brew install cmake \
   expect \
   jq \
   fish \
+  starship \
   tmux \
   neovim \
   vifm \
@@ -34,3 +35,6 @@ brew install cmake \
   lazygit \
   jesseduffield/lazydocker/lazydocker \
   btop
+
+ln -sf "$PWD/os/shared/starship.toml" "$HOME/.config/starship.toml"
+

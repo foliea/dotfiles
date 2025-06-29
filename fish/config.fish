@@ -3,6 +3,7 @@ set -g -x SHELL (which fish)
 set -g -x TERM xterm-256color
 set -g -x LC_ALL en_US.UTF-8
 set -g -x PAGER most
+
 if test -d /opt/homebrew/bin
     set -U fish_user_paths /opt/homebrew/bin $fish_user_paths
 end
@@ -53,6 +54,8 @@ for file in $fisher_path/conf.d/*.fish
     builtin source $file 2>/dev/null
 end
 
+starship init fish | source
+
 # tabtab source for packages
 # uninstall by removing these lines
 [ -f ~/.config/tabtab/__tabtab.fish ]; and . ~/.config/tabtab/__tabtab.fish; or true
@@ -60,3 +63,4 @@ end
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
 source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+starship init fish | source
