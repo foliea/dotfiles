@@ -17,6 +17,7 @@ pcall(function()
       winbar = true,
     },
     config = {
+      header = {},
       disable_move = true,
       week_header = {
         enable = false,
@@ -28,13 +29,14 @@ pcall(function()
         enable = false,
       },
       footer = {},
+      shortcut = {},
     },
   }
 end)
 
 -- Colorize indentation levels
 pcall(function()
-  require("ibl").setup()
+  require("ibl").setup({ exclude = { filetypes = { "dashboard" } } })
 end)
 
 -- CopilotChat.nvim setup
