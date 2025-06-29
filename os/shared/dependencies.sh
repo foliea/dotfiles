@@ -38,3 +38,6 @@ brew install cmake \
 
 ln -sf "$PWD/os/shared/starship.toml" "$HOME/.config/starship.toml"
 
+mkdir -p "$HOME/.config/wezterm"
+ln -sf "$PWD/os/shared/wezterm.lua" "$HOME/.config/wezterm/wezterm.lua"
+
