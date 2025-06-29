@@ -2,11 +2,12 @@
 vim.cmd [[
   let g:fzf_install = 'yes | ./install --bin'
   call plug#begin('~/.config/nvim/plugins')
+  Plug 'nvimdev/dashboard-nvim'
   Plug 'neovim/nvim-lspconfig'
   Plug 'scrooloose/nerdcommenter'
   Plug 'majutsushi/tagbar'
   Plug 'easymotion/vim-easymotion'
-  Plug 'Yggdroot/indentline'
+  Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'brenoprata10/nvim-highlight-colors'
   Plug 'jgdavey/tslime.vim'
   Plug 'christoomey/vim-tmux-navigator'

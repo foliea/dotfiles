@@ -23,6 +23,7 @@ vim.opt.linebreak = true
 vim.opt.showbreak = '=>   '
 vim.opt.termguicolors = true
 vim.cmd [[colorscheme base16-tomorrow-night-eighties]]
+vim.opt.fillchars:append({ eob = " " })
 
 vim.api.nvim_set_hl(0, "Delimiter", { fg = "#ffffff" })
 vim.api.nvim_set_hl(0, "@string.special", { fg = "#f99157" })

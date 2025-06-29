@@ -4,8 +4,38 @@ require('options')
 require('keymaps')
 require('autocmds')
 require('lsp')
-require('usercmds')
+require("usercmds")
 require('linters')
+
+-- Dashboard setup
+pcall(function()
+  require('dashboard').setup {
+    theme = 'hyper',
+    hide = {
+      statusline = true,
+      tabline = true,
+      winbar = true,
+    },
+    config = {
+      disable_move = true,
+      week_header = {
+        enable = false,
+      },
+      packages = {
+        enable = false,
+      },
+      project = {
+        enable = false,
+      },
+      footer = {},
+    },
+  }
+end)
+
+-- Colorize indentation levels
+pcall(function()
+  require("ibl").setup()
+end)
 
 -- CopilotChat.nvim setup
 pcall(function()
