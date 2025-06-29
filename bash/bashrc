@@ -3,6 +3,7 @@
 
 # Environment variables
 export EDITOR=nvim
+export VISUAL=nvim
 export SHELL=$(which bash)
 export TERM=xterm-256color
 export LC_ALL=en_US.UTF-8
@@ -47,9 +48,26 @@ fi
 set -o vi
 
 # Aliases
-alias ll='ls -lF'
-alias la='ls -lA'
-alias git='hub'
+if command -v eza >/dev/null 2>&1; then
+    alias ll='eza -lF --icons'
+    alias la='eza -lA --icons'
+fi
+
+if command -v zoxide >/dev/null 2>&1; then
+    alias z='zoxide'
+fi
+
+if command -v hub  >/dev/null 2>&1; then
+    alias git='hub'
+fi
+
+if command -v lazygit  >/dev/null 2>&1; then
+    alias lzg='lazygit'
+fi
+
+if command -v lazydocker  >/dev/null 2>&1; then
+    alias lzd='lazydocker'
+fi
 
 # Prompt setup
 eval "$(starship init bash)"

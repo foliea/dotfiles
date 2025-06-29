@@ -1,4 +1,5 @@
 set -g -x EDITOR nvim
+set -g -x VISUAL nvim
 set -g -x SHELL (which fish)
 set -g -x TERM xterm-256color
 set -g -x LC_ALL en_US.UTF-8
@@ -38,10 +39,27 @@ if type -q fnm
     fnm env --use-on-cd | source
 end
 
-alias ll='eza -lF --icons'
-alias la='eza -lA --icons'
-alias z='zoxide'
-alias git='hub'
+# Aliases
+if type -q eza
+    alias ll='eza -lF --icons'
+    alias la='eza -lA --icons'
+end
+
+if type -q zoxide
+    alias z='zoxide'
+end
+
+if type -q hub
+    alias git='hub'
+end
+
+if type -q lazygit
+    alias lzg='lazygit'
+end
+
+if type -q lazydocker
+    alias lzd='lazydocker'
+end
 
 set -g fish_key_bindings fish_vi_key_bindings
 
@@ -63,4 +81,3 @@ starship init fish | source
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
 source ~/.orbstack/shell/init2.fish 2>/dev/null || :
-starship init fish | source
