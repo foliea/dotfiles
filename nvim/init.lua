@@ -106,6 +106,10 @@ pcall(function()
   require('diffview').setup()
 end)
 
+pcall(function()
+  require('symbols-outline').setup()
+end)
+
 -- NvimTree setup
 pcall(function()
   require('nvim-tree').setup {

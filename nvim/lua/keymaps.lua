@@ -1,5 +1,5 @@
 -- Key mappings
-vim.api.nvim_set_keymap('n', '<F9>', ':TagbarToggle<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>so', '<cmd>SymbolsOutline<CR>', { noremap = true })
 
 vim.api.nvim_set_keymap('n', '<C-H>', '<C-W><C-H>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-J>', '<C-W><C-J>', { noremap = true })
