@@ -15,6 +15,7 @@ vim.api.nvim_set_keymap('n', '<C-F>', [[<cmd>lua require('telescope.builtin').li
 vim.api.nvim_set_keymap('n', '<C-I>', [[<cmd>lua require('CopilotChat').toggle()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>s', [[<cmd>lua require('spectre').open()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader><C-P>', ':Telescope commands<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>hf', ':Telescope find_files hidden=true<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>t', ':TestNearest<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>f', ':TestFile<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>l', ':TestLast<CR>', { noremap = true, silent = true })

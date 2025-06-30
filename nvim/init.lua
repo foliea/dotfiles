@@ -53,6 +53,7 @@ end)
 
 pcall(function()
   require("telescope").setup {
+    defaults = { hidden = true },
     extensions = {
       ["ui-select"] = {
         require("telescope.themes").get_dropdown {
