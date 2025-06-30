@@ -77,24 +77,6 @@ After installation, complete the following steps:
    ```
 2. Spawn a new login shell.
 
-## Reinstallation
-
-To reinstall the dotfiles, run:
-
-```bash
-make re
-```
-
-## Uninstallation
-
-To remove the dotfiles, run:
-
-```bash
-make clean
-```
-
-> **Note:** The `clean` target is **not modular** and will attempt to remove all installed configuration files and related data. Use with caution, as it may erase files for all components (fish, bash, etc.) regardless of which ones you installed.
-
 ## Features
 
 - **Cross-platform support**: Works on macOS and Ubuntu (native or WSL 2).

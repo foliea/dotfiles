@@ -1,17 +1,12 @@
-.PHONY: all re clean test help fish bash git nvim tmux vscode tuis
+.PHONY: all test help fish bash git nvim tmux vscode tuis
 
 SCRIPTS_DIR := scripts
 MODULES := fish bash git nvim tmux vscode tuis
 
 all: $(MODULES)
 
-re: clean all
-
-clean:
-	@$(SCRIPTS_DIR)/clean.sh
-
 test:
-	@$(SCRIPTS_DIR)/test.exp
+	@$(SCRIPTS_DIR)/run-tests.exp
 
 $(MODULES):
 	@./$@/install.sh
@@ -19,8 +14,6 @@ $(MODULES):
 help:
 	@echo "Available targets:"
 	@echo "  all        Install all configurations"
-	@echo "  re         Clean and reinstall all"
-	@echo "  clean      Remove installed files"
 	@echo "  test       Run tests"
 	@echo "  fish       Install Fish shell config"
 	@echo "  bash       Install Bash config"

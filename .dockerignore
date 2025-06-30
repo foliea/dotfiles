@@ -3,6 +3,7 @@
 .gitignore
 .vscode
 images/
+misc/
 node_modules/
 *.swp
 *.swo
