@@ -1,3 +1,4 @@
+add_newline = false
 command_timeout = 1000
 format = '$all'
 
@@ -5,7 +6,7 @@ format = '$all'
 disabled = true
 
 [directory]
-format = '[ $path]($style)[$read_only]($style) '
+format = '[ $path]($style)[$read_only]($style) '
 read_only = " 󰌾"
 
 [package]
