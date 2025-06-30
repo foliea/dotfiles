@@ -1,43 +1,78 @@
+command_timeout = 1000
+format = '$all'
+
+[os]
+disabled = true
+
+[directory]
+format = '[ $path]($style)[$read_only]($style) '
+read_only = " 󰌾"
+
+[package]
+disabled = true
+symbol = "󰏗 "
+
+[git_branch]
+symbol = " "
+format = "[$symbol$branch](bold #cc99cc) "
+
+[git_commit]
+tag_symbol = '  '
+
+[git_status]
+untracked = ""
+stashed = ""
+format = "[ $all_status$ahead_behind](bold #f99157) "
+
+[docker_context]
+disabled = true
+symbol = " "
+
 [aws]
 symbol = "  "
 
 [buf]
+format = "[$symbol$version]($style) "
 symbol = " "
 
 [bun]
+format = "[$symbol$version]($style) "
 symbol = " "
 
 [c]
+format = "[$symbol$version]($style) "
 symbol = " "
 
 [cpp]
+format = "[$symbol$version]($style) "
 symbol = " "
 
 [cmake]
+format = "[$symbol$version]($style) "
 symbol = " "
 
 [conda]
+format = "[$symbol$version]($style) "
 symbol = " "
 
 [crystal]
+format = "[$symbol$version]($style) "
 symbol = " "
 
 [dart]
+format = "[$symbol$version]($style) "
 symbol = " "
 
 [deno]
+format = "[$symbol$version]($style) "
 symbol = " "
 
-[directory]
-read_only = " 󰌾"
-
-[docker_context]
-symbol = " "
-
 [elixir]
+format = "[$symbol$version]($style) "
 symbol = " "
 
 [elm]
+format = "[$symbol$version]($style) "
 symbol = " "
 
 [fennel]
@@ -49,22 +84,20 @@ symbol = " "
 [gcloud]
 symbol = "  "
 
-[git_branch]
-symbol = " "
-
-[git_commit]
-tag_symbol = '  '
-
 [golang]
+format = "[$symbol$version]($style) "
 symbol = " "
 
 [guix_shell]
+format = "[$symbol$version]($style) "
 symbol = " "
 
 [haskell]
+format = "[$symbol$version]($style) "
 symbol = " "
 
 [haxe]
+format = "[$symbol$version]($style) "
 symbol = " "
 
 [hg_branch]
@@ -74,33 +107,42 @@ symbol = " "
 ssh_symbol = " "
 
 [java]
+format = "[$symbol$version]($style) "
 symbol = " "
 
 [julia]
+format = "[$symbol$version]($style) "
 symbol = " "
 
 [kotlin]
+format = "[$symbol$version]($style) "
 symbol = " "
 
 [lua]
+format = "[$symbol$version]($style) "
 symbol = " "
 
 [memory_usage]
 symbol = "󰍛 "
 
 [meson]
+format = "[$symbol$version]($style) "
 symbol = "󰔷 "
 
 [nim]
+format = "[$symbol$version]($style) "
 symbol = "󰆥 "
 
 [nix_shell]
+format = "[$symbol$version]($style) "
 symbol = " "
 
 [nodejs]
+format = "[$symbol$version]($style) "
 symbol = " "
 
 [ocaml]
+format = "[$symbol$version]($style) "
 symbol = " "
 
 [os.symbols]
@@ -150,41 +192,50 @@ Unknown = " "
 Void = " "
 Windows = "󰍲 "
 
-[package]
-symbol = "󰏗 "
-
 [perl]
+format = "[$symbol$version]($style) "
 symbol = " "
 
 [php]
+format = "[$symbol$version]($style) "
 symbol = " "
 
 [pijul_channel]
+format = "[$symbol$version]($style) "
 symbol = " "
 
 [pixi]
+format = "[$symbol$version]($style) "
 symbol = "󰏗 "
 
 [python]
+format = "[$symbol$version]($style) "
 symbol = " "
 
 [rlang]
+format = "[$symbol$version]($style) "
 symbol = "󰟔 "
 
 [ruby]
+format = "[$symbol$version]($style) "
 symbol = " "
 
 [rust]
+format = "[$symbol$version]($style) "
 symbol = "󱘗 "
 
 [scala]
+format = "[$symbol$version]($style) "
 symbol = " "
 
 [swift]
+format = "[$symbol$version]($style) "
 symbol = " "
 
 [zig]
+format = "[$symbol$version]($style) "
 symbol = " "
 
 [gradle]
+format = "[$symbol$version]($style) "
 symbol = " "
