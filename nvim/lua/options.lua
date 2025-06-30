@@ -53,3 +53,5 @@ if vim.fn.has('wsl') == 1 then
 end
 
 vim.opt.clipboard:append('unnamedplus')
+
+vim.g['test#javascript#jest#executable'] = 'npm test --'
