@@ -19,7 +19,7 @@ vim.api.nvim_set_keymap('n', '<leader>t', ':TestNearest<CR>', { noremap = true, 
 vim.api.nvim_set_keymap('n', '<leader>f', ':TestFile<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>l', ':TestLast<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>v', ':TestVisit<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>so', ':SymbolsOutline<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>so', ':Outline<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>tq', ':TodoTelescope<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>tb', ':Trouble<CR>', { noremap = true, silent = true })

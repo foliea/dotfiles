@@ -101,7 +101,7 @@ pcall(function()
 end)
 
 pcall(function()
-  require('symbols-outline').setup()
+  require('outline').setup()
 end)
 
 -- NvimTree setup

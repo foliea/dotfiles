@@ -4,9 +4,9 @@ vim.cmd [[
 let g:fzf_install = 'yes | ./install --bin'
   call plug#begin('~/.config/nvim/plugins')
   Plug 'nvimdev/dashboard-nvim'
+  Plug 'hedyhli/outline.nvim'
   Plug 'neovim/nvim-lspconfig'
   Plug 'scrooloose/nerdcommenter'
-  Plug 'simrat39/symbols-outline.nvim'
   Plug 'easymotion/vim-easymotion'
   Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'brenoprata10/nvim-highlight-colors'
