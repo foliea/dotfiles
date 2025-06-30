@@ -4,8 +4,7 @@ require('options')
 require('keymaps')
 require('autocmds')
 require('lsp')
-require("usercmds")
-require('linters')
+require('usercmds')
 
 -- Dashboard setup
 pcall(function()

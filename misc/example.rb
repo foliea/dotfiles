@@ -1,6 +1,6 @@
 class Example
   def initialize
-    @name = "Example"
+    @name = 'Example'
   end
 
   def greet

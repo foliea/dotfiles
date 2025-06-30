@@ -15,6 +15,7 @@ install_node_ls() {
 
 install_ruby_ls() {
     gem install solargraph
+    gem install rubocop
 
     if command -v nvim >/dev/null 2>&1; then
         nvim --headless -c "TSUpdate ruby" -c "qa!"
