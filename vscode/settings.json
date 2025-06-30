@@ -1,6 +1,6 @@
 {
   "window.commandCenter": true,
-  "terminal.integrated.fontFamily": "Hack Nerd Font, monospace",
+  "terminal.integrated.fontFamily": "FiraCode Nerd Font, monospace",
   "terminal.integrated.fontSize": 13,
   "terminal.integrated.defaultProfile.osx": "tmux-session",
   "terminal.integrated.profiles.osx": {
@@ -27,7 +27,7 @@
     "statusBarItem.activeBackground": "#ffcc66",
     "statusBarItem.hoverBackground": "#50fa7b"
   },
-  "editor.fontFamily": "Hack Nerd Font, monospace",
+  "editor.fontFamily": "FiraCode Nerd Font, monospace",
   "editor.fontSize": 13,
   "editor.lineNumbers": "relative",
   "editor.autoClosingBrackets": "never",
