@@ -85,7 +85,15 @@ end)
 
 -- Gitsigns setup
 pcall(function()
-  require('gitsigns').setup()
+  require('gitsigns').setup({
+    preview_config = {
+      border = 'rounded',
+      style = 'minimal',
+      relative = 'cursor',
+      row = 0,
+      col = 1,
+    },
+  })
 end)
 
 -- Git diff view setup
