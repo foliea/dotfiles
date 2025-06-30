@@ -36,9 +36,18 @@ end)
 
 pcall(function()
   require("copilot_cmp").setup()
+
+  vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6699cc"})
 end)
 
 pcall(function()
+  local lspkind = require("lspkind")
+
+  lspkind.init({
+    symbol_map = {
+      Copilot = " ",
+    }
+  })
   local cmp = require('cmp')
 
   cmp.setup({
@@ -53,6 +62,20 @@ pcall(function()
       { name = 'nvim_lsp' },
       { name = 'buffer' },
       { name = 'path' },
-    })
+    }),
+    formatting = {
+      format = lspkind.cmp_format({
+        mode = 'symbol',
+        maxwidth = {
+          menu = 50,
+          abbr = 50,
+        },
+        ellipsis_char = '...',
+        show_labelDetails = true,
+        before = function (entry, vim_item)
+          return vim_item
+        end
+     })
+    }
   })
 end)

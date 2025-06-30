@@ -43,5 +43,6 @@ let g:fzf_install = 'yes | ./install --bin'
   Plug 'hrsh7th/cmp-cmdline'
   Plug 'zbirenbaum/copilot.lua'
   Plug 'zbirenbaum/copilot-cmp'
+  Plug 'onsails/lspkind.nvim'
   call plug#end()
 ]]
