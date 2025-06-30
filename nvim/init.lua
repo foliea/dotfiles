@@ -6,7 +6,6 @@ require('autocmds')
 require('lsp')
 require('usercmds')
 
--- Dashboard setup
 pcall(function()
   require('dashboard').setup {
     theme = 'hyper',
@@ -33,7 +32,6 @@ pcall(function()
   }
 end)
 
--- Colorize indentation levels
 pcall(function()
   local highlight = {
     "Whitespace",
@@ -53,7 +51,6 @@ pcall(function()
   })
 end)
 
--- CopilotChat.nvim setup
 pcall(function()
   require("CopilotChat").setup {
     model = "gpt-4.1",
@@ -63,7 +60,6 @@ pcall(function()
   }
 end)
 
--- Telescope ui-select setup
 pcall(function()
   require("telescope").setup {
     extensions = {
@@ -83,7 +79,6 @@ pcall(function()
   require("telescope").load_extension("fzf")
 end)
 
--- Treesitter setup for better syntax highlighting
 pcall(function()
   require'nvim-treesitter.configs'.setup {
     ensure_installed = { "ruby", "javascript", "typescript", "lua", "bash", "fish", "dockerfile", "json", "yaml", "markdown", "prisma", "graphql" },
@@ -132,32 +127,11 @@ pcall(function()
 end)
 
 pcall(function()
+  require('nvim-web-devicons').setup()
+end)
+
+pcall(function()
   require("trouble").setup {}
-end)
-
--- Lualine setup (after plugin block)
-pcall(function()
-  require('lualine').setup {
-    options = {
-      theme = 'auto',
-      icons_enabled = true,
-      section_separators = '',
-      component_separators = '',
-    },
-    -- You can customize sections/components here
-  }
-end)
-
--- Bufferline setup
-pcall(function()
-  require("bufferline").setup{
-    options = {
-      show_buffer_icons = true, -- enable filetype icons
-      show_buffer_close_icons = true,
-      show_close_icon = true,
-      separator_style = "slant", -- looks modern with icons
-    }
-  }
 end)
 
 pcall(function()
@@ -177,18 +151,51 @@ pcall(function()
   vim.notify = require("notify")
 end)
 
-vim.diagnostic.config({
-  signs = true,
-  virtual_text = true,
-  underline = true,
-  update_in_insert = false,
-  severity_sort = true,
-})
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+-- Lualine setup (after plugin block)
+pcall(function()
+  require('lualine').setup {
+    options = {
+      theme = 'auto',
+      icons_enabled = true,
+      section_separators = '',
+      component_separators = '',
+    },
+    sections = {
+      lualine_b = {
+        { 'branch',
+          icon = '',
+        },
+        {
+          'diff',
+          colored = true,
+          symbols = { added = ' ', modified = ' ', removed = ' ' },
+        }
+      },
+      lualine_c = { { 'filename', path = 1 }},
+      lualine_x = { 'filetype' },
+      lualine_y = { 'encoding' },
+      lualine_z = {
+        {
+          'location',
+          fmt = function(str)
+            local line = vim.fn.line('.')
+            local col = vim.fn.col('.')
+            return string.format(' %d  %d', line, col)
+          end,
+        }
+      }
+    }
+  }
+end)
 
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
+pcall(function()
+  require("bufferline").setup{
+    options = {
+      show_buffer_icons = true,
+      show_buffer_close_icons = true,
+      show_close_icon = true,
+      separator_style = "slant",
+    }
+  }
+end)
 
