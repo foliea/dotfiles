@@ -37,7 +37,7 @@ vim.api.nvim_set_hl(0, "DevIconGemfile", { fg = "#e8274b" })
 vim.api.nvim_set_hl(0, "DevIconRake", { fg = "#e8274b" })
 vim.api.nvim_set_hl(0, "DevIconRakefile", { fg = "#e8274b" })
 
-if vim.fn.has('wsl') then
+if vim.fn.has('wsl') == 1 then
   vim.g.clipboard = {
     name = 'WslClipboard',
     copy = {
