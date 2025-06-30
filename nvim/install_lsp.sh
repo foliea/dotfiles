@@ -7,10 +7,18 @@ install_node_ls() {
     npm install -g dockerfile-language-server-nodejs
     npm install -g @prisma/language-server
     npm install -g vscode-json-languageserver
+
+    if command -v nvim >/dev/null 2>&1; then
+        nvim --headless -c "TSUpdate all" -c "qa!"
+    fi
 }
 
 install_ruby_ls() {
     gem install solargraph
+
+    if command -v nvim >/dev/null 2>&1; then
+        nvim --headless -c "TSUpdate ruby" -c "qa!"
+    fi
 }
 
 case "$1" in

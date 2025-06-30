@@ -1,12 +1,30 @@
 -- LSP and completion setup
 pcall(function()
   local lspconfig = require('lspconfig')
-  lspconfig.ts_ls.setup{}
+
   lspconfig.solargraph.setup{}
+  lspconfig.ts_ls.setup{}
   lspconfig.bashls.setup{}
-  lspconfig.dockerls.setup{}
+  lspconfig.dockerls.setup{
+    on_attach = function(client, bufnr)
+      client.server_capabilities.semanticTokensProvider = nil
+    end,
+  }
   lspconfig.prismals.setup{}
-  lspconfig.jsonls.setup{}
+  lspconfig.jsonls.setup {
+    capabilities = capabilities,
+    settings = {
+      json = {
+        schemas = require('schemastore.json').schemas(),
+        validate = { enable = true },
+      },
+    },
+    cmd = { "bash", "-c", "which vscode-json-languageserver && exec $(which vscode-json-languageserver) --stdio" },
+    on_attach = function(client, bufnr)
+      client.name = "jsonls"
+      require('completion').on_attach(client, bufnr)
+    end,
+  }
 end)
 
 pcall(function()

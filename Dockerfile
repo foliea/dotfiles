@@ -4,12 +4,12 @@ ENV USER=developer
 ENV PROJECT_DIR=/home/${USER}/dotfiles
 
 RUN apt-get update && \
-  apt-get install -y build-essential procps curl file git python3 sudo locales && \
-  locale-gen en_US.UTF-8
+    apt-get install -y build-essential procps curl file git python3 sudo locales && \
+    locale-gen en_US.UTF-8
 
 RUN useradd -ms /bin/bash ${USER} && \
-  echo "${USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
-  chsh -s $(which fish) ${USER}
+    echo "${USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
+    chsh -s $(which fish) ${USER}
 
 COPY . ${PROJECT_DIR}
 RUN chown -R ${USER}:${USER} ${PROJECT_DIR}
