@@ -1,5 +1,7 @@
 " vim:ft=vim
 
+set vicmd=nvim
+
 " Color scheme
 colorscheme Tomorrow-Night
 
