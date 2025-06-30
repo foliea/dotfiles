@@ -20,5 +20,5 @@ jobs:
 
       - name: Run tests
         run: |
-          chmod +x scripts/test.exp
+          chmod +x run-tests.exp
           ./run-tests.exp
