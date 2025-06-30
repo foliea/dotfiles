@@ -13,8 +13,6 @@ My personal configuration files for setting up and managing development environm
 - [Dependencies](#dependencies)
 - [Installation](#installation)
 - [Post-installation](#post-installation)
-- [Reinstallation](#reinstallation)
-- [Uninstallation](#uninstallation)
 - [Features](#features)
 - [Contributing](#contributing)
 
