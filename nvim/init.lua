@@ -167,7 +167,7 @@ pcall(function()
         },
         {
           'diff',
-          colored = true,
+          colored = false,
           symbols = { added = ' ', modified = ' ', removed = ' ' },
         }
       },
