@@ -37,23 +37,19 @@ vim.api.nvim_set_hl(0, "DevIconGemfile", { fg = "#e8274b" })
 vim.api.nvim_set_hl(0, "DevIconRake", { fg = "#e8274b" })
 vim.api.nvim_set_hl(0, "DevIconRakefile", { fg = "#e8274b" })
 
--- Clipboard integration for vim-system-copy in WSL, Wayland, X11, and VS Code
-if vim.fn.has('wsl') == 1 then
-  vim.g['system_copy#copy_command'] = 'clip.exe'
-  vim.g['system_copy#paste_command'] = "powershell.exe -NoLogo -NoProfile -Command \"[Console]::Write((Get-Clipboard -Raw) -replace '\r', '')\""
-elseif vim.fn.has('macunix') == 1 then
-  vim.g['system_copy#copy_command'] = 'pbcopy'
-  vim.g['system_copy#paste_command'] = 'pbpaste'
-elseif vim.g['vscode'] ~= nil then
-  vim.g['system_copy#copy_command'] = ''
-  vim.g['system_copy#paste_command'] = ''
-elseif vim.fn.executable('wl-copy') == 1 then
-  vim.g['system_copy#copy_command'] = 'wl-copy'
-  vim.g['system_copy#paste_command'] = 'wl-paste'
-elseif vim.fn.executable('xclip') == 1 then
-  vim.g['system_copy#copy_command'] = 'xclip -selection clipboard'
-  vim.g['system_copy#paste_command'] = 'xclip -selection clipboard -o'
-elseif vim.fn.executable('xsel') == 1 then
-  vim.g['system_copy#copy_command'] = 'xsel --clipboard --input'
-  vim.g['system_copy#paste_command'] = 'xsel --clipboard --output'
+if vim.fn.has('wsl') then
+  vim.g.clipboard = {
+    name = 'WslClipboard',
+    copy = {
+      ['+'] = 'clip.exe',
+      ['*'] = 'clip.exe',
+    },
+    paste = {
+      ['+'] = 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      ['*'] = 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    },
+    cache_enabled = 0,
+  }
 end
+
+vim.opt.clipboard:append('unnamedplus')

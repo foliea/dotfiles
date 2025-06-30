@@ -25,7 +25,6 @@ let g:fzf_install = 'yes | ./install --bin'
   Plug 'sindrets/diffview.nvim'
   Plug 'folke/trouble.nvim'
   Plug 'kdheepak/lazygit.nvim'
-  Plug 'christoomey/vim-system-copy'
   Plug 'pbrisbin/vim-mkdir'
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
   Plug 'tpope/vim-fugitive'
