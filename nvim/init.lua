@@ -5,6 +5,7 @@ require('keymaps')
 require('autocmds')
 require('lsp')
 require('usercmds')
+require('highlights')
 
 pcall(function()
   require('dashboard').setup {

@@ -37,7 +37,7 @@ end)
 pcall(function()
   require("copilot_cmp").setup()
 
-  vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6699cc"})
+  vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#66cccc"})
 end)
 
 pcall(function()
@@ -76,6 +76,15 @@ pcall(function()
           return vim_item
         end
      })
+    },
+    window = {
+      completion = {
+        border = "rounded",
+      },
+      documentation = {
+        border = "rounded",
+        winhighlight = "Normal:CmpDocNormal",
+      }
     }
   })
 end)
