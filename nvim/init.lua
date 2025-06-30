@@ -52,15 +52,6 @@ pcall(function()
 end)
 
 pcall(function()
-  require("CopilotChat").setup {
-    model = "gpt-4.1",
-    markdown = {
-      enabled = true
-    }
-  }
-end)
-
-pcall(function()
   require("telescope").setup {
     extensions = {
       ["ui-select"] = {

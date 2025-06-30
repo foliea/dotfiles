@@ -14,9 +14,7 @@ let g:fzf_install = 'yes | ./install --bin'
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'chriskempson/base16-vim'
   Plug 'rcarriga/nvim-notify'
-  Plug 'github/copilot.vim'
   Plug 'nvim-lua/plenary.nvim'
-  Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'do': 'make tiktoken' }
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'nvim-telescope/telescope-ui-select.nvim'
   Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
@@ -43,5 +41,7 @@ let g:fzf_install = 'yes | ./install --bin'
   Plug 'hrsh7th/cmp-buffer'
   Plug 'hrsh7th/cmp-path'
   Plug 'hrsh7th/cmp-cmdline'
+  Plug 'zbirenbaum/copilot.lua'
+  Plug 'zbirenbaum/copilot-cmp'
   call plug#end()
 ]]

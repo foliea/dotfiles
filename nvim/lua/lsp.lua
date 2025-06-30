@@ -28,7 +28,19 @@ pcall(function()
 end)
 
 pcall(function()
-  local cmp = require'cmp'
+  require("copilot").setup({
+    suggestion = { enabled = false },
+    panel = { enabled = false },
+  })
+end)
+
+pcall(function()
+  require("copilot_cmp").setup()
+end)
+
+pcall(function()
+  local cmp = require('cmp')
+
   cmp.setup({
     mapping = cmp.mapping.preset.insert({
       ['<C-Space>'] = cmp.mapping.complete(),
@@ -37,6 +49,7 @@ pcall(function()
       ['<S-Tab>'] = cmp.mapping.select_prev_item(),
     }),
     sources = cmp.config.sources({
+      { name = "copilot" },
       { name = 'nvim_lsp' },
       { name = 'buffer' },
       { name = 'path' },
