@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
 
+brew update
+
 brew install cmake \
   curl \
   git \
@@ -34,7 +36,8 @@ brew install cmake \
   fastfetch \
   lazygit \
   jesseduffield/lazydocker/lazydocker \
-  btop
+  btop \
+  gemini-cli
 
 ln -sf "$PWD/os/shared/starship.toml" "$HOME/.config/starship.toml"
 
