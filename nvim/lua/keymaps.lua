@@ -26,6 +26,7 @@ vim.api.nvim_set_keymap('n', '<leader>tb', ':Trouble<CR>', { noremap = true, sil
 vim.api.nvim_set_keymap('n', '<leader>lg', ':LazyGit<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>df', ':DiffviewOpen<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>dc', ':DiffviewClose<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>co', ':BufferLineCloseOthers<CR>', { noremap = true, silent = true })
 
 -- Buffer navigation
 vim.api.nvim_set_keymap('n', '<S-J>', ':bprevious<CR>', { noremap = true, silent = true })

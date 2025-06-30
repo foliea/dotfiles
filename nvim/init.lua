@@ -1,4 +1,4 @@
--- Load plugin management, options, keymaps, autocommands, LSP, and user commands modules
+ -- Load plugin management, options, keymaps, autocommands, LSP, and user commands modules
 require('plugins')
 require('options')
 require('keymaps')
@@ -195,7 +195,19 @@ pcall(function()
       show_buffer_close_icons = true,
       show_close_icon = true,
       separator_style = "slant",
-    }
+      themable = true,
+    },
+    highlights = {
+      modified = {
+        fg = "#ffcc66",
+      },
+      modified_visible = {
+        fg = "#ffcc66",
+      },
+      modified_selected = {
+        fg = "#ffcc66",
+      },
+    },
   }
 end)
 
