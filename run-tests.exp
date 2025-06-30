@@ -1,6 +1,6 @@
 #!/usr/bin/env expect
 
-spawn make re
+spawn make
 
 expect "Please specify you git user name: "
 send "John Snow"
