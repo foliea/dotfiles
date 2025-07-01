@@ -1,7 +1,6 @@
  -- Load plugin management, options, keymaps, autocommands, LSP, and user commands modules
 require('plugins')
 require('options')
-require('keymaps')
 require('autocmds')
 require('lsp')
 require('usercmds')
@@ -149,6 +148,16 @@ pcall(function()
 end)
 
 pcall(function()
+  require("cinnamon").setup {
+    keymaps = {
+      basic = true,
+      extra = true,
+    },
+    options = { mode = "window" },
+  }
+end)
+
+ pcall(function()
   vim.notify = require("notify")
 end)
 
@@ -212,3 +221,4 @@ pcall(function()
   }
 end)
 
+require('keymaps')

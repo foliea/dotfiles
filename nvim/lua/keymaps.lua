@@ -35,7 +35,7 @@ vim.api.nvim_set_keymap('n', '<S-J>', ':bprevious<CR>', { noremap = true, silent
 vim.api.nvim_set_keymap('n', '<S-K>', ':bnext<CR>', { noremap = true, silent = true })
 
 -- Native LSP keymaps
-vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
+vim.keymap.set("n", "gd", function() require('cinnamon').scroll(vim.lsp.buf.definition) end)
 vim.api.nvim_set_keymap('n', 'gy', '<cmd>lua vim.lsp.buf.type_definition()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', { noremap = true, silent = true })
