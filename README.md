@@ -31,7 +31,7 @@ This repository contains configuration files and scripts to automate the setup o
 To install every dependency required:
 
 - **macOS**: See the [macOS script](os/macOS/dependencies.sh).
-- Linux**: See the [Linux script](os/linux/dependencies.sh).
+- **Linux**: See the [Linux script](os/linux/dependencies.sh).
 
 ```bash
 ./os/macOS/dependencies.sh
@@ -63,8 +63,6 @@ make vscode   # Install only VS Code configuration
 make tuis     # Install only TUI configuration
 ```
 
-> If you encounter an error indicating that a configuration file already exists, please follow the [Reinstallation](#reinstallation) instructions.
-
 ## Post-installation
 
 After installation, complete the following steps:
@@ -77,7 +75,8 @@ After installation, complete the following steps:
 
 ## Features
 
-- **Cross-platform support**: Works on macOS and Ubuntu (native or WSL 2).
+- **Cross-platform support**: Works on macOS and Linux (native or WSL 2, requires
+[Homebrew on Linux](https://docs.brew.sh/Homebrew-on-Linux)).
 - **Custom shell setup**: Includes Fish and Bash shell configurations and plugins.
 - **Editor configurations**: Preconfigured Neovim and VS Code settings.
 - **TUI configurations**: Preconfigured btop, k9s, vifm, etc...
