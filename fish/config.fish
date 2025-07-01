@@ -43,10 +43,7 @@ end
 if type -q eza
     alias ll='eza -lF --icons'
     alias la='eza -lA --icons'
-end
-
-if type -q zoxide
-    alias z='zoxide'
+    alias ls='eza'
 end
 
 if type -q hub
