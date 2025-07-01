@@ -181,7 +181,18 @@ pcall(function()
           symbols = { added = ' ', modified = ' ', removed = ' ' },
         }
       },
-      lualine_c = { { 'filename', path = 1 }},
+      lualine_c = {
+        { 'filename', path = 1 },
+        { 'diagnostics',
+          sources = { 'nvim_lsp' },
+          symbols = {
+            error = ' ',
+            warn = ' ',
+            info = ' ',
+            hint = ' '
+          }
+        }
+      },
       lualine_x = { 'filetype' },
       lualine_y = { 'encoding' },
       lualine_z = {
