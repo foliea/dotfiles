@@ -72,8 +72,12 @@ fi
 # Prompt setup
 eval "$(starship init bash)"
 
-install_lsp() {
-    "$HOME/.config/nvim/install_lsp.sh" "$@"
+swork() {
+  $HOME/.config/tmux/switch_workspace.sh "$1" true
+}
+
+iwork() {
+  $HOME/.config/tmux/switch_workspace.sh "$PWD" false
 }
 
 # Load local customizations if they exist
