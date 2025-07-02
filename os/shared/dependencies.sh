@@ -4,40 +4,46 @@ set -e
 brew update
 
 brew install cmake \
-  curl \
-  git \
-  cmake \
-  wget \
-  gawk \
-  readline \
-  most \
-  expect \
-  jq \
-  fish \
-  starship \
-  tmux \
-  neovim \
-  vifm \
-  ncdu \
-  fzf \
-  ripgrep \
-  fd \
-  hub \
-  rbenv \
-  p7zip \
-  kubectx \
-  kubeseal \
-  helm \
-  k9s \
-  awscli \
-  fnm \
-  eza \
-  zoxide \
-  fastfetch \
-  lazygit \
-  jesseduffield/lazydocker/lazydocker \
-  btop \
-  gemini-cli
+    curl \
+    git \
+    cmake \
+    wget \
+    gawk \
+    readline \
+    most \
+    expect \
+    jq \
+    fish \
+    starship \
+    tmux \
+    neovim \
+    vifm \
+    ncdu \
+    fzf \
+    ripgrep \
+    fd \
+    hub \
+    rbenv \
+    p7zip \
+    kubectx \
+    kubeseal \
+    helm \
+    k9s \
+    awscli \
+    fnm \
+    eza \
+    zoxide \
+    fastfetch \
+    lazygit \
+    jesseduffield/lazydocker/lazydocker \
+    btop \
+    gemini-cli \
+    yazi \
+    ffmpeg \
+    sevenzip \
+    poppler \
+    resvg \
+    imagemagick
 
 ln -sf "$PWD/os/shared/starship.toml" "$HOME/.config/starship.toml"
 
