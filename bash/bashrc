@@ -74,11 +74,19 @@ fi
 eval "$(starship init bash)"
 
 swork() {
-  $HOME/.config/tmux/switch_workspace.sh "$1" true
+    $HOME/.config/tmux/switch_workspace.sh "$1" true
 }
 
 iwork() {
-  $HOME/.config/tmux/switch_workspace.sh "$PWD" false
+    $HOME/.config/tmux/switch_workspace.sh "$PWD" false
+}
+
+function y() {
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+    yazi "$@" --cwd-file="$tmp"
+    IFS= read -r -d '' cwd < "$tmp"
+    [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+    rm -f -- "$tmp"
 }
 
 # Added by OrbStack: command-line tools and integration
