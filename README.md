@@ -79,7 +79,7 @@ After installation, complete the following steps:
 [Homebrew on Linux](https://docs.brew.sh/Homebrew-on-Linux)).
 - **Custom shell setup**: Includes Fish and Bash shell configurations and plugins.
 - **Editor configurations**: Preconfigured Neovim and VS Code settings.
-- **TUI configurations**: Preconfigured btop, k9s, vifm, etc...
+- **TUI configurations**: Preconfigured btop, k9s, yazi, etc...
 - **Tmux enhancements**: Includes plugins for better terminal multiplexing.
 - **Automated setup**: Scripts to install dependencies and configure the environment.
 
