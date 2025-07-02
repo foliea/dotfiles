@@ -51,10 +51,11 @@ set -o vi
 if command -v eza >/dev/null 2>&1; then
     alias ll='eza -lF --icons'
     alias la='eza -lA --icons'
+    alias ls="eza"
 fi
 
 if command -v zoxide >/dev/null 2>&1; then
-    alias z='zoxide'
+    alias cd='zoxide'
 fi
 
 if command -v hub  >/dev/null 2>&1; then
@@ -80,8 +81,6 @@ iwork() {
   $HOME/.config/tmux/switch_workspace.sh "$PWD" false
 }
 
-# Load local customizations if they exist
-[ -f "$HOME/.bashrc.local" ] && source "$HOME/.bashrc.local"
-
-# Load AWS CLI configuration if it exists
-[ -f "$HOME/.aws/cli.bash" ] && source "$HOME/.aws/cli.bash"
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+[ -f "$HOME/.orbstack/shell/init.bash" ] && source "$HOME/.orbstack/shell/init.bash"
