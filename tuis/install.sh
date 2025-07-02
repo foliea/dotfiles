@@ -25,4 +25,5 @@ ln -sf "$PWD/tuis/k9s/config.yaml" "$K9S_CONFIG_SUPPORT/config.yaml"
 
 
 # vifm
+rm -rf "$HOME/.vifm"
 ln -sf "$PWD/tuis/vifm/" "$HOME/.vifm"

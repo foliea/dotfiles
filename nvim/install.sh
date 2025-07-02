@@ -7,6 +7,7 @@ mkdir -p $tmp/backup
 mkdir -p $tmp/swap
 mkdir -p $tmp/undo
 
+rm -rf "$HOME/.config/nvim"
 ln -sf "$PWD/nvim" "$HOME/.config/nvim"
 
 # Install plugins
