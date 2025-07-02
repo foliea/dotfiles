@@ -17,7 +17,7 @@ if [ "$gpgsign" = "y" ]; then
 fi
 
 ${config} core.autocrlf input
-${config} push.default simple
+${config} push.default current
 ${config} pull.rebase true
 ${config} rerere.enabled true
 ${config} color.ui true
