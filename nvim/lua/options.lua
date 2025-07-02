@@ -25,18 +25,6 @@ vim.opt.termguicolors = true
 vim.cmd [[colorscheme base16-tomorrow-night-eighties]]
 vim.opt.fillchars:append({ eob = " " })
 
-vim.api.nvim_set_hl(0, "Delimiter", { fg = "#ffffff" })
-vim.api.nvim_set_hl(0, "@string.special", { fg = "#f99157" })
-vim.api.nvim_set_hl(0, "@string.regexp", { fg = "#99cc99" })
-vim.api.nvim_set_hl(0, "@string.escape", { fg = "#f99157" })
-vim.api.nvim_set_hl(0, "@variable", { fg = "#f2777a" })
-vim.api.nvim_set_hl(0, "DevIconRb", { fg = "#e8274b" })
-vim.api.nvim_set_hl(0, "DevIconErb", { fg = "#e8274b" })
-vim.api.nvim_set_hl(0, "DevIconConfigRu", { fg = "#e8274b" })
-vim.api.nvim_set_hl(0, "DevIconGemfile", { fg = "#e8274b" })
-vim.api.nvim_set_hl(0, "DevIconRake", { fg = "#e8274b" })
-vim.api.nvim_set_hl(0, "DevIconRakefile", { fg = "#e8274b" })
-
 vim.g['test#javascript#jest#executable'] = 'npm test --'
 
 if vim.fn.has('wsl') == 1 then

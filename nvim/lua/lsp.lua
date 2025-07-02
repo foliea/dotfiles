@@ -36,8 +36,6 @@ end)
 
 pcall(function()
   require("copilot_cmp").setup()
-
-  vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#66cccc"})
 end)
 
 pcall(function()
