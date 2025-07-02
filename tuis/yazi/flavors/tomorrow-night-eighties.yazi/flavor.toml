@@ -52,7 +52,7 @@ unset_alt  = { fg = "#f2777a", bg = "#515151" }
 overall   = {}
 
 # Permissions
-perm_sep   = { fg = "#393939" }
+perm_sep   = { fg = "#999999" }
 perm_type  = { fg = "#99cc99" }
 perm_read  = { fg = "#ffcc66" }
 perm_write = { fg = "#f2777a" }
