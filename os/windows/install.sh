@@ -36,3 +36,11 @@ WT_DEST_FILE="$WT_DEST_DIR/settings.json"
 
 mkdir -p "$WT_DEST_DIR"
 cp "$WT_SOURCE_PATH" "$WT_DEST_FILE"
+
+# Komorebi
+KOMOREBI_DEST_DIR="/mnt/c/Users/$WIN_USER"
+WHKDRC_DEST_DIR="/mnt/c/Users/$WIN_USER/.config"
+
+cp "$PWD/os/windows/komorebi/komorebi.json" "$KOMOREBI_DEST_DIR"
+cp "$PWD/os/windows/komorebi/komorebi.bar.json" "$KOMOREBI_DEST_DIR"
+cp "$PWD/os/windows/komorebi/whkdrc" "$WHKDRC_DEST_DIR"
