@@ -41,3 +41,7 @@ vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { no
 vim.api.nvim_set_keymap('n', 'gy', '<cmd>lua vim.lsp.buf.type_definition()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', { noremap = true, silent = true })
+
+-- Folding keymaps
+vim.api.nvim_set_keymap('n', 'of', [[<cmd>lua require('ufo').openAllFolds()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'cf', [[<cmd>lua require('ufo').closeAllFolds()<CR>]], { noremap = true, silent = true })
