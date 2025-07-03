@@ -8,6 +8,8 @@ if [ "$NEW_WINDOW" = "true" ]; then
   tmux new-window -c "$TARGET_DIR"
 fi
 
+tmux rename-window " $(basename "$TARGET_DIR")"
+
 tmux split-window -h -p 30 -c "$TARGET_DIR"
 tmux split-window -v -p 20 -t 0 -c "$TARGET_DIR"
 tmux send-keys -t 0 "nvim" C-m

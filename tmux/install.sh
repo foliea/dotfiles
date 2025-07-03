@@ -17,5 +17,5 @@ fi
 # Install tmux plugins
 $tpm_dir/bin/install_plugins
 
-mkdir -p $HOME/.config/tmux
-ln -sf $PWD/tmux/switch_workspace.sh $HOME/.config/tmux/switch_workspace.sh
+rm -rf "$HOME/.config/tmux"
+ln -sf "$PWD/tmux" "$HOME/.config/tmux"
