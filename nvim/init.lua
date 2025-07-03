@@ -157,7 +157,7 @@ pcall(function()
   }
 end)
 
- pcall(function()
+pcall(function()
   vim.notify = require("notify")
 end)
 
