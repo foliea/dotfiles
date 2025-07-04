@@ -39,8 +39,14 @@ cp "$WT_SOURCE_PATH" "$WT_DEST_FILE"
 
 # GlazeWM
 GLAZE_DEST_DIR="/mnt/c/Users/$WIN_USER/.glzr/"
-
 mkdir -p $GLAZE_DEST_DIR
-cp -r "$PWD/os/windows/zebar" "$GLAZE_DEST_DIR"
+
 cp "$PWD/os/windows/glazewm.yaml" "$GLAZE_DEST_DIR/glazewm/config.yaml"
-cp -r "$PWD/os/windows/neon-folie@0.0.0" "/mnt/c/Users/$WIN_USER/AppData/Roaming/zebar/downloads/"
+
+rm -rf "$GLAZE_DEST_DIR/zebar"
+cp -r "$PWD/os/windows/zebar" "$GLAZE_DEST_DIR"
+
+ZEBAR_ROAMING_DIR="/mnt/c/Users/$WIN_USER/AppData/Roaming/zebar"
+rm -rf "$ZEBAR_ROAMING_DIR"
+mkdir -p "$ZEBAR_ROAMING_DIR/downloads"
+cp -r "$PWD/os/windows/neon-folie@0.0.0" "$ZEBAR_ROAMING_DIR/downloads"
