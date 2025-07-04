@@ -37,10 +37,9 @@ WT_DEST_FILE="$WT_DEST_DIR/settings.json"
 mkdir -p "$WT_DEST_DIR"
 cp "$WT_SOURCE_PATH" "$WT_DEST_FILE"
 
-# Komorebi
-KOMOREBI_DEST_DIR="/mnt/c/Users/$WIN_USER"
-WHKDRC_DEST_DIR="/mnt/c/Users/$WIN_USER/.config"
+# GlazeWM
+GLAZE_DEST_DIR="/mnt/c/Users/$WIN_USER/.glzr/"
 
-cp "$PWD/os/windows/komorebi/komorebi.json" "$KOMOREBI_DEST_DIR"
-cp "$PWD/os/windows/komorebi/komorebi.bar.json" "$KOMOREBI_DEST_DIR"
-cp "$PWD/os/windows/komorebi/whkdrc" "$WHKDRC_DEST_DIR"
+mkdir -p $GLAZE_DEST_DIR
+cp -r "$PWD/os/windows/zebar" "$GLAZE_DEST_DIR/zebar"
+cp "$PWD/os/windows/glazewm.yaml" "$GLAZE_DEST_DIR/glazewm/config.yaml"
