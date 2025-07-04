@@ -75,16 +75,16 @@ iwork() {
     $HOME/.config/tmux/switch_workspace.sh "$PWD" false
 }
 
+sdash() {
+    $HOME/.config/tmux/system-dashboard.sh
+}
+
 function y() {
     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
     yazi "$@" --cwd-file="$tmp"
     IFS= read -r -d '' cwd < "$tmp"
     [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
     rm -f -- "$tmp"
-}
-
-sdash() {
-    $HOME/.config/tmux/system-dashboard.sh
 }
 
 # Added by OrbStack: command-line tools and integration
