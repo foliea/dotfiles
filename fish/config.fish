@@ -62,6 +62,8 @@ if type -q lazydocker
     alias lzd='lazydocker'
 end
 
+alias gbs "git branch | sed 's/  *//' | fzf --preview-window=right:60% --preview 'git log --oneline --graph --date=relative --branches={1} --' | xargs git switch"
+
 starship init fish | source
 
 set -g fish_key_bindings fish_vi_key_bindings

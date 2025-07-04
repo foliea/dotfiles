@@ -64,6 +64,8 @@ if command -v lazydocker  >/dev/null 2>&1; then
     alias lzd='lazydocker'
 fi
 
+alias gbs="git branch | sed 's/^\* //' | sed 's/  *//' | fzf --preview-window=right:60% --preview 'git log --oneline --graph --date=relative --branches={1} --' | xargs git switch"
+
 # Prompt setup
 eval "$(starship init bash)"
 
@@ -79,7 +81,7 @@ sdash() {
     $HOME/.config/tmux/system-dashboard.sh
 }
 
-function y() {
+y() {
     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
     yazi "$@" --cwd-file="$tmp"
     IFS= read -r -d '' cwd < "$tmp"
