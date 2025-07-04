@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Custom styles. -->
+  <link rel="stylesheet" type="text/css" href="./styles.css" />
+
+  <!-- Allows React to be run buildless via "text/babel" script below. -->
+  <script src="https://unpkg.com/@babel/standalone@7.25.6/babel.min.js"
+    integrity="sha256-aS0B0wnsaDByLfE16h4MDCP1fQFccysd1YWOcV+gbBo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel" data-type="module">
+    import React, {
+      useState,
+      useEffect,
+    } from 'https://esm.sh/react@18?dev';
+    import { createRoot } from 'https://esm.sh/react-dom@18/client?dev';
+    import * as zebar from 'https://esm.sh/zebar@2';
+
+    const providers = zebar.createProviderGroup({
+      network: { type: 'network' },
+      glazewm: { type: 'glazewm' },
+      date: { type: 'date', formatting: 'EEE, MMM yyyy d, h:mm a' },
+      battery: { type: 'battery' },
+      audio: { type: "audio" },
+    });
+
+    createRoot(document.getElementById('root')).render(<App />);
+
+    function App() {
+      const [output, setOutput] = useState(providers.outputMap);
+
+      useEffect(() => {
+        providers.onOutput(() => setOutput(providers.outputMap));
+      }, []);
+
+      // Get icon to show for current network status.
+      function getNetworkIcon(networkOutput) {
+        switch (networkOutput.defaultInterface?.type) {
+          case 'ethernet':
+            return <i className="nf nf-md-ethernet_cable"></i>;
+          case 'wifi':
+            if (networkOutput.defaultGateway?.signalStrength >= 80) {
+              return <i className="nf nf-md-wifi_strength_4"></i>;
+            } else if (
+              networkOutput.defaultGateway?.signalStrength >= 65
+            ) {
+              return <i className="nf nf-md-wifi_strength_3"></i>;
+            } else if (
+              networkOutput.defaultGateway?.signalStrength >= 40
+            ) {
+              return <i className="nf nf-md-wifi_strength_2"></i>;
+            } else if (
+              networkOutput.defaultGateway?.signalStrength >= 25
+            ) {
+              return <i className="nf nf-md-wifi_strength_1"></i>;
+            } else {
+              return <i className="nf nf-md-wifi_strength_outline"></i>;
+            }
+          default:
+            return (
+              <i className="nf nf-md-wifi_strength_off_outline"></i>
+            );
+        }
+      }
+
+      // Get icon to show for how much of the battery is charged.
+      function getBatteryIcon(batteryOutput) {
+        let batteryClass = '';
+        let batteryIcon;
+
+        if (batteryOutput.chargePercent === 100) {
+          batteryClass = ' full-battery';
+        } else if (batteryOutput.chargePercent <= 20) {
+          batteryClass = ' low-battery';
+        }
+
+        if (batteryOutput.chargePercent > 90)
+          batteryIcon = <i className={`nf nf-fa-battery_4${batteryClass}`}></i>;
+        else if (batteryOutput.chargePercent > 70)
+          batteryIcon = <i className={`nf nf-fa-battery_3${batteryClass}`}></i>;
+        else if (batteryOutput.chargePercent > 40)
+          batteryIcon = <i className={`nf nf-fa-battery_2${batteryClass}`}></i>;
+        else if (batteryOutput.chargePercent > 20)
+          batteryIcon = <i className={`nf nf-fa-battery_1${batteryClass}`}></i>;
+        else
+          batteryIcon = <i className={`nf nf-fa-battery_0${batteryClass}`}></i>;
+
+        if (batteryOutput.isCharging) {
+          return (
+            <>
+              <i className="nf nf-md-power_plug charging"></i>
+              {batteryIcon}
+            </>
+          );
+        }
+
+        return batteryIcon;
+      }
+
+      function getAudioIcon(audioOutput) {
+        const volume = Math.round(audioOutput.defaultPlaybackDevice?.volume ?? 0);
+        if (volume === 0) {
+          return <i className="nf nf-fa-volume_off"></i>;
+        } else if (volume <= 33) {
+          return <i className="nf nf-fa-volume_down"></i>;
+        } else if (volume <= 66) {
+          return <i className="nf nf-md-volume_medium"></i>;
+        } else {
+          return <i className="nf nf-fa-volume_up"></i>;
+        }
+      }
+
+      return (
+        <div className="app">
+          <div className="left">
+            <i className="logo nf nf-fa-windows"></i>
+            {output.glazewm && (
+              <div className="workspaces">
+                {output.glazewm.currentWorkspaces.map(workspace => (
+                  <button
+                    className={`workspace ${workspace.hasFocus && 'focused'} ${workspace.isDisplayed && 'displayed'}`}
+                    onClick={() =>
+                      output.glazewm.runCommand(
+                        `focus --workspace ${workspace.name}`,
+                      )
+                    }
+                    key={workspace.name}
+                  >
+                    {workspace.displayName ?? workspace.name}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div className="center">
+            <span className="date">{output.date?.formatted}</span>
+            {output.glazewm?.focusedContainer?.processName && (
+              <>
+                <span className="separator">•</span>
+                <span className="process">{output.glazewm?.focusedContainer?.processName}</span>
+              </>
+            )}
+          </div>
+
+          <div className="right">
+            <div className="status-box">
+              {output.glazewm && (
+                <>
+                  {output.glazewm.isPaused && (
+                    <button
+                      className="paused-button"
+                      onClick={() => glazewm.runCommand('wm-toggle-pause')}
+                    >
+                      PAUSED
+                    </button>
+                  )}
+                  {output.glazewm.bindingModes.map(bindingMode => (
+                    <button
+                      className="binding-mode"
+                      key={bindingMode.name}
+                      onClick={() =>
+                        output.glazewm.runCommand(
+                          `wm-disable-binding-mode --name ${bindingMode.name}`,
+                        )
+                      }
+                    >
+                      {bindingMode.displayName ?? bindingMode.name}
+                    </button>
+                  ))}
+
+                  <button
+                    className={`tiling-direction nf ${output.glazewm.tilingDirection === 'horizontal' ? 'nf-md-swap_horizontal' : 'nf-md-swap_vertical'}`}
+                    onClick={() =>
+                      output.glazewm.runCommand('toggle-tiling-direction')
+                    }
+                  ></button>
+                </>
+              )}
+
+              {output.network && (
+                <div className="network">
+                  {getNetworkIcon(output.network)}
+                  {output.network.defaultGateway?.ssid}
+                </div>
+              )}
+
+              {output.battery && (
+                <div className="battery">
+                  {getBatteryIcon(output.battery)}
+                  {Math.round(output.battery.chargePercent)}%
+                </div>
+              )}
+
+              {output.audio && (
+                <div className="audio">
+                  {getAudioIcon(output.audio)}
+                  <span
+                    className={Math.round(output.audio.defaultPlaybackDevice?.volume ?? 0) === 0 ? 'muted' : ''}
+                  >
+                    {Math.round(output.audio.defaultPlaybackDevice?.volume ?? 0)}%
+                  </span>
+                </div>
+              )}
+
+            </div>
+          </div>
+        </div>
+      );
+    }
+  </script>
+</body>
+
+</html>

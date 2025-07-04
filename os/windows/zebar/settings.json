@@ -3,7 +3,7 @@
   "startupConfigs": [
     {
       "pack": "neon-folie@0.0.0",
-      "widget": "with-glazewm",
+      "widget": "neon",
       "preset": "default"
     }
   ]
