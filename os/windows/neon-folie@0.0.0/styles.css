@@ -53,7 +53,7 @@ body,
 
 .center {
   justify-self: center;
-  background: rgb(20 20 30 / 80%);
+  background: rgb(45 45 45 / 80%);
   padding: 4px 12px;
   border-radius: 4px;
   box-shadow: 0 0 15px rgb(242 119 122 / 30%);
@@ -106,7 +106,7 @@ body,
 }
 
 .workspace {
-  background: rgb(20 20 30 / 80%);
+  background: rgb(45 45 45 / 80%);
   margin-right: 4px;
   padding: 4px 8px;
   color: rgb(255 255 255 / 100%);
@@ -117,7 +117,7 @@ body,
   box-shadow: 0 0 10px rgb(242 119 122 / 20%);
 
   &.displayed {
-    background: rgb(20 20 30 / 50%);
+    background: rgb(45 45 45 / 50%);
     box-shadow: 0 0 15px rgb(242 119 122 / 30%);
   }
 
@@ -134,7 +134,7 @@ body,
 .binding-mode,
 .tiling-direction,
 .paused-button {
-  background: rgb(20 20 30 / 80%);
+  background: rgb(45 45 45 / 80%);
   color: rgb(255 255 255 / 100%);
   border-radius: 4px;
   line-height: 1;
@@ -187,7 +187,7 @@ body,
 .status-box {
   display: flex;
   align-items: center;
-  background: rgb(20 20 30 / 80%);
+  background: rgb(45 45 45 / 80%);
   padding: 4px 12px;
   border-radius: 4px;
   box-shadow: 0 0 15px rgb(242 119 122 / 30%);

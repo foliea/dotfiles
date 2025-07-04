@@ -72,7 +72,7 @@ window_effects:
     corner_style:
       enabled: true
       # Allowed values: 'square', 'rounded', 'small_rounded'.
-      style: 'square'
+      style: 'rounded'
 
     # Change the transparency of the window.
     transparency:
@@ -90,7 +90,7 @@ window_effects:
       enabled: false
     corner_style:
       enabled: true
-      style: 'square'
+      style: 'rounded'
     transparency:
       enabled: false
       opacity: '0%'
