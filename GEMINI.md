@@ -1,57 +1,85 @@
-# Gemini Codebase Analysis
+# Gemini Codebase Analysis for AI Contributors
 
-This document provides an overview of the `dotfiles` repository, a collection of personal configuration files and scripts for setting up and managing development environments on macOS and Linux systems.
+This document provides a technical overview of the `dotfiles` repository, optimized for AI-driven development and contribution.
 
-## Project Structure
+## 1. Project Goal
 
-The repository is organized into the following main directories:
+To provide a modular, cross-platform (macOS and Linux) set of configuration files for a consistent and efficient development environment, managed via a central `Makefile`.
 
-- **`bash/`**: Contains configuration files for the Bash shell, including `bash_profile` and `bashrc`.
-- **`fish/`**: Contains configuration files for the Fish shell, including `config.fish` and a list of plugins.
-- **`git/`**: Contains global Git configuration settings and a `.gitignore` file.
-- **`nvim/`**: Contains the Neovim configuration, structured in Lua, with plugin management, options, keymaps, and LSP settings.
-- **`os/`**: Contains OS-specific dependency installation scripts for `macOS`, `linux`, and `windows`, as well as shared configurations.
-- **`tmux/`**: Contains the Tmux configuration, including `tmux.conf` and plugin settings.
-- **`tuis/`**: Contains configurations for various Text-based User Interfaces (TUIs) like `btop`, `k9s`, and `yazi`.
-- **`vscode/`**: Contains Visual Studio Code settings, keybindings, and a list of extensions.
-- **`misc/`**: Contains miscellaneous files, including example code snippets and images.
+## 2. Core Technologies
 
-## Key Components and Features
+- **Shell:** Fish (primary), Bash (fallback)
+- **Prompt:** Starship
+- **Editor:** Neovim (configured with Lua)
+- **Terminal Multiplexer:** Tmux
+- **Package Manager:** Homebrew (for both macOS and Linux)
+- **Containerization:** Docker
+- **Automation:** Make, Shell scripts
 
-### Shell Configurations (Fish and Bash)
+## 3. Project Structure Overview
 
-- **Fish Shell (`fish/`)**: The primary shell configuration, featuring a modern setup with plugins like `tide` for a custom prompt, `zoxide` for intelligent directory navigation, and `bass` for running Bash commands in a Fish shell.
-- **Bash Shell (`bash/`)**: A fallback shell configuration with similar aliases and environment variable setups as the Fish configuration.
+The repository is structured into modules, each corresponding to a specific tool or group of tools (e.g., `nvim`, `tmux`, `tuis`). A central `Makefile` orchestrates the installation of these modules. The `os/` directory is a special, cross-cutting module that handles system-level dependencies and shared configurations.
 
-### Editor Configurations
+## 4. OS-Specific and Shared Configurations (`os/`)
 
-- **Neovim (`nvim/`)**: A highly customized Neovim setup using Lua. It includes a wide range of plugins for enhancing the editing experience, such as:
-  - **LSP and Completion**: `nvim-lspconfig`, `cmp-nvim-lsp`, and `copilot.lua` for code intelligence and completion.
-  - **UI Enhancements**: `lualine.nvim`, `bufferline.nvim`, and `nvim-web-devicons` for a modern and informative UI.
-  - **Git Integration**: `gitsigns.nvim` and `diffview.nvim` for seamless Git operations within the editor.
-  - **Telescope**: For fuzzy finding files, buffers, and more.
-  - **Treesitter**: For advanced syntax highlighting and code analysis.
-- **Visual Studio Code (`vscode/`)**: A set of configurations for VS Code, including a list of essential extensions, custom settings in `settings.json`, and keybindings in `keybindings.json`.
+This directory is critical for managing the cross-platform nature of the dotfiles. It is structured as follows:
 
-### Terminal Multiplexing (Tmux)
+-   **`os/shared/`**: Contains configurations and dependencies that are common to all supported operating systems.
+-   **`os/macOS/`** and **`os/linux/`**: Contain dependencies specific to each operating system. Their respective `dependencies.sh` scripts first execute the `os/shared/dependencies.sh` script and then install any OS-specific packages.
+-   **`os/windows/`**: Contains setup scripts and configurations specifically for a WSL (Windows Subsystem for Linux) environment.
 
-- **Tmux (`tmux/`)**: The Tmux configuration is designed for efficient terminal management, with plugins like `vim-tmux-navigator` for seamless navigation between Vim and Tmux panes, and `tmux-resurrect` for session persistence.
+### Dependency Installation Strategy
 
-### System and Application Configurations
+When adding new dependencies, adhere to the following priority order:
 
-- **OS Dependencies (`os/`)**: Scripts to install necessary packages and tools for different operating systems using Homebrew.
-- **TUI Configurations (`tuis/`)**: Custom themes and settings for popular TUIs, ensuring a consistent look and feel across different terminal applications.
+1.  **Core Utilities (`curl`, `wget`)**: These should ideally be installed manually or via a script to `$HOME/.local/bin` to ensure they are available before other package managers run. This is the preferred convention.
+2.  **Homebrew (Primary)**: For all other packages, **Homebrew is the preferred package manager** for both macOS and Linux. Add new packages to the `brew install` list in the appropriate `dependencies.sh` script.
+3.  **APT (Fallback for Docker)**: The `Dockerfile` uses `apt-get` for bootstrapping the container environment. Only add packages here if they are essential for the Docker image build process and are not available via Homebrew on Linux.
 
-## Installation and Usage
+## 5. Key Module Files and Entry Points
 
-The repository uses a `Makefile` to automate the installation process. Users can install all configurations at once with `make` or install specific components individually (e.g., `make nvim`).
+This table maps each primary module to its main configuration and installation files.
 
-The `README.md` file provides detailed instructions on dependencies, installation, and post-installation steps.
+| Module | Primary Config File(s) | Installation Script |
+| :--- | :--- | :--- |
+| **Bash** | `bash/bashrc`, `bash/bash_profile` | `bash/install.sh` |
+| **Fish** | `fish/config.fish`, `fish/fish_plugins` | `fish/install.sh` |
+| **Git** | `git/gitignore` | `git/install.sh` |
+| **Neovim** | `nvim/init.lua`, `nvim/lua/` | `nvim/install.sh` |
+| **Tmux** | `tmux/tmux.conf` | `tmux/install.sh` |
+| **VS Code**| `vscode/settings.json`, `vscode/keybindings.json` | `vscode/install.sh` |
+| **TUIs** | `tuis/` (directory) | `tuis/install.sh` |
+| **Docker** | `Dockerfile` | N/A |
 
-## CI/CD
+## 6. Development and Testing
 
-The repository includes GitHub Actions workflows (`.github/workflows/`) to run tests on macOS and Ubuntu, ensuring the configurations are functional across different environments.
+To ensure changes are valid and non-breaking, follow this workflow:
 
-## Overall Impression
+1.  **Install Dependencies:** Run the appropriate script from the `os/` directory.
+2.  **Install Configurations:** Use `make` or `make <module>`.
+3.  **Run Tests:** The primary test suite is executed via `make test` or `./run-tests.exp`.
 
-This `dotfiles` repository is a well-structured and comprehensive collection of configurations for creating a personalized and efficient development environment. The modular design allows for flexibility, and the use of modern tools and plugins ensures a productive workflow. The documentation is clear and provides a good starting point for anyone looking to adopt or adapt these configurations.
+## 7. Guidance for AI Contributors
+
+### How to Add a New Tool Configuration
+
+1.  **Categorize the Tool**: First, determine where the new tool's configuration should live.
+    -   Is it a major, standalone application (like an editor or shell)? Place it in a new directory at the **root level** (e.g., `newtool/`).
+    -   Is it a Terminal User Interface (TUI) application? Place it in a new subdirectory within the **`tuis/`** directory (e.g., `tuis/newtui/`).
+
+2.  **Create Configuration Files**: Add the tool's configuration files to its new directory.
+
+3.  **Update Installation Logic**:
+    -   **For a top-level tool**: Create an `install.sh` in the new directory and add the tool's name to the `MODULES` variable in the root `Makefile`.
+    -   **For a TUI tool**: Modify the existing `tuis/install.sh` to add the setup logic for the new TUI.
+
+4.  **Add Dependencies**: Add the necessary packages by following the **Dependency Installation Strategy** outlined in Section 4.
+
+5.  **Verify**: Run `make <module>` and `make test` to ensure the changes are correctly implemented and do not break existing setups.
+
+### How to Modify an Existing Configuration
+
+1.  **Identify the relevant files** using the tables and descriptions above.
+2.  **Read the files** to understand context and conventions.
+3.  **Apply changes** and re-run the installation for that module (e.g., `make nvim`).
+4.  **Verify** with `make test`.
