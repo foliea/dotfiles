@@ -24,6 +24,7 @@ vim.opt.showbreak = '=>   '
 vim.opt.termguicolors = true
 vim.cmd [[colorscheme base16-tomorrow-night-eighties]]
 vim.opt.fillchars:append({ eob = " " })
+vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
 
 vim.g['test#javascript#jest#executable'] = 'npm test --'
 

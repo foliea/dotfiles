@@ -28,9 +28,13 @@ end
 
 set PATH $HOME/.local/bin $PATH
 
-# Ruby
-if type rbenv >/dev/null 2>&1
-    status --is-interactive; and source (rbenv init -|psub)
+# Languages version manager
+if type mise >/dev/null 2>&1
+    if status is-interactive
+        mise activate fish | source
+    else
+        mise activate fish --shims | source
+    end
 end
 set -gx OBJC_DISABLE_INITIALIZE_FORK_SAFETY YES
 
@@ -58,6 +62,8 @@ if type -q lazydocker
     alias lzd='lazydocker'
 end
 
+starship init fish | source
+
 set -g fish_key_bindings fish_vi_key_bindings
 
 set -g fisher_path $HOME/.config/fish/plugins
@@ -68,8 +74,6 @@ set fish_complete_path $fish_complete_path[1] $fisher_path/completions $fish_com
 for file in $fisher_path/conf.d/*.fish
     builtin source $file 2>/dev/null
 end
-
-starship init fish | source
 
 # tabtab source for packages
 # uninstall by removing these lines

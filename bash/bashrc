@@ -9,6 +9,8 @@ export TERM=xterm-256color
 export LC_ALL=en_US.UTF-8
 export PAGER=most
 
+set -o vi
+
 if [ -d "/opt/homebrew/bin" ]; then
     export PATH="/opt/homebrew/bin:$PATH"
 fi
@@ -33,19 +35,11 @@ fi
 
 export PATH="$HOME/.local/bin:$PATH"
 
-# Ruby
-if command -v rbenv >/dev/null 2>&1; then
-    export PATH="$HOME/.rbenv/bin:$PATH"
-    eval "$(rbenv init -)"
+# Languages version manager
+if command -v mise >/dev/null 2>&1; then
+    eval "$(mise activate bash)"
 fi
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
-
-# Node.js
-if command -v fnm >/dev/null 2>&1; then
-    eval "$(fnm env --use-on-cd)"
-fi
-
-set -o vi
 
 # Aliases
 if command -v eza >/dev/null 2>&1; then
