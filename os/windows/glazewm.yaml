@@ -85,7 +85,7 @@ window_effects:
   other_windows:
     border:
       enabled: true
-      color: '#2d2d2d'
+      color: '#4a4a4a'
     hide_title_bar:
       enabled: false
     corner_style:
