@@ -14,5 +14,14 @@ if [ -z "$WIN_USER" ]; then
 fi
 
 winget.exe install \
+    GlazeWM \
+    CharlesMilette.TranslucentTB \
+    Microsoft.PowerToys \
     wez.wezterm \
-    GlazeWM
+    Microsoft.VisualStudioCode \
+    Microsoft.WindowsTerminal \
+    Microsoft.PowerShell \
+    Docker.DockerDesktop \
+    Discord.Discord \
+    Google.QuickShare \
+    screenbox

@@ -47,16 +47,12 @@ brew install cmake \
 # Starship
 ln -sf "$PWD/os/shared/starship.toml" "$HOME/.config/starship.toml"
 
-# WezTerm
-mkdir -p "$HOME/.config/wezterm"
-ln -sf "$PWD/os/shared/wezterm.lua" "$HOME/.config/wezterm/wezterm.lua"
-
 # Ruby
 ln -sf "$PWD/os/shared/default-gems" "$HOME/.default-gems"
 mise settings add idiomatic_version_file_enable_tools ruby
-mise use ruby@latest
+mise use -g ruby@latest
 
 # Node.js
 ln -sf "$PWD/os/shared/default-npm-packages" "$HOME/.default-npm-packages"
 mise settings add idiomatic_version_file_enable_tools node
-mise use node@latest
+mise use -g node@latest

@@ -43,10 +43,23 @@ mkdir -p $GLAZE_DEST_DIR
 
 cp "$PWD/os/windows/glazewm.yaml" "$GLAZE_DEST_DIR/glazewm/config.yaml"
 
-rm -rf "$GLAZE_DEST_DIR/zebar"
-cp -r "$PWD/os/windows/zebar" "$GLAZE_DEST_DIR"
+INSTALL_ZEBAR=false
+for arg in "$@"; do
+    if [ "$arg" = "--with-zebar" ]; then
+        INSTALL_ZEBAR=true
+        break
+    fi
+done
 
-ZEBAR_ROAMING_DIR="/mnt/c/Users/$WIN_USER/AppData/Roaming/zebar"
-rm -rf "$ZEBAR_ROAMING_DIR"
-mkdir -p "$ZEBAR_ROAMING_DIR/downloads"
-cp -r "$PWD/os/windows/neon-folie@0.0.0" "$ZEBAR_ROAMING_DIR/downloads"
+if [ "$INSTALL_ZEBAR" = "true" ]; then
+    echo "Installing Zebar..."
+    rm -rf "$GLAZE_DEST_DIR/zebar"
+    cp -r "$PWD/os/windows/zebar" "$GLAZE_DEST_DIR"
+
+    ZEBAR_ROAMING_DIR="/mnt/c/Users/$WIN_USER/AppData/Roaming/zebar"
+    rm -rf "$ZEBAR_ROAMING_DIR"
+    mkdir -p "$ZEBAR_ROAMING_DIR/downloads"
+    cp -r "$PWD/os/windows/neon-folie@0.0.0" "$ZEBAR_ROAMING_DIR/downloads"
+else
+    echo "Skipping Zebar installation. Use --with-zebar to install."
+fi
