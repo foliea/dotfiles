@@ -191,16 +191,6 @@ keybindings:
   - commands: ['move --direction down']
     bindings: ['alt+shift+j', 'alt+shift+down']
 
-  # Resize focused window by a percentage or pixel amount.
-  - commands: ['resize --width -2%']
-    bindings: ['alt+u']
-  - commands: ['resize --width +2%']
-    bindings: ['alt+p']
-  - commands: ['resize --height +2%']
-    bindings: ['alt+o']
-  - commands: ['resize --height -2%']
-    bindings: ['alt+i']
-
   # As an alternative to the resize keybindings above, resize mode enables
   # resizing via arrow keys or HJKL. The binding mode is defined above with
   # the name 'resize'.
@@ -256,7 +246,7 @@ keybindings:
   # Launch CMD terminal. Alternatively, use `shell-exec wt` or
   # `shell-exec %ProgramFiles%/Git/git-bash.exe` to start Windows
   # Terminal and Git Bash respectively.
-  - commands: ['shell-exec cmd']
+  - commands: ['shell-exec %ProgramFiles%/WezTerm/wezterm-gui.exe']
     bindings: ['alt+enter']
 
   # Focus the next/previous active workspace defined in `workspaces` config.
