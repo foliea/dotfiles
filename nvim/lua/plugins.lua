@@ -1,5 +1,5 @@
 -- Plugin management (vim-plug block)
-vim.cmd [[
+vim.cmd([[
 
 let g:fzf_install = 'yes | ./install --bin'
   call plug#begin('~/.config/nvim/plugins')
@@ -48,4 +48,4 @@ let g:fzf_install = 'yes | ./install --bin'
   Plug 'kevinhwang91/nvim-ufo'
   Plug 'onsails/lspkind.nvim'
   call plug#end()
-]]
+]])

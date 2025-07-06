@@ -6,7 +6,7 @@ vim.api.nvim_set_hl(0, "PmenuThumb", { bg = "#515151" })
 vim.api.nvim_set_hl(0, "CmpDocNormal", { bg = "#2d2d2d" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#2d2d2d" })
 vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#2d2d2d" })
-vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#66cccc"})
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#66cccc" })
 
 -- Notification
 vim.api.nvim_set_hl(0, "NotifyERRORBorder", { fg = "#f2777a" })
@@ -36,4 +36,3 @@ vim.api.nvim_set_hl(0, "DevIconConfigRu", { fg = "#e8274b" })
 vim.api.nvim_set_hl(0, "DevIconGemfile", { fg = "#e8274b" })
 vim.api.nvim_set_hl(0, "DevIconRake", { fg = "#e8274b" })
 vim.api.nvim_set_hl(0, "DevIconRakefile", { fg = "#e8274b" })
-
