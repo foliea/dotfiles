@@ -54,3 +54,4 @@ vim.api.nvim_set_keymap('n', '<leader>gb', ':Gitsigns blame_line<CR>', { noremap
 vim.api.nvim_set_keymap('n', '<leader>hk', ':Telescope keymaps<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>hc', ':Telescope commands<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>hd', ':Trouble<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>ha', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
