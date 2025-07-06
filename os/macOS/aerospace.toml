@@ -47,6 +47,9 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
     # Change the focused window to be fullscreen.
     alt-f = 'fullscreen'
 
+    # Close focused window.
+    alt-q = 'close --quit-if-last-window'
+
     # 'layout stacking' in i3
     alt-n = 'layout v_accordion'
 
@@ -60,12 +63,7 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
     alt-shift-r = 'reload-config'
 
     # Launch terminal.
-    alt-enter = '''exec-and-forget osascript -e '
-    tell application "Terminal"
-        do script
-        activate
-    end tell'
-    '''
+    alt-enter = 'exec-and-forget open -n -a WezTerm'
 
     # Change focus to a workspace.
     alt-1 = 'workspace 1'
@@ -80,7 +78,7 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
     alt-0 = 'workspace 10'
 
     # Move the focused window's parent workspace to another monitor.
-    alt-shift-j = 'move-workspace-to-monitor --wrap-around next'
+    alt-shift-d = 'move-workspace-to-monitor --wrap-around next'
 
     # Move focused window to a workspace.
     alt-shift-1 = 'move-node-to-workspace 1'
