@@ -2,7 +2,7 @@
 $ErrorActionPreference = "Stop"
 
 # Path to the ui-extensions.txt file
-$ExtensionsFile = ".\ui-extensions.txt"
+$ExtensionsFile = ".\host-extensions.txt"
 
 # Check if the file exists
 if (-Not (Test-Path -Path $ExtensionsFile)) {

@@ -34,14 +34,6 @@ ln -sf "$PWD/vscode/settings.json" "$VS_CODE_CONFIG_DIR/settings.json"
 
 if [ "$IS_WSL" = false ]; then
     ln -sf "$PWD/vscode/keybindings.json" "$VS_CODE_CONFIG_DIR/keybindings.json"
-
-    while IFS= read -r extension; do
-        if [ ! -z "$extension" ]; then
-            echo "Installing UI extension: $extension"
-
-            code --install-extension "$extension" --force
-        fi
-    done < "$PWD/vscode/ui-extensions.txt"
 else
     win_user=$(cmd.exe /C 'echo %USERNAME%' 2>/dev/null | tr -d '\r')
 
@@ -49,9 +41,19 @@ else
     cp "$PWD/vscode/keybindings.json" "/mnt/c/Users/$win_user/AppData/Roaming/Code/User/keybindings.json"
 fi
 
+if [ ! -d "$HOME/.vscode-server" ]; then
+    while IFS= read -r extension; do
+        if [ ! -z "$extension" ]; then
+            echo "Installing host extension: $extension"
+
+            code --install-extension "$extension" --force
+        fi
+    done < "$PWD/vscode/host-extensions.txt"
+fi
+
 while IFS= read -r extension; do
     if [ ! -z "$extension" ]; then
-        echo "Installing extension: $extension"
+        echo "Installing remote extension: $extension"
         code --install-extension "$extension" --force
     fi
-done < "$PWD/vscode/extensions.txt"
+done < "$PWD/vscode/remote-extensions.txt"
