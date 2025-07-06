@@ -15,10 +15,9 @@ fi
 
 # WezTerm configuration
 WEZTERM_DEST_DIR="/mnt/c/Users/$WIN_USER/.config/wezterm"
-WEZTERM_DEST_FILE="$WEZTERM_DEST_DIR/wezterm.lua"
 
 mkdir -p "$WEZTERM_DEST_DIR"
-cp "$PWD/os/shared/wezterm.lua" "$WEZTERM_DEST_FILE"
+cp "$PWD/os/shared/wezterm.lua" "$WEZTERM_DEST_DIR/wezterm.lua"
 
 # Windows Terminal configuration
 WT_SOURCE_PATH="$PWD/os/windows/terminal.json"
@@ -38,8 +37,8 @@ mkdir -p "$WT_DEST_DIR"
 cp "$WT_SOURCE_PATH" "$WT_DEST_FILE"
 
 # GlazeWM
-GLAZE_DEST_DIR="/mnt/c/Users/$WIN_USER/.glzr/"
-mkdir -p $GLAZE_DEST_DIR
+GLAZE_DEST_DIR="/mnt/c/Users/$WIN_USER/.glzr"
+mkdir -p "$GLAZE_DEST_DIR/glazewm"
 
 cp "$PWD/os/windows/glazewm.yaml" "$GLAZE_DEST_DIR/glazewm/config.yaml"
 
