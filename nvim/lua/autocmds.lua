@@ -1,14 +1,48 @@
--- Autocommands
+-- Softtab 2
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'ruby', 'eruby', 'crystal', 'yaml', 'haml', 'toml', 'slim', 'json', 'scss', 'css', 'vim', 'javascript', 'typescript', 'groovy', 'lua' },
+  pattern = {
+    'ruby',
+    'eruby',
+    'crystal',
+    'yaml',
+    'haml',
+    'toml',
+    'slim',
+    'json',
+    'scss',
+    'css',
+    'vim',
+    'javascript',
+    'typescript',
+    'groovy',
+    'lua',
+  },
   callback = function()
     vim.opt_local.shiftwidth = 2
     vim.opt_local.softtabstop = 2
   end
 })
 
+-- Softtab 4
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'cs',
+  pattern = {
+    'sh',
+    'bash',
+    'fish',
+    'dockerfile',
+  },
+  callback = function()
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.softtabstop = 2
+  end
+})
+
+-- Hardtab 4
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = {
+    'cs',
+    'make',
+  },
   callback = function()
     vim.opt_local.tabstop = 4
     vim.opt_local.shiftwidth = 4
@@ -21,7 +55,7 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = 'ruby',
   callback = function()
     vim.cmd 'compiler ruby'
-    vim.api.nvim_buf_set_keymap(0, 'n', '<leader>b', "irequire 'pry'; binding.pry<Esc>:w<CR>", { noremap = true, silent = false })
+    vim.api.nvim_buf_set_keymap(0, 'n', '<leader>bp', "require 'pry'; binding.pry<Esc>:w<CR>", { noremap = true, silent = false })
   end
 })
 
@@ -31,6 +65,18 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
 })
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   pattern = 'Caskfile',
+  callback = function() vim.bo.filetype = 'ruby' end
+})
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = 'Gemfile',
+  callback = function() vim.bo.filetype = 'ruby' end
+})
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = 'Rakefile',
+  callback = function() vim.bo.filetype = 'ruby' end
+})
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = 'config.ru',
   callback = function() vim.bo.filetype = 'ruby' end
 })
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
