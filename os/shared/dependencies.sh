@@ -41,7 +41,8 @@ brew install \
     yazi \
     lazygit \
     jesseduffield/lazydocker/lazydocker \
-    gemini-cli
+    gemini-cli \
+    stylua
 
 # Starship
 ln -sf "$PWD/os/shared/starship.toml" "$HOME/.config/starship.toml"

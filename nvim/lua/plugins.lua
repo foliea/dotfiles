@@ -30,6 +30,7 @@ let g:fzf_install = 'yes | ./install --bin'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-obsession'
   Plug 'janko-m/vim-test'
+  Plug 'stevearc/conform.nvim'
   Plug 'nvim-tree/nvim-web-devicons'
   Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
   Plug 'lewis6991/gitsigns.nvim'
