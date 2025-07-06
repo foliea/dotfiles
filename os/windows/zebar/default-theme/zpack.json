@@ -1,18 +1,18 @@
 {
   "$schema": "https://github.com/glzr-io/zebar/raw/v3.1.1/resources/zpack-schema.json",
-  "name": "neon-folie",
+  "name": "default-theme",
   "version": "0.0.0",
-  "description": "A vibrant neon-themed configuration for zebar",
+  "description": "A vibrant configuration for zebar",
   "tags": [
-    "neon"
+    "default-theme"
   ],
   "previewImages": [
     "img/image1.png"
   ],
-  "repositoryUrl": "https://github.com/echosonusharma/zebar_neon_theme",
+  "repositoryUrl": "https://github.com/foliea/dotfiles",
   "widgets": [
     {
-      "name": "neon",
+      "name": "main",
       "htmlPath": "./index.html",
       "zOrder": "normal",
       "shownInTaskbar": false,
