@@ -72,6 +72,7 @@
             },
             {
                 "colorScheme": "Tomorrow Night Eighties",
+                "icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
                 "guid": "{d96f7780-5aeb-5c77-93b1-4bf2de58552f}",
                 "hidden": false,
                 "name": "Ubuntu",
