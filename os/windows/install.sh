@@ -24,4 +24,5 @@ winget.exe install \
     Docker.DockerDesktop \
     Discord.Discord \
     Google.QuickShare \
-    screenbox
+    screenbox \
+    DuongDieuPhap.ImageGlass
