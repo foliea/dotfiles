@@ -265,7 +265,6 @@ pcall(function()
 			dockerfile = { "beautysh" },
 			fish = { "fish_indent" },
 			ruby = { "rubocop" },
-			python = { "ruff" },
 		},
 	})
 end)
