@@ -1,10 +1,6 @@
 #!/bin/sh
 set -e
 
-if [ "$CI" = "true" ]; then
-  export GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}"
-fi
-
 brew update
 
 brew install \
