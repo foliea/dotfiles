@@ -47,7 +47,9 @@ brew install \
     prettierd \
     shfmt \
     beautysh \
-    ruff
+    ruff \
+    lua-language-server \
+    fish-lsp
 
 # Starship
 ln -sf "$PWD/os/shared/starship.toml" "$HOME/.config/starship.toml"
