@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=https://dlvhdr.github.io/gh-dash/configuration/gh-dash/schema.json
+
+theme:
+  colors:
+    text:
+      primary: "#ffffff"
+      secondary: "#cccccc"
+      inverted: "#2d2d2d"
+      faint: "#cccccc"
+      success: "#99cc99"
+      warning: "#f99157"
+    background:
+      selected: "#393939"
+    border:
+      primary: "#f2777a"
+      secondary: "#cccccc"
+      faint: "#515151"
+    icon:
+      owner: "#f99157"
+      collaborator: "#6699cc"
+      member: "#99cc99"
+      contributor: "#cc99cc"
+      newContributor: "#ffcc66"
+      unknown: "#393939"
+
+ui:
+  table:
+    compact: true             # More compact table display
+    showSeparator: false      # Hide row separators for cleaner look
+  sectionsShowCount: true     # Show result count for each section

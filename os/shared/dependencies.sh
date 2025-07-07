@@ -19,6 +19,7 @@ brew install \
     zoxide \
     git \
     hub \
+    gh \
     bash \
     fish \
     starship \

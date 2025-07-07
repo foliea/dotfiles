@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:dlvhdr.github.io)",
+      "WebFetch(domain:github.com)"
+    ],
+    "deny": []
+  }
+}

@@ -29,3 +29,7 @@ ln -sf "$PWD/tuis/vifm/" "$HOME/.vifm"
 # yazi
 rm -rf "$HOME/.config/yazi"
 ln -sf "$PWD/tuis/yazi/" "$HOME/.config/yazi"
+
+# gh-dash
+mkdir -p "$HOME/.config/gh-dash"
+ln -sf "$PWD/tuis/gh-dash/config.yml" "$HOME/.config/gh-dash/config.yml"
