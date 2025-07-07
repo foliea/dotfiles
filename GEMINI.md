@@ -83,3 +83,34 @@ To ensure changes are valid and non-breaking, follow this workflow:
 2.  **Read the files** to understand context and conventions.
 3.  **Apply changes** and re-run the installation for that module (e.g., `make nvim`).
 4.  **Verify** with `make test`.
+
+## 8. Language Server Protocol (LSP) and Formatting
+
+This section details the LSP servers and formatters configured in the repository.
+
+### Language Servers
+
+| Language | LSP Server | Installation Method | Configuration File(s) | Notes |
+| :--- | :--- | :--- | :--- | :--- |
+| **Ruby** | `solargraph` | `default-gems` (via `mise`) | `nvim/lua/lsp.lua` | Uses project-local version if available, otherwise global. |
+| **TypeScript/JavaScript** | `typescript-language-server` | `default-npm-packages` (via `mise`) | `nvim/lua/lsp.lua` | Uses project-local version if available, otherwise global. |
+| **Bash** | `bash-language-server` | Homebrew | `nvim/lua/lsp.lua` | |
+| **Docker** | `dockerls` | Homebrew | `nvim/lua/lsp.lua` | |
+| **Prisma** | `@prisma/language-server` | `default-npm-packages` (via `mise`) | `nvim/lua/lsp.lua` | Official distribution via npm. |
+| **JSON** | `vscode-json-languageserver` | Homebrew | `nvim/lua/lsp.lua` | |
+| **Lua** | `lua-language-server` | Homebrew | `nvim/lua/lsp.lua` | |
+| **Fish** | `fish-lsp` | Homebrew | `nvim/lua/lsp.lua` | |
+
+### Formatters
+
+| Language | Formatter | Installation Method | Configuration File(s) | Notes |
+| :--- | :--- | :--- | :--- | :--- |
+| **Lua** | `stylua` | Homebrew | `nvim/init.lua` | |
+| **JavaScript** | `prettierd`, `prettier` | Homebrew | `nvim/init.lua` | Uses project-local version if available, otherwise global. |
+| **TypeScript** | `prettierd`, `prettier` | Homebrew | `nvim/init.lua` | Uses project-local version if available, otherwise global. |
+| **Shell** | `shfmt` | Homebrew | `nvim/init.lua` | Covers Bash scripts. |
+| **Makefile** | `beautysh` | Homebrew | `nvim/init.lua` | |
+| **Dockerfile** | `beautysh` | Homebrew | `nvim/init.lua` | |
+| **Fish** | `fish_indent` | Homebrew (part of `fish` package) | `nvim/init.lua` | |
+| **Ruby** | `rubocop` | `default-gems` (via `mise`) | `nvim/init.lua` | Uses project-local version if available, otherwise global. |
+| **Python** | `ruff` | Homebrew | `nvim/init.lua` | |

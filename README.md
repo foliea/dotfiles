@@ -82,6 +82,7 @@ After installation, complete the following steps:
 - **TUI configurations**: Preconfigured btop, k9s, yazi, etc...
 - **Tmux enhancements**: Includes plugins for better terminal multiplexing.
 - **Automated setup**: Scripts to install dependencies and configure the environment.
+- **Language Server Protocol (LSP) & Formatting**: Comprehensive LSP and formatting support for various languages, including Ruby, Python, JavaScript/TypeScript, Bash, Fish, Dockerfile, and JSON.
 
 ## Contributing
 

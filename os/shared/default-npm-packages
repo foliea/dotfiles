@@ -1,6 +1,3 @@
 typescript
 typescript-language-server
 @prisma/language-server
-bash-language-server
-dockerfile-language-server-nodejs
-vscode-json-languageserver

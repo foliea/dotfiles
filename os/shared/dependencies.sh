@@ -49,7 +49,10 @@ brew install \
     beautysh \
     ruff \
     lua-language-server \
-    fish-lsp
+    fish-lsp \
+    bash-language-server \
+    dockerfile-language-server \
+    vscode-langservers-extracted
 
 # Starship
 ln -sf "$PWD/os/shared/starship.toml" "$HOME/.config/starship.toml"
