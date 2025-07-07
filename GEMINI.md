@@ -12,6 +12,7 @@ To provide a modular, cross-platform (macOS and Linux) set of configuration file
 - **Prompt:** Starship
 - **Editor:** Neovim (configured with Lua)
 - **Terminal Multiplexer:** Tmux
+- **Language Version Manager:** mise
 - **Package Manager:** Homebrew (for both macOS and Linux)
 - **Containerization:** Docker
 - **Automation:** Make, Shell scripts
