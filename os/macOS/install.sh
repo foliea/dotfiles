@@ -2,5 +2,11 @@
 set -e
 
 brew install --cask \
+	font-fira-code-nerd-font \
 	nikitabobko/tap/aerospace \
-	font-fira-code-nerd-font
+	scroll-reverser \
+	caffeine \
+	visual-studio-code \
+	wezterm \
+	orbstack \
+	discord

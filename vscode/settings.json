@@ -93,5 +93,10 @@
   "explorer.confirmDragAndDrop": false,
   "explorer.confirmDelete": false,
   "vim.easymotion": true,
-  "vim.useSystemClipboard": true
+  "vim.useSystemClipboard": true,
+  "chat.instructionsFilesLocations": {
+    ".github/instructions": true,
+    "/var/folders/4x/50db097n6z73x8r72dzj5lpm0000gp/T/postman-http-request-post-response.instructions.md": true,
+    "/var/folders/4x/50db097n6z73x8r72dzj5lpm0000gp/T/postman-http-request-pre-request.instructions.md": true
+  }
 }
