@@ -3,23 +3,23 @@
 monitors=($(xrandr | awk '( $2 == "connected" ){ print $1 }'))
 
 function switch_dpi() {
-    local dpi=$(cat /var/default/$1-dpi 2>/dev/null)
+	local dpi=$(cat /var/default/$1-dpi 2>/dev/null)
 
-    if [ -z "$dpi" ]; then dpi=96 ; fi
+	if [ -z "$dpi" ]; then dpi=96; fi
 
-    local scaling=$(($dpi / 96))
-    local font_size=$(($scaling * 15))
+	local scaling=$(($dpi / 96))
+	local font_size=$(($scaling * 15))
 
-    sudo sed -i -e "/font-size =/ s/= .*/= $font_size/" \
-        /etc/lightdm/lightdm-mini-greeter.conf 1>/dev/null
+	sudo sed -i -e "/font-size =/ s/= .*/= $font_size/" \
+		/etc/lightdm/lightdm-mini-greeter.conf 1>/dev/null
 }
 
 if [ -z ${monitors[1]} ]; then
-    xrandr --output ${monitors[0]} --auto --primary
+	xrandr --output ${monitors[0]} --auto --primary
 
-    switch_dpi internal
+	switch_dpi internal
 else
-    xrandr --output ${monitors[1]} --auto --primary --output ${monitors[0]} --off
+	xrandr --output ${monitors[1]} --auto --primary --output ${monitors[0]} --off
 
-    switch_dpi external
+	switch_dpi external
 fi

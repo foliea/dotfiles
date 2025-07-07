@@ -6,39 +6,37 @@ config_dir="$HOME/.config"
 mkdir -p $config_dir
 
 for file in i3 \
-    polybar \
-    nitrogen \
-    fontconfig \
-    terminator \
-    dunst \
-    gtk-3.0 \
-    compton.conf \
-    clipit \
-    qutebrowser \
-    zathura \
-    mimeapps.list \
-    firegrid
-do
-    ln -s $PWD/config/$file $config_dir/
+	polybar \
+	nitrogen \
+	fontconfig \
+	terminator \
+	dunst \
+	gtk-3.0 \
+	compton.conf \
+	clipit \
+	qutebrowser \
+	zathura \
+	mimeapps.list \
+	firegrid; do
+	ln -s $PWD/config/$file $config_dir/
 done
 
 for file in Xresources \
-    Xresources.d \
-    Xmodmap \
-    xprofile \
-    dmrc \
-    gtkrc-2.0 \
-    gnupg \
-    grip \
-    pam_environment
-do
-    ln -s $PWD/config/$file $HOME/.$file
+	Xresources.d \
+	Xmodmap \
+	xprofile \
+	dmrc \
+	gtkrc-2.0 \
+	gnupg \
+	grip \
+	pam_environment; do
+	ln -s $PWD/config/$file $HOME/.$file
 done
 
 mkdir -p $HOME/.local/share/applications
 
-for file in tui dev slack qutebrowser system-update system-config-printer gparted Zoom ; do
-    ln -s $PWD/applications/$file.desktop $HOME/.local/share/applications/$file.desktop
+for file in tui dev slack qutebrowser system-update system-config-printer gparted Zoom; do
+	ln -s $PWD/applications/$file.desktop $HOME/.local/share/applications/$file.desktop
 done
 
 # Link custom binaries

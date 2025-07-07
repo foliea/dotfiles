@@ -6,18 +6,18 @@ options="Qwerty\nQwerty International\nAzerty"
 option=$(echo -e $options | $launcher)
 
 if [ ${#option} -gt 0 ]; then
-    if [ "$option" == "Qwerty" ]; then
-        layout=us
-    elif [ "$option" == "Qwerty International" ]; then
-        layout=us
-        flags="-variant altgr-intl -option nodeadkeys"
-    elif [ "$option" == "Azerty" ]; then
-        layout=fr
-    fi
+	if [ "$option" == "Qwerty" ]; then
+		layout=us
+	elif [ "$option" == "Qwerty International" ]; then
+		layout=us
+		flags="-variant altgr-intl -option nodeadkeys"
+	elif [ "$option" == "Azerty" ]; then
+		layout=fr
+	fi
 
-    echo "$layout $flags" > $HOME/.config/keyboard-layout.conf
+	echo "$layout $flags" >$HOME/.config/keyboard-layout.conf
 
-    load-keyboard-layout
+	load-keyboard-layout
 
-    notify-send --urgency=normal "Keyboard set to $option"
+	notify-send --urgency=normal "Keyboard set to $option"
 fi

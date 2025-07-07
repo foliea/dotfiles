@@ -26,8 +26,8 @@ if [ -d "/home/linuxbrew" ]; then
         export MANPATH=":$MANPATH"
     fi
     case ":$INFOPATH:" in
-        *:/home/linuxbrew/.linuxbrew/share/info:*) ;;
-        *) export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH" ;;
+    *:/home/linuxbrew/.linuxbrew/share/info:*) ;;
+    *) export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH" ;;
     esac
 
     export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
@@ -52,15 +52,15 @@ if command -v zoxide >/dev/null 2>&1; then
     alias cd='zoxide'
 fi
 
-if command -v hub  >/dev/null 2>&1; then
+if command -v hub >/dev/null 2>&1; then
     alias git='hub'
 fi
 
-if command -v lazygit  >/dev/null 2>&1; then
+if command -v lazygit >/dev/null 2>&1; then
     alias lzg='lazygit'
 fi
 
-if command -v lazydocker  >/dev/null 2>&1; then
+if command -v lazydocker >/dev/null 2>&1; then
     alias lzd='lazydocker'
 fi
 
@@ -70,11 +70,11 @@ alias gbs="git branch | sed 's/^\* //' | sed 's/  *//' | fzf --preview-window=ri
 eval "$(starship init bash)"
 
 swork() {
-    $HOME/.config/tmux/switch_workspace.sh "$1" true
+    $HOME/.config/tmux/switch-workspace.sh "$1" true
 }
 
 iwork() {
-    $HOME/.config/tmux/switch_workspace.sh "$PWD" false
+    $HOME/.config/tmux/switch-workspace.sh "$PWD" false
 }
 
 sdash() {
@@ -84,7 +84,7 @@ sdash() {
 y() {
     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
     yazi "$@" --cwd-file="$tmp"
-    IFS= read -r -d '' cwd < "$tmp"
+    IFS= read -r -d '' cwd <"$tmp"
     [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
     rm -f -- "$tmp"
 }

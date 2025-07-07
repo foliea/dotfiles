@@ -5,7 +5,7 @@ TARGET_DIR="${1:-}"
 NEW_WINDOW="${2:-true}"
 
 if [ "$NEW_WINDOW" = "true" ]; then
-  tmux new-window -c "$TARGET_DIR"
+    tmux new-window -c "$TARGET_DIR"
 fi
 
 tmux rename-window " $(basename "$TARGET_DIR")"

@@ -25,8 +25,6 @@ vim.api.nvim_create_autocmd("FileType", {
 -- Softtab 4
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = {
-		"sh",
-		"bash",
 		"fish",
 		"dockerfile",
 	},
@@ -40,6 +38,8 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = {
 		"cs",
+		"sh",
+		"bash",
 		"make",
 		"lua",
 	},

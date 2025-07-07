@@ -3,17 +3,16 @@ set -e
 
 config="git config --global"
 
-for info in name email
-do
-    read -p "Please specify you git user $info: " userinfo
-    if [ "$userinfo" ]; then
-        ${config} user.$info "$userinfo"
-    fi
+for info in name email; do
+	read -p "Please specify you git user $info: " userinfo
+	if [ "$userinfo" ]; then
+		${config} user.$info "$userinfo"
+	fi
 done
 
 read -p "Do you want to sign git commits with gpg key? (y/n): " gpgsign
 if [ "$gpgsign" = "y" ]; then
-    ${config} commit.gpgsign true
+	${config} commit.gpgsign true
 fi
 
 ${config} core.autocrlf input

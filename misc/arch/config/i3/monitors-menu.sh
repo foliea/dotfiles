@@ -15,19 +15,19 @@ option=$(echo -e $options | $launcher)
 cmd=switch-monitor
 
 if [ ${#option} -gt 0 ]; then
-    if [ "$option" == "Clone" ]; then
-        $cmd clone
-    elif [ "$option" == "Internal" ]; then
-        $cmd internal
-    elif [ "$option" == "External" ]; then
-        $cmd external
-    elif [ "$option" == "Extended (Left of computer)" ]; then
-        $cmd extended --left-of
-    elif [ "$option" == "Extended (Right of computer)" ]; then
-        $cmd extended --right-of
-    elif [ "$option" == "Extended (Above computer)" ]; then
-        $cmd extended --above
-    elif [ "$option" == "Extended (Below computer)" ]; then
-        $cmd extended --below
-    fi
+	if [ "$option" == "Clone" ]; then
+		$cmd clone
+	elif [ "$option" == "Internal" ]; then
+		$cmd internal
+	elif [ "$option" == "External" ]; then
+		$cmd external
+	elif [ "$option" == "Extended (Left of computer)" ]; then
+		$cmd extended --left-of
+	elif [ "$option" == "Extended (Right of computer)" ]; then
+		$cmd extended --right-of
+	elif [ "$option" == "Extended (Above computer)" ]; then
+		$cmd extended --above
+	elif [ "$option" == "Extended (Below computer)" ]; then
+		$cmd extended --below
+	fi
 fi

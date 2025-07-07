@@ -2,15 +2,15 @@
 set -e
 
 if ! grep -qEi "WSL" /proc/version; then
-    echo "Error: This script is intended to be run inside Windows Subsystem for Linux (WSL)."
-    exit 1
+	echo "Error: This script is intended to be run inside Windows Subsystem for Linux (WSL)."
+	exit 1
 fi
 
 WIN_USER=$(cmd.exe /C 'echo %USERNAME%' 2>/dev/null | tr -d '\r')
 
 if [ -z "$WIN_USER" ]; then
-    echo "Error: Could not determine Windows username. Please ensure cmd.exe is accessible."
-    exit 1
+	echo "Error: Could not determine Windows username. Please ensure cmd.exe is accessible."
+	exit 1
 fi
 
 # WezTerm configuration
@@ -26,8 +26,8 @@ WT_SOURCE_PATH="$PWD/os/windows/terminal.json"
 WT_PACKAGE_DIR=$(find "/mnt/c/Users/$WIN_USER/AppData/Local/Packages" -maxdepth 1 -type d -name "Microsoft.WindowsTerminal_*" | head -n 1)
 
 if [ -z "$WT_PACKAGE_DIR" ]; then
-    echo "Error: Could not find Windows Terminal package directory. Is Windows Terminal installed?"
-    exit 1
+	echo "Error: Could not find Windows Terminal package directory. Is Windows Terminal installed?"
+	exit 1
 fi
 
 WT_DEST_DIR="$WT_PACKAGE_DIR/LocalState"
@@ -44,16 +44,16 @@ cp "$PWD/os/windows/glazewm.yaml" "$GLAZE_DEST_DIR/glazewm/config.yaml"
 
 INSTALL_ZEBAR=false
 for arg in "$@"; do
-    if [ "$arg" = "--with-zebar" ]; then
-        INSTALL_ZEBAR=true
-        break
-    fi
+	if [ "$arg" = "--with-zebar" ]; then
+		INSTALL_ZEBAR=true
+		break
+	fi
 done
 
 if [ "$INSTALL_ZEBAR" = "true" ]; then
-    echo "Installing Zebar..."
-    rm -rf "$GLAZE_DEST_DIR/zebar"
-    cp -r "$PWD/os/windows/zebar" "$GLAZE_DEST_DIR"
+	echo "Installing Zebar..."
+	rm -rf "$GLAZE_DEST_DIR/zebar"
+	cp -r "$PWD/os/windows/zebar" "$GLAZE_DEST_DIR"
 else
-    echo "Skipping Zebar installation. Use --with-zebar to install."
+	echo "Skipping Zebar installation. Use --with-zebar to install."
 fi
