@@ -17,3 +17,6 @@ cweijan.vscode-postgresql-client2
 postman.postman-for-vscode
 ms-vscode.powershell
 streetsidesoftware.code-spell-checker
+sumneko.lua
+mads-hartmann.bash-ide-vscode
+Prisma.prisma
