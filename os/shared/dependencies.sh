@@ -42,7 +42,12 @@ brew install \
     lazygit \
     jesseduffield/lazydocker/lazydocker \
     gemini-cli \
-    stylua
+    stylua \
+    prettier \
+    prettierd \
+    shfmt \
+    beautysh \
+    ruff
 
 # Starship
 ln -sf "$PWD/os/shared/starship.toml" "$HOME/.config/starship.toml"
