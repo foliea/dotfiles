@@ -12,7 +12,8 @@ pcall(function()
 	})
 	lspconfig.prismals.setup({})
 	lspconfig.lua_ls.setup({})
-	lspconfig.fish_lsp.setup({})
+	lspconfig.fish_lsp.setup({});
+	lspconfig.terraformls.setup({});
 	lspconfig.jsonls.setup({
 		capabilities = capabilities,
 		settings = {

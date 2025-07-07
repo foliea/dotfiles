@@ -65,3 +65,7 @@ mise use -g ruby@latest
 ln -sf "$PWD/os/shared/default-npm-packages" "$HOME/.default-npm-packages"
 mise settings add idiomatic_version_file_enable_tools node
 mise use -g node@latest
+
+# Terraform
+mise settings add idiomatic_version_file_enable_tools terraform
+mise use -g terraform@latest

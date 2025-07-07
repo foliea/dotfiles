@@ -265,6 +265,7 @@ pcall(function()
 			dockerfile = { "beautysh" },
 			fish = { "fish_indent" },
 			ruby = { "rubocop" },
+			terraform = { "terraform_fmt" },
 		},
 	})
 end)

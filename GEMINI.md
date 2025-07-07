@@ -100,7 +100,8 @@ This section details the LSP servers and formatters configured in the repository
 | **Prisma** | `@prisma/language-server` | `default-npm-packages` (via `mise`) | `nvim/lua/lsp.lua` | Official distribution via npm. |
 | **JSON** | `vscode-json-languageserver` | Homebrew | `nvim/lua/lsp.lua` | |
 | **Lua** | `lua-language-server` | Homebrew | `nvim/lua/lsp.lua` | |
-| **Fish** | `fish-lsp` | Homebrew | `nvim/lua/lsp.lua` | |
+| **Fish** | `fish-lsp` | Homebrew | `nvim/lua/lsp.lua` |
+| **Terraform** | `terraform-ls` | `mise` | `nvim/lua/lsp.lua` | Uses project-local version if available, otherwise global. | |
 
 ### Formatters
 
@@ -114,4 +115,4 @@ This section details the LSP servers and formatters configured in the repository
 | **Dockerfile** | `beautysh` | Homebrew | `nvim/init.lua` | |
 | **Fish** | `fish_indent` | Homebrew (part of `fish` package) | `nvim/init.lua` | |
 | **Ruby** | `rubocop` | `default-gems` (via `mise`) | `nvim/init.lua` | Uses project-local version if available, otherwise global. |
-| **Python** | `ruff` | Homebrew | `nvim/init.lua` | |
+| **Terraform** | `terraform fmt` | `mise` | `nvim/init.lua` | |
