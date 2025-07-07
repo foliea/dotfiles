@@ -32,7 +32,6 @@
   "editor.lineNumbers": "relative",
   "editor.autoClosingBrackets": "never",
   "editor.autoClosingQuotes": "never",
-  "editor.autoClosingQuotes": "never",
   "editor.snippetSuggestions": "none",
   "editor.autoSurround": "never",
   "editor.formatOnSave": true,
@@ -82,11 +81,17 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[lua]": {
+    "editor.defaultFormatter": "JohnnyMorganz.stylua"
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[fish]": {
+    "editor.defaultFormatter": "TeddyDD.fish-format"
+  },
   "explorer.confirmDragAndDrop": false,
   "explorer.confirmDelete": false,
-  "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1
-  },
   "vim.easymotion": true,
   "vim.useSystemClipboard": true
 }

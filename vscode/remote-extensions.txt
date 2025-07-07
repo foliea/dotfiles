@@ -20,3 +20,6 @@ streetsidesoftware.code-spell-checker
 sumneko.lua
 mads-hartmann.bash-ide-vscode
 Prisma.prisma
+JohnnyMorganz.stylua
+foxundermoon.shell-format
+TeddyDD.fish-format
