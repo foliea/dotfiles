@@ -9,7 +9,7 @@ brew install \
     cmake \
     gawk \
     readline \
-    most \
+    bat \
     expect \
     jq \
     fzf \

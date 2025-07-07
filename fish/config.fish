@@ -3,7 +3,8 @@ set -g -x VISUAL nvim
 set -g -x SHELL (which fish)
 set -g -x TERM xterm-256color
 set -g -x LC_ALL en_US.UTF-8
-set -g -x PAGER most
+set -g -x PAGER "bat --paging=always"
+set -g -x BAT_THEME base16
 
 if test -d /opt/homebrew/bin
     set -U fish_user_paths /opt/homebrew/bin $fish_user_paths
