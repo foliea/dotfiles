@@ -13,5 +13,5 @@ tmux rename-window " $(basename "$TARGET_DIR")"
 tmux split-window -h -p 30 -c "$TARGET_DIR"
 tmux split-window -v -p 20 -t 0 -c "$TARGET_DIR"
 tmux send-keys -t 0 "nvim" C-m
-tmux send-keys -t 2 "gemini" C-m
+tmux send-keys -t 2 "$HOME/.config/tmux/launch-claude.sh" C-m
 tmux select-pane -t 1
