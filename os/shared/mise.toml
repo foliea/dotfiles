@@ -1,0 +1,8 @@
+[settings]
+auto_install = false
+idiomatic_version_file_enable_tools = ["ruby", "node", "terraform"]
+
+[tools]
+ruby = "latest"
+node = "latest"
+terraform = "latest"
