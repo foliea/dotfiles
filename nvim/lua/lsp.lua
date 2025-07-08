@@ -1,6 +1,5 @@
 -- LSP and completion setup
-pcall(function()
-	local lspconfig = require("lspconfig")
+local lspconfig = require("lspconfig")
 
 	lspconfig.solargraph.setup({})
 	lspconfig.ts_ls.setup({})
@@ -12,23 +11,19 @@ pcall(function()
 	})
 	lspconfig.prismals.setup({})
 	lspconfig.lua_ls.setup({})
-	lspconfig.fish_lsp.setup({});
-	lspconfig.terraformls.setup({});
+	lspconfig.fish_lsp.setup({})
+	lspconfig.terraformls.setup({})
 	lspconfig.jsonls.setup({
-		capabilities = capabilities,
 		settings = {
 			json = {
-				schemas = require("schemastore.json").schemas(),
 				validate = { enable = true },
 			},
 		},
 		cmd = { "bash", "-c", "which vscode-json-languageserver && exec $(which vscode-json-languageserver) --stdio" },
-		on_attach = function(client, bufnr)
-			client.name = "jsonls"
-			require("completion").on_attach(client, bufnr)
-		end,
 	})
-end)
+	
+	lspconfig.eslint.setup({})
+	lspconfig.biome.setup({})
 
 pcall(function()
 	require("copilot").setup({
