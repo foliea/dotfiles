@@ -69,12 +69,12 @@ alias gbs="git branch | sed 's/^\* //' | sed 's/  *//' | fzf --preview-window=ri
 # Prompt setup
 eval "$(starship init bash)"
 
-swork() {
-    $HOME/.config/tmux/switch-workspace.sh "$1" true
+nwork() {
+    $HOME/.config/tmux/init-workspace.sh "$1" true
 }
 
 iwork() {
-    $HOME/.config/tmux/switch-workspace.sh "$PWD" false
+    $HOME/.config/tmux/init-workspace.sh "$PWD" false
 }
 
 sdash() {
