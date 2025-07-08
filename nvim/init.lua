@@ -255,11 +255,14 @@ pcall(function()
 end)
 
 pcall(function()
+	local utils = require("utils")
+	local js_formatters = utils.get_js_formatters()
+
 	require("conform").setup({
 		formatters_by_ft = {
 			lua = { "stylua" },
-			javascript = { "prettierd", "prettier", stop_after_first = true },
-			typescript = { "prettierd", "prettier", stop_after_first = true },
+			javascript = js_formatters,
+			typescript = js_formatters,
 			sh = { "shfmt" },
 			make = { "beautysh" },
 			dockerfile = { "beautysh" },
