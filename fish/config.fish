@@ -30,7 +30,7 @@ end
 set PATH $HOME/.local/bin $PATH
 
 # Languages version manager
-if type mise >/dev/null 2>&1
+if type -q mise
     if status is-interactive
         mise activate fish | source
     else
@@ -38,11 +38,6 @@ if type mise >/dev/null 2>&1
     end
 end
 set -gx OBJC_DISABLE_INITIALIZE_FORK_SAFETY YES
-
-# Node.js
-if type -q fnm
-    fnm env --use-on-cd | source
-end
 
 # Aliases
 if type -q eza
@@ -80,7 +75,7 @@ end
 
 # tabtab source for packages
 # uninstall by removing these lines
-[ -f ~/.config/tabtab/__tabtab.fish ]; and . ~/.config/tabtab/__tabtab.fish; or true
+[ -f ~/.config/tabtab/__tabtab.fish ]; and source ~/.config/tabtab/__tabtab.fish; or true
 
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
