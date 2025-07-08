@@ -17,7 +17,11 @@ pcall(function()
 	lspconfig.jsonls.setup({})
 	
 	lspconfig.eslint.setup({})
-	lspconfig.biome.setup({})
+	lspconfig.biome.setup({
+		cmd = { 'npx', 'biome', 'lsp-proxy' },
+		filetypes = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' },
+		root_dir = lspconfig.util.root_pattern('biome.json', 'biome.jsonc', '.git'),
+	})
 end)
 
 pcall(function()
