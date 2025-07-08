@@ -46,6 +46,14 @@ if type -q eza
     alias ls='eza'
 end
 
+if type -q rg
+    alias grep='rg'
+end
+
+if type -q bat
+    alias cat='bat'
+end
+
 if type -q hub
     alias git='hub'
 end
