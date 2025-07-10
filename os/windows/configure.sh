@@ -4,6 +4,9 @@ set -e
 # Source WSL validation
 . "$(dirname "$0")/check-wsl.sh"
 
+# WSL configuration
+sudo cp "$(dirname "$0")/wsl.conf" /etc/wsl.conf
+
 # WezTerm configuration
 WEZTERM_DEST_DIR="/mnt/c/Users/$WIN_USER/.config/wezterm"
 

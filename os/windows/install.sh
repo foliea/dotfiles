@@ -12,7 +12,6 @@ winget.exe install \
 	Microsoft.VisualStudioCode \
 	Microsoft.WindowsTerminal \
 	Microsoft.PowerShell \
-	Docker.DockerDesktop \
 	Discord.Discord \
 	Google.QuickShare \
 	Starpine.Screenbox \
