@@ -65,7 +65,7 @@ POWERTOYS_DEST_DIR="/mnt/c/Users/$WIN_USER/AppData/Local/Microsoft/PowerToys"
 if [ -d "$POWERTOYS_DEST_DIR" ]; then
 	# Copy configuration files, excluding runtime files
 	find "$PWD/os/windows/powertoys" -name "*.json" -exec cp {} "$POWERTOYS_DEST_DIR/" \;
-	
+
 	# Copy module-specific configurations
 	for module_dir in "$PWD/os/windows/powertoys"/*/; do
 		if [ -d "$module_dir" ]; then
@@ -76,15 +76,12 @@ if [ -d "$POWERTOYS_DEST_DIR" ]; then
 			fi
 		fi
 	done
-	
-	echo "PowerToys configuration installed successfully."
 else
 	echo "Warning: PowerToys directory not found. Please install PowerToys first."
 fi
 
 # PowerShell profile configuration
-echo "Installing PowerShell profile..."
 POWERSHELL_PROFILE_DIR="/mnt/c/Users/$WIN_USER/Documents/PowerShell"
+
 mkdir -p "$POWERSHELL_PROFILE_DIR"
 cp "$PWD/os/windows/powershell_profile.ps1" "$POWERSHELL_PROFILE_DIR/Microsoft.PowerShell_profile.ps1"
-echo "PowerShell profile installed successfully."
