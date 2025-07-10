@@ -1,0 +1,42 @@
+{
+  "Records": {
+    "File Explorer : Application": {
+      "SelectedCount": 2,
+      "LastSelected": "2025-07-04T22:06:52.1012887Z",
+      "IconPath": "C:\\Users\\Adrien\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\File Explorer.lnk",
+      "Title": "File Explorer",
+      "Search": "file",
+      "Score": 0,
+      "SubTitle": "Application",
+      "PluginID": "791FC278BA414111B8D1886DFE447410"
+    },
+    "Terminal : Packaged application": {
+      "SelectedCount": 6,
+      "LastSelected": "2025-07-04T23:25:55.0672892Z",
+      "Title": "Terminal",
+      "Search": "ter",
+      "Score": 0,
+      "SubTitle": "Packaged application",
+      "PluginID": "791FC278BA414111B8D1886DFE447410"
+    },
+    "Settings : Packaged application": {
+      "SelectedCount": 2,
+      "LastSelected": "2025-07-04T23:27:16.5459932Z",
+      "Title": "Settings",
+      "Search": "set",
+      "Score": 0,
+      "SubTitle": "Packaged application",
+      "PluginID": "791FC278BA414111B8D1886DFE447410"
+    },
+    "Signal : Application": {
+      "SelectedCount": 1,
+      "LastSelected": "2025-07-04T21:52:31.7657601Z",
+      "IconPath": "C:\\Users\\Adrien\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Signal.lnk",
+      "Title": "Signal",
+      "Search": "sign",
+      "Score": 0,
+      "SubTitle": "Application",
+      "PluginID": "791FC278BA414111B8D1886DFE447410"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "Items": [
+    {
+      "Query": "file",
+      "ExecutedDateTime": "2025-07-04T23:36:29.5187395+02:00"
+    },
+    {
+      "Query": "windows ter",
+      "ExecutedDateTime": "2025-07-04T23:46:31.6160009+02:00"
+    },
+    {
+      "Query": "sett",
+      "ExecutedDateTime": "2025-07-04T23:49:31.8136184+02:00"
+    },
+    {
+      "Query": "sign",
+      "ExecutedDateTime": "2025-07-04T23:52:31.7657729+02:00"
+    },
+    {
+      "Query": "ter",
+      "ExecutedDateTime": "2025-07-05T00:01:24.6670483+02:00"
+    },
+    {
+      "Query": "term",
+      "ExecutedDateTime": "2025-07-05T00:03:08.4185743+02:00"
+    },
+    {
+      "Query": "file",
+      "ExecutedDateTime": "2025-07-05T00:06:52.1012946+02:00"
+    },
+    {
+      "Query": "windows ter",
+      "ExecutedDateTime": "2025-07-05T01:02:10.5248768+02:00"
+    },
+    {
+      "Query": "ter",
+      "ExecutedDateTime": "2025-07-05T01:25:55.067302+02:00"
+    },
+    {
+      "Query": "set",
+      "ExecutedDateTime": "2025-07-05T01:27:16.5460075+02:00"
+    }
+  ]
+}

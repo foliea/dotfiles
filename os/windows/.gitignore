@@ -1,0 +1,20 @@
+# Ignore log files
+*.log
+**/logs/
+**/Logs/
+
+# Ignore cache and temporary files
+**/.cache/
+**/temp/
+**/tmp/
+
+# Ignore PowerToys runtime files
+powertoys/RunnerLogs/
+powertoys/UpdateLogs/
+powertoys/Updates/
+powertoys/etw/
+powertoys/last_version_run.json
+powertoys/UpdateState.json
+
+# Ignore telemetry files
+powertoys/settings-telemetry.json

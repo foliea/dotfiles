@@ -57,3 +57,25 @@ if [ "$INSTALL_ZEBAR" = "true" ]; then
 else
 	echo "Skipping Zebar installation. Use --with-zebar to install."
 fi
+
+# PowerToys configuration
+echo "Installing PowerToys configuration..."
+POWERTOYS_DEST_DIR="/mnt/c/Users/$WIN_USER/AppData/Local/Microsoft/PowerToys"
+
+if [ -d "$POWERTOYS_DEST_DIR" ]; then
+	# Copy configuration files, excluding runtime files
+	find "$PWD/os/windows/powertoys" -name "*.json" -exec cp {} "$POWERTOYS_DEST_DIR/" \;
+	
+	# Copy module-specific configurations
+	for module_dir in "$PWD/os/windows/powertoys"/*/; do
+		if [ -d "$module_dir" ]; then
+			module_name=$(basename "$module_dir")
+			mkdir -p "$POWERTOYS_DEST_DIR/$module_name"
+			cp -r "$module_dir"* "$POWERTOYS_DEST_DIR/$module_name/"
+		fi
+	done
+	
+	echo "PowerToys configuration installed successfully."
+else
+	echo "Warning: PowerToys directory not found. Please install PowerToys first."
+fi
