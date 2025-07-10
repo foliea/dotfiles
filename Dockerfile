@@ -20,6 +20,5 @@ WORKDIR ${PROJECT_DIR}
 RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 ENV PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${PATH}"
-ENV HOMEBREW_NO_ANALYTICS=1
 
-RUN os/linux/dependencies.sh
+RUN ulimit -n 65536 && os/linux/dependencies.sh
