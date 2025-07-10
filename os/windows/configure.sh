@@ -71,7 +71,9 @@ if [ -d "$POWERTOYS_DEST_DIR" ]; then
 		if [ -d "$module_dir" ]; then
 			module_name=$(basename "$module_dir")
 			mkdir -p "$POWERTOYS_DEST_DIR/$module_name"
-			cp -r "$module_dir"* "$POWERTOYS_DEST_DIR/$module_name/"
+			if [ "$(ls -A "$module_dir" 2>/dev/null)" ]; then
+				cp -r "$module_dir"* "$POWERTOYS_DEST_DIR/$module_name/"
+			fi
 		fi
 	done
 	
