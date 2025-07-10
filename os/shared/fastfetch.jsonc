@@ -1,0 +1,21 @@
+{
+  "logo": {
+    "type": "small"
+  },
+  "display": {
+    "separator": " "
+  },
+  "modules": [
+    {
+      "type": "title",
+      "format": "\u001b[31;1mSystem Information\u001b[0m"
+    },
+    "separator",
+    "os",
+    "kernel",
+    "shell",
+    "terminal",
+    "cpu",
+    "memory"
+  ]
+}
