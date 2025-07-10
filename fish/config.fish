@@ -7,7 +7,7 @@ set -g -x PAGER "bat --paging=always"
 set -g -x BAT_THEME base16
 
 if test -d /opt/homebrew/bin
-    set -U fish_user_paths /opt/homebrew/bin $fish_user_paths
+    fish_add_path --move /opt/homebrew/bin
 end
 
 if test -d /home/linuxbrew
@@ -27,7 +27,7 @@ if test -d /home/linuxbrew
     set -gx RUBY_CONFIGURE_OPTS "--with-openssl-dir=$(brew --prefix openssl@3)"
 end
 
-set PATH $HOME/.local/bin $PATH
+fish_add_path --move $HOME/.local/bin
 
 # Languages version manager
 if type -q mise
@@ -39,34 +39,52 @@ if type -q mise
 end
 set -gx OBJC_DISABLE_INITIALIZE_FORK_SAFETY YES
 
-# Aliases
+# Functions (preferred over aliases)
 if type -q eza
-    alias ll='eza -lF --icons'
-    alias la='eza -lA --icons'
-    alias ls='eza'
+    function ll
+        eza -lF --icons $argv
+    end
+    function la
+        eza -lA --icons $argv
+    end
+    function ls
+        eza $argv
+    end
 end
 
 if type -q rg
-    alias grep='rg'
+    function grep
+        rg $argv
+    end
 end
 
 if type -q bat
-    alias cat='bat'
+    function cat
+        bat $argv
+    end
 end
 
 if type -q hub
-    alias git='hub'
+    function git
+        hub $argv
+    end
 end
 
 if type -q lazygit
-    alias lzg='lazygit'
+    function lzg
+        lazygit $argv
+    end
 end
 
 if type -q lazydocker
-    alias lzd='lazydocker'
+    function lzd
+        lazydocker $argv
+    end
 end
 
-alias gbs "git branch | sed 's/  *//' | fzf --preview-window=right:60% --preview 'git log --oneline --graph --date=relative --branches={1} --' | xargs git switch"
+function gbs
+    git branch | sed 's/  *//' | fzf --preview-window=right:60% --preview 'git log --oneline --graph --date=relative --branches={1} --' | xargs git switch
+end
 
 starship init fish | source
 
@@ -81,10 +99,6 @@ for file in $fisher_path/conf.d/*.fish
     builtin source $file 2>/dev/null
 end
 
-# tabtab source for packages
-# uninstall by removing these lines
-[ -f ~/.config/tabtab/__tabtab.fish ]; and source ~/.config/tabtab/__tabtab.fish; or true
-
-# Added by OrbStack: command-line tools and integration
-# This won't be added again if you remove it.
-source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+if test -f $HOME/.orbstack/shell/init2.fish
+    source $HOME/.orbstack/shell/init2.fish 2>/dev/null
+end
