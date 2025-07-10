@@ -41,19 +41,23 @@ else
 	cp "$PWD/vscode/keybindings.json" "/mnt/c/Users/$win_user/AppData/Roaming/Code/User/keybindings.json"
 fi
 
-if [ ! -d "$HOME/.vscode-server" ]; then
-	while IFS= read -r extension; do
-		if [ ! -z "$extension" ]; then
-			echo "Installing host extension: $extension"
+while IFS= read -r extension <&3; do
+	if [ ! -z "$extension" ]; then
+		echo "Installing host extension: $extension"
 
+		if [ "$IS_WSL" = true ]; then
+			# For WSL, install these extensions on the Windows side
+			powershell.exe -Command "cd C:\\; code --install-extension '$extension' --force"
+		elif [ ! -d "$HOME/.vscode-server" ]; then
+			# If no remote/host system, install extensions directly
 			code --install-extension "$extension" --force
 		fi
-	done <"$PWD/vscode/host-extensions.txt"
-fi
+	fi
+done 3<"$PWD/vscode/host-extensions.txt"
 
-while IFS= read -r extension; do
+while IFS= read -r extension <&3; do
 	if [ ! -z "$extension" ]; then
 		echo "Installing remote extension: $extension"
 		code --install-extension "$extension" --force
 	fi
-done <"$PWD/vscode/remote-extensions.txt"
+done 3<"$PWD/vscode/remote-extensions.txt"
