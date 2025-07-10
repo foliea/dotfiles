@@ -81,3 +81,10 @@ if [ -d "$POWERTOYS_DEST_DIR" ]; then
 else
 	echo "Warning: PowerToys directory not found. Please install PowerToys first."
 fi
+
+# PowerShell profile configuration
+echo "Installing PowerShell profile..."
+POWERSHELL_PROFILE_DIR="/mnt/c/Users/$WIN_USER/Documents/PowerShell"
+mkdir -p "$POWERSHELL_PROFILE_DIR"
+cp "$PWD/os/windows/powershell_profile.ps1" "$POWERSHELL_PROFILE_DIR/Microsoft.PowerShell_profile.ps1"
+echo "PowerShell profile installed successfully."

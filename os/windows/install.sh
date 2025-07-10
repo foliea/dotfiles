@@ -25,4 +25,5 @@ winget.exe install \
 	Discord.Discord \
 	Google.QuickShare \
 	Starpine.Screenbox \
-	DuongDieuPhap.ImageGlass
+	DuongDieuPhap.ImageGlass \
+	Starship.Starship
