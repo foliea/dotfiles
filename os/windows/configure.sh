@@ -1,17 +1,8 @@
 #!/bin/sh
 set -e
 
-if ! grep -qEi "WSL" /proc/version; then
-	echo "Error: This script is intended to be run inside Windows Subsystem for Linux (WSL)."
-	exit 1
-fi
-
-WIN_USER=$(cmd.exe /C 'echo %USERNAME%' 2>/dev/null | tr -d '\r')
-
-if [ -z "$WIN_USER" ]; then
-	echo "Error: Could not determine Windows username. Please ensure cmd.exe is accessible."
-	exit 1
-fi
+# Source WSL validation
+. "$(dirname "$0")/check-wsl.sh"
 
 # WezTerm configuration
 WEZTERM_DEST_DIR="/mnt/c/Users/$WIN_USER/.config/wezterm"
@@ -59,7 +50,6 @@ else
 fi
 
 # PowerToys configuration
-echo "Installing PowerToys configuration..."
 POWERTOYS_DEST_DIR="/mnt/c/Users/$WIN_USER/AppData/Local/Microsoft/PowerToys"
 
 if [ -d "$POWERTOYS_DEST_DIR" ]; then
