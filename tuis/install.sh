@@ -2,9 +2,8 @@
 set -e
 
 # btop
-mkdir -p $HOME/.config/btop/themes
-
-ln -sf "$PWD/tuis/btop/themes/tomorrow-night-eighties.theme" $HOME/.config/btop/themes/tomorrow-night-eighties.theme
+mkdir -p "$HOME/.config/btop/themes"
+ln -sf "$PWD/tuis/btop/themes/tomorrow-night-eighties.theme" "$HOME/.config/btop/themes/tomorrow-night-eighties.theme"
 
 # k9s
 OS="$(uname -s)"
@@ -29,3 +28,7 @@ ln -sf "$PWD/tuis/yazi/" "$HOME/.config/yazi"
 # gh-dash
 mkdir -p "$HOME/.config/gh-dash"
 ln -sf "$PWD/tuis/gh-dash/config.yml" "$HOME/.config/gh-dash/config.yml"
+
+# fastfetch
+mkdir -p "$HOME/.config/fastfetch"
+ln -sf "$PWD/tuis/fastfetch.jsonc" "$HOME/.config/fastfetch/config.jsonc"
