@@ -7,9 +7,10 @@ set -e
 # WSL configuration
 sudo cp "$(dirname "$0")/wsl.conf" /etc/wsl.conf
 
+echo "\n[user]\ndefault=$USER" | sudo tee -a /etc/wsl.conf
+
 # WezTerm configuration
 WEZTERM_DEST_DIR="/mnt/c/Users/$WIN_USER/.config/wezterm"
-
 mkdir -p "$WEZTERM_DEST_DIR"
 cp "$PWD/os/shared/wezterm.lua" "$WEZTERM_DEST_DIR/wezterm.lua"
 
