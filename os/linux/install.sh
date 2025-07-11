@@ -9,3 +9,4 @@ rm get-docker.sh
 
 # Disable docker engine on boot
 sudo systemctl disable docker
+sudo systemctl disable docker.socket
