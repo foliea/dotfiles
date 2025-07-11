@@ -67,3 +67,6 @@ ln -sf "$PWD/os/shared/default-gems" "$HOME/.default-gems"
 
 # Node.js
 ln -sf "$PWD/os/shared/default-npm-packages" "$HOME/.default-npm-packages"
+
+# Install default languages and tools
+mise install

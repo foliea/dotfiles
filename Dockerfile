@@ -4,7 +4,7 @@ ENV USER=developer
 ENV PROJECT_DIR=/home/${USER}/dotfiles
 
 RUN apt-get update && \
-    apt-get install -y build-essential procps curl file git python3 sudo locales && \
+    apt-get install -y build-essential procps curl file git python3 sudo locales libffi-dev libyaml-dev zlib1g-dev && \
     locale-gen en_US.UTF-8
 
 RUN useradd -ms /bin/bash ${USER} && \
