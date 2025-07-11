@@ -27,6 +27,7 @@ vim.opt.fillchars:append({ eob = " " })
 vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
 
 vim.g["test#javascript#jest#executable"] = "npm test --"
+vim.g["test#basic#start_normal"] = 1
 
 if vim.fn.has("wsl") == 1 then
 	vim.g.clipboard = {
