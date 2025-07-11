@@ -2,7 +2,7 @@
 pcall(function()
 	local lspconfig = require("lspconfig")
 
-	lspconfig.solargraph.setup({})
+	lspconfig.ruby_lsp.setup({})
 	lspconfig.ts_ls.setup({})
 	lspconfig.bashls.setup({})
 	lspconfig.dockerls.setup({

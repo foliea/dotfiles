@@ -97,6 +97,10 @@
   "chat.instructionsFilesLocations": {
     ".github/instructions": true,
     "/var/folders/4x/50db097n6z73x8r72dzj5lpm0000gp/T/postman-http-request-post-response.instructions.md": true,
-    "/var/folders/4x/50db097n6z73x8r72dzj5lpm0000gp/T/postman-http-request-pre-request.instructions.md": true
+    "/var/folders/4x/50db097n6z73x8r72dzj5lpm0000gp/T/postman-http-request-pre-request.instructions.md": true,
+    "/var/folders/4x/50db097n6z73x8r72dzj5lpm0000gp/T/postman-collections-post-response.instructions.md": true,
+    "/var/folders/4x/50db097n6z73x8r72dzj5lpm0000gp/T/postman-collections-pre-request.instructions.md": true,
+    "/var/folders/4x/50db097n6z73x8r72dzj5lpm0000gp/T/postman-folder-post-response.instructions.md": true,
+    "/var/folders/4x/50db097n6z73x8r72dzj5lpm0000gp/T/postman-folder-pre-request.instructions.md": true
   }
 }
