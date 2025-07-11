@@ -15,5 +15,7 @@ winget.exe install \
 	Discord.Discord \
 	Google.QuickShare \
 	Starpine.Screenbox \
-	DuongDieuPhap.ImageGlass \
-	Starship.Starship
+	DuongDieuPhap.ImageGlass
+
+# Alongside the other packages, it just gets ignored for no reason
+winget.exe install --scope user --exact --id Starship.Starship
