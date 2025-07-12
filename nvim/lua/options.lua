@@ -24,11 +24,19 @@ vim.opt.showbreak = "=>   "
 vim.opt.termguicolors = true
 vim.cmd([[colorscheme base16-tomorrow-night-eighties]])
 vim.opt.fillchars:append({ eob = " " })
+
+-- Disable mouse menu items
+vim.cmd([[aunmenu PopUp.How-to\ disable\ mouse]])
+vim.cmd([[aunmenu PopUp.-2-]])
+
+-- Add mise to PATH (for lsp servers)
 vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
 
+-- Test runners configuration
 vim.g["test#javascript#jest#executable"] = "npm test --"
 vim.g["test#basic#start_normal"] = 1
 
+-- Clipboard configuration
 if vim.fn.has("wsl") == 1 then
 	vim.g.clipboard = {
 		name = "WslClipboard",
@@ -43,9 +51,9 @@ if vim.fn.has("wsl") == 1 then
 		cache_enabled = 0,
 	}
 end
-
 vim.opt.clipboard:append("unnamedplus")
 
+-- Diagnostics styling
 vim.diagnostic.config({
 	float = {
 		border = "rounded",
