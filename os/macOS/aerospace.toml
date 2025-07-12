@@ -54,7 +54,7 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
     alt-n = 'layout v_accordion'
 
     # 'layout tabbed' in i3
-    alt-w = 'layout h_accordion'
+    alt-p = 'layout h_accordion'
 
      # 'floating toggle' in i3
     alt-shift-space = 'layout floating tiling'
