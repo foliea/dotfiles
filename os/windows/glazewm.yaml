@@ -213,7 +213,7 @@ keybindings:
 
   # Change focus from tiling windows -> floating -> fullscreen.
   - commands: ['wm-cycle-focus']
-    bindings: ['alt+n']
+    bindings: ['alt+shift+n']
 
   # Change the focused window to be floating.
   - commands: ['toggle-floating --centered']
@@ -247,21 +247,35 @@ keybindings:
   - commands: ['wm-redraw']
     bindings: ['alt+shift+w']
 
-  # Launch CMD terminal. Alternatively, use `shell-exec wt` or
-  # `shell-exec %ProgramFiles%/Git/git-bash.exe` to start Windows
-  # Terminal and Git Bash respectively.
+  # Launch terminal
   - commands: ['shell-exec %ProgramFiles%/WezTerm/wezterm-gui.exe']
     bindings: ['alt+enter']
 
+  # Launch web browser
+  - commands: ['shell-exec %programfiles%/Google/Chrome/Application/chrome.exe']
+    bindings: ['alt+b']
+
+  # Launch AI chat
+  - commands: ['shell-exec %programfiles%/Google/Chrome/Application/chrome_proxy.exe --profile-directory=Default --app-id=gdfaincndogidkdcdkhapmbffkckdkhn']
+    bindings: ['alt+i']
+
+  # Launch file explorer
+  - commands: ['shell-exec explorer.exe']
+    bindings: ['alt+e']
+
+    # Launch settings
+  - commands: ['shell-exec ms-settings:']
+    bindings: ['alt+s']
+
   # Focus the next/previous active workspace defined in `workspaces` config.
   - commands: ['focus --next-active-workspace']
-    bindings: ['alt+s']
+    bindings: ['alt+n']
   - commands: ['focus --prev-active-workspace']
-    bindings: ['alt+a']
+    bindings: ['alt+p']
 
   # Focus the workspace that last had focus.
   - commands: ['focus --recent-workspace']
-    bindings: ['alt+d']
+    bindings: ['alt+shift+d']
 
   # Change focus to a workspace defined in `workspaces` config.
   - commands: ['focus --workspace 1']
