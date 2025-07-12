@@ -7,7 +7,7 @@ set -e
 # WSL configuration
 sudo cp "$(dirname "$0")/wsl.conf" /etc/wsl.conf
 
-echo "\n[user]\ndefault=$USER" | sudo tee -a /etc/wsl.conf
+echo "\n[user]\ndefault=$USER" | sudo tee -a /etc/wsl.conf > /dev/null
 
 # WezTerm configuration
 WEZTERM_DEST_DIR="/mnt/c/Users/$WIN_USER/.config/wezterm"
@@ -38,10 +38,12 @@ mkdir -p "$GLAZE_DEST_DIR/glazewm"
 cp "$PWD/os/windows/glazewm.yaml" "$GLAZE_DEST_DIR/glazewm/config.yaml"
 
 INSTALL_ZEBAR=false
+INSTALL_POWERTOYS=false
 for arg in "$@"; do
 	if [ "$arg" = "--with-zebar" ]; then
 		INSTALL_ZEBAR=true
-		break
+	elif [ "$arg" = "--power-toys" ]; then
+		INSTALL_POWERTOYS=true
 	fi
 done
 
@@ -56,9 +58,12 @@ fi
 # PowerToys configuration
 POWERTOYS_DEST_DIR="/mnt/c/Users/$WIN_USER/AppData/Local/Microsoft/PowerToys"
 
-if [ -d "$POWERTOYS_DEST_DIR" ]; then
-	# Copy configuration files, excluding runtime files
-	find "$PWD/os/windows/powertoys" -name "*.json" -exec cp {} "$POWERTOYS_DEST_DIR/" \;
+if [ "$INSTALL_POWERTOYS" = "true" ] && [ -d "$POWERTOYS_DEST_DIR" ]; then
+	# Remove everything except NewPlus folder
+	find "$POWERTOYS_DEST_DIR" -mindepth 1 -maxdepth 1 ! -name "NewPlus" -exec rm -rf {} \;
+	
+	# Copy main configuration files only
+	cp "$PWD/os/windows/powertoys"/*.json "$POWERTOYS_DEST_DIR/" 2>/dev/null || true
 
 	# Copy module-specific configurations
 	for module_dir in "$PWD/os/windows/powertoys"/*/; do
@@ -70,8 +75,10 @@ if [ -d "$POWERTOYS_DEST_DIR" ]; then
 			fi
 		fi
 	done
-else
+elif [ "$INSTALL_POWERTOYS" = "true" ]; then
 	echo "Warning: PowerToys directory not found. Please install PowerToys first."
+elif [ "$INSTALL_POWERTOYS" = "false" ]; then
+	echo "Skipping PowerToys installation. Use --power-toys to install."
 fi
 
 # PowerShell profile configuration
