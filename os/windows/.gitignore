@@ -18,3 +18,7 @@ powertoys/UpdateState.json
 
 # Ignore telemetry files
 powertoys/settings-telemetry.json
+
+# Ignore PowerToys version and runtime files
+powertoys/**/*_version.txt
+powertoys/**/power-rename-ui-flags
