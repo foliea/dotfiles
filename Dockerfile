@@ -3,9 +3,9 @@ FROM ubuntu:24.04
 ENV USER=developer
 ENV PROJECT_DIR=/home/${USER}/dotfiles
 
-RUN apt-get update && \
-    apt-get install -y build-essential procps curl file git python3 sudo locales libffi-dev libyaml-dev zlib1g-dev && \
-    locale-gen en_US.UTF-8
+COPY os/linux/ubuntu.sh /tmp/ubuntu.sh
+RUN chmod +x /tmp/ubuntu.sh && \
+    /tmp/ubuntu.sh install_ubuntu_deps
 
 RUN useradd -ms /bin/bash ${USER} && \
     echo "${USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
@@ -17,7 +17,7 @@ RUN chown -R ${USER}:${USER} ${PROJECT_DIR}
 USER ${USER}
 WORKDIR ${PROJECT_DIR}
 
-RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+RUN /tmp/ubuntu.sh install_homebrew
 
 ENV PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${PATH}"
 

@@ -15,9 +15,8 @@ jobs:
 
       - name: Install brew
         run: |
-          sudo apt-get update
-          sudo apt-get install -y build-essential procps curl file git python3 sudo locales
-          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+          chmod +x os/linux/ubuntu.sh
+          ./os/linux/ubuntu.sh
           echo "PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH" >> $GITHUB_ENV
           echo "HOMEBREW_NO_ANALYTICS=1" >> $GITHUB_ENV
 
