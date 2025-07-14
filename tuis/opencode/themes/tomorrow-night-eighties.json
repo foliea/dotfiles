@@ -31,7 +31,7 @@
     },
     "text": {
       "dark": "#cccccc",
-      "light": "#2d2d2d"
+      "light": "#cccccc"
     },
     "textMuted": {
       "dark": "#999999",
@@ -39,19 +39,19 @@
     },
     "background": {
       "dark": "#2d2d2d",
-      "light": "#cccccc"
+      "light": "#2d2d2d"
     },
     "backgroundPanel": {
       "dark": "#393939",
-      "light": "#ffffff"
+      "light": "#393939"
     },
     "backgroundElement": {
       "dark": "#515151",
-      "light": "#e5e5e5"
+      "light": "#515151"
     },
     "border": {
       "dark": "#515151",
-      "light": "#999999"
+      "light": "#515151"
     },
     "borderActive": {
       "dark": "#6699cc",
@@ -59,7 +59,7 @@
     },
     "borderSubtle": {
       "dark": "#393939",
-      "light": "#d5d5d5"
+      "light": "#393939"
     },
     "diffAdded": {
       "dark": "#99cc99",
@@ -71,7 +71,7 @@
     },
     "diffContext": {
       "dark": "#cccccc",
-      "light": "#999999"
+      "light": "#cccccc"
     },
     "diffHunkHeader": {
       "dark": "#66cccc",
@@ -86,32 +86,32 @@
       "light": "#f2777a"
     },
     "diffAddedBg": {
-      "dark": "#1a3d1a",
-      "light": "#e6ffe6"
+      "dark": "#393939",
+      "light": "#393939"
     },
     "diffRemovedBg": {
-      "dark": "#3d1a1a",
-      "light": "#ffe6e6"
+      "dark": "#393939",
+      "light": "#393939"
     },
     "diffContextBg": {
       "dark": "#2d2d2d",
-      "light": "#f5f5f5"
+      "light": "#2d2d2d"
     },
     "diffLineNumber": {
       "dark": "#2d2d2d",
-      "light": "#000000"
+      "light": "#2d2d2d"
     },
     "diffAddedLineNumberBg": {
-      "dark": "#1a3d1a",
-      "light": "#e6ffe6"
+      "dark": "#393939",
+      "light": "#393939"
     },
     "diffRemovedLineNumberBg": {
-      "dark": "#3d1a1a",
-      "light": "#ffe6e6"
+      "dark": "#393939",
+      "light": "#393939"
     },
     "markdownText": {
       "dark": "#cccccc",
-      "light": "#2d2d2d"
+      "light": "#cccccc"
     },
     "markdownHeading": {
       "dark": "#6699cc",
@@ -163,7 +163,7 @@
     },
     "markdownCodeBlock": {
       "dark": "#cccccc",
-      "light": "#2d2d2d"
+      "light": "#cccccc"
     },
     "syntaxComment": {
       "dark": "#999999",
@@ -199,7 +199,7 @@
     },
     "syntaxPunctuation": {
       "dark": "#cccccc",
-      "light": "#2d2d2d"
+      "light": "#cccccc"
     }
   }
 }
