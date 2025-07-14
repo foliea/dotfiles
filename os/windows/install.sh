@@ -14,7 +14,7 @@ winget.exe install \
 	Microsoft.PowerShell \
 	Discord.Discord \
 	Google.QuickShare \
-	Starpine.Screenbox \
+	mpv.net \
 	DuongDieuPhap.ImageGlass
 
 # Alongside the other packages, it just gets ignored for no reason

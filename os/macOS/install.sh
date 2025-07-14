@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
 
+brew install mpv
+
 brew install --cask \
 	font-fira-code-nerd-font \
 	nikitabobko/tap/aerospace \
