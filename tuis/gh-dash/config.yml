@@ -3,7 +3,7 @@
 theme:
   colors:
     text:
-      primary: "#ffffff"
+      primary: "#cccccc"
       secondary: "#cccccc"
       inverted: "#2d2d2d"
       faint: "#cccccc"
