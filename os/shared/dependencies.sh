@@ -42,7 +42,6 @@ brew install \
 	yazi \
 	lazygit \
 	jesseduffield/lazydocker/lazydocker \
-	gemini-cli \
 	sst/tap/opencode \
 	stylua \
 	prettier \
