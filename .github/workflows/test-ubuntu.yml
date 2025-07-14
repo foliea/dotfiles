@@ -13,10 +13,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install brew
+      - name: Install system packages
         run: |
           chmod +x os/linux/ubuntu.sh
-          ./os/linux/ubuntu.sh
+          sudo ./os/linux/ubuntu.sh install_ubuntu_deps
+
+      - name: Install brew
+        run: |
+          ./os/linux/ubuntu.sh install_homebrew
           echo "PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH" >> $GITHUB_ENV
           echo "HOMEBREW_NO_ANALYTICS=1" >> $GITHUB_ENV
 
