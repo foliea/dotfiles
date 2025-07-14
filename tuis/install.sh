@@ -32,3 +32,9 @@ ln -sf "$PWD/tuis/gh-dash/config.yml" "$HOME/.config/gh-dash/config.yml"
 # fastfetch
 mkdir -p "$HOME/.config/fastfetch"
 ln -sf "$PWD/tuis/fastfetch.jsonc" "$HOME/.config/fastfetch/config.jsonc"
+
+# opencode
+mkdir -p "$HOME/.config/opencode"
+rm -rf "$HOME/.config/opencode/themes"
+ln -sf "$PWD/tuis/opencode/opencode.json" "$HOME/.config/opencode/opencode.json"
+ln -sf "$PWD/tuis/opencode/themes" "$HOME/.config/opencode/themes"
