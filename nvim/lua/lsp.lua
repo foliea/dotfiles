@@ -15,12 +15,12 @@ pcall(function()
 	lspconfig.fish_lsp.setup({})
 	lspconfig.terraformls.setup({})
 	lspconfig.jsonls.setup({})
-	
+
 	lspconfig.eslint.setup({})
 	lspconfig.biome.setup({
-		cmd = { 'npx', 'biome', 'lsp-proxy' },
-		filetypes = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' },
-		root_dir = lspconfig.util.root_pattern('biome.json', 'biome.jsonc', '.git'),
+		cmd = { "npx", "biome", "lsp-proxy" },
+		filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
+		root_dir = lspconfig.util.root_pattern("biome.json", "biome.jsonc", ".git"),
 	})
 end)
 
@@ -48,7 +48,7 @@ pcall(function()
 	cmp.setup({
 		mapping = cmp.mapping.preset.insert({
 			["<C-Space>"] = cmp.mapping.complete(),
-			["<CR>"] = cmp.mapping.confirm({ select = true }),
+			["<CR>"] = cmp.mapping.confirm({ select = false }),
 			["<C-N"] = cmp.mapping.select_next_item(),
 			["<C-P"] = cmp.mapping.select_prev_item(),
 		}),
