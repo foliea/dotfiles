@@ -6,6 +6,7 @@ brew install mpv
 brew install --cask \
 	font-fira-code-nerd-font \
 	nikitabobko/tap/aerospace \
+	hiddenbar \
 	scroll-reverser \
 	caffeine \
 	visual-studio-code \
