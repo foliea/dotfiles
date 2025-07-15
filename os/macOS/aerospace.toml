@@ -65,7 +65,19 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
     # Launch terminal.
     alt-enter = 'exec-and-forget open -n -a WezTerm'
 
-    # Change focus to a workspace.
+    # Launch web browser
+    alt-b = 'exec-and-forget open -n -a "Google Chrome"'
+
+    # Launch AI chat
+    alt-i = 'exec-and-forget open -a "Google Gemini"'
+
+   # Launch file explorer
+    alt-e = 'exec-and-forget open ~'
+
+   # Launch settings
+    alt-s = 'exec-and-forget open -n -a "System Settings"'
+
+   # Change focus to a workspace.
     alt-1 = 'workspace 1'
     alt-2 = 'workspace 2'
     alt-3 = 'workspace 3'
