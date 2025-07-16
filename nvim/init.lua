@@ -91,6 +91,11 @@ pcall(function()
 			additional_vim_regex_highlighting = false,
 		},
 		indent = { enable = true },
+		modules = {},
+		sync_install = false,
+		ignore_install = {},
+		auto_install = false,
+		parser_install_dir = nil,
 	})
 end)
 
@@ -161,10 +166,8 @@ end)
 
 pcall(function()
 	require("cinnamon").setup({
-		keymaps = {
-			basic = true,
-			extra = true,
-		},
+		disabled = false,
+		keymaps = { basic = true, extra = true },
 		options = { mode = "window" },
 	})
 end)
@@ -288,7 +291,7 @@ pcall(function()
 	local utils = require("utils")
 	local js_formatters = utils.get_js_formatters()
 
-require("conform").setup({
+	require("conform").setup({
 		formatters_by_ft = {
 			lua = { "stylua" },
 			javascript = js_formatters,
