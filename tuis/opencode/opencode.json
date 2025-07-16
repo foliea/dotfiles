@@ -3,5 +3,6 @@
   "theme": "tomorrow-night-eighties",
   "keybinds": {
     "leader": "ctrl+space"
-  }
+  },
+  "layout": "stretch"
 }
