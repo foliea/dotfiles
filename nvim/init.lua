@@ -288,7 +288,7 @@ pcall(function()
 	local utils = require("utils")
 	local js_formatters = utils.get_js_formatters()
 
-	require("conform").setup({
+require("conform").setup({
 		formatters_by_ft = {
 			lua = { "stylua" },
 			javascript = js_formatters,
@@ -299,6 +299,11 @@ pcall(function()
 			fish = { "fish_indent" },
 			ruby = { "rubocop" },
 			terraform = { "terraform_fmt" },
+		},
+		formatters = {
+			rubocop = {
+				prepend_args = { "--disable-uncorrectable" },
+			},
 		},
 	})
 end)
