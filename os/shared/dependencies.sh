@@ -72,6 +72,7 @@ ln -sf "$PWD/os/shared/default-npm-packages" "$HOME/.default-npm-packages"
 mise install
 
 # Centralize theme folder for omamad
-mkdir -p "$HOME/.config/omamad"
-ln -sf "$PWD/themes" "$HOME/.config/omamad/themes"
-cp -r "$PWD/themes/tomorrow-night-eighties" "$HOME/.config/omamad/themes/default"
+rm -rf "$HOME/.config/themes"
+ln -sf "$PWD/themes" "$HOME/.config/themes"
+rm -rf "$PWD/themes/default"
+cp -r "$PWD/themes/tomorrow-night-eighties" "$HOME/.config/themes/default"

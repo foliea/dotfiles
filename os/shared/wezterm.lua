@@ -17,7 +17,7 @@ end
 -- Load colors from themes/default/wezterm.json with fallback
 local function load_theme_colors()
 	local home = os.getenv("HOME")
-	local theme_path = home .. "/.config/omamad/themes/default/wezterm.json"
+	local theme_path = home .. "/.config/themes/default/wezterm.json"
 
 	-- Try to read the file
 	local file = io.open(theme_path, "r")

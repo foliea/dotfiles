@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-THEMES_DIR="$HOME/.config/omamad/themes"
+THEMES_DIR="$HOME/.config/themes"
 DEFAULT_THEME_DIR="$THEMES_DIR/default"
 
 # List all .json files except default.json
