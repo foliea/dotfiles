@@ -1,0 +1,28 @@
+{
+  "background": "#212121",
+  "foreground": "#e0e0e0",
+  "cursor_bg": "#e0e0e0",
+  "cursor_fg": "#212121",
+  "selection_bg": "#303030",
+  "selection_fg": "#e0e0e0",
+  "ansi": [
+    "#212121",  // black
+    "#e06c75",  // red
+    "#7fd88f",  // green
+    "#e5c07b",  // yellow
+    "#5c9cf5",  // blue
+    "#9d7cd8",  // magenta
+    "#56b6c2",  // cyan
+    "#e0e0e0"   // white
+  ],
+  "brights": [
+    "#6a6a6a",  // bright black
+    "#f5a742",  // bright red (warning)
+    "#7fd88f",  // bright green
+    "#fab283",  // bright yellow (primary)
+    "#5c9cf5",  // bright blue
+    "#9d7cd8",  // bright magenta
+    "#56b6c2",  // bright cyan
+    "#ffffff"   // bright white
+  ]
+}

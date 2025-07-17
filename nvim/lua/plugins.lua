@@ -13,7 +13,6 @@ let g:fzf_install = 'yes | ./install --bin'
   Plug 'jgdavey/tslime.vim'
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'chriskempson/base16-vim'
-  Plug 'dracula/vim', { 'as': 'dracula' }
   Plug 'rcarriga/nvim-notify'
   Plug 'declancm/cinnamon.nvim'
   Plug 'nvim-lua/plenary.nvim'

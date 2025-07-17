@@ -15,6 +15,6 @@
   "black": "#000000",
   "background_deep": "#1a1b26",
   "scheme": {
-    "vim": "dracula"
+    "vim": "base16-dracula"
   }
 }
