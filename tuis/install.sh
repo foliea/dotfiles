@@ -25,6 +25,7 @@ ln -sf "$PWD/tuis/k9s/config.yaml" "$K9S_CONFIG_SUPPORT/config.yaml"
 # yazi
 rm -rf "$HOME/.config/yazi"
 ln -sf "$PWD/tuis/yazi/" "$HOME/.config/yazi"
+ln -sf "$HOME/.config/omamad/themes/default/yazi.toml" "$HOME/.config/yazi/flavors/default.yazi/flavor.toml"
 
 # gh-dash
 mkdir -p "$HOME/.config/gh-dash"
