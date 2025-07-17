@@ -15,7 +15,7 @@ symbol = "󰏗 "
 
 [git_branch]
 symbol = " "
-format = "[$symbol$branch](bold #cc99cc) "
+format = "[$symbol$branch](bold purple) "
 
 [git_commit]
 tag_symbol = '  '
@@ -23,7 +23,7 @@ tag_symbol = '  '
 [git_status]
 untracked = ""
 stashed = ""
-format = "[ $all_status$ahead_behind](bold #f99157) "
+format = "[ $all_status$ahead_behind](bold red) "
 
 [docker_context]
 disabled = true
