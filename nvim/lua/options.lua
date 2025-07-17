@@ -21,8 +21,6 @@ vim.cmd([[filetype plugin on]])
 vim.opt.wrap = true
 vim.opt.linebreak = true
 vim.opt.showbreak = "=>   "
-vim.opt.termguicolors = true
-vim.cmd([[colorscheme base16-tomorrow-night-eighties]])
 vim.opt.fillchars:append({ eob = " " })
 
 -- Disable mouse menu items

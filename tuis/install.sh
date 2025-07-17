@@ -3,7 +3,8 @@ set -e
 
 # btop
 mkdir -p "$HOME/.config/btop/themes"
-ln -sf "$PWD/tuis/btop/themes/tomorrow-night-eighties.theme" "$HOME/.config/btop/themes/tomorrow-night-eighties.theme"
+ln -sf "$PWD/tuis/btop.conf" "$HOME/.config/btop/btop.conf"
+ln -sf "$HOME/.config/themes/default/btop.theme" "$HOME/.config/btop/themes/default.theme"
 
 # k9s
 OS="$(uname -s)"
@@ -18,23 +19,23 @@ else
 fi
 
 mkdir -p "$K9S_CONFIG_SUPPORT/skins"
-ln -sf "$PWD/tuis/k9s/skins/tomorrow-night-eighties.yaml" "$K9S_CONFIG_SUPPORT/skins/tomorrow-night-eighties.yaml"
+ln -sf "$HOME/.config/themes/default/k9s.yaml" "$K9S_CONFIG_SUPPORT/skins/default.yaml"
 ln -sf "$PWD/tuis/k9s/config.yaml" "$K9S_CONFIG_SUPPORT/config.yaml"
 
 # yazi
 rm -rf "$HOME/.config/yazi"
 ln -sf "$PWD/tuis/yazi/" "$HOME/.config/yazi"
+ln -sf "$HOME/.config/themes/default/yazi.toml" "$HOME/.config/yazi/flavors/default.yazi/flavor.toml"
 
 # gh-dash
 mkdir -p "$HOME/.config/gh-dash"
-ln -sf "$PWD/tuis/gh-dash/config.yml" "$HOME/.config/gh-dash/config.yml"
+ln -sf "$HOME/.config/themes/default/gh-dash.yml" "$HOME/.config/gh-dash/config.yml"
 
 # fastfetch
 mkdir -p "$HOME/.config/fastfetch"
 ln -sf "$PWD/tuis/fastfetch.jsonc" "$HOME/.config/fastfetch/config.jsonc"
 
 # opencode
-mkdir -p "$HOME/.config/opencode"
-rm -rf "$HOME/.config/opencode/themes"
+mkdir -p "$HOME/.config/opencode/themes"
 ln -sf "$PWD/tuis/opencode/opencode.json" "$HOME/.config/opencode/opencode.json"
-ln -sf "$PWD/tuis/opencode/themes" "$HOME/.config/opencode/themes"
+ln -sf "$HOME/.config/themes/default/opencode.json" "$HOME/.config/opencode/themes/default.json"
