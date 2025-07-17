@@ -5,7 +5,7 @@
 
 My personal configuration files for setting up and managing development environments across macOS and Linux systems.
 
-<img src="/misc/images/windows_2025.png" width="350"/>
+<img src="/misc/images/windows_2025.png" width="350"/> <img src="/misc/images/macOs_2025.png" width="350"/>
 
 ## Table of Contents
 
