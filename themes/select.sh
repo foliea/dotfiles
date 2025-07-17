@@ -4,7 +4,7 @@ set -e
 THEMES_DIR="$HOME/.config/omamad/themes"
 
 # List all .json files except default.json
-SELECTED=$(find -L "$THEMES_DIR" -maxdepth 1 -type d ! -name 'themes' ! -name 'themes/default' -exec basename {} \; | fzf --prompt="Select a theme: ")
+SELECTED=$(find -L "$THEMES_DIR" -maxdepth 1 -type d ! -name 'themes' ! -name 'default' -exec basename {} \; | fzf --prompt="Select a theme: ")
 
 if [ -z "$SELECTED" ]; then
 	echo "No theme selected."
