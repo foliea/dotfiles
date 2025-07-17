@@ -14,10 +14,8 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" or wezterm.target_triple ==
 	config.font_size = 10
 end
 
--- Load colors from themes/default/wezterm.json with fallback
 local function load_theme_colors()
-	local home = os.getenv("HOME")
-	local theme_path = home .. "/.config/themes/default/wezterm.json"
+	local theme_path = wezterm.config_dir .. "/wezterm.json"
 
 	-- Try to read the file
 	local file = io.open(theme_path, "r")
@@ -70,4 +68,3 @@ local theme_colors = load_theme_colors()
 config.colors = theme_colors
 
 return config
-

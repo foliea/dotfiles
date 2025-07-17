@@ -7,12 +7,13 @@ set -e
 # WSL configuration
 sudo cp "$(dirname "$0")/wsl.conf" /etc/wsl.conf
 
-echo "\n[user]\ndefault=$USER" | sudo tee -a /etc/wsl.conf > /dev/null
+echo "\n[user]\ndefault=$USER" | sudo tee -a /etc/wsl.conf >/dev/null
 
 # WezTerm configuration
 WEZTERM_DEST_DIR="/mnt/c/Users/$WIN_USER/.config/wezterm"
 mkdir -p "$WEZTERM_DEST_DIR"
 cp "$PWD/os/shared/wezterm.lua" "$WEZTERM_DEST_DIR/wezterm.lua"
+cp "$HOME/.config/themes/default/wezterm.json" "$WEZTERM_DEST_DIR/wezterm.json"
 
 # Windows Terminal configuration
 WT_SOURCE_PATH="$PWD/os/windows/terminal.json"
@@ -61,7 +62,7 @@ POWERTOYS_DEST_DIR="/mnt/c/Users/$WIN_USER/AppData/Local/Microsoft/PowerToys"
 if [ "$INSTALL_POWERTOYS" = "true" ] && [ -d "$POWERTOYS_DEST_DIR" ]; then
 	# Remove everything except NewPlus folder
 	find "$POWERTOYS_DEST_DIR" -mindepth 1 -maxdepth 1 ! -name "NewPlus" -exec rm -rf {} \;
-	
+
 	# Copy main configuration files only
 	cp "$PWD/os/windows/powertoys"/*.json "$POWERTOYS_DEST_DIR/" 2>/dev/null || true
 
