@@ -2,7 +2,28 @@ local colors = require("colors")
 
 vim.opt.termguicolors = true
 
-vim.cmd("colorscheme " .. colors.scheme.vim)
+if colors.scheme.vim == "none" then
+	require("base16-colorscheme").setup({
+		base00 = colors.background,
+		base01 = colors.background_deep,
+		base02 = colors.selection,
+		base03 = colors.muted,
+		base04 = colors.foreground,
+		base05 = colors.white,
+		base06 = colors.black,
+		base07 = colors.foreground,
+		base08 = colors.red,
+		base09 = colors.orange,
+		base0A = colors.yellow,
+		base0B = colors.green,
+		base0C = colors.aqua,
+		base0D = colors.blue,
+		base0E = colors.purple,
+		base0F = colors.orange,
+	})
+else
+	vim.cmd("colorscheme " .. colors.scheme.vim)
+end
 
 -- Code completion and git blame
 vim.api.nvim_set_hl(0, "Pmenu", { fg = colors.foreground, bg = colors.background })

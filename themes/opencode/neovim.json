@@ -15,6 +15,6 @@
   "black": "#000000",
   "background_deep": "#131417",
   "scheme": {
-    "vim": "base16-google-dark"
+    "vim": "none"
   }
 }
