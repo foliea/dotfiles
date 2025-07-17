@@ -1,0 +1,20 @@
+{
+  "background": "#282a36",
+  "foreground": "#f8f8f2",
+  "muted": "#6272a4",
+  "red": "#ff5555",
+  "orange": "#ffb86c",
+  "yellow": "#f1fa8c",
+  "green": "#50fa7b",
+  "aqua": "#8be9fd",
+  "blue": "#6272a4",
+  "purple": "#bd93f9",
+  "selection": "#44475a",
+  "panel": "#21222c",
+  "white": "#ffffff",
+  "black": "#000000",
+  "background_deep": "#1a1b26",
+  "scheme": {
+    "vim": "dracula"
+  }
+}
