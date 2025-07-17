@@ -232,47 +232,6 @@ pcall(function()
 			separator_style = "slant",
 			themable = true,
 		},
-		highlights = {
-			modified = {
-				fg = "#ffcc66",
-			},
-			modified_visible = {
-				fg = "#ffcc66",
-			},
-			modified_selected = {
-				fg = "#ffcc66",
-			},
-			fill = {
-				bg = "#262626",
-			},
-			separator = {
-				fg = "#262626",
-			},
-			separator_visible = {
-				fg = "#262626",
-			},
-			separator_selected = {
-				fg = "#262626",
-			},
-			tab_separator = {
-				fg = "#262626",
-			},
-			tab_separator_selected = {
-				fg = "#262626",
-			},
-			group_label = {
-				fg = "#262626",
-			},
-			trunc_marker = {
-				bg = "#262626",
-			},
-			offset_separator = {
-				bg = "#262626",
-			},
-			group_separator = {
-				bg = "#262626",
-			},
-		},
 	})
 end)
 

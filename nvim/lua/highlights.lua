@@ -35,6 +35,21 @@ vim.api.nvim_set_hl(0, "@string.regexp", { fg = colors.green })
 vim.api.nvim_set_hl(0, "@string.escape", { fg = colors.orange })
 vim.api.nvim_set_hl(0, "@variable", { fg = colors.red })
 
+-- Bufferline
+vim.api.nvim_set_hl(0, "BufferLineModified", { fg = colors.orange })
+vim.api.nvim_set_hl(0, "BufferLineModifiedVisible", { fg = colors.orange })
+vim.api.nvim_set_hl(0, "BufferLineModifiedSelected", { fg = colors.orange })
+vim.api.nvim_set_hl(0, "BufferLineFill", { bg = colors.current_line })
+vim.api.nvim_set_hl(0, "BufferLineSeparator", { fg = colors.current_line })
+vim.api.nvim_set_hl(0, "BufferLineSeparatorVisible", { fg = colors.current_line })
+vim.api.nvim_set_hl(0, "BufferLineSeparatorSelected", { fg = colors.current_line })
+vim.api.nvim_set_hl(0, "BufferLineTabSeparator", { fg = colors.current_line })
+vim.api.nvim_set_hl(0, "BufferLineTabSeparatorSelected", { fg = colors.current_line })
+vim.api.nvim_set_hl(0, "BufferLineGroupLabel", { fg = colors.current_line })
+vim.api.nvim_set_hl(0, "BufferLineTruncMarker", { bg = colors.current_line })
+vim.api.nvim_set_hl(0, "BufferLineOffsetSeparator", { bg = colors.current_line })
+vim.api.nvim_set_hl(0, "BufferLineGroupSeparator", { bg = colors.current_line })
+
 -- Ruby icons
 vim.api.nvim_set_hl(0, "DevIconRb", { fg = "#e8274b" })
 vim.api.nvim_set_hl(0, "DevIconErb", { fg = "#e8274b" })
