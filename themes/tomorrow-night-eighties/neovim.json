@@ -13,5 +13,8 @@
   "panel": "#393939",
   "white": "#ffffff",
   "black": "#000000",
-  "background_deep": "#262626"
+  "background_deep": "#262626",
+  "scheme": {
+    "vim": "base16-tomorrow-night-eighties"
+  }
 }

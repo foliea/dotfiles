@@ -70,3 +70,8 @@ ln -sf "$PWD/os/shared/default-npm-packages" "$HOME/.default-npm-packages"
 
 # Install default languages and tools
 mise install
+
+# Centralize theme folder for omamad
+mkdir -p "$HOME/.config/omamad"
+ln -sf "$PWD/themes" "$HOME/.config/omamad/themes"
+cp -r "$PWD/themes/tomorrow-night-eighties" "$HOME/.config/omamad/themes/default"
