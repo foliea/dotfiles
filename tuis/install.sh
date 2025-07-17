@@ -3,7 +3,8 @@ set -e
 
 # btop
 mkdir -p "$HOME/.config/btop/themes"
-ln -sf "$PWD/tuis/btop/themes/tomorrow-night-eighties.theme" "$HOME/.config/btop/themes/tomorrow-night-eighties.theme"
+ln -sf "$PWD/tuis/btop.conf" "$HOME/.config/btop/btop.conf"
+ln -sf "$HOME/.config/omamad/themes/default/btop.theme" "$HOME/.config/btop/themes/default.theme"
 
 # k9s
 OS="$(uname -s)"
