@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "theme": "tomorrow-night-eighties",
+  "theme": "default",
   "keybinds": {
     "leader": "ctrl+space"
   },
