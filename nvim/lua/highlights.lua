@@ -5,7 +5,7 @@ vim.opt.termguicolors = true
 if colors.scheme.vim == "none" then
 	require("base16-colorscheme").setup({
 		base00 = colors.background,
-		base01 = colors.background_deep,
+		base01 = colors.panel,
 		base02 = colors.selection,
 		base03 = colors.muted,
 		base04 = colors.foreground,
