@@ -38,6 +38,15 @@ mkdir -p "$GLAZE_DEST_DIR/glazewm"
 
 cp "$PWD/os/windows/glazewm.yaml" "$GLAZE_DEST_DIR/glazewm/config.yaml"
 
+# Apply theme color to GlazeWM config
+GLAZEWM_THEME_FILE="$HOME/.config/themes/default/glazewm.txt"
+if [ -f "$GLAZEWM_THEME_FILE" ]; then
+	THEME_COLOR=$(head -n 1 "$GLAZEWM_THEME_FILE" | tr -d '[:space:]')
+	if [ -n "$THEME_COLOR" ]; then
+		sed -i "s/#ffffff/$THEME_COLOR/g" "$GLAZE_DEST_DIR/glazewm/config.yaml"
+	fi
+fi
+
 INSTALL_ZEBAR=false
 INSTALL_POWERTOYS=false
 for arg in "$@"; do
