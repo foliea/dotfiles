@@ -25,6 +25,16 @@ else
 	vim.cmd("colorscheme " .. colors.scheme.vim)
 end
 
+require("base16-colorscheme").with_config({
+	telescope = true,
+	indentblankline = false,
+	notify = false,
+	ts_rainbow = false,
+	cmp = false,
+	illuminate = false,
+	dapui = false,
+})
+
 -- Code completion and git blame
 vim.api.nvim_set_hl(0, "Pmenu", { fg = colors.foreground, bg = colors.background })
 vim.api.nvim_set_hl(0, "PmenuSel", { fg = colors.white, bg = colors.selection })
@@ -33,7 +43,8 @@ vim.api.nvim_set_hl(0, "PmenuThumb", { bg = colors.selection })
 vim.api.nvim_set_hl(0, "CmpDocNormal", { bg = colors.background })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = colors.background })
 vim.api.nvim_set_hl(0, "FloatBorder", { bg = colors.background })
-vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = colors.aqua })
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = colors.purple })
+vim.api.nvim_set_hl(0, "CmpItemAbbr", { bg = colors.background })
 
 -- Notification
 vim.api.nvim_set_hl(0, "NotifyERRORBorder", { fg = colors.red })
