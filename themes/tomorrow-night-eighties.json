@@ -1,0 +1,17 @@
+{
+  "background": "#2d2d2d",
+  "foreground": "#cccccc",
+  "muted": "#999999",
+  "red": "#f2777a",
+  "orange": "#f99157",
+  "yellow": "#ffcc66",
+  "green": "#99cc99",
+  "aqua": "#66cccc",
+  "blue": "#6699cc",
+  "purple": "#cc99cc",
+  "selection": "#515151",
+  "panel": "#393939",
+  "white": "#ffffff",
+  "black": "#000000",
+  "background_deep": "#262626"
+}
