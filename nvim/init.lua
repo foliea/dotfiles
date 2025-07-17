@@ -224,6 +224,8 @@ pcall(function()
 end)
 
 pcall(function()
+	local colors = require("colors")
+
 	require("bufferline").setup({
 		options = {
 			show_buffer_icons = true,
@@ -231,6 +233,47 @@ pcall(function()
 			show_close_icon = true,
 			separator_style = "slant",
 			themable = true,
+		},
+		highlights = {
+			modified = {
+				fg = colors.yellow,
+			},
+			modified_visible = {
+				fg = colors.yellow,
+			},
+			modified_selected = {
+				fg = colors.yellow,
+			},
+			fill = {
+				bg = colors.background_deep,
+			},
+			separator = {
+				fg = colors.background_deep,
+			},
+			separator_visible = {
+				fg = colors.background_deep,
+			},
+			separator_selected = {
+				fg = colors.background_deep,
+			},
+			tab_separator = {
+				fg = colors.background_deep,
+			},
+			tab_separator_selected = {
+				fg = colors.background_deep,
+			},
+			group_label = {
+				fg = colors.background_deep,
+			},
+			trunc_marker = {
+				bg = colors.background_deep,
+			},
+			offset_separator = {
+				bg = colors.background_deep,
+			},
+			group_separator = {
+				bg = colors.background_deep,
+			},
 		},
 	})
 end)
