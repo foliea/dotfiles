@@ -1,0 +1,28 @@
+{
+  "background": "#2d2d2d",
+  "foreground": "#cccccc",
+  "cursor_bg": "#cccccc",
+  "cursor_fg": "#2d2d2d",
+  "selection_bg": "#515151",
+  "selection_fg": "#ffffff",
+  "ansi": [
+    "#999999",
+    "#f2777a",
+    "#99cc99",
+    "#ffcc66",
+    "#6699cc",
+    "#cc99cc",
+    "#66cccc",
+    "#cccccc"
+  ],
+  "brights": [
+    "#999999",
+    "#f2777a",
+    "#99cc99",
+    "#ffcc66",
+    "#6699cc",
+    "#cc99cc",
+    "#66cccc",
+    "#cccccc"
+  ]
+}
