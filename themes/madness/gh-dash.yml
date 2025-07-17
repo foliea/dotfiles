@@ -3,25 +3,25 @@
 theme:
   colors:
     text:
-      primary: "#eeeeee"
-      secondary: "#eeeeee"
-      inverted: "#0a0a0a"
-      faint: "#808080"
+      primary: "#e0e0e0"
+      secondary: "#e0e0e0"
+      inverted: "#212121"
+      faint: "#6a6a6a"
       success: "#7fd88f"
       warning: "#f5a742"
     background:
-      selected: "#1e1e1e"
+      selected: "#303030"
     border:
       primary: "#fab283"
       secondary: "#5c9cf5"
-      faint: "#484848"
+      faint: "#4b4c5c"
     icon:
       owner: "#fab283"
       collaborator: "#5c9cf5"
       member: "#7fd88f"
       contributor: "#e06c75"
       newContributor: "#e5c07b"
-      unknown: "#1e1e1e"
+      unknown: "#303030"
 
 ui:
   table:

@@ -3,11 +3,11 @@
   --accent-primary: 250 178 131;
   
   /* Background colors */
-  --bg-primary: 10 10 10;
-  --bg-secondary: 20 20 20;
+  --bg-primary: 33 33 33;
+  --bg-secondary: 48 48 48;
   
   /* Text colors */
-  --text-primary: 238 238 238;
+  --text-primary: 224 224 224;
   
   /* Status colors */
   --status-error: 224 108 117;

@@ -3,10 +3,10 @@
 # All colors are in 24-bit RGB format: "#RRGGBB", "#BW" or "0-255 0-255 0-255"
 
 # Main background color
-theme[main_bg]="#0a0a0a"
+theme[main_bg]="#212121"
 
 # Main text color
-theme[main_fg]="#eeeeee"
+theme[main_fg]="#e0e0e0"
 
 # Title color for boxes
 theme[title]="#fab283"
@@ -15,13 +15,13 @@ theme[title]="#fab283"
 theme[hi_fg]="#fab283"
 
 # Background color of selected item in processes box
-theme[selected_bg]="#1e1e1e"
+theme[selected_bg]="#303030"
 
 # Foreground color of selected item in processes box
-theme[selected_fg]="#eeeeee"
+theme[selected_fg]="#e0e0e0"
 
 # Color of inactive/disabled text
-theme[inactive_fg]="#808080"
+theme[inactive_fg]="#6a6a6a"
 
 # Misc colors for processes box including mini cpu graphs, details memory graph and details status text
 theme[proc_misc]="#5c9cf5"

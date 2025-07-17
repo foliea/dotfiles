@@ -1,22 +1,22 @@
 k9s:
   body:
-    fgColor: "#eeeeee"
-    bgColor: "#0a0a0a"
+    fgColor: "#e0e0e0"
+    bgColor: "#212121"
   info:
     fgColor: "#7fd88f"
     sectionColor: "#fab283"
   dialog:
-    fgColor: "#eeeeee"
-    bgColor: "#0a0a0a"
-    buttonFgColor: "#eeeeee"
-    buttonBgColor: "#0a0a0a"
+    fgColor: "#e0e0e0"
+    bgColor: "#212121"
+    buttonFgColor: "#e0e0e0"
+    buttonBgColor: "#212121"
     buttonFocusFgColor: "#e5c07b"
-    buttonFocusBgColor: "#0a0a0a"
+    buttonFocusBgColor: "#212121"
     labelFgColor: "#e5c07b"
   frame:
     title:
       fgColor: "#e5c07b"
-      bgColor: "#0a0a0a"
+      bgColor: "#212121"
       highlightColor: "#fab283"
       counterColor: "#7fd88f"
       filterColor: "#56b6c2"
@@ -24,12 +24,12 @@ k9s:
       fgColor: "#fab283"
       focusColor: "#e5c07b"
     menu:
-      fgColor: "#eeeeee"
+      fgColor: "#e0e0e0"
       keyColor: "#e5c07b"
       numKeyColor: "#fab283"
     crumbs:
-      fgColor: "#eeeeee"
-      bgColor: "#0a0a0a"
+      fgColor: "#e0e0e0"
+      bgColor: "#212121"
       activeColor: "#e5c07b"
     status:
       newColor: "#7fd88f"
@@ -41,22 +41,22 @@ k9s:
       completedColor: "#7fd88f"
   views:
     table:
-      fgColor: "#eeeeee"
-      bgColor: "#0a0a0a"
-      cursorFgColor: "#0a0a0a"
-      cursorBgColor: "#eeeeee"
+      fgColor: "#e0e0e0"
+      bgColor: "#212121"
+      cursorFgColor: "#212121"
+      cursorBgColor: "#e0e0e0"
       header:
         fgColor: "#e5c07b"
-        bgColor: "#0a0a0a"
+        bgColor: "#212121"
         sorterColor: "#fab283"
     xray:
-      fgColor: "#eeeeee"
-      bgColor: "#0a0a0a"
+      fgColor: "#e0e0e0"
+      bgColor: "#212121"
       cursorColor: "#fab283"
       graphicColor: "#e5c07b"
       showIcons: false
     charts:
-      bgColor: "#0a0a0a"
+      bgColor: "#212121"
       defaultDialColors:
         - "#5c9cf5"
         - "#e06c75"
@@ -65,11 +65,11 @@ k9s:
         - "#e06c75"
     yaml:
       keyColor: "#e5c07b"
-      valueColor: "#eeeeee"
+      valueColor: "#e0e0e0"
       colonColor: "#fab283"
     logs:
-      fgColor: "#eeeeee"
-      bgColor: "#0a0a0a"
+      fgColor: "#e0e0e0"
+      bgColor: "#212121"
       indicator:
         fgColor: "#e5c07b"
-        bgColor: "#0a0a0a"
+        bgColor: "#212121"

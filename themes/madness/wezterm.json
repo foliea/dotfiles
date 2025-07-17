@@ -1,22 +1,22 @@
 {
-  "background": "#0a0a0a",
-  "foreground": "#eeeeee",
-  "cursor_bg": "#eeeeee",
-  "cursor_fg": "#0a0a0a",
-  "selection_bg": "#1e1e1e",
-  "selection_fg": "#eeeeee",
+  "background": "#212121",
+  "foreground": "#e0e0e0",
+  "cursor_bg": "#e0e0e0",
+  "cursor_fg": "#212121",
+  "selection_bg": "#303030",
+  "selection_fg": "#e0e0e0",
   "ansi": [
-    "#0a0a0a",  // black
+    "#212121",  // black
     "#e06c75",  // red
     "#7fd88f",  // green
     "#e5c07b",  // yellow
     "#5c9cf5",  // blue
     "#9d7cd8",  // magenta
     "#56b6c2",  // cyan
-    "#eeeeee"   // white
+    "#e0e0e0"   // white
   ],
   "brights": [
-    "#808080",  // bright black
+    "#6a6a6a",  // bright black
     "#f5a742",  // bright red (warning)
     "#7fd88f",  // bright green
     "#fab283",  // bright yellow (primary)
