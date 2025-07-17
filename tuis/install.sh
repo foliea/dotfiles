@@ -19,7 +19,7 @@ else
 fi
 
 mkdir -p "$K9S_CONFIG_SUPPORT/skins"
-ln -sf "$PWD/tuis/k9s/skins/tomorrow-night-eighties.yaml" "$K9S_CONFIG_SUPPORT/skins/tomorrow-night-eighties.yaml"
+ln -sf "$HOME/.config/omamad/themes/default/k9s.yaml" "$K9S_CONFIG_SUPPORT/skins/default.yaml"
 ln -sf "$PWD/tuis/k9s/config.yaml" "$K9S_CONFIG_SUPPORT/config.yaml"
 
 # yazi
