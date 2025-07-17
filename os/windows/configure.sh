@@ -52,6 +52,7 @@ if [ "$INSTALL_ZEBAR" = "true" ]; then
 	echo "Installing Zebar..."
 	rm -rf "$GLAZE_DEST_DIR/zebar"
 	cp -r "$PWD/os/windows/zebar" "$GLAZE_DEST_DIR"
+	cp "$HOME/.config/themes/default/zebar.css" "$GLAZE_DEST_DIR/zebar/default-theme/colors.css"
 else
 	echo "Skipping Zebar installation. Use --with-zebar to install."
 fi

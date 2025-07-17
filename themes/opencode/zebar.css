@@ -1,0 +1,24 @@
+:root {
+  /* Primary accent color (opencode primary) */
+  --accent-primary: 250 178 131;
+  
+  /* Background colors */
+  --bg-primary: 33 33 33;
+  --bg-secondary: 48 48 48;
+  
+  /* Text colors */
+  --text-primary: 224 224 224;
+  
+  /* Status colors */
+  --status-error: 224 108 117;
+  --status-success: 127 216 143;
+  
+  /* Opacity levels */
+  --opacity-full: 100%;
+  --opacity-high: 90%;
+  --opacity-medium: 80%;
+  --opacity-low: 60%;
+  --opacity-subtle: 40%;
+  --opacity-faint: 30%;
+  --opacity-ghost: 20%;
+}

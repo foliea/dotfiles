@@ -3,15 +3,16 @@
  * Ref https://www.nerdfonts.com/cheat-sheet for a cheatsheet of available Nerdfonts icons.
  */
 @import 'https://www.nerdfonts.com/assets/css/webfont.css';
+@import './colors.css';
 
 i {
-  color: rgb(242 119 122 / 100%);
+  color: rgb(var(--accent-primary) / var(--opacity-full));
   margin-right: 7px;
-  text-shadow: 0 0 10px rgb(242 119 122 / 80%);
+  text-shadow: 0 0 10px rgb(var(--accent-primary) / var(--opacity-medium));
 }
 
 body {
-  color: rgb(255 255 255 / 100%);
+  color: rgb(var(--text-primary) / var(--opacity-full));
   font-size: 12px;
   overflow: hidden;
 }
@@ -30,10 +31,10 @@ body,
 }
 
 #root {
-  border-bottom: 1px solid rgb(242 119 122 / 40%);
-  background-color: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgb(var(--accent-primary) / var(--opacity-subtle));
+  background-color: rgba(var(--bg-primary), 0.3);
   backdrop-filter: blur(16px);
-  box-shadow: 0 0 20px rgb(242 119 122 / 20%);
+  box-shadow: 0 0 20px rgb(var(--accent-primary) / var(--opacity-ghost));
 }
 
 .app {
@@ -53,31 +54,31 @@ body,
 
 .center {
   justify-self: center;
-  background: rgb(45 45 45 / 80%);
+  background: rgb(var(--bg-secondary) / var(--opacity-medium));
   padding: 4px 12px;
   border-radius: 4px;
-  box-shadow: 0 0 15px rgb(242 119 122 / 30%);
+  box-shadow: 0 0 15px rgb(var(--accent-primary) / var(--opacity-faint));
   font-weight: 500;
   letter-spacing: 0.3px;
-  color: rgb(255 255 255 / 100%);
-  text-shadow: 0 0 10px rgb(242 119 122 / 80%);
-  border: 1px solid rgb(242 119 122 / 30%);
+  color: rgb(var(--text-primary) / var(--opacity-full));
+  text-shadow: 0 0 10px rgb(var(--accent-primary) / var(--opacity-medium));
+  border: 1px solid rgb(var(--accent-primary) / var(--opacity-faint));
 }
 
 .center .date {
   font-weight: 600;
-  color: rgb(255 255 255 / 100%);
+  color: rgb(var(--text-primary) / var(--opacity-full));
 }
 
 .center .separator {
   margin: 0 8px;
-  color: rgb(242 119 122 / 60%);
+  color: rgb(var(--accent-primary) / var(--opacity-low));
   font-weight: bold;
 }
 
 .center .process {
   font-weight: 400;
-  color: rgb(242 119 122 / 90%);
+  color: rgb(var(--accent-primary) / var(--opacity-high));
   text-transform: capitalize;
   font-size: 0.95em;
 }
@@ -106,50 +107,50 @@ body,
 }
 
 .workspace {
-  background: rgb(45 45 45 / 80%);
+  background: rgb(var(--bg-secondary) / var(--opacity-medium));
   margin-right: 4px;
   padding: 4px 8px;
-  color: rgb(255 255 255 / 100%);
-  border: 1px solid rgb(242 119 122 / 30%);
+  color: rgb(var(--text-primary) / var(--opacity-full));
+  border: 1px solid rgb(var(--accent-primary) / var(--opacity-faint));
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 0 10px rgb(242 119 122 / 20%);
+  box-shadow: 0 0 10px rgb(var(--accent-primary) / var(--opacity-ghost));
 
   &.displayed {
-    background: rgb(45 45 45 / 50%);
-    box-shadow: 0 0 15px rgb(242 119 122 / 30%);
+    background: rgb(var(--bg-secondary) / 50%);
+    box-shadow: 0 0 15px rgb(var(--accent-primary) / var(--opacity-faint));
   }
 
   &.focused,
   &:hover {
-    background: rgb(242 119 122 / 40%);
+    background: rgb(var(--accent-primary) / var(--opacity-subtle));
     transform: translateY(-1px);
-    text-shadow: 0 0 10px rgb(242 119 122 / 80%);
-    box-shadow: 0 0 20px rgb(242 119 122 / 40%);
-    border: 1px solid rgb(242 119 122 / 60%);
+    text-shadow: 0 0 10px rgb(var(--accent-primary) / var(--opacity-medium));
+    box-shadow: 0 0 20px rgb(var(--accent-primary) / var(--opacity-subtle));
+    border: 1px solid rgb(var(--accent-primary) / var(--opacity-low));
   }
 }
 
 .binding-mode,
 .tiling-direction,
 .paused-button {
-  background: rgb(45 45 45 / 80%);
-  color: rgb(255 255 255 / 100%);
+  background: rgb(var(--bg-secondary) / var(--opacity-medium));
+  color: rgb(var(--text-primary) / var(--opacity-full));
   border-radius: 4px;
   line-height: 1;
   padding: 4px 8px;
-  border: 1px solid rgb(242 119 122 / 30%);
+  border: 1px solid rgb(var(--accent-primary) / var(--opacity-faint));
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 0 10px rgb(242 119 122 / 20%);
+  box-shadow: 0 0 10px rgb(var(--accent-primary) / var(--opacity-ghost));
 
   &:hover {
-    background: rgb(242 119 122 / 40%);
+    background: rgb(var(--accent-primary) / var(--opacity-subtle));
     transform: translateY(-1px);
-    text-shadow: 0 0 10px rgb(242 119 122 / 80%);
-    box-shadow: 0 0 20px rgb(242 119 122 / 40%);
-    border: 1px solid rgb(242 119 122 / 60%);
+    text-shadow: 0 0 10px rgb(var(--accent-primary) / var(--opacity-medium));
+    box-shadow: 0 0 20px rgb(var(--accent-primary) / var(--opacity-subtle));
+    border: 1px solid rgb(var(--accent-primary) / var(--opacity-low));
   }
 }
 
@@ -158,8 +159,8 @@ body,
 }
 
 .cpu .high-usage {
-  color: rgb(242 119 122 / 100%);
-  text-shadow: 0 0 10px rgb(242 119 122 / 80%);
+  color: rgb(var(--accent-primary) / var(--opacity-full));
+  text-shadow: 0 0 10px rgb(var(--accent-primary) / var(--opacity-medium));
 }
 
 .battery {
@@ -177,7 +178,7 @@ body,
   padding: 0;
   border-radius: 0;
   box-shadow: none;
-  color: rgb(255 255 255 / 100%);
+  color: rgb(var(--text-primary) / var(--opacity-full));
 
   &:hover {
     background: transparent;
@@ -187,11 +188,11 @@ body,
 .status-box {
   display: flex;
   align-items: center;
-  background: rgb(45 45 45 / 80%);
+  background: rgb(var(--bg-secondary) / var(--opacity-medium));
   padding: 4px 12px;
   border-radius: 4px;
-  box-shadow: 0 0 15px rgb(242 119 122 / 30%);
-  border: 1px solid rgb(242 119 122 / 30%);
+  box-shadow: 0 0 15px rgb(var(--accent-primary) / var(--opacity-faint));
+  border: 1px solid rgb(var(--accent-primary) / var(--opacity-faint));
 }
 
 .network {
@@ -205,20 +206,20 @@ body,
   gap: 4px;
   font-size: 0.85em;
   margin-left: 4px;
-  text-shadow: 0 0 10px rgb(242 119 122 / 80%);
+  text-shadow: 0 0 10px rgb(var(--accent-primary) / var(--opacity-medium));
 }
 
 .network .download {
-  color: rgb(242 119 122 / 100%);
+  color: rgb(var(--accent-primary) / var(--opacity-full));
 }
 
 .network .upload {
-  color: rgb(242 119 122 / 100%);
+  color: rgb(var(--accent-primary) / var(--opacity-full));
 }
 
 .audio .muted {
-  color: rgb(255 0 0 / 100%);
-  text-shadow: 0 0 10px rgb(255 0 0 / 80%);
+  color: rgb(var(--status-error) / var(--opacity-full));
+  text-shadow: 0 0 10px rgb(var(--status-error) / var(--opacity-medium));
 }
 
 .charging {
@@ -233,25 +234,25 @@ body,
 }
 
 .low-battery {
-  color: rgb(255 0 0 / 100%) !important;
-  text-shadow: 0 0 10px rgb(255 0 0 / 80%) !important;
+  color: rgb(var(--status-error) / var(--opacity-full)) !important;
+  text-shadow: 0 0 10px rgb(var(--status-error) / var(--opacity-medium)) !important;
 }
 
 .full-battery {
-  color: rgb(0 255 0 / 100%) !important;
-  text-shadow: 0 0 10px rgb(0 255 0 / 80%) !important;
+  color: rgb(var(--status-success) / var(--opacity-full)) !important;
+  text-shadow: 0 0 10px rgb(var(--status-success) / var(--opacity-medium)) !important;
 }
 
 @keyframes pulse-charging {
 
   0%,
   100% {
-    color: rgb(0 255 0 / 100%);
-    text-shadow: 0 0 10px rgb(0 255 0 / 80%);
+    color: rgb(var(--status-success) / var(--opacity-full));
+    text-shadow: 0 0 10px rgb(var(--status-success) / var(--opacity-medium));
   }
 
   50% {
-    color: rgb(0 255 0 / 60%);
-    text-shadow: 0 0 15px rgb(0 255 0 / 90%);
+    color: rgb(var(--status-success) / var(--opacity-low));
+    text-shadow: 0 0 15px rgb(var(--status-success) / var(--opacity-high));
   }
 }
