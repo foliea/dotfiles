@@ -29,7 +29,7 @@ ln -sf "$HOME/.config/omamad/themes/default/yazi.toml" "$HOME/.config/yazi/flavo
 
 # gh-dash
 mkdir -p "$HOME/.config/gh-dash"
-ln -sf "$PWD/tuis/gh-dash/config.yml" "$HOME/.config/gh-dash/config.yml"
+ln -sf "$HOME/.config/omamad/themes/default/gh-dash.yml" "$HOME/.config/gh-dash/config.yml"
 
 # fastfetch
 mkdir -p "$HOME/.config/fastfetch"
