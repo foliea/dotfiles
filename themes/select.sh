@@ -16,10 +16,12 @@ rm -rf "$DEFAULT_THEME_DIR"
 mkdir -p "$DEFAULT_THEME_DIR"
 cp -r "$THEMES_DIR/$SELECTED"/* "$DEFAULT_THEME_DIR/"
 
+if command -v wezterm >/dev/null 2>&1; then
+	touch "$HOME/.config/wezterm/wezterm.lua"
+fi
+
 # Reload tmux config if tmux is running
 if command -v tmux >/dev/null 2>&1 && tmux list-sessions >/dev/null 2>&1; then
 	tmux source-file ~/.tmux.conf
-	echo "Theme $SELECTED set as default and tmux config reloaded."
-else
-	echo "Theme $SELECTED set as default."
 fi
+echo "Theme $SELECTED set as default."
