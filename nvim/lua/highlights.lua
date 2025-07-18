@@ -28,7 +28,7 @@ end
 require("base16-colorscheme").with_config({
 	telescope = true,
 	indentblankline = false,
-	notify = false,
+	notify = true,
 	ts_rainbow = false,
 	cmp = false,
 	illuminate = false,
@@ -46,26 +46,8 @@ vim.api.nvim_set_hl(0, "FloatBorder", { bg = colors.background })
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = colors.purple })
 vim.api.nvim_set_hl(0, "CmpItemAbbr", { bg = colors.background })
 
--- Notification
-vim.api.nvim_set_hl(0, "NotifyERRORBorder", { fg = colors.red })
-vim.api.nvim_set_hl(0, "NotifyWARNBorder", { fg = colors.orange })
-vim.api.nvim_set_hl(0, "NotifyHINTBorder", { fg = colors.yellow })
-vim.api.nvim_set_hl(0, "NotifyINFOBorder", { fg = colors.green })
-vim.api.nvim_set_hl(0, "NotifyERRORIcon", { fg = colors.red })
-vim.api.nvim_set_hl(0, "NotifyWARNIcon", { fg = colors.orange })
-vim.api.nvim_set_hl(0, "NotifyHINTIcon", { fg = colors.yellow })
-vim.api.nvim_set_hl(0, "NotifyINFOIcon", { fg = colors.green })
-vim.api.nvim_set_hl(0, "NotifyERRORTitle", { fg = colors.red })
-vim.api.nvim_set_hl(0, "NotifyWARNTitle", { fg = colors.orange })
-vim.api.nvim_set_hl(0, "NotifyHINTTitle", { fg = colors.yellow })
-vim.api.nvim_set_hl(0, "NotifyINFOTitle", { fg = colors.green })
-
 -- Code editor
 vim.api.nvim_set_hl(0, "Delimiter", { fg = colors.white })
-vim.api.nvim_set_hl(0, "@string.special", { fg = colors.orange })
-vim.api.nvim_set_hl(0, "@string.regexp", { fg = colors.green })
-vim.api.nvim_set_hl(0, "@string.escape", { fg = colors.orange })
-vim.api.nvim_set_hl(0, "@variable", { fg = colors.red })
 
 -- Ruby icons
 vim.api.nvim_set_hl(0, "DevIconRb", { fg = "#e8274b" })
