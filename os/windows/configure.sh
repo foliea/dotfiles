@@ -4,6 +4,13 @@ set -e
 # Get script directory for relative paths
 SCRIPT_DIR="$(dirname "$0")"
 
+INSTALL_POWERTOYS=false
+for arg in "$@"; do
+	if [ "$arg" = "--power-toys" ]; then
+		INSTALL_POWERTOYS=true
+	fi
+done
+
 # Source WSL validation
 . "$SCRIPT_DIR/check-wsl.sh"
 
@@ -47,16 +54,6 @@ fi
 if command -v glazewm.exe >/dev/null 2>&1; then
 	glazewm.exe command wm-reload-config
 fi
-
-INSTALL_ZEBAR=false
-INSTALL_POWERTOYS=false
-for arg in "$@"; do
-	if [ "$arg" = "--with-zebar" ]; then
-		INSTALL_ZEBAR=true
-	elif [ "$arg" = "--power-toys" ]; then
-		INSTALL_POWERTOYS=true
-	fi
-done
 
 # Zebar configuration and theme
 if command -v zebar.exe >/dev/null 2>&1; then

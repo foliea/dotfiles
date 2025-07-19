@@ -29,8 +29,12 @@ if command -v tmux >/dev/null 2>&1 && tmux list-sessions >/dev/null 2>&1; then
 	tmux source-file ~/.tmux.conf
 fi
 
+# Check if running inside WSL
 if grep -qEi "WSL" /proc/version; then
-	sh "$REPO_ROOT/os/windows/configure.sh"
+	# Check if Windows tools are installed
+	if command -v glazewm.exe >/dev/null 2>&1 || command -v zebar.exe >/dev/null 2>&1; then
+		sh "$REPO_ROOT/os/windows/configure.sh"
+	fi
 fi
 
 echo "Theme $SELECTED set as default."
