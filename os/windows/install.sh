@@ -6,20 +6,21 @@ set -e
 
 WIN_USER=$(cmd.exe /C 'echo %USERNAME%' 2>/dev/null | tr -d '\r')
 
-# Install or update Winget system packages
-winget.exe install \
-	GlazeWM \
-	CharlesMilette.TranslucentTB \
-	Microsoft.PowerToys \
-	Microsoft.WindowsTerminal \
-	Microsoft.PowerShell \
-	Discord.Discord \
-	Google.QuickShare \
-	DuongDieuPhap.ImageGlass || true
+# Install winget packages
+WINGET_PACKAGES="CharlesMilette.TranslucentTB GlazeWM Microsoft.WindowsTerminal Microsoft.PowerToys Microsoft.PowerShell Discord.Discord Google.QuickShare DuongDieuPhap.ImageGlass"
 
-# Install or update Winget user packages
-winget.exe install --scope user --exact --id Microsoft.WindowsStudioCode || true
-winget.exe install --scope user --exact --id Starship.Starship || true
+for package in $WINGET_PACKAGES; do
+	echo "Installing $package..."
+	winget.exe install --exact --id "$package" || true
+done
+
+# Install winget user packages
+WINGET_USER_PACKAGES="Microsoft.WindowsStudioCode Starship.Starship"
+
+for package in $WINGET_USER_PACKAGES; do
+	echo "Installing $package (user scope)..."
+	winget.exe install --scope user --exact --id "$package" || true
+done
 
 SCOOP="/mnt/c/Users/$WIN_USER/scoop/shims/scoop"
 
