@@ -2,7 +2,7 @@
 "$schema" = "https://yazi-rs.github.io/schemas/theme.json"
 
 [mgr]
-cwd = { fg = "#fab283" }
+cwd = { fg = "#56b6c2" }
 
 # Hovered
 hovered         = { reversed = true }
@@ -10,7 +10,7 @@ preview_hovered = { underline = true }
 
 # Find
 find_keyword  = { fg = "#e5c07b", bold = true, italic = true, underline = true }
-find_position = { fg = "#5c9cf5", bg = "reset", bold = true, italic = true }
+find_position = { fg = "#9d7cd8", bg = "reset", bold = true, italic = true }
 
 # Symlink
 symlink_target = { italic = true }
@@ -18,7 +18,7 @@ symlink_target = { italic = true }
 # Marker
 marker_copied   = { fg = "#7fd88f",  bg = "#7fd88f" }
 marker_cut      = { fg = "#e06c75",    bg = "#e06c75" }
-marker_marked   = { fg = "#fab283",   bg = "#fab283" }
+marker_marked   = { fg = "#56b6c2",   bg = "#56b6c2" }
 marker_selected = { fg = "#e5c07b", bg = "#e5c07b" }
 
 # Count
@@ -27,53 +27,53 @@ count_cut      = { fg = "white", bg = "#e06c75" }
 count_selected = { fg = "white", bg = "#e5c07b" }
 
 # Border
-border_style  = { fg = "#484848" }
+border_style  = { fg = "#1e1e1e" }
 
 # Highlighting
 syntect_theme = ""
 
 [tabs]
 active   = { bg = "#fab283", bold = true }
-inactive = { fg = "#fab283", bg = "#808080" }
+inactive = { fg = "#fab283", bg = "#1e1e1e" }
 
 [mode]
 normal_main = { bg = "#fab283", bold = true }
-normal_alt  = { fg = "#fab283", bg = "#808080" }
+normal_alt  = { fg = "#fab293", bg = "#1e1e1e" }
 
 # Select mode
 select_main = { bg = "#e06c75", bold = true }
-select_alt  = { fg = "#e06c75", bg = "#808080" }
+select_alt  = { fg = "#e06c75", bg = "#1e1e1e" }
 
 # Unset mode
 unset_main = { bg = "#e06c75", bold = true }
-unset_alt  = { fg = "#e06c75", bg = "#808080" }
+unset_alt  = { fg = "#e06c75", bg = "#1e1e1e" }
 
 [status]
 overall   = {}
 
 # Permissions
-perm_sep   = { fg = "#484848" }
+perm_sep   = { fg = "#808080" }
 perm_type  = { fg = "#7fd88f" }
 perm_read  = { fg = "#e5c07b" }
 perm_write = { fg = "#e06c75" }
-perm_exec  = { fg = "#fab283" }
+perm_exec  = { fg = "#56b6c2" }
 
 # Progress
 progress_label  = { bold = true }
-progress_normal = { fg = "#fab283", bg = "black" }
+progress_normal = { fg = "#fab293", bg = "black" }
 progress_error  = { fg = "#e06c75", bg = "black" }
 
 [which]
 cols            = 3
 mask            = { bg = "black" }
-cand            = { fg = "#fab283" }
-rest            = { fg = "#1e1e1e" }
-desc            = { fg = "#5c9cf5" }
-separator_style = { fg = "#1e1e1e" }
+cand            = { fg = "#56b6c2" }
+rest            = { fg = "#141414" }
+desc            = { fg = "#9d7cd8" }
+separator_style = { fg = "#141414" }
 
 [confirm]
-border     = { fg = "#fab283" }
-title      = { fg = "#fab283" }
+border     = { fg = "#fab293" }
+title      = { fg = "#fab293" }
 content    = {}
 list       = {}
 btn_yes    = { reversed = true }
@@ -81,11 +81,11 @@ btn_no     = {}
 btn_labels = [ "  [Y]es  ", "  (N)o  " ]
 
 [spot]
-border = { fg = "#fab283" }
-title  = { fg = "#fab283" }
+border = { fg = "#fab293" }
+title  = { fg = "#fab293" }
 
 # Table
-tbl_col  = { fg = "#fab283" }
+tbl_col  = { fg = "#fab293" }
 tbl_cell = { fg = "#e5c07b", reversed = true }
 
 [notify]
@@ -94,29 +94,29 @@ title_warn  = { fg = "#e5c07b" }
 title_error = { fg = "#e06c75" }
 
 [pick]
-border   = { fg = "#fab283" }
-active   = { fg = "#5c9cf5", bold = true }
+border   = { fg = "#fab293" }
+active   = { fg = "#9d7cd8", bold = true }
 inactive = {}
 
 [input]
-border   = { fg = "#fab283" }
+border   = { fg = "#fab293" }
 title    = {}
 value    = {}
 selected = { reversed = true }
 
 [cmp]
-border   = { fg = "#fab283" }
+border   = { fg = "#fab293" }
 active   = { reversed = true }
 inactive = {}
 
 [tasks]
-border  = { fg = "#fab283" }
+border  = { fg = "#fab293" }
 title   = {}
-hovered = { fg = "#5c9cf5", underline = true }
+hovered = { fg = "#9d7cd9", underline = true }
 
 [help]
-on      = { fg = "#fab283" }
-run     = { fg = "#5c9cf5" }
+on      = { fg = "#56b6c2" }
+run     = { fg = "#9d7cd9" }
 desc    = {}
 hovered = { reversed = true, bold = true }
 footer  = { fg = "black", bg = "white" }
@@ -133,7 +133,7 @@ rules = [
       { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#e06c75" },
 
       # Documents
-      { mime = "application/{pdf,doc,rtf}", fg = "#fab283" },
+      { mime = "application/{pdf,doc,rtf}", fg = "#56b6c2" },
 
       # Special files
       { name = "*", is = "orphan", bg = "#e06c75" },
@@ -144,7 +144,7 @@ rules = [
       { name = "*/", is = "dummy", bg = "#e06c75" },
 
       # Fallback
-      { name = "*/", fg = "#fab283" }
+      { name = "*/", fg = "#fab293" }
 ]
 
 [icon]

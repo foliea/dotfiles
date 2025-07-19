@@ -6,22 +6,22 @@ theme:
       primary: "#eeeeee"
       secondary: "#eeeeee"
       inverted: "#000000"
-      faint: "#808080"
+      faint: "#eeeeee"
       success: "#7fd88f"
       warning: "#f5a742"
     background:
-      selected: "#1e1e1e"
+      selected: "#141414"
     border:
       primary: "#fab283"
       secondary: "#5c9cf5"
-      faint: "#484848"
+      faint: "#303030"
     icon:
       owner: "#fab283"
       collaborator: "#5c9cf5"
       member: "#7fd88f"
       contributor: "#e06c75"
       newContributor: "#e5c07b"
-      unknown: "#1e1e1e"
+      unknown: "#141414"
 
 ui:
   table:
