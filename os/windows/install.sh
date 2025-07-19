@@ -17,10 +17,10 @@ winget.exe install \
 	Discord.Discord \
 	Google.QuickShare \
 	mpv.net \
-	DuongDieuPhap.ImageGlass
+	DuongDieuPhap.ImageGlass || true
 
 # Install or update Winget user packages
-winget.exe install --scope user --exact --id Starship.Starship
+winget.exe install --scope user --exact --id Starship.Starship || true
 
 SCOOP="/mnt/c/Users/$WIN_USER/scoop/shims/scoop"
 
