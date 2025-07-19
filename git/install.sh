@@ -41,4 +41,13 @@ ${config} alias.s "status -s"
 ${config} alias.lg "log --oneline --decorate --all --graph"
 ${config} alias.pushall "push --recurse-submodules=on-demand"
 
+# Pager
+${config} core.pager delta
+${config} interactive.diffFilter 'delta --color-only'
+${config} delta.navigate true
+${config} delta.pager "bat --style=plain"
+${config} delta.line-numbers true
+${config} delta.side-by-side true
+${config} merge.conflictStyle zdiff3
+
 ln -sf $PWD/git/gitignore $HOME/.gitignore-global

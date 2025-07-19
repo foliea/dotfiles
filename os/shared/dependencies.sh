@@ -18,6 +18,7 @@ brew install \
 	eza \
 	zoxide \
 	git \
+	git-delta \
 	hub \
 	gh \
 	bash \
