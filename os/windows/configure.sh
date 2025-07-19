@@ -1,17 +1,20 @@
 #!/bin/sh
 set -e
 
+# Get script directory for relative paths
+SCRIPT_DIR="$(dirname "$0")"
+
 # Source WSL validation
-. "$(dirname "$0")/check-wsl.sh"
+. "$SCRIPT_DIR/check-wsl.sh"
 
 # WezTerm configuration
 WEZTERM_DEST_DIR="/mnt/c/Users/$WIN_USER/.config/wezterm"
 mkdir -p "$WEZTERM_DEST_DIR"
-cp "$PWD/os/shared/wezterm.lua" "$WEZTERM_DEST_DIR/wezterm.lua"
+cp "$SCRIPT_DIR/../shared/wezterm.lua" "$WEZTERM_DEST_DIR/wezterm.lua"
 cp "$HOME/.config/themes/default/wezterm.json" "$WEZTERM_DEST_DIR/wezterm.json"
 
 # Windows Terminal configuration
-WT_SOURCE_PATH="$PWD/os/windows/terminal.json"
+WT_SOURCE_PATH="$SCRIPT_DIR/terminal.json"
 
 # Find the Windows Terminal package directory
 WT_PACKAGE_DIR=$(find "/mnt/c/Users/$WIN_USER/AppData/Local/Packages" -maxdepth 1 -type d -name "Microsoft.WindowsTerminal_*" | head -n 1)
@@ -31,7 +34,7 @@ cp "$WT_SOURCE_PATH" "$WT_DEST_FILE"
 GLAZE_DEST_DIR="/mnt/c/Users/$WIN_USER/.glzr"
 mkdir -p "$GLAZE_DEST_DIR/glazewm"
 
-cp "$PWD/os/windows/glazewm.yaml" "$GLAZE_DEST_DIR/glazewm/config.yaml"
+cp "$SCRIPT_DIR/glazewm.yaml" "$GLAZE_DEST_DIR/glazewm/config.yaml"
 
 # Apply theme color to GlazeWM config
 GLAZEWM_THEME_FILE="$HOME/.config/themes/default/glazewm.txt"
@@ -61,7 +64,7 @@ if command -v zebar.exe >/dev/null 2>&1; then
 fi
 echo "Installing Zebar..."
 rm -rf "$GLAZE_DEST_DIR/zebar"
-cp -r "$PWD/os/windows/zebar" "$GLAZE_DEST_DIR"
+cp -r "$SCRIPT_DIR/zebar" "$GLAZE_DEST_DIR"
 cp "$HOME/.config/themes/default/zebar.css" "$GLAZE_DEST_DIR/zebar/default-theme/colors.css"
 
 if command -v zebar.exe >/dev/null 2>&1; then
@@ -76,10 +79,10 @@ if [ "$INSTALL_POWERTOYS" = "true" ] && [ -d "$POWERTOYS_DEST_DIR" ]; then
 	find "$POWERTOYS_DEST_DIR" -mindepth 1 -maxdepth 1 ! -name "NewPlus" -exec rm -rf {} \;
 
 	# Copy main configuration files only
-	cp "$PWD/os/windows/powertoys"/*.json "$POWERTOYS_DEST_DIR/" 2>/dev/null || true
+	cp "$SCRIPT_DIR/powertoys"/*.json "$POWERTOYS_DEST_DIR/" 2>/dev/null || true
 
 	# Copy module-specific configurations
-	for module_dir in "$PWD/os/windows/powertoys"/*/; do
+	for module_dir in "$SCRIPT_DIR/powertoys"/*/; do
 		if [ -d "$module_dir" ]; then
 			module_name=$(basename "$module_dir")
 			mkdir -p "$POWERTOYS_DEST_DIR/$module_name"
@@ -98,7 +101,7 @@ fi
 POWERSHELL_PROFILE_DIR="/mnt/c/Users/$WIN_USER/Documents/PowerShell"
 
 mkdir -p "$POWERSHELL_PROFILE_DIR"
-cp "$PWD/os/windows/powershell_profile.ps1" "$POWERSHELL_PROFILE_DIR/Microsoft.PowerShell_profile.ps1"
+cp "$SCRIPT_DIR/powershell_profile.ps1" "$POWERSHELL_PROFILE_DIR/Microsoft.PowerShell_profile.ps1"
 
 # Wallpaper
-exec "$PWD/os/windows/WallP.exe" $(cat "$HOME/.config/themes/default/wallpaper.txt")
+exec "$SCRIPT_DIR/WallP.exe" $(cat "$HOME/.config/themes/default/wallpaper.txt")

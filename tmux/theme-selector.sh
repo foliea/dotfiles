@@ -3,6 +3,8 @@ set -e
 
 THEMES_DIR="$HOME/.config/themes"
 DEFAULT_THEME_DIR="$THEMES_DIR/default"
+SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
+REPO_ROOT="$(dirname "$SCRIPT_DIR")"
 
 # List all .json files except default.json
 SELECTED=$(find -L "$THEMES_DIR" -maxdepth 1 -type d ! -name 'themes' ! -name 'default' -exec basename {} \; | fzf --prompt="Select a theme: ")
@@ -28,7 +30,7 @@ if command -v tmux >/dev/null 2>&1 && tmux list-sessions >/dev/null 2>&1; then
 fi
 
 if grep -qEi "WSL" /proc/version; then
-	sh "$PWD/os/windows/configure.sh"
+	sh "$REPO_ROOT/os/windows/configure.sh"
 fi
 
 echo "Theme $SELECTED set as default."
