@@ -6,6 +6,22 @@ set -e
 
 WIN_USER=$(cmd.exe /C 'echo %USERNAME%' 2>/dev/null | tr -d '\r')
 
+# Install or update Winget system packages
+winget.exe install \
+	GlazeWM \
+	CharlesMilette.TranslucentTB \
+	Microsoft.PowerToys \
+	Microsoft.VisualStudioCode \
+	Microsoft.WindowsTerminal \
+	Microsoft.PowerShell \
+	Discord.Discord \
+	Google.QuickShare \
+	mpv.net \
+	DuongDieuPhap.ImageGlass
+
+# Install or update Winget user packages
+winget.exe install --scope user --exact --id Starship.Starship
+
 SCOOP="/mnt/c/Users/$WIN_USER/scoop/shims/scoop"
 
 # Install scoop if necessary
@@ -35,19 +51,3 @@ for package in $SCOOP_PACKAGES; do
 		${SCOOP} install "$package"
 	fi
 done
-
-# Install or update Winget system packages
-winget.exe install \
-	GlazeWM \
-	CharlesMilette.TranslucentTB \
-	Microsoft.PowerToys \
-	Microsoft.VisualStudioCode \
-	Microsoft.WindowsTerminal \
-	Microsoft.PowerShell \
-	Discord.Discord \
-	Google.QuickShare \
-	mpv.net \
-	DuongDieuPhap.ImageGlass
-
-# Install or update Winget user packages
-winget.exe install --scope user --exact --id Starship.Starship
