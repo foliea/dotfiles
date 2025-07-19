@@ -16,6 +16,8 @@ rm -rf "$DEFAULT_THEME_DIR"
 mkdir -p "$DEFAULT_THEME_DIR"
 cp -r "$THEMES_DIR/$SELECTED"/* "$DEFAULT_THEME_DIR/"
 
+sh "$DEFAULT_THEME_DIR/git-delta.sh"
+
 if command -v wezterm >/dev/null 2>&1; then
 	touch "$HOME/.config/wezterm/wezterm.lua"
 fi
