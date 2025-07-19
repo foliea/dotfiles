@@ -58,10 +58,14 @@ for arg in "$@"; do
 done
 
 if [ "$INSTALL_ZEBAR" = "true" ]; then
+	taskkill.exe /IM zebar.exe /F
+
 	echo "Installing Zebar..."
 	rm -rf "$GLAZE_DEST_DIR/zebar"
 	cp -r "$PWD/os/windows/zebar" "$GLAZE_DEST_DIR"
 	cp "$HOME/.config/themes/default/zebar.css" "$GLAZE_DEST_DIR/zebar/default-theme/colors.css"
+
+	zebar.exe >/dev/null 2>&1 &
 else
 	echo "Skipping Zebar installation. Use --with-zebar to install."
 fi
@@ -97,3 +101,6 @@ POWERSHELL_PROFILE_DIR="/mnt/c/Users/$WIN_USER/Documents/PowerShell"
 
 mkdir -p "$POWERSHELL_PROFILE_DIR"
 cp "$PWD/os/windows/powershell_profile.ps1" "$POWERSHELL_PROFILE_DIR/Microsoft.PowerShell_profile.ps1"
+
+# Wallpaper
+exec "$PWD/os/windows/WallP.exe" $(cat "$HOME/.config/themes/default/wallpaper.txt")
