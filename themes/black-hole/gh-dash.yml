@@ -5,7 +5,7 @@ theme:
     text:
       primary: "#eeeeee"
       secondary: "#eeeeee"
-      inverted: "#0a0a0a"
+      inverted: "#000000"
       faint: "#808080"
       success: "#7fd88f"
       warning: "#f5a742"

@@ -1,22 +1,22 @@
 k9s:
   body:
     fgColor: "#eeeeee"
-    bgColor: "#0a0a0a"
+    bgColor: "#000000"
   info:
     fgColor: "#7fd88f"
     sectionColor: "#fab283"
   dialog:
     fgColor: "#eeeeee"
-    bgColor: "#0a0a0a"
+    bgColor: "#000000"
     buttonFgColor: "#eeeeee"
-    buttonBgColor: "#0a0a0a"
+    buttonBgColor: "#000000"
     buttonFocusFgColor: "#e5c07b"
-    buttonFocusBgColor: "#0a0a0a"
+    buttonFocusBgColor: "#000000"
     labelFgColor: "#e5c07b"
   frame:
     title:
       fgColor: "#e5c07b"
-      bgColor: "#0a0a0a"
+      bgColor: "#000000"
       highlightColor: "#fab283"
       counterColor: "#7fd88f"
       filterColor: "#56b6c2"
@@ -29,7 +29,7 @@ k9s:
       numKeyColor: "#fab283"
     crumbs:
       fgColor: "#eeeeee"
-      bgColor: "#0a0a0a"
+      bgColor: "#000000"
       activeColor: "#e5c07b"
     status:
       newColor: "#7fd88f"
@@ -42,21 +42,21 @@ k9s:
   views:
     table:
       fgColor: "#eeeeee"
-      bgColor: "#0a0a0a"
-      cursorFgColor: "#0a0a0a"
+      bgColor: "#000000"
+      cursorFgColor: "#000000"
       cursorBgColor: "#eeeeee"
       header:
         fgColor: "#e5c07b"
-        bgColor: "#0a0a0a"
+        bgColor: "#000000"
         sorterColor: "#fab283"
     xray:
       fgColor: "#eeeeee"
-      bgColor: "#0a0a0a"
+      bgColor: "#000000"
       cursorColor: "#fab283"
       graphicColor: "#e5c07b"
       showIcons: false
     charts:
-      bgColor: "#0a0a0a"
+      bgColor: "#000000"
       defaultDialColors:
         - "#5c9cf5"
         - "#e06c75"
@@ -69,7 +69,7 @@ k9s:
       colonColor: "#fab283"
     logs:
       fgColor: "#eeeeee"
-      bgColor: "#0a0a0a"
+      bgColor: "#000000"
       indicator:
         fgColor: "#e5c07b"
-        bgColor: "#0a0a0a"
+        bgColor: "#000000"

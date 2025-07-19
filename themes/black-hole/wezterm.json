@@ -1,12 +1,12 @@
 {
-  "background": "#0a0a0a",
+  "background": "#000000",
   "foreground": "#eeeeee",
   "cursor_bg": "#eeeeee",
-  "cursor_fg": "#0a0a0a",
+  "cursor_fg": "#000000",
   "selection_bg": "#1e1e1e",
   "selection_fg": "#eeeeee",
   "ansi": [
-    "#0a0a0a",  // black
+    "#000000",  // black
     "#e06c75",  // red
     "#7fd88f",  // green
     "#e5c07b",  // yellow

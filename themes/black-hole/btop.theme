@@ -3,7 +3,7 @@
 # All colors are in 24-bit RGB format: "#RRGGBB", "#BW" or "0-255 0-255 0-255"
 
 # Main background color
-theme[main_bg]="#0a0a0a"
+theme[main_bg]="#000000"
 
 # Main text color
 theme[main_fg]="#eeeeee"
