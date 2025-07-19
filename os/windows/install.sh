@@ -11,15 +11,14 @@ winget.exe install \
 	GlazeWM \
 	CharlesMilette.TranslucentTB \
 	Microsoft.PowerToys \
-	Microsoft.VisualStudioCode \
 	Microsoft.WindowsTerminal \
 	Microsoft.PowerShell \
 	Discord.Discord \
 	Google.QuickShare \
-	mpv.net \
 	DuongDieuPhap.ImageGlass || true
 
 # Install or update Winget user packages
+winget.exe install --scope user --exact --id Microsoft.WindowsStudioCode || true
 winget.exe install --scope user --exact --id Starship.Starship || true
 
 SCOOP="/mnt/c/Users/$WIN_USER/scoop/shims/scoop"
