@@ -248,7 +248,7 @@ keybindings:
     bindings: ['alt+shift+w']
 
   # Launch terminal
-  - commands: ['shell-exec %ProgramFiles%/WezTerm/wezterm-gui.exe']
+  - commands: ['shell-exec %userprofile%/scoop/apps/wezterm-nightly/current/wezterm-gui.exe']
     bindings: ['alt+enter']
 
   # Launch web browser
