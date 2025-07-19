@@ -26,4 +26,9 @@ fi
 if command -v tmux >/dev/null 2>&1 && tmux list-sessions >/dev/null 2>&1; then
 	tmux source-file ~/.tmux.conf
 fi
+
+if grep -qEi "WSL" /proc/version; then
+	sh "$PWD/os/windows/configure.sh"
+fi
+
 echo "Theme $SELECTED set as default."

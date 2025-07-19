@@ -4,11 +4,6 @@ set -e
 # Source WSL validation
 . "$(dirname "$0")/check-wsl.sh"
 
-# WSL configuration
-sudo cp "$(dirname "$0")/wsl.conf" /etc/wsl.conf
-
-echo "\n[user]\ndefault=$USER" | sudo tee -a /etc/wsl.conf >/dev/null
-
 # WezTerm configuration
 WEZTERM_DEST_DIR="/mnt/c/Users/$WIN_USER/.config/wezterm"
 mkdir -p "$WEZTERM_DEST_DIR"
@@ -46,6 +41,9 @@ if [ -f "$GLAZEWM_THEME_FILE" ]; then
 		sed -i "s/#ffffff/$THEME_COLOR/g" "$GLAZE_DEST_DIR/glazewm/config.yaml"
 	fi
 fi
+if command -v glazewm.exe >/dev/null 2>&1; then
+	glazewm.exe command wm-reload-config
+fi
 
 INSTALL_ZEBAR=false
 INSTALL_POWERTOYS=false
@@ -57,17 +55,17 @@ for arg in "$@"; do
 	fi
 done
 
-if [ "$INSTALL_ZEBAR" = "true" ]; then
+# Zebar configuration and theme
+if command -v zebar.exe >/dev/null 2>&1; then
 	taskkill.exe /IM zebar.exe /F
+fi
+echo "Installing Zebar..."
+rm -rf "$GLAZE_DEST_DIR/zebar"
+cp -r "$PWD/os/windows/zebar" "$GLAZE_DEST_DIR"
+cp "$HOME/.config/themes/default/zebar.css" "$GLAZE_DEST_DIR/zebar/default-theme/colors.css"
 
-	echo "Installing Zebar..."
-	rm -rf "$GLAZE_DEST_DIR/zebar"
-	cp -r "$PWD/os/windows/zebar" "$GLAZE_DEST_DIR"
-	cp "$HOME/.config/themes/default/zebar.css" "$GLAZE_DEST_DIR/zebar/default-theme/colors.css"
-
+if command -v zebar.exe >/dev/null 2>&1; then
 	zebar.exe >/dev/null 2>&1 &
-else
-	echo "Skipping Zebar installation. Use --with-zebar to install."
 fi
 
 # PowerToys configuration
