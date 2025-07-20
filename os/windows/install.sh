@@ -4,8 +4,6 @@ set -e
 # Source WSL validation
 . "$(dirname "$0")/check-wsl.sh"
 
-WIN_USER=$(cmd.exe /C 'echo %USERNAME%' 2>/dev/null | tr -d '\r')
-
 # Install winget packages
 WINGET_PACKAGES="CharlesMilette.TranslucentTB GlazeWM Microsoft.WindowsTerminal Microsoft.PowerToys Microsoft.PowerShell Discord.Discord Google.QuickShare DuongDieuPhap.ImageGlass"
 

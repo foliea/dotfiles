@@ -4,15 +4,15 @@ set -e
 # Get script directory for relative paths
 SCRIPT_DIR="$(dirname "$0")"
 
+# Source WSL validation
+. "$SCRIPT_DIR/check-wsl.sh"
+
 INSTALL_POWERTOYS=false
 for arg in "$@"; do
 	if [ "$arg" = "--power-toys" ]; then
 		INSTALL_POWERTOYS=true
 	fi
 done
-
-# Source WSL validation
-. "$SCRIPT_DIR/check-wsl.sh"
 
 # WezTerm configuration
 WEZTERM_DEST_DIR="/mnt/c/Users/$WIN_USER/.config/wezterm"
