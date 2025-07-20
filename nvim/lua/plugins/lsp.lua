@@ -81,7 +81,7 @@ return {
 			local lspkind = require("lspkind")
 
 			lspkind.init({
-				symbol_map = { Copilot = " " },
+				symbol_map = { Copilot = " " },
 			})
 
 			cmp.setup({
@@ -148,4 +148,3 @@ return {
 		end,
 	},
 }
-
