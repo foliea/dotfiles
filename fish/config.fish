@@ -82,6 +82,12 @@ if type -q lazydocker
     end
 end
 
+if type -q yazi
+    function y
+        yazi $argv
+    end
+end
+
 function gbs
     git branch | sed 's/  *//' | fzf --preview-window=right:60% --preview 'git log --oneline --graph --date=relative --branches={1} --' | xargs git switch
 end

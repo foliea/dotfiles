@@ -12,64 +12,68 @@ export PAGER=most
 set -o vi
 
 if [ -d "/opt/homebrew/bin" ]; then
-    export PATH="/opt/homebrew/bin:$PATH"
+	export PATH="/opt/homebrew/bin:$PATH"
 fi
 
 if [ -d "/home/linuxbrew" ]; then
-    export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
-    export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar"
-    export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew"
+	export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
+	export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar"
+	export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew"
 
-    export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
+	export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
 
-    if [ -n "$MANPATH" ]; then
-        export MANPATH=":$MANPATH"
-    fi
-    case ":$INFOPATH:" in
-    *:/home/linuxbrew/.linuxbrew/share/info:*) ;;
-    *) export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH" ;;
-    esac
+	if [ -n "$MANPATH" ]; then
+		export MANPATH=":$MANPATH"
+	fi
+	case ":$INFOPATH:" in
+	*:/home/linuxbrew/.linuxbrew/share/info:*) ;;
+	*) export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH" ;;
+	esac
 
-    export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
+	export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
 fi
 
 export PATH="$HOME/.local/bin:$PATH"
 
 # Languages version manager
 if command -v mise >/dev/null 2>&1; then
-    eval "$(mise activate bash)"
+	eval "$(mise activate bash)"
 fi
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
 # Aliases
 if command -v eza >/dev/null 2>&1; then
-    alias ll='eza -lF --icons'
-    alias la='eza -lA --icons'
-    alias ls="eza"
+	alias ll='eza -lF --icons'
+	alias la='eza -lA --icons'
+	alias ls="eza"
 fi
 
 if command -v rg >/dev/null 2>&1; then
-    alias grep='rg'
+	alias grep='rg'
 fi
 
 if command -v bat >/dev/null 2>&1; then
-    alias cat='bat'
+	alias cat='bat'
 fi
 
 if command -v zoxide >/dev/null 2>&1; then
-    eval "$(zoxide init bash --cmd cd)"
+	eval "$(zoxide init bash --cmd cd)"
 fi
 
 if command -v hub >/dev/null 2>&1; then
-    alias git='hub'
+	alias git='hub'
 fi
 
 if command -v lazygit >/dev/null 2>&1; then
-    alias lzg='lazygit'
+	alias lzg='lazygit'
 fi
 
 if command -v lazydocker >/dev/null 2>&1; then
-    alias lzd='lazydocker'
+	alias lzd='lazydocker'
+fi
+
+if command -v yazi >/dev/null 2>&1; then
+	alias y='yazi'
 fi
 
 alias gbs="git branch | sed 's/^\* //' | sed 's/  *//' | fzf --preview-window=right:60% --preview 'git log --oneline --graph --date=relative --branches={1} --' | xargs git switch"
@@ -78,23 +82,15 @@ alias gbs="git branch | sed 's/^\* //' | sed 's/  *//' | fzf --preview-window=ri
 eval "$(starship init bash)"
 
 nwork() {
-    $HOME/.config/tmux/init-workspace.sh "$1" true
+	$HOME/.config/tmux/init-workspace.sh "$1" true
 }
 
 iwork() {
-    $HOME/.config/tmux/init-workspace.sh "$PWD" false
+	$HOME/.config/tmux/init-workspace.sh "$PWD" false
 }
 
 sdash() {
-    $HOME/.config/tmux/system-dashboard.sh
-}
-
-y() {
-    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-    yazi "$@" --cwd-file="$tmp"
-    IFS= read -r -d '' cwd <"$tmp"
-    [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
-    rm -f -- "$tmp"
+	$HOME/.config/tmux/system-dashboard.sh
 }
 
 # Added by OrbStack: command-line tools and integration
