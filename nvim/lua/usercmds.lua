@@ -85,7 +85,7 @@ function _G.TelescopeHighlights()
 		}),
 		sorter = require("telescope.sorters").get_generic_fuzzy_sorter(),
 		previewer = require("telescope.previewers").vim_buffer_cat.new({
-			get_buffer_by_name = function(entry)
+			get_buffer_by_name = function()
 				return vim.api.nvim_create_buf(false, true)
 			end,
 			define_preview = function(self, entry)

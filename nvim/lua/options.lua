@@ -1,5 +1,4 @@
 -- Editor options
-vim.opt.background = "dark"
 vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.ruler = true

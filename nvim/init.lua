@@ -212,7 +212,7 @@ pcall(function()
 			lualine_z = {
 				{
 					"location",
-					fmt = function(str)
+					fmt = function()
 						local line = vim.fn.line(".")
 						local col = vim.fn.col(".")
 						return string.format(" %d  %d", line, col)
@@ -283,7 +283,7 @@ require("keymaps")
 -- UFO setup
 pcall(function()
 	require("ufo").setup({
-		provider_selector = function(bufnr, filetype, buftype)
+		provider_selector = function()
 			return { "treesitter", "indent" }
 		end,
 	})

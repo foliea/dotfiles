@@ -1,5 +1,6 @@
 local colors = require("colors")
 
+vim.opt.background = "dark"
 vim.opt.termguicolors = true
 
 if colors.scheme.vim == "none" then

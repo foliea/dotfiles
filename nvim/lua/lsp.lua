@@ -6,12 +6,24 @@ pcall(function()
 	lspconfig.ts_ls.setup({})
 	lspconfig.bashls.setup({})
 	lspconfig.dockerls.setup({
-		on_attach = function(client, bufnr)
+		on_attach = function(client)
 			client.server_capabilities.semanticTokensProvider = nil
 		end,
 	})
 	lspconfig.prismals.setup({})
-	lspconfig.lua_ls.setup({})
+	lspconfig.lua_ls.setup({
+		settings = {
+			Lua = {
+				diagnostics = {
+					globals = { "vim" },
+				},
+				workspace = {
+					library = vim.api.nvim_get_runtime_file("", true),
+					checkThirdParty = false,
+				},
+			},
+		},
+	})
 	lspconfig.fish_lsp.setup({})
 	lspconfig.terraformls.setup({})
 	lspconfig.jsonls.setup({})
@@ -67,7 +79,7 @@ pcall(function()
 				},
 				ellipsis_char = "...",
 				show_labelDetails = true,
-				before = function(entry, vim_item)
+				before = function(_, vim_item)
 					return vim_item
 				end,
 			}),

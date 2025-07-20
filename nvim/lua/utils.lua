@@ -36,4 +36,3 @@ function M.get_js_formatters()
 end
 
 return M
-
