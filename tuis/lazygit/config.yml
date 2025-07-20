@@ -1,0 +1,37 @@
+git:
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never --line-numbers
+  parseEmoji: true
+  autoFetch: true
+  autoRefresh: true
+  branchLogCmd: git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --
+
+gui:
+  theme:
+    lightTheme: false
+    selectedLineBgColor:
+      - reverse
+  showFileTree: true
+  showRandomTip: false
+  nerdFontsVersion: 3
+  showFileIcons: true
+  commitAuthorShortLength: 2
+  commitHashLength: 8
+  scrollHeight: 2
+  mouseEvents: true
+  skipDiscardChangeWarning: false
+  expandFocusedSidePanel: false
+  sidePanelWidth: 0.25
+
+refresher:
+  refreshInterval: 10
+  fetchInterval: 60
+
+confirmOnQuit: false
+quitOnTopLevelReturn: false
+
+keybinding:
+  universal:
+    scrollUpMain-alt1: K
+    scrollDownMain-alt1: J

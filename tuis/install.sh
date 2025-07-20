@@ -22,6 +22,10 @@ mkdir -p "$K9S_CONFIG_SUPPORT/skins"
 ln -sf "$HOME/.config/themes/default/k9s.yaml" "$K9S_CONFIG_SUPPORT/skins/default.yaml"
 ln -sf "$PWD/tuis/k9s/config.yaml" "$K9S_CONFIG_SUPPORT/config.yaml"
 
+# lazygit
+mkdir -p "$HOME/.config/lazygit"
+ln -sf "$PWD/tuis/lazygit/config.yml" "$HOME/.config/lazygit/config.yml"
+
 # yazi
 rm -rf "$HOME/.config/yazi"
 ln -sf "$PWD/tuis/yazi/" "$HOME/.config/yazi"
