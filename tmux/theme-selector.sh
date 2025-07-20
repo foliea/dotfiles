@@ -26,7 +26,7 @@ fi
 
 # Reload tmux config if tmux is running
 if command -v tmux >/dev/null 2>&1 && tmux list-sessions >/dev/null 2>&1; then
-	tmux source-file ~/.tmux.conf
+	tmux source-file ~/.config/tmux/tmux.conf
 fi
 
 # Check if running inside WSL

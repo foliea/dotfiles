@@ -1,21 +1,17 @@
 #!/bin/sh
 set -e
 
-rm -rf "$HOME/.tmux"
-ln -sf $PWD/tmux $HOME/.tmux
-ln -sf $PWD/tmux/tmux.conf $HOME/.tmux.conf
+rm "$HOME/.tmux.conf"
+rm -rf "$HOME/.config/tmux"
+ln -sf "$PWD/tmux" "$HOME/.config/tmux"
 
-plugins_dir="$HOME/.tmux/plugins"
-mkdir -p $plugins_dir
+PLUGINS_DIR="$HOME/.config/tmux/plugins"
+mkdir -p $PLUGINS_DIR
 
-tpm_dir="$plugins_dir/tpm"
-
-if [ ! -d $tpm_dir ]; then
-	git clone https://github.com/tmux-plugins/tpm $tpm_dir
+TPM_DIR="$PLUGINS_DIR/tpm"
+if [ ! -d $TPM_DIR ]; then
+	git clone https://github.com/tmux-plugins/tpm $TPM_DIR
 fi
 
 # Install tmux plugins
-$tpm_dir/bin/install_plugins
-
-rm -rf "$HOME/.config/tmux"
-ln -sf "$PWD/tmux" "$HOME/.config/tmux"
+$TPM_DIR/bin/install_plugins
