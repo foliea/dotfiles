@@ -73,8 +73,6 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap("n", "<leader>st", ":TodoTelescope<CR>", { noremap = true, silent = true })
 
 -- Git
-vim.api.nvim_set_keymap("n", "<leader>do", ":DiffviewOpen<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>dc", ":DiffviewClose<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>gb", ":Gitsigns blame_line<CR>", { noremap = true, silent = true })
 
 -- Help / Diagnostics
@@ -82,4 +80,9 @@ vim.api.nvim_set_keymap("n", "<leader>hk", ":Telescope keymaps<CR>", { noremap =
 vim.api.nvim_set_keymap("n", "<leader>hc", ":Telescope commands<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>hd", ":Trouble<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>ha", "<cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>di", "<cmd>lua vim.diagnostic.open_float(0, { scope = 'cursor' })<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>di",
+	"<cmd>lua vim.diagnostic.open_float(0, { scope = 'cursor' })<CR>",
+	{ noremap = true, silent = true }
+)

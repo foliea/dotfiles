@@ -21,7 +21,6 @@ let g:fzf_install = 'yes | ./install --bin'
   Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-lualine/lualine.nvim'
-  Plug 'sindrets/diffview.nvim'
   Plug 'folke/trouble.nvim'
   Plug 'kdheepak/lazygit.nvim'
   Plug 'pbrisbin/vim-mkdir'
