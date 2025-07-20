@@ -26,6 +26,10 @@ ln -sf "$PWD/tuis/k9s/config.yaml" "$K9S_CONFIG_SUPPORT/config.yaml"
 mkdir -p "$HOME/.config/lazygit"
 ln -sf "$PWD/tuis/lazygit/config.yml" "$HOME/.config/lazygit/config.yml"
 
+# lazydocker
+mkdir -p "$HOME/.config/lazydocker"
+ln -sf "$PWD/tuis/lazydocker/config.yml" "$HOME/.config/lazydocker/config.yml"
+
 # yazi
 rm -rf "$HOME/.config/yazi"
 ln -sf "$PWD/tuis/yazi/" "$HOME/.config/yazi"

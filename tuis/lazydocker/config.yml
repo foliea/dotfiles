@@ -1,0 +1,80 @@
+gui:
+  scrollHeight: 2
+  language: "auto"
+  border: "rounded"
+  theme:
+    activeBorderColor:
+      - green
+      - bold
+    inactiveBorderColor:
+      - white
+    selectedLineBgColor:
+      - reverse
+    optionsTextColor:
+      - blue
+  returnImmediately: false
+  wrapMainPanel: true
+  sidePanelWidth: 0.333
+  showBottomLine: true
+  expandFocusedSidePanel: false
+  screenMode: "normal"
+  containerStatusHealthStyle: "short"
+
+logs:
+  timestamps: true
+  since: '24h'
+  tail: '500'
+
+commandTemplates:
+  dockerCompose: docker compose
+  restartService: '{{ .DockerCompose }} restart {{ .Service.Name }}'
+  up: '{{ .DockerCompose }} up -d'
+  down: '{{ .DockerCompose }} down'
+  downWithVolumes: '{{ .DockerCompose }} down --volumes'
+  upService: '{{ .DockerCompose }} up -d {{ .Service.Name }}'
+  startService: '{{ .DockerCompose }} start {{ .Service.Name }}'
+  stopService: '{{ .DockerCompose }} stop {{ .Service.Name }}'
+  serviceLogs: '{{ .DockerCompose }} logs --since=24h --follow {{ .Service.Name }}'
+  viewServiceLogs: '{{ .DockerCompose }} logs --follow {{ .Service.Name }}'
+  rebuildService: '{{ .DockerCompose }} up -d --build {{ .Service.Name }}'
+  recreateService: '{{ .DockerCompose }} up -d --force-recreate {{ .Service.Name }}'
+  allLogs: '{{ .DockerCompose }} logs --tail=500 --follow'
+  viewAlLogs: '{{ .DockerCompose }} logs'
+  dockerComposeConfig: '{{ .DockerCompose }} config'
+  checkDockerComposeConfig: '{{ .DockerCompose }} config --quiet'
+  serviceTop: '{{ .DockerCompose }} top {{ .Service.Name }}'
+
+stats:
+  graphs:
+    - caption: CPU (%)
+      statPath: DerivedStats.CPUPercentage
+      color: blue
+    - caption: Memory (%)
+      statPath: DerivedStats.MemoryPercentage
+      color: green
+    - caption: Network I/O
+      statPath: DerivedStats.NetworkRx
+      color: cyan
+    - caption: Disk I/O
+      statPath: DerivedStats.BlockRead
+      color: yellow
+
+customCommands:
+  containers:
+    - name: bash
+      attach: true
+      command: 'docker exec -it {{ .Container.ID }} bash'
+      serviceNames: []
+    - name: sh
+      attach: true
+      command: 'docker exec -it {{ .Container.ID }} sh'
+      serviceNames: []
+    - name: logs-json
+      attach: false
+      command: 'docker logs {{ .Container.ID }} --details'
+      serviceNames: []
+  services:
+    - name: restart-build
+      attach: false
+      command: '{{ .DockerCompose }} up -d --build --force-recreate {{ .Service.Name }}'
+      serviceNames: []
