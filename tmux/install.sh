@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-rm "$HOME/.tmux.conf"
+rm -f "$HOME/.tmux.conf"
 rm -rf "$HOME/.config/tmux"
 ln -sf "$PWD/tmux" "$HOME/.config/tmux"
 
