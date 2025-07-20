@@ -81,7 +81,7 @@ return {
 		event = "VimEnter",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
-			local colors = require("colors")
+			local colors = require("config.colors")
 			require("bufferline").setup({
 				options = {
 					show_buffer_icons = true,
@@ -189,4 +189,3 @@ return {
 		end,
 	},
 }
-

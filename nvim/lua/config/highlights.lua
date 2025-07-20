@@ -41,9 +41,9 @@ vim.api.nvim_set_hl(0, "Pmenu", { fg = colors.foreground, bg = colors.background
 vim.api.nvim_set_hl(0, "PmenuSel", { fg = colors.white, bg = colors.selection })
 vim.api.nvim_set_hl(0, "PmenuSbar", { bg = colors.blue })
 vim.api.nvim_set_hl(0, "PmenuThumb", { bg = colors.selection })
-vim.api.nvim_set_hl(0, "CmpDocNormal", { bg = colors.background })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = colors.background })
 vim.api.nvim_set_hl(0, "FloatBorder", { bg = colors.background })
+vim.api.nvim_set_hl(0, "CmpDocNormal", { bg = colors.background })
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = colors.purple })
 vim.api.nvim_set_hl(0, "CmpItemAbbr", { bg = colors.background })
 
