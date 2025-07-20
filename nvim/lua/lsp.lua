@@ -61,8 +61,8 @@ pcall(function()
 		mapping = cmp.mapping.preset.insert({
 			["<C-Space>"] = cmp.mapping.complete(),
 			["<CR>"] = cmp.mapping.confirm({ select = false }),
-			["<C-N"] = cmp.mapping.select_next_item(),
-			["<C-P"] = cmp.mapping.select_prev_item(),
+			["<C-N>"] = cmp.mapping.select_next_item(),
+			["<C-P>"] = cmp.mapping.select_prev_item(),
 		}),
 		sources = cmp.config.sources({
 			{ name = "copilot" },

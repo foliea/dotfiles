@@ -30,7 +30,6 @@ vim.api.nvim_set_keymap("n", "<leader>l", ":TestLast<CR>", { noremap = true, sil
 vim.api.nvim_set_keymap("n", "<leader>v", ":TestVisit<CR>", { noremap = true, silent = true })
 
 -- Folding
-vim.api.nvim_set_keymap("n", "<leader>co", ":BufferLineCloseOthers<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap(
 	"n",
 	"<leader>of",

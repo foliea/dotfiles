@@ -278,8 +278,6 @@ pcall(function()
 	})
 end)
 
-require("keymaps")
-
 -- UFO setup
 pcall(function()
 	require("ufo").setup({
@@ -312,3 +310,5 @@ pcall(function()
 		},
 	})
 end)
+
+require("keymaps")
