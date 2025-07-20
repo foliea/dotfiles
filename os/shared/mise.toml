@@ -1,6 +1,7 @@
 [settings]
 auto_install = false
 idiomatic_version_file_enable_tools = ["ruby", "node", "terraform"]
+override_config_filenames = [".mise-config"]
 
 [tools]
 ruby = "latest"
