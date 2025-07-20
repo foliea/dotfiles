@@ -1,4 +1,4 @@
-local colors = require("colors")
+local colors = require("config.colors")
 
 vim.opt.background = "dark"
 vim.opt.termguicolors = true

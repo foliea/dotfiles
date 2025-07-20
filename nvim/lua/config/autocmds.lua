@@ -1,3 +1,11 @@
+-- Load keymaps after all plugins are loaded to override plugin keymaps
+vim.api.nvim_create_autocmd("User", {
+	pattern = "VeryLazy",
+	callback = function()
+		require("config.keymaps")
+	end,
+})
+
 -- Softtab 2
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = {

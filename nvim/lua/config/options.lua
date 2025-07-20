@@ -10,7 +10,6 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.backspace = { "indent", "eol", "start" }
 vim.opt.list = true
-vim.g.mapleader = ","
 vim.opt.hlsearch = true
 vim.opt.compatible = false
 vim.cmd([[syntax on]])

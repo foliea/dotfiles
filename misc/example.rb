@@ -1,4 +1,4 @@
-class Example
+class Example # rubocop:todo Style/Documentation
   def initialize
     @name = 'Example'
   end
