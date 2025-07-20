@@ -8,15 +8,11 @@ vim.api.nvim_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", { no
 vim.api.nvim_set_keymap("n", "gn", "<cmd>lua vim.diagnostic.goto_next()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "gp", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { noremap = true, silent = true })
 
--- Pane navigation
+-- Disable arrow keys
 vim.api.nvim_set_keymap("", "<Up>", "<Nop>", { noremap = true })
 vim.api.nvim_set_keymap("", "<Down>", "<Nop>", { noremap = true })
 vim.api.nvim_set_keymap("", "<Left>", "<Nop>", { noremap = true })
 vim.api.nvim_set_keymap("", "<Right>", "<Nop>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<C-H>", "<C-W><C-H>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<C-J>", "<C-W><C-J>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<C-K>", "<C-W><C-K>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<C-L>", "<C-W><C-L>", { noremap = true })
 
 -- Buffer navigation
 vim.api.nvim_set_keymap("n", "<S-J>", ":bprevious<CR>", { noremap = true, silent = true })
