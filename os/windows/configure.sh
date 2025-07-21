@@ -101,4 +101,4 @@ mkdir -p "$POWERSHELL_PROFILE_DIR"
 cp "$SCRIPT_DIR/powershell_profile.ps1" "$POWERSHELL_PROFILE_DIR/Microsoft.PowerShell_profile.ps1"
 
 # Wallpaper
-exec "$SCRIPT_DIR/WallP.exe" $(cat "$HOME/.config/themes/default/wallpaper.txt")
+exec "$SCRIPT_DIR/WallP.exe" $(cat "$HOME/.config/themes/default/wallpaper-win.txt")
