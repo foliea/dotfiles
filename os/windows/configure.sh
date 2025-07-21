@@ -68,6 +68,11 @@ if command -v zebar.exe >/dev/null 2>&1; then
 	zebar.exe >/dev/null 2>&1 &
 fi
 
+# Flow Launcher configuration
+FLOW_LAUNCHER_DIR="/mnt/c/Users/$WIN_USER/AppData/Roaming/FlowLauncher"
+mkdir -p "$FLOW_LAUNCHER_DIR"
+cp "$PWD/os/windows/flow-launcher.json" "$FLOW_LAUNCHER_DIR/Settings.json"
+
 # PowerToys configuration
 POWERTOYS_DEST_DIR="/mnt/c/Users/$WIN_USER/AppData/Local/Microsoft/PowerToys"
 

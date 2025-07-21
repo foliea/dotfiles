@@ -5,7 +5,7 @@ set -e
 . "$(dirname "$0")/check-wsl.sh"
 
 # Install winget packages
-WINGET_PACKAGES="CharlesMilette.TranslucentTB GlazeWM Microsoft.WindowsTerminal Microsoft.PowerToys Microsoft.PowerShell Discord.Discord Google.QuickShare DuongDieuPhap.ImageGlass"
+WINGET_PACKAGES="CharlesMilette.TranslucentTB GlazeWM Flow-Launcher.Flow-Launcher Microsoft.WindowsTerminal Microsoft.PowerToys Microsoft.PowerShell Discord.Discord Google.QuickShare DuongDieuPhap.ImageGlass"
 
 for package in $WINGET_PACKAGES; do
 	echo "Installing $package..."
