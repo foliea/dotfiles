@@ -69,9 +69,27 @@ if command -v zebar.exe >/dev/null 2>&1; then
 fi
 
 # Flow Launcher configuration
-FLOW_LAUNCHER_DIR="/mnt/c/Users/$WIN_USER/AppData/Roaming/FlowLauncher"
+FLOW_LAUNCHER_DIR="/mnt/c/Users/$WIN_USER/AppData/Roaming/FlowLauncher/Settings"
 mkdir -p "$FLOW_LAUNCHER_DIR"
 cp "$PWD/os/windows/flow-launcher.json" "$FLOW_LAUNCHER_DIR/Settings.json"
+
+# Apply theme to Flow Launcher settings
+FLOW_LAUNCHER_THEME_FILE="$HOME/.config/themes/default/flow-launcher.txt"
+if [ -f "$FLOW_LAUNCHER_THEME_FILE" ]; then
+	THEME_NAME=$(head -n 1 "$FLOW_LAUNCHER_THEME_FILE" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+	if [ -n "$THEME_NAME" ]; then
+		sed -i "s/\"Theme\": \"[^\"]*\"/\"Theme\": \"$THEME_NAME\"/g" "$FLOW_LAUNCHER_DIR/Settings.json"
+	fi
+fi
+
+# Restart Flow Launcher to apply changes
+FLOW_LAUNCHER_EXE="/mnt/c/Users/$WIN_USER/AppData/Local/FlowLauncher/Flow.Launcher.exe"
+
+if [ -f "$FLOW_LAUNCHER_EXE" ]; then
+	taskkill.exe /IM Flow.Launcher.exe /F 2>/dev/null || true
+
+	"$FLOW_LAUNCHER_EXE" >/dev/null 2>&1 &
+fi
 
 # PowerToys configuration
 POWERTOYS_DEST_DIR="/mnt/c/Users/$WIN_USER/AppData/Local/Microsoft/PowerToys"
