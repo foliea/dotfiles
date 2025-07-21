@@ -37,4 +37,9 @@ if grep -qEi "WSL" /proc/version; then
 	fi
 fi
 
+# If on macOS, set wallpaper
+if [ "$(uname)" = "Darwin" ]; then
+	sh "$REPO_ROOT/os/macOS/set-wallpaper.sh"
+fi
+
 echo "Theme $SELECTED set as default."

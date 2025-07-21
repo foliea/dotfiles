@@ -1,7 +1,9 @@
 #!/bin/sh
 set -e
 
-brew install mpv
+brew install \
+	mpv \
+	desktoppr
 
 brew install --cask \
 	font-fira-code-nerd-font \
