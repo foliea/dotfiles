@@ -22,3 +22,16 @@ powertoys/settings-telemetry.json
 # Ignore PowerToys version and runtime files
 powertoys/**/*_version.txt
 powertoys/**/power-rename-ui-flags
+powertoys/ColorPicker/colorHistory.json
+
+# Ignore PowerToys generated files
+powertoys/**/Logs
+powertoys/**/ModuleInterface
+
+# Ignore PowerToys runtime/cache files
+powertoys/PowerRename/power-rename-last-run-data.json
+powertoys/PowerToys\ Run/Settings/ImageCache.json
+powertoys/PowerToys\ Run/Settings/QueryHistory.json
+powertoys/PowerToys\ Run/Settings/UserSelectedRecord.json
+powertoys/FancyZones/applied-layouts.json
+powertoys/FancyZones/last-used-virtual-desktop.json
