@@ -7,6 +7,7 @@ SCRIPT_DIR="$(dirname "$0")"
 # Source WSL validation
 . "$SCRIPT_DIR/check-wsl.sh"
 
+# Handle arguments
 INSTALL_POWERTOYS=false
 for arg in "$@"; do
 	if [ "$arg" = "--power-toys" ]; then
@@ -43,7 +44,7 @@ mkdir -p "$GLAZE_DEST_DIR/glazewm"
 
 cp "$SCRIPT_DIR/glazewm.yaml" "$GLAZE_DEST_DIR/glazewm/config.yaml"
 
-# Apply theme color to GlazeWM config
+# Apply theme to GlazeWM configuration
 GLAZEWM_THEME_FILE="$HOME/.config/themes/default/glazewm.txt"
 if [ -f "$GLAZEWM_THEME_FILE" ]; then
 	THEME_COLOR=$(head -n 1 "$GLAZEWM_THEME_FILE" | tr -d '[:space:]')
