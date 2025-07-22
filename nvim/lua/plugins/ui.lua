@@ -53,11 +53,11 @@ return {
 				},
 				sections = {
 					lualine_b = {
-						{ "branch", icon = "" },
+						{ "branch", icon = "" },
 						{
 							"diff",
 							colored = false,
-							symbols = { added = " ", modified = " ", removed = " " },
+							symbols = { added = " ", modified = " ", removed = " " },
 						},
 					},
 					lualine_c = {
@@ -66,10 +66,10 @@ return {
 							"diagnostics",
 							sources = { "nvim_lsp" },
 							symbols = {
-								error = " ",
-								warn = " ",
-								info = " ",
-								hint = " ",
+								error = " ",
+								warn = " ",
+								info = " ",
+								hint = " ",
 							},
 						},
 					},
@@ -81,7 +81,7 @@ return {
 							fmt = function()
 								local line = vim.fn.line(".")
 								local col = vim.fn.col(".")
-								return string.format(" %d  %d", line, col)
+								return string.format(" %d  %d", line, col)
 							end,
 						},
 					},
