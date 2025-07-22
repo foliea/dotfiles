@@ -3,7 +3,7 @@
   "foreground": "#e0e0e0",
   "cursor_bg": "#e0e0e0",
   "cursor_fg": "#212121",
-  "selection_bg": "#303030",
+  "selection_bg": "#444444",
   "selection_fg": "#e0e0e0",
   "ansi": [
     "#000000",

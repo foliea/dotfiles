@@ -15,7 +15,7 @@ theme[title]="#e0e0e0"
 theme[hi_fg]="#e0e0e0"
 
 # Background color of selected item in processes box
-theme[selected_bg]="#303030"
+theme[selected_bg]="#444444"
 
 # Foreground color of selected item in processes box
 theme[selected_fg]="#e0e0e0"

@@ -29,12 +29,27 @@ return {
 		"nvim-lualine/lualine.nvim",
 		event = "VeryLazy",
 		config = function()
+			local colors = require("config.colors")
 			require("lualine").setup({
 				options = {
-					theme = "auto",
 					icons_enabled = true,
 					section_separators = "",
 					component_separators = "",
+					theme = {
+						normal = {
+							c = { fg = colors.foreground, bg = colors.panel },
+							b = { fg = colors.foreground, bg = colors.selection },
+							a = { fg = colors.background, bg = colors.blue },
+						},
+						insert = { a = { fg = colors.background, bg = colors.green } },
+						visual = { a = { fg = colors.background, bg = colors.purple } },
+						replace = { a = { fg = colors.background, bg = colors.red } },
+						inactive = {
+							c = { fg = colors.muted, bg = colors.background },
+							b = { fg = colors.muted, bg = colors.panel },
+							a = { fg = colors.muted, bg = colors.background },
+						},
+					},
 				},
 				sections = {
 					lualine_b = {
