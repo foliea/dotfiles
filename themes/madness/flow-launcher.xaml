@@ -1,0 +1,274 @@
+<!--
+    Name: Default
+    IsDark: True
+    HasBlur: False
+-->
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:m="http://schemas.modernwpf.com/2019"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Themes/Base.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+
+    <!-- Blur behind the window -->
+    <system:Boolean x:Key="ThemeBlurEnabled">False</system:Boolean>
+
+    <!-- Main window background -->
+    <Style
+        x:Key="WindowBorderStyle"
+        BasedOn="{StaticResource BaseWindowBorderStyle}"
+        TargetType="{x:Type Border}">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="#FFFAB283" />
+        <Setter Property="Background" Value="#FF212121"/>
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="UseLayoutRounding" Value="True" />
+    </Style>
+
+    <Style
+        x:Key="WindowStyle"
+        BasedOn="{StaticResource BaseWindowStyle}"
+        TargetType="{x:Type Window}" />
+
+    <Style x:Key="WindowRadius" TargetType="{x:Type Border}" />
+
+
+    <!-- Query input text box -->
+    <Style
+        x:Key="QueryBoxStyle"
+        BasedOn="{StaticResource BaseQueryBoxStyle}"
+        TargetType="{x:Type TextBox}">
+        <Setter Property="Foreground" Value="#FFE0E0E0" />
+        <Setter Property="CaretBrush" Value="#FFFAB283" />
+    </Style>
+
+    <!-- Query suggestion text box -->
+    <Style
+        x:Key="QuerySuggestionBoxStyle"
+        BasedOn="{StaticResource BaseQuerySuggestionBoxStyle}"
+        TargetType="{x:Type TextBox}">
+        <Setter Property="Foreground" Value="#FF6A6A6A" />
+    </Style>
+
+    <!-- The panel with the time and date -->
+    <Style
+        x:Key="ClockPanel"
+        BasedOn="{StaticResource ClockPanel}"
+        TargetType="{x:Type StackPanel}">
+        <Setter Property="Margin" Value="0 0 56 0" />
+    </Style>
+
+    <!-- Time text block -->
+    <Style
+        x:Key="ClockBox"
+        BasedOn="{StaticResource BaseClockBox}"
+        TargetType="{x:Type TextBlock}">
+        <Setter Property="Margin" Value="0 0 0 0" />
+        <Setter Property="Foreground" Value="#FF56B6C2" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontStyle" Value="Normal" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+    </Style>
+
+    <!-- Date text block -->
+    <Style
+        x:Key="DateBox"
+        BasedOn="{StaticResource BaseDateBox}"
+        TargetType="{x:Type TextBlock}">
+        <Setter Property="Margin" Value="0 0 0 0" />
+        <Setter Property="Foreground" Value="#FF7FD88F" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontStyle" Value="Normal" />
+        <Setter Property="FontWeight" Value="Normal" />
+    </Style>
+
+    <!-- Icon to the right of the query text box -->
+    <Style
+        x:Key="SearchIconStyle"
+        BasedOn="{StaticResource BaseSearchIconStyle}"
+        TargetType="{x:Type Path}">
+    <Setter Property="Fill" Value="#FF6A6A6A" />
+        <Setter Property="Width" Value="32" />
+        <Setter Property="Height" Value="32" />
+    </Style>
+
+    <!-- Progress bar under the query text box -->
+    <Style
+        x:Key="PendingLineStyle"
+        BasedOn="{StaticResource BasePendingLineStyle}"
+        TargetType="{x:Type Line}">
+        <Setter Property="Stroke" Value="#FF9D7CD8" />
+        <Setter Property="StrokeThickness" Value="3" />
+    </Style>
+
+
+    <!-- Separator between the query box and the results -->
+    <Style
+        x:Key="SeparatorStyle"
+        BasedOn="{StaticResource BaseSeparatorStyle}"
+        TargetType="{x:Type Rectangle}">
+        <Setter Property="Fill" Value="#FF444444" />
+        <Setter Property="Height" Value="1" />
+        <Setter Property="Margin" Value="0 1 0 0" />
+    </Style>
+
+
+    <!-- Margins for the list of results -->
+    <Thickness x:Key="ResultMargin">0 0 0 0</Thickness>
+
+    <!-- Result title -->
+    <Style
+        x:Key="ItemTitleStyle"
+        BasedOn="{StaticResource BaseItemTitleStyle}"
+        TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="#FFE0E0E0" />
+    </Style>
+
+    <Style
+        x:Key="ItemTitleSelectedStyle"
+        BasedOn="{StaticResource BaseItemTitleSelectedStyle}"
+        TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="#FFFFFFFF" />
+    </Style>
+
+    <!-- Result subtitle -->
+    <Style
+        x:Key="ItemSubTitleStyle"
+        BasedOn="{StaticResource BaseItemSubTitleStyle}"
+        TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="#FF6A6A6A" />
+    </Style>
+
+    <Style
+        x:Key="ItemSubTitleSelectedStyle"
+        BasedOn="{StaticResource BaseItemSubTitleSelectedStyle}"
+        TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="#FFE0E0E0" />
+    </Style>
+
+    <!-- Result hotkey (Alt+1, Alt+2, etc.) -->
+    <Style x:Key="ItemHotkeyStyle" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Foreground" Value="#FF6A6A6A" />
+    </Style>
+
+    <Style x:Key="ItemHotkeySelectedStyle" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Foreground" Value="#FFFAB283" />
+    </Style>
+
+    <!-- Result glyph -->
+    <Style x:Key="ItemGlyph" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="#FF7FD88F" />
+        <Setter Property="Width" Value="20" />
+        <Setter Property="Height" Value="20" />
+        <Setter Property="FontSize" Value="20" />
+    </Style>
+
+    <Style x:Key="ItemGlyphSelectedStyle" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="#FFE5C07B" />
+        <Setter Property="Width" Value="20" />
+        <Setter Property="Height" Value="20" />
+        <Setter Property="FontSize" Value="20" />
+    </Style>
+
+    <!-- Selected result styles -->
+    <SolidColorBrush x:Key="ItemSelectedBackgroundColor">#FF444444</SolidColorBrush>
+    <CornerRadius x:Key="ItemRadius">4</CornerRadius>
+    <Thickness x:Key="ItemMargin">2 1 2 1</Thickness>
+
+    <!-- Highlighted text -->
+    <Style x:Key="HighlightStyle">
+        <Setter Property="Inline.Foreground" Value="#FFFAB283" />
+        <Setter Property="Inline.FontStyle" Value="Normal" />
+        <Setter Property="Inline.FontWeight" Value="Bold" />
+    </Style>
+
+
+    <!-- Bullets -->
+    <Style
+        x:Key="BulletStyle"
+        BasedOn="{StaticResource BaseBulletStyle}"
+        TargetType="{x:Type Border}">
+        <Setter Property="Visibility" Value="Collapsed" />
+    </Style>
+
+    <Style
+        x:Key="ItemBulletSelectedStyle"
+        BasedOn="{StaticResource BaseBulletStyle}"
+        TargetType="{x:Type Border}">
+        <Setter Property="Visibility" Value="Collapsed" />
+    </Style>
+
+
+    <!-- Scrollbar container -->
+    <Style
+        x:Key="ScrollBarStyle"
+        BasedOn="{StaticResource BaseScrollBarStyle}"
+        TargetType="{x:Type ScrollBar}">
+        <Setter Property="Width" Value="5" />
+    </Style>
+
+    <!-- Scrollbar thumb -->
+    <Style
+        x:Key="ThumbStyle"
+        BasedOn="{StaticResource BaseThumbStyle}"
+        TargetType="{x:Type Thumb}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Border
+                        Background="#FF444444"
+                        BorderBrush="Transparent"
+                        BorderThickness="0"
+                        CornerRadius="3"
+                        DockPanel.Dock="Right" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Preview Panel -->
+    <Style
+        x:Key="PreviewBorderStyle"
+        BasedOn="{StaticResource BasePreviewBorderStyle}"
+        TargetType="{x:Type Border}">
+        <Setter Property="BorderBrush" Value="#FF444444" />
+        <Setter Property="BorderThickness" Value="1 0 0 0" />
+        <Setter Property="Margin" Value="0 0 0 0" />
+    </Style>
+
+    <Style
+        x:Key="PreviewItemTitleStyle"
+        BasedOn="{StaticResource BasePreviewItemTitleStyle}"
+        TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="#FF5C9CF5" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontStyle" Value="Normal" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="LineHeight" Value="21" />
+    </Style>
+
+    <Style
+        x:Key="PreviewItemSubTitleStyle"
+        BasedOn="{StaticResource BasePreviewItemSubTitleStyle}"
+        TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="#FF6A6A6A" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontStyle" Value="Normal" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="LineHeight" Value="18" />
+    </Style>
+
+    <Style
+        x:Key="PreviewGlyph"
+        BasedOn="{StaticResource BasePreviewGlyph}"
+        TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="#FF7FD88F" />
+    </Style>
+
+</ResourceDictionary>

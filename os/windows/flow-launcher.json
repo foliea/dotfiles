@@ -19,7 +19,7 @@
   "CycleHistoryUpHotkey": "Alt \u002B Up",
   "CycleHistoryDownHotkey": "Alt \u002B Down",
   "Language": "system",
-  "Theme": "Win11Light",
+  "Theme": "Default",
   "UseDropShadowEffect": true,
   "BackdropType": 1,
   "WindowHeightSize": 42,
