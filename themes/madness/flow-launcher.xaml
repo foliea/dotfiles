@@ -177,7 +177,7 @@
     </Style>
 
     <!-- Selected result styles -->
-    <SolidColorBrush x:Key="ItemSelectedBackgroundColor">#FF444444</SolidColorBrush>
+    <SolidColorBrush x:Key="ItemSelectedBackgroundColor">#FF252525</SolidColorBrush>
     <CornerRadius x:Key="ItemRadius">4</CornerRadius>
     <Thickness x:Key="ItemMargin">2 1 2 1</Thickness>
 

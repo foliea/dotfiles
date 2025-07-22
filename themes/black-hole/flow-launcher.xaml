@@ -91,7 +91,7 @@
         x:Key="SearchIconStyle"
         BasedOn="{StaticResource BaseSearchIconStyle}"
         TargetType="{x:Type Path}">
-    <Setter Property="Fill" Value="#FF1E1E1E" />
+    <Setter Property="Fill" Value="#FF808080" />
         <Setter Property="Width" Value="32" />
         <Setter Property="Height" Value="32" />
     </Style>
@@ -176,7 +176,7 @@
     </Style>
 
     <!-- Selected result styles -->
-    <SolidColorBrush x:Key="ItemSelectedBackgroundColor">#FF1E1E1E</SolidColorBrush>
+    <SolidColorBrush x:Key="ItemSelectedBackgroundColor">#FF141414</SolidColorBrush>
     <CornerRadius x:Key="ItemRadius">4</CornerRadius>
     <Thickness x:Key="ItemMargin">2 1 2 1</Thickness>
 
