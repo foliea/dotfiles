@@ -62,12 +62,12 @@
       "light": "#303030"
     },
     "diffAdded": {
-      "dark": "#7fd88f",
-      "light": "#7fd88f"
+      "dark": "#65ecc9",
+      "light": "#65ecc9"
     },
     "diffRemoved": {
-      "dark": "#e06c75",
-      "light": "#e06c75"
+      "dark": "#db5169",
+      "light": "#db5169"
     },
     "diffContext": {
       "dark": "#e0e0e0",
@@ -78,20 +78,20 @@
       "light": "#56b6c2"
     },
     "diffHighlightAdded": {
-      "dark": "#7fd88f",
-      "light": "#7fd88f"
+      "dark": "#65ecc9",
+      "light": "#65ecc9"
     },
     "diffHighlightRemoved": {
-      "dark": "#e06c75",
-      "light": "#e06c75"
+      "dark": "#db5169",
+      "light": "#db5169"
     },
     "diffAddedBg": {
-      "dark": "#252525",
-      "light": "#252525"
+      "dark": "#31414a",
+      "light": "#31414a"
     },
     "diffRemovedBg": {
-      "dark": "#252525",
-      "light": "#252525"
+      "dark": "#43353c",
+      "light": "#43353c"
     },
     "diffContextBg": {
       "dark": "#212121",
@@ -102,12 +102,12 @@
       "light": "#212121"
     },
     "diffAddedLineNumberBg": {
-      "dark": "#252525",
-      "light": "#252525"
+      "dark": "#31414a",
+      "light": "#31414a"
     },
     "diffRemovedLineNumberBg": {
-      "dark": "#252525",
-      "light": "#252525"
+      "dark": "#43353c",
+      "light": "#43353c"
     },
     "markdownText": {
       "dark": "#e0e0e0",

@@ -78,12 +78,12 @@
       "light": "#828bb8"
     },
     "diffHighlightAdded": {
-      "dark": "#b8db87",
-      "light": "#b8db87"
+      "dark": "#4fd6be",
+      "light": "#4fd6be"
     },
     "diffHighlightRemoved": {
-      "dark": "#e26a75",
-      "light": "#e26a75"
+      "dark": "#c53b53",
+      "light": "#c53b53"
     },
     "diffAddedBg": {
       "dark": "#20303b",
