@@ -260,7 +260,7 @@ keybindings:
     bindings: ['alt+i']
 
   # Launch file explorer
-  - commands: ['shell-exec explorer.exe']
+  - commands: ['shell-exec %userprofile%/scoop/apps/wezterm-nightly/current/wezterm-gui.exe start --domain "WSL:Ubuntu" -- /home/linuxbrew/.linuxbrew/bin/yazi']
     bindings: ['alt+e']
 
     # Launch settings
