@@ -10,11 +10,11 @@ theme:
       success: "#7fd88f"
       warning: "#f5a742"
     background:
-      selected: "#141414"
+      selected: "#303030"
     border:
       primary: "#fab283"
       secondary: "#5c9cf5"
-      faint: "#303030"
+      faint: "#141414"
     icon:
       owner: "#fab283"
       collaborator: "#5c9cf5"

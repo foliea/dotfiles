@@ -27,26 +27,26 @@ count_cut      = { fg = "white", bg = "#e06c75" }
 count_selected = { fg = "white", bg = "#e5c07b" }
 
 # Border
-border_style  = { fg = "#303030" }
+border_style  = { fg = "#444444" }
 
 # Highlighting
 syntect_theme = ""
 
 [tabs]
 active   = { bg = "#fab283", bold = true }
-inactive = { fg = "#fab283", bg = "#303030" }
+inactive = { fg = "#fab283", bg = "#444444" }
 
 [mode]
 normal_main = { bg = "#fab283", bold = true }
-normal_alt  = { fg = "#fab283", bg = "#303030" }
+normal_alt  = { fg = "#fab283", bg = "#444444" }
 
 # Select mode
 select_main = { bg = "#e06c75", bold = true }
-select_alt  = { fg = "#e06c75", bg = "#303030" }
+select_alt  = { fg = "#e06c75", bg = "#444444" }
 
 # Unset mode
 unset_main = { bg = "#e06c75", bold = true }
-unset_alt  = { fg = "#e06c75", bg = "#303030" }
+unset_alt  = { fg = "#e06c75", bg = "#444444" }
 
 [status]
 overall   = {}

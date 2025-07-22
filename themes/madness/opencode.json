@@ -46,8 +46,8 @@
       "light": "#252525"
     },
     "backgroundElement": {
-      "dark": "#303030",
-      "light": "#303030"
+      "dark": "#444444",
+      "light": "#444444"
     },
     "border": {
       "dark": "#4b4c5c",
@@ -58,8 +58,8 @@
       "light": "#fab283"
     },
     "borderSubtle": {
-      "dark": "#303030",
-      "light": "#303030"
+      "dark": "#444444",
+      "light": "#444444"
     },
     "diffAdded": {
       "dark": "#65ecc9",
