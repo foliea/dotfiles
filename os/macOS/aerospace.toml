@@ -75,7 +75,7 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
     alt-i = 'exec-and-forget open -a "Google Gemini"'
 
    # Launch file explorer
-    alt-e = 'exec-and-forget open ~'
+    alt-e = 'exec-and-forget open -n -a WezTerm --args start -- yazi ~'
 
    # Launch settings
     alt-s = 'exec-and-forget open -n -a "System Settings"'
