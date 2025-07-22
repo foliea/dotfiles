@@ -58,7 +58,7 @@ fi
 
 # Zebar configuration and theme
 if command -v zebar.exe >/dev/null 2>&1; then
-	taskkill.exe /IM zebar.exe /F
+	taskkill.exe /IM zebar.exe /F 2>/dev/null || true
 fi
 echo "Installing Zebar..."
 rm -rf "$GLAZE_DEST_DIR/zebar"
