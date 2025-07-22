@@ -158,6 +158,11 @@ window_rules:
     match:
       - window_title: { regex: 'Command Palette' }
 
+  - commands: ['set-tiling', 'toggle-fullscreen']
+    match:
+      - window_process: { equals: 'SnippingTool' }
+      - window_title: { regex: 'Snipping Tool' }
+
 binding_modes:
   # When enabled, the focused window can be resized via arrow keys or HJKL.
   - name: 'resize'
