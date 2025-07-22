@@ -54,11 +54,19 @@ play = [
       { run = 'mpv --force-window %*', orphan = true, for = "windows" },
       { run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
 ]
+mount = [
+      { run = 'hdiutil attach "$1"', desc = "Mount DMG", for = "macos" },
+      { run = 'powershell -c "Mount-DiskImage -ImagePath \"%1\""', desc = "Mount ISO/VHD", for = "windows" },
+]
+unmount = [
+      { run = 'hdiutil detach "$1" || diskutil unmount "$1"', desc = "Unmount Volume", for = "macos" },
+      { run = 'powershell -c "Dismount-DiskImage -ImagePath \"%1\""', desc = "Dismount Volume", for = "windows" },
+]
 
 [open]
 rules = [
       # Folder
-      { name = "*/", use = [ "edit", "open", "reveal" ] },
+      { name = "*/", use = [ "edit", "open", "unmount", "reveal" ] },
       # Text
       { mime = "text/*", use = [ "edit", "reveal" ] },
       # Image
@@ -67,6 +75,8 @@ rules = [
       { mime = "{audio,video}/*", use = [ "play", "reveal" ] },
       # Archive
       { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = [ "extract", "reveal" ] },
+      # Disk images
+      { name = "*.{dmg,iso,img,vhd,vhdx}", use = [ "open", "mount", "extract", "reveal" ] },
       # JSON
       { mime = "application/{json,ndjson}", use = [ "edit", "reveal" ] },
       { mime = "*/javascript", use = [ "edit", "reveal" ] },
