@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-COLOR_FILE="$HOME/.config/themes/default/wallpaper-macOs.txt"
+COLOR_FILE="$HOME/.config/themes/default/wallpaper.txt"
 
 # Read color code
 COLOR=$(head -n 1 "$COLOR_FILE" | tr -d '\n' | tr -d ' ')
