@@ -257,7 +257,7 @@ keybindings:
     bindings: ['alt+enter']
 
   # Launch web browser
-  - commands: ['shell-exec %programfiles%/Google/Chrome/Application/chrome.exe']
+  - commands: ['shell-exec %programfiles%/Firefox Developer Edition/firefox.exe']
     bindings: ['alt+b']
 
   # Launch AI chat
