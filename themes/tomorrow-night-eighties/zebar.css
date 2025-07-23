@@ -1,24 +1,15 @@
 :root {
   /* Primary accent color (pink/red) */
   --accent-primary: 242 119 122; /* #f2777a */
-  
+
   /* Background colors */
   --bg-primary: 0 0 0; /* #000000 */
   --bg-secondary: 45 45 45; /* #2d2d2d */
-  
+
   /* Text colors */
   --text-primary: 255 255 255; /* #ffffff */
-  
+
   /* Status colors */
-  --status-error: 255 0 0; /* #ff0000 */
-  --status-success: 0 255 0; /* #00ff00 */
-  
-  /* Opacity levels */
-  --opacity-full: 100%;
-  --opacity-high: 90%;
-  --opacity-medium: 80%;
-  --opacity-low: 60%;
-  --opacity-subtle: 40%;
-  --opacity-faint: 30%;
-  --opacity-ghost: 20%;
+  --status-error: 255 0 0; /* #f2777a */
+  --status-success: 0 255 0; /* #99cc99 */
 }

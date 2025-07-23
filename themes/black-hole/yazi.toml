@@ -33,12 +33,12 @@ border_style  = { fg = "#1e1e1e" }
 syntect_theme = ""
 
 [tabs]
-active   = { bg = "#fab283", bold = true }
-inactive = { fg = "#fab283", bg = "#1e1e1e" }
+active   = { bg = "#9d7cd8", bold = true }
+inactive = { fg = "#9d7cd8", bg = "#1e1e1e" }
 
 [mode]
-normal_main = { bg = "#fab283", bold = true }
-normal_alt  = { fg = "#fab293", bg = "#1e1e1e" }
+normal_main = { bg = "#9d7cd8", bold = true }
+normal_alt  = { fg = "#9d7cd8", bg = "#1e1e1e" }
 
 # Select mode
 select_main = { bg = "#e06c75", bold = true }
@@ -60,7 +60,7 @@ perm_exec  = { fg = "#56b6c2" }
 
 # Progress
 progress_label  = { bold = true }
-progress_normal = { fg = "#fab293", bg = "black" }
+progress_normal = { fg = "#9d7cd8", bg = "black" }
 progress_error  = { fg = "#e06c75", bg = "black" }
 
 [which]
@@ -68,12 +68,12 @@ cols            = 3
 mask            = { bg = "black" }
 cand            = { fg = "#56b6c2" }
 rest            = { fg = "#141414" }
-desc            = { fg = "#9d7cd8" }
+desc            = { fg = "#fab283" }
 separator_style = { fg = "#141414" }
 
 [confirm]
-border     = { fg = "#fab293" }
-title      = { fg = "#fab293" }
+border     = { fg = "#9d7cd8" }
+title      = { fg = "#9d7cd8" }
 content    = {}
 list       = {}
 btn_yes    = { reversed = true }
@@ -81,11 +81,11 @@ btn_no     = {}
 btn_labels = [ "  [Y]es  ", "  (N)o  " ]
 
 [spot]
-border = { fg = "#fab293" }
-title  = { fg = "#fab293" }
+border = { fg = "#9d7cd8" }
+title  = { fg = "#9d7cd8" }
 
 # Table
-tbl_col  = { fg = "#fab293" }
+tbl_col  = { fg = "#9d7cd8" }
 tbl_cell = { fg = "#e5c07b", reversed = true }
 
 [notify]
@@ -94,29 +94,29 @@ title_warn  = { fg = "#e5c07b" }
 title_error = { fg = "#e06c75" }
 
 [pick]
-border   = { fg = "#fab293" }
-active   = { fg = "#9d7cd8", bold = true }
+border   = { fg = "#9d7cd8" }
+active   = { fg = "#fab283", bold = true }
 inactive = {}
 
 [input]
-border   = { fg = "#fab293" }
+border   = { fg = "#9d7cd8" }
 title    = {}
 value    = {}
 selected = { reversed = true }
 
 [cmp]
-border   = { fg = "#fab293" }
+border   = { fg = "#9d7cd8" }
 active   = { reversed = true }
 inactive = {}
 
 [tasks]
-border  = { fg = "#fab293" }
+border  = { fg = "#9d7cd8" }
 title   = {}
-hovered = { fg = "#9d7cd9", underline = true }
+hovered = { fg = "#fab283", underline = true }
 
 [help]
 on      = { fg = "#56b6c2" }
-run     = { fg = "#9d7cd9" }
+run     = { fg = "#fab283" }
 desc    = {}
 hovered = { reversed = true, bold = true }
 footer  = { fg = "black", bg = "white" }
@@ -144,7 +144,7 @@ rules = [
       { name = "*/", is = "dummy", bg = "#e06c75" },
 
       # Fallback
-      { name = "*/", fg = "#fab293" }
+      { name = "*/", fg = "#9d7cd8" }
 ]
 
 [icon]

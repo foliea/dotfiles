@@ -23,7 +23,7 @@
         BasedOn="{StaticResource BaseWindowBorderStyle}"
         TargetType="{x:Type Border}">
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="BorderBrush" Value="#FFFAB283" />
+        <Setter Property="BorderBrush" Value="#FF9D7CD8" />
         <Setter Property="Background" Value="#FF212121"/>
         <Setter Property="CornerRadius" Value="8" />
         <Setter Property="UseLayoutRounding" Value="True" />
@@ -43,7 +43,7 @@
         BasedOn="{StaticResource BaseQueryBoxStyle}"
         TargetType="{x:Type TextBox}">
         <Setter Property="Foreground" Value="#FFE0E0E0" />
-        <Setter Property="CaretBrush" Value="#FFFAB283" />
+        <Setter Property="CaretBrush" Value="#FF9D7CD8" />
     </Style>
 
     <!-- Query suggestion text box -->
@@ -158,7 +158,7 @@
 
     <Style x:Key="ItemHotkeySelectedStyle" TargetType="{x:Type TextBlock}">
         <Setter Property="FontSize" Value="12" />
-        <Setter Property="Foreground" Value="#FFFAB283" />
+        <Setter Property="Foreground" Value="#FF9D7CD8" />
     </Style>
 
     <!-- Result glyph -->
@@ -183,7 +183,7 @@
 
     <!-- Highlighted text -->
     <Style x:Key="HighlightStyle">
-        <Setter Property="Inline.Foreground" Value="#FFFAB283" />
+        <Setter Property="Inline.Foreground" Value="#FF9D7CD8" />
         <Setter Property="Inline.FontStyle" Value="Normal" />
         <Setter Property="Inline.FontWeight" Value="Bold" />
     </Style>
