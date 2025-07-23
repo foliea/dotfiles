@@ -6,13 +6,13 @@
 @import './colors.css';
 
 i {
-  color: rgb(var(--accent-primary) / var(--opacity-full));
+  color: rgb(var(--accent-primary));
   margin-right: 7px;
-  text-shadow: 0 0 10px rgb(var(--accent-primary) / var(--opacity-medium));
+
 }
 
 body {
-  color: rgb(var(--text-primary) / var(--opacity-full));
+  color: rgb(var(--text-primary));
   font-size: 12px;
   overflow: hidden;
 }
@@ -31,10 +31,10 @@ body,
 }
 
 #root {
-  border-bottom: 1px solid rgb(var(--accent-primary) / var(--opacity-subtle));
+  border-bottom: 1px solid rgb(var(--accent-primary));
   background-color: rgba(var(--bg-primary), 0.3);
-  backdrop-filter: blur(16px);
-  box-shadow: 0 0 20px rgb(var(--accent-primary) / var(--opacity-ghost));
+
+
 }
 
 .app {
@@ -54,31 +54,30 @@ body,
 
 .center {
   justify-self: center;
-  background: rgb(var(--bg-secondary) / var(--opacity-medium));
+  background: rgb(var(--bg-secondary));
   padding: 4px 12px;
   border-radius: 4px;
-  box-shadow: 0 0 15px rgb(var(--accent-primary) / var(--opacity-faint));
   font-weight: 500;
   letter-spacing: 0.3px;
-  color: rgb(var(--text-primary) / var(--opacity-full));
-  text-shadow: 0 0 10px rgb(var(--accent-primary) / var(--opacity-medium));
-  border: 1px solid rgb(var(--accent-primary) / var(--opacity-faint));
+  color: rgb(var(--text-primary));
+
+  border: 1px solid rgb(var(--accent-primary));
 }
 
 .center .date {
   font-weight: 600;
-  color: rgb(var(--text-primary) / var(--opacity-full));
+  color: rgb(var(--text-primary));
 }
 
 .center .separator {
   margin: 0 8px;
-  color: rgb(var(--accent-primary) / var(--opacity-low));
+  color: rgb(var(--accent-primary));
   font-weight: bold;
 }
 
 .center .process {
   font-weight: 400;
-  color: rgb(var(--accent-primary) / var(--opacity-high));
+  color: rgb(var(--accent-primary));
   text-transform: capitalize;
   font-size: 0.95em;
 }
@@ -107,50 +106,49 @@ body,
 }
 
 .workspace {
-  background: rgb(var(--bg-secondary) / var(--opacity-medium));
+  background: rgb(var(--bg-secondary));
   margin-right: 4px;
   padding: 4px 8px;
-  color: rgb(var(--text-primary) / var(--opacity-full));
-  border: 1px solid rgb(var(--accent-primary) / var(--opacity-faint));
+  color: rgb(var(--text-primary));
+  border: 1px solid rgb(var(--accent-primary));
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 0 10px rgb(var(--accent-primary) / var(--opacity-ghost));
+
 
   &.displayed {
-    background: rgb(var(--bg-secondary) / 50%);
-    box-shadow: 0 0 15px rgb(var(--accent-primary) / var(--opacity-faint));
+    background: rgb(var(--bg-secondary));
   }
 
   &.focused,
   &:hover {
-    background: rgb(var(--accent-primary) / var(--opacity-subtle));
+    background: rgb(var(--accent-primary));
     transform: translateY(-1px);
-    text-shadow: 0 0 10px rgb(var(--accent-primary) / var(--opacity-medium));
-    box-shadow: 0 0 20px rgb(var(--accent-primary) / var(--opacity-subtle));
-    border: 1px solid rgb(var(--accent-primary) / var(--opacity-low));
+  
+
+    border: 1px solid rgb(var(--accent-primary));
   }
 }
 
 .binding-mode,
 .tiling-direction,
 .paused-button {
-  background: rgb(var(--bg-secondary) / var(--opacity-medium));
-  color: rgb(var(--text-primary) / var(--opacity-full));
+  background: rgb(var(--bg-secondary));
+  color: rgb(var(--text-primary));
   border-radius: 4px;
   line-height: 1;
   padding: 4px 8px;
-  border: 1px solid rgb(var(--accent-primary) / var(--opacity-faint));
+  border: 1px solid rgb(var(--accent-primary));
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 0 10px rgb(var(--accent-primary) / var(--opacity-ghost));
+
 
   &:hover {
-    background: rgb(var(--accent-primary) / var(--opacity-subtle));
+    background: rgb(var(--accent-primary));
     transform: translateY(-1px);
-    text-shadow: 0 0 10px rgb(var(--accent-primary) / var(--opacity-medium));
-    box-shadow: 0 0 20px rgb(var(--accent-primary) / var(--opacity-subtle));
-    border: 1px solid rgb(var(--accent-primary) / var(--opacity-low));
+  
+
+    border: 1px solid rgb(var(--accent-primary));
   }
 }
 
@@ -159,8 +157,8 @@ body,
 }
 
 .cpu .high-usage {
-  color: rgb(var(--accent-primary) / var(--opacity-full));
-  text-shadow: 0 0 10px rgb(var(--accent-primary) / var(--opacity-medium));
+  color: rgb(var(--accent-primary));
+
 }
 
 .battery {
@@ -178,7 +176,7 @@ body,
   padding: 0;
   border-radius: 0;
   box-shadow: none;
-  color: rgb(var(--text-primary) / var(--opacity-full));
+  color: rgb(var(--text-primary));
 
   &:hover {
     background: transparent;
@@ -188,11 +186,10 @@ body,
 .status-box {
   display: flex;
   align-items: center;
-  background: rgb(var(--bg-secondary) / var(--opacity-medium));
+  background: rgb(var(--bg-secondary));
   padding: 4px 12px;
   border-radius: 4px;
-  box-shadow: 0 0 15px rgb(var(--accent-primary) / var(--opacity-faint));
-  border: 1px solid rgb(var(--accent-primary) / var(--opacity-faint));
+  border: 1px solid rgb(var(--accent-primary));
 }
 
 .network {
@@ -206,20 +203,20 @@ body,
   gap: 4px;
   font-size: 0.85em;
   margin-left: 4px;
-  text-shadow: 0 0 10px rgb(var(--accent-primary) / var(--opacity-medium));
+
 }
 
 .network .download {
-  color: rgb(var(--accent-primary) / var(--opacity-full));
+  color: rgb(var(--accent-primary));
 }
 
 .network .upload {
-  color: rgb(var(--accent-primary) / var(--opacity-full));
+  color: rgb(var(--accent-primary));
 }
 
 .audio .muted {
-  color: rgb(var(--status-error) / var(--opacity-full));
-  text-shadow: 0 0 10px rgb(var(--status-error) / var(--opacity-medium));
+  color: rgb(var(--status-error));
+
 }
 
 .charging {
@@ -234,25 +231,23 @@ body,
 }
 
 .low-battery {
-  color: rgb(var(--status-error) / var(--opacity-full)) !important;
-  text-shadow: 0 0 10px rgb(var(--status-error) / var(--opacity-medium)) !important;
+  color: rgb(var(--status-error)) !important;
 }
 
 .full-battery {
-  color: rgb(var(--status-success) / var(--opacity-full)) !important;
-  text-shadow: 0 0 10px rgb(var(--status-success) / var(--opacity-medium)) !important;
+  color: rgb(var(--status-success)) !important;
 }
 
 @keyframes pulse-charging {
 
   0%,
   100% {
-    color: rgb(var(--status-success) / var(--opacity-full));
-    text-shadow: 0 0 10px rgb(var(--status-success) / var(--opacity-medium));
+    color: rgb(var(--status-success));
+
   }
 
   50% {
-    color: rgb(var(--status-success) / var(--opacity-low));
-    text-shadow: 0 0 15px rgb(var(--status-success) / var(--opacity-high));
+    color: rgb(var(--status-success));
+
   }
 }
