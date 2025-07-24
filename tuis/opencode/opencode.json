@@ -17,6 +17,18 @@
         "edit": false,
         "bash": true
       }
+    },
+    "search": {
+      "prompt": "{file:./prompts/search.txt}",
+      "tools": {
+        "read": true,
+        "grep": true,
+        "glob": true,
+        "webfetch": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
     }
   }
 }
