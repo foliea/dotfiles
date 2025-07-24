@@ -25,20 +25,6 @@ vim.api.nvim_set_keymap("n", "<leader>f", ":TestFile<CR>", { noremap = true, sil
 vim.api.nvim_set_keymap("n", "<leader>l", ":TestLast<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>v", ":TestVisit<CR>", { noremap = true, silent = true })
 
--- Folding
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader>of",
-	[[<cmd>lua require('ufo').openAllFolds()<CR>]],
-	{ noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader>cf",
-	[[<cmd>lua require('ufo').closeAllFolds()<CR>]],
-	{ noremap = true, silent = true }
-)
-
 -- File explorer / Symbols outline
 vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>ef", ":NvimTreeFindFile<CR>", { noremap = true, silent = true })

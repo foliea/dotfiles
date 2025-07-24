@@ -109,18 +109,4 @@ return {
 			require("todo-comments").setup()
 		end,
 	},
-
-	-- Folding
-	{
-		"kevinhwang91/nvim-ufo",
-		event = "BufReadPost",
-		dependencies = { "kevinhwang91/promise-async" },
-		config = function()
-			require("ufo").setup({
-				provider_selector = function()
-					return { "treesitter", "indent" }
-				end,
-			})
-		end,
-	},
 }
