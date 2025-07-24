@@ -85,15 +85,6 @@ return {
 		end,
 	},
 
-	-- Symbols outline
-	{
-		"hedyhli/outline.nvim",
-		cmd = "Outline",
-		config = function()
-			require("outline").setup()
-		end,
-	},
-
 	-- Diagnostics
 	{
 		"folke/trouble.nvim",
@@ -133,4 +124,3 @@ return {
 		end,
 	},
 }
-

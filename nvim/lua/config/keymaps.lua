@@ -42,7 +42,7 @@ vim.api.nvim_set_keymap(
 -- File explorer / Symbols outline
 vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>ef", ":NvimTreeFindFile<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>so", ":Outline<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>so", ":Trouble symbols toggle focus=false<CR>", { noremap = true })
 
 -- Fuzzy Finder / Search & Replace
 vim.api.nvim_set_keymap(
@@ -75,6 +75,13 @@ vim.api.nvim_set_keymap("n", "<leader>hk", ":Telescope keymaps<CR>", { noremap =
 vim.api.nvim_set_keymap("n", "<leader>hc", ":Telescope commands<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>hd", ":Trouble<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>ha", "<cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>da",
+	":Trouble diagnostics toggle filter.buf=0<CR>",
+	{ noremap = true, silent = true }
+)
 vim.api.nvim_set_keymap(
 	"n",
 	"<leader>di",
