@@ -63,7 +63,7 @@ vim.api.nvim_set_keymap("n", "<leader>ha", "<cmd>lua vim.lsp.buf.code_action()<C
 
 vim.api.nvim_set_keymap(
 	"n",
-	"<leader>da",
+	"<leader>do",
 	":Trouble diagnostics toggle filter.buf=0<CR>",
 	{ noremap = true, silent = true }
 )
