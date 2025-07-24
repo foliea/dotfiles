@@ -4,5 +4,19 @@
   "keybinds": {
     "leader": "ctrl+space"
   },
-  "layout": "stretch"
+  "layout": "stretch",
+  "mode": {
+    "review": {
+      "prompt": "{file:./prompts/code-review.txt}",
+      "tools": {
+        "read": true,
+        "grep": true,
+        "glob": true,
+        "webfetch": true,
+        "write": false,
+        "edit": false,
+        "bash": true
+      }
+    }
+  }
 }
