@@ -11,12 +11,6 @@ return {
 		event = "BufReadPost",
 	},
 
-	-- Surround
-	{
-		"tpope/vim-surround",
-		event = "BufReadPost",
-	},
-
 	-- Test runner
 	{
 		"janko-m/vim-test",
