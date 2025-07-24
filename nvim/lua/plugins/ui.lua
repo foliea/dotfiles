@@ -128,25 +128,6 @@ return {
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
-		opts = {
-			routes = {
-				{
-					filter = {
-						event = "notify",
-						find = ":qa!",
-					},
-					opts = { skip = true },
-				},
-				{
-					filter = {
-						event = "msg_show",
-						kind = { "", "wmsg", "emsg" },
-						find = ":qa!",
-					},
-					opts = { skip = true },
-				},
-			},
-		},
 		config = function()
 			require("noice").setup({
 				lsp = {

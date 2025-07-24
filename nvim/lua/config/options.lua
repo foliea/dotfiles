@@ -21,6 +21,9 @@ vim.opt.linebreak = true
 vim.opt.showbreak = "=>   "
 vim.opt.fillchars:append({ eob = " " })
 
+-- Disable quit messages and intro screen
+vim.opt.shortmess = "filnxtToOFWIcC"
+
 -- Disable mouse menu items
 vim.cmd([[aunmenu PopUp.How-to\ disable\ mouse]])
 vim.cmd([[aunmenu PopUp.-2-]])
