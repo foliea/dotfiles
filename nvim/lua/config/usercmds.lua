@@ -7,12 +7,6 @@ function Open(target)
 end
 _G.Open = Open
 
-function ClearBuffers()
-	vim.cmd("w")
-	vim.cmd("%bd")
-	vim.cmd("e#")
-end
-vim.api.nvim_create_user_command("B", ClearBuffers, {})
 
 function RenameFile()
 	local old_name = vim.fn.expand("%")
