@@ -50,6 +50,10 @@ vim.api.nvim_set_hl(0, "CmpItemAbbr", { bg = colors.background })
 -- Code editor
 vim.api.nvim_set_hl(0, "Delimiter", { fg = colors.white })
 
+-- Line numbers
+vim.api.nvim_set_hl(0, "LineNr", { fg = colors.muted })
+vim.api.nvim_set_hl(0, "CursorLineNr", { fg = colors.orange, bold = true })
+
 -- Ruby icons
 vim.api.nvim_set_hl(0, "DevIconRb", { fg = "#e8274b" })
 vim.api.nvim_set_hl(0, "DevIconErb", { fg = "#e8274b" })

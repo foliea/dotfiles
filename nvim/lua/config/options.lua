@@ -1,6 +1,7 @@
 -- Editor options
 vim.opt.relativenumber = true
 vim.opt.number = true
+vim.opt.cursorline = true
 vim.opt.ruler = true
 vim.opt.backupdir = vim.fn.expand("~/.config/nvim/tmp/backup//")
 vim.opt.directory = vim.fn.expand("~/.config/nvim/tmp/swap//")
@@ -9,7 +10,7 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.backspace = { "indent", "eol", "start" }
-vim.opt.list = true
+vim.opt.list = false
 vim.opt.hlsearch = true
 vim.opt.compatible = false
 vim.cmd([[syntax on]])
