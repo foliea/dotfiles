@@ -260,10 +260,6 @@ keybindings:
   - commands: ['shell-exec %programfiles%/Firefox Developer Edition/firefox.exe']
     bindings: ['alt+b']
 
-  # Launch AI chat
-  - commands: ['shell-exec %programfiles%/Google/Chrome/Application/chrome_proxy.exe --profile-directory=Default --app-id=gdfaincndogidkdcdkhapmbffkckdkhn']
-    bindings: ['alt+i']
-
   # Launch file explorer
   - commands: ['shell-exec %userprofile%/scoop/apps/wezterm-nightly/current/wezterm-gui.exe start --domain "WSL:Ubuntu" -- /home/linuxbrew/.linuxbrew/bin/yazi']
     bindings: ['alt+e']
