@@ -3,7 +3,8 @@ set -e
 
 brew install \
 	mpv \
-	desktoppr
+	desktoppr \
+	artginzburg/tap/sudo-touchid
 
 brew install --cask \
 	font-fira-code-nerd-font \
@@ -15,3 +16,6 @@ brew install --cask \
 	wezterm \
 	orbstack \
 	discord
+
+# Enable Touch ID for sudo
+sudo-touchid
