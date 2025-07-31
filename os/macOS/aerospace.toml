@@ -59,7 +59,7 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
     # 'layout tabbed' in i3
     alt-p = 'layout h_accordion'
 
-     # 'floating toggle' in i3
+    # 'floating toggle' in i3
     alt-shift-space = 'layout floating tiling'
 
     # Re-evaluate configuration file.
@@ -74,13 +74,16 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
     # Launch AI chat
     alt-i = 'exec-and-forget open -a "Google Gemini"'
 
-   # Launch file explorer
+    # Launch color picker
+    alt-c = 'exec-and-forget open -a "Digital Color Meter"'
+
+    # Launch file explorer
     alt-e = 'exec-and-forget open -n -a WezTerm --args start -- yazi ~'
 
-   # Launch settings
+    # Launch settings
     alt-s = 'exec-and-forget open -n -a "System Settings"'
 
-   # Change focus to a workspace.
+    # Change focus to a workspace.
     alt-1 = 'workspace 1'
     alt-2 = 'workspace 2'
     alt-3 = 'workspace 3'
