@@ -166,6 +166,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*",
 	callback = function(args)
+		local root = vim.fn.getcwd()
+		if vim.fn.filereadable(root .. "/.disable-autoformat") == 1 then
+			print("Autoformat disabled for this project")
+			return
+		end
 		require("conform").format({ bufnr = args.buf })
 	end,
 })
