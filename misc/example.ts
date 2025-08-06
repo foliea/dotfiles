@@ -1,5 +1,5 @@
 class Example {
-  constructor(public ame: string) {}
+  constructor(public name: string) {}
 
   greet() {
     return `Hello, ${this.name}!`;
