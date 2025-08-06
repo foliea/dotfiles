@@ -264,9 +264,13 @@ keybindings:
   - commands: ['shell-exec %userprofile%/scoop/apps/wezterm-nightly/current/wezterm-gui.exe start --domain "WSL:Ubuntu" -- /home/linuxbrew/.linuxbrew/bin/yazi']
     bindings: ['alt+e']
 
-    # Launch settings
+  # Launch settings
   - commands: ['shell-exec ms-settings:']
     bindings: ['alt+s']
+
+  # Lock computer
+  - commands: ['shell-exec rundll32.exe user32.dll,LockWorkStation']
+    bindings: ['alt+shift+x']
 
   # Focus the next/previous active workspace defined in `workspaces` config.
   - commands: ['focus --next-active-workspace']
