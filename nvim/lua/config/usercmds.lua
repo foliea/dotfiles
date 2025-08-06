@@ -40,7 +40,7 @@ if has_telescope then
 
 		pickers
 			.new({}, {
-				prompt_title = "Buffer Ordinals",
+				prompt_title = "Tabs",
 				finder = finders.new_table({
 					results = entries,
 					entry_maker = function(entry)
