@@ -83,6 +83,9 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
     # Launch settings
     alt-s = 'exec-and-forget open -n -a "System Settings"'
 
+    # Lock computer
+    alt-shift-x = 'exec-and-forget osascript -e "delay 0.2" -e "tell application \"System Events\" to keystroke \"q\" using {control down, command down}"'
+
     # Change focus to a workspace.
     alt-1 = 'workspace 1'
     alt-2 = 'workspace 2'
