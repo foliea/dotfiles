@@ -48,7 +48,6 @@ vim.api.nvim_create_autocmd("FileType", {
 		"cs",
 		"sh",
 		"bash",
-		"make",
 	},
 	callback = function()
 		vim.opt_local.tabstop = 4
@@ -58,10 +57,11 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
--- Hardtab 8
+-- Hardtab 8 (Makefile and Lua)
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = {
 		"lua",
+		"make",
 	},
 	callback = function()
 		vim.opt_local.tabstop = 8

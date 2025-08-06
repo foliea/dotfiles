@@ -133,7 +133,7 @@ return {
 					javascript = js_formatters,
 					typescript = js_formatters,
 					sh = { "shfmt" },
-					make = { "beautysh" },
+					make = {},
 					dockerfile = { "beautysh" },
 					fish = { "fish_indent" },
 					ruby = { "rubocop" },
