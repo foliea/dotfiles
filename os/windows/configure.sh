@@ -37,6 +37,31 @@ WT_DEST_FILE="$WT_DEST_DIR/settings.json"
 
 mkdir -p "$WT_DEST_DIR"
 cp "$WT_SOURCE_PATH" "$WT_DEST_FILE"
+awk -v theme_file="$HOME/.config/themes/default/windows-terminal.json" '
+  BEGIN {
+    in_schemes=0;
+    theme = "";
+    while ((getline line < theme_file) > 0) {
+      theme = theme (theme ? "\n" : "") line
+    }
+    close(theme_file)
+    sub(/^[[:space:]]*\[/, "", theme)
+    sub(/\][[:space:]]*$/, "", theme)
+  }
+  /"schemes"[ \t]*:[ \t]*\[/ {
+    print "\"schemes\": [";
+    if (length(theme) > 0) print theme;
+    in_schemes=1;
+    next
+  }
+  in_schemes && /\][ \t]*,?/ {
+    print "],";
+    in_schemes=0;
+    next
+  }
+  in_schemes { next }
+  { print }
+' "$WT_DEST_FILE" > "$WT_DEST_FILE.tmp" && mv "$WT_DEST_FILE.tmp" "$WT_DEST_FILE"
 
 # GlazeWM
 GLAZE_DEST_DIR="/mnt/c/Users/$WIN_USER/.glzr"
