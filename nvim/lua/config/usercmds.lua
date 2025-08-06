@@ -52,6 +52,17 @@ if has_telescope then
 					end,
 				}),
 				sorter = conf.generic_sorter({}),
+				previewer = require("telescope.previewers").new_buffer_previewer({
+					title = "Buffer Preview",
+					define_preview = function(self, entry, _)
+						local bufnr = entry.value.id
+						if vim.api.nvim_buf_is_valid(bufnr) then
+							local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+							vim.api.nvim_buf_set_lines(self.state.bufnr, 0, -1, false, lines)
+							vim.bo[self.state.bufnr].filetype = vim.bo[bufnr].filetype
+						end
+					end,
+				}),
 				attach_mappings = function(prompt_bufnr, _)
 					actions.select_default:replace(function()
 						actions.close(prompt_bufnr)
