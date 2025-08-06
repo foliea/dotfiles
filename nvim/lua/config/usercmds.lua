@@ -56,8 +56,8 @@ if has_telescope then
 					actions.select_default:replace(function()
 						actions.close(prompt_bufnr)
 						local selection = action_state.get_selected_entry()
-						if selection and selection.value and selection.value.ordinal then
-							vim.cmd("BufferLineGoToBuffer " .. selection.value.ordinal)
+						if selection and selection.value and selection.value.id then
+							vim.api.nvim_set_current_buf(selection.value.id)
 						end
 					end)
 					return true

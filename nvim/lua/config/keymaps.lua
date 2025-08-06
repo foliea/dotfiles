@@ -17,6 +17,7 @@ vim.api.nvim_set_keymap("n", "<S-J>", ":BufferLineCyclePrev<CR>", { noremap = tr
 vim.api.nvim_set_keymap("n", "<S-K>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>tco", ":BufferLineCloseOthers<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>tp", ":BufferLineTogglePin<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>tl", ":TabsList<CR>", { noremap = true, silent = true })
 vim.api.nvim_create_user_command("J", function(opts)
 	vim.cmd("BufferLineGoToBuffer " .. opts.args)
 end, { nargs = 1 })
@@ -30,7 +31,7 @@ vim.api.nvim_set_keymap("n", "<leader>v", ":TestVisit<CR>", { noremap = true, si
 -- File explorer / Symbols outline
 vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>ef", ":NvimTreeFindFile<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>so", ":Trouble symbols toggle focus=false<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>ss", ":Trouble symbols toggle focus=false<CR>", { noremap = true })
 
 -- Fuzzy Finder / Search & Replace
 vim.api.nvim_set_keymap(
@@ -53,23 +54,23 @@ vim.api.nvim_set_keymap(
 	{ noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap("n", "<leader>st", ":TodoTelescope<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>r", "<cmd>lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>rs", "<cmd>lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>rf", ":RenameFile<CR>", { noremap = true, silent = true })
 
 -- Git
 vim.api.nvim_set_keymap("n", "<leader>gb", ":Gitsigns blame_line<CR>", { noremap = true, silent = true })
 
--- Toggle whitespace characters
-vim.api.nvim_set_keymap("n", "<leader>w", ":set list!<CR>", { noremap = true, silent = true })
+-- Show whitespace characters
+vim.api.nvim_set_keymap("n", "<leader>sw", ":set list!<CR>", { noremap = true, silent = true })
 
 -- Help / Diagnostics
 vim.api.nvim_set_keymap("n", "<leader>hk", ":Telescope keymaps<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>hc", ":Telescope commands<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>hd", ":Trouble<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>ha", "<cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
-
 vim.api.nvim_set_keymap(
 	"n",
-	"<leader>do",
+	"<leader>dl",
 	":Trouble diagnostics toggle filter.buf=0<CR>",
 	{ noremap = true, silent = true }
 )
