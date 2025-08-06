@@ -99,6 +99,7 @@ return {
 			local colors = require("config.colors")
 			require("bufferline").setup({
 				options = {
+					numbers = "ordinal",
 					show_buffer_icons = true,
 					show_buffer_close_icons = true,
 					show_close_icon = true,

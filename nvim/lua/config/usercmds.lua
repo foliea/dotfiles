@@ -32,4 +32,3 @@ function MakeExecutable()
 end
 vim.api.nvim_create_user_command("ME", MakeExecutable, {})
 
-vim.cmd([[cabbrev ls Telescope buffers]])

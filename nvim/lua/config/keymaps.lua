@@ -13,9 +13,13 @@ vim.api.nvim_set_keymap("", "<Left>", "<Nop>", { noremap = true })
 vim.api.nvim_set_keymap("", "<Right>", "<Nop>", { noremap = true })
 
 -- Buffer navigation
-vim.api.nvim_set_keymap("n", "<S-J>", ":bprevious<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<S-K>", ":bnext<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>co", ":BufferLineCloseOthers<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<S-J>", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<S-K>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>tco", ":BufferLineCloseOthers<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>tp", ":BufferLineTogglePin<CR>", { noremap = true, silent = true })
+vim.api.nvim_create_user_command("J", function(opts)
+	vim.cmd("BufferLineGoToBuffer " .. opts.args)
+end, { nargs = 1 })
 
 -- Tests runner
 vim.api.nvim_set_keymap("n", "<leader>t", ":TestNearest<CR>", { noremap = true, silent = true })
@@ -41,7 +45,6 @@ vim.api.nvim_set_keymap(
 	[[<cmd>lua require('telescope.builtin').live_grep()<CR>]],
 	{ noremap = true, silent = true }
 )
-vim.api.nvim_set_keymap("n", "<leader>ls", ":Telescope resume<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>sh", ":Telescope find_files hidden=true<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap(
 	"n",
