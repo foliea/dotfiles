@@ -221,7 +221,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
                     <Border
-                        Background="#FF1E1E1E"
+                        Background="#FF404040"
                         BorderBrush="Transparent"
                         BorderThickness="0"
                         CornerRadius="3"
@@ -236,7 +236,7 @@
         x:Key="PreviewBorderStyle"
         BasedOn="{StaticResource BasePreviewBorderStyle}"
         TargetType="{x:Type Border}">
-        <Setter Property="BorderBrush" Value="#FF1E1E1E" />
+        <Setter Property="BorderBrush" Value="#FF404040" />
         <Setter Property="BorderThickness" Value="1 0 0 0" />
         <Setter Property="Margin" Value="0 0 0 0" />
     </Style>
