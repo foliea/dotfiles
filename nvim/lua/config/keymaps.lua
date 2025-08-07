@@ -47,6 +47,7 @@ vim.api.nvim_set_keymap(
 	{ noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap("n", "<leader>sh", ":Telescope find_files hidden=true<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>sb", ":Telescope resume<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap(
 	"n",
 	"<leader>sr",
