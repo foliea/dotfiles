@@ -13,7 +13,7 @@
   "panel": "#141414",
   "white": "#ffffff",
   "black": "#000000",
-  "background_deep": "#141414",
+  "background_deep": "#212121",
   "scheme": {
     "vim": "none"
   }
