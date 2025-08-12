@@ -15,6 +15,7 @@ vim.api.nvim_set_keymap("", "<Right>", "<Nop>", { noremap = true })
 -- Buffer navigation
 vim.api.nvim_set_keymap("n", "<S-J>", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<S-K>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>tc", ":BufferLinePickClose<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>tco", ":BufferLineCloseOthers<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>tp", ":BufferLineTogglePin<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>tl", ":TabsList<CR>", { noremap = true, silent = true })
