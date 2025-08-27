@@ -24,10 +24,10 @@ vim.api.nvim_create_user_command("J", function(opts)
 end, { nargs = 1 })
 
 -- Tests runner
-vim.api.nvim_set_keymap("n", "<leader>t", ":TestNearest<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>f", ":TestFile<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>l", ":TestLast<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>v", ":TestVisit<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>rc", ":TestNearest<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>rf", ":TestFile<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>rl", ":TestLast<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>rv", ":TestVisit<CR>", { noremap = true, silent = true })
 
 -- File explorer / Symbols outline
 vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
@@ -49,13 +49,13 @@ vim.api.nvim_set_keymap(
 )
 vim.api.nvim_set_keymap("n", "<leader>sh", ":Telescope find_files hidden=true<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>sb", ":Telescope resume<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>st", ":TodoTelescope<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap(
 	"n",
 	"<leader>sr",
 	[[<cmd>lua require('spectre').open()<CR>]],
 	{ noremap = true, silent = true }
 )
-vim.api.nvim_set_keymap("n", "<leader>st", ":TodoTelescope<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>rs", "<cmd>lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>rf", ":RenameFile<CR>", { noremap = true, silent = true })
 
