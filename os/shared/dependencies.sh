@@ -75,4 +75,4 @@ ln -sf "$PWD/themes" "$HOME/.config/themes"
 
 # Setup default theme
 rm -rf "$PWD/themes/default"
-cp -r "$PWD/themes/tomorrow-night-eighties" "$HOME/.config/themes/default"
+cp -r "$PWD/themes/Madness" "$HOME/.config/themes/default"
