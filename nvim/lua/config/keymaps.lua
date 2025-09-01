@@ -24,15 +24,14 @@ vim.api.nvim_create_user_command("J", function(opts)
 end, { nargs = 1 })
 
 -- Tests runner
-vim.api.nvim_set_keymap("n", "<leader>rc", ":TestNearest<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>rf", ":TestFile<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>rl", ":TestLast<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>rv", ":TestVisit<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>n", ":TestNearest<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>f", ":TestFile<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>l", ":TestLast<CR>", { noremap = true, silent = true })
 
 -- File explorer / Symbols outline
 vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>ef", ":NvimTreeFindFile<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>ss", ":Trouble symbols toggle focus=false<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>es", ":Trouble symbols toggle focus=false<CR>", { noremap = true })
 
 -- Fuzzy Finder / Search & Replace
 vim.api.nvim_set_keymap(
