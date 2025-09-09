@@ -1,7 +1,12 @@
 #!/bin/sh
 set -e
 
-if ! command -v code >/dev/null 2>&1; then
+THEME_ONLY=false
+if [ "$1" = "theme-only" ]; then
+	THEME_ONLY=true
+fi
+
+if [ "$THEME_ONLY" = false ] && ! command -v code >/dev/null 2>&1; then
 	echo "Error: 'code' command not found. Please ensure Visual Studio Code is installed and the 'code' command is added to your PATH."
 	exit 1
 fi
@@ -29,6 +34,18 @@ Linux*) # Linux / WSL
 esac
 
 mkdir -p "$VS_CODE_CONFIG_DIR"
+
+# Handle theme-only mode
+if [ "$THEME_ONLY" = true ]; then
+	if [ -f "$HOME/.config/themes/default/vscode.json" ]; then
+		mkdir -p "$VS_CODE_CONFIG_DIR/themes"
+		cp "$HOME/.config/themes/default/vscode.json" "$VS_CODE_CONFIG_DIR/themes/Default.json"
+		echo "VSCode theme updated"
+	else
+		echo "No theme file found at $HOME/.config/themes/default/vscode.json"
+	fi
+	exit 0
+fi
 
 ln -sf "$PWD/vscode/settings.json" "$VS_CODE_CONFIG_DIR/settings.json"
 

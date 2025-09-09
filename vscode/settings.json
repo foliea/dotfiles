@@ -19,7 +19,7 @@
       "args": ["-l", "new-session", "-A", "-s", "vscode:${workspaceFolder}"]
     }
   },
-  "workbench.colorTheme": "Tomorrow Night Eighties",
+  "workbench.colorTheme": "Default",
   "workbench.colorCustomizations": {
     "statusBar.background": "#393939",
     "statusBar.foreground": "#cccccc",

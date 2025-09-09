@@ -42,4 +42,9 @@ if [ "$(uname)" = "Darwin" ]; then
 	sh "$REPO_ROOT/os/macOS/set-wallpaper.sh"
 fi
 
+# Update VSCode theme if VSCode is available
+if command -v code >/dev/null 2>&1; then
+	sh "$REPO_ROOT/vscode/install.sh" theme-only
+fi
+
 echo "Theme $SELECTED set as default."
