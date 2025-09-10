@@ -19,13 +19,6 @@
       "args": ["-l", "new-session", "-A", "-s", "vscode:${workspaceFolder}"]
     }
   },
-  "workbench.colorCustomizations": {
-    "statusBar.background": "#393939",
-    "statusBar.foreground": "#cccccc",
-    "statusBar.noFolderBackground": "#bd93f9",
-    "statusBarItem.activeBackground": "#ffcc66",
-    "statusBarItem.hoverBackground": "#50fa7b"
-  },
   "editor.fontFamily": "FiraCode Nerd Font, monospace",
   "editor.fontSize": 13,
   "editor.lineNumbers": "relative",
