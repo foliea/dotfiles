@@ -96,7 +96,7 @@
       "name": "Variables",
       "scope": ["variable", "string constant.other.placeholder"],
       "settings": {
-        "foreground": "#cccccc"
+        "foreground": "#f2777a"
       }
     },
     {
@@ -229,7 +229,7 @@
       "name": "Entity Types",
       "scope": ["support.type"],
       "settings": {
-        "foreground": "#cccccc"
+        "foreground": "#f2777a"
       }
     },
     {
@@ -243,7 +243,7 @@
         "source.postcss support.type.property-name"
       ],
       "settings": {
-        "foreground": "#cccccc"
+        "foreground": "#f2777a"
       }
     },
     {
@@ -312,7 +312,7 @@
       "name": "CSS ID's",
       "scope": ["source.sass keyword.control"],
       "settings": {
-        "foreground": "#66cccc"
+        "foreground": "#6699cc"
       }
     },
     {
@@ -340,14 +340,14 @@
       "name": "Regular Expressions",
       "scope": ["string.regexp"],
       "settings": {
-        "foreground": "#66cccc"
+        "foreground": "#6699cc"
       }
     },
     {
       "name": "Escape Characters",
       "scope": ["constant.character.escape"],
       "settings": {
-        "foreground": "#66cccc"
+        "foreground": "#6699cc"
       }
     },
     {
@@ -365,7 +365,7 @@
       ],
       "settings": {
         "fontStyle": "italic",
-        "foreground": "#66cccc"
+        "foreground": "#6699cc"
       }
     },
     {
@@ -429,7 +429,7 @@
         "source.json meta.structure.dictionary.json meta.structure.dictionary.value.json meta.structure.dictionary.json meta.structure.dictionary.value.json meta.structure.dictionary.json meta.structure.dictionary.value.json meta.structure.dictionary.json meta.structure.dictionary.value.json meta.structure.dictionary.json meta.structure.dictionary.value.json meta.structure.dictionary.json support.type.property-name.json"
       ],
       "settings": {
-        "foreground": "#66cccc"
+        "foreground": "#6699cc"
       }
     },
     {
@@ -466,7 +466,7 @@
         "punctuation.definition.list_item.markdown"
       ],
       "settings": {
-        "foreground": "#cccccc"
+        "foreground": "#f2777a"
       }
     },
     {
@@ -599,7 +599,7 @@
         "punctuation.section.class.end"
       ],
       "settings": {
-        "foreground": "#cccccc"
+        "foreground": "#f2777a"
       }
     },
     {
@@ -621,7 +621,7 @@
       "name": "Markup - Table",
       "scope": ["markup.table"],
       "settings": {
-        "foreground": "#cccccc"
+        "foreground": "#f2777a"
       }
     }
   ]
