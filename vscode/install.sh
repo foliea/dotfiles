@@ -35,8 +35,8 @@ esac
 
 mkdir -p "$VS_CODE_CONFIG_DIR"
 
-# Handle theme-only mode
-if [ "$THEME_ONLY" = true ]; then
+# Function to install/update VSCode theme
+install_vscode_theme() {
 	if [ -f "$HOME/.config/themes/default/vscode.json" ]; then
 		# Remove old extension if it exists
 		rm -rf "$HOME/.vscode/extensions/local.dynamic-theme-1.0.0"
@@ -51,8 +51,16 @@ if [ "$THEME_ONLY" = true ]; then
 	else
 		echo "No theme file found at $HOME/.config/themes/default/vscode.json"
 	fi
+}
+
+# Handle theme-only mode
+if [ "$THEME_ONLY" = true ]; then
+	install_vscode_theme
 	exit 0
 fi
+
+# Install VSCode theme by default
+install_vscode_theme
 
 ln -sf "$PWD/vscode/settings.json" "$VS_CODE_CONFIG_DIR/settings.json"
 
