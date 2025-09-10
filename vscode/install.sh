@@ -38,8 +38,15 @@ mkdir -p "$VS_CODE_CONFIG_DIR"
 # Handle theme-only mode
 if [ "$THEME_ONLY" = true ]; then
 	if [ -f "$HOME/.config/themes/default/vscode.json" ]; then
-		mkdir -p "$VS_CODE_CONFIG_DIR/themes"
-		cp "$HOME/.config/themes/default/vscode.json" "$VS_CODE_CONFIG_DIR/themes/Default.json"
+		# Remove old extension if it exists
+		rm -rf "$HOME/.vscode/extensions/local.dynamic-theme-1.0.0"
+		
+		# Copy extension folder structure
+		cp -r "$PWD/vscode/local.dynamic-theme-1.0.0" "$HOME/.vscode/extensions/"
+		
+		# Replace theme file with current theme
+		cp "$HOME/.config/themes/default/vscode.json" "$HOME/.vscode/extensions/local.dynamic-theme-1.0.0/theme.json"
+		
 		echo "VSCode theme updated"
 	else
 		echo "No theme file found at $HOME/.config/themes/default/vscode.json"

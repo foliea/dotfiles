@@ -19,7 +19,6 @@
       "args": ["-l", "new-session", "-A", "-s", "vscode:${workspaceFolder}"]
     }
   },
-  "workbench.colorTheme": "Default",
   "workbench.colorCustomizations": {
     "statusBar.background": "#393939",
     "statusBar.foreground": "#cccccc",
@@ -102,5 +101,6 @@
     "/var/folders/4x/50db097n6z73x8r72dzj5lpm0000gp/T/postman-collections-pre-request.instructions.md": true,
     "/var/folders/4x/50db097n6z73x8r72dzj5lpm0000gp/T/postman-folder-post-response.instructions.md": true,
     "/var/folders/4x/50db097n6z73x8r72dzj5lpm0000gp/T/postman-folder-pre-request.instructions.md": true
-  }
+  },
+  "workbench.colorTheme": "Default"
 }

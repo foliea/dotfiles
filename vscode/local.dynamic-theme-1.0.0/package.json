@@ -1,0 +1,20 @@
+{
+    "name": "dynamic-theme",
+    "displayName": "Default",
+    "description": "Dynamic theme switcher",
+    "version": "1.0.0",
+    "publisher": "local",
+    "engines": {
+        "vscode": "^1.0.0"
+    },
+    "categories": ["Themes"],
+    "contributes": {
+        "themes": [
+            {
+                "label": "Default",
+                "uiTheme": "vs-dark",
+                "path": "./theme.json"
+            }
+        ]
+    }
+}
