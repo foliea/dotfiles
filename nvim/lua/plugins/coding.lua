@@ -5,11 +5,6 @@ return {
 		event = "BufReadPost",
 	},
 
-	-- Easy motion
-	{
-		"easymotion/vim-easymotion",
-		event = "BufReadPost",
-	},
 
 	-- Test runner
 	{
