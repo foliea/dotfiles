@@ -7,19 +7,17 @@ return {
 			"hrsh7th/cmp-nvim-lsp",
 		},
 		config = function()
-			local lspconfig = require("lspconfig")
-
-			-- LSP servers setup
-			lspconfig.ruby_lsp.setup({})
-			lspconfig.ts_ls.setup({})
-			lspconfig.bashls.setup({})
-			lspconfig.dockerls.setup({
+			-- LSP servers setup using vim.lsp.config (new API)
+			vim.lsp.config.ruby_lsp = {}
+			vim.lsp.config.ts_ls = {}  
+			vim.lsp.config.bashls = {}
+			vim.lsp.config.dockerls = {
 				on_attach = function(client)
 					client.server_capabilities.semanticTokensProvider = nil
 				end,
-			})
-			lspconfig.prismals.setup({})
-			lspconfig.lua_ls.setup({
+			}
+			vim.lsp.config.prismals = {}
+			vim.lsp.config.lua_ls = {
 				settings = {
 					Lua = {
 						diagnostics = { globals = { "vim" } },
@@ -29,16 +27,31 @@ return {
 						},
 					},
 				},
-			})
-			lspconfig.fish_lsp.setup({})
-			lspconfig.terraformls.setup({})
-			lspconfig.jsonls.setup({})
-			lspconfig.eslint.setup({})
-			lspconfig.biome.setup({
+			}
+			vim.lsp.config.fish_lsp = {}
+			vim.lsp.config.terraformls = {}
+			vim.lsp.config.jsonls = {}
+			vim.lsp.config.eslint = {}
+			vim.lsp.config.biome = {
 				cmd = { "npx", "biome", "lsp-proxy" },
 				filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
-				root_dir = lspconfig.util.root_pattern("biome.json", "biome.jsonc", ".git"),
-			})
+				root_dir = function(fname)
+					return vim.fs.root(fname, { "biome.json", "biome.jsonc", ".git" })
+				end,
+			}
+
+			-- Enable LSP servers
+			vim.lsp.enable("ruby_lsp")
+			vim.lsp.enable("ts_ls") 
+			vim.lsp.enable("bashls")
+			vim.lsp.enable("dockerls")
+			vim.lsp.enable("prismals")
+			vim.lsp.enable("lua_ls")
+			vim.lsp.enable("fish_lsp")
+			vim.lsp.enable("terraformls")
+			vim.lsp.enable("jsonls")
+			vim.lsp.enable("eslint")
+			vim.lsp.enable("biome")
 		end,
 	},
 
@@ -144,6 +157,11 @@ return {
 						prepend_args = { "--disable-uncorrectable" },
 					},
 				},
+				format_on_save = {
+					timeout_ms = 500,
+					lsp_fallback = true,
+				},
+				notify_on_error = false,
 			})
 		end,
 	},
