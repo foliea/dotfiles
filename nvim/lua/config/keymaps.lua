@@ -64,6 +64,11 @@ vim.api.nvim_set_keymap("n", "<leader>gb", ":Gitsigns blame_line<CR>", { noremap
 -- Show whitespace characters
 vim.api.nvim_set_keymap("n", "<leader>sw", ":set list!<CR>", { noremap = true, silent = true })
 
+-- OpenCode
+vim.keymap.set("n", "<leader>i", function()
+	require("opencode").select()
+end, { noremap = true, silent = true, desc = "OpenCode select" })
+
 -- Help / Diagnostics
 vim.api.nvim_set_keymap("n", "<leader>hk", ":Telescope keymaps<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>hc", ":Telescope commands<CR>", { noremap = true, silent = true })
