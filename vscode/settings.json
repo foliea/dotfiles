@@ -2,10 +2,14 @@
   "window.commandCenter": true,
   "terminal.integrated.fontFamily": "FiraCode Nerd Font, monospace",
   "terminal.integrated.fontSize": 13,
-  "terminal.integrated.defaultProfile.osx": "tmux-session",
+  "terminal.integrated.defaultProfile.osx": "fish",
   "terminal.integrated.profiles.osx": {
+    "fish": {
+      "path": "/opt/homebrew/bin/fish",
+      "args": ["-l"]
+    },
     "tmux-session": {
-      "path": "tmux",
+      "path": "/opt/homebrew/bin/tmux",
       "args": ["-l", "new-session", "-A", "-s", "vscode:${workspaceFolder}"]
     }
   },
@@ -95,5 +99,6 @@
     "/var/folders/4x/50db097n6z73x8r72dzj5lpm0000gp/T/postman-folder-post-response.instructions.md": true,
     "/var/folders/4x/50db097n6z73x8r72dzj5lpm0000gp/T/postman-folder-pre-request.instructions.md": true
   },
-  "workbench.colorTheme": "Default"
+  "workbench.colorTheme": "Default",
+  "githubPullRequests.pullBranch": "never"
 }
