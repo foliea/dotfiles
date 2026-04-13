@@ -72,7 +72,7 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
     alt-b = 'exec-and-forget open -n -a "Google Chrome"'
 
     # Launch AI chat
-    alt-i = 'exec-and-forget open -a "Google Gemini"'
+    alt-a = 'exec-and-forget open -a "Google Gemini"'
 
     # Launch color picker
     alt-c = 'exec-and-forget open -a "Digital Color Meter"'
