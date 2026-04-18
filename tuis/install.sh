@@ -40,8 +40,6 @@ mkdir -p "$HOME/.config/fastfetch"
 ln -sf "$PWD/tuis/fastfetch.jsonc" "$HOME/.config/fastfetch/config.jsonc"
 
 # opencode
-mkdir -p "$HOME/.config/opencode/themes"
-ln -sf "$PWD/tuis/opencode/opencode.json" "$HOME/.config/opencode/opencode.json"
-ln -sf "$HOME/.config/themes/default/opencode.json" "$HOME/.config/opencode/themes/default.json"
-rm -rf "$HOME/.config/opencode/prompts"
-ln -sf "$PWD/tuis/opencode/prompts" "$HOME/.config/opencode/prompts"
+mkdir -p "$HOME/.config/opencode"
+rm -rf "$HOME/.config/opencode"/*
+cp -r "$PWD/tuis/opencode"/* "$HOME/.config/opencode/"
