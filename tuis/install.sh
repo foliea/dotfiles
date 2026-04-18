@@ -35,11 +35,6 @@ ln -sf "$PWD/tuis/lazygit/config.yml" "$LAZYGIT_CONFIG_SUPPORT/config.yml"
 mkdir -p "$LAZYDOCKER_CONFIG_SUPPORT"
 ln -sf "$PWD/tuis/lazydocker/config.yml" "$LAZYDOCKER_CONFIG_SUPPORT/config.yml"
 
-# yazi
-rm -rf "$HOME/.config/yazi"
-ln -sf "$PWD/tuis/yazi/" "$HOME/.config/yazi"
-ln -sf "$HOME/.config/themes/default/yazi.toml" "$HOME/.config/yazi/flavors/default.yazi/flavor.toml"
-
 # gh-dash
 mkdir -p "$HOME/.config/gh-dash"
 ln -sf "$HOME/.config/themes/default/gh-dash.yml" "$HOME/.config/gh-dash/config.yml"
