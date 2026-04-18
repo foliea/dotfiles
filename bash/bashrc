@@ -72,10 +72,6 @@ if command -v lazydocker >/dev/null 2>&1; then
 	alias lzd='lazydocker'
 fi
 
-if command -v yazi >/dev/null 2>&1; then
-	alias y='yazi'
-fi
-
 alias gbs="git branch | sed 's/^\* //' | sed 's/  *//' | fzf --preview-window=right:60% --preview 'git log --oneline --graph --date=relative --branches={1} --' | xargs git switch"
 
 # Prompt setup

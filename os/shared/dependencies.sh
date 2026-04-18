@@ -40,7 +40,6 @@ brew install \
 	poppler \
 	resvg \
 	imagemagick \
-	yazi \
 	lazygit \
 	jesseduffield/lazydocker/lazydocker \
 	sst/tap/opencode \

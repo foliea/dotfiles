@@ -77,9 +77,6 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
     # Launch color picker
     alt-c = 'exec-and-forget open -a "Digital Color Meter"'
 
-    # Launch file explorer
-    alt-e = 'exec-and-forget open -n -a WezTerm --args start -- yazi ~'
-
     # Launch settings
     alt-s = 'exec-and-forget open -n -a "System Settings"'
 
