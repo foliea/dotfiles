@@ -82,7 +82,7 @@ alias gbs="git branch | sed 's/^\* //' | sed 's/  *//' | fzf --preview-window=ri
 eval "$(starship init bash)"
 
 iwork() {
-	$HOME/.config/tmux/init-workspace.sh "$PWD" false
+	$HOME/.config/scripts/init-workspace.sh "$PWD" false
 }
 
 # Added by OrbStack: command-line tools and integration

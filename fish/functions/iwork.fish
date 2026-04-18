@@ -1,3 +1,3 @@
 function iwork
-    $HOME/.config/tmux/init-workspace.sh "$PWD" false
+    $HOME/.config/scripts/init-workspace.sh "$PWD" false
 end
