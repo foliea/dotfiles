@@ -106,7 +106,7 @@ Cross-platform applications with consistent configuration:
 - **Unified window management**: Consistent tiling window manager keybindings across platforms
 - **Custom shell setup**: Fish and Bash configurations with cross-platform prompt (Starship)
 - **Editor configurations**: Neovim with Lua
-- **TUI applications**: Preconfigured btop, k9s, gh-dash, and more
+- **TUI applications**: Preconfigured btop, k9s, and more
 - **Terminal experience**: WezTerm with platform-specific optimizations and consistent theming
 - **Development toolchain**: Mise for version management, comprehensive LSP support, and automated package installation
 - **Modular installation**: Install everything or specific components as needed

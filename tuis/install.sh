@@ -35,10 +35,6 @@ ln -sf "$PWD/tuis/lazygit/config.yml" "$LAZYGIT_CONFIG_SUPPORT/config.yml"
 mkdir -p "$LAZYDOCKER_CONFIG_SUPPORT"
 ln -sf "$PWD/tuis/lazydocker/config.yml" "$LAZYDOCKER_CONFIG_SUPPORT/config.yml"
 
-# gh-dash
-mkdir -p "$HOME/.config/gh-dash"
-ln -sf "$HOME/.config/themes/default/gh-dash.yml" "$HOME/.config/gh-dash/config.yml"
-
 # fastfetch
 mkdir -p "$HOME/.config/fastfetch"
 ln -sf "$PWD/tuis/fastfetch.jsonc" "$HOME/.config/fastfetch/config.jsonc"
