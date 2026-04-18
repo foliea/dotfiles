@@ -5,7 +5,7 @@
 
 My personal configuration files for setting up and managing development environments across macOS and Linux systems.
 
-<img src="/misc/images/windows_2025.png" width="350"/> <img src="/misc/images/macOs_2025.png" width="350"/>
+<img src="/misc/images/macOs_2025.png" width="350"/>
 
 ## Table of Contents
 
@@ -23,8 +23,8 @@ This repository contains configuration files and scripts to automate the setup o
 - **Cross-platform core**: Shared configurations for terminal (WezTerm), prompt (Starship), and development tools
 - **Shell configurations**: Fish and Bash with custom functions and plugins
 - **Editor setups**: Neovim with Lua configuration and VS Code settings
-- **Window management**: Tiling window managers with consistent keybindings (Aerospace for macOS, GlazeWM for Windows)
-- **Platform-specific optimizations**: Native configurations for macOS, Linux, and Windows (including WSL 2)
+- **Window management**: Tiling window managers with consistent keybindings (Aerospace for macOS)
+- **Platform-specific optimizations**: Native configurations for macOS and Linux
 - **Development toolchain**: Language servers, formatters, and package managers via Mise
 
 ## Installation
@@ -93,22 +93,19 @@ Then configure platform-specific applications:
 
 # Linux - System configurations
 ./os/linux/install.sh && ./os/linux/configure.sh
-
-# Windows - PowerToys, GlazeWM, Zebar (run from Windows host)
-./os/windows/install.sh && ./os/windows/configure.sh
 ```
 
 ### Shared Tools
 Cross-platform applications with consistent configuration:
-- **WezTerm**: Terminal with unified theming and WSL integration
+- **WezTerm**: Terminal with unified theming
 - **Starship**: Shell prompt with custom symbols and git integration
 - **Mise**: Version manager for Ruby, Node.js, Terraform
 - **Package managers**: Consistent tooling via default gems/npm packages
 
 ## Features
 
-- **Multi-platform consistency**: Identical development experience across macOS, Linux, and Windows (WSL 2) using Homebrew and shared configurations
-- **Unified window management**: Consistent tiling window manager keybindings across all platforms
+- **Multi-platform consistency**: Identical development experience across macOS and Linux using Homebrew and shared configurations
+- **Unified window management**: Consistent tiling window manager keybindings across platforms
 - **Custom shell setup**: Fish and Bash configurations with cross-platform prompt (Starship)
 - **Editor configurations**: Neovim with Lua and VS Code with synchronized settings
 - **TUI applications**: Preconfigured btop, k9s, yazi, gh-dash, and more
