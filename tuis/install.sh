@@ -37,7 +37,8 @@ ln -sf "$PWD/tuis/lazydocker/config.yml" "$LAZYDOCKER_CONFIG_SUPPORT/config.yml"
 
 # fastfetch
 mkdir -p "$HOME/.config/fastfetch"
-ln -sf "$PWD/tuis/fastfetch.jsonc" "$HOME/.config/fastfetch/config.jsonc"
+rm -rf "$HOME/.config/fastfetch"/*
+cp -r "$PWD/tuis/fastfetch"/* "$HOME/.config/fastfetch/"
 
 # opencode
 mkdir -p "$HOME/.config/opencode"
