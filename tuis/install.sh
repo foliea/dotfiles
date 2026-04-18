@@ -1,7 +1,6 @@
 #!/bin/sh
 set -e
 
-# OS-specific config paths
 OS="$(uname -s)"
 
 if [ "$OS" = "Darwin" ]; then
@@ -17,30 +16,32 @@ else
 	exit 1
 fi
 
-# btop
-mkdir -p "$HOME/.config/btop/themes"
-ln -sf "$PWD/tuis/btop.conf" "$HOME/.config/btop/btop.conf"
-ln -sf "$HOME/.config/themes/default/btop.theme" "$HOME/.config/btop/themes/default.theme"
+rm -f "$HOME/.config/btop/btop.conf"
+cp "$PWD/tuis/btop.conf" "$HOME/.config/btop/btop.conf"
+if [ -f "$HOME/.config/themes/default/btop.theme" ]; then
+  mkdir -p "$HOME/.config/btop/themes"
+	cp "$HOME/.config/themes/default/btop.theme" "$HOME/.config/btop/themes/current.theme"
+fi
 
-# k9s
 mkdir -p "$K9S_CONFIG_SUPPORT/skins"
-ln -sf "$HOME/.config/themes/default/k9s.yaml" "$K9S_CONFIG_SUPPORT/skins/default.yaml"
-ln -sf "$PWD/tuis/k9s/config.yaml" "$K9S_CONFIG_SUPPORT/config.yaml"
+rm -rf "$K9S_CONFIG_SUPPORT"/*
+cp -r "$PWD/tuis/k9s"/* "$K9S_CONFIG_SUPPORT/"
+if [ -f "$HOME/.config/themes/default/k9s.yaml" ]; then
+	cp "$HOME/.config/themes/default/k9s.yaml" "$K9S_CONFIG_SUPPORT/skins/default.yaml"
+fi
 
-# lazygit
 mkdir -p "$LAZYGIT_CONFIG_SUPPORT"
-ln -sf "$PWD/tuis/lazygit/config.yml" "$LAZYGIT_CONFIG_SUPPORT/config.yml"
+rm -rf "$LAZYGIT_CONFIG_SUPPORT"/*
+cp -r "$PWD/tuis/lazygit"/* "$LAZYGIT_CONFIG_SUPPORT/"
 
-# lazydocker
 mkdir -p "$LAZYDOCKER_CONFIG_SUPPORT"
-ln -sf "$PWD/tuis/lazydocker/config.yml" "$LAZYDOCKER_CONFIG_SUPPORT/config.yml"
+rm -rf "$LAZYDOCKER_CONFIG_SUPPORT"/*
+cp -r "$PWD/tuis/lazydocker"/* "$LAZYDOCKER_CONFIG_SUPPORT/"
 
-# fastfetch
 mkdir -p "$HOME/.config/fastfetch"
 rm -rf "$HOME/.config/fastfetch"/*
 cp -r "$PWD/tuis/fastfetch"/* "$HOME/.config/fastfetch/"
 
-# opencode
 mkdir -p "$HOME/.config/opencode"
 rm -rf "$HOME/.config/opencode"/*
 cp -r "$PWD/tuis/opencode"/* "$HOME/.config/opencode/"
