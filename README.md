@@ -22,7 +22,7 @@ This repository contains configuration files and scripts to automate the setup o
 
 - **Cross-platform core**: Shared configurations for terminal (WezTerm), prompt (Starship), and development tools
 - **Shell configurations**: Fish and Bash with custom functions and plugins
-- **Editor setups**: Neovim with Lua configuration and VS Code settings
+- **Editor setups**: Neovim with Lua configuration
 - **Window management**: Tiling window managers with consistent keybindings (Aerospace for macOS)
 - **Platform-specific optimizations**: Native configurations for macOS and Linux
 - **Development toolchain**: Language servers, formatters, and package managers via Mise
@@ -66,8 +66,6 @@ make fish     # Install only Fish shell configuration
 make bash     # Install only Bash configuration
 make git      # Install only Git configuration
 make tmux     # Install only Tmux configuration
-make vscode   # Install only VS Code configuration
-make tuis     # Install only TUI configuration
 ```
 
 ## Post-installation
@@ -107,7 +105,7 @@ Cross-platform applications with consistent configuration:
 - **Multi-platform consistency**: Identical development experience across macOS and Linux using Homebrew and shared configurations
 - **Unified window management**: Consistent tiling window manager keybindings across platforms
 - **Custom shell setup**: Fish and Bash configurations with cross-platform prompt (Starship)
-- **Editor configurations**: Neovim with Lua and VS Code with synchronized settings
+- **Editor configurations**: Neovim with Lua
 - **TUI applications**: Preconfigured btop, k9s, yazi, gh-dash, and more
 - **Terminal experience**: WezTerm with platform-specific optimizations and consistent theming
 - **Development toolchain**: Mise for version management, comprehensive LSP support, and automated package installation

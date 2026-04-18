@@ -5,7 +5,7 @@ This file provides guidance to agentic coding agents when working with this dotf
 ## Commands
 
 ### Build/Test/Lint
-- `make` - Install all configurations (fish, bash, git, nvim, tmux, vscode, tuis)
+- `make` - Install all configurations (fish, bash, git, nvim, tmux)
 - `make test` - Run integration tests using expect script (tests full installation flow)
 - `make <module>` - Install specific module (e.g., `make nvim`, `make fish`)
 - No single test command - this is a configuration repository, not a code project
