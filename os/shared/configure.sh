@@ -3,7 +3,6 @@ set -e
 
 # Themes
 rm -rf "$HOME/.config/themes"
-mkdir -p "$HOME/.config/themes"
 cp -r "$PWD/themes" "$HOME/.config/themes"
 rm -rf "$HOME/.config/themes/default"
 cp -r "$PWD/themes/Madness" "$HOME/.config/themes/default"
