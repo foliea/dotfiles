@@ -16,7 +16,11 @@ jobs:
       - name: Install system packages
         run: |
           chmod +x os/ubuntu/dependencies.sh
-          ./os/ubuntu/dependencies.sh install_shared_deps
+          sudo ./os/ubuntu/dependencies.sh install_ubuntu_deps
+
+      - name: Install brew
+        run: |
+          ./os/ubuntu/dependencies.sh install_homebrew
 
       - name: Run tests
         run: |
