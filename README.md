@@ -38,7 +38,7 @@ Before installing any configurations, install the required dependencies:
 ./os/macOS/dependencies.sh
 
 # Linux
-./os/linux/dependencies.sh
+./os/shared/dependencies.sh
 ```
 
 This installs essential tools (git, neovim, tmux, fish, etc.) needed by the dotfiles configurations.
@@ -90,7 +90,7 @@ Then configure platform-specific applications:
 ./os/macOS/install.sh && ./os/macOS/configure.sh
 
 # Linux - System configurations
-./os/linux/install.sh && ./os/linux/configure.sh
+./os/shared/dependencies.sh
 ```
 
 ### Shared Tools

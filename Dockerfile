@@ -21,4 +21,4 @@ RUN /tmp/ubuntu.sh install_homebrew
 
 ENV PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${PATH}"
 
-RUN ulimit -n 65536 && os/linux/dependencies.sh
+RUN ulimit -n 65536 && os/shared/dependencies.sh
