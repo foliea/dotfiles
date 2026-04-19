@@ -18,15 +18,9 @@ fi
 
 cp "$PWD/tuis/btop/btop.conf" "$HOME/.config/btop/btop.conf"
 mkdir -p "$HOME/.config/btop/themes"
-if [ -f "$HOME/.config/themes/default/btop.theme" ]; then
-	cp "$HOME/.config/themes/default/btop.theme" "$HOME/.config/btop/themes/current.theme"
-fi
 
 cp "$PWD/tuis/k9s/config.yaml" "$K9S_CONFIG_SUPPORT/config.yaml"
 mkdir -p "$K9S_CONFIG_SUPPORT/skins"
-if [ -f "$HOME/.config/themes/default/k9s.yaml" ]; then
-	cp "$HOME/.config/themes/default/k9s.yaml" "$K9S_CONFIG_SUPPORT/skins/current.yaml"
-fi
 
 mkdir -p "$LAZYGIT_CONFIG_SUPPORT"
 rm -rf "$LAZYGIT_CONFIG_SUPPORT"/*

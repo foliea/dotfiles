@@ -7,6 +7,9 @@ sh "$(dirname "$0")/../shared/configure.sh"
 mkdir -p "$HOME/.config/aerospace"
 ln -sf "$PWD/os/macOs/aerospace.toml" "$HOME/.config/aerospace/aerospace.toml"
 
+# Wallpaper
+sh "$(dirname "$0")/set-wallpaper.sh"
+
 # Global macOS settings
 defaults write -g NSWindowShouldDragOnGesture -bool true
 defaults write com.apple.dock autohide -bool true

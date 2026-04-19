@@ -1,10 +1,7 @@
 #!/bin/sh
 set -e
 
-COLOR_FILE="$HOME/.config/themes/default/wallpaper.txt"
-
-# Read color code
-COLOR=$(head -n 1 "$COLOR_FILE" | tr -d '\n' | tr -d ' ')
+COLOR="0,0,0"
 
 # Setup wallpapers folder
 WALLPAPER_DIR="$HOME/.config/wallpapers"
