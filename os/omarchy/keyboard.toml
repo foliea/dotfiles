@@ -1,0 +1,11 @@
+[remap]
+# Maps Copilot (Meta+Shift+F23) to a clean Super key
+KEY_LEFTMETA-KEY_LEFTSHIFT-KEY_F23 = ["KEY_LEFTMETA"]
+
+# Swaps Caps Lock and Left Control
+KEY_CAPSLOCK = ["KEY_LEFTCTRL"]
+KEY_LEFTCTRL = ["KEY_CAPSLOCK"]
+
+[settings]
+# Necessary to suppress the original hardware signals
+GRAB_DEVICE = "true"

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Maps
+Comment=Maps
+Exec=omarchy-launch-webapp https://map.google.com
+Terminal=false
+Type=Application
+Icon=/home/foliea/.local/share/applications/icons/Maps.png
+StartupNotify=true

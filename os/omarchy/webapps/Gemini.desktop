@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Gemini
+Comment=Gemini
+Exec=omarchy-launch-webapp https://gemini.google.com/
+Terminal=false
+Type=Application
+Icon=/home/foliea/.local/share/applications/icons/Gemini.png
+StartupNotify=true

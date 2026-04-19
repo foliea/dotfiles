@@ -1,0 +1,15 @@
+[Unit]
+Description=Makima Key Remapper (User Service)
+# Ensures the service starts after Hyprland/Wayland is ready
+After=graphical-session.target
+
+[Service]
+# Path to the binary
+ExecStart=/usr/bin/makima
+Restart=always
+# Points Makima to your local config folder
+Environment=MAKIMA_CONFIG=%h/.config/makima
+
+[Install]
+# Ties the service to your login session
+WantedBy=graphical-session.target
