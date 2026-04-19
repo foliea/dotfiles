@@ -3,7 +3,7 @@ FROM ubuntu:24.04
 ENV USER=developer
 ENV PROJECT_DIR=/home/${USER}/dotfiles
 
-COPY os/ubuntu/configure.sh /tmp/ubuntu.sh
+COPY os/ubuntu/dependencies.sh /tmp/ubuntu.sh
 RUN chmod +x /tmp/ubuntu.sh && \
     /tmp/ubuntu.sh install_ubuntu_deps
 
@@ -21,4 +21,4 @@ RUN /tmp/ubuntu.sh install_homebrew
 
 ENV PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${PATH}"
 
-RUN ulimit -n 65536 && os/shared/dependencies.sh
+RUN /tmp/ubuntu.sh install_shared_deps
