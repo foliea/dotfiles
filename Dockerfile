@@ -3,7 +3,7 @@ FROM ubuntu:24.04
 ENV USER=developer
 ENV PROJECT_DIR=/home/${USER}/dotfiles
 
-COPY os/linux/ubuntu.sh /tmp/ubuntu.sh
+COPY os/ubuntu/install.sh /tmp/ubuntu.sh
 RUN chmod +x /tmp/ubuntu.sh && \
     /tmp/ubuntu.sh install_ubuntu_deps
 

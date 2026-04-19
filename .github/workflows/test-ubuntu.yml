@@ -15,12 +15,12 @@ jobs:
 
       - name: Install system packages
         run: |
-          chmod +x os/linux/ubuntu.sh
-          sudo ./os/linux/ubuntu.sh install_ubuntu_deps
+chmod +x os/ubuntu/install.sh
+        sudo ./os/ubuntu/install.sh install_ubuntu_deps
 
       - name: Install brew
         run: |
-          ./os/linux/ubuntu.sh install_homebrew
+          ./os/ubuntu/install.sh install_homebrew
           echo "PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH" >> $GITHUB_ENV
           echo "HOMEBREW_NO_ANALYTICS=1" >> $GITHUB_ENV
 
