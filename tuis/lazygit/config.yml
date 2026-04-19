@@ -1,7 +1,4 @@
 git:
-  pagers:
-    - colorArg: always
-      pager: delta --dark --paging=never --line-numbers
   parseEmoji: true
   autoFetch: true
   autoRefresh: true
