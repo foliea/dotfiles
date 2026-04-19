@@ -67,15 +67,3 @@ ln -sf "$PWD/os/shared/default-gems" "$HOME/.default-gems"
 
 # Node.js
 ln -sf "$PWD/os/shared/default-npm-packages" "$HOME/.default-npm-packages"
-
-# Centralize theme folder
-rm -rf "$HOME/.config/themes"
-ln -sf "$PWD/themes" "$HOME/.config/themes"
-
-# Scripts
-mkdir -p "$HOME/.config/scripts"
-cp -r "$PWD/os/shared/scripts/"* "$HOME/.config/scripts/"
-
-# Setup default theme
-rm -rf "$PWD/themes/default"
-cp -r "$PWD/themes/Madness" "$HOME/.config/themes/default"
