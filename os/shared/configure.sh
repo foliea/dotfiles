@@ -11,10 +11,6 @@ if [ ! -f "$HOME/.config/k9s/skins/current.yaml" ]; then
 	cp "$PWD/themes/k9s.yaml" "$HOME/.config/k9s/skins/current.yaml"
 fi
 
-# Scripts
-rm -rf "$HOME/.config/scripts"
-cp -r "$PWD/os/shared/scripts" "$HOME/.config/scripts"
-
 # Mise
 rm -rf "$HOME/.config/mise"
 cp -r "$PWD/os/shared/mise" "$HOME/.config/mise"

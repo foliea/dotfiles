@@ -5,62 +5,31 @@ OMARCHY_RC="$HOME/.local/share/omarchy/default/bash/rc"
 if [ -f "$OMARCHY_RC" ]; then
     source "$OMARCHY_RC"
 else
-    if [ -d "/opt/homebrew/bin" ]; then
-        export PATH="/opt/homebrew/bin:$PATH"
-    fi
-
-    if [ -d "/home/linuxbrew" ]; then
-        export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
-        export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar"
-        export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew"
-
-        export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
-
-        if [ -n "$MANPATH" ]; then
-            export MANPATH=":$MANPATH"
-        fi
-        case ":$INFOPATH:" in
-        *:/home/linuxbrew/.linuxbrew/share/info:*) ;;
-        *) export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH" ;;
-        esac
-
-        export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
+    if [ -f "${HOME}/.config/bash/brew" ]; then
+        source "${HOME}/.config/bash/brew"
     fi
 
     export PATH="$HOME/.local/bin:$PATH"
-
-    if command -v eza >/dev/null 2>&1; then
-        alias ls="eza"
-    fi
-
-    if command -v rg >/dev/null 2>&1; then
-        alias grep='rg'
-    fi
-
-    if command -v bat >/dev/null 2>&1; then
-        alias cat='bat'
-    fi
 
     if command -v zoxide >/dev/null 2>&1; then
         eval "$(zoxide init bash --cmd cd)"
     fi
 
-    eval "$(starship init bash)"
-
+    if command -v starship >/dev/null 2>&1; then
+        eval "$(starship init bash)"
+    fi
+ 
     if command -v mise >/dev/null 2>&1; then
         eval "$(mise activate bash)"
     fi
+    
+    if command -v eza >/dev/null 2>&1; then
+        alias ls="eza"
+    fi
+   
+    if [ -f "$HOME/.config/bash/functions" ]; then
+        source "$HOME/.config/bash/functions"
+    fi
 fi
-
-export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
-
-if command -v eza >/dev/null 2>&1; then
-    alias ll='eza -lF --icons'
-    alias la='eza -lA --icons'
-fi
-
-iwork() {
-    $HOME/.config/scripts/init-workspace.sh "$PWD" false
-}
 
 [ -f "$HOME/.orbstack/shell/init.bash" ] && source "$HOME/.orbstack/shell/init.bash"
