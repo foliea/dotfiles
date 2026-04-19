@@ -29,6 +29,7 @@ install_shared_deps() {
 main() {
 	sudo install_ubuntu_deps
 	install_homebrew
+  install_shared_deps
 }
 
 if [ "$1" = "install_ubuntu_deps" ]; then
