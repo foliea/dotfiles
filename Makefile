@@ -1,7 +1,7 @@
-.PHONY: all test help fish bash git nvim tmux
+.PHONY: all test help fish bash git nvim tmux tuis
 
 SCRIPTS_DIR := scripts
-MODULES := fish bash git nvim tmux
+MODULES := fish bash git nvim tmux tuis
 
 all: $(MODULES)
 
@@ -20,4 +20,5 @@ help:
 	@echo "  git        Install Git config"
 	@echo "  nvim       Install Neovim config"
 	@echo "  tmux       Install Tmux config"
+	@echo "  tuis       Install TUI config"
 	@echo "  help       Show this help message"
