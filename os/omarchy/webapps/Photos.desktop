@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Name=Photos
-Comment=Photos
-Exec=omarchy-launch-webapp https://photos.google.com
-Terminal=false
-Type=Application
-Icon=/home/foliea/.local/share/applications/icons/Photos.png
-StartupNotify=true

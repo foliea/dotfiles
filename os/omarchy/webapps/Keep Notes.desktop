@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Name=Keep Notes
-Comment=Keep Notes
-Exec=omarchy-launch-webapp https://keep.google.com
-Terminal=false
-Type=Application
-Icon=/home/foliea/.local/share/applications/icons/Keep Notes.png
-StartupNotify=true
