@@ -15,21 +15,8 @@ jobs:
 
       - name: Install system packages
         run: |
-          chmod +x os/ubuntu/configure.sh
-          sudo ./os/ubuntu/configure.sh install_ubuntu_deps
-
-      - name: Install brew
-        run: |
-          ./os/ubuntu/configure.sh install_homebrew
-          echo "PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH" >> $GITHUB_ENV
-          echo "HOMEBREW_NO_ANALYTICS=1" >> $GITHUB_ENV
-
-      - name: Install dependencies
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          chmod +x os/shared/dependencies.sh
-          ./os/shared/dependencies.sh
+          chmod +x os/ubuntu/dependencies.sh
+          ./os/ubuntu/dependencies.sh install_shared_deps
 
       - name: Run tests
         run: |

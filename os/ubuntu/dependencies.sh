@@ -22,9 +22,14 @@ install_homebrew() {
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 }
 
+install_shared_deps() {
+	./os/shared/dependencies.sh
+}
+
 main() {
 	sudo install_ubuntu_deps
 	install_homebrew
+	install_shared_deps
 }
 
 if [ "$1" = "install_ubuntu_deps" ]; then
