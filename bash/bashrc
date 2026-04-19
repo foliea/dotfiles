@@ -11,10 +11,6 @@ else
 
     export PATH="$HOME/.local/bin:$PATH"
 
-    if command -v zoxide >/dev/null 2>&1; then
-        eval "$(zoxide init bash --cmd cd)"
-    fi
-
     if command -v starship >/dev/null 2>&1; then
         eval "$(starship init bash)"
     fi
@@ -23,10 +19,10 @@ else
         eval "$(mise activate bash)"
     fi
     
-    if command -v eza >/dev/null 2>&1; then
-        alias ls="eza"
+    if [ -f "$HOME/.config/bash/aliases" ]; then
+        source "$HOME/.config/bash/aliases"
     fi
-   
+    
     if [ -f "$HOME/.config/bash/functions" ]; then
         source "$HOME/.config/bash/functions"
     fi
