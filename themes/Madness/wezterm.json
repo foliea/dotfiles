@@ -1,10 +1,10 @@
 {
-  "background": "#212121",
-  "foreground": "#e0e0e0",
-  "cursor_bg": "#e0e0e0",
-  "cursor_fg": "#212121",
-  "selection_bg": "#444444",
-  "selection_fg": "#e0e0e0",
+  "background": "#000000",
+  "foreground": "#eeeeee",
+  "cursor_bg": "#eeeeee",
+  "cursor_fg": "#000000",
+  "selection_bg": "#404040",
+  "selection_fg": "#eeeeee",
   "ansi": [
     "#000000",
     "#e06c75",
@@ -16,7 +16,7 @@
     "#ffffff"
   ],
   "brights": [
-    "#6a6a6a",
+    "#808080",
     "#e06c75",
     "#7fd88f",
     "#e5c07b",

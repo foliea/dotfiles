@@ -3,28 +3,28 @@
 # All colors are in 24-bit RGB format: "#RRGGBB", "#BW" or "0-255 0-255 0-255"
 
 # Main background color
-theme[main_bg]="#212121"
+theme[main_bg]="#000000"
 
 # Main text color
-theme[main_fg]="#e0e0e0"
+theme[main_fg]="#eeeeee"
 
 # Title color for boxes
-theme[title]="#e0e0e0"
+theme[title]="#eeeeee"
 
 # Highlight color for keyboard shortcuts
-theme[hi_fg]="#e0e0e0"
+theme[hi_fg]="#eeeeee"
 
 # Background color of selected item in processes box
-theme[selected_bg]="#444444"
+theme[selected_bg]="#404040"
 
 # Foreground color of selected item in processes box
-theme[selected_fg]="#e0e0e0"
+theme[selected_fg]="#eeeeee"
 
 # Color of inactive/disabled text
-theme[inactive_fg]="#6a6a6a"
+theme[inactive_fg]="#808080"
 
 # Misc colors for processes box including mini cpu graphs, details memory graph and details status text
-theme[proc_misc]="#6a6a6a"
+theme[proc_misc]="#808080"
 
 # Cpu box outline color
 theme[cpu_box]="#fab283"
