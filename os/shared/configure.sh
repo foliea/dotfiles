@@ -2,8 +2,14 @@
 set -e
 
 # Themes
-cp -r "$PWD/themes/btop.theme" "$HOME/.config/btop/themes/current.theme"
-cp -r "$PWD/themes/k9s.yaml" "$HOME/.config/k9s/skins/current.yaml"
+mkdir -p "$HOME/.config/btop/themes"
+if [ ! -f "$HOME/.config/btop/themes/current.theme" ]; then
+	cp "$PWD/themes/btop.theme" "$HOME/.config/btop/themes/current.theme"
+fi
+mkdir -p "$HOME/.config/k9s/skins"
+if [ ! -f "$HOME/.config/k9s/skins/current.yaml" ]; then
+	cp "$PWD/themes/k9s.yaml" "$HOME/.config/k9s/skins/current.yaml"
+fi
 
 # Scripts
 rm -rf "$HOME/.config/scripts"
