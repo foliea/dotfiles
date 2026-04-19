@@ -1,7 +1,7 @@
-.PHONY: all test help bash git nvim tmux tuis
+.PHONY: all test help bash git nvim tmux mise starship tuis
 
 SCRIPTS_DIR := scripts
-MODULES := bash git nvim tmux tuis
+MODULES := bash git nvim tmux mise starship tuis
 
 all: $(MODULES)
 

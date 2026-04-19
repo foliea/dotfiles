@@ -1,37 +1,10 @@
 # dotfiles
 
-[![Run tests on macOS](https://github.com/foliea/dotfiles/actions/workflows/test-macOS.yml/badge.svg)](https://github.com/foliea/dotfiles/actions/workflows/test-macOS.yml)
-[![Run tests on Ubuntu](https://github.com/foliea/dotfiles/actions/workflows/test-ubuntu.yml/badge.svg)](https://github.com/foliea/dotfiles/actions/workflows/test-ubuntu.yml)
+My personal configuration files for macOS and Linux.
 
-My personal configuration files for setting up and managing development environments across macOS and Linux systems.
+## Dependencies
 
-<img src="/misc/images/macOs_2025.png" width="350"/>
-
-## Table of Contents
-
-- [Overview](#overview)
-- [Dependencies](#dependencies)
-- [Installation](#installation)
-- [Post-installation](#post-installation)
-- [Features](#features)
-- [Contributing](#contributing)
-
-## Overview
-
-This repository contains configuration files and scripts to automate the setup of development environments across multiple platforms. It includes:
-
-- **Cross-platform core**: Shared configurations for terminal (WezTerm), prompt (Starship), and development tools
-- **Shell configurations**: Bash with custom functions and plugins
-- **Editor setups**: Neovim with Lua configuration
-- **Window management**: Tiling window managers with consistent keybindings (Aerospace for macOS)
-- **Platform-specific optimizations**: Native configurations for macOS and Linux
-- **Development toolchain**: Language servers, formatters, and package managers via Mise
-
-## Installation
-
-### Prerequisites
-
-Before installing any configurations, install the required dependencies:
+Install required dependencies before configuring:
 
 ```bash
 # macOS
@@ -41,75 +14,6 @@ Before installing any configurations, install the required dependencies:
 ./os/shared/dependencies.sh
 ```
 
-This installs essential tools (git, neovim, tmux, bash, etc.) needed by the dotfiles configurations.
+Requires [Homebrew](https://brew.sh/) or [Linuxbrew](https://docs.brew.sh/Homebrew-on-Linux).
 
-You need to install [Homebrew](https://brew.sh/)/[Linuxbrew](https://docs.brew.sh/Homebrew-on-Linux) first.
-For Ubuntu 24.04 users, you can use `./os/ubuntu/dependencies.sh install_ubuntu_deps`.
-
-### Install Configurations
-
-This repository is **modular**: you can install all configurations at once, or install only the components you need.
-
-#### Install everything
-
-```bash
-make
-```
-
-#### Install a specific component
-
-You can install only a specific configuration by running its target. For example:
-
-```bash
-make nvim     # Install only Neovim configuration
-make bash     # Install only Bash configuration
-make git      # Install only Git configuration
-make tmux     # Install only Tmux configuration
-```
-
-## Post-installation
-
-After installation, complete the following steps:
-
-1. Change your login shell to Bash:
-   ```bash
-   chsh -s $(which bash) $USER
-   ```
-2. Spawn a new login shell.
-
-## Platform Applications
-
-The `os/` directory contains platform-specific application installations and configurations, separate from the terminal-based dotfiles above.
-
-### Install Applications
-Then configure platform-specific applications:
-
-```bash
-# macOS - Aerospace window manager, system preferences
-./os/macOS/install.sh && ./os/macOS/configure.sh
-
-# Linux - System configurations
-./os/shared/dependencies.sh
-```
-
-### Shared Tools
-Cross-platform applications with consistent configuration:
-- **WezTerm**: Terminal with unified theming
-- **Starship**: Shell prompt with custom symbols and git integration
-- **Mise**: Version manager for Ruby, Node.js, Terraform
-- **Package managers**: Consistent tooling via default gems/npm packages
-
-## Features
-
-- **Multi-platform consistency**: Identical development experience across macOS and Linux using Homebrew and shared configurations
-- **Unified window management**: Consistent tiling window manager keybindings across platforms
-- **Custom shell setup**: Fish and Bash configurations with cross-platform prompt (Starship)
-- **Editor configurations**: Neovim with Lua
-- **TUI applications**: Preconfigured btop, k9s, and more
-- **Terminal experience**: WezTerm with platform-specific optimizations and consistent theming
-- **Development toolchain**: Mise for version management, comprehensive LSP support, and automated package installation
-- **Modular installation**: Install everything or specific components as needed
-
-## Contributing
-
-Contributions are welcome! Feel free to open issues or submit pull requests to improve this repository.
+For Ubuntu 24.04: `./os/ubuntu/dependencies.sh install_ubuntu_deps`

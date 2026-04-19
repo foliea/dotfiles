@@ -14,7 +14,3 @@ fi
 # Mise
 rm -rf "$HOME/.config/mise"
 cp -r "$PWD/os/shared/mise" "$HOME/.config/mise"
-
-# Starship
-rm -f "$HOME/.config/starship.toml"
-cp "$PWD/os/shared/starship.toml" "$HOME/.config/starship.toml"
