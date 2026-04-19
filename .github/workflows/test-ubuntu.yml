@@ -15,8 +15,8 @@ jobs:
 
       - name: Install system packages
         run: |
-chmod +x os/ubuntu/configure.sh
-        sudo ./os/ubuntu/configure.sh install_ubuntu_deps
+          chmod +x os/ubuntu/configure.sh
+          sudo ./os/ubuntu/configure.sh install_ubuntu_deps
 
       - name: Install brew
         run: |
