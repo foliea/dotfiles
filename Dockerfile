@@ -9,7 +9,7 @@ RUN chmod +x /tmp/ubuntu.sh && \
 
 RUN useradd -ms /bin/bash ${USER} && \
     echo "${USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
-    chsh -s $(which fish) ${USER}
+    chsh -s $(which bash) ${USER}
 
 COPY . ${PROJECT_DIR}
 RUN chown -R ${USER}:${USER} ${PROJECT_DIR}

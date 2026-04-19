@@ -21,7 +21,7 @@ My personal configuration files for setting up and managing development environm
 This repository contains configuration files and scripts to automate the setup of development environments across multiple platforms. It includes:
 
 - **Cross-platform core**: Shared configurations for terminal (WezTerm), prompt (Starship), and development tools
-- **Shell configurations**: Fish and Bash with custom functions and plugins
+- **Shell configurations**: Bash with custom functions and plugins
 - **Editor setups**: Neovim with Lua configuration
 - **Window management**: Tiling window managers with consistent keybindings (Aerospace for macOS)
 - **Platform-specific optimizations**: Native configurations for macOS and Linux
@@ -41,7 +41,7 @@ Before installing any configurations, install the required dependencies:
 ./os/shared/dependencies.sh
 ```
 
-This installs essential tools (git, neovim, tmux, fish, etc.) needed by the dotfiles configurations.
+This installs essential tools (git, neovim, tmux, bash, etc.) needed by the dotfiles configurations.
 
 You need to install [Homebrew](https://brew.sh/)/[Linuxbrew](https://docs.brew.sh/Homebrew-on-Linux) first.
 For Ubuntu 24.04 users, you can use `./os/ubuntu/dependencies.sh install_ubuntu_deps`.
@@ -62,7 +62,6 @@ You can install only a specific configuration by running its target. For example
 
 ```bash
 make nvim     # Install only Neovim configuration
-make fish     # Install only Fish shell configuration
 make bash     # Install only Bash configuration
 make git      # Install only Git configuration
 make tmux     # Install only Tmux configuration
@@ -72,9 +71,9 @@ make tmux     # Install only Tmux configuration
 
 After installation, complete the following steps:
 
-1. Change your login shell to Fish:
+1. Change your login shell to Bash:
    ```bash
-   chsh -s $(which fish) $USER
+   chsh -s $(which bash) $USER
    ```
 2. Spawn a new login shell.
 

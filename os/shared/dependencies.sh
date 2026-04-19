@@ -21,7 +21,6 @@ brew install \
 	hub \
 	gh \
 	bash \
-	fish \
 	starship \
 	tmux \
 	neovim \
@@ -48,7 +47,6 @@ brew install \
 	shfmt \
 	beautysh \
 	lua-language-server \
-	fish-lsp \
 	bash-language-server \
 	dockerfile-language-server \
 	vscode-langservers-extracted
