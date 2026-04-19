@@ -1,86 +1,66 @@
-# If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# Environment variables
-export EDITOR=nvim
-export VISUAL=nvim
-export SHELL=$(which bash)
-export TERM=xterm-256color
-export LC_ALL=en_US.UTF-8
-export PAGER=most
+OMARCHY_RC="$HOME/.local/share/omarchy/default/bash/rc"
 
-set -o vi
+if [ -f "$OMARCHY_RC" ]; then
+    source "$OMARCHY_RC"
+else
+    if [ -d "/opt/homebrew/bin" ]; then
+        export PATH="/opt/homebrew/bin:$PATH"
+    fi
 
-if [ -d "/opt/homebrew/bin" ]; then
-	export PATH="/opt/homebrew/bin:$PATH"
+    if [ -d "/home/linuxbrew" ]; then
+        export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
+        export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar"
+        export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew"
+
+        export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
+
+        if [ -n "$MANPATH" ]; then
+            export MANPATH=":$MANPATH"
+        fi
+        case ":$INFOPATH:" in
+        *:/home/linuxbrew/.linuxbrew/share/info:*) ;;
+        *) export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH" ;;
+        esac
+
+        export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
+    fi
+
+    export PATH="$HOME/.local/bin:$PATH"
+
+    if command -v eza >/dev/null 2>&1; then
+        alias ls="eza"
+    fi
+
+    if command -v rg >/dev/null 2>&1; then
+        alias grep='rg'
+    fi
+
+    if command -v bat >/dev/null 2>&1; then
+        alias cat='bat'
+    fi
+
+    if command -v zoxide >/dev/null 2>&1; then
+        eval "$(zoxide init bash --cmd cd)"
+    fi
+
+    eval "$(starship init bash)"
+
+    if command -v mise >/dev/null 2>&1; then
+        eval "$(mise activate bash)"
+    fi
 fi
 
-if [ -d "/home/linuxbrew" ]; then
-	export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
-	export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar"
-	export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew"
-
-	export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
-
-	if [ -n "$MANPATH" ]; then
-		export MANPATH=":$MANPATH"
-	fi
-	case ":$INFOPATH:" in
-	*:/home/linuxbrew/.linuxbrew/share/info:*) ;;
-	*) export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH" ;;
-	esac
-
-	export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
-fi
-
-export PATH="$HOME/.local/bin:$PATH"
-
-# Languages version manager
-if command -v mise >/dev/null 2>&1; then
-	eval "$(mise activate bash)"
-fi
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
-# Aliases
 if command -v eza >/dev/null 2>&1; then
-	alias ll='eza -lF --icons'
-	alias la='eza -lA --icons'
-	alias ls="eza"
+    alias ll='eza -lF --icons'
+    alias la='eza -lA --icons'
 fi
-
-if command -v rg >/dev/null 2>&1; then
-	alias grep='rg'
-fi
-
-if command -v bat >/dev/null 2>&1; then
-	alias cat='bat'
-fi
-
-if command -v zoxide >/dev/null 2>&1; then
-	eval "$(zoxide init bash --cmd cd)"
-fi
-
-if command -v hub >/dev/null 2>&1; then
-	alias git='hub'
-fi
-
-if command -v lazygit >/dev/null 2>&1; then
-	alias lzg='lazygit'
-fi
-
-if command -v lazydocker >/dev/null 2>&1; then
-	alias lzd='lazydocker'
-fi
-
-alias gbs="git branch | sed 's/^\* //' | sed 's/  *//' | fzf --preview-window=right:60% --preview 'git log --oneline --graph --date=relative --branches={1} --' | xargs git switch"
-
-# Prompt setup
-eval "$(starship init bash)"
 
 iwork() {
-	$HOME/.config/scripts/init-workspace.sh "$PWD" false
+    $HOME/.config/scripts/init-workspace.sh "$PWD" false
 }
 
-# Added by OrbStack: command-line tools and integration
-# This won't be added again if you remove it.
 [ -f "$HOME/.orbstack/shell/init.bash" ] && source "$HOME/.orbstack/shell/init.bash"
