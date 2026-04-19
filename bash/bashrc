@@ -3,29 +3,29 @@
 OMARCHY_RC="$HOME/.local/share/omarchy/default/bash/rc"
 
 if [ -f "$OMARCHY_RC" ]; then
-    source "$OMARCHY_RC"
+  source "$OMARCHY_RC"
 else
-    if [ -f "${HOME}/.config/bash/brew" ]; then
-        source "${HOME}/.config/bash/brew"
-    fi
+  if [ -f "${HOME}/.config/bash/brew" ]; then
+    source "${HOME}/.config/bash/brew"
+  fi
 
-    export PATH="$HOME/.local/bin:$PATH"
+  export PATH="$HOME/.local/bin:$PATH"
 
-    if command -v starship >/dev/null 2>&1; then
-        eval "$(starship init bash)"
-    fi
+  if command -v starship >/dev/null 2>&1; then
+    eval "$(starship init bash)"
+  fi
  
-    if command -v mise >/dev/null 2>&1; then
-        eval "$(mise activate bash)"
-    fi
+  if command -v mise >/dev/null 2>&1; then
+    eval "$(mise activate bash)"
+  fi
     
-    if [ -f "$HOME/.config/bash/aliases" ]; then
-        source "$HOME/.config/bash/aliases"
-    fi
+  if [ -f "$HOME/.config/bash/aliases" ]; then
+    source "$HOME/.config/bash/aliases"
+  fi
     
-    if [ -f "$HOME/.config/bash/functions" ]; then
-        source "$HOME/.config/bash/functions"
-    fi
+  if [ -f "$HOME/.config/bash/functions" ]; then
+    source "$HOME/.config/bash/functions"
+  fi
 fi
 
 [ -f "$HOME/.orbstack/shell/init.bash" ] && source "$HOME/.orbstack/shell/init.bash"
