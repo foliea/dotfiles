@@ -23,6 +23,8 @@ jobs:
           ./os/ubuntu/dependencies.sh install_homebrew
 
       - name: Install dependencies
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           ./os/ubuntu/dependencies.sh install_shared_deps
 
