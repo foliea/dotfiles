@@ -22,13 +22,13 @@ jobs:
         run: |
           ./os/ubuntu/dependencies.sh install_homebrew
 
-      - name: Setup brew env
-        run: |
-          source "$PWD/bash/env"
-
       - name: Install dependencies
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HOMEBREW_PREFIX: /home/linuxbrew/.linuxbrew
+          HOMEBREW_CELLAR: /home/linuxbrew/.linuxbrew/Cellar
+          HOMEBREW_REPOSITORY: /home/linuxbrew/.linuxbrew/Homebrew
+          PATH: /home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH
         run: |
           ./os/ubuntu/dependencies.sh install_shared_deps
 
