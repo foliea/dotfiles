@@ -24,10 +24,10 @@ if [ -f "$HOME/.config/themes/default/btop.theme" ]; then
 fi
 
 mkdir -p "$K9S_CONFIG_SUPPORT/skins"
-rm -rf "$K9S_CONFIG_SUPPORT"/*
-cp -r "$PWD/tuis/k9s"/* "$K9S_CONFIG_SUPPORT/"
+rm -f "$K9S_CONFIG_SUPPORT/config.yaml"
+cp "$PWD/tuis/k9s/config.yaml" "$K9S_CONFIG_SUPPORT/config.yaml"
 if [ -f "$HOME/.config/themes/default/k9s.yaml" ]; then
-	cp "$HOME/.config/themes/default/k9s.yaml" "$K9S_CONFIG_SUPPORT/skins/default.yaml"
+	cp "$HOME/.config/themes/default/k9s.yaml" "$K9S_CONFIG_SUPPORT/skins/current.yaml"
 fi
 
 mkdir -p "$LAZYGIT_CONFIG_SUPPORT"
