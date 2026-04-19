@@ -19,3 +19,13 @@ if [ -d "/home/linuxbrew" ]; then
 
     export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
 fi
+  
+export PATH="$HOME/.local/bin:$PATH"
+
+if command -v starship >/dev/null 2>&1; then
+  eval "$(starship init bash)"
+fi
+
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate bash)"
+fi
