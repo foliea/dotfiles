@@ -1,16 +1,6 @@
 #!/bin/sh
 set -e
 
-sh "$(dirname "$0")/../shared/configure.sh"
-
-# WezTerm
-rm -rf "$HOME/.config/wezterm"
-cp -r "$PWD/os/macOs/wezterm" "$HOME/.config/wezterm"
-
-# Aerospace
-mkdir -p "$HOME/.config/aerospace"
-ln -sf "$PWD/os/macOs/aerospace.toml" "$HOME/.config/aerospace/aerospace.toml"
-
 # Wallpaper
 sh "$(dirname "$0")/set-wallpaper.sh"
 

@@ -19,3 +19,12 @@ brew install --cask \
 
 # Enable Touch ID for sudo
 sudo-touchid
+
+# WezTerm
+rm -rf "$HOME/.config/wezterm"
+cp -r "$PWD/os/macOs/wezterm" "$HOME/.config/wezterm"
+
+# Aerospace
+mkdir -p "$HOME/.config/aerospace"
+ln -sf "$PWD/os/macOs/aerospace.toml" "$HOME/.config/aerospace/aerospace.toml"
+
