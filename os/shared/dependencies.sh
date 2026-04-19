@@ -54,14 +54,6 @@ brew install \
 	dockerfile-language-server \
 	vscode-langservers-extracted
 
-# Starship
-mkdir -p "$HOME/.config"
-ln -sf "$PWD/os/shared/starship.toml" "$HOME/.config/starship.toml"
-
-# Mise
-mkdir -p "$HOME/.config/mise"
-ln -sf "$PWD/os/shared/mise.toml" "$HOME/.config/mise/config.toml"
-
 # Ruby
 ln -sf "$PWD/os/shared/default-gems" "$HOME/.default-gems"
 
