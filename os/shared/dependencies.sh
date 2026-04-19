@@ -54,8 +54,4 @@ brew install \
 	dockerfile-language-server \
 	vscode-langservers-extracted
 
-# Ruby
-ln -sf "$PWD/os/shared/default-gems" "$HOME/.default-gems"
 
-# Node.js
-ln -sf "$PWD/os/shared/default-npm-packages" "$HOME/.default-npm-packages"
