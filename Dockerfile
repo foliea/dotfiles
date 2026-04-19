@@ -21,4 +21,4 @@ RUN /tmp/ubuntu.sh install_homebrew
 
 ENV PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${PATH}"
 
-RUN /tmp/ubuntu.sh install_shared_deps
+RUN ulimit -n 65536 && /tmp/ubuntu.sh install_shared_deps
