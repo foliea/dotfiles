@@ -22,9 +22,11 @@ sudo-touchid
 
 # WezTerm
 rm -rf "$HOME/.config/wezterm"
-cp -r "$PWD/os/macOs/wezterm" "$HOME/.config/wezterm"
+mkdir -p "$HOME/.config/wezterm"
+cp -r "$PWD/os/macOs/config/wezterm.lua" "$HOME/.config/wezterm/wezterm.lua"
 
 # Aerospace
+rm -rf "$HOME/.config/aerospace"
 mkdir -p "$HOME/.config/aerospace"
-ln -sf "$PWD/os/macOs/aerospace.toml" "$HOME/.config/aerospace/aerospace.toml"
+cp "$PWD/os/macOs/config/aerospace.toml" "$HOME/.config/aerospace/aerospace.toml"
 
