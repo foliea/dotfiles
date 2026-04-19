@@ -13,9 +13,8 @@ rm -rf "$HOME/.config/scripts"
 cp -r "$PWD/os/shared/scripts" "$HOME/.config/scripts"
 
 # Mise
-mkdir -p "$HOME/.config/mise"
-rm -f "$HOME/.config/mise/config.toml"
-cp "$PWD/os/shared/mise.toml" "$HOME/.config/mise/config.toml"
+rm -rf "$HOME/.config/mise"
+cp -r "$PWD/os/shared/mise" "$HOME/.config/mise"
 
 # Starship
 rm -f "$HOME/.config/starship.toml"
@@ -23,5 +22,4 @@ cp "$PWD/os/shared/starship.toml" "$HOME/.config/starship.toml"
 
 # WezTerm
 rm -rf "$HOME/.config/wezterm"
-mkdir -p "$HOME/.config/wezterm"
-cp "$PWD/os/shared/wezterm.lua" "$HOME/.config/wezterm/wezterm.lua"
+cp -r "$PWD/os/shared/wezterm" "$HOME/.config/wezterm"
