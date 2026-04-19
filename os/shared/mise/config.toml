@@ -1,9 +1,10 @@
+[tools]
+node = "latest"
+ruby = "latest"
+
 [settings]
-auto_install = false
-idiomatic_version_file_enable_tools = ["ruby", "node", "terraform"]
+idiomatic_version_file_enable_tools = ["ruby"]
 override_config_filenames = [".mise-config"]
 
-[tools]
-ruby = "latest"
-node = "latest"
-terraform = "latest"
+[settings.ruby]
+compile = false
