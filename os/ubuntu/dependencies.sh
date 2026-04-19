@@ -29,13 +29,14 @@ install_shared_deps() {
 main() {
 	sudo install_ubuntu_deps
 	install_homebrew
-	install_shared_deps
 }
 
 if [ "$1" = "install_ubuntu_deps" ]; then
 	install_ubuntu_deps
 elif [ "$1" = "install_homebrew" ]; then
 	install_homebrew
+elif [ "$1" = "install_shared_deps" ]; then
+	install_shared_deps
 else
 	main "$@"
 fi
