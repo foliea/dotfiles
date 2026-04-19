@@ -2,11 +2,9 @@
 set -e
 
 # Themes
-mkdir -p "$HOME/.config/btop/themes"
-if [ ! -f "$HOME/.config/btop/themes/current.theme" ]; then
+if [ ! -d "$HOME/.local/share/omarchy" ]; then
+	mkdir -p "$HOME/.config/btop/themes"
 	cp "$PWD/themes/btop.theme" "$HOME/.config/btop/themes/current.theme"
 fi
 mkdir -p "$HOME/.config/k9s/skins"
-if [ ! -f "$HOME/.config/k9s/skins/current.yaml" ]; then
-	cp "$PWD/themes/k9s.yaml" "$HOME/.config/k9s/skins/current.yaml"
-fi
+cp "$PWD/themes/k9s.yaml" "$HOME/.config/k9s/skins/current.yaml"
