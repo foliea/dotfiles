@@ -16,7 +16,3 @@ cp -r "$PWD/os/shared/mise" "$HOME/.config/mise"
 # Starship
 rm -f "$HOME/.config/starship.toml"
 cp "$PWD/os/shared/starship.toml" "$HOME/.config/starship.toml"
-
-# WezTerm
-rm -rf "$HOME/.config/wezterm"
-cp -r "$PWD/os/shared/wezterm" "$HOME/.config/wezterm"
