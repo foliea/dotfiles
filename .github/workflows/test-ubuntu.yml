@@ -28,8 +28,8 @@ chmod +x os/ubuntu/configure.sh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          chmod +x os/linux/dependencies.sh
-          ./os/linux/dependencies.sh
+          chmod +x os/shared/dependencies.sh
+          ./os/shared/dependencies.sh
 
       - name: Run tests
         run: |
