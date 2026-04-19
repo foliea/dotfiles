@@ -44,7 +44,7 @@ Before installing any configurations, install the required dependencies:
 This installs essential tools (git, neovim, tmux, fish, etc.) needed by the dotfiles configurations.
 
 You need to install [Homebrew](https://brew.sh/)/[Linuxbrew](https://docs.brew.sh/Homebrew-on-Linux) first.
-For Ubuntu 24.04 users, you can use `./os/ubuntu/install.sh`.
+For Ubuntu 24.04 users, you can use `./os/ubuntu/configure.sh`.
 
 ### Install Configurations
 
