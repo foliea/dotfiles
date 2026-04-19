@@ -1,9 +1,8 @@
 #!/bin/sh
 set -e
 
-rm -rf "$HOME/.config/git"/*
-mkdir -p "$HOME/.config/git"
-cp -r "$PWD/git"/* "$HOME/.config/git/"
+rm -rf "$HOME/.config/git"
+cp -r "$PWD/git" "$HOME/.config/git"
 
 read -p "Please specify your git user name: " gitname
 read -p "Please specify your git user email: " gitemail

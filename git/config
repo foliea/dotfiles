@@ -27,4 +27,4 @@
 	enabled = true           # Record and reuse conflict resolutions
 	autoupdate = true        # Apply stored conflict resolutions automatically
 [core]
-  excludesfile ~/.config/git/gitignore
+	excludesfile = ~/.config/git/gitignore
