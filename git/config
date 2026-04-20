@@ -26,5 +26,25 @@
 [rerere]
 	enabled = true           # Record and reuse conflict resolutions
 	autoupdate = true        # Apply stored conflict resolutions automatically
+[interactive]
+	diffFilter = delta --color-only
+[merge]
+	conflictStyle = zdiff3
 [core]
 	excludesfile = ~/.config/git/gitignore
+	pager = delta
+[delta]
+	pager = bat --style=plain
+	syntax-theme = base16
+	side-by-side = true
+	navigate = true
+	line-numbers = true
+	line-numbers-left-style = red
+	line-numbers-right-style = green
+	line-numbers-minus-style = red
+	line-numbers-plus-style = green
+	line-numbers-zero-style = white
+	minus-style = bold red
+	minus-emph-style = bold red
+	plus-style = bold green
+	plus-emph-style = bold green
