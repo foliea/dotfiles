@@ -12,12 +12,14 @@ else
 	exit 1
 fi
 
+THEME_BASE_URL="https://raw.githubusercontent.com/foliea/omarchy-madness-theme/master"
+
 # Themes
 if [ ! -d "$HOME/.local/share/omarchy" ]; then
 	mkdir -p "$HOME/.config/btop/themes"
-	cp "$PWD/themes/btop.theme" "$HOME/.config/btop/themes/current.theme"
+	curl -fsSL "$THEME_BASE_URL/btop.theme" -o "$HOME/.config/btop/themes/current.theme"
 	mkdir -p "$HOME/.config/nvim/lua/plugins"
-	cp "$PWD/themes/neovim.lua" "$HOME/.config/nvim/lua/plugins/theme.lua"
+	curl -fsSL "$THEME_BASE_URL/neovim.lua" -o "$HOME/.config/nvim/lua/plugins/theme.lua"
 fi
 mkdir -p "$K9S_CONFIG_SUPPORT/skins"
 rm -f "$K9S_CONFIG_SUPPORT/skins/current.yaml"
