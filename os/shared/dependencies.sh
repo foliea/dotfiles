@@ -18,7 +18,6 @@ brew install \
 	eza \
 	zoxide \
 	git \
-	hub \
 	gh \
 	bash \
 	starship \
