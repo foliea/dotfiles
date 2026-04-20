@@ -14,11 +14,11 @@ MAGICK_COLOR="rgb($COLOR)"
 
 IMG_PATH="$WALLPAPER_DIR/wallpaper-${COLOR}-${WIDTH}x${HEIGHT}.png"
 if [ ! -f "$IMG_PATH" ]; then
-	magick -size ${WIDTH}x${HEIGHT} xc:"$MAGICK_COLOR" "$IMG_PATH"
+  magick -size ${WIDTH}x${HEIGHT} xc:"$MAGICK_COLOR" "$IMG_PATH"
 fi
 
 if command -v desktoppr >/dev/null 2>&1; then
-	desktoppr "$IMG_PATH"
+  desktoppr "$IMG_PATH"
 fi
 
 echo "Wallpaper set to $COLOR ($IMG_PATH)"
