@@ -17,10 +17,12 @@ else
 fi
 
 mkdir -p "$HOME/.config/btop"
+rm -f "$HOME/.config/btop/btop.conf"
 cp "$PWD/tuis/btop/btop.conf" "$HOME/.config/btop/btop.conf"
 mkdir -p "$HOME/.config/btop/themes"
 
 mkdir -p "$K9S_CONFIG_SUPPORT"
+rm -f "$K9S_CONFIG_SUPPORT/config.yaml"
 cp "$PWD/tuis/k9s/config.yaml" "$K9S_CONFIG_SUPPORT/config.yaml"
 mkdir -p "$K9S_CONFIG_SUPPORT/skins"
 

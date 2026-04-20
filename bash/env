@@ -21,6 +21,7 @@ if [ -d "/home/linuxbrew" ]; then
 fi
   
 export PATH="$HOME/.local/bin:$PATH"
+export EDITOR='nvim'
 
 if command -v starship >/dev/null 2>&1; then
   eval "$(starship init bash)"
