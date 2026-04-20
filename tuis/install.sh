@@ -35,8 +35,10 @@ rm -rf "$LAZYDOCKER_CONFIG_SUPPORT"/*
 cp -r "$PWD/tuis/lazydocker"/* "$LAZYDOCKER_CONFIG_SUPPORT/"
 
 mkdir -p "$HOME/.config/fastfetch"
-rm -rf "$HOME/.config/fastfetch"/*
-cp -r "$PWD/tuis/fastfetch"/* "$HOME/.config/fastfetch/"
+if ! command -v omarchy-version > /dev/null 2>&1; then
+	rm -rf "$HOME/.config/fastfetch"/*
+	cp -r "$PWD/tuis/fastfetch"/* "$HOME/.config/fastfetch/"
+fi
 
 mkdir -p "$HOME/.config/opencode"
 rm -rf "$HOME/.config/opencode"/*
