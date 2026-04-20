@@ -3,7 +3,10 @@
 SCRIPTS_DIR := scripts
 MODULES := bash git nvim tmux mise starship tuis themes
 
-all: $(MODULES)
+all: bash git nvim tmux mise starship tuis
+
+nvim: themes
+tuis: themes
 
 test:
 	@$(SCRIPTS_DIR)/run-tests.exp
