@@ -1,4 +1,7 @@
 #!/bin/sh
 set -e
 
-echo "No dependencies required for Omarchy, skipping..."
+rm -f "$HOME/.local/bin/opencode"
+curl -fsSL https://opencode.ai/install | bash
+mv "$HOME/.opencode/bin/opencode" "$HOME/.local/bin/opencode"
+rm -rf "$HOME/.opencode"
