@@ -9,7 +9,7 @@ RUN chmod +x /tmp/ubuntu.sh && \
 
 RUN useradd -ms /bin/bash ${USER} && \
     echo "${USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
-    chsh -s $(which bash) ${USER}
+    chsh -s "$(which bash)" ${USER}
 
 COPY . ${PROJECT_DIR}
 RUN chown -R ${USER}:${USER} ${PROJECT_DIR}
@@ -21,4 +21,4 @@ RUN /tmp/ubuntu.sh install_homebrew
 
 ENV PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${PATH}"
 
-RUN ulimit -n 65536 && /tmp/ubuntu.sh install_shared_deps
+RUN bash -c "ulimit -n 65536 && /tmp/ubuntu.sh install_shared_deps"
