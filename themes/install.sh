@@ -15,7 +15,7 @@ fi
 THEME_BASE_URL="https://raw.githubusercontent.com/foliea/omarchy-madness-theme/master"
 
 # Themes
-if [ ! -d "$HOME/.local/share/omarchy" ]; then
+if ! command -v omarchy-version > /dev/null 2>&1; then
 	mkdir -p "$HOME/.config/btop/themes"
 	curl -fsSL "$THEME_BASE_URL/btop.theme" -o "$HOME/.config/btop/themes/current.theme"
 	mkdir -p "$HOME/.config/nvim/lua/plugins"

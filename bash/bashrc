@@ -1,9 +1,7 @@
 [[ $- != *i* ]] && return
 
-OMARCHY_RC="$HOME/.local/share/omarchy/default/bash/rc"
-
-if [ -f "$OMARCHY_RC" ]; then
-  source "$OMARCHY_RC"
+if command -v omarchy-version > /dev/null 2>&1; then
+  source "$HOME/.local/share/omarchy/default/bash/rc"
 else
   if [ -f "${HOME}/.config/bash/env" ]; then
     source "${HOME}/.config/bash/env"
