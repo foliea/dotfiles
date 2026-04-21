@@ -13,7 +13,7 @@ install_keyboard() {
     mkdir -p "$conf_dest"
 
     KBD_NAME=$(cat /proc/bus/input/devices | grep -m 1 '^N: Name=' | cut -d'"' -f2)
-    cp "$PWD/os/omarchy/keyboard.toml" "$conf_dest/$KBD_NAME.toml"
+    cp "$PWD/os/omarchy/makima/keyboard.toml" "$conf_dest/$KBD_NAME.toml"
     echo "Keyboard config copied as: $conf_dest/$KBD_NAME.toml"
 }
 
