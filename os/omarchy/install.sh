@@ -18,17 +18,17 @@ install_keyboard() {
 }
 
 install_webapps() {
-    omarchy-webapp-install "Calendar" "https://calendar.google.com"
-    omarchy-webapp-install "Discord" "https://discord.com/channels/@me"
-    omarchy-webapp-install "Drive" "https://drive.google.com"
-    omarchy-webapp-install "Gemini" "https://gemini.google.com/"
-    omarchy-webapp-install "GitHub" "https://github.com/"
-    omarchy-webapp-install "Keep Notes" "https://keep.google.com"
-    omarchy-webapp-install "Maps" "https://map.google.com"
-    omarchy-webapp-install "Photos" "https://photos.google.com"
-    omarchy-webapp-install "X" "https://x.com/"
-    omarchy-webapp-install "YouTube" "https://youtube.com/"
-    omarchy-webapp-install "YT Music" "https://music.youtube.com"
+    omarchy-webapp-install "Calendar" "https://calendar.google.com" ""
+    omarchy-webapp-install "Discord" "https://discord.com/channels/@me" ""
+    omarchy-webapp-install "Drive" "https://drive.google.com" ""
+    omarchy-webapp-install "Gemini" "https://gemini.google.com/" ""
+    omarchy-webapp-install "GitHub" "https://github.com/" ""
+    omarchy-webapp-install "Keep Notes" "https://keep.google.com" ""
+    omarchy-webapp-install "Maps" "https://map.google.com" ""
+    omarchy-webapp-install "Photos" "https://photos.google.com" ""
+    omarchy-webapp-install "X" "https://x.com/" ""
+    omarchy-webapp-install "YouTube" "https://youtube.com/" ""
+    omarchy-webapp-install "YT Music" "https://music.youtube.com" ""
     omarchy-webapp-install "Zoom" "https://zoom.us" "" "omarchy-webapp-handler-zoom %u" "x-scheme-handler/zoommtg;x-scheme-handler/zoomus"
     echo "Installed web apps"
 }
