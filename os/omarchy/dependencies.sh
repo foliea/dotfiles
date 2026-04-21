@@ -1,9 +1,4 @@
 #!/bin/sh
 set -e
 
-sudo pacman -S --noconfirm git-delta
-
-rm -f "$HOME/.local/bin/opencode"
-curl -fsSL https://opencode.ai/install | bash -s -- --no-modify-path
-mv "$HOME/.opencode/bin/opencode" "$HOME/.local/bin/opencode"
-rm -rf "$HOME/.opencode"
+omarchy-pkg-add git-delta
