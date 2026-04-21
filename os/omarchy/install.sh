@@ -44,7 +44,12 @@ install_services() {
     systemctl --user status makima || true
 }
 
+install_hardware_fixes() {
+    sh "$PWD/os/omarchy/scripts/fix-audio-ux5406sa.sh"
+}
+
 install_config
 install_keyboard
 install_webapps
 install_services
+install_hardware_fixes

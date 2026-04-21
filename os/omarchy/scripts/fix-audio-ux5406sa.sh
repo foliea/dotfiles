@@ -3,6 +3,14 @@ set -e
 
 # Audio Fix for Zenbook S 14 UX5406SA (Lunar Lake + ALC285)
 
+PRODUCT=$(cat /sys/class/dmi/id/product_name 2>/dev/null || echo "")
+if ! echo "$PRODUCT" | grep -qi "UX5406SA"; then
+    echo "Skipping UX5406SA audio fix (detected: ${PRODUCT:-unknown})."
+    exit 0
+fi
+
+echo "Applying UX5406SA audio fix..."
+
 sudo pacman -S --noconfirm \
   sof-firmware \
   alsa-ucm-conf \
