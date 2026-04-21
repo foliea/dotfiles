@@ -1,14 +1,13 @@
 #!/bin/sh
 set -e
 
+rm -rf "$HOME/.config/bash"
+mkdir -p "$HOME/.config/bash/fns"
+
+for file in env functions aliases; do
+	cp "$PWD/bash/$file" "$HOME/.config/bash/$file"
+done
+cp -r "$PWD/bash/fns"/* "$HOME/.config/bash/fns/"
+
 cp "$PWD/bash/bashrc" "$HOME/.bashrc"
 cp "$PWD/bash/bash_profile" "$HOME/.bash_profile"
-
-rm -rf "$HOME/.config/bash"
-mkdir -p "$HOME/.config/bash"
-cp "$PWD/bash/env" "$HOME/.config/bash/env"
-cp "$PWD/bash/functions" "$HOME/.config/bash/functions"
-cp "$PWD/bash/aliases" "$HOME/.config/bash/aliases"
-
-mkdir -p "$HOME/.config/bash/fns"
-cp -r "$PWD/bash/fns"/* "$HOME/.config/bash/fns/"
