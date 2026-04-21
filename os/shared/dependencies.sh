@@ -53,5 +53,5 @@ brew install \
 
 # xdg-open shim
 mkdir -p "$HOME/.local/bin"
-cp "$(dirname "$0")/xdg-open.sh" "$HOME/.local/bin/xdg-open"
+cp "$(dirname "$0")/scripts/xdg-open.sh" "$HOME/.local/bin/xdg-open"
 chmod +x "$HOME/.local/bin/xdg-open"
