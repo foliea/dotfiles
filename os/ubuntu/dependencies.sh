@@ -14,7 +14,8 @@ install_ubuntu_deps() {
     locales \
     libffi-dev \
     libyaml-dev \
-    zlib1g-dev
+    zlib1g-dev \
+    aptitude
   locale-gen en_US.UTF-8
 }
 

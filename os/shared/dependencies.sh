@@ -40,7 +40,8 @@ brew install \
   imagemagick \
   lazygit \
   jesseduffield/lazydocker/lazydocker \
-  sst/tap/opencode \
+  anomalyco/tap/opencode \
+  Valkyrie00/homebrew-bbrew/bbrew \
   stylua \
   prettier \
   prettierd \
@@ -51,7 +52,9 @@ brew install \
   dockerfile-language-server \
   vscode-langservers-extracted
 
-# xdg-open shim
+# Local bin scripts
 mkdir -p "$HOME/.local/bin"
-cp "$(dirname "$0")/scripts/xdg-open.sh" "$HOME/.local/bin/xdg-open"
-chmod +x "$HOME/.local/bin/xdg-open"
+for script in xdg-open pkg-install-menu; do
+  cp "$PWD/os/shared/scripts/$script.sh" "$HOME/.local/bin/$script"
+  chmod +x "$HOME/.local/bin/$script"
+done
