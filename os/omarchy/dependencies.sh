@@ -3,6 +3,7 @@ set -e
 
 omarchy-pkg-add \
   "FiraCode Nerd Font" \
+  yazi \
   git-delta \
   makima-bin \
   k9s

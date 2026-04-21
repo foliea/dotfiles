@@ -22,6 +22,7 @@ brew install \
   gh \
   bash \
   starship \
+  yazi \
   tmux \
   neovim \
   mise \
