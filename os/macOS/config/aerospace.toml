@@ -71,11 +71,11 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
     # Launch tmux terminal.
     alt-cmd-enter = 'exec-and-forget open -n -a Ghostty --args -e sh -c "tmux attach || tmux new -s Work"'
 
-    # Launch web browser
-    alt-shift-b = 'exec-and-forget open -n -a "Google Chrome"'
+    # Launch web browser (personal)
+    alt-shift-b = 'exec-and-forget open -n -a Chromium'
 
     # Launch web browser (private)
-    alt-shift-cmd-b = 'exec-and-forget open -n -a "Google Chrome" --args --incognito'
+    alt-shift-cmd-b = 'exec-and-forget open -n -a Chromium --args --incognito'
 
     # Launch editor
     alt-shift-e = 'exec-and-forget open -n -a Ghostty --args -e nvim'
@@ -89,29 +89,29 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
     # Launch file manager
     alt-shift-f = 'exec-and-forget open -n -a Finder'
 
-    # Launch calendar
-    alt-shift-c = 'exec-and-forget open -n -a "Google Chrome" --args --app=https://calendar.google.com --profile-directory="Profile 1"'
+    # Launch calendar (professional)
+    alt-shift-c = 'exec-and-forget open -n -a "Google Chrome" --args --app=https://calendar.google.com'
 
     # Launch music
-    alt-shift-m = 'exec-and-forget open -n -a "Google Chrome" --args --app=https://music.youtube.com --profile-directory="Default"'
+    alt-shift-m = 'exec-and-forget open -n -a Chromium --args --app=https://music.youtube.com'
 
     # Launch notes
-    alt-shift-n = 'exec-and-forget open -n -a "Google Chrome" --args --app=https://keep.google.com --profile-directory="Default"'
+    alt-shift-n = 'exec-and-forget open -n -a Chromium --args --app=https://keep.google.com'
 
     # Launch YouTube
-    alt-shift-y = 'exec-and-forget open -n -a "Google Chrome" --args --app=https://youtube.com --profile-directory="Default"'
+    alt-shift-y = 'exec-and-forget open -n -a Chromium --args --app=https://youtube.com'
 
     # Launch photos
-    alt-shift-p = 'exec-and-forget open -n -a "Google Chrome" --args --app=https://photos.google.com --profile-directory="Default"'
+    alt-shift-p = 'exec-and-forget open -n -a Chromium --args --app=https://photos.google.com'
 
     # Launch X
-    alt-shift-x = 'exec-and-forget open -n -a "Google Chrome" --args --app=https://x.com --profile-directory="Default"'
+    alt-shift-x = 'exec-and-forget open -n -a Chromium --args --app=https://x.com'
 
     # Launch AI chat
     alt-shift-a = 'exec-and-forget open -a "Google Gemini"'
 
     # Launch Grok
-    alt-shift-cmd-a = 'exec-and-forget open -n -a "Google Chrome" --args --app=https://grok.com --profile-directory="Default"'
+    alt-shift-cmd-a = 'exec-and-forget open -n -a Chromium --args --app=https://grok.com'
 
     # Change focus to a workspace.
     alt-1 = 'workspace 1'
