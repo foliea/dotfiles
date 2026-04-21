@@ -10,13 +10,23 @@ My personal configuration files for macOS and Linux.
 Install required dependencies before configuring:
 
 ```bash
-# macOS
+# macOS (requires brew)
 ./os/macOS/dependencies.sh
 
-# Linux
-./os/shared/dependencies.sh
+# Ubuntu (includes brew installation)
+./os/ubuntu/dependencies.sh
+
+# Bazzite
+./os/bazzite/dependencies.sh
+
+# Omarchy
+./os/omarchy/dependencies.sh
 ```
 
 Requires [Homebrew](https://brew.sh/) or [Linuxbrew](https://docs.brew.sh/Homebrew-on-Linux).
 
-For Ubuntu 24.04: `./os/ubuntu/dependencies.sh install_ubuntu_deps`
+## Install
+
+```bash
+make
+```
