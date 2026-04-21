@@ -3,6 +3,11 @@ set -e
 
 sh "$(dirname "$0")/../shared/install.sh"
 
+install_packages() {
+    omarchy-pkg-add makima-bin
+    omarchy-install-terminal ghostty
+}
+
 install_config() {
     mkdir -p "$HOME/.config"
     rsync -a "$PWD/os/omarchy/config/" "$HOME/.config/"
@@ -12,7 +17,7 @@ install_keyboard() {
     local conf_dest="$HOME/.config/makima"
     mkdir -p "$conf_dest"
 
-    KBD_NAME=$(cat /proc/bus/input/devices | grep -m 1 '^N: Name=' | cut -d'"' -f2)
+    KBD_NAME=$(cat /proc/bus/input/devices | grep '^N: Name=' | grep -i keyboard | head -1 | cut -d'"' -f2)
     cp "$PWD/os/omarchy/makima/keyboard.toml" "$conf_dest/$KBD_NAME.toml"
     echo "Keyboard config copied as: $conf_dest/$KBD_NAME.toml"
 }
@@ -38,6 +43,16 @@ install_services() {
     mkdir -p "$service_dest"
     cp -n "$PWD/os/omarchy/services/makima.service" "$service_dest/" 2>/dev/null || true
 
+    if [ -c /dev/uinput ] && ! sudo -n chmod 666 /dev/uinput 2>/dev/null; then
+        echo "Fixing /dev/uinput permissions..."
+        sudo chmod 666 /dev/uinput 2>/dev/null || echo "/!\\ Run: sudo chmod 666 /dev/uinput"
+    fi
+
+    local udev_rule="/etc/udev/rules.d/99-uinput.rules"
+    if [ -c /dev/uinput ] && ! grep -q "MODE.*0660" "$udev_rule" 2>/dev/null; then
+        echo 'KERNEL=="uinput", MODE="0660", GROUP="input", OPTIONS+="static_node=uinput"' | sudo tee "$udev_rule" > /dev/null 2>&1 || true
+    fi
+
     echo "Reloading systemd and starting makima..."
     systemctl --user daemon-reload
     systemctl --user enable --now makima || true
@@ -48,6 +63,7 @@ install_hardware_fixes() {
     sh "$PWD/os/omarchy/scripts/fix-audio-ux5406sa.sh"
 }
 
+install_packages
 install_config
 install_keyboard
 install_webapps
