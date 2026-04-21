@@ -3,7 +3,7 @@ node = "latest"
 ruby = "latest"
 
 [settings]
-idiomatic_version_file_enable_tools = ["ruby"]
+idiomatic_version_file_enable_tools = ["ruby", "node"]
 override_config_filenames = [".mise-config"]
 
 [settings.ruby]
