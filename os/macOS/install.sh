@@ -13,19 +13,20 @@ brew install --cask \
   scroll-reverser \
   caffeine \
   visual-studio-code \
-  wezterm \
+  ghostty \
   orbstack \
   discord
 
 # Enable Touch ID for sudo
 sudo-touchid
 
-# WezTerm
-rm -rf "$HOME/.config/wezterm"
-mkdir -p "$HOME/.config/wezterm"
-cp -r "$PWD/os/macOs/config/wezterm.lua" "$HOME/.config/wezterm/wezterm.lua"
+# Ghostty
+rm -rf "$HOME/.config/ghostty"
+mkdir -p "$HOME/.config/ghostty"
+cp "$PWD/os/shared/config/ghostty/config" "$HOME/.config/ghostty/config"
 
 # Aerospace
 rm -rf "$HOME/.config/aerospace"
 mkdir -p "$HOME/.config/aerospace"
-cp "$PWD/os/macOs/config/aerospace.toml" "$HOME/.config/aerospace/aerospace.toml"
+cp "$PWD/os/macOS/config/aerospace.toml" "$HOME/.config/aerospace/aerospace.toml"
+

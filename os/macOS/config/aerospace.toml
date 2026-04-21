@@ -66,10 +66,10 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
     alt-shift-r = 'reload-config'
 
     # Launch terminal.
-    alt-enter = 'exec-and-forget open -n -a WezTerm'
+    alt-enter = 'exec-and-forget open -n -a Ghostty'
 
     # Launch tmux terminal.
-    alt-cmd-enter = 'exec-and-forget open -n -a WezTerm --args start -- sh -c "tmux attach || tmux new -s Work"'
+    alt-cmd-enter = 'exec-and-forget open -n -a Ghostty --args -e sh -c "tmux attach || tmux new -s Work"'
 
     # Launch web browser
     alt-shift-b = 'exec-and-forget open -n -a "Google Chrome"'
@@ -78,13 +78,13 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
     alt-shift-cmd-b = 'exec-and-forget open -n -a "Google Chrome" --args --incognito'
 
     # Launch editor
-    alt-shift-e = 'exec-and-forget open -n -a WezTerm --args start -- nvim'
+    alt-shift-e = 'exec-and-forget open -n -a Ghostty --args -e nvim'
 
     # Launch docker TUI
-    alt-shift-d = 'exec-and-forget open -n -a WezTerm --args start -- lazydocker'
+    alt-shift-d = 'exec-and-forget open -n -a Ghostty --args -e lazydocker'
 
     # Launch git TUI
-    alt-shift-g = 'exec-and-forget open -n -a WezTerm --args start -- lazygit'
+    alt-shift-g = 'exec-and-forget open -n -a Ghostty --args -e lazygit'
 
     # Launch file manager
     alt-shift-f = 'exec-and-forget open -n -a Finder'

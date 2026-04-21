@@ -1,0 +1,30 @@
+font-family = FiraCode Nerd Font
+font-size = 13
+
+confirm-close-surface = false
+window-decoration = false
+macos-titlebar-style = hidden
+
+background = #000000
+foreground = #eeeeee
+cursor-color = #eeeeee
+cursor-text = #000000
+selection-background = #404040
+selection-foreground = #eeeeee
+
+palette = 0=#000000
+palette = 1=#e06c75
+palette = 2=#7fd88f
+palette = 3=#e5c07b
+palette = 4=#5c9cf5
+palette = 5=#9d7cd8
+palette = 6=#56b6c2
+palette = 7=#ffffff
+palette = 8=#808080
+palette = 9=#e06c75
+palette = 10=#7fd88f
+palette = 11=#e5c07b
+palette = 12=#5c9cf5
+palette = 13=#9d7cd8
+palette = 14=#56b6c2
+palette = 15=#ffffff
