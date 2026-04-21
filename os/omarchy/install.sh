@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
 
+sh "$(dirname "$0")/../shared/install.sh"
+
 install_config() {
     mkdir -p "$HOME/.config"
     rsync -a "$PWD/os/omarchy/config/" "$HOME/.config/"

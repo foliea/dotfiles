@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
 
+sh "$(dirname "$0")/../shared/install.sh"
+
 brew install \
   mpv \
   desktoppr \
@@ -19,11 +21,6 @@ brew install --cask \
 
 # Enable Touch ID for sudo
 sudo-touchid
-
-# Ghostty
-rm -rf "$HOME/.config/ghostty"
-mkdir -p "$HOME/.config/ghostty"
-cp "$PWD/os/shared/config/ghostty/config" "$HOME/.config/ghostty/config"
 
 # Aerospace
 rm -rf "$HOME/.config/aerospace"
