@@ -31,9 +31,9 @@ if [ ! -d "/Applications/Google Chrome.app" ] && [ ! -d "$HOME/Applications/Goog
   printf "Google Chrome is not installed. Install it via Homebrew? [y/N] "
   read -r answer
   case "$answer" in
-    [yY]|[yY][eE][sS])
-      brew install --cask google-chrome
-      ;;
+  [yY] | [yY][eE][sS])
+    brew install --cask google-chrome
+    ;;
   esac
 fi
 
@@ -50,3 +50,4 @@ if [ ! -d "/Applications/Google Chrome.app" ] && [ ! -d "$HOME/Applications/Goog
   sed -i '' 's/"Google Chrome"/Chromium/g' "$HOME/.config/aerospace/aerospace.toml"
 fi
 
+sh "$(dirname "$0")/scripts/set-default-settings.sh"
