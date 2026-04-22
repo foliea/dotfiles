@@ -1,8 +1,13 @@
-[[ $- != *i* ]] && return
-
-if command -v omarchy-version > /dev/null 2>&1; then
+if command -v omarchy-version >/dev/null 2>&1; then
   source "$HOME/.local/share/omarchy/default/bash/rc"
 else
+  # Activate mise before interactive check so it works in new tmux panes
+  if command -v mise >/dev/null 2>&1; then
+    eval "$(mise hook-env -s bash)"
+  fi
+
+  [[ $- != *i* ]] && return
+
   if [ -f "${HOME}/.config/bash/env" ]; then
     source "${HOME}/.config/bash/env"
   fi
@@ -10,7 +15,7 @@ else
   if [ -f "$HOME/.config/bash/aliases" ]; then
     source "$HOME/.config/bash/aliases"
   fi
-    
+
   if [ -f "$HOME/.config/bash/functions" ]; then
     source "$HOME/.config/bash/functions"
   fi
