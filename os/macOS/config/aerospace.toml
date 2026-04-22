@@ -1,141 +1,125 @@
-# Reference: https://github.com/i3/i3/blob/next/etc/config
+# AeroSpace config - Omarchy-style keybindings
 
-# Start AeroSpace at login
 start-at-login = true
 
-# i3 doesn't have "normalizations" feature that why we disable them here.
-# But the feature is very helpful.
-# Normalizations eliminate all sorts of weird tree configurations that don't make sense.
-# Give normalizations a chance and enable them back.
-enable-normalization-flatten-containers = false
-enable-normalization-opposite-orientation-for-nested-containers = false
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
 
-# Mouse follows focus when focused monitor changes
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 [mode.resize.binding]
-    h = 'resize width -50'
-    j = 'resize height +50'
-    k = 'resize height -50'
-    l = 'resize width +50'
-    enter = 'mode main'
-    esc = 'mode main'
+h = 'resize width -50'
+j = 'resize height +50'
+k = 'resize height -50'
+l = 'resize width +50'
+enter = 'mode main'
+esc = 'mode main'
 
 [mode.main.binding]
-    # Shift focus in a given direction.
-    alt-h = 'focus --boundaries-action wrap-around-the-workspace left'
-    alt-j = 'focus --boundaries-action wrap-around-the-workspace down'
-    alt-k = 'focus --boundaries-action wrap-around-the-workspace up'
-    alt-l = 'focus --boundaries-action wrap-around-the-workspace right'
+# Focus (Cmd + HJKL)
+cmd-h = 'focus --boundaries-action wrap-around-the-workspace left'
+cmd-j = 'focus --boundaries-action wrap-around-the-workspace down'
+cmd-k = 'focus --boundaries-action wrap-around-the-workspace up'
+cmd-l = 'focus --boundaries-action wrap-around-the-workspace right'
 
-    # Move focused window in a given direction.
-    alt-shift-h = 'move left'
-    alt-shift-j = 'move down'
-    alt-shift-k = 'move up'
-    alt-shift-l = 'move right'
+# Move window (Cmd + Shift + HJKL)
+cmd-shift-h = 'move left'
+cmd-shift-j = 'move down'
+cmd-shift-k = 'move up'
+cmd-shift-l = 'move right'
 
-    # As an alternative to the resize keybindings above, resize mode enables
-    # resizing via arrow keys or HJKL. The binding mode is defined above with
-    # the name 'resize'.
-    alt-r = 'mode resize'
+# Resize mode
+cmd-r = 'mode resize'
 
-    # Change tiling direction. This determines where new tiling windows will
-    # be inserted.
-    alt-semicolon = 'split horizontal'
-    alt-v = 'split vertical'
+# Layouts
+cmd-t = 'layout tiles horizontal vertical'
+cmd-n = 'layout v_accordion'
+cmd-p = 'layout h_accordion'
 
-    # Change the focused window to be tiling.
-    alt-t = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
+# Fullscreen
+cmd-f = 'fullscreen'
 
-    # Change the focused window to be fullscreen.
-    alt-f = 'fullscreen'
+# Floating toggle
+cmd-shift-space = 'layout floating tiling'
 
-    # Close focused window.
-    alt-w = 'close --quit-if-last-window'
+# Reload config
+cmd-shift-r = 'reload-config'
 
-    # 'layout stacking' in i3
-    alt-n = 'layout v_accordion'
+# Close window (Alt+W to avoid Cmd+W conflict with macOS close)
+alt-w = 'close --quit-if-last-window'
 
-    # 'layout tabbed' in i3
-    alt-p = 'layout h_accordion'
+# Terminal
+cmd-enter = 'exec-and-forget open -n -a Ghostty'
 
-    # 'floating toggle' in i3
-    alt-shift-space = 'layout floating tiling'
+# Tmux terminal
+cmd-shift-enter = 'exec-and-forget open -n -a Ghostty --args -e sh -c "tmux attach || tmux new -s Work"'
 
-    # Re-evaluate configuration file.
-    alt-shift-r = 'reload-config'
+# Browser (personal)
+cmd-shift-b = 'exec-and-forget open -n -a Chromium'
 
-    # Launch terminal.
-    alt-enter = 'exec-and-forget open -n -a Ghostty'
+# Browser (private)
+cmd-alt-b = 'exec-and-forget open -n -a Chromium --args --incognito'
 
-    # Launch tmux terminal.
-    alt-cmd-enter = 'exec-and-forget open -n -a Ghostty --args -e sh -c "tmux attach || tmux new -s Work"'
+# Editor
+cmd-shift-e = 'exec-and-forget open -n -a Ghostty --args -e nvim'
 
-    # Launch web browser (personal)
-    alt-shift-b = 'exec-and-forget open -n -a Chromium'
+# Docker TUI
+cmd-shift-d = 'exec-and-forget open -n -a Ghostty --args -e lazydocker'
 
-    # Launch web browser (private)
-    alt-shift-cmd-b = 'exec-and-forget open -n -a Chromium --args --incognito'
+# Git TUI
+cmd-shift-g = 'exec-and-forget open -n -a Ghostty --args -e lazygit'
 
-    # Launch editor
-    alt-shift-e = 'exec-and-forget open -n -a Ghostty --args -e nvim'
+# File manager
+cmd-shift-f = 'exec-and-forget open -n -a Finder'
 
-    # Launch docker TUI
-    alt-shift-d = 'exec-and-forget open -n -a Ghostty --args -e lazydocker'
+# Calendar
+cmd-shift-c = 'exec-and-forget open -n -a "Google Chrome" --args --app=https://calendar.google.com'
 
-    # Launch git TUI
-    alt-shift-g = 'exec-and-forget open -n -a Ghostty --args -e lazygit'
+# Music
+cmd-shift-m = 'exec-and-forget open -n -a Chromium --args --app=https://music.youtube.com'
 
-    # Launch file manager
-    alt-shift-f = 'exec-and-forget open -n -a Finder'
+# Notes
+cmd-shift-n = 'exec-and-forget open -n -a Chromium --args --app=https://keep.google.com'
 
-    # Launch calendar (professional)
-    alt-shift-c = 'exec-and-forget open -n -a "Google Chrome" --args --app=https://calendar.google.com'
+# YouTube
+cmd-shift-y = 'exec-and-forget open -n -a Chromium --args --app=https://youtube.com'
 
-    # Launch music
-    alt-shift-m = 'exec-and-forget open -n -a Chromium --args --app=https://music.youtube.com'
+# Photos
+cmd-shift-p = 'exec-and-forget open -n -a Chromium --args --app=https://photos.google.com'
 
-    # Launch notes
-    alt-shift-n = 'exec-and-forget open -n -a Chromium --args --app=https://keep.google.com'
+# X (Twitter)
+cmd-shift-x = 'exec-and-forget open -n -a Chromium --args --app=https://x.com'
 
-    # Launch YouTube
-    alt-shift-y = 'exec-and-forget open -n -a Chromium --args --app=https://youtube.com'
+# AI Chat (Gemini)
+cmd-shift-a = 'exec-and-forget open -a "Google Gemini"'
 
-    # Launch photos
-    alt-shift-p = 'exec-and-forget open -n -a Chromium --args --app=https://photos.google.com'
+# Grok
+cmd-alt-a = 'exec-and-forget open -n -a Chromium --args --app=https://grok.com'
 
-    # Launch X
-    alt-shift-x = 'exec-and-forget open -n -a Chromium --args --app=https://x.com'
+# Workspaces (Cmd + 1-0)
+cmd-1 = 'workspace 1'
+cmd-2 = 'workspace 2'
+cmd-3 = 'workspace 3'
+cmd-4 = 'workspace 4'
+cmd-5 = 'workspace 5'
+cmd-6 = 'workspace 6'
+cmd-7 = 'workspace 7'
+cmd-8 = 'workspace 8'
+cmd-9 = 'workspace 9'
+cmd-0 = 'workspace 10'
 
-    # Launch AI chat
-    alt-shift-a = 'exec-and-forget open -a "Google Gemini"'
+# Move workspace to monitor
+cmd-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
-    # Launch Grok
-    alt-shift-cmd-a = 'exec-and-forget open -n -a Chromium --args --app=https://grok.com'
+# Move window to workspace (Cmd + Shift + 1-0)
+cmd-shift-1 = 'move-node-to-workspace 1'
+cmd-shift-2 = 'move-node-to-workspace 2'
+cmd-shift-3 = 'move-node-to-workspace 3'
+cmd-shift-4 = 'move-node-to-workspace 4'
+cmd-shift-5 = 'move-node-to-workspace 5'
+cmd-shift-6 = 'move-node-to-workspace 6'
+cmd-shift-7 = 'move-node-to-workspace 7'
+cmd-shift-8 = 'move-node-to-workspace 8'
+cmd-shift-9 = 'move-node-to-workspace 9'
+cmd-shift-0 = 'move-node-to-workspace 10'
 
-    # Change focus to a workspace.
-    alt-1 = 'workspace 1'
-    alt-2 = 'workspace 2'
-    alt-3 = 'workspace 3'
-    alt-4 = 'workspace 4'
-    alt-5 = 'workspace 5'
-    alt-6 = 'workspace 6'
-    alt-7 = 'workspace 7'
-    alt-8 = 'workspace 8'
-    alt-9 = 'workspace 9'
-    alt-0 = 'workspace 10'
-
-    # Move the focused window's parent workspace to another monitor.
-    alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
-
-    # Move focused window to a workspace.
-    alt-shift-1 = 'move-node-to-workspace 1'
-    alt-shift-2 = 'move-node-to-workspace 2'
-    alt-shift-3 = 'move-node-to-workspace 3'
-    alt-shift-4 = 'move-node-to-workspace 4'
-    alt-shift-5 = 'move-node-to-workspace 5'
-    alt-shift-6 = 'move-node-to-workspace 6'
-    alt-shift-7 = 'move-node-to-workspace 7'
-    alt-shift-8 = 'move-node-to-workspace 8'
-    alt-shift-9 = 'move-node-to-workspace 9'
-    alt-shift-0 = 'move-node-to-workspace 10'
