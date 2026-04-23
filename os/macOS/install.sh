@@ -43,7 +43,7 @@ sudo-touchid
 # Aerospace
 rm -rf "$HOME/.config/aerospace"
 mkdir -p "$HOME/.config/aerospace"
-cp "$PWD/os/macOS/config/aerospace.toml" "$HOME/.config/aerospace/aerospace.toml"
+cp "$PWD/os/macOS/config/aerospace/aerospace.toml" "$HOME/.config/aerospace/aerospace.toml"
 
 # If Chrome is not installed, fall back to Chromium for bindings that use Chrome
 if [ ! -d "/Applications/Google Chrome.app" ] && [ ! -d "$HOME/Applications/Google Chrome.app" ]; then
