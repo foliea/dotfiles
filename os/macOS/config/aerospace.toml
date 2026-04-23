@@ -55,10 +55,10 @@ cmd-enter = 'exec-and-forget open -n -a Ghostty'
 cmd-shift-enter = 'exec-and-forget open -n -a Ghostty --args -e sh -c "tmux attach || tmux new -s Work"'
 
 # Browser
-cmd-shift-b = 'exec-and-forget open -n -a Chromium'
+cmd-shift-b = 'exec-and-forget open -n -a "Google Chrome"'
 
 # Browser (private)
-cmd-alt-b = 'exec-and-forget open -n -a Chromium --args --incognito'
+cmd-alt-b = 'exec-and-forget open -n -a "Google Chrome" --args --incognito'
 
 # Editor
 cmd-shift-e = 'exec-and-forget open -n -a Ghostty --args -e nvim'
