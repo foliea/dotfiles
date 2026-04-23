@@ -4,7 +4,10 @@ set -e
 sh "$(dirname "$0")/../shared/install.sh"
 
 install_packages() {
-  omarchy-pkg-add makima-bin
+  omarchy-pkg-add \
+    makima-bin \
+    "FiraCode Nerd Font"
+
   omarchy-install-terminal ghostty
 }
 
@@ -45,13 +48,13 @@ install_services() {
   cp -n "$PWD/os/omarchy/services/makima.service" "$service_dest/" 2>/dev/null || true
 
   if [ -c /dev/uinput ] && ! sudo -n chmod 666 /dev/uinput 2>/dev/null; then
-      echo "Fixing /dev/uinput permissions..."
-      sudo chmod 666 /dev/uinput 2>/dev/null || echo "/!\\ Run: sudo chmod 666 /dev/uinput"
+    echo "Fixing /dev/uinput permissions..."
+    sudo chmod 666 /dev/uinput 2>/dev/null || echo "/!\\ Run: sudo chmod 666 /dev/uinput"
   fi
 
   local udev_rule="/etc/udev/rules.d/99-uinput.rules"
   if [ -c /dev/uinput ] && ! grep -q "MODE.*0660" "$udev_rule" 2>/dev/null; then
-      echo 'KERNEL=="uinput", MODE="0660", GROUP="input", OPTIONS+="static_node=uinput"' | sudo tee "$udev_rule" > /dev/null 2>&1 || true
+    echo 'KERNEL=="uinput", MODE="0660", GROUP="input", OPTIONS+="static_node=uinput"' | sudo tee "$udev_rule" >/dev/null 2>&1 || true
   fi
 
   echo "Reloading systemd and starting makima..."
@@ -70,3 +73,4 @@ install_keyboard
 install_webapps
 install_services
 install_hardware_fixes
+
