@@ -54,7 +54,7 @@ cmd-enter = 'exec-and-forget open -n -a Ghostty'
 # Tmux terminal
 cmd-shift-enter = 'exec-and-forget open -n -a Ghostty --args -e sh -c "tmux attach || tmux new -s Work"'
 
-# Browser (personal)
+# Browser
 cmd-shift-b = 'exec-and-forget open -n -a Chromium'
 
 # Browser (private)
@@ -91,7 +91,7 @@ cmd-shift-p = 'exec-and-forget open -n -a Chromium --args --app=https://photos.g
 cmd-shift-x = 'exec-and-forget open -n -a Chromium --args --app=https://x.com'
 
 # AI Chat (Gemini)
-cmd-shift-a = 'exec-and-forget open -a "Google Gemini"'
+cmd-shift-a = 'exec-and-forget open -n -a "Google Chrome" --args --app=https://gemini.google.com'
 
 # Grok
 cmd-alt-a = 'exec-and-forget open -n -a Chromium --args --app=https://grok.com'
