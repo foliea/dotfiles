@@ -4,9 +4,7 @@ set -e
 sh "$(dirname "$0")/../shared/install.sh"
 
 brew install \
-  mpv \
-  desktoppr \
-  artginzburg/tap/sudo-touchid
+  desktoppr
 
 brew install --cask \
   font-fira-code-nerd-font \
@@ -14,7 +12,7 @@ brew install --cask \
   hiddenbar \
   scroll-reverser \
   caffeine \
-  visual-studio-code \
+  stolendata-mpv \
   ghostty \
   orbstack \
   discord \
@@ -36,9 +34,6 @@ if [ ! -d "/Applications/Google Chrome.app" ] && [ ! -d "$HOME/Applications/Goog
     ;;
   esac
 fi
-
-# Enable Touch ID for sudo
-sudo-touchid
 
 # Aerospace
 rm -rf "$HOME/.config/aerospace"
