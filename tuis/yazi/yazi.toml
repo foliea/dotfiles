@@ -1,0 +1,53 @@
+[mgr]
+ratio = [1, 4, 3]
+sort_by = "natural"
+sort_sensitive = false
+sort_reverse = false
+sort_dir_first = true
+sort_translit = false
+linemode = "size"
+show_hidden = false
+show_symlink = true
+scrolloff = 5
+mouse_events = ["click", "scroll"]
+
+[preview]
+tab_size = 2
+max_width = 600
+max_height = 900
+cache_dir = ""
+image_delay = 30
+image_filter = "triangle"
+image_quality = 75
+
+[opener]
+edit = [
+	{ run = "${EDITOR:-nvim} %s", desc = "nvim", block = true, for = "unix" },
+]
+open = [
+	{ run = 'xdg-open "$@"', desc = "xdg-open", orphan = true, for = "unix" },
+]
+
+[open]
+rules = [
+	{ url = "*/", use = "open" },
+	{ mime = "text/*", use = "edit" },
+	{ mime = "image/*", use = "open" },
+	{ mime = "video/*", use = "open" },
+	{ mime = "audio/*", use = "open" },
+	{ mime = "application/pdf", use = "open" },
+]
+
+[tasks]
+file_workers = 3
+plugin_workers = 5
+fetch_workers = 5
+preload_workers = 2
+process_workers = 5
+image_alloc = 536870912
+
+[which]
+sort_by = "none"
+sort_sensitive = false
+sort_reverse = false
+sort_translit = false

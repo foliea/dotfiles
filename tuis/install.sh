@@ -11,19 +11,20 @@ else
   exit 1
 fi
 
-for tool in k9s yazi lazygit lazydocker; do
-  TOOL_CONFIG_DIR="$CONFIG_DIR/$tool"
-  mkdir -p "$TOOL_CONFIG_DIR"
-  rm -rf "$TOOL_CONFIG_DIR"/*
-  cp -r "$PWD/tuis/$tool"/* "$TOOL_CONFIG_DIR/"
-done
+install_tools() (
+  for tool in "$1"; do
+    local tool_config_dir = "$2/$tool"
 
-mkdir -p "$HOME/.config/fastfetch"
+    echo $tool $tool_config_dir
+    #    mkdir -p $tool_config_dir
+    #rm -rf $tool_config_dir/*
+    #  cp -r "$PWD/tuis/$tool"/* "$tool_config_dir/"
+  done
+)
+
+install_tools "k9s lazygit lazydocker" "$CONFIG_DIR"
+install_tools "yazi opencode" "$HOME/.config"
+
 if ! command -v omarchy-version >/dev/null 2>&1; then
-  rm -rf "$HOME/.config/fastfetch"/*
-  cp -r "$PWD/tuis/fastfetch"/* "$HOME/.config/fastfetch/"
+  install_tools "fastfetch" "$HOME/.config"
 fi
-
-mkdir -p "$HOME/.config/opencode"
-rm -rf "$HOME/.config/opencode"/*
-cp -r "$PWD/tuis/opencode"/* "$HOME/.config/opencode/"
