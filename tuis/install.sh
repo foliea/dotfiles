@@ -2,42 +2,26 @@
 set -e
 
 OS="$(uname -s)"
-
 if [ "$OS" = "Darwin" ]; then
-	K9S_CONFIG_SUPPORT="$HOME/Library/Application Support/k9s"
-	LAZYGIT_CONFIG_SUPPORT="$HOME/Library/Application Support/lazygit"
-	LAZYDOCKER_CONFIG_SUPPORT="$HOME/Library/Application Support/lazydocker"
+  CONFIG_DIR="$HOME/Library/Application Support"
 elif [ "$OS" = "Linux" ]; then
-	K9S_CONFIG_SUPPORT="$HOME/.config/k9s"
-	LAZYGIT_CONFIG_SUPPORT="$HOME/.config/lazygit"
-	LAZYDOCKER_CONFIG_SUPPORT="$HOME/.config/lazydocker"
+  CONFIG_DIR="$HOME/.config"
 else
-	echo "Unsupported OS: $OS"
-	exit 1
+  echo "Unsupported OS: $OS"
+  exit 1
 fi
 
-mkdir -p "$HOME/.config/btop"
-rm -f "$HOME/.config/btop/btop.conf"
-cp "$PWD/tuis/btop/btop.conf" "$HOME/.config/btop/btop.conf"
-mkdir -p "$HOME/.config/btop/themes"
-
-mkdir -p "$K9S_CONFIG_SUPPORT"
-rm -f "$K9S_CONFIG_SUPPORT/config.yaml"
-cp "$PWD/tuis/k9s/config.yaml" "$K9S_CONFIG_SUPPORT/config.yaml"
-mkdir -p "$K9S_CONFIG_SUPPORT/skins"
-
-mkdir -p "$LAZYGIT_CONFIG_SUPPORT"
-rm -rf "$LAZYGIT_CONFIG_SUPPORT"/*
-cp -r "$PWD/tuis/lazygit"/* "$LAZYGIT_CONFIG_SUPPORT/"
-
-mkdir -p "$LAZYDOCKER_CONFIG_SUPPORT"
-rm -rf "$LAZYDOCKER_CONFIG_SUPPORT"/*
-cp -r "$PWD/tuis/lazydocker"/* "$LAZYDOCKER_CONFIG_SUPPORT/"
+for tool in k9s yazi lazygit lazydocker; do
+  TOOL_CONFIG_DIR="$CONFIG_DIR/$tool"
+  mkdir -p "$TOOL_CONFIG_DIR"
+  rm -rf "$TOOL_CONFIG_DIR"/*
+  cp -r "$PWD/tuis/$tool"/* "$TOOL_CONFIG_DIR/"
+done
 
 mkdir -p "$HOME/.config/fastfetch"
-if ! command -v omarchy-version > /dev/null 2>&1; then
-	rm -rf "$HOME/.config/fastfetch"/*
-	cp -r "$PWD/tuis/fastfetch"/* "$HOME/.config/fastfetch/"
+if ! command -v omarchy-version >/dev/null 2>&1; then
+  rm -rf "$HOME/.config/fastfetch"/*
+  cp -r "$PWD/tuis/fastfetch"/* "$HOME/.config/fastfetch/"
 fi
 
 mkdir -p "$HOME/.config/opencode"
