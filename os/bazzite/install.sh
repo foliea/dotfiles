@@ -27,4 +27,11 @@ flatpak install \
   org.localsend.localsend_app \
   net.retrodeck.retrodeck
 
+# Decky Loader
+sudo ujust setup-decky
+
+# Decky Plugins
+sudo ujust install-decky-plugins decky-framegen
+sudo ujust install-decky-plugins decky-lsfg-vk
+
 echo "Done. Reboot required."
