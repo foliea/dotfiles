@@ -8,11 +8,12 @@ sed -i 's/window-decoration = false/window-decoration = true/' "$HOME/.config/gh
 sed -i 's/font-size = 13/font-size = 11/' "$HOME/.config/ghostty/config"
 
 # Fira Code Nerd Font (install to user fonts dir on atomicdesktop)
-mkdir -p "$HOME/.local/share/fonts/FiraCode"
+firacode_dir="$HOME/.local/share/fonts/FiraCode"
+mkdir -p "$firacode_dir"
 curl -L -o /tmp/firacode-nf.zip https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.zip
-unzip -o /tmp/firacode-nf.zip -d "$HOME/.local/share/fonts/FiraCode"
+unzip -o /tmp/firacode-nf.zip -d "$firacode_dir"
 rm /tmp/firacode-nf.zip
-fc-cache -f ~/.local/share/fonts/FiraCode 2>/dev/null || true
+fc-cache -f "$firacode_dir" 2>/dev/null
 
 # Ghostty via COPR (requires reboot)
 . /etc/os-release
