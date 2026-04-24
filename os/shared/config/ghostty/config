@@ -2,7 +2,13 @@ font-family = FiraCode Nerd Font
 font-size = 13
 
 confirm-close-surface = false
-window-decoration = false
+resize-overlay = never
+window-theme = ghostty
+window-decoration = true
+window-padding-x = 14
+window-padding-y = 14
+gtk-titlebar-style = tabs
+gtk-toolbar-style = flat
 macos-titlebar-style = hidden
 
 background = #000000
