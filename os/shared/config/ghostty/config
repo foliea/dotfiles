@@ -1,36 +1,38 @@
+# Dynamic theme colors
+config-file = ?"~/.config/ghostty/theme.conf"
+
 font-family = FiraCode Nerd Font
 font-size = 13
 
-confirm-close-surface = false
-resize-overlay = never
+# Window
+window-decoration = false
 window-theme = ghostty
-window-decoration = true
 window-padding-x = 14
 window-padding-y = 14
-gtk-titlebar-style = tabs
+confirm-close-surface=false
+resize-overlay = never
 gtk-toolbar-style = flat
+gtk-titlebar-style = tabs
 macos-titlebar-style = hidden
 
-background = #000000
-foreground = #eeeeee
-cursor-color = #eeeeee
-cursor-text = #000000
-selection-background = #404040
-selection-foreground = #eeeeee
+# Cursor styling
+cursor-style = "block"
+cursor-style-blink = false
 
-palette = 0=#000000
-palette = 1=#e06c75
-palette = 2=#7fd88f
-palette = 3=#e5c07b
-palette = 4=#5c9cf5
-palette = 5=#9d7cd8
-palette = 6=#56b6c2
-palette = 7=#ffffff
-palette = 8=#808080
-palette = 9=#e06c75
-palette = 10=#7fd88f
-palette = 11=#e5c07b
-palette = 12=#5c9cf5
-palette = 13=#9d7cd8
-palette = 14=#56b6c2
-palette = 15=#ffffff
+# Cursor styling + SSH session terminfo
+# (all shell integration options must be passed together)
+shell-integration-features = no-cursor,ssh-env
+
+# Keyboard bindings
+keybind = shift+insert=paste_from_clipboard
+keybind = control+insert=copy_to_clipboard
+keybind = super+control+shift+alt+arrow_down=resize_split:down,100
+keybind = super+control+shift+alt+arrow_up=resize_split:up,100
+keybind = super+control+shift+alt+arrow_left=resize_split:left,100
+keybind = super+control+shift+alt+arrow_right=resize_split:right,100
+
+# Slowdown mouse scrolling
+mouse-scroll-multiplier = 0.95
+
+# Fix general slowness on hyprland (https://github.com/ghostty-org/ghostty/discussions/3224)
+async-backend = epoll
