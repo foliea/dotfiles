@@ -22,6 +22,9 @@ sudo rpm-ostree refresh-md
 sudo rpm-ostree install -A ghostty || true
 
 # Install Apps
-flatpak install flathub org.localsend.localsend_app
+flatpak install \
+  com.discordapp.Discord \
+  org.localsend.localsend_app \
+  net.retrodeck.retrodeck
 
 echo "Done. Reboot required."
