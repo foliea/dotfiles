@@ -16,7 +16,8 @@ brew install --cask \
   ghostty \
   orbstack \
   discord \
-  chromium
+  chromium \
+  localsend
 
 # Chromium from Homebrew isn't notarized; clear the quarantine attribute so
 # macOS Gatekeeper doesn't flag it as damaged.

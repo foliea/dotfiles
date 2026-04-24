@@ -20,4 +20,7 @@ curl -fsSL "https://copr.fedorainfracloud.org/coprs/scottames/ghostty/repo/fedor
 sudo rpm-ostree refresh-md
 sudo rpm-ostree install -A ghostty || true
 
+# Install Apps
+flatpak install flathub org.localsend.localsend_app
+
 echo "Done. Reboot required."
