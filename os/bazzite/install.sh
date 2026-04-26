@@ -4,9 +4,12 @@ set -e
 sh "$(dirname "$0")/../shared/install.sh"
 
 install_config() {
+  ghostty_config="$HOME/.config/ghostty/config"
+
   # Enable window decorations for Ghostty
-  sed -i 's/window-decoration = false/window-decoration = true/' "$HOME/.config/ghostty/config"
-  sed -i 's/font-size = 13/font-size = 11/' "$HOME/.config/ghostty/config"
+  sed -i 's/window-decoration = false/window-decoration = true/' "$ghostty_config"
+  sed -i 's/font-size = 13/font-size = 11/' "$ghostty_config"
+  sed -i '/^gtk-toolbar-style/a gtk-titlebar-style = tabs' "$ghostty_config"
 }
 
 install_fonts() {

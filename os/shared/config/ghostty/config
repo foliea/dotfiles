@@ -12,7 +12,6 @@ window-padding-y = 14
 confirm-close-surface=false
 resize-overlay = never
 gtk-toolbar-style = flat
-gtk-titlebar-style = tabs
 macos-titlebar-style = hidden
 
 # Cursor styling
