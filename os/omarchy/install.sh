@@ -67,10 +67,23 @@ install_hardware_fixes() {
   sh "$PWD/os/omarchy/scripts/fix-audio-ux5406sa.sh"
 }
 
-install_packages
-install_config
-install_keyboard
-install_webapps
-install_services
-install_hardware_fixes
+TARGET="${1:-all}"
+
+case "$TARGET" in
+  packages) install_packages ;;
+  config) install_config ;;
+  keyboard) install_keyboard ;;
+  webapps) install_webapps ;;
+  services) install_services ;;
+  hardware_fixes|hardware) install_hardware_fixes ;;
+  all)
+    install_packages
+    install_config
+    install_keyboard
+    install_webapps
+    install_services
+    install_hardware_fixes
+    ;;
+  *) echo "Usage: $0 [packages|config|keyboard|webapps|services|hardware]" >&2; exit 1 ;;
+esac
 
