@@ -1,12 +1,16 @@
 .PHONY: all test help bash git nvim tmux mise starship tuis themes
 
 SCRIPTS_DIR := scripts
-MODULES := bash git nvim tmux mise starship tuis themes
+MODULES := bash git tmux mise starship themes
 
 all: bash git nvim tmux mise starship tuis
 
-nvim: themes
-tuis: themes
+nvim:
+	@./nvim/install.sh
+	@./themes/install.sh
+tuis:
+	@./tuis/install.sh
+	@./themes/install.sh
 
 test:
 	@$(SCRIPTS_DIR)/run-tests.exp
