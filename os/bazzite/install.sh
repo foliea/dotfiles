@@ -11,7 +11,7 @@ install_config() {
   # Enable window decorations for Ghostty
   sed -i 's/^window-decoration = .*/window-decoration = true/' "$ghostty_config"
   sed -i 's/^font-size = .*/font-size = 11/' "$ghostty_config"
-  sed -i '/^gtk-toolbar-style/a gtk-titlebar-style = tabs' "$ghostty_config"
+  grep -q '^gtk-titlebar-style' "$ghostty_config" 2>/dev/null || sed -i '/^gtk-toolbar-style/a gtk-titlebar-style = tabs' "$ghostty_config"
 }
 
 install_fonts() {
