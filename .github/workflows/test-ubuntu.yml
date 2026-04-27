@@ -16,11 +16,11 @@ jobs:
       - name: Install system packages
         run: |
           chmod +x os/ubuntu/dependencies.sh
-          sudo ./os/ubuntu/dependencies.sh install_ubuntu_deps
+          sudo ./os/ubuntu/dependencies.sh system
 
       - name: Install brew
         run: |
-          ./os/ubuntu/dependencies.sh install_homebrew
+          ./os/ubuntu/dependencies.sh homebrew
           echo "PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH" >> $GITHUB_ENV
           echo "HOMEBREW_NO_ANALYTICS=1" >> $GITHUB_ENV
 
@@ -28,9 +28,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          ./os/ubuntu/dependencies.sh install_shared_deps
+          ./os/ubuntu/dependencies.sh shared
 
       - name: Run tests
         run: |
           chmod +x run-tests.exp
           ./run-tests.exp
+
