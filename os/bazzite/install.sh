@@ -50,19 +50,23 @@ install_decky() {
 TARGET="${1:-all}"
 
 case "$TARGET" in
-  shared) install_shared ;;
-  config) install_config ;;
-  fonts) install_fonts ;;
-  packages) install_packages
-    echo "Done. Reboot required."
-    ;;
-  decky) install_decky ;;
-  all)
-    install_shared
-    install_config
-    install_fonts
-    install_packages
-    install_decky
-    ;;
-  *) echo "Usage: $0 [shared|config|fonts|packages|decky]" >&2; exit 1 ;;
+shared) install_shared ;;
+config) install_config ;;
+fonts) install_fonts ;;
+packages)
+  install_packages
+  echo "Done. Reboot required."
+  ;;
+decky) install_decky ;;
+all)
+  install_shared
+  install_config
+  install_fonts
+  install_packages
+  install_decky
+  ;;
+*)
+  echo "Usage: $0 [shared|config|fonts|packages|decky]" >&2
+  exit 1
+  ;;
 esac

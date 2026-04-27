@@ -59,14 +59,18 @@ install_settings() {
 TARGET="${1:-all}"
 
 case "$TARGET" in
-  shared) install_shared ;;
-  packages) install_packages ;;
-  config) install_config ;;
-  settings) install_settings ;;
-  all)
-    install_packages
-    install_config
-    install_settings
-    ;;
-  *) echo "Usage: $0 [shared|packages|config|settings]" >&2; exit 1 ;;
+shared) install_shared ;;
+packages) install_packages ;;
+config) install_config ;;
+settings) install_settings ;;
+all)
+  install_shared
+  install_packages
+  install_config
+  install_settings
+  ;;
+*)
+  echo "Usage: $0 [shared|packages|config|settings]" >&2
+  exit 1
+  ;;
 esac

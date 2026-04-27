@@ -28,10 +28,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          ./os/ubuntu/dependencies.sh shared
+          ./os/ubuntu/dependencies.sh packages
 
       - name: Run tests
         run: |
           chmod +x run-tests.exp
           ./run-tests.exp
-

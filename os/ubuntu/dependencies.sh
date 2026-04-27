@@ -23,20 +23,23 @@ install_homebrew() {
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 }
 
-install_shared() {
+install_packages() {
   sh "$(dirname "$0")/../shared/dependencies.sh"
 }
 
 TARGET="${1:-all}"
 
 case "$TARGET" in
-  system) install_system_deps ;;
-  homebrew) install_homebrew ;;
-  shared) install_shared ;;
-  all)
-    install_system_deps
-    install_homebrew
-    install_shared
-    ;;
-  *) echo "Usage: $0 [system|homebrew|shared|all]" >&2; exit 1 ;;
+system) install_system_deps ;;
+homebrew) install_homebrew ;;
+packages) install_packages ;;
+all)
+  install_system_deps
+  install_homebrew
+  install_packages
+  ;;
+*)
+  echo "Usage: $0 [system|homebrew|packages|all]" >&2
+  exit 1
+  ;;
 esac

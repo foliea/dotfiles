@@ -21,4 +21,4 @@ RUN /tmp/dependencies.sh homebrew
 
 ENV PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${PATH}"
 
-RUN bash -c "ulimit -n 65536 && /tmp/dependencies.sh shared"
+RUN bash -c "ulimit -n 65536 && /tmp/dependencies.sh packages"
