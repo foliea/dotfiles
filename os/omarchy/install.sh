@@ -6,7 +6,7 @@ sh "$(dirname "$0")/../shared/install.sh"
 install_packages() {
   omarchy-pkg-add \
     makima-bin \
-    "FiraCode Nerd Font"
+    "JetBrainsMono Nerd Font Mono"
 
   omarchy-install-terminal ghostty
 }
@@ -16,7 +16,7 @@ install_config() {
   rsync -a "$PWD/os/omarchy/config/" "$HOME/.config/"
   sed -i 's/^font-size = .*/font-size = 9.1/' "$HOME/.config/ghostty/config"
   sed -i 's/mode="assign" binding="strong"/mode="assign"/' "$HOME/.config/fontconfig/fonts.conf"
-  omarchy-font-set "FiraCode Nerd Font"
+  omarchy-font-set "JetBrainsMono Nerd Font Mono"
 }
 
 install_keyboard() {

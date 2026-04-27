@@ -8,7 +8,7 @@ install_packages() {
     desktoppr
 
   brew install --cask \
-    font-fira-code-nerd-font \
+    font-jetbrains-mono-nerd-font \
     nikitabobko/tap/aerospace \
     hiddenbar \
     scroll-reverser \

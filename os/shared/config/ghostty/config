@@ -1,7 +1,7 @@
 # Dynamic theme colors
 config-file = ?"~/.config/ghostty/theme.conf"
 
-font-family = "FiraCode Nerd Font"
+font-family = "JetBrainsMono Nerd Font Mono"
 font-size = 13
 
 # Window

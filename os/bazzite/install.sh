@@ -13,13 +13,13 @@ install_config() {
 }
 
 install_fonts() {
-  # Fira Code Nerd Font (install to user fonts dir on atomicdesktop)
-  firacode_dir="$HOME/.local/share/fonts/FiraCode"
-  mkdir -p "$firacode_dir"
-  curl -L -o /tmp/firacode-nf.zip https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.zip
-  unzip -o /tmp/firacode-nf.zip -d "$firacode_dir"
-  rm /tmp/firacode-nf.zip
-  fc-cache -f "$firacode_dir" 2>/dev/null
+  # JetBrainsMono Nerd Font (install to user fonts dir on atomicdesktop)
+  jetbrainsmono_dir="$HOME/.local/share/fonts/JetBrainsMono"
+  mkdir -p "$jetbrainsmono_dir"
+  curl -L -o /tmp/jetbrainsmono-nf.zip https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
+  unzip -o /tmp/jetbrainsmono-nf.zip -d "$jetbrainsmono_dir"
+  rm /tmp/jetbrainsmono-nf.zip
+  fc-cache -f "$jetbrainsmono_dir" 2>/dev/null
 }
 
 install_packages() {
