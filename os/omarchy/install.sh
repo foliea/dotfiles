@@ -15,6 +15,7 @@ install_config() {
   mkdir -p "$HOME/.config"
   rsync -a "$PWD/os/omarchy/config/" "$HOME/.config/"
   sed -i 's/^font-size = .*/font-size = 9.1/' "$HOME/.config/ghostty/config"
+  sed -i 's/mode="assign" binding="strong"/mode="assign"/' "$HOME/.config/fontconfig/fonts.conf"
   omarchy-font-set "FiraCode Nerd Font"
 }
 
