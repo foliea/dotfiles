@@ -11,13 +11,7 @@ install_config() {
   # Enable window decorations for Ghostty
   sed -i 's/^window-decoration = .*/window-decoration = true/' "$ghostty_config"
   sed -i 's/^font-size = .*/font-size = 11/' "$ghostty_config"
-  if ! grep -q '^gtk-titlebar-style' "$ghostty_config" 2>/dev/null; then
-    if grep -q '^gtk-toolbar-style' "$ghostty_config" 2>/dev/null; then
-      sed -i '/^gtk-toolbar-style/a gtk-titlebar-style = tabs' "$ghostty_config"
-    else
-      echo 'gtk-titlebar-style = tabs' >> "$ghostty_config"
-    fi
-  fi
+  grep -q '^gtk-titlebar-style' "$ghostty_config" 2>/dev/null || echo 'gtk-titlebar-style = tabs' >>"$ghostty_config"
 }
 
 install_fonts() {
@@ -31,9 +25,9 @@ install_fonts() {
 }
 
 install_packages() {
-  # Ghostty via COPR
   . /etc/os-release
-  curl -fsSL "https://copr.fedorainfracloud.org/coprs/scottames/ghostty/repo/fedora-${VERSION_ID}/scottames-ghostty-fedora-${VERSION_ID}.repo" | sudo tee /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:scottames:ghostty.repo >/dev/null
+  repo_url="https://copr.fedorainfracloud.org/coprs/scottames/ghostty/repo/fedora-${VERSION_ID}/scottames-ghostty-fedora-${VERSION_ID}.repo"
+  curl -fsSL "$repo_url" | sudo tee /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:scottames:ghostty.repo >/dev/null
   sudo rpm-ostree refresh-md
   sudo rpm-ostree install -A ghostty || true
 
