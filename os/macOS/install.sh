@@ -1,7 +1,9 @@
 #!/bin/sh
 set -e
 
-sh "$(dirname "$0")/../shared/install.sh"
+install_shared() {
+  sh "$(dirname "$0")/../shared/install.sh"
+}
 
 install_packages() {
   brew install \
@@ -57,6 +59,7 @@ install_settings() {
 TARGET="${1:-all}"
 
 case "$TARGET" in
+  shared) install_shared ;;
   packages) install_packages ;;
   config) install_config ;;
   settings) install_settings ;;
@@ -65,5 +68,5 @@ case "$TARGET" in
     install_config
     install_settings
     ;;
-  *) echo "Usage: $0 [packages|config|settings]" >&2; exit 1 ;;
+  *) echo "Usage: $0 [shared|packages|config|settings]" >&2; exit 1 ;;
 esac

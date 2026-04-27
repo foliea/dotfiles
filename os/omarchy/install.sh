@@ -1,7 +1,9 @@
 #!/bin/sh
 set -e
 
-sh "$(dirname "$0")/../shared/install.sh"
+install_shared() {
+  sh "$(dirname "$0")/../shared/install.sh"
+}
 
 install_packages() {
   omarchy-pkg-add \
@@ -72,6 +74,7 @@ install_hardware_fixes() {
 TARGET="${1:-all}"
 
 case "$TARGET" in
+  shared) install_shared ;;
   packages) install_packages ;;
   config) install_config ;;
   keyboard) install_keyboard ;;
@@ -79,6 +82,7 @@ case "$TARGET" in
   services) install_services ;;
   hardware_fixes|hardware) install_hardware_fixes ;;
   all)
+    install_shared
     install_packages
     install_config
     install_keyboard
@@ -86,6 +90,6 @@ case "$TARGET" in
     install_services
     install_hardware_fixes
     ;;
-  *) echo "Usage: $0 [packages|config|keyboard|webapps|services|hardware]" >&2; exit 1 ;;
+  *) echo "Usage: $0 [shared|packages|config|keyboard|webapps|services|hardware]" >&2; exit 1 ;;
 esac
 

@@ -1,7 +1,9 @@
 #!/bin/sh
 set -e
 
-sh "$(dirname "$0")/../shared/install.sh"
+install_shared() {
+  sh "$(dirname "$0")/../shared/install.sh"
+}
 
 install_config() {
   ghostty_config="$HOME/.config/ghostty/config"
@@ -48,6 +50,7 @@ install_decky() {
 TARGET="${1:-all}"
 
 case "$TARGET" in
+  shared) install_shared ;;
   config) install_config ;;
   fonts) install_fonts ;;
   packages) install_packages
@@ -55,10 +58,11 @@ case "$TARGET" in
     ;;
   decky) install_decky ;;
   all)
+    install_shared
     install_config
     install_fonts
     install_packages
     install_decky
     ;;
-  *) echo "Usage: $0 [config|fonts|packages|decky]" >&2; exit 1 ;;
+  *) echo "Usage: $0 [shared|config|fonts|packages|decky]" >&2; exit 1 ;;
 esac
