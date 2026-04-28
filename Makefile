@@ -18,7 +18,9 @@ test:
 
 lint:
 	@stylua --config-path nvim/stylua.toml --check nvim/
+	@cd nvim && selene lua/ init.lua plugin/
 	@shfmt -d -i 2 $(SHELL_SCRIPTS)
+	@shellcheck --severity=warning $(SHELL_SCRIPTS)
 
 $(MODULES):
 	@./$@/install.sh
@@ -27,7 +29,7 @@ help:
 	@echo "Available targets:"
 	@echo "  all        Install all configurations"
 	@echo "  test       Run tests"
-	@echo "  lint       Run formatters in check mode (stylua, shfmt)"
+	@echo "  lint       Run formatters and linters (stylua, selene, shfmt, shellcheck)"
 	@echo "  bash       Install Bash config"
 	@echo "  git        Install Git config"
 	@echo "  nvim       Install Neovim config"

@@ -5,7 +5,7 @@ choice=$(printf "%b" "System\nTerminal\n" | fzf --prompt="Open with:" --height=1
 case "$choice" in
 System)
   if [ -n "$TMUX" ]; then
-    tmux run-shell -b "xdg-open \"$@\" >/dev/null 2>&1"
+    tmux run-shell -b "xdg-open \"$1\" >/dev/null 2>&1"
   else
     exec xdg-open "$@"
   fi

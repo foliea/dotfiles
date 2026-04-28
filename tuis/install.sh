@@ -12,7 +12,7 @@ install_tuis() (
     tui_config_dir="$2/$tui"
 
     mkdir -p "$tui_config_dir"
-    rm -rf "$tui_config_dir"/*
+    rm -rf "${tui_config_dir:?}"/*
     cp -r "$PWD/tuis/$tui"/* "$tui_config_dir/"
   done
 )

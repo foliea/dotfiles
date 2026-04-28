@@ -45,9 +45,11 @@ if ! command -v omarchy-version >/dev/null 2>&1; then
     anomalyco/tap/opencode \
     Valkyrie00/homebrew-bbrew/bbrew \
     stylua \
+    selene \
     prettier \
     prettierd \
     shfmt \
+    shellcheck \
     beautysh \
     lua-language-server \
     bash-language-server \
