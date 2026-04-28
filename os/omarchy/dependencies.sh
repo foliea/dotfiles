@@ -6,4 +6,7 @@ sh "$(dirname "$0")/../shared/dependencies.sh"
 omarchy-pkg-add \
   yazi \
   git-delta \
-  k9s
+  k9s \
+  shellcheck \
+  selene \
+  actionlint
