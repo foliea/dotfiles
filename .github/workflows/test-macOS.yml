@@ -20,6 +20,10 @@ jobs:
           chmod +x os/macOS/dependencies.sh
           ./os/macOS/dependencies.sh
 
+      - name: Run Linting
+        run: |
+          stylua --config-path nvim/stylua.toml --check nvim/
+
       - name: Run tests
         run: |
           chmod +x run-tests.exp
