@@ -57,7 +57,7 @@ fi
 
 # Local bin scripts
 mkdir -p "$HOME/.local/bin"
-for script in xdg-open pkg-install-menu open-folder-menu; do
+for script in xdg-open pkg-install-menu open-folder-menu agents-menu node-global-install; do
   cp "$PWD/os/shared/scripts/$script.sh" "$HOME/.local/bin/$script"
   chmod +x "$HOME/.local/bin/$script"
 done
