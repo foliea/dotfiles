@@ -1,6 +1,5 @@
 .PHONY: all test lint help bash git nvim tmux mise starship tuis themes
 
-SCRIPTS_DIR := scripts
 MODULES := bash git tmux mise starship themes
 SHELL_SCRIPTS := $(shell find . -name "*.sh" -not -path "./.git/*")
 JSON_FILES := $(shell find . -name "*.json" -not -path "./.git/*")
@@ -15,7 +14,7 @@ tuis:
 	@./themes/install.sh
 
 test:
-	@$(SCRIPTS_DIR)/run-tests.exp
+	@./run-tests.exp
 
 lint:
 	@cd nvim && selene lua/ init.lua plugin/

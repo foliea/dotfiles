@@ -26,5 +26,4 @@ jobs:
 
       - name: Run tests
         run: |
-          chmod +x run-tests.exp
-          ./run-tests.exp
+          make test
