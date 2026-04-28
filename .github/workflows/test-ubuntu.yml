@@ -7,11 +7,11 @@ on:
 
 jobs:
   run-test-ubuntu:
-    runs-on: ubuntu-26.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install system packages
         run: |
@@ -21,8 +21,8 @@ jobs:
       - name: Install brew
         run: |
           ./os/ubuntu/dependencies.sh homebrew
-          echo "PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH" >> $GITHUB_ENV
-          echo "HOMEBREW_NO_ANALYTICS=1" >> $GITHUB_ENV
+          echo "PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH" >> "$GITHUB_ENV"
+          echo "HOMEBREW_NO_ANALYTICS=1" >> "$GITHUB_ENV"
 
       - name: Install dependencies
         env:

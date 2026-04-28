@@ -50,6 +50,7 @@ if ! command -v omarchy-version >/dev/null 2>&1; then
     prettierd \
     shfmt \
     shellcheck \
+    actionlint \
     beautysh \
     lua-language-server \
     bash-language-server \
