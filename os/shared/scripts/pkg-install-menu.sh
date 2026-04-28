@@ -14,8 +14,8 @@ fi
 choice=$(printf "%b" "$options" | fzf --prompt="Install with:" --height=100% --reverse)
 
 case "$choice" in
-  Brew) exec bbrew ;;
-  Aptitude) exec sudo aptitude ;;
-  Pacman) exec omarchy-pkg-install ;;
-  AUR) exec omarchy-pkg-aur-install ;;
+Brew) exec bbrew ;;
+Aptitude) exec sudo aptitude ;;
+Pacman) exec omarchy-pkg-install ;;
+AUR) exec omarchy-pkg-aur-install ;;
 esac

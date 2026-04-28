@@ -6,7 +6,7 @@ if command -v omarchy-version >/dev/null 2>&1; then
   omarchy-theme-install "https://github.com/foliea/omarchy-madness-theme"
   omarchy-theme-set "Madness"
 
-  echo "config-file = ?\"$HOME/.config/omarchy/current/theme/ghostty.conf\"" > "$HOME/.config/ghostty/theme.conf"
+  echo "config-file = ?\"$HOME/.config/omarchy/current/theme/ghostty.conf\"" >"$HOME/.config/ghostty/theme.conf"
   sed -i 's/font-size = 13/font-size = 9.1/' "$HOME/.config/ghostty/config"
 else
   THEME_BASE_URL="https://raw.githubusercontent.com/foliea/omarchy-madness-theme/master"

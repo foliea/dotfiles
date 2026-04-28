@@ -33,6 +33,7 @@ jobs:
       - name: Run Linting
         run: |
           stylua --config-path nvim/stylua.toml --check nvim/
+          shfmt -d -i 2 $(find . -name "*.sh" -not -path "./.git/*")
 
       - name: Run tests
         run: |
