@@ -52,7 +52,7 @@ alt-w = 'close --quit-if-last-window'
 cmd-enter = 'exec-and-forget open -n -a Ghostty'
 
 # Tmux terminal
-cmd-shift-enter = 'exec-and-forget open -n -a Ghostty --args -e sh -c "tmux attach || tmux new -s Work"'
+cmd-alt-enter = 'exec-and-forget open -n -a Ghostty --args -e sh -c "tmux attach || tmux new -s Work"'
 
 # Browser
 cmd-shift-b = 'exec-and-forget open -n -a "Google Chrome"'
