@@ -1,7 +1,8 @@
-.PHONY: all test help bash git nvim tmux mise starship tuis themes
+.PHONY: all test lint help bash git nvim tmux mise starship tuis themes
 
 SCRIPTS_DIR := scripts
 MODULES := bash git tmux mise starship themes
+SHELL_SCRIPTS := $(shell find . -name "*.sh" -not -path "./.git/*")
 
 all: bash git nvim tmux mise starship tuis
 
@@ -15,6 +16,10 @@ tuis:
 test:
 	@$(SCRIPTS_DIR)/run-tests.exp
 
+lint:
+	@stylua --config-path nvim/stylua.toml --check nvim/
+	@shfmt -d -i 2 $(SHELL_SCRIPTS)
+
 $(MODULES):
 	@./$@/install.sh
 
@@ -22,6 +27,7 @@ help:
 	@echo "Available targets:"
 	@echo "  all        Install all configurations"
 	@echo "  test       Run tests"
+	@echo "  lint       Run formatters in check mode (stylua, shfmt)"
 	@echo "  bash       Install Bash config"
 	@echo "  git        Install Git config"
 	@echo "  nvim       Install Neovim config"
