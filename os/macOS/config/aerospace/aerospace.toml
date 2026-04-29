@@ -16,17 +16,17 @@ enter = 'mode main'
 esc = 'mode main'
 
 [mode.main.binding]
-# Focus (Cmd + HJKL)
-cmd-h = 'focus --boundaries-action wrap-around-the-workspace left'
-cmd-j = 'focus --boundaries-action wrap-around-the-workspace down'
-cmd-k = 'focus --boundaries-action wrap-around-the-workspace up'
-cmd-l = 'focus --boundaries-action wrap-around-the-workspace right'
+# Focus window
+alt-h = 'focus --boundaries-action wrap-around-the-workspace left'
+alt-j = 'focus --boundaries-action wrap-around-the-workspace down'
+alt-k = 'focus --boundaries-action wrap-around-the-workspace up'
+alt-l = 'focus --boundaries-action wrap-around-the-workspace right'
 
-# Move window (Cmd + Shift + HJKL)
-cmd-shift-h = 'move left'
-cmd-shift-j = 'move down'
-cmd-shift-k = 'move up'
-cmd-shift-l = 'move right'
+# Move window
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
 
 # Resize mode
 cmd-r = 'mode resize'
@@ -122,4 +122,3 @@ cmd-shift-7 = 'move-node-to-workspace 7'
 cmd-shift-8 = 'move-node-to-workspace 8'
 cmd-shift-9 = 'move-node-to-workspace 9'
 cmd-shift-0 = 'move-node-to-workspace 10'
-
