@@ -1,17 +1,10 @@
-.PHONY: all test lint help bash git nvim tmux mise starship tuis themes
+.PHONY: all test lint help bash git nvim tmux mise starship tuis
 
-MODULES := bash git tmux mise starship themes
+MODULES := bash git nvim tmux mise starship tuis
 SHELL_SCRIPTS := $(shell find . -name "*.sh" -not -path "./.git/*")
 JSON_FILES := $(shell find . -name "*.json" -not -path "./.git/*")
 
-all: bash git nvim tmux mise starship tuis
-
-nvim:
-	@./nvim/install.sh
-	@./themes/install.sh
-tuis:
-	@./tuis/install.sh
-	@./themes/install.sh
+all: $(MODULES)
 
 test:
 	@./run-tests.exp

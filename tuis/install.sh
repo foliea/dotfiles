@@ -23,4 +23,8 @@ install_tuis "yazi opencode" "$HOME/.config"
 
 if ! command -v omarchy-version >/dev/null 2>&1; then
   install_tuis "fastfetch" "$HOME/.config/fastfetch"
+
+  mkdir -p "$HOME/.config/btop/themes"
+  curl -fsSL "https://raw.githubusercontent.com/foliea/omarchy-madness-theme/master/btop.theme" \
+    -o "$HOME/.config/btop/themes/current.theme"
 fi

@@ -21,6 +21,11 @@ install_config() {
   omarchy-font-set "JetBrainsMono Nerd Font Mono"
 }
 
+install_theme() {
+  omarchy-theme-install "https://github.com/foliea/omarchy-madness-theme"
+  omarchy-theme-set "Madness"
+}
+
 install_keyboard() {
   local conf_dest="$HOME/.config/makima"
   mkdir -p "$conf_dest"
@@ -77,6 +82,7 @@ case "$TARGET" in
 shared) install_shared ;;
 packages) install_packages ;;
 config) install_config ;;
+theme) install_theme ;;
 keyboard) install_keyboard ;;
 webapps) install_webapps ;;
 services) install_services ;;
@@ -85,13 +91,14 @@ all)
   install_shared
   install_packages
   install_config
+  install_theme
   install_keyboard
   install_webapps
   install_services
   install_hardware_fixes
   ;;
 *)
-  echo "Usage: $0 [shared|packages|config|keyboard|webapps|services|hardware]" >&2
+  echo "Usage: $0 [shared|packages|config|theme|keyboard|webapps|services|hardware]" >&2
   exit 1
   ;;
 esac
