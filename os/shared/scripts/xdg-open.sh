@@ -4,12 +4,9 @@
 open_with_terminal() {
   if [ -f "$1" ] || [ -d "$1" ]; then
     command -v yazi >/dev/null 2>&1 && exec yazi "$1"
-  else
-    command -v curl >/dev/null 2>&1 || exit 1
-    command -v bat >/dev/null 2>&1 && exec curl -Ls "$1" | bat
-    exec curl -Ls "$1"
   fi
 
+  echo "xdg-open: cannot open URL in terminal: $1" >&2
   exit 1
 }
 
