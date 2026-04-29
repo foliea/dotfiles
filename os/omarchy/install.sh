@@ -8,7 +8,7 @@ install_shared() {
 install_packages() {
   omarchy-pkg-add \
     makima-bin \
-    "JetBrainsMono Nerd Font Mono"
+    ttf-jetbrains-mono-nerd
 
   omarchy-install-terminal ghostty
 }
