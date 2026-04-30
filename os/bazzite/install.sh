@@ -12,6 +12,10 @@ install_config() {
   sed -i 's/^window-decoration = .*/window-decoration = true/' "$ghostty_config"
   sed -i 's/^font-size = .*/font-size = 11/' "$ghostty_config"
   grep -q '^gtk-titlebar-style' "$ghostty_config" 2>/dev/null || echo 'gtk-titlebar-style = tabs' >>"$ghostty_config"
+
+  # Forge extension config
+  rm -rf "$HOME/.config/forge"
+  cp -r "$PWD/os/bazzite/config/forge" "$HOME/.config/forge"
 }
 
 install_fonts() {
