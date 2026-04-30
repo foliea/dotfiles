@@ -1,4 +1,21 @@
-# AeroSpace config - Omarchy-style keybindings
+# Mirrors the Hyprland (Omarchy) config as closely as possible. macOS-specific
+# substitutions: alt-w (close) and alt-h/j/k/l (focus / move) replace the
+# SUPER+W and SUPER+arrow bindings due to system shortcut conflicts.
+#
+# Hyprland features intentionally NOT mapped (no AeroSpace equivalent):
+#   - SUPER+P                        Pseudo windows
+#   - SUPER+ALT+F                    Full width / single-axis maximize
+#   - SUPER+O                        Pop-out (float + pin)
+#   - SUPER+S, SUPER+ALT+S           Scratchpad
+#   - SUPER+G, SUPER+ALT+G + 13 more Window groups (join, navigate, activate,
+#                                    scroll, ...)
+#   - SUPER+mouse_*                  Workspace scroll
+#   - SUPER+mouse:272/273            Mouse drag move/resize
+#   - SUPER+ALT+mouse_*              Group scroll
+#   - SUPER+/, SUPER+ALT+/           Monitor scaling cycle (would need exec script)
+#   - SUPER+SHIFT+RETURN             Browser (duplicate of SUPER+SHIFT+B already mapped to cmd-shift-b)
+#   - SUPER+SHIFT+ALT+F              File manager at cwd (no macOS equivalent — Finder has no
+#                                    global "focused window cwd" concept like Hyprland)
 
 start-at-login = true
 
@@ -7,96 +24,24 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
-[mode.resize.binding]
-h = 'resize width -50'
-j = 'resize height +50'
-k = 'resize height -50'
-l = 'resize width +50'
-enter = 'mode main'
-esc = 'mode main'
-
 [mode.main.binding]
-# Focus window
+# Close windows
+alt-w = 'close --quit-if-last-window' # Close window (Alt+W to avoid Cmd+W conflict with macOS)
+
+# Control tiling
+cmd-j = 'layout tiles horizontal vertical' # Toggle window split
+cmd-t = 'layout floating tiling'           # Toggle window floating/tiling
+cmd-f = 'fullscreen'                       # Full screen
+cmd-ctrl-f = 'fullscreen --no-outer-gaps'  # Tiled full screen
+cmd-l = 'layout tiles accordion'           # Toggle workspace layout
+
+# Move focus
 alt-h = 'focus --boundaries-action wrap-around-the-workspace left'
 alt-j = 'focus --boundaries-action wrap-around-the-workspace down'
 alt-k = 'focus --boundaries-action wrap-around-the-workspace up'
 alt-l = 'focus --boundaries-action wrap-around-the-workspace right'
 
-# Move window
-alt-shift-h = 'move left'
-alt-shift-j = 'move down'
-alt-shift-k = 'move up'
-alt-shift-l = 'move right'
-
-# Resize mode
-cmd-r = 'mode resize'
-
-# Layouts
-cmd-t = 'layout tiles horizontal vertical'
-cmd-n = 'layout v_accordion'
-cmd-p = 'layout h_accordion'
-
-# Fullscreen
-cmd-f = 'fullscreen'
-
-# Floating toggle
-cmd-shift-space = 'layout floating tiling'
-
-# Reload config
-cmd-shift-r = 'reload-config'
-
-# Close window (Alt+W to avoid Cmd+W conflict with macOS close)
-alt-w = 'close --quit-if-last-window'
-
-# Terminal
-cmd-enter = 'exec-and-forget open -n -a Ghostty'
-
-# Tmux terminal
-cmd-alt-enter = 'exec-and-forget open -n -a Ghostty --args -e sh -c "tmux attach || tmux new -s Work"'
-
-# Browser
-cmd-shift-b = 'exec-and-forget open -n -a "Google Chrome"'
-
-# Browser (private)
-cmd-alt-b = 'exec-and-forget open -n -a "Google Chrome" --args --incognito'
-
-# Editor
-cmd-shift-e = 'exec-and-forget open -n -a Ghostty --args -e nvim'
-
-# Docker TUI
-cmd-shift-d = 'exec-and-forget open -n -a Ghostty --args -e lazydocker'
-
-# Git TUI
-cmd-shift-g = 'exec-and-forget open -n -a Ghostty --args -e lazygit'
-
-# File manager
-cmd-shift-f = 'exec-and-forget open -n -a Finder'
-
-# Calendar
-cmd-shift-c = 'exec-and-forget open -n -a "Google Chrome" --args --app=https://calendar.google.com'
-
-# Music
-cmd-shift-m = 'exec-and-forget open -n -a Chromium --args --app=https://music.youtube.com'
-
-# Notes
-cmd-shift-n = 'exec-and-forget open -n -a Chromium --args --app=https://keep.google.com'
-
-# YouTube
-cmd-shift-y = 'exec-and-forget open -n -a Chromium --args --app=https://youtube.com'
-
-# Photos
-cmd-shift-p = 'exec-and-forget open -n -a Chromium --args --app=https://photos.google.com'
-
-# X (Twitter)
-cmd-shift-x = 'exec-and-forget open -n -a Chromium --args --app=https://x.com'
-
-# AI Chat (Gemini)
-cmd-shift-a = 'exec-and-forget open -n -a "Google Chrome" --args --app=https://gemini.google.com'
-
-# Grok
-cmd-alt-a = 'exec-and-forget open -n -a Chromium --args --app=https://grok.com'
-
-# Workspaces (Cmd + 1-0)
+# Switch workspaces
 cmd-1 = 'workspace 1'
 cmd-2 = 'workspace 2'
 cmd-3 = 'workspace 3'
@@ -108,10 +53,7 @@ cmd-8 = 'workspace 8'
 cmd-9 = 'workspace 9'
 cmd-0 = 'workspace 10'
 
-# Move workspace to monitor
-cmd-shift-tab = 'move-workspace-to-monitor --wrap-around next'
-
-# Move window to workspace (Cmd + Shift + 1-0)
+# Move active window to a workspace
 cmd-shift-1 = 'move-node-to-workspace 1'
 cmd-shift-2 = 'move-node-to-workspace 2'
 cmd-shift-3 = 'move-node-to-workspace 3'
@@ -122,3 +64,55 @@ cmd-shift-7 = 'move-node-to-workspace 7'
 cmd-shift-8 = 'move-node-to-workspace 8'
 cmd-shift-9 = 'move-node-to-workspace 9'
 cmd-shift-0 = 'move-node-to-workspace 10'
+
+# TAB between workspaces
+cmd-tab = 'workspace --wrap-around next'       # Next workspace
+cmd-shift-tab = 'workspace --wrap-around prev' # Previous workspace
+cmd-ctrl-tab = 'workspace-back-and-forth'      # Former workspace
+
+# Move workspaces to other monitors
+cmd-shift-alt-left = 'move-workspace-to-monitor --wrap-around prev'
+cmd-shift-alt-right = 'move-workspace-to-monitor --wrap-around next'
+cmd-shift-alt-up = 'move-workspace-to-monitor --wrap-around prev'
+cmd-shift-alt-down = 'move-workspace-to-monitor --wrap-around next'
+
+# Swap active window with ALT + SHIFT + h/j/k/l
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+
+# Cycle through windows on active workspace
+alt-tab = 'focus-back-and-forth' # Toggle between last two focused windows
+alt-shift-tab = 'focus dfs-prev' # Focus previous window in workspace
+
+# Cycle through monitors
+ctrl-alt-tab = 'focus-monitor --wrap-around next'       # Focus next monitor
+ctrl-alt-shift-tab = 'focus-monitor --wrap-around prev' # Focus previous monitor
+
+# Resize active window
+cmd-minus = 'resize width -100'        # Shrink width
+cmd-equal = 'resize width +100'        # Expand width
+cmd-shift-minus = 'resize height -100' # Shrink height
+cmd-shift-equal = 'resize height +100' # Expand height
+
+# Reload config
+cmd-shift-r = 'reload-config'
+
+# Application launchers
+cmd-enter = 'exec-and-forget open -n -a Ghostty'                                                       # Terminal
+cmd-alt-enter = 'exec-and-forget open -n -a Ghostty --args -e sh -c "tmux attach || tmux new -s Work"' # Tmux terminal
+cmd-shift-b = 'exec-and-forget open -n -a "Google Chrome"'                                             # Browser
+cmd-shift-alt-b = 'exec-and-forget open -n -a "Google Chrome" --args --incognito'                      # Browser (private)
+cmd-shift-e = 'exec-and-forget open -n -a Ghostty --args -e nvim'                                      # Editor
+cmd-shift-d = 'exec-and-forget open -n -a Ghostty --args -e lazydocker'                                # Docker TUI
+cmd-shift-g = 'exec-and-forget open -n -a Ghostty --args -e lazygit'                                   # Git TUI
+cmd-shift-f = 'exec-and-forget open -n -a Finder'                                                      # File manager
+cmd-shift-c = 'exec-and-forget open -n -a "Google Chrome" --args --app=https://calendar.google.com'    # Calendar
+cmd-shift-m = 'exec-and-forget open -n -a Chromium --args --app=https://music.youtube.com'             # Music
+cmd-shift-n = 'exec-and-forget open -n -a Chromium --args --app=https://keep.google.com'               # Notes
+cmd-shift-y = 'exec-and-forget open -n -a Chromium --args --app=https://youtube.com'                   # YouTube
+cmd-shift-p = 'exec-and-forget open -n -a Chromium --args --app=https://photos.google.com'             # Photos
+cmd-shift-x = 'exec-and-forget open -n -a Chromium --args --app=https://x.com'                         # X (Twitter)
+cmd-shift-a = 'exec-and-forget open -n -a "Google Chrome" --args --app=https://gemini.google.com'      # AI Chat (Gemini)
+cmd-shift-alt-a = 'exec-and-forget open -n -a Chromium --args --app=https://grok.com'                  # Grok
