@@ -6,14 +6,14 @@ install_shared() {
 }
 
 install_gnome_extensions() {
-  # Install Forge extension
+  # Install tiling window manager
   curl -L -o /tmp/forge.zip "https://github.com/forge-ext/forge/archive/refs/tags/v49-89.zip"
   unzip -qo /tmp/forge.zip -d /tmp/forge-extract
   cd /tmp/forge-extract/forge-49-89 && zip -rq /tmp/forge-ext.zip .
   gnome-extensions install /tmp/forge-ext.zip --force
   rm -rf /tmp/forge.zip /tmp/forge-extract /tmp/forge-ext.zip
 
-  # Install Workspace Indicator
+  # Install workspace indicator
   curl -L -o /tmp/workspace-indicator.zip "https://extensions.gnome.org/extension-data/workspace-indicatorgnome-shell-extensions.gcampax.github.com.v71.shell-extension.zip"
   gnome-extensions install /tmp/workspace-indicator.zip --force 2>/dev/null || true
   rm -f /tmp/workspace-indicator.zip
@@ -22,10 +22,7 @@ install_gnome_extensions() {
 install_config() {
   ghostty_config="$HOME/.config/ghostty/config"
 
-  # Enable window decorations for Ghostty
-  sed -i 's/^window-decoration = .*/window-decoration = true/' "$ghostty_config"
   sed -i 's/^font-size = .*/font-size = 11/' "$ghostty_config"
-  grep -q '^gtk-titlebar-style' "$ghostty_config" 2>/dev/null || echo 'gtk-titlebar-style = tabs' >>"$ghostty_config"
 
   # Forge extension config
   rm -rf "$HOME/.config/forge"
@@ -55,7 +52,7 @@ install_packages() {
   sudo rpm-ostree refresh-md
   sudo rpm-ostree install -A ghostty || true
 
-  # Install Apps
+  # Install apps
   flatpak install \
     com.discordapp.Discord \
     org.localsend.localsend_app \
@@ -63,10 +60,10 @@ install_packages() {
 }
 
 install_decky() {
-  # Decky Loader
+  # Decky loader
   sudo ujust setup-decky
 
-  # Decky Plugins
+  # Decky plugins
   sudo ujust install-decky-plugins decky-framegen
   sudo ujust install-decky-plugins decky-lsfg-vk
 }
