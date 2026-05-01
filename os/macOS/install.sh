@@ -53,7 +53,7 @@ install_config() {
 }
 
 install_settings() {
-  sh "$(dirname "$0")/scripts/set-default-settings.sh"
+  sh "$PWD/os/macOS/scripts/set-default-settings.sh"
 }
 
 TARGET="${1:-all}"
