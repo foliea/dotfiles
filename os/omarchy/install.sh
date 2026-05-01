@@ -11,6 +11,7 @@ install_packages() {
     ttf-jetbrains-mono-nerd
 
   omarchy-install-terminal ghostty
+  omarchy-install-chromium-google-account
 }
 
 install_config() {
