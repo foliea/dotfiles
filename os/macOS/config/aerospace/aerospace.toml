@@ -7,8 +7,6 @@
 #   - SUPER+ALT+F                    Full width / single-axis maximize
 #   - SUPER+O                        Pop-out (float + pin)
 #   - SUPER+S, SUPER+ALT+S           Scratchpad
-#   - SUPER+G, SUPER+ALT+G + 13 more Window groups (join, navigate, activate,
-#                                    scroll, ...)
 #   - SUPER+mouse_*                  Workspace scroll
 #   - SUPER+mouse:272/273            Mouse drag move/resize
 #   - SUPER+ALT+mouse_*              Group scroll
@@ -33,7 +31,7 @@ cmd-j = 'layout tiles horizontal vertical' # Toggle window split
 cmd-t = 'layout floating tiling'           # Toggle window floating/tiling
 cmd-f = 'fullscreen'                       # Full screen
 cmd-ctrl-f = 'fullscreen --no-outer-gaps'  # Tiled full screen
-cmd-l = 'layout tiles accordion'           # Toggle workspace layout
+cmd-g = 'layout tiles accordion'           # Toggle accordion (tabbed) layout
 
 # Move focus
 alt-h = 'focus --boundaries-action wrap-around-the-workspace left'
