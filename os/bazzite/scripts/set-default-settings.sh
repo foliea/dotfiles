@@ -17,3 +17,12 @@ dconf write /org/gnome/desktop/background/secondary-color "'#000000'"
 # Enable extensions
 gnome-extensions enable forge@jmmaranan.com 2>/dev/null || true
 gnome-extensions enable workspace-indicator@gnome-shell-extensions.gcampax.github.com 2>/dev/null || true
+
+# Clock format
+dconf write /org/gnome/desktop/interface/clock-format "'24h'"
+dconf write /org/gnome/desktop/interface/clock-show-date false
+dconf write /org/gnome/desktop/interface/clock-show-seconds false
+dconf write /org/gnome/desktop/interface/clock-show-weekday false
+
+# Accent color
+dconf write /org/gnome/desktop/interface/accent-color "'blue'"
