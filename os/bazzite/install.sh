@@ -34,16 +34,8 @@ install_config() {
   # Set keybindings
   sh "$PWD/os/bazzite/scripts/set-default-keybindings.sh"
 
-  # Workspace configuration
-  dconf write /org/gnome/mutter/dynamic-workspaces false
-  dconf write /org/gnome/desktop/wm/preferences/num-workspaces 5
-
-  # Workspace indicator settings
-  dconf write /org/gnome/shell/extensions/workspace-indicator/embed-previews false
-
-  # Enable extensions
-  gnome-extensions enable forge@jmmaranan.com 2>/dev/null || true
-  gnome-extensions enable workspace-indicator@gnome-shell-extensions.gcampax.github.com 2>/dev/null || true
+  # Apply default GNOME settings
+  sh "$PWD/os/bazzite/scripts/set-default-settings.sh"
 }
 
 install_fonts() {
