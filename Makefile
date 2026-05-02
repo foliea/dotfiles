@@ -12,7 +12,7 @@ test:
 lint:
 	@cd nvim && selene lua/ init.lua plugin/
 	@shellcheck --severity=warning $(SHELL_SCRIPTS)
-	@actionlint
+	@actionlint .github/workflows/*.yml
 	@for f in $(JSON_FILES); do jq empty "$$f" || exit 1; done
 
 $(MODULES):
