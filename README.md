@@ -1,7 +1,7 @@
 # dotfiles
 
 [![Run tests on macOS](https://github.com/foliea/dotfiles/actions/workflows/test-macOS.yml/badge.svg)](https://github.com/foliea/dotfiles/actions/workflows/test-macOS.yml)
-[![Run tests on Ubuntu](https://github.com/foliea/dotfiles/actions/workflows/test-ubuntu.yml/badge.svg)](https://github.com/foliea/dotfiles/actions/workflows/test-ubuntu.yml)
+[![Run tests on Bazzite](https://github.com/foliea/dotfiles/actions/workflows/test-bazzite.yml/badge.svg)](https://github.com/foliea/dotfiles/actions/workflows/test-bazzite.yml)
 
 My personal configuration files for macOS and Linux.
 
@@ -12,9 +12,6 @@ Install required dependencies before configuring:
 ```bash
 # macOS (requires brew)
 ./os/macOS/dependencies.sh
-
-# Ubuntu (includes brew installation)
-./os/ubuntu/dependencies.sh
 
 # Bazzite
 ./os/bazzite/dependencies.sh

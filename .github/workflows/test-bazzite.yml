@@ -1,0 +1,43 @@
+name: Run tests on Bazzite
+
+on:
+  push:
+    branches:
+      - "*"
+
+jobs:
+  run-test-bazzite:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/ublue-os/bluefin-dx:stable
+
+    defaults:
+      run:
+        shell: /usr/bin/sudo -u developer -E bash -e {0}
+
+    steps:
+      - name: Setup user
+        shell: bash -e {0}
+        run: useradd -ms /bin/bash developer
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Extract homebrew
+        shell: bash -e {0}
+        run: |
+          tar --zstd -xf /usr/share/homebrew.tar.zst -C /
+          chown -R developer:developer /home/linuxbrew "$GITHUB_WORKSPACE"
+          echo "PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH" >> "$GITHUB_ENV"
+          echo "HOMEBREW_NO_ANALYTICS=1" >> "$GITHUB_ENV"
+
+      - name: Install dependencies
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./os/bazzite/dependencies.sh
+
+      - name: Run linting
+        run: make lint
+
+      - name: Run tests
+        run: make test
