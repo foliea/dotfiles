@@ -19,6 +19,8 @@ else
   if [ -f "$HOME/.config/bash/functions" ]; then
     source "$HOME/.config/bash/functions"
   fi
-fi
 
-[ -f "$HOME/.orbstack/shell/init.bash" ] && source "$HOME/.orbstack/shell/init.bash"
+  if [ -f "$HOME/.orbstack/shell/init.bash" ]; then
+    source "$HOME/.orbstack/shell/init.bash"
+  fi
+fi
