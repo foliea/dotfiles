@@ -1,4 +1,4 @@
-FROM ghcr.io/ublue-os/bluefin-dx:stable
+FROM ghcr.io/ublue-os/bluefin:stable
 
 ENV USER=developer \
     PROJECT_DIR=/home/developer/dotfiles \
