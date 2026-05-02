@@ -4,65 +4,26 @@ on:
   push:
     branches:
       - "*"
-    paths-ignore:
-      - "Dockerfile"
-      - "os/bazzite/**"
-      - "os/shared/**"
-      - ".github/workflows/build-bazzite-image.yml"
-  workflow_run:
-    workflows: ["Build Bazzite image"]
-    types: [completed]
-
-concurrency:
-  group: test-bazzite-${{ github.event.workflow_run.head_branch || github.ref_name }}
-  cancel-in-progress: true
 
 jobs:
-  resolve-image:
-    if: ${{ github.event_name == 'push' || github.event.workflow_run.conclusion == 'success' }}
-    runs-on: ubuntu-latest
-    outputs:
-      image: ${{ steps.resolve.outputs.image }}
-      ref: ${{ steps.resolve.outputs.ref }}
-    steps:
-      - name: Log in to GHCR
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Resolve image and ref
-        id: resolve
-        run: |
-          BRANCH="${{ github.event.workflow_run.head_branch || github.ref_name }}"
-          SHA="${{ github.event.workflow_run.head_sha || github.sha }}"
-          BRANCH_TAG="bazzite-$(echo "$BRANCH" | tr '/' '-')"
-          if docker manifest inspect "ghcr.io/foliea/dotfiles:$BRANCH_TAG" >/dev/null 2>&1; then
-            echo "image=ghcr.io/foliea/dotfiles:$BRANCH_TAG" >> "$GITHUB_OUTPUT"
-          else
-            echo "image=ghcr.io/foliea/dotfiles:bazzite-master" >> "$GITHUB_OUTPUT"
-          fi
-          echo "ref=$SHA" >> "$GITHUB_OUTPUT"
-
   run-test-bazzite:
-    needs: resolve-image
     runs-on: ubuntu-latest
-    container:
-      image: ${{ needs.resolve-image.outputs.image }}
-      options: --user root
-      credentials:
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Build image
+        uses: docker/build-push-action@v6
         with:
-          ref: ${{ needs.resolve-image.outputs.ref }}
+          context: .
+          load: true
+          tags: dotfiles:bazzite
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
       - name: Run linting
-        run: make lint
+        run: docker run --rm dotfiles:bazzite make lint
 
       - name: Run tests
-        run: make test
+        run: docker run --rm dotfiles:bazzite make test
