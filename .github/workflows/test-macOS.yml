@@ -6,7 +6,7 @@ on:
       - "*"
 
 jobs:
-  run-test-darwin:
+  run-tests-darwin:
     runs-on: macos-latest
 
     steps:
