@@ -7,6 +7,7 @@ This file provides guidance to agentic coding agents when working with this dotf
 ### Build/Test/Lint
 - `make` - Install all configurations (bash, git, nvim, tmux, tuis)
 - `make test` - Run integration tests using expect script (tests full installation flow)
+- `make lint` - Run linters (selene for Lua, shellcheck for shell, actionlint for workflows, jq for JSON)
 - `make <module>` - Install specific module (e.g., `make nvim`, `make bash`)
 - No single test command - this is a configuration repository, not a code project
 
@@ -23,9 +24,10 @@ This file provides guidance to agentic coding agents when working with this dotf
 - Prefer absolute paths and explicit directory creation with `mkdir -p`
 
 ### Lua (Neovim)
+- Built on LazyVim; LSPs/formatters are managed by Mason inside Neovim (not via brew)
 - Follow existing modular structure: separate files for plugins, options, lsp, keymaps
 - Use `pcall()` for optional plugin configurations to prevent errors
-- Stylua formatting enforced (excludes nvim/plugins/** per .styluaignore)
+- Selene linting enforced via `make lint` (config in `nvim/selene.toml`)
 - Prefer explicit requires over autoloading
 
 ### Configuration Files

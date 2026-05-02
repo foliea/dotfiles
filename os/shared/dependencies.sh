@@ -44,18 +44,9 @@ if ! command -v omarchy-version >/dev/null 2>&1; then
     jesseduffield/lazydocker/lazydocker \
     anomalyco/tap/opencode \
     Valkyrie00/homebrew-bbrew/bbrew \
-    stylua \
     selene \
-    prettier \
-    prettierd \
-    shfmt \
     shellcheck \
-    actionlint \
-    beautysh \
-    lua-language-server \
-    bash-language-server \
-    dockerfile-language-server \
-    vscode-langservers-extracted
+    actionlint
 fi
 
 # Local bin scripts
