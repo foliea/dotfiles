@@ -1,0 +1,45 @@
+name: Build Bazzite image
+
+on:
+  push:
+    branches:
+      - "*"
+    paths:
+      - "Dockerfile"
+      - "os/bazzite/**"
+      - "os/shared/**"
+      - ".github/workflows/build-bazzite-image.yml"
+
+concurrency:
+  group: build-bazzite-image-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Compute image tag
+        id: tag
+        run: echo "tag=bazzite-$(echo '${{ github.ref_name }}' | tr '/' '-')" >> "$GITHUB_OUTPUT"
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64
+          push: true
+          tags: ghcr.io/foliea/dotfiles:${{ steps.tag.outputs.tag }}

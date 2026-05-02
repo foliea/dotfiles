@@ -4,37 +4,69 @@ on:
   push:
     branches:
       - "*"
+    paths-ignore:
+      - "Dockerfile"
+      - "os/bazzite/**"
+      - "os/shared/**"
+      - ".github/workflows/build-bazzite-image.yml"
+  workflow_run:
+    workflows: ["Build Bazzite image"]
+    types: [completed]
+
+concurrency:
+  group: test-bazzite-${{ github.event.workflow_run.head_branch || github.ref_name }}
+  cancel-in-progress: true
 
 jobs:
+  resolve-image:
+    if: ${{ github.event_name == 'push' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    outputs:
+      image: ${{ steps.resolve.outputs.image }}
+      ref: ${{ steps.resolve.outputs.ref }}
+    steps:
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Resolve image and ref
+        id: resolve
+        run: |
+          BRANCH="${{ github.event.workflow_run.head_branch || github.ref_name }}"
+          SHA="${{ github.event.workflow_run.head_sha || github.sha }}"
+          BRANCH_TAG="bazzite-$(echo "$BRANCH" | tr '/' '-')"
+          if docker manifest inspect ghcr.io/foliea/dotfiles:$BRANCH_TAG >/dev/null 2>&1; then
+            echo "image=ghcr.io/foliea/dotfiles:$BRANCH_TAG" >> "$GITHUB_OUTPUT"
+          else
+            echo "image=ghcr.io/foliea/dotfiles:bazzite-master" >> "$GITHUB_OUTPUT"
+          fi
+          echo "ref=$SHA" >> "$GITHUB_OUTPUT"
+
   run-test-bazzite:
+    needs: resolve-image
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/ublue-os/bluefin-dx:stable
+      image: ${{ needs.resolve-image.outputs.image }}
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
 
     defaults:
       run:
         shell: /usr/bin/sudo -u developer -E bash -e {0}
 
     steps:
-      - name: Setup user
-        shell: bash -e {0}
-        run: useradd -ms /bin/bash developer
-
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.resolve-image.outputs.ref }}
 
-      - name: Extract homebrew
+      - name: Fix workspace permissions
         shell: bash -e {0}
-        run: |
-          tar --zstd -xf /usr/share/homebrew.tar.zst -C /
-          chown -R developer:developer /home/linuxbrew "$GITHUB_WORKSPACE"
-          echo "PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH" >> "$GITHUB_ENV"
-          echo "HOMEBREW_NO_ANALYTICS=1" >> "$GITHUB_ENV"
-
-      - name: Install dependencies
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./os/bazzite/dependencies.sh
+        run: chown -R developer:developer "$GITHUB_WORKSPACE"
 
       - name: Run linting
         run: make lint
