@@ -28,22 +28,18 @@ if ! command -v omarchy-version >/dev/null 2>&1; then
     neovim \
     mise \
     ncdu \
-    kubectx \
-    kubeseal \
-    helm \
-    awscli \
     fastfetch \
     btop \
     k9s \
+    lazygit \
+    jesseduffield/lazydocker/lazydocker \
+    anomalyco/tap/opencode \
+    Valkyrie00/homebrew-bbrew/bbrew \
     ffmpeg \
     sevenzip \
     poppler \
     resvg \
     imagemagick \
-    lazygit \
-    jesseduffield/lazydocker/lazydocker \
-    anomalyco/tap/opencode \
-    Valkyrie00/homebrew-bbrew/bbrew \
     selene \
     shellcheck \
     actionlint
