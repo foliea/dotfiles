@@ -1,15 +1,13 @@
-FROM ubuntu:26.04
+FROM ghcr.io/ublue-os/bluefin-dx:stable
 
 ENV USER=developer
 ENV PROJECT_DIR=/home/${USER}/dotfiles
 
-COPY os/ubuntu/dependencies.sh /tmp/dependencies.sh
-RUN chmod +x /tmp/dependencies.sh && \
-  /tmp/dependencies.sh system
-
 RUN useradd -ms /bin/bash ${USER} && \
-  echo "${USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
-  chsh -s "$(which bash)" ${USER}
+  echo "${USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+RUN tar --zstd -xf /usr/share/homebrew.tar.zst -C / && \
+  chown -R ${USER}:${USER} /home/linuxbrew
 
 COPY . ${PROJECT_DIR}
 RUN chown -R ${USER}:${USER} ${PROJECT_DIR}
@@ -17,8 +15,6 @@ RUN chown -R ${USER}:${USER} ${PROJECT_DIR}
 USER ${USER}
 WORKDIR ${PROJECT_DIR}
 
-RUN /tmp/dependencies.sh homebrew
-
 ENV PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${PATH}"
 
-RUN bash -c "ulimit -n 65536 && /tmp/dependencies.sh packages"
+RUN ./os/bazzite/dependencies.sh
