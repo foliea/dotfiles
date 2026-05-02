@@ -50,23 +50,16 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ${{ needs.resolve-image.outputs.image }}
+      options: --user root
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
-
-    defaults:
-      run:
-        shell: /usr/bin/sudo -u developer -E bash -e {0}
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           ref: ${{ needs.resolve-image.outputs.ref }}
-
-      - name: Fix workspace permissions
-        shell: bash -e {0}
-        run: chown -R developer:developer "$GITHUB_WORKSPACE"
 
       - name: Run linting
         run: make lint
