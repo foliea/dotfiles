@@ -5,7 +5,8 @@ ENV USER=developer \
     PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${PATH}"
 
 RUN useradd -ms /bin/bash ${USER} && \
-  tar --zstd -xf /usr/share/homebrew.tar.zst -C /
+  tar --zstd -xf /usr/share/homebrew.tar.zst -C / && \
+  chown -R ${USER}:${USER} /home/linuxbrew
 
 USER ${USER}
 WORKDIR ${PROJECT_DIR}
