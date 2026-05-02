@@ -1,7 +1,7 @@
 # dotfiles
 
 [![Run tests on macOS](https://github.com/foliea/dotfiles/actions/workflows/test-macOS.yml/badge.svg)](https://github.com/foliea/dotfiles/actions/workflows/test-macOS.yml)
-[![Run tests on Bazzite](https://github.com/foliea/dotfiles/actions/workflows/test-bazzite.yml/badge.svg)](https://github.com/foliea/dotfiles/actions/workflows/test-bazzite.yml)
+[![Run tests on linux](https://github.com/foliea/dotfiles/actions/workflows/test-linux.yml/badge.svg)](https://github.com/foliea/dotfiles/actions/workflows/test-linux.yml)
 
 My personal configuration files for macOS and Linux.
 

@@ -1,4 +1,4 @@
-name: Run tests on Bazzite
+name: Run tests on linux
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - "*"
 
 jobs:
-  run-test-bazzite:
+  run-test-linux:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,12 +21,12 @@ jobs:
         with:
           context: .
           load: true
-          tags: dotfiles:bazzite
+          tags: dotfiles:linux
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
       - name: Run linting
-        run: docker run --rm dotfiles:bazzite make lint
+        run: docker run --rm dotfiles:linux make lint
 
       - name: Run tests
-        run: docker run --rm dotfiles:bazzite make test
+        run: docker run --rm dotfiles:linux make test
