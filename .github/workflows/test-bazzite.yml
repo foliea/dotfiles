@@ -38,7 +38,7 @@ jobs:
           BRANCH="${{ github.event.workflow_run.head_branch || github.ref_name }}"
           SHA="${{ github.event.workflow_run.head_sha || github.sha }}"
           BRANCH_TAG="bazzite-$(echo "$BRANCH" | tr '/' '-')"
-          if docker manifest inspect ghcr.io/foliea/dotfiles:$BRANCH_TAG >/dev/null 2>&1; then
+          if docker manifest inspect "ghcr.io/foliea/dotfiles:$BRANCH_TAG" >/dev/null 2>&1; then
             echo "image=ghcr.io/foliea/dotfiles:$BRANCH_TAG" >> "$GITHUB_OUTPUT"
           else
             echo "image=ghcr.io/foliea/dotfiles:bazzite-master" >> "$GITHUB_OUTPUT"
