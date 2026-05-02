@@ -4,42 +4,55 @@ set -e
 if ! command -v omarchy-version >/dev/null 2>&1; then
   brew update
 
+  # Core CLI
   brew install \
     wget \
     curl \
     cmake \
     gawk \
     readline \
-    bat \
     expect \
     jq \
+    bat \
     fzf \
     ripgrep \
     fd \
     eza \
-    zoxide \
+    zoxide
+
+  # Tools
+  brew install \
+    bash \
     git \
     git-delta \
     gh \
-    bash \
-    starship \
-    yazi \
-    tmux \
-    neovim \
     mise \
+    neovim \
+    starship \
+    tmux
+
+  # TUIs
+  brew install \
     ncdu \
-    fastfetch \
-    btop \
     k9s \
+    btop \
+    yazi \
     lazygit \
     jesseduffield/lazydocker/lazydocker \
+    fastfetch \
     anomalyco/tap/opencode \
-    Valkyrie00/homebrew-bbrew/bbrew \
+    Valkyrie00/homebrew-bbrew/bbrew
+
+  # Yazi dependencies
+  brew install \
     ffmpeg \
     sevenzip \
     poppler \
     resvg \
-    imagemagick \
+    imagemagick
+
+  # Linters
+  brew install \
     selene \
     shellcheck \
     actionlint
