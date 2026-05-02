@@ -6,7 +6,7 @@ open_with_terminal() {
     command -v yazi >/dev/null 2>&1 && exec yazi "$1"
   fi
 
-  echo "xdg-open: cannot open URL in terminal: $1" >&2
+  echo "xdg-open: cannot open in terminal: $1" >&2
   exit 1
 }
 
