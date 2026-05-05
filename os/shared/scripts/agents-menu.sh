@@ -6,7 +6,7 @@ run() {
   if [ -n "$TMUX" ]; then
     tmux new-window -a -c "$PWD" -n "$choice:$(basename "$PWD")" "$1"
   else
-    exec $1
+    exec sh -c "$1"
   fi
 }
 
@@ -20,9 +20,9 @@ choice=$(printf "%b" "$options" | fzf --prompt="Start agent:" --height=100% --re
 case "$choice" in
 termly)
   if command -v termly >/dev/null 2>&1; then
-    run "termly start"
+    run "termly start; termly cleanup"
   else
-    run "npm-global-install @termly-dev/cli && termly start"
+    run "npm-global-install @termly-dev/cli && termly start; termly cleanup"
   fi
   ;;
 opencode) run "opencode" ;;
