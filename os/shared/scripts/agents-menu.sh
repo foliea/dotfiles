@@ -22,7 +22,7 @@ termly)
   if command -v termly >/dev/null 2>&1; then
     run "termly start"
   else
-    run "node-global-install @termly-dev/cli && termly start"
+    run "npm-global-install @termly-dev/cli && termly start"
   fi
   ;;
 opencode) run "opencode" ;;
