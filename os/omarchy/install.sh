@@ -75,6 +75,7 @@ install_services() {
 
 install_hardware_fixes() {
   sh "$PWD/os/omarchy/scripts/fix-audio-ux5406sa.sh"
+  sudo "$PWD/os/omarchy/scripts/fix-keyboard-nuphy.sh"
 }
 
 TARGET="${1:-all}"
