@@ -11,7 +11,7 @@ fi
 
 echo "Applying UX5406SA audio fix..."
 
-omarchy-pkg-install \
+omarchy-pkg-add \
   sof-firmware \
   alsa-ucm-conf \
   alsa-utils \
