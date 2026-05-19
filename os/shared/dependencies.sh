@@ -30,7 +30,8 @@ if ! command -v omarchy-version >/dev/null 2>&1; then
     neovim \
     sops \
     starship \
-    tmux
+    tmux \
+    typst
 
   # TUIs
   brew install \
