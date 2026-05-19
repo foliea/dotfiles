@@ -7,6 +7,7 @@ omarchy-pkg-add \
   yazi \
   git-delta \
   k9s \
+  sops \
   shellcheck \
   selene \
   actionlint

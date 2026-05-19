@@ -28,6 +28,7 @@ if ! command -v omarchy-version >/dev/null 2>&1; then
     gh \
     mise \
     neovim \
+    sops \
     starship \
     tmux
 
