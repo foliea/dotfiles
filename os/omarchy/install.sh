@@ -41,15 +41,13 @@ install_webapps() {
   omarchy-webapp-install "Discord" "https://discord.com/channels/@me/" ""
   omarchy-webapp-install "Drive" "https://drive.google.com/" ""
   omarchy-webapp-install "Gemini" "https://gemini.google.com/" ""
-  omarchy-webapp-install "GitHub" "https://github.com/" ""
-  omarchy-webapp-install "Keyboard" "https://drive.nuphy.io/" ""
+  omarchy-webapp-install "Nuphy Keyboard Settings" "https://drive.nuphy.io/" ""
   omarchy-webapp-install "Keep Notes" "https://keep.google.com/" ""
   omarchy-webapp-install "Maps" "https://map.google.com/" ""
   omarchy-webapp-install "Photos" "https://photos.google.com/" ""
   omarchy-webapp-install "X" "https://x.com/" ""
   omarchy-webapp-install "YouTube" "https://youtube.com/" ""
-  omarchy-webapp-install "YT Music" "https://music.youtube.com/" ""
-  omarchy-webapp-install "Zoom" "https://zoom.us/" "" "omarchy-webapp-handler-zoom %u" "x-scheme-handler/zoommtg;x-scheme-handler/zoomus"
+  omarchy-webapp-install "YouTube Music" "https://music.youtube.com/" ""
   echo "Installed web apps"
 }
 
