@@ -19,14 +19,8 @@ install_packages() {
     ghostty \
     orbstack \
     discord \
-    chromium \
+    ungoogled-chromium \
     localsend
-
-  # Chromium from Homebrew isn't notarized; clear the quarantine attribute so
-  # macOS Gatekeeper doesn't flag it as damaged.
-  if [ -d "/Applications/Chromium.app" ]; then
-    xattr -cr "/Applications/Chromium.app"
-  fi
 
   # Install Chrome only if not already present (e.g. managed by work IT)
   if [ ! -d "/Applications/Google Chrome.app" ] && [ ! -d "$HOME/Applications/Google Chrome.app" ]; then
