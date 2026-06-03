@@ -35,5 +35,10 @@ defaults write com.apple.WindowManager GloballyEnabled -bool false
 defaults write com.apple.WindowManager StandardHideWidgets -int 0
 defaults write com.apple.WindowManager StageManagerHideWidgets -int 0
 
+# Disable Ctrl+Space for input source switching (frees it for tmux prefix)
+/usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:60:enabled false" \
+  ~/Library/Preferences/com.apple.symbolichotkeys.plist 2>/dev/null || true
+
 killall Dock
 killall WindowManager
+killall SystemUIServer 2>/dev/null || true
