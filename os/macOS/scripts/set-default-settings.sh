@@ -31,9 +31,12 @@ defaults write com.apple.dock orientation -string left
 # Disable Stage Manager
 defaults write com.apple.WindowManager GloballyEnabled -bool false
 
-# Hide Desktop Widgets
-defaults write com.apple.WindowManager StandardHideWidgets -int 0
+# Hide Desktop Widgets when clicking on wallpaper
+defaults write com.apple.WindowManager StandardHideWidgets -int 2
 defaults write com.apple.WindowManager StageManagerHideWidgets -int 0
+
+# Hide all icons from Desktop
+defaults write com.apple.finder CreateDesktop -bool false
 
 # Disable Ctrl+Space for input source switching (frees it for tmux prefix)
 /usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:60:enabled false" \
@@ -41,4 +44,5 @@ defaults write com.apple.WindowManager StageManagerHideWidgets -int 0
 
 killall Dock
 killall WindowManager
+killall Finder 2>/dev/null || true
 killall SystemUIServer 2>/dev/null || true
