@@ -8,6 +8,9 @@ else
 
   [[ $- != *i* ]] && return
 
+  export DISABLE_SPRING=1
+  export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
   if [ -f "${HOME}/.config/bash/env" ]; then
     source "${HOME}/.config/bash/env"
   fi
