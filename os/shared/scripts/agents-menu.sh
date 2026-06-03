@@ -13,6 +13,12 @@ run() {
 options=""
 command -v opencode >/dev/null 2>&1 && options="${options}opencode\n"
 command -v agent >/dev/null 2>&1 && options="${options}cursor\n"
+command -v claude >/dev/null 2>&1 && options="${options}claude\n"
+command -v vibe >/dev/null 2>&1 && options="${options}mistral\n"
+command -v codex >/dev/null 2>&1 && options="${options}codex\n"
+command -v gemini >/dev/null 2>&1 && options="${options}gemini\n"
+command -v pi >/dev/null 2>&1 && options="${options}pi\n"
+command -v crush >/dev/null 2>&1 && options="${options}crush\n"
 options="termly\n${options}"
 
 choice=$(printf "%b" "$options" | fzf --prompt="Start agent:" --height=100% --reverse)
@@ -26,5 +32,11 @@ termly)
   fi
   ;;
 opencode) run "opencode" ;;
-cursor) run "cursor-agent" ;;
+cursor) run "agent" ;;
+claude) run "claude" ;;
+mistral) run "vibe" ;;
+codex) run "codex" ;;
+gemini) run "gemini" ;;
+pi) run "pi" ;;
+crush) run "crush" ;;
 esac

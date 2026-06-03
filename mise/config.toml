@@ -1,8 +1,15 @@
 [tools]
 node = "latest"
 ruby = "latest"
+pipx = "latest"
 "aqua:anomalyco/opencode" = "latest"
 "npm:@termly-dev/cli" = "latest"
+"npm:@charmland/crush" = "latest"
+"npm:@earendil-works/pi-coding-agent" = "latest"
+"npm:@anthropic-ai/claude-code" = "latest"
+"npm:@openai/codex" = "latest"
+"npm:@google/gemini-cli" = "latest"
+"pipx:mistral-vibe" = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["ruby", "node"]
