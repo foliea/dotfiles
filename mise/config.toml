@@ -1,6 +1,8 @@
 [tools]
 node = "latest"
 ruby = "latest"
+"aqua:anomalyco/opencode" = "latest"
+"npm:@termly-dev/cli" = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["ruby", "node"]

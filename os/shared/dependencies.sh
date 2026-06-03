@@ -42,7 +42,6 @@ if ! command -v omarchy-version >/dev/null 2>&1; then
     lazygit \
     jesseduffield/lazydocker/lazydocker \
     fastfetch \
-    anomalyco/tap/opencode \
     Valkyrie00/homebrew-bbrew/bbrew
 
   # Yazi dependencies
