@@ -8,10 +8,19 @@ install_shared() {
 install_packages() {
   omarchy-pkg-add \
     makima-bin \
+    protonmail-bridge \
     ttf-jetbrains-mono-nerd
 
   omarchy-install-terminal ghostty
   omarchy-install-chromium-google-account
+
+  local bridge_desktop="/usr/share/applications/proton-bridge.desktop"
+  local bridge_autostart="$HOME/.config/autostart/Proton Mail Bridge.desktop"
+  if [ -f "$bridge_desktop" ]; then
+    mkdir -p "$HOME/.config/autostart"
+    cp -n "$bridge_desktop" "$bridge_autostart"
+    systemctl --user disable --now protonmail-bridge.service 2>/dev/null || true
+  fi
 }
 
 install_config() {
