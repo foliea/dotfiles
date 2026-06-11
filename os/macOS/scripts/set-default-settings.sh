@@ -31,8 +31,8 @@ defaults write com.apple.dock orientation -string left
 # Disable Stage Manager
 defaults write com.apple.WindowManager GloballyEnabled -bool false
 
-# Hide Desktop Widgets when clicking on wallpaper
-defaults write com.apple.WindowManager StandardHideWidgets -int 2
+# Disable Desktop Widgets
+defaults write com.apple.WindowManager StandardHideWidgets -bool true
 defaults write com.apple.WindowManager StageManagerHideWidgets -int 0
 
 # Hide all icons from Desktop
@@ -49,3 +49,4 @@ killall Dock
 killall WindowManager
 killall Finder 2>/dev/null || true
 killall SystemUIServer 2>/dev/null || true
+killall NotificationCenter 2>/dev/null || true
