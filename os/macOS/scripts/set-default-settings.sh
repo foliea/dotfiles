@@ -38,6 +38,9 @@ defaults write com.apple.WindowManager StageManagerHideWidgets -int 0
 # Hide all icons from Desktop
 defaults write com.apple.finder CreateDesktop -bool false
 
+# Disable Look up & Data Detectors (long press on trackpad)
+defaults write -g com.apple.trackpad.forceClick -bool false
+
 # Disable Ctrl+Space for input source switching (frees it for tmux prefix)
 /usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:60:enabled false" \
   ~/Library/Preferences/com.apple.symbolichotkeys.plist 2>/dev/null || true
