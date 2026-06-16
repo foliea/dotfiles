@@ -12,7 +12,6 @@ if ! command -v omarchy-version >/dev/null 2>&1; then
     gawk \
     readline \
     expect \
-    jq \
     bat \
     fzf \
     ripgrep \
@@ -30,8 +29,7 @@ if ! command -v omarchy-version >/dev/null 2>&1; then
     neovim \
     sops \
     starship \
-    tmux \
-    typst
+    tmux
 
   # TUIs
   brew install \
@@ -52,11 +50,6 @@ if ! command -v omarchy-version >/dev/null 2>&1; then
     resvg \
     imagemagick
 
-  # Linters
-  brew install \
-    selene \
-    shellcheck \
-    actionlint
 fi
 
 # Local bin scripts

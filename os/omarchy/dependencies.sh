@@ -7,8 +7,4 @@ omarchy-pkg-add \
   yazi \
   git-delta \
   k9s \
-  sops \
-  typst \
-  shellcheck \
-  selene \
-  actionlint
+  sops
