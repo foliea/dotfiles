@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export PATH="$HOME/.local/bin:$HOME/.local/share/mise/installs/node/latest/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$PATH"
 
 run() {
   if [ -n "$TMUX" ]; then
