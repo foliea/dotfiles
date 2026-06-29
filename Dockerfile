@@ -9,4 +9,8 @@ WORKDIR ${PROJECT_DIR}
 COPY os/shared ${PROJECT_DIR}/os/shared
 RUN ${PROJECT_DIR}/os/shared/dependencies.sh
 
+# Install lint tools (selene, shellcheck, actionlint, jq) via mise
+COPY .tool-versions ${PROJECT_DIR}/.tool-versions
+RUN mise install
+
 COPY . ${PROJECT_DIR}

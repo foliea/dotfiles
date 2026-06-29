@@ -20,6 +20,9 @@ jobs:
           chmod +x os/macOS/dependencies.sh
           ./os/macOS/dependencies.sh
 
+      - name: Install lint tools via mise
+        run: mise install
+
       - name: Run Linting
         run: |
           make lint
