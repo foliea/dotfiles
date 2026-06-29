@@ -13,7 +13,7 @@ RUN ${PROJECT_DIR}/os/shared/dependencies.sh
 COPY .tool-versions ${PROJECT_DIR}/.tool-versions
 RUN mise install && \
     for tool in selene shellcheck actionlint jq; do \
-      ln -sf "$(mise which "$tool")" /usr/local/bin/"$tool"; \
+      sudo ln -sf "$(mise which "$tool")" /usr/local/bin/"$tool"; \
     done
 
 COPY . ${PROJECT_DIR}
