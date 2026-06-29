@@ -11,6 +11,9 @@ RUN ${PROJECT_DIR}/os/shared/dependencies.sh
 
 # Install lint tools (selene, shellcheck, actionlint, jq) via mise
 COPY .tool-versions ${PROJECT_DIR}/.tool-versions
-RUN mise install
+RUN mise install && \
+    for tool in selene shellcheck actionlint jq; do \
+      ln -sf "$(mise which "$tool")" /usr/local/bin/"$tool"; \
+    done
 
 COPY . ${PROJECT_DIR}
