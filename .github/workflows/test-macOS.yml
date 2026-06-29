@@ -24,8 +24,7 @@ jobs:
         run: mise install
 
       - name: Run Linting
-        run: |
-          make lint
+        run: mise exec -- make lint
 
       - name: Run tests
         run: |
