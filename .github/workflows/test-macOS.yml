@@ -21,6 +21,8 @@ jobs:
           ./os/macOS/dependencies.sh
 
       - name: Install lint tools via mise
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: mise install
 
       - name: Run Linting
