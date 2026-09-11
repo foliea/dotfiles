@@ -37,7 +37,6 @@ install_config() {
 
 install_theme() {
   omarchy-theme-install "https://github.com/foliea/omarchy-madness-theme"
-  omarchy-theme-set "Madness"
 }
 
 install_keyboard() {
