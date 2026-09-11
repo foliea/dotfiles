@@ -10,7 +10,7 @@ fi
 echo "Creating udev rule for NuPhy keyboards..."
 
 # Define the rule content
-RULE='KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0666", TAG+="uaccess"'
+RULE='SUBSYSTEM=="hidraw", ATTRS{idVendor}=="2b2c", MODE="0660", TAG+="uaccess"'
 FILE_PATH="/etc/udev/rules.d/99-hidraw-nuphy.rules"
 
 # Write the rule to the file
