@@ -33,6 +33,9 @@ install_config() {
   # Disable idle screensaver (same flag as `omarchy toggle screensaver`)
   mkdir -p "$HOME/.local/state/omarchy/toggles"
   touch "$HOME/.local/state/omarchy/toggles/screensaver-off"
+
+  # Remove AI subscription usage widget from the bar (claude/codex/fireworks)
+  omarchy plugin disable omarchy.agents
 }
 
 install_theme() {
