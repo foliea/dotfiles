@@ -28,7 +28,7 @@ install_config() {
   rsync -a "$PWD/os/omarchy/config/" "$HOME/.config/"
   sed -i 's/^font-size = .*/font-size = 9.1/' "$HOME/.config/ghostty/config"
   sed -i 's/mode="assign" binding="strong"/mode="assign"/' "$HOME/.config/fontconfig/fonts.conf"
-  omarchy-font-set "JetBrainsMono Nerd Font Mono"
+  omarchy-font-set "JetBrainsMono Nerd Font"
 
   # Disable idle screensaver (same flag as `omarchy toggle screensaver`)
   mkdir -p "$HOME/.local/state/omarchy/toggles"
