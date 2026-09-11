@@ -10,6 +10,7 @@ pipx = "latest"
 "npm:@openai/codex" = "latest"
 "npm:@google/gemini-cli" = "latest"
 "pipx:mistral-vibe" = "latest"
+codex = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["ruby", "node"]
@@ -17,3 +18,6 @@ override_config_filenames = [".mise-config"]
 
 [settings.ruby]
 compile = false
+
+[settings.upgrade]
+auto_prune = false
