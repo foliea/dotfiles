@@ -2,6 +2,9 @@
 set -e
 
 # Audio Fix for Zenbook S 14 UX5406SA (Lunar Lake + ALC285)
+# Omarchy Quattro already installs sof-firmware, pipewire, wireplumber,
+# alsa-ucm-conf, and friends -- this only applies the machine-specific
+# codec quirks and the HiFi upmix preference.
 
 PRODUCT=$(cat /sys/class/dmi/id/product_name 2>/dev/null || echo "")
 if ! echo "$PRODUCT" | grep -qi "UX5406SA"; then
@@ -10,14 +13,6 @@ if ! echo "$PRODUCT" | grep -qi "UX5406SA"; then
 fi
 
 echo "Applying UX5406SA audio fix..."
-
-omarchy-pkg-add \
-  sof-firmware \
-  alsa-ucm-conf \
-  alsa-utils \
-  pipewire-alsa \
-  pipewire-pulse \
-  wireplumber
 
 echo "options snd-intel-dspcfg dsp_driver=3" | sudo tee /etc/modprobe.d/sof.conf
 echo "options snd-hda-intel model=alc285-zenbook" | sudo tee /etc/modprobe.d/alsa-base.conf
@@ -30,7 +25,5 @@ stream.properties = {
     channelmix.lfe-cutoff = 150
 }
 EOF
-
-rm -rf $HOME/.config/pulse $HOME/.local/state/wireplumber $HOME/.config/chromium/Default/AudioState 2>/dev/null
 
 echo "Done. Reboot required."
