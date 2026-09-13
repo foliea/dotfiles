@@ -46,9 +46,14 @@ install_keyboard() {
   local conf_dest="$HOME/.config/makima"
   mkdir -p "$conf_dest"
 
-  KBD_NAME=$(cat /proc/bus/input/devices | grep '^N: Name=' | grep -i keyboard | head -1 | cut -d'"' -f2)
-  cp "$PWD/os/omarchy/makima/keyboard.toml" "$conf_dest/$KBD_NAME.toml"
-  echo "Keyboard config copied as: $conf_dest/$KBD_NAME.toml"
+  local src_file="$PWD/os/omarchy/makima/keyboard.toml"
+  if [ ! -f "$src_file" ]; then
+    echo "/!\\ Missing $src_file; skipping makima keyboard config." >&2
+    return 0
+  fi
+
+  cp "$src_file" "$conf_dest/AT Translated Set 2 keyboard.toml"
+  echo "Keyboard config copied as: $conf_dest/AT Translated Set 2 keyboard.toml"
 }
 
 install_webapps() {
@@ -79,6 +84,20 @@ install_services() {
   local udev_rule="/etc/udev/rules.d/99-uinput.rules"
   if [ -c /dev/uinput ] && ! grep -q "MODE.*0660" "$udev_rule" 2>/dev/null; then
     echo 'KERNEL=="uinput", MODE="0660", GROUP="input", OPTIONS+="static_node=uinput"' | sudo tee "$udev_rule" >/dev/null 2>&1 || true
+  fi
+
+  # Grant the user read access to keyboard event devices. /dev/input/event*
+  # and /dev/uinput are all group "input" with group read/write, so add the
+  # user to that group. This is what actually makes the makima user service
+  # work; without it makima logs "No matching devices found" and the remap
+  # never applies. Takes effect on the next login.
+  if ! id -nG | tr ' ' '\n' | grep -qx input; then
+    sudo usermod -aG input "$USER" || true
+  fi
+
+  # Immediate effect for the current login, before the group takes hold.
+  if ! [ -r /dev/input/event0 ]; then
+    sudo chmod 666 /dev/input/event* 2>/dev/null || true
   fi
 
   echo "Reloading systemd and starting makima..."
