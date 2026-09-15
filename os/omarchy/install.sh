@@ -27,6 +27,9 @@ install_config() {
 
   # Remove AI subscription usage widget from the bar (claude/codex/fireworks)
   omarchy plugin disable omarchy.agents
+
+  # 3-column gaming mode layout toggle (SUPER + SHIFT + T)
+  install -Dm755 "$PWD/os/omarchy/scripts/toggle-gaming-mode.sh" "$HOME/.local/bin/toggle-gaming-mode.sh"
 }
 
 install_theme() {

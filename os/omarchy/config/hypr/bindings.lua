@@ -37,3 +37,7 @@ o.bind("ALT + SHIFT + J", "Swap window down", hl.dsp.window.swap({ direction = "
 
 -- Close window.
 o.bind("ALT + W", "Close window", hl.dsp.window.close())
+
+-- Toggle 3-column "gaming mode" on the active workspace (centered master,
+-- two side panels). Persisted per-workspace by toggle-gaming-mode.
+o.bind("SUPER + SHIFT + T", "Toggle gaming mode layout", "toggle-gaming-mode.sh")
