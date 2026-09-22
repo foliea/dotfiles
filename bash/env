@@ -35,3 +35,16 @@ export PATH="$HOME/.local/bin:$PATH"
 export SOPS_AGE_KEY_FILE="${HOME}/.config/sops/age/keys.txt"
 
 export SOPS_AGE_KEY_FILE="${HOME}/.config/sops/age/keys.txt"
+
+# Authenticate Bundler to GitHub Packages using the active gh account.
+# The token remains managed by gh instead of being committed to this repository.
+if command -v gh >/dev/null 2>&1; then
+  github_username="$(gh auth status --json hosts --jq '.hosts["github.com"][] | select(.active) | .login' 2>/dev/null || true)"
+  github_token="$(gh auth token --hostname github.com 2>/dev/null || true)"
+
+  if [ -n "$github_username" ] && [ -n "$github_token" ]; then
+    export BUNDLE_RUBYGEMS__PKG__GITHUB__COM="${github_username}:${github_token}"
+  fi
+
+  unset github_username github_token
+fi
