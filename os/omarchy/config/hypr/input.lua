@@ -23,3 +23,8 @@ hl.config({
     },
   },
 })
+
+-- Slower pointer speed for the external/wireless mice only.
+-- Negative = slower. Adjust to taste (e.g. -0.3 milder, -0.8 much slower).
+hl.device({ name = "corsair-corsair-slipstream-wireless-usb-receiver", sensitivity = -0.5 })
+hl.device({ name = "steelseries-rival-3-wireless-gen-2", sensitivity = -0.5 })
