@@ -23,10 +23,8 @@ install_tuis "yazi opencode" "$HOME/.config"
 
 # Install the Madness theme, then let RTK configure its Claude hook.
 mkdir -p "$HOME/.claude/themes"
-claude_theme_tmp="$(mktemp)"
 curl -fsSL "https://raw.githubusercontent.com/foliea/omarchy-madness-theme/master/claude.json" \
-  -o "$claude_theme_tmp"
-mv "$claude_theme_tmp" "$HOME/.claude/themes/madness.json"
+  -o "$HOME/.claude/themes/madness.json"
 printf '{"theme":"custom:madness"}\n' >"$HOME/.claude/settings.json"
 mise exec -- rtk init --global --hook-only --auto-patch
 
