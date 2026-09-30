@@ -25,8 +25,10 @@ install_tuis "yazi opencode" "$HOME/.config"
 # such as RTK.
 mkdir -p "$HOME/.claude"
 mkdir -p "$HOME/.claude/themes"
+claude_theme_tmp="$(mktemp)"
 curl -fsSL "https://raw.githubusercontent.com/foliea/omarchy-madness-theme/master/claude.json" \
-  -o "$HOME/.claude/themes/madness.json"
+  -o "$claude_theme_tmp"
+mv "$claude_theme_tmp" "$HOME/.claude/themes/madness.json"
 claude_settings="$HOME/.claude/settings.json"
 claude_settings_tmp="$(mktemp)"
 if [ -f "$claude_settings" ]; then
