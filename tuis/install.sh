@@ -22,7 +22,6 @@ install_tuis "k9s lazygit lazydocker" "$CONFIG_DIR"
 install_tuis "yazi opencode" "$HOME/.config"
 
 # Install the Madness theme, then let RTK configure its Claude hook.
-mkdir -p "$HOME/.claude"
 mkdir -p "$HOME/.claude/themes"
 claude_theme_tmp="$(mktemp)"
 curl -fsSL "https://raw.githubusercontent.com/foliea/omarchy-madness-theme/master/claude.json" \
