@@ -11,6 +11,7 @@ pipx = "latest"
 "npm:@google/gemini-cli" = "latest"
 "pipx:mistral-vibe" = "latest"
 codex = "latest"
+rtk = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["ruby", "node"]
